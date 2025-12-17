@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    
+    <!-- SEO & AI Optimization -->
+    <title>NCNI Wrocław | Dr Sebastian Kraszewski: ADHD, Innowacje & Neurocoaching</title>
+    <meta name="description" content="NCNI Wrocław: Centrum Terapii ADHD i Neuroróżnorodności. Dr hab. inż. Sebastian Kraszewski i Karol Kiszło łączą naukę z innowacjami (VR, Biofeedback). Skuteczny coaching neuroróżnorodności i leczenie stresu.">
+    <meta name="keywords" content="Sebastian Kraszewski ADHD, Karol Kiszło, Neurocoaching Wrocław, Terapia ADHD dorośli, Innowacje w terapii, Biofeedback VR, Neuroróżnorodność, Psychotraumatologia">
+    <link rel="canonical" href="https://ncni.pl">
+    <link rel="icon" href="logo.png" type="image/png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Libraries (Three.js for particles) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "MedicalClinic",
+          "name": "NCNI - Naukowe Centrum Neuroinnowacji",
+          "url": "https://ncni.pl",
+          "logo": "https://ncni.pl/logo.png",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "ul. Żeromskiego 60/5a",
+            "addressLocality": "Wrocław",
+            "postalCode": "50-312",
+            "addressCountry": "PL"
+          },
+          "telephone": "+48600608333",
+          "email": "kontakt@ncni.pl",
+          "sameAs": [
+            "https://youtube.com/@neuroinnowacje",
+            "https://x.com/neuroinnowacje"
+          ]
+        }
+      ]
+    }
+    </script>
+
+    <style>
+        :root {
+            /* Palette */
+            --bg-body: #F8FAFC;       
+            --bg-surface: rgba(255, 255, 255, 0.85);
+            --primary: #0F766E;       
+            --primary-dark: #0D5E57;
+            --primary-light: #CCFBF1;
+            --accent: #6366F1;        
+            --accent-glow: rgba(99, 102, 241, 0.3);
+            --text-main: #1E293B;
+            --text-muted: #64748B;
+            --border: #E2E8F0;
+            --radius: 16px;
+            --trans-default: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; font-size: 16px; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        /* --- TYPOGRAPHY RESPONSIVE --- */
+        h1 { font-family: 'Lexend', sans-serif; line-height: 1.1; letter-spacing: -0.02em; }
+        h2, h3, h4 { font-family: 'Lexend', sans-serif; }
+
+        /* --- KURSOR (Desktop Only) --- */
+        @media (min-width: 1025px) {
+            body, a, button, input, textarea, select { cursor: none !important; }
+            .cursor-dot { width: 8px; height: 8px; background: var(--primary); position: fixed; top: 0; left: 0; transform: translate(-50%, -50%); border-radius: 50%; z-index: 9999; pointer-events: none; }
+            .cursor-outline { width: 40px; height: 40px; border: 1px solid rgba(15, 118, 110, 0.5); position: fixed; top: 0; left: 0; transform: translate(-50%, -50%); border-radius: 50%; z-index: 9998; pointer-events: none; transition: width 0.2s, height 0.2s, background-color 0.2s, border-color 0.2s; }
+            body.hovering .cursor-outline { width: 70px; height: 70px; background-color: rgba(15, 118, 110, 0.05); border-color: var(--primary); border-width: 2px; }
+        }
+        @media (max-width: 1024px) {
+            .cursor-dot, .cursor-outline { display: none !important; }
+            body { cursor: auto; }
+        }
+
+        /* --- BACKGROUND --- */
+        #bg-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; z-index: -1; opacity: 0.6; pointer-events: none; }
+
+        /* --- LAYOUT UTILS --- */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        @media (max-width: 768px) { .container { padding: 0 16px; } }
+
+        .section { padding: 80px 0; position: relative; }
+        @media (max-width: 768px) { .section { padding: 50px 0; } }
+
+        .glass {
+            background: var(--bg-surface); backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+        }
+
+        /* --- HEADER --- */
+        header {
+            position: sticky; top: 0; z-index: 1000;
+            transition: var(--trans-default);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+            padding: 12px 0;
+            background: rgba(255,255,255,0.95); /* Better contrast on mobile */
+        }
+        
+        .nav-wrapper {
+            display: flex;
+            flex-direction: column; 
+            align-items: center;
+            gap: 16px;
+        }
+        
+        .brand-bar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            position: relative; 
+        }
+
+        .logo {
+            display: flex; align-items: center; gap: 10px;
+            font-weight: 700; font-size: 1.4rem; color: var(--text-main);
+            text-decoration: none; cursor: pointer; letter-spacing: -0.02em;
+        }
+        .logo img { height: 40px; width: auto; border-radius: 8px; }
+
+        /* Navigation Links (Desktop) */
+        .nav-links { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+        .nav-item {
+            padding: 8px 16px; border-radius: 99px; font-size: 0.9rem; font-weight: 500;
+            color: var(--text-muted); text-decoration: none; transition: var(--trans-default); cursor: pointer;
+            white-space: nowrap;
+        }
+        .nav-item:hover { color: var(--primary); background: var(--primary-light); }
+        .nav-cta {
+            background: var(--primary); color: white !important;
+            box-shadow: 0 4px 12px rgba(15, 118, 110, 0.25); margin-left: 8px;
+        }
+        
+        /* Mobile Header Clean Up */
+        @media (max-width: 900px) {
+            header { padding: 10px 0; }
+            .nav-wrapper { flex-direction: row; height: 50px; justify-content: center; padding: 0; }
+            .brand-bar { width: auto; }
+            .nav-links { display: none; } 
+            .logo { font-size: 1.1rem; }
+            .logo img { height: 32px; }
+            .logo span { display: inline-block; max-width: 200px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        }
+
+        /* --- FLOATING MOBILE MENU (NEW) --- */
+        .fab-container {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 2000;
+            display: none; /* Hidden on desktop */
+        }
+        @media (max-width: 900px) { .fab-container { display: flex; flex-direction: column-reverse; align-items: flex-end; gap: 12px; } }
+
+        .fab-btn {
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(15, 118, 110, 0.4);
+            cursor: pointer;
+            border: none;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            font-size: 24px;
+        }
+        .fab-btn:active { transform: scale(0.9); }
+        .fab-btn.open { transform: rotate(45deg); background: var(--text-main); }
+
+        .fab-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            align-items: flex-end;
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            margin-bottom: 8px;
+        }
+        .fab-menu.active {
+            opacity: 1;
+            pointer-events: all;
+            transform: translateY(0);
+        }
+
+        .fab-item {
+            background: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 600;
+            font-size: 0.95rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transform: translateX(20px);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        .fab-menu.active .fab-item {
+            transform: translateX(0);
+            opacity: 1;
+        }
+        /* Staggered animation delays */
+        .fab-menu.active .fab-item:nth-child(1) { transition-delay: 0.05s; }
+        .fab-menu.active .fab-item:nth-child(2) { transition-delay: 0.1s; }
+        .fab-menu.active .fab-item:nth-child(3) { transition-delay: 0.15s; }
+        .fab-menu.active .fab-item:nth-child(4) { transition-delay: 0.2s; }
+        .fab-menu.active .fab-item:nth-child(5) { transition-delay: 0.25s; }
+
+        /* --- HERO --- */
+        .hero { padding: 80px 0 60px; text-align: center; }
+        h1 {
+            font-size: clamp(2rem, 6vw, 3.5rem); /* Responsive font size */
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, var(--text-main) 0%, var(--primary) 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .hero-lead {
+            font-size: clamp(1rem, 4vw, 1.25rem);
+            color: var(--text-muted); max-width: 700px; margin: 0 auto 32px;
+        }
+        /* Flex buttons wrap on mobile */
+        .hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+        .btn {
+            display: inline-flex; align-items: center; justify-content: center;
+            padding: 12px 24px; border-radius: 99px; font-weight: 600; cursor: pointer;
+            border: none; font-family: 'Lexend', sans-serif; transition: 0.2s;
+            width: auto;
+        }
+        @media (max-width: 480px) { .btn { width: 100%; } } /* Full width buttons on small screens */
+
+        .btn-primary { background-color: var(--primary); color: white; }
+        .btn-outline { background: white; border: 1px solid var(--border); color: var(--text-main); }
+
+        /* --- MARQUEE --- */
+        .marquee-wrapper {
+            background: var(--primary); color: white; padding: 10px 0; overflow: hidden;
+            position: relative; font-family: 'Lexend', sans-serif; font-size: 0.85rem;
+            letter-spacing: 0.05em; text-transform: uppercase; white-space: nowrap;
+        }
+        .marquee-content { display: inline-block; animation: scroll 40s linear infinite; } /* Slower scroll */
+        .marquee-item { margin: 0 16px; display: inline-flex; align-items: center; gap: 6px; }
+        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        /* --- TABS --- */
+        .tabs-container { margin-top: 40px; }
+        .tabs-nav {
+            display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-bottom: 30px;
+        }
+        .tab-btn {
+            background: white; border: 1px solid var(--border); padding: 10px 20px;
+            border-radius: 99px; font-weight: 600; color: var(--text-muted); cursor: pointer;
+            font-family: 'Lexend', sans-serif; flex-grow: 1; text-align: center;
+        }
+        @media (min-width: 600px) { .tab-btn { flex-grow: 0; } } /* Normal size on desktop */
+
+        .tab-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
+        .tab-content { display: none; animation: fadeIn 0.5s ease; }
+        .tab-content.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* --- CARDS (GRID) --- */
+        .grid-cards {
+            display: grid;
+            grid-template-columns: 1fr; /* Single column mobile */
+            gap: 20px;
+        }
+        @media (min-width: 640px) { .grid-cards { grid-template-columns: repeat(2, 1fr); } }
+        @media (min-width: 1024px) { .grid-cards { grid-template-columns: repeat(3, 1fr); } }
+
+        .feature-card {
+            border-radius: 20px; padding: 24px; position: relative; overflow: hidden;
+            transition: var(--trans-default); border: 2px solid transparent; background: white;
+            text-decoration: none; display: block;
+        }
+        .feature-card:hover { transform: translateY(-3px); border-color: var(--primary); }
+        .card-icon {
+            width: 48px; height: 48px; background: linear-gradient(135deg, #EEF2FF, #E0F2FE);
+            border-radius: 14px; display: flex; align-items: center; justify-content: center;
+            margin-bottom: 16px; font-size: 24px;
+        }
+        .feature-card h3 { font-size: 1.3rem; margin-bottom: 10px; color: var(--text-main); }
+        .feature-card p { color: var(--text-muted); margin-bottom: 20px; font-size: 0.95rem; }
+        .read-more { font-weight: 600; color: var(--primary); font-size: 0.9rem; }
+
+        /* Oval Cards */
+        .oval-card {
+            border-radius: 40px; padding: 32px; background: linear-gradient(145deg, #FFFFFF, #F0F9FF);
+            border: 2px solid var(--primary-light); text-align: center;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            text-decoration: none;
+        }
+        @media (min-width: 768px) { .oval-card { grid-column: span 1; } } /* Adjust span if needed */
+
+        /* --- VR SECTION --- */
+        .vr-tech-section {
+            background: #0F172A; color: white; padding: 60px 24px; border-radius: 24px;
+            margin: 40px 0; text-align: center;
+        }
+        .vr-tag {
+            display: inline-block; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px);
+            padding: 6px 14px; border-radius: 99px; font-size: 0.85rem; color: #67E8F9;
+            border: 1px solid rgba(103, 232, 249, 0.3); margin-bottom: 20px;
+        }
+        .vr-tech-section h2 { font-size: clamp(2rem, 5vw, 2.5rem); margin-bottom: 20px; color: white; }
+        .vr-tech-section p { font-size: 1.1rem; color: #CBD5E1; margin-bottom: 30px; }
+
+        /* --- TEAM GRID --- */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+        .team-card {
+            border-radius: 20px; overflow: hidden; background: white; text-decoration: none;
+            display: flex; flex-direction: column;
+        }
+        .team-img-wrapper { height: 280px; overflow: hidden; background: #E2E8F0; }
+        .team-img { width: 100%; height: 100%; object-fit: cover; object-position: top center; filter: grayscale(100%); transition: 0.5s; }
+        .team-card:hover .team-img { filter: grayscale(0%); transform: scale(1.05); }
+        .team-info { padding: 20px; }
+
+        /* --- RESERVATION FORM --- */
+        .reservation-section {
+            background: white; border: 1px solid var(--border); border-radius: 20px;
+            padding: 32px 20px; margin: 50px auto; max-width: 600px;
+        }
+        .form-group { margin-bottom: 16px; text-align: left; }
+        .form-group label { display: block; margin-bottom: 6px; font-weight: 600; font-size: 0.9rem; }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%; padding: 12px; border-radius: 10px; border: 1px solid var(--border);
+            background: #FAFAFA; font-size: 1rem;
+        }
+        .form-btn {
+            width: 100%; padding: 14px; background: var(--primary); color: white;
+            border: none; border-radius: 10px; font-weight: 700; font-size: 1rem; cursor: pointer;
+        }
+
+        /* --- FOOTER --- */
+        footer { background: white; border-top: 1px solid var(--border); padding: 50px 0 20px; margin-top: 60px; }
+        .footer-grid {
+            display: grid; grid-template-columns: 1fr; gap: 30px; text-align: center;
+        }
+        @media (min-width: 768px) {
+            .footer-grid { grid-template-columns: repeat(3, 1fr); text-align: left; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Canvas (Background) -->
+    <div id="bg-canvas"></div>
+
+    <!-- Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <!-- Header -->
+    <header class="glass">
+        <div class="container nav-wrapper">
+            <div class="brand-bar">
+                <a href="#" class="logo cursor-trigger">
+                    <img src="logo.png" alt="NCNI">
+                    <span>Naukowe Centrum Neuroinnowacji</span>
+                </a>
+            </div>
+
+            <!-- Nav Links Row (Desktop Only) -->
+            <nav class="nav-links">
+                <div style="margin-right: 20px; font-size: 0.9rem; font-weight: 600;">
+                    <a href="tel:+48600608333" style="margin-right: 15px; color: var(--text-main);">📞 600 608 333</a>
+                    <a href="mailto:kontakt@ncni.pl" style="color: var(--text-main);">✉️ kontakt@ncni.pl</a>
+                </div>
+                <a href="o-nas.html" class="nav-item cursor-trigger">O nas</a>
+                <a href="oferta.html" class="nav-item cursor-trigger">Oferta</a>
+                <a href="neuroroznorodnosc.html" class="nav-item cursor-trigger">Neuroróżnorodność</a>
+                <a href="psychologia.html" class="nav-item cursor-trigger">Psychologia</a>
+                <a href="technologie.html" class="nav-item cursor-trigger">Technologie</a>
+                <a href="#rezerwacja" class="nav-item nav-cta cursor-trigger">Umów wizytę</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Floating Mobile Menu (FAB) -->
+    <div class="fab-container">
+        <div class="fab-menu">
+            <a href="#rezerwacja" class="fab-item" style="color: var(--primary);">📅 Umów wizytę</a>
+            <a href="oferta.html" class="fab-item">📋 Oferta</a>
+            <a href="neuroroznorodnosc.html" class="fab-item">🧠 Neuroróżnorodność</a>
+            <a href="psychologia.html" class="fab-item">❤️ Psychologia</a>
+            <a href="o-nas.html" class="fab-item">👥 O nas</a>
+            <a href="tel:+48600608333" class="fab-item">📞 Zadzwoń</a>
+        </div>
+        <button class="fab-btn cursor-trigger">
+            <span>+</span>
+        </button>
+    </div>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <div style="display:inline-block; padding: 6px 14px; background: white; border: 1px solid var(--primary-light); border-radius: 99px; font-size: 0.85rem; font-weight: 600; color: var(--primary); margin-bottom: 20px;">
+                Nowoczesna medycyna & technologia
+            </div>
+            <h1>Twoja równowaga.<br>Potwierdzona nauką.</h1>
+            <p class="hero-lead">
+                Łączymy psychologię kliniczną, dietetykę, fizjoterapię i technologie (VR, Biofeedback), aby skutecznie wspierać neuroróżnorodność, leczyć stres i traumę.
+            </p>
+            <div class="hero-btns">
+                <button class="btn btn-primary cursor-trigger" onclick="openTab('neuroroznorodnosc')">Dla Neuroróżnorodnych</button>
+                <button class="btn btn-outline cursor-trigger" style="border: 1px solid var(--border); background: white;" onclick="openTab('psychologia')">Wsparcie Psychologiczne</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Marquee -->
+    <div class="marquee-wrapper">
+        <div class="marquee-content">
+            <span class="marquee-item">Evidence Based Medicine</span>
+            <span class="marquee-item">Neuroróżnorodność (ADHD / ASD)</span>
+            <span class="marquee-item">Psychotraumatologia</span>
+            <span class="marquee-item">Dietetyka Kliniczna</span>
+            <span class="marquee-item">Fizjoterapia</span>
+            <span class="marquee-item">Terapie VR</span>
+            <span class="marquee-item">Biofeedback HRV</span>
+            <span class="marquee-item">Zero-Gravity</span>
+            
+            <span class="marquee-item">Evidence Based Medicine</span>
+            <span class="marquee-item">Neuroróżnorodność (ADHD / ASD)</span>
+            <span class="marquee-item">Psychotraumatologia</span>
+            <span class="marquee-item">Dietetyka Kliniczna</span>
+            <span class="marquee-item">Fizjoterapia</span>
+            <span class="marquee-item">Terapie VR</span>
+            <span class="marquee-item">Biofeedback HRV</span>
+            <span class="marquee-item">Zero-Gravity</span>
+        </div>
+    </div>
+
+    <!-- Oferta (Tabs) -->
+    <section class="section" id="oferta">
+        <div class="container">
+            <div class="tabs-nav">
+                <button class="tab-btn active cursor-trigger" onclick="openTab('neuroroznorodnosc')">Neuroróżnorodność</button>
+                <button class="tab-btn cursor-trigger" onclick="openTab('psychologia')">Psychologia</button>
+                <button class="tab-btn cursor-trigger" onclick="openTab('technologie')">Technologie (VR/AI)</button>
+            </div>
+
+            <!-- Neuroróżnorodność -->
+            <div id="neuroroznorodnosc" class="tab-content active">
+                <div class="grid-cards">
+                    <a href="psychologia.html" class="oval-card cursor-trigger" style="text-decoration: none;">
+                        <div class="card-icon" style="color: var(--accent);">🫂</div>
+                        <h3>Wsparcie Psychologiczne</h3>
+                        <p style="color: var(--text-muted);">Dedykowana pomoc dla osób neuroatypowych. Zrozumienie, akceptacja i narzędzia.</p>
+                        <span class="read-more" style="margin-top:10px; display:inline-block;">Sprawdź ofertę →</span>
+                    </a>
+                    <a href="technologie.html" class="oval-card cursor-trigger" style="text-decoration: none;">
+                        <div class="card-icon" style="color: var(--primary);">🥽</div>
+                        <h3>Technologia VR</h3>
+                        <p style="color: var(--text-muted);">Treningi kompetencji w VR. Nauka przez doświadczanie bez stresu.</p>
+                        <span class="read-more" style="margin-top:10px; display:inline-block;">Poznaj VR →</span>
+                    </a>
+
+                    <a href="adhd.html" class="feature-card glass cursor-trigger">
+                        <div class="card-icon">🧠</div>
+                        <h3>ADHD / ADD</h3>
+                        <p>Treningi funkcji wykonawczych i zarządzania uwagą (VR + Biofeedback).</p>
+                        <span class="read-more">Zobacz program →</span>
+                    </a>
+                    <a href="asd.html" class="feature-card glass cursor-trigger">
+                        <div class="card-icon">🧩</div>
+                        <h3>Spektrum Autyzmu (ASD)</h3>
+                        <p>Przestrzeń ND-affirming. Treningi kompetencji i regulacja napięcia.</p>
+                        <span class="read-more">Zobacz program →</span>
+                    </a>
+                    <a href="wysoka-wrazliwosc.html" class="feature-card glass cursor-trigger">
+                        <div class="card-icon">🦋</div>
+                        <h3>Wysoka Wrażliwość</h3>
+                        <p>Nauka higieny układu nerwowego i zarządzania energią.</p>
+                        <span class="read-more">Zobacz program →</span>
+                    </a>
+                    <a href="dysleksja.html" class="feature-card glass cursor-trigger">
+                        <div class="card-icon">📖</div>
+                        <h3>Dysleksja</h3>
+                        <p>Wsparcie w trudnościach z czytaniem. Nowoczesne metody treningowe.</p>
+                        <span class="read-more">Zobacz program →</span>
+                    </a>
+                    <a href="dyskalkulia.html" class="feature-card glass cursor-trigger">
+                        <div class="card-icon">🔢</div>
+                        <h3>Dyskalkulia</h3>
+                        <p>Pomoc w trudnościach z matematyką. Treningi poznawcze.</p>
+                        <span class="read-more">Zobacz program →</span>
+                    </a>
+                    <a href="dcd.html" class="feature-card glass cursor-trigger">
+                        <div class="card-icon">🤸</div>
+                        <h3>Dyspraksja (DCD)</h3>
+                        <p>Wsparcie w koordynacji ruchowej i planowaniu motorycznym.</p>
+                        <span class="read-more">Zobacz program →</span>
+                    </a>
+                    <a href="tourette.html" class="feature-card glass cursor-trigger">
+                        <div class="card-icon">⚡</div>
+                        <h3>Tiki / Tourette</h3>
+                        <p>Terapie behawioralne i relaksacyjne dla redukcji napięcia.</p>
+                        <span class="read-more">Zobacz program →</span>
+                    </a>
+                    <a href="metoda-kraszewskiego.html" class="feature-card glass cursor-trigger">
+                        <div class="card-icon">🎓</div>
+                        <h3>Metoda Kraszewskiego</h3>
+                        <p>Autorska metoda integracji sensorycznej i poznawczej.</p>
+                        <span class="read-more">Czytaj więcej →</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Psychologia -->
+            <div id="psychologia" class="tab-content">
+                <div class="grid-cards">
+                    <a href="psychologia.html" class="feature-card glass cursor-trigger">
+                        <div class="card-icon">❤️‍🩹</div>
+                        <h3>Psychotraumatologia</h3>
+                        <p>Terapia traumy i PTSD. Praca z ciałem i umysłem.</p>
+                        <span class="read-more">Więcej informacji →</span>
+                    </a>
+                    <a href="psychologia.html" class="feature-card glass cursor-trigger">
+                        <div class="card-icon">🌬️</div>
+                        <h3>Stres i Wypalenie</h3>
+                        <p>Mierzalna redukcja kortyzolu. Treningi oddechowe i Zero-Gravity.</p>
+                        <span class="read-more">Więcej informacji →</span>
+                    </a>
+                    <a href="psychologia.html" class="feature-card glass cursor-trigger">
+                        <div class="card-icon">💬</div>
+                        <h3>Konsultacje</h3>
+                        <p>Indywidualne wsparcie w kryzysie, lęku i depresji.</p>
+                        <span class="read-more">Więcej informacji →</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Technologie -->
+            <div id="technologie" class="tab-content">
+                <div class="grid-cards">
+                    <a href="technologie.html" class="feature-card glass cursor-trigger">
+                        <div class="card-icon">🥽</div>
+                        <h3>Terapia VR</h3>
+                        <p>Immersyjne środowiska terapeutyczne. Leczenie fobii.</p>
+                        <span class="read-more">Sprawdź sprzęt →</span>
+                    </a>
+                    <a href="technologie.html" class="feature-card glass cursor-trigger">
+                        <div class="card-icon">📊</div>
+                        <h3>Biofeedback HRV</h3>
+                        <p>Trenuj swoje serce i mózg. Obserwuj wpływ oddechu na stres.</p>
+                        <span class="read-more">Sprawdź sprzęt →</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- O Nas (Teaser) -->
+    <section id="o-nas" class="section">
+        <div class="container">
+            <div style="text-align: center; max-width: 800px; margin: 0 auto 60px;">
+                <span style="color: var(--primary); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; font-size: 0.9rem;">Eksperci NCNI</span>
+                <h2 style="font-size: 2.5rem; margin-top: 10px;">Ludzie i Nauka</h2>
+                <p style="color: var(--text-muted); font-size: 1.1rem; margin-bottom: 24px;">
+                    Poznaj zespół łączący medycynę, inżynierię i psychologię. 
+                </p>
+                <a href="o-nas.html" class="btn btn-outline cursor-trigger" style="border-color: var(--primary); color: var(--primary);">Poznaj pełną historię i misję →</a>
+            </div>
+
+            <div class="team-grid">
+                <!-- 1 -->
+                <a href="kraszewski.html" class="team-card glass cursor-trigger">
+                    <div class="team-img-wrapper">
+                        <img src="sk.jpg" alt="Sebastian Kraszewski" class="team-img" onerror="this.src='https://ui-avatars.com/api/?name=Sebastian+Kraszewski&background=6366F1&color=fff&size=400'">
+                    </div>
+                    <div class="team-info">
+                        <span class="team-role">Dyrektor Naukowy</span>
+                        <h3>dr hab. inż. Sebastian Kraszewski</h3>
+                        <p style="font-size: 0.9rem; color: var(--text-muted);">Zobacz profil →</p>
+                    </div>
+                </a>
+                
+                <!-- 2 -->
+                <a href="kiszlo.html" class="team-card glass cursor-trigger">
+                    <div class="team-img-wrapper">
+                        <img src="kk.jpg" alt="Karol Kiszło" class="team-img" onerror="this.src='https://ui-avatars.com/api/?name=Karol+Kiszlo&background=0F766E&color=fff&size=400'">
+                    </div>
+                    <div class="team-info">
+                        <span class="team-role">Head of NeuroPerformance</span>
+                        <h3>Karol Kiszło</h3>
+                        <p style="font-size: 0.9rem; color: var(--text-muted);">Zobacz profil →</p>
+                    </div>
+                </a>
+
+                <!-- 3 -->
+                <a href="psycholog.html" class="team-card glass cursor-trigger">
+                    <div class="team-img-wrapper">
+                        <img src="psycholog.jpg" alt="Psycholog NCNI" class="team-img" onerror="this.src='https://ui-avatars.com/api/?name=Psycholog&background=0F766E&color=fff&size=400'">
+                    </div>
+                    <div class="team-info">
+                        <span class="team-role">Psychologia Kliniczna</span>
+                        <h3>Zespół Psychologów</h3>
+                        <p style="font-size: 0.9rem; color: var(--text-muted);">Zobacz specjalizacje →</p>
+                    </div>
+                </a>
+
+                <!-- 4 Dietetyk -->
+                <a href="dietetyk.html" class="team-card glass cursor-trigger">
+                    <div class="team-img-wrapper">
+                        <img src="https://ui-avatars.com/api/?name=Dietetyk+Kliniczny&background=10B981&color=fff&size=400" alt="Dietetyk NCNI" class="team-img">
+                    </div>
+                    <div class="team-info">
+                        <span class="team-role">Psychodietetyka</span>
+                        <h3>Dietetyk Kliniczny</h3>
+                        <p style="font-size: 0.9rem; color: var(--text-muted);">Zobacz ofertę →</p>
+                    </div>
+                </a>
+                
+                <!-- 5 Fizjo -->
+                <a href="fizjoterapia.html" class="team-card glass cursor-trigger">
+                    <div class="team-img-wrapper">
+                        <img src="https://ui-avatars.com/api/?name=Fizjo+NCNI&background=F59E0B&color=fff&size=400" alt="Fizjoterapeuta NCNI" class="team-img">
+                    </div>
+                    <div class="team-info">
+                        <span class="team-role">Fizjoterapia</span>
+                        <h3>Fizjoterapeuta</h3>
+                        <p style="font-size: 0.9rem; color: var(--text-muted);">Zobacz ofertę →</p>
+                    </div>
+                </a>
+
+                <!-- 6 Szablon -->
+                <a href="szablon-profil.html" class="team-card glass cursor-trigger">
+                    <div class="team-img-wrapper">
+                        <img src="https://ui-avatars.com/api/?name=Do%C5%82%C4%85cz+do+nas&background=CBD5E1&color=fff&size=400" alt="Placeholder" class="team-img">
+                    </div>
+                    <div class="team-info">
+                        <span class="team-role" style="color: var(--text-muted);">Rekrutacja</span>
+                        <h3>Twój Specjalista</h3>
+                        <p style="font-size: 0.9rem; color: var(--text-muted);">Miejsce na nowego eksperta.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- VR Section -->
+    <div class="container">
+        <section class="vr-tech-section cursor-trigger">
+            <div class="vr-tech-content">
+                <span class="vr-tag">INNOWACJA NCNI</span>
+                <h2>Neuro-Immersja:<br>VR + Zero Gravity</h2>
+                <p>
+                    Połączenie całkowitego odciążenia ciała (Zero-G) z cyfrową stymulacją mózgu (VR). 
+                    To najgłębsza forma regeneracji układu nerwowego dostępna we Wrocławiu.
+                </p>
+                <div style="display: flex; gap: 16px; justify-content: center;">
+                    <a href="#rezerwacja" class="btn btn-primary cursor-trigger" style="background: #67E8F9; color: #0F172A; box-shadow: 0 0 20px rgba(103, 232, 249, 0.4);">Rezerwuj Sesję</a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- FAQ -->
+    <section id="faq" class="section">
+        <div class="container" style="max-width: 800px;">
+            <h2 style="margin-bottom: 40px; text-align: center;">Pytania i Odpowiedzi</h2>
+            <details class="cursor-trigger">
+                <summary>Jak wygląda pierwsza wizyta?</summary>
+                <div class="details-content">
+                    Pierwsza wizyta to konsultacja diagnostyczna (60 min). Omawiamy Twoje potrzeby, historię medyczną i dobieramy odpowiednią ścieżkę.
+                </div>
+            </details>
+            <details class="cursor-trigger">
+                <summary>Czy terapie VR są bezpieczne?</summary>
+                <div class="details-content">
+                    Tak. Przed sesją VR przeprowadzamy wywiad kwalifikacyjny. Dla osób z epilepsją światłoczułą mamy alternatywne metody (Biofeedback bez VR).
+                </div>
+            </details>
+        </div>
+    </section>
+
+    <!-- Formularz Rezerwacji -->
+    <section id="rezerwacja" class="reservation-section">
+        <h2 style="text-align: center; margin-bottom: 12px; color: var(--primary-dark);">Zarezerwuj Wizytę</h2>
+        <p style="text-align: center; color: var(--text-muted); margin-bottom: 32px;">Wypełnij formularz – skontaktujemy się, by potwierdzić termin.</p>
+        
+        <form id="bookingForm" class="cursor-trigger">
+            <div class="form-group">
+                <label>Imię i Nazwisko</label>
+                <input type="text" id="name" required placeholder="np. Jan Kowalski">
+            </div>
+            <div class="form-group">
+                <label>Telefon</label>
+                <input type="tel" id="phone" required placeholder="np. 600 608 333">
+            </div>
+            <div class="form-group">
+                <label>Rodzaj wizyty</label>
+                <select id="service">
+                    <option value="Konsultacja Psychologiczna">Konsultacja Psychologiczna</option>
+                    <option value="Terapia ADHD/ASD">Terapia ADHD/ASD</option>
+                    <option value="Biofeedback / VR">Biofeedback / VR</option>
+                    <option value="Dietetyka Kliniczna">Dietetyka Kliniczna</option>
+                    <option value="Fizjoterapia">Fizjoterapia</option>
+                    <option value="Inne">Inne</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Wiadomość (opcjonalnie)</label>
+                <textarea id="msg" rows="3" placeholder="Preferowane godziny..."></textarea>
+            </div>
+            <button type="submit" class="form-btn cursor-trigger">Wyślij Zgłoszenie (Otwórz Email)</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer id="kontakt">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <a href="#" class="logo cursor-trigger" style="margin-bottom: 20px; display: inline-block;">
+                        <img src="logo.png" alt="NCNI">
+                        NCNI
+                    </a>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">
+                        Naukowe Centrum Neuroinnowacji.<br>
+                        Twój partner w zdrowiu psychicznym.
+                    </p>
+                </div>
+                <div>
+                    <h4 style="margin-bottom: 16px;">Kontakt</h4>
+                    <p style="color: var(--text-muted); margin-bottom: 8px;">ul. Stefana Żeromskiego 60/5a</p>
+                    <p style="color: var(--text-muted); margin-bottom: 8px;">50-312 Wrocław</p>
+                    
+                    <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 16px;">
+                        <a href="mailto:kontakt@ncni.pl" class="cursor-trigger" style="color: var(--text-main); font-weight: 600; text-decoration: none;">
+                            ✉️ kontakt@ncni.pl
+                        </a>
+                        <a href="tel:+48600608333" class="cursor-trigger" style="color: var(--primary); font-weight: 600; text-decoration: none; font-size: 1.1rem;">
+                            📞 600 608 333
+                        </a>
+                    </div>
+                    
+                    <div style="margin-top: 24px; display: flex; gap: 16px; align-items: center;">
+                        <a href="https://youtube.com/@neuroinnowacje" target="_blank" class="cursor-trigger" style="color: var(--text-muted); text-decoration: none; font-weight: 600;">YouTube</a>
+                        <span style="color: var(--border);">|</span>
+                        <a href="https://x.com/neuroinnowacje" target="_blank" class="cursor-trigger" style="color: var(--text-muted); text-decoration: none; font-weight: 600;">X (Twitter)</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 style="margin-bottom: 16px;">Mapa Strony</h4>
+                    <ul style="color: var(--text-muted); font-size: 0.95rem; list-style: none; padding: 0;">
+                        <li style="margin-bottom: 8px;"><a href="adhd.html" class="cursor-trigger">ADHD</a></li>
+                        <li style="margin-bottom: 8px;"><a href="asd.html" class="cursor-trigger">Autyzm</a></li>
+                        <li style="margin-bottom: 8px;"><a href="psychologia.html" class="cursor-trigger">Psychologia</a></li>
+                        <li style="margin-bottom: 8px;"><a href="technologie.html" class="cursor-trigger">VR Lab</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div style="border-top: 1px solid var(--border); padding-top: 24px; margin-top: 40px; text-align: center; color: var(--text-muted); font-size: 0.85rem;">
+                &copy; 2025 Naukowe Centrum Neuroinnowacji | Designed and built by NCNI.agency Karol Kiszło
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        function initParticles(){const container=document.getElementById('bg-canvas');if(!container)return;const scene=new THREE.Scene();scene.fog=new THREE.FogExp2(0xF8FAFC,0.002);const camera=new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,1000);camera.position.z=10;const renderer=new THREE.WebGLRenderer({alpha:true,antialias:true});renderer.setSize(window.innerWidth,window.innerHeight);renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));container.appendChild(renderer.domElement);const geometry=new THREE.BufferGeometry();const count=200;const positions=new Float32Array(count*3);const colors=new Float32Array(count*3);for(let i=0;i<count*3;i+=3){positions[i]=(Math.random()-0.5)*25;positions[i+1]=(Math.random()-0.5)*25;positions[i+2]=(Math.random()-0.5)*25;const mix=Math.random();if(mix>0.5){colors[i]=0.06;colors[i+1]=0.46;colors[i+2]=0.43;}else{colors[i]=0.39;colors[i+1]=0.4;colors[i+2]=0.94;}}geometry.setAttribute('position',new THREE.BufferAttribute(positions,3));geometry.setAttribute('color',new THREE.BufferAttribute(colors,3));const material=new THREE.PointsMaterial({size:0.1,vertexColors:true,transparent:true,opacity:0.4});const particles=new THREE.Points(geometry,material);scene.add(particles);let mouseX=0,mouseY=0,targetX=0,targetY=0;const windowHalfX=window.innerWidth/2;const windowHalfY=window.innerHeight/2;document.addEventListener('mousemove',(e)=>{mouseX=(e.clientX-windowHalfX);mouseY=(e.clientY-windowHalfY);});const clock=new THREE.Clock();function animate(){const time=clock.getElapsedTime();targetX=mouseX*0.0001;targetY=mouseY*0.0001;particles.rotation.y+=0.01*(targetX-particles.rotation.y);particles.rotation.x+=0.01*(targetY-particles.rotation.x);particles.rotation.z+=0.0005;const scale=1+Math.sin(time*0.5)*0.02;particles.scale.set(scale,scale,scale);renderer.render(scene,camera);requestAnimationFrame(animate);}animate();window.addEventListener('resize',()=>{camera.aspect=window.innerWidth/window.innerHeight;camera.updateProjectionMatrix();renderer.setSize(window.innerWidth,window.innerHeight);});}document.addEventListener("DOMContentLoaded",initParticles);
+        
+        const cursorDot=document.querySelector('.cursor-dot');const cursorOutline=document.querySelector('.cursor-outline');window.addEventListener('mousemove',(e)=>{const posX=e.clientX;const posY=e.clientY;cursorDot.style.left=`${posX}px`;cursorDot.style.top=`${posY}px`;cursorOutline.animate({left:`${posX}px`,top:`${posY}px`},{duration:500,fill:"forwards"});});const triggers=document.querySelectorAll('.cursor-trigger, a, button, .story-block, .team-card, .value-card');triggers.forEach(trigger=>{trigger.addEventListener('mouseenter',()=>{document.body.classList.add('hovering');});trigger.addEventListener('mouseleave',()=>{document.body.classList.remove('hovering');});});
+        
+        // Floating Menu Logic
+        const fabBtn = document.querySelector('.fab-btn');
+        const fabMenu = document.querySelector('.fab-menu');
+
+        if (fabBtn && fabMenu) {
+            fabBtn.addEventListener('click', () => {
+                fabMenu.classList.toggle('active');
+                fabBtn.classList.toggle('open');
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!fabBtn.contains(e.target) && !fabMenu.contains(e.target)) {
+                    fabMenu.classList.remove('active');
+                    fabBtn.classList.remove('open');
+                }
+            });
+
+            // Close menu when clicking a link
+            fabMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    fabMenu.classList.remove('active');
+                    fabBtn.classList.remove('open');
+                });
+            });
+        }
+
+        // Tabs
+        function openTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            const target = document.getElementById(tabId);
+            if(target) target.classList.add('active');
+            const btns = document.querySelectorAll('.tab-btn');
+            btns.forEach(btn => {
+                if(btn.getAttribute('onclick').includes(tabId)) { btn.classList.add('active'); }
+            });
+        }
+    </script>
+</body>
+</html>
