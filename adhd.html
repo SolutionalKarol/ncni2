@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO & AI Optimization -->
+    <title>Terapia ADHD i ADD Wrocław | Diagnoza i Trening VR | NCNI</title>
+    <meta name="description" content="Skuteczna terapia ADHD i ADD we Wrocławiu. Diagnoza (DIVA-5, MOXO), treningi funkcji wykonawczych w VR, Biofeedback HRV. Program dla dzieci i dorosłych.">
+    <meta name="keywords" content="ADHD Wrocław, Diagnoza ADHD dorośli, Terapia ADD, Trening koncentracji VR, Biofeedback ADHD, NCNI, Dr Kraszewski">
+    <link rel="canonical" href="https://ncni.pl/adhd.html">
+    <link rel="icon" href="logo.png" type="image/png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Libraries (Three.js for particles) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "MedicalCondition",
+      "name": "Attention Deficit Hyperactivity Disorder (ADHD)",
+      "alternateName": "ADD",
+      "possibleTreatment": [
+        { "@type": "MedicalTherapy", "name": "Terapia VR (Virtual Reality)" },
+        { "@type": "MedicalTherapy", "name": "Biofeedback HRV" },
+        { "@type": "MedicalTherapy", "name": "Trening Funkcji Wykonawczych" },
+        { "@type": "MedicalTherapy", "name": "Psychoedukacja" }
+      ],
+      "secondaryPrevention": {
+        "@type": "MedicalTherapy",
+        "name": "Diagnoza MOXO i DIVA-5"
+      }
+    }
+    </script>
+
+    <style>
+        /* CORE STYLES (Spójne z resztą) */
+        :root {
+            --bg-body: #F8FAFC;       
+            --bg-surface: rgba(255, 255, 255, 0.85);
+            --primary: #0F766E;       
+            --primary-dark: #0D5E57;
+            --primary-light: #CCFBF1;
+            --accent: #6366F1;        
+            --accent-glow: rgba(99, 102, 241, 0.3);
+            --text-main: #1E293B;
+            --text-muted: #64748B;
+            --border: #E2E8F0;
+            --radius: 16px;
+            --trans-default: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; font-size: 16px; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Cursor */
+        @media (min-width: 901px) { body, a, button { cursor: none !important; } }
+        @media (max-width: 900px) { .cursor-dot, .cursor-outline { display: none !important; } body { cursor: auto; } }
+        .cursor-dot { width: 8px; height: 8px; background: var(--primary); position: fixed; border-radius: 50%; z-index: 9999; pointer-events: none; }
+        .cursor-outline { width: 40px; height: 40px; border: 1px solid rgba(15,118,110,0.5); position: fixed; border-radius: 50%; z-index: 9998; pointer-events: none; transition: width 0.2s, height 0.2s; }
+        body.hovering .cursor-outline { width: 70px; height: 70px; background: rgba(15,118,110,0.05); border-width: 2px; }
+
+        /* Background */
+        #bg-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; z-index: -1; opacity: 0.6; pointer-events: none; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+        .glass { background: var(--bg-surface); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.6); box-shadow: 0 4px 20px rgba(0,0,0,0.03); }
+
+        /* Header */
+        header { position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid var(--border); padding: 12px 0; }
+        .nav-wrapper { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+        .brand-bar { display: flex; justify-content: center; align-items: center; width: 100%; position: relative; }
+        .logo { display: flex; align-items: center; gap: 14px; font-weight: 700; font-size: 1.6rem; color: var(--text-main); text-decoration: none; cursor: pointer; letter-spacing: -0.02em; }
+        .logo img { height: 50px; width: auto; border-radius: 8px; }
+        .nav-link-back { text-decoration: none; color: var(--primary); font-weight: 600; font-size: 0.95rem; display: flex; align-items: center; gap: 8px; position: absolute; left: 0; top: 50%; transform: translateY(-50%); }
+
+        /* Mobile */
+        .mobile-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; position: absolute; right: 0; top: 50%; transform: translateY(-50%); }
+        .mobile-toggle span { display: block; width: 24px; height: 2px; background: var(--text-main); margin: 5px 0; transition: 0.3s; }
+        .mobile-menu { position: fixed; top: 80px; left: 0; width: 100%; background: white; padding: 24px; border-bottom: 1px solid var(--border); transform: translateY(-150%); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); z-index: 999; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .mobile-menu.active { transform: translateY(0); }
+        .mobile-link { display: block; padding: 14px 0; font-size: 1.1rem; font-weight: 500; color: var(--text-main); text-decoration: none; border-bottom: 1px solid var(--bg-body); }
+
+        @media (max-width: 900px) {
+            .nav-wrapper { flex-direction: row; height: 60px; justify-content: center; padding: 0; }
+            .nav-link-back { display: none; }
+            .mobile-toggle { display: block; }
+            .logo { font-size: 1.1rem; }
+            .logo img { height: 36px; }
+        }
+
+        /* --- Article Layout --- */
+        .article-hero { padding: 80px 0 60px; text-align: center; max-width: 800px; margin: 0 auto; }
+        .article-hero h1 { font-size: 3rem; margin-bottom: 24px; color: var(--text-main); }
+        .article-hero span { color: var(--primary); display: block; font-weight: 600; font-size: 1.1rem; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.05em; }
+        .lead { font-size: 1.25rem; color: var(--text-muted); }
+        
+        .content-section {
+            background: white; border-radius: 24px; padding: 48px; margin-bottom: 40px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.02); border: 1px solid var(--border);
+            transition: var(--trans-default);
+        }
+        .content-section:hover { border-color: var(--primary-light); box-shadow: 0 10px 40px rgba(15, 118, 110, 0.05); }
+        
+        .content-section h2 { color: var(--primary); margin-bottom: 24px; font-size: 1.8rem; border-bottom: 1px solid var(--bg-body); padding-bottom: 12px; }
+        .content-section h3 { color: var(--text-main); font-size: 1.3rem; margin: 24px 0 16px; }
+        .content-section p { margin-bottom: 16px; }
+        .content-section ul { padding-left: 20px; color: var(--text-muted); margin-bottom: 24px; list-style: none; }
+        .content-section li { margin-bottom: 10px; position: relative; padding-left: 24px; }
+        .content-section li::before { content: "•"; color: var(--accent); font-weight: bold; font-size: 1.5rem; position: absolute; left: 0; top: -5px; }
+
+        /* Feature Boxes */
+        .grid-features { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin: 32px 0; }
+        .tech-box { background: #F0FDF4; border-left: 4px solid #10B981; padding: 24px; border-radius: 0 12px 12px 0; }
+        .tech-box h4 { color: #065F46; margin-bottom: 8px; font-size: 1.1rem; }
+        .tech-box p { color: #064E3B; font-size: 0.95rem; margin: 0; }
+
+        /* CTA */
+        .cta-box { text-align: center; padding: 60px 0; }
+        .btn-primary {
+            background: var(--primary); color: white; padding: 16px 32px; border-radius: 99px;
+            text-decoration: none; font-weight: 700; transition: 0.3s; display: inline-block;
+            box-shadow: 0 10px 20px rgba(15, 118, 110, 0.2);
+        }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(15, 118, 110, 0.3); background: var(--primary-dark); }
+
+        @media (max-width: 768px) {
+            .article-hero h1 { font-size: 2.2rem; }
+            .content-section { padding: 24px; }
+        }
+        
+        /* Footer */
+        footer { background: white; border-top: 1px solid var(--border); padding: 60px 0 20px; margin-top: 80px; text-align: center; }
+    </style>
+</head>
+<body>
+
+    <div id="bg-canvas"></div>
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <header class="glass">
+        <div class="container nav-wrapper">
+            <div class="brand-bar">
+                <a href="neuroroznorodnosc.html" class="nav-link-back cursor-trigger">← Wróć</a>
+                <a href="index.html" class="logo cursor-trigger">
+                    <img src="logo.png" alt="NCNI">
+                    <span>Naukowe Centrum Neuroinnowacji</span>
+                </a>
+                <button class="mobile-toggle cursor-trigger" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="mobile-menu">
+        <a href="neuroroznorodnosc.html" class="mobile-link">← Wróć do listy</a>
+        <a href="index.html" class="mobile-link">Strona Główna</a>
+        <a href="index.html#rezerwacja" class="mobile-link" style="color: var(--primary); font-weight: 700;">Umów wizytę</a>
+    </div>
+
+    <article>
+        <section class="article-hero">
+            <span>Program Neuro-Rozwojowy</span>
+            <h1>ADHD i ADD:<br>Zrozumieć i Okiełznać</h1>
+            <p class="lead">
+                Nie traktujemy ADHD jako "choroby", którą trzeba wyleczyć, ale jako specyficzny sposób działania układu nerwowego. Naszym celem jest nauczenie Cię obsługi Twojego mózgu.
+            </p>
+        </section>
+
+        <div class="container">
+            <!-- 1. PROBLEM & PODEJŚCIE -->
+            <div class="content-section glass cursor-trigger">
+                <h2>Czym jest ADHD w ujęciu NCNI?</h2>
+                <p>
+                    ADHD (Zespół nadpobudliwości psychoruchowej z deficytem uwagi) to neurobiologiczne zaburzenie, które wpływa na zdolność mózgu do zarządzania funkcjami wykonawczymi: koncentracją, planowaniem i kontrolą impulsów.
+                </p>
+                <p>
+                    W NCNI podchodzimy do ADHD holistycznie. Nie ograniczamy się do farmakoterapii. Wierzymy w **neuroplastyczność** – zdolność mózgu do tworzenia nowych połączeń. Poprzez celowane treningi uczymy mózg "włączać" skupienie wtedy, gdy jest to potrzebne.
+                </p>
+            </div>
+
+            <!-- 2. DIAGNOSTYKA -->
+            <div class="content-section glass cursor-trigger">
+                <h2>Proces Diagnostyczny</h2>
+                <p>
+                    Prawidłowa diagnoza to podstawa. Nasz proces jest wieloetapowy i oparty na międzynarodowych standardach, aby wykluczyć inne przyczyny (np. lęk, traumę).
+                </p>
+                <ul>
+                    <li><strong>Wywiad kliniczny (DIVA-5):</strong> Szczegółowa rozmowa z certyfikowanym diagnostą (ok. 2h).</li>
+                    <li><strong>Test MOXO / QEEG:</strong> Komputerowe badanie obiektywizujące poziom uwagi, czasu reakcji i impulsywności.</li>
+                    <li><strong>Obserwacja i Raport:</strong> Podsumowanie wyników i plan działania.</li>
+                </ul>
+            </div>
+
+            <!-- 3. TECHNOLOGIE -->
+            <div class="content-section glass cursor-trigger">
+                <h2>Nowoczesne Metody Terapii</h2>
+                <p>
+                    Tradycyjna terapia rozmową jest ważna, ale w ADHD często niewystarczająca. My działamy bezpośrednio na fizjologię mózgu.
+                </p>
+                
+                <div class="grid-features">
+                    <div class="tech-box cursor-trigger">
+                        <h4>🥽 Wirtualna Rzeczywistość (VR)</h4>
+                        <p>
+                            Trening w "wirtualnej klasie" lub "biurze". Uczymy się ignorować dystraktory (szum, ruch) w bezpiecznym środowisku. To "siłownia" dla Twojej uwagi.
+                        </p>
+                    </div>
+
+                    <div class="tech-box cursor-trigger" style="border-left-color: var(--accent); background: #EEF2FF;">
+                        <h4 style="color: var(--accent);">📊 Biofeedback HRV</h4>
+                        <p>
+                            Trening koherencji serca. Uczysz się uspokajać układ nerwowy za pomocą oddechu, widząc reakcję swojego serca na ekranie. Spokojne ciało = lepsze skupienie.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. DLA KOGO -->
+            <div class="content-section glass cursor-trigger">
+                <h2>Dla kogo jest ten program?</h2>
+                <h3>Dorośli</h3>
+                <ul>
+                    <li>Masz "słomiany zapał", zaczynasz 10 rzeczy i nie kończysz żadnej.</li>
+                    <li>Gubisz klucze, zapominasz o spotkaniach, prokrastynujesz.</li>
+                    <li>Czujesz, że Twój potencjał jest blokowany przez chaos w głowie.</li>
+                </ul>
+                
+                <h3>Dzieci i Młodzież (8+)</h3>
+                <ul>
+                    <li>Problemy z usiedzeniem w ławce, "bujanie w obłokach".</li>
+                    <li>Wybuchy emocji, trudności z odrabianiem lekcji.</li>
+                    <li>Ucieczka w świat gier (dopaminowy strzał).</li>
+                </ul>
+            </div>
+
+            <div class="cta-box">
+                <h2 style="margin-bottom: 16px;">Przejmij kontrolę nad swoim mózgiem</h2>
+                <p style="color: var(--text-muted); margin-bottom: 32px;">Umów się na konsultację kwalifikacyjną. Sprawdzimy, czy nasze metody są dla Ciebie.</p>
+                <a href="index.html#rezerwacja" class="btn-primary cursor-trigger">Zarezerwuj Wizytę</a>
+            </div>
+        </div>
+    </article>
+
+    <footer>
+        <div class="container" style="text-align: center; color: var(--text-muted);">
+            &copy; 2025 Naukowe Centrum Neuroinnowacji.
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        function initParticles(){const container=document.getElementById('bg-canvas');if(!container)return;const scene=new THREE.Scene();scene.fog=new THREE.FogExp2(0xF8FAFC,0.002);const camera=new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,1000);camera.position.z=10;const renderer=new THREE.WebGLRenderer({alpha:true,antialias:true});renderer.setSize(window.innerWidth,window.innerHeight);renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));container.appendChild(renderer.domElement);const geometry=new THREE.BufferGeometry();const count=200;const positions=new Float32Array(count*3);const colors=new Float32Array(count*3);for(let i=0;i<count*3;i+=3){positions[i]=(Math.random()-0.5)*25;positions[i+1]=(Math.random()-0.5)*25;positions[i+2]=(Math.random()-0.5)*25;const mix=Math.random();if(mix>0.5){colors[i]=0.06;colors[i+1]=0.46;colors[i+2]=0.43;}else{colors[i]=0.39;colors[i+1]=0.4;colors[i+2]=0.94;}}geometry.setAttribute('position',new THREE.BufferAttribute(positions,3));geometry.setAttribute('color',new THREE.BufferAttribute(colors,3));const material=new THREE.PointsMaterial({size:0.1,vertexColors:true,transparent:true,opacity:0.4});const particles=new THREE.Points(geometry,material);scene.add(particles);let mouseX=0,mouseY=0,targetX=0,targetY=0;const windowHalfX=window.innerWidth/2;const windowHalfY=window.innerHeight/2;document.addEventListener('mousemove',(e)=>{mouseX=(e.clientX-windowHalfX);mouseY=(e.clientY-windowHalfY);});const clock=new THREE.Clock();function animate(){const time=clock.getElapsedTime();targetX=mouseX*0.0001;targetY=mouseY*0.0001;particles.rotation.y+=0.01*(targetX-particles.rotation.y);particles.rotation.x+=0.01*(targetY-particles.rotation.x);particles.rotation.z+=0.0005;const scale=1+Math.sin(time*0.5)*0.02;particles.scale.set(scale,scale,scale);renderer.render(scene,camera);requestAnimationFrame(animate);}animate();window.addEventListener('resize',()=>{camera.aspect=window.innerWidth/window.innerHeight;camera.updateProjectionMatrix();renderer.setSize(window.innerWidth,window.innerHeight);});}document.addEventListener("DOMContentLoaded",initParticles);
+        
+        const cursorDot=document.querySelector('.cursor-dot');const cursorOutline=document.querySelector('.cursor-outline');window.addEventListener('mousemove',(e)=>{const posX=e.clientX;const posY=e.clientY;cursorDot.style.left=`${posX}px`;cursorDot.style.top=`${posY}px`;cursorOutline.animate({left:`${posX}px`,top:`${posY}px`},{duration:500,fill:"forwards"});});const triggers=document.querySelectorAll('.cursor-trigger, a, button, .content-section, .tech-box');triggers.forEach(trigger=>{trigger.addEventListener('mouseenter',()=>{document.body.classList.add('hovering');});trigger.addEventListener('mouseleave',()=>{document.body.classList.remove('hovering');});});
+        
+        const toggle=document.querySelector('.mobile-toggle');const menu=document.querySelector('.mobile-menu');if(toggle&&menu){toggle.addEventListener('click',()=>{menu.classList.toggle('active');});}
+    </script>
+</body>
+</html>
