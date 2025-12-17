@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neuroróżnorodność | NCNI Wrocław</title>
+    <meta name="description" content="Kompleksowe wsparcie dla neuroróżnorodności: ADHD, Autyzm, Dysleksja, WWO. Nowoczesna diagnostyka i terapie.">
+    <link rel="icon" href="logo.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <style>
+        /* --- COPY OF CORE STYLES (z index.html) --- */
+        :root {
+            --bg-body: #F8FAFC;       
+            --bg-surface: rgba(255, 255, 255, 0.85);
+            --primary: #0F766E;       
+            --primary-dark: #0D5E57;
+            --primary-light: #CCFBF1;
+            --accent: #6366F1;        
+            --accent-glow: rgba(99, 102, 241, 0.3);
+            --text-main: #1E293B;
+            --text-muted: #64748B;
+            --border: #E2E8F0;
+            --radius: 16px;
+            --trans-default: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; font-size: 16px; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Cursor Logic */
+        @media (min-width: 901px) { body, a, button { cursor: none !important; } }
+        @media (max-width: 900px) { .cursor-dot, .cursor-outline { display: none !important; } body { cursor: auto; } }
+
+        h1, h2, h3, h4 { font-family: 'Lexend', sans-serif; }
+
+        /* Custom Cursor */
+        .cursor-dot { width: 8px; height: 8px; background-color: var(--primary); position: fixed; top: 0; left: 0; transform: translate(-50%, -50%); border-radius: 50%; z-index: 9999; pointer-events: none; }
+        .cursor-outline { width: 40px; height: 40px; border: 1px solid rgba(15, 118, 110, 0.5); position: fixed; top: 0; left: 0; transform: translate(-50%, -50%); border-radius: 50%; z-index: 9998; pointer-events: none; transition: width 0.2s, height 0.2s, background-color 0.2s, border-color 0.2s; }
+        body.hovering .cursor-outline { width: 70px; height: 70px; background-color: rgba(15, 118, 110, 0.05); border-color: var(--primary); border-width: 2px; }
+
+        /* Background */
+        #bg-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; z-index: -1; opacity: 0.6; pointer-events: none; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        .glass { background: var(--bg-surface); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.6); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03); }
+
+        /* Header */
+        header { position: sticky; top: 0; z-index: 1000; transition: var(--trans-default); border-bottom: 1px solid rgba(226, 232, 240, 0.6); padding: 12px 0; }
+        .nav-wrapper { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+        .brand-bar { display: flex; justify-content: center; align-items: center; width: 100%; position: relative; }
+        .logo { display: flex; align-items: center; gap: 14px; font-weight: 700; font-size: 1.6rem; color: var(--text-main); text-decoration: none; cursor: pointer; letter-spacing: -0.02em; }
+        .logo img { height: 50px; width: auto; border-radius: 8px; }
+
+        .nav-links { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+        .nav-item { padding: 8px 18px; border-radius: 99px; font-size: 0.95rem; font-weight: 500; color: var(--text-muted); text-decoration: none; transition: var(--trans-default); cursor: pointer; }
+        .nav-item:hover, .nav-item.active { color: var(--primary); background: var(--primary-light); }
+        .nav-cta { background: var(--primary); color: white !important; box-shadow: 0 4px 12px rgba(15, 118, 110, 0.25); margin-left: 8px; }
+        .nav-cta:hover { background: var(--primary-dark); transform: translateY(-1px); }
+
+        /* Mobile */
+        .mobile-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; position: absolute; right: 0; top: 50%; transform: translateY(-50%); }
+        .mobile-toggle span { display: block; width: 24px; height: 2px; background: var(--text-main); margin: 5px 0; transition: 0.3s; }
+        .mobile-menu { position: fixed; top: 80px; left: 0; width: 100%; background: white; padding: 24px; border-bottom: 1px solid var(--border); transform: translateY(-150%); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); z-index: 999; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .mobile-menu.active { transform: translateY(0); }
+        .mobile-link { display: block; padding: 14px 0; font-size: 1.1rem; font-weight: 500; color: var(--text-main); text-decoration: none; border-bottom: 1px solid var(--bg-body); }
+
+        @media (max-width: 900px) {
+            .nav-wrapper { flex-direction: row; height: 60px; justify-content: space-between; padding: 0; }
+            .brand-bar { justify-content: flex-start; width: auto; }
+            .nav-links { display: none; }
+            .mobile-toggle { display: block; }
+            .logo { font-size: 1.1rem; }
+            .logo img { height: 36px; }
+        }
+
+        /* --- Page Specific --- */
+        .hero-mini { padding: 80px 0 60px; text-align: center; }
+        .hero-mini h1 { font-size: 3rem; margin-bottom: 24px; background: linear-gradient(135deg, var(--text-main), var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero-mini p { font-size: 1.2rem; color: var(--text-muted); max-width: 700px; margin: 0 auto; }
+
+        /* Grid Cards */
+        .grid-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; margin-bottom: 80px; }
+        .topic-card {
+            border-radius: 24px; padding: 32px; background: white;
+            border: 1px solid var(--border); transition: all 0.3s ease;
+            text-decoration: none; display: flex; flex-direction: column; height: 100%;
+        }
+        .topic-card:hover { transform: translateY(-5px); border-color: var(--primary); box-shadow: 0 10px 40px rgba(15, 118, 110, 0.1); }
+        
+        .card-icon { 
+            width: 64px; height: 64px; border-radius: 16px; background: #EEF2FF; color: var(--primary);
+            display: flex; align-items: center; justify-content: center; font-size: 32px; margin-bottom: 24px;
+        }
+        .topic-card h3 { color: var(--text-main); font-size: 1.5rem; margin-bottom: 12px; }
+        .topic-card p { color: var(--text-muted); flex-grow: 1; }
+        .btn-link { color: var(--primary); font-weight: 600; margin-top: 24px; display: inline-flex; align-items: center; gap: 8px; }
+
+        /* Special Cards */
+        .card-accent { border-left: 4px solid var(--accent); }
+        .card-accent .card-icon { color: var(--accent); background: #EEF2FF; }
+        
+        /* Footer */
+        footer { background: white; border-top: 1px solid var(--border); padding: 60px 0 20px; margin-top: 40px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
+    </style>
+</head>
+<body>
+
+    <div id="bg-canvas"></div>
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <header class="glass">
+        <div class="container nav-wrapper">
+            <div class="brand-bar">
+                <a href="index.html" class="logo cursor-trigger">
+                    <img src="logo.png" alt="NCNI">
+                    <span>Naukowe Centrum Neuroinnowacji</span>
+                </a>
+                <button class="mobile-toggle cursor-trigger" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+            <nav class="nav-links">
+                <a href="o-nas.html" class="nav-item cursor-trigger">O nas</a>
+                <a href="neuroroznorodnosc.html" class="nav-item cursor-trigger active">Neuroróżnorodność</a>
+                <a href="psychologia.html" class="nav-item cursor-trigger">Psychologia</a>
+                <a href="technologie.html" class="nav-item cursor-trigger">Technologie</a>
+                <a href="oferta.html" class="nav-item cursor-trigger">Oferta</a>
+                <a href="index.html#rezerwacja" class="nav-item nav-cta cursor-trigger">Umów wizytę</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="mobile-menu">
+        <a href="o-nas.html" class="mobile-link">O nas</a>
+        <a href="neuroroznorodnosc.html" class="mobile-link">Neuroróżnorodność</a>
+        <a href="psychologia.html" class="mobile-link">Psychologia</a>
+        <a href="technologie.html" class="mobile-link">Technologie</a>
+        <a href="oferta.html" class="mobile-link">Oferta</a>
+        <a href="index.html#rezerwacja" class="mobile-link" style="color: var(--primary); font-weight: 700;">Umów wizytę</a>
+    </div>
+
+    <section class="hero-mini">
+        <div class="container">
+            <span style="background: var(--primary-light); color: var(--primary); padding: 6px 12px; border-radius: 99px; font-size: 0.9rem; font-weight: 600;">Obszar Wsparcia</span>
+            <h1>Neuroróżnorodność</h1>
+            <p>
+                Nie leczymy "inności" – uczymy, jak z nią żyć, wykorzystywać jej potencjał i radzić sobie z wyzwaniami. Podejście oparte na dowodach (EBM) i nowoczesnej technologii.
+            </p>
+        </div>
+    </section>
+
+    <section class="container">
+        <div class="grid-cards">
+            <!-- ADHD -->
+            <a href="adhd.html" class="topic-card cursor-trigger">
+                <div class="card-icon">🧠</div>
+                <h3>ADHD / ADD</h3>
+                <p>Treningi funkcji wykonawczych dla dzieci i dorosłych. Zarządzanie uwagą, impulsywnością i "chaosem" w głowie przy użyciu VR i Biofeedbacku.</p>
+                <span class="btn-link">Poznaj program →</span>
+            </a>
+
+            <!-- ASD -->
+            <a href="asd.html" class="topic-card cursor-trigger">
+                <div class="card-icon">🧩</div>
+                <h3>Spektrum Autyzmu (ASD)</h3>
+                <p>Treningi kompetencji społecznych w bezpiecznym, wirtualnym środowisku. Praca nad odczytywaniem emocji i regulacją napięcia.</p>
+                <span class="btn-link">Więcej informacji →</span>
+            </a>
+
+            <!-- WWO -->
+            <a href="wysoka-wrazliwosc.html" class="topic-card cursor-trigger">
+                <div class="card-icon">🦋</div>
+                <h3>Wysoka Wrażliwość (WWO)</h3>
+                <p>Jak nie ulegać przestymulowaniu? Nauka higieny układu nerwowego i zarządzania energią w intensywnym świecie.</p>
+                <span class="btn-link">Sprawdź ofertę →</span>
+            </a>
+
+            <!-- Dysleksja -->
+            <a href="dysleksja.html" class="topic-card cursor-trigger">
+                <div class="card-icon">📖</div>
+                <h3>Dysleksja</h3>
+                <p>Nowoczesne treningi czytania i przetwarzania wzrokowego. Przekraczamy bariery edukacyjne za pomocą technologii VR.</p>
+                <span class="btn-link">Zobacz metody →</span>
+            </a>
+
+            <!-- Dyskalkulia -->
+            <a href="dyskalkulia.html" class="topic-card cursor-trigger">
+                <div class="card-icon">🔢</div>
+                <h3>Dyskalkulia</h3>
+                <p>Wsparcie w rozumieniu liczb i pojęć matematycznych. Treningi poznawcze aktywujące konkretne obszary mózgu.</p>
+                <span class="btn-link">Zobacz metody →</span>
+            </a>
+
+            <!-- DCD -->
+            <a href="dcd.html" class="topic-card cursor-trigger">
+                <div class="card-icon">🤸</div>
+                <h3>Dyspraksja (DCD)</h3>
+                <p>Wsparcie koordynacji ruchowej i planowania motorycznego. Integracja ciała i umysłu w ruchu.</p>
+                <span class="btn-link">Więcej informacji →</span>
+            </a>
+
+            <!-- Tourette -->
+            <a href="tourette.html" class="topic-card cursor-trigger">
+                <div class="card-icon">⚡</div>
+                <h3>Zespół Tourette'a / Tiki</h3>
+                <p>Terapie behawioralne (CBIT) i relaksacyjne wspomagające kontrolę tików i redukcję napięcia w ciele.</p>
+                <span class="btn-link">Poznaj program →</span>
+            </a>
+
+            <!-- Metoda Kraszewskiego -->
+            <a href="metoda-kraszewskiego.html" class="topic-card card-accent cursor-trigger">
+                <div class="card-icon">🎓</div>
+                <h3>Metoda Kraszewskiego</h3>
+                <p>Autorska metoda integracji sensoryczno-poznawczej opracowana w NCNI. Unikalne podejście do rozwoju mózgu.</p>
+                <span class="btn-link">Odkryj innowację →</span>
+            </a>
+
+            <!-- Migrena -->
+            <a href="migrena.html" class="topic-card cursor-trigger">
+                <div class="card-icon">🤕</div>
+                <h3>Migrena i Bóle Głowy</h3>
+                <p>Niefarmakologiczne wsparcie w leczeniu bólu. Biofeedback termiczny i treningi relaksacji naczyń krwionośnych.</p>
+                <span class="btn-link">Uwolnij się od bólu →</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="kontakt">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <a href="#" class="logo cursor-trigger" style="margin-bottom: 20px; display: inline-block;">
+                        <img src="logo.png" alt="NCNI">
+                        NCNI
+                    </a>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">
+                        Naukowe Centrum Neuroinnowacji.<br>
+                        Twój partner w zdrowiu psychicznym.
+                    </p>
+                </div>
+                <div>
+                    <h4 style="margin-bottom: 16px;">Kontakt</h4>
+                    <p style="color: var(--text-muted); margin-bottom: 8px;">ul. Stefana Żeromskiego 60/5a</p>
+                    <p style="color: var(--text-muted); margin-bottom: 8px;">50-312 Wrocław</p>
+                    <a href="mailto:kontakt@ncni.pl" class="cursor-trigger" style="color: var(--text-main);">kontakt@ncni.pl</a>
+                </div>
+                <div>
+                    <h4 style="margin-bottom: 16px;">Social Media</h4>
+                    <ul style="color: var(--text-muted); font-size: 0.95rem; list-style: none;">
+                        <li style="margin-bottom: 8px;"><a href="https://youtube.com/@neuroinnowacje" target="_blank" class="cursor-trigger">YouTube</a></li>
+                        <li style="margin-bottom: 8px;"><a href="https://x.com/neuroinnowacje" target="_blank" class="cursor-trigger">X (Twitter)</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div style="border-top: 1px solid var(--border); padding-top: 24px; margin-top: 40px; text-align: center; color: var(--text-muted); font-size: 0.85rem;">
+                &copy; 2025 Naukowe Centrum Neuroinnowacji sp. z o.o. | Design: Neuro Harmony System.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // --- THREE.JS BACKGROUND ---
+        function initParticles() {
+            const container = document.getElementById('bg-canvas');
+            if (!container) return;
+
+            const scene = new THREE.Scene();
+            scene.fog = new THREE.FogExp2(0xF8FAFC, 0.002);
+
+            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            camera.position.z = 10;
+
+            const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+            container.appendChild(renderer.domElement);
+
+            const geometry = new THREE.BufferGeometry();
+            const count = 200; 
+            const positions = new Float32Array(count * 3);
+            const colors = new Float32Array(count * 3);
+
+            for(let i = 0; i < count * 3; i+=3) {
+                positions[i] = (Math.random() - 0.5) * 25;
+                positions[i+1] = (Math.random() - 0.5) * 25;
+                positions[i+2] = (Math.random() - 0.5) * 25;
+
+                const mix = Math.random();
+                if(mix > 0.5) { colors[i] = 0.06; colors[i+1] = 0.46; colors[i+2] = 0.43; } 
+                else { colors[i] = 0.39; colors[i+1] = 0.4; colors[i+2] = 0.94; }
+            }
+
+            geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+            geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+
+            const material = new THREE.PointsMaterial({ size: 0.1, vertexColors: true, transparent: true, opacity: 0.4 });
+            const particles = new THREE.Points(geometry, material);
+            scene.add(particles);
+
+            let mouseX = 0, mouseY = 0, targetX = 0, targetY = 0;
+            const windowHalfX = window.innerWidth / 2;
+            const windowHalfY = window.innerHeight / 2;
+
+            document.addEventListener('mousemove', (event) => {
+                mouseX = (event.clientX - windowHalfX);
+                mouseY = (event.clientY - windowHalfY);
+            });
+
+            const clock = new THREE.Clock();
+
+            function animate() {
+                const time = clock.getElapsedTime();
+                targetX = mouseX * 0.0001; 
+                targetY = mouseY * 0.0001;
+
+                particles.rotation.y += 0.01 * (targetX - particles.rotation.y);
+                particles.rotation.x += 0.01 * (targetY - particles.rotation.x);
+                particles.rotation.z += 0.0005; 
+                const scale = 1 + Math.sin(time * 0.5) * 0.02; 
+                particles.scale.set(scale, scale, scale);
+
+                renderer.render(scene, camera);
+                requestAnimationFrame(animate);
+            }
+            animate();
+
+            window.addEventListener('resize', () => {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            });
+        }
+        document.addEventListener("DOMContentLoaded", initParticles);
+
+        // Custom Cursor
+        const cursorDot = document.querySelector('.cursor-dot');
+        const cursorOutline = document.querySelector('.cursor-outline');
+        window.addEventListener('mousemove', (e) => {
+            const posX = e.clientX; const posY = e.clientY;
+            cursorDot.style.left = `${posX}px`; cursorDot.style.top = `${posY}px`;
+            cursorOutline.animate({ left: `${posX}px`, top: `${posY}px` }, { duration: 500, fill: "forwards" });
+        });
+
+        const triggers = document.querySelectorAll('.cursor-trigger, a, button, .topic-card');
+        triggers.forEach(trigger => {
+            trigger.addEventListener('mouseenter', () => { document.body.classList.add('hovering'); });
+            trigger.addEventListener('mouseleave', () => { document.body.classList.remove('hovering'); });
+        });
+
+        // Mobile Menu
+        const toggle = document.querySelector('.mobile-toggle');
+        const menu = document.querySelector('.mobile-menu');
+        if (toggle && menu) {
+            toggle.addEventListener('click', () => {
+                menu.classList.toggle('active');
+            });
+            menu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => menu.classList.remove('active'));
+            });
+        }
+    </script>
+</body>
+</html>
