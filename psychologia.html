@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Psychologia i Psychotraumatologia | NCNI Wrocław</title>
+    <meta name="description" content="Klinika VR-IT w NCNI Wrocław. Leczenie traumy, PTSD, OCD i lęku z wykorzystaniem technologii immersyjnych. Terapia poznawczo-behawioralna i DBT.">
+    <meta name="keywords" content="Psychoterapia traumy Wrocław, PTSD, OCD leczenie, Terapia VR, Biofeedback, DBT Wrocław, Fobie, Lęk społeczny, Psychotraumatolog">
+    <link rel="icon" href="logo.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <!-- Schema.org for Medical Services -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "MedicalClinic",
+      "name": "NCNI - Naukowe Centrum Neuroinnowacji",
+      "medicalSpecialty": ["Psychology", "Psychiatry", "Virtual Reality Therapy"],
+      "availableService": [
+        { "@type": "MedicalTherapy", "name": "Terapia VR (Exposure Therapy)" },
+        { "@type": "MedicalTherapy", "name": "Leczenie PTSD i Traumy Złożonej" },
+        { "@type": "MedicalTherapy", "name": "Terapia OCD i Fobii" },
+        { "@type": "MedicalTherapy", "name": "Trening umiejętności DBT" },
+        { "@type": "MedicalTherapy", "name": "Biofeedback HRV" }
+      ]
+    }
+    </script>
+
+    <style>
+        /* CORE STYLES (Identyczne jak w bazie) */
+        :root {
+            --bg-body: #F8FAFC;       
+            --bg-surface: rgba(255, 255, 255, 0.85);
+            --primary: #0F766E;       
+            --primary-dark: #0D5E57;
+            --primary-light: #CCFBF1;
+            --accent: #6366F1;        
+            --accent-glow: rgba(99, 102, 241, 0.3);
+            --text-main: #1E293B;
+            --text-muted: #64748B;
+            --border: #E2E8F0;
+            --radius: 16px;
+            --trans-default: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; font-size: 16px; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Cursor Logic */
+        @media (min-width: 901px) { body, a, button { cursor: none !important; } }
+        @media (max-width: 900px) { .cursor-dot, .cursor-outline { display: none !important; } body { cursor: auto; } }
+
+        h1, h2, h3, h4 { font-family: 'Lexend', sans-serif; }
+
+        /* Custom Cursor */
+        .cursor-dot { width: 8px; height: 8px; background-color: var(--primary); position: fixed; top: 0; left: 0; transform: translate(-50%, -50%); border-radius: 50%; z-index: 9999; pointer-events: none; }
+        .cursor-outline { width: 40px; height: 40px; border: 1px solid rgba(15, 118, 110, 0.5); position: fixed; top: 0; left: 0; transform: translate(-50%, -50%); border-radius: 50%; z-index: 9998; pointer-events: none; transition: width 0.2s, height 0.2s, background-color 0.2s, border-color 0.2s; }
+        body.hovering .cursor-outline { width: 70px; height: 70px; background-color: rgba(15, 118, 110, 0.05); border-color: var(--primary); border-width: 2px; }
+
+        /* Background */
+        #bg-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; z-index: -1; opacity: 0.6; pointer-events: none; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        .glass { background: var(--bg-surface); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.6); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03); }
+
+        /* Header (Clean Version) */
+        header { position: sticky; top: 0; z-index: 1000; transition: var(--trans-default); border-bottom: 1px solid rgba(226, 232, 240, 0.6); padding: 12px 0; }
+        .nav-wrapper { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+        .brand-bar { display: flex; justify-content: center; align-items: center; width: 100%; position: relative; }
+        .logo { display: flex; align-items: center; gap: 14px; font-weight: 700; font-size: 1.6rem; color: var(--text-main); text-decoration: none; cursor: pointer; letter-spacing: -0.02em; }
+        .logo img { height: 50px; width: auto; border-radius: 8px; }
+
+        .nav-links { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+        .nav-item { padding: 8px 18px; border-radius: 99px; font-size: 0.95rem; font-weight: 500; color: var(--text-muted); text-decoration: none; transition: var(--trans-default); cursor: pointer; }
+        .nav-item:hover, .nav-item.active { color: var(--primary); background: var(--primary-light); }
+        .nav-cta { background: var(--primary); color: white !important; box-shadow: 0 4px 12px rgba(15, 118, 110, 0.25); margin-left: 8px; }
+        .nav-cta:hover { background: var(--primary-dark); transform: translateY(-1px); }
+
+        /* Mobile */
+        .mobile-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; position: absolute; right: 0; top: 50%; transform: translateY(-50%); }
+        .mobile-toggle span { display: block; width: 24px; height: 2px; background: var(--text-main); margin: 5px 0; transition: 0.3s; }
+        .mobile-menu { position: fixed; top: 80px; left: 0; width: 100%; background: white; padding: 24px; border-bottom: 1px solid var(--border); transform: translateY(-150%); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); z-index: 999; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .mobile-menu.active { transform: translateY(0); }
+        .mobile-link { display: block; padding: 14px 0; font-size: 1.1rem; font-weight: 500; color: var(--text-main); text-decoration: none; border-bottom: 1px solid var(--bg-body); }
+
+        @media (max-width: 900px) {
+            .nav-wrapper { flex-direction: row; height: 60px; justify-content: space-between; padding: 0; }
+            .brand-bar { justify-content: flex-start; width: auto; }
+            .nav-links { display: none; }
+            .mobile-toggle { display: block; }
+            .logo { font-size: 1.1rem; }
+            .logo img { height: 36px; }
+        }
+
+        /* --- Page Specific --- */
+        .hero-mini { padding: 80px 0 60px; text-align: center; }
+        .hero-mini h1 { font-size: 3rem; margin-bottom: 24px; background: linear-gradient(135deg, var(--text-main), var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero-mini p { font-size: 1.2rem; color: var(--text-muted); max-width: 700px; margin: 0 auto; }
+
+        /* VR INFO BOX (Green) - Klinika VR-IT */
+        .vr-info-box {
+            background: #F0FDF4; /* Zielone tło */
+            border-left: 4px solid #10B981; /* Zielony pasek */
+            padding: 32px;
+            border-radius: 12px;
+            margin: 0 auto 60px auto; /* Margin bottom dla odstępu od reszty */
+            max-width: 900px;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.1);
+        }
+        .vr-info-box h3 { color: #065F46; font-size: 1.4rem; margin-bottom: 16px; }
+        .vr-info-box p { color: #374151; font-size: 1rem; margin-bottom: 16px; line-height: 1.7; }
+        .vr-info-box a { color: #059669; font-weight: 600; text-decoration: none; }
+        .vr-info-box a:hover { text-decoration: underline; }
+
+        /* Scoped Lists & Accordions */
+        .scope-section { padding: 40px 0; }
+        .list-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 32px; }
+        
+        .list-card {
+            background: white; border: 1px solid var(--border); border-radius: 16px; padding: 32px;
+            transition: var(--trans-default);
+        }
+        .list-card:hover { border-color: var(--primary); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.03); }
+        
+        .list-card h3 { color: var(--primary); font-size: 1.4rem; margin-bottom: 20px; border-bottom: 1px solid var(--border); padding-bottom: 12px; }
+        .custom-list { list-style: none; padding: 0; }
+        .custom-list li { margin-bottom: 10px; display: flex; align-items: flex-start; gap: 10px; color: var(--text-muted); font-size: 1rem; }
+        .custom-list li::before { content: "✓"; color: #10B981; font-weight: bold; flex-shrink: 0; }
+
+        /* Accordion for Details */
+        .method-section { padding: 40px 0; }
+        .section-title { font-size: 2rem; margin-bottom: 40px; text-align: center; }
+        
+        details {
+            margin-bottom: 12px; border: 1px solid var(--border); border-radius: 12px;
+            background: white; overflow: hidden; transition: all 0.3s ease;
+        }
+        details:hover { border-color: var(--primary-light); }
+        details[open] { border-color: var(--primary); }
+        
+        summary {
+            padding: 16px 20px; cursor: pointer; font-weight: 600;
+            display: flex; justify-content: space-between; align-items: center; list-style: none;
+            color: var(--text-main);
+        }
+        summary::-webkit-details-marker { display: none; }
+        summary::after { content: '+'; font-size: 1.2rem; color: var(--primary); transition: transform 0.2s; }
+        details[open] summary::after { transform: rotate(45deg); }
+        details[open] summary { background: #F8FAFC; border-bottom: 1px solid var(--border); }
+        
+        .details-content { padding: 20px; color: var(--text-muted); background: white; font-size: 0.95rem; }
+
+        /* Trauma Highlight */
+        .trauma-section {
+            background: #0F172A; color: white; padding: 60px; border-radius: 32px; margin: 60px 0;
+            position: relative; overflow: hidden;
+        }
+        .trauma-section:hover { box-shadow: 0 0 40px rgba(15, 118, 110, 0.15); }
+        .trauma-content { position: relative; z-index: 2; max-width: 700px; }
+        .trauma-section h2 { font-size: 2.5rem; margin-bottom: 20px; }
+        .trauma-section h2 span { color: #2DD4BF; }
+        .trauma-section p { font-size: 1.1rem; color: #CBD5E1; margin-bottom: 30px; }
+        .trauma-list { list-style: none; margin-bottom: 40px; padding: 0; }
+        .trauma-list li { margin-bottom: 12px; display: flex; align-items: center; gap: 10px; font-size: 1.05rem; }
+        .trauma-list li::before { content: "✓"; color: #4ADE80; font-weight: bold; }
+        
+        .btn-light { background: white; color: #0F172A; padding: 12px 24px; border-radius: 99px; text-decoration: none; font-weight: 700; transition: 0.3s; display: inline-block; }
+        .btn-light:hover { background: #E2E8F0; transform: translateY(-2px); }
+
+        /* Decorative Elements in Trauma Section */
+        .trauma-deco {
+            position: absolute; width: 400px; height: 400px; background: radial-gradient(circle, rgba(45,212,191,0.1) 0%, transparent 70%);
+            border-radius: 50%; top: -100px; right: -100px; z-index: 1; pointer-events: none;
+        }
+
+        /* Footer */
+        footer { background: white; border-top: 1px solid var(--border); padding: 60px 0 20px; margin-top: 40px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
+    </style>
+</head>
+<body>
+
+    <div id="bg-canvas"></div>
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <header class="glass">
+        <div class="container nav-wrapper">
+            <div class="brand-bar">
+                <a href="index.html" class="logo cursor-trigger">
+                    <img src="logo.png" alt="NCNI">
+                    <span>Naukowe Centrum Neuroinnowacji</span>
+                </a>
+                <button class="mobile-toggle cursor-trigger" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+            <nav class="nav-links">
+                <a href="o-nas.html" class="nav-item cursor-trigger">O nas</a>
+                <a href="neuroroznorodnosc.html" class="nav-item cursor-trigger">Neuroróżnorodność</a>
+                <a href="psychologia.html" class="nav-item cursor-trigger active">Psychologia</a>
+                <a href="technologie.html" class="nav-item cursor-trigger">Technologie</a>
+                <a href="oferta.html" class="nav-item cursor-trigger">Oferta</a>
+                <a href="index.html#rezerwacja" class="nav-item nav-cta cursor-trigger">Umów wizytę</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="mobile-menu">
+        <a href="o-nas.html" class="mobile-link">O nas</a>
+        <a href="neuroroznorodnosc.html" class="mobile-link">Neuroróżnorodność</a>
+        <a href="psychologia.html" class="mobile-link">Psychologia</a>
+        <a href="technologie.html" class="mobile-link">Technologie</a>
+        <a href="oferta.html" class="mobile-link">Oferta</a>
+        <a href="index.html#rezerwacja" class="mobile-link" style="color: var(--primary); font-weight: 700;">Umów wizytę</a>
+    </div>
+
+    <section class="hero-mini">
+        <div class="container">
+            <span style="background: var(--primary-light); color: var(--primary); padding: 6px 12px; border-radius: 99px; font-size: 0.9rem; font-weight: 600;">Wsparcie Kliniczne</span>
+            <h1>Psychologia i Psychotraumatologia</h1>
+            <p>
+                Łączymy klasyczną psychoterapię z neurotechnologią. Skupiamy się na mierzalnej redukcji stresu, leczeniu traumy i przywracaniu równowagi emocjonalnej w bezpiecznym środowisku.
+            </p>
+        </div>
+    </section>
+
+    <!-- VR INFO BOX (Green) - Tłumaczenie i Wdrożenie -->
+    <section class="container" style="margin-top: 60px;">
+        <div class="vr-info-box cursor-trigger">
+            <h3>Technologie Wirtualnej Rzeczywistości (VR) w Terapii</h3>
+            <p>
+                Rzeczywistość wirtualna i technologie immersyjne mogą usprawnić leczenie i trening umiejętności w terapii wielu chorób psychiatrycznych. Rzeczywistość rozszerzona (XR) może poprawić techniki kształtowania zachowań i komfort podczas nauki nowych i skutecznych strategii łagodzenia objawów.
+            </p>
+            <p>
+                Klinika Wirtualnej Rzeczywistości i Technologii Immersyjnych (VR-IT) w NCNI łączy psychoterapie oparte na dowodach, badania kliniczne i technologie medyczne w leczeniu różnych schorzeń psychiatrycznych. Wykorzystuje najnowsze urządzenia ubieralne i sprawdzone metody, łącząc rzeczywistość wirtualną i rozszerzoną z terapią poznawczo-behawioralną oraz treningami uważności (mindfulness), co pozwala klinicystom na wygodniejsze dostosowanie leczenia dla każdego pacjenta.
+            </p>
+            <a href="technologie.html">Dowiedz się więcej o dostępie do opieki ></a>
+        </div>
+    </section>
+
+    <!-- ZAKRES PORAD I WARUNKI LECZONE (LISTA) -->
+    <section class="container scope-section">
+        <div class="list-grid">
+            
+            <!-- Conditions Treated -->
+            <div class="list-card cursor-trigger">
+                <h3>Leczone Schorzenia (Conditions Treated)</h3>
+                <ul class="custom-list">
+                    <li>Fobie proste (Simple Phobias)</li>
+                    <li>Zaburzenia obsesyjno-kompulsyjne (OCD)</li>
+                    <li>Zespół stresu pourazowego (PTSD)</li>
+                    <li>Trauma złożona (Complex Trauma)</li>
+                    <li>Uzależnienia (Addiction)</li>
+                    <li>Psychozy (Psychosis)</li>
+                    <li>Lęk społeczny (Social Anxiety)</li>
+                    <li>Zespół lęku napadowego (Panic Disorder)</li>
+                    <li>Zespół lęku uogólnionego (GAD)</li>
+                    <li>Zaburzenia pod postacią somatyczną</li>
+                    <li>Zaburzenia odżywiania (Eating Disorders)</li>
+                </ul>
+            </div>
+
+            <!-- This Program Provides -->
+            <div class="list-card cursor-trigger" style="border-left: 4px solid var(--accent);">
+                <h3>Nasz Program Zapewnia</h3>
+                <ul class="custom-list">
+                    <li>Ocena i konsultacja pacjenta</li>
+                    <li>Desensytyzacja (Odczulanie)</li>
+                    <li>Terapia Ekspozycyjna (Exposure Therapy)</li>
+                    <li>Psychoterapia skoncentrowana na traumie</li>
+                    <li>Trening umiejętności społecznych, interpersonalnych i komunikacyjnych</li>
+                    <li>Trening odwracania nawyków (Habit Reversal)</li>
+                    <li>Psychoterapie oparte na dowodach dostarczane z technologią VR i AR</li>
+                    <li>Trening umiejętności oparty na uważności (Mindfulness)</li>
+                    <li>Trening umiejętności DBT (Terapia Dialektyczno-Behawioralna)</li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- HIGHLIGHT: PSYCHOTRAUMATOLOGIA -->
+    <section class="container">
+        <div class="trauma-section cursor-trigger">
+            <div class="trauma-deco"></div>
+            <div class="trauma-content">
+                <h2>Specjalizacja: <span>Psychotraumatologia</span></h2>
+                <p>
+                    Praca z traumą wymaga precyzji i bezpieczeństwa. Nasze podejście integruje diagnostykę psychometryczną z interwencjami neurofizjologicznymi, które pomagają "domknąć" reakcję stresową w ciele.
+                </p>
+                <ul class="trauma-list">
+                    <li>Bezpieczne przetwarzanie doświadczeń traumatycznych</li>
+                    <li>Stabilizacja układu nerwowego (Nerw błędny)</li>
+                    <li>Redukcja objawów psychosomatycznych i flashbacków</li>
+                    <li>Praca z ciałem, oddechem i uziemieniem</li>
+                </ul>
+                <a href="index.html#rezerwacja" class="btn-light cursor-trigger">Umów konsultację specjalistyczną</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ROZWIJANE SZCZEGÓŁY (ACCORDION) -->
+    <section class="container method-section">
+        <h2 class="section-title">Dodatkowe Informacje</h2>
+        <div style="max-width: 800px; margin: 0 auto;">
+            
+            <details class="cursor-trigger">
+                <summary>Podejście Terapeutyczne</summary>
+                <div class="details-content">
+                    Oferujemy psychoterapię indywidualną, terapię par, psychoterapię traumy oraz uzależnień. Pracujemy w nurtach opartych na dowodach naukowych.
+                </div>
+            </details>
+
+            <details class="cursor-trigger">
+                <summary>Zakres Porad</summary>
+                <div class="details-content">
+                    Psychologia kliniczna, psychologia dzieci i młodzieży, poradnictwo psychologiczne, interwencja kryzysowa oraz konsultacje online.
+                </div>
+            </details>
+
+            <details class="cursor-trigger">
+                <summary>Zaburzenia Nastroju i Depresja</summary>
+                <div class="details-content">
+                    Kompleksowe leczenie depresji, choroby afektywnej dwubiegunowej (ChAD) oraz dystymii przy wsparciu technologicznym.
+                </div>
+            </details>
+
+        </div>
+        <div style="text-align: center; margin-top: 20px;">
+            <button class="btn-light cursor-trigger" style="background: transparent; border: 1px solid var(--border); color: var(--text-muted); font-weight: normal; font-size: 0.9rem;" onclick="this.parentElement.style.display='none';">Pokaż mniej ▲</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="kontakt">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <a href="#" class="logo cursor-trigger" style="margin-bottom: 20px; display: inline-block;">
+                        <img src="logo.png" alt="NCNI">
+                        NCNI
+                    </a>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">
+                        Naukowe Centrum Neuroinnowacji.<br>
+                        Twój partner w zdrowiu psychicznym.
+                    </p>
+                </div>
+                <div>
+                    <h4 style="margin-bottom: 16px;">Kontakt</h4>
+                    <p style="color: var(--text-muted); margin-bottom: 8px;">ul. Stefana Żeromskiego 60/5a</p>
+                    <p style="color: var(--text-muted); margin-bottom: 8px;">50-312 Wrocław</p>
+                    <a href="mailto:kontakt@ncni.pl" class="cursor-trigger" style="color: var(--text-main);">kontakt@ncni.pl</a>
+                </div>
+                <div>
+                    <h4 style="margin-bottom: 16px;">Social Media</h4>
+                    <ul style="color: var(--text-muted); font-size: 0.95rem; list-style: none;">
+                        <li style="margin-bottom: 8px;"><a href="https://youtube.com/@neuroinnowacje" target="_blank" class="cursor-trigger">YouTube</a></li>
+                        <li style="margin-bottom: 8px;"><a href="https://x.com/neuroinnowacje" target="_blank" class="cursor-trigger">X (Twitter)</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div style="border-top: 1px solid var(--border); padding-top: 24px; margin-top: 40px; text-align: center; color: var(--text-muted); font-size: 0.85rem;">
+                &copy; 2025 Naukowe Centrum Neuroinnowacji sp. z o.o. | Design: Neuro Harmony System.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // --- THREE.JS BACKGROUND ---
+        function initParticles() {
+            const container = document.getElementById('bg-canvas');
+            if (!container) return;
+
+            const scene = new THREE.Scene();
+            scene.fog = new THREE.FogExp2(0xF8FAFC, 0.002);
+
+            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            camera.position.z = 10;
+
+            const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+            container.appendChild(renderer.domElement);
+
+            const geometry = new THREE.BufferGeometry();
+            const count = 200; 
+            const positions = new Float32Array(count * 3);
+            const colors = new Float32Array(count * 3);
+
+            for(let i = 0; i < count * 3; i+=3) {
+                positions[i] = (Math.random() - 0.5) * 25;
+                positions[i+1] = (Math.random() - 0.5) * 25;
+                positions[i+2] = (Math.random() - 0.5) * 25;
+
+                const mix = Math.random();
+                if(mix > 0.5) { colors[i] = 0.06; colors[i+1] = 0.46; colors[i+2] = 0.43; } 
+                else { colors[i] = 0.39; colors[i+1] = 0.4; colors[i+2] = 0.94; }
+            }
+
+            geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+            geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+
+            const material = new THREE.PointsMaterial({ size: 0.1, vertexColors: true, transparent: true, opacity: 0.4 });
+            const particles = new THREE.Points(geometry, material);
+            scene.add(particles);
+
+            let mouseX = 0, mouseY = 0, targetX = 0, targetY = 0;
+            const windowHalfX = window.innerWidth / 2;
+            const windowHalfY = window.innerHeight / 2;
+
+            document.addEventListener('mousemove', (event) => {
+                mouseX = (event.clientX - windowHalfX);
+                mouseY = (event.clientY - windowHalfY);
+            });
+
+            const clock = new THREE.Clock();
+
+            function animate() {
+                const time = clock.getElapsedTime();
+                targetX = mouseX * 0.0001; 
+                targetY = mouseY * 0.0001;
+
+                particles.rotation.y += 0.01 * (targetX - particles.rotation.y);
+                particles.rotation.x += 0.01 * (targetY - particles.rotation.x);
+                particles.rotation.z += 0.0005; 
+                const scale = 1 + Math.sin(time * 0.5) * 0.02; 
+                particles.scale.set(scale, scale, scale);
+
+                renderer.render(scene, camera);
+                requestAnimationFrame(animate);
+            }
+            animate();
+
+            window.addEventListener('resize', () => {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            });
+        }
+        document.addEventListener("DOMContentLoaded", initParticles);
+
+        const cursorDot = document.querySelector('.cursor-dot');
+        const cursorOutline = document.querySelector('.cursor-outline');
+        window.addEventListener('mousemove', (e) => {
+            const posX = e.clientX; const posY = e.clientY;
+            cursorDot.style.left = `${posX}px`; cursorDot.style.top = `${posY}px`;
+            cursorOutline.animate({ left: `${posX}px`, top: `${posY}px` }, { duration: 500, fill: "forwards" });
+        });
+
+        const triggers = document.querySelectorAll('.cursor-trigger, a, button, .method-card, .trauma-section, .list-card, .vr-info-box');
+        triggers.forEach(trigger => {
+            trigger.addEventListener('mouseenter', () => { document.body.classList.add('hovering'); });
+            trigger.addEventListener('mouseleave', () => { document.body.classList.remove('hovering'); });
+        });
+
+        // Mobile Menu
+        const toggle = document.querySelector('.mobile-toggle');
+        const menu = document.querySelector('.mobile-menu');
+        if (toggle && menu) {
+            toggle.addEventListener('click', () => {
+                menu.classList.toggle('active');
+            });
+            menu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => menu.classList.remove('active'));
+            });
+        }
+    </script>
+</body>
+</html>
