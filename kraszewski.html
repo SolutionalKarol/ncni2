@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO & AI Optimization -->
+    <title>Dr hab. inż. Sebastian Kraszewski | Dyrektor Naukowy & Trener Neuroróżnorodności</title>
+    <meta name="description" content="Profil eksperta: Dr hab. inż. Sebastian Kraszewski, prof. PWr. Dyrektor Naukowy NCNI, Trener Neuroróżnorodności, specjalista od technologii w traumatologii i terapii ADHD.">
+    <meta name="keywords" content="Sebastian Kraszewski, Trener Neuroróżnorodności, Traumatologia VR, Innowacje medyczne, Terapia ADHD, Biofizyka, Politechnika Wrocławska">
+    <link rel="canonical" href="https://ncni.pl/kraszewski.html">
+    <link rel="icon" href="logo.png" type="image/png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Libraries (Three.js for particles) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <!-- Schema.org for Person -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Sebastian Kraszewski",
+      "honorificPrefix": "Dr hab. inż.",
+      "jobTitle": ["Dyrektor Naukowy", "Trener Neuroróżnorodności"],
+      "affiliation": {
+        "@type": "MedicalClinic",
+        "name": "NCNI - Naukowe Centrum Neuroinnowacji"
+      },
+      "url": "https://ncni.pl/kraszewski.html",
+      "image": "https://ncni.pl/sk.jpg",
+      "alumniOf": "Politechnika Wrocławska",
+      "description": "Ekspert w dziedzinie inżynierii biomedycznej, biofizyki i innowacyjnych terapii neurodydaktycznych. Trener neuroróżnorodności wykorzystujący technologie VR w traumatologii.",
+      "knowsAbout": [
+        "ADHD Therapy",
+        "Virtual Reality in Medicine",
+        "Biophysics",
+        "Neurodiversity Coaching",
+        "Traumatology Technology",
+        "Medical Innovation"
+      ],
+      "sameAs": [
+        "https://irforum.pl/speaker/dr-hab-inz-sebastian-kraszewski-prof-pwr/",
+        "https://gazetawroclawska.pl/p/kandydat/dr-hab-inz-prof-sebastian-kraszewski%2C1917633/", 
+        "https://wppt.pwr.edu.pl/pracownicy/sebastian-kraszewski",
+        "https://www.researchgate.net/profile/Sebastian-Kraszewski"
+      ]
+    }
+    </script>
+
+    <style>
+        /* CORE STYLES (Spójne z resztą) */
+        :root {
+            --bg-body: #F8FAFC;       
+            --bg-surface: rgba(255, 255, 255, 0.85);
+            --primary: #0F766E;       
+            --primary-dark: #0D5E57;
+            --primary-light: #CCFBF1;
+            --accent: #6366F1;        
+            --text-main: #1E293B;
+            --text-muted: #64748B;
+            --border: #E2E8F0;
+            --radius: 16px;
+            --trans-default: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-body); color: var(--text-main); line-height: 1.6; overflow-x: hidden; }
+        h1, h2, h3 { font-family: 'Lexend', sans-serif; }
+        
+        #bg-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; z-index: -1; opacity: 0.6; pointer-events: none; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+        .glass { background: var(--bg-surface); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.6); box-shadow: 0 4px 20px rgba(0,0,0,0.03); }
+        
+        /* Cursor */
+        @media (min-width: 901px) { body, a, button { cursor: none !important; } }
+        @media (max-width: 900px) { .cursor-dot, .cursor-outline { display: none !important; } body { cursor: auto; } }
+        .cursor-dot { width: 8px; height: 8px; background: var(--primary); position: fixed; border-radius: 50%; z-index: 9999; pointer-events: none; }
+        .cursor-outline { width: 40px; height: 40px; border: 1px solid rgba(15,118,110,0.5); position: fixed; border-radius: 50%; z-index: 9998; pointer-events: none; transition: width 0.2s, height 0.2s; }
+        body.hovering .cursor-outline { width: 70px; height: 70px; background: rgba(15,118,110,0.05); border-width: 2px; }
+
+        /* Header */
+        header { position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid var(--border); padding: 12px 0; }
+        .nav-wrapper { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+        .brand-bar { display: flex; justify-content: center; align-items: center; width: 100%; position: relative; }
+        .logo { display: flex; align-items: center; gap: 14px; font-weight: 700; font-size: 1.6rem; color: var(--text-main); text-decoration: none; cursor: pointer; letter-spacing: -0.02em; }
+        .logo img { height: 50px; width: auto; border-radius: 8px; }
+        .nav-link-back { text-decoration: none; color: var(--primary); font-weight: 600; font-size: 0.95rem; display: flex; align-items: center; gap: 8px; position: absolute; left: 0; top: 50%; transform: translateY(-50%); }
+
+        /* Mobile */
+        .mobile-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; position: absolute; right: 0; top: 50%; transform: translateY(-50%); }
+        .mobile-toggle span { display: block; width: 24px; height: 2px; background: var(--text-main); margin: 5px 0; transition: 0.3s; }
+        .mobile-menu { position: fixed; top: 80px; left: 0; width: 100%; background: white; padding: 24px; border-bottom: 1px solid var(--border); transform: translateY(-150%); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); z-index: 999; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .mobile-menu.active { transform: translateY(0); }
+        .mobile-link { display: block; padding: 14px 0; font-size: 1.1rem; font-weight: 500; color: var(--text-main); text-decoration: none; border-bottom: 1px solid var(--bg-body); }
+
+        @media (max-width: 900px) {
+            .nav-wrapper { flex-direction: row; height: 60px; justify-content: center; padding: 0; }
+            .nav-link-back { display: none; } /* Hide back link on mobile header to save space */
+            .mobile-toggle { display: block; }
+            .logo { font-size: 1.1rem; }
+            .logo img { height: 36px; }
+        }
+
+        /* --- Profile Layout --- */
+        .profile-header {
+            display: grid; grid-template-columns: 350px 1fr; gap: 60px;
+            margin-top: 80px; margin-bottom: 80px; align-items: start;
+        }
+        
+        .profile-img-container {
+            position: relative;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .profile-img {
+            width: 100%; height: auto; display: block;
+            /* AGENCY EFFECT: B&W -> COLOR */
+            filter: grayscale(100%);
+            transition: filter 0.6s ease, transform 0.6s ease;
+        }
+        .profile-img-container:hover .profile-img {
+            filter: grayscale(0%);
+            transform: scale(1.03);
+        }
+
+        .role-badge {
+            display: inline-block; background: #E0F2FE; color: #0284C7;
+            padding: 8px 16px; border-radius: 99px; font-size: 0.9rem; font-weight: 700;
+            margin-bottom: 20px; letter-spacing: 0.05em; text-transform: uppercase;
+        }
+
+        .profile-name { font-size: 3rem; line-height: 1.1; margin-bottom: 16px; color: var(--text-main); }
+        .profile-titles { font-size: 1.2rem; color: var(--primary); font-weight: 500; margin-bottom: 24px; display: block; }
+        
+        .bio-text { font-size: 1.1rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 32px; }
+
+        .tags-container { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 40px; }
+        .tag {
+            background: white; border: 1px solid var(--border); padding: 8px 16px;
+            border-radius: 8px; font-size: 0.9rem; font-weight: 500; color: var(--text-main);
+            display: flex; align-items: center; gap: 8px;
+        }
+        .tag span { color: var(--primary); }
+
+        /* Content Blocks */
+        .content-block {
+            background: white; padding: 40px; border-radius: 24px; border: 1px solid var(--border);
+            margin-bottom: 32px; transition: var(--trans-default);
+        }
+        .content-block:hover { border-color: var(--primary-light); box-shadow: 0 10px 30px rgba(0,0,0,0.02); }
+        
+        .content-block h2 { font-size: 1.8rem; margin-bottom: 24px; color: var(--text-main); border-bottom: 2px solid var(--bg-body); padding-bottom: 12px; display: inline-block; }
+        .content-block ul { padding-left: 20px; color: var(--text-muted); list-style: none; }
+        .content-block li { margin-bottom: 12px; position: relative; padding-left: 24px; }
+        .content-block li::before {
+            content: "•"; color: var(--primary); font-weight: bold; font-size: 1.5rem;
+            position: absolute; left: 0; top: -4px;
+        }
+
+        /* Achievements (Gold/Accent) */
+        .achievements-block { border-left: 4px solid #F59E0B; }
+        .achievements-block h2 { color: #D97706; border-color: #FEF3C7; }
+        
+        /* Links in Achievements */
+        .achievements-block a {
+            color: #D97706; font-weight: 600; text-decoration: none; border-bottom: 1px dotted #D97706;
+            transition: 0.2s;
+        }
+        .achievements-block a:hover { color: #B45309; border-bottom-style: solid; }
+
+        @media (max-width: 900px) {
+            .profile-header { grid-template-columns: 1fr; gap: 32px; text-align: center; }
+            .profile-img-container { max-width: 400px; margin: 0 auto; }
+            .tags-container { justify-content: center; }
+            .profile-name { font-size: 2.2rem; }
+        }
+
+        /* Footer */
+        footer { background: white; border-top: 1px solid var(--border); padding: 60px 0 20px; margin-top: 80px; text-align: center; }
+    </style>
+</head>
+<body>
+
+    <div id="bg-canvas"></div>
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <header class="glass">
+        <div class="container nav-wrapper">
+            <div class="brand-bar">
+                <a href="o-nas.html" class="nav-link-back cursor-trigger">← Zespół</a>
+                <a href="index.html" class="logo cursor-trigger">
+                    <img src="logo.png" alt="NCNI">
+                    <span>NCNI Wrocław</span>
+                </a>
+                <button class="mobile-toggle cursor-trigger" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="mobile-menu">
+        <a href="o-nas.html" class="mobile-link">← Wróć do Zespołu</a>
+        <a href="index.html" class="mobile-link">Strona Główna</a>
+        <a href="index.html#rezerwacja" class="mobile-link" style="color: var(--primary); font-weight: 700;">Umów wizytę</a>
+    </div>
+
+    <div class="container">
+        <div class="profile-header">
+            <div class="profile-img-container cursor-trigger">
+                <!-- Zdjęcie Sebastiana: B&W domyślnie, Kolor po najechaniu -->
+                <img src="sk.jpg" alt="Dr hab. inż. Sebastian Kraszewski" class="profile-img" onerror="this.src='https://ui-avatars.com/api/?name=Sebastian+Kraszewski&background=6366F1&color=fff&size=400'">
+            </div>
+            
+            <div>
+                <span class="role-badge">Dyrektor Naukowy</span>
+                <h1 class="profile-name">dr hab. inż. Sebastian Kraszewski</h1>
+                <span class="profile-titles">Profesor PWr | Trener Neuroróżnorodności</span>
+                
+                <p class="bio-text">
+                    Naukowiec, wizjoner i praktyk. Jego misją jest łączenie twardej nauki (fizyka, inżynieria biomedyczna) z humanistycznym podejściem do zdrowia psychicznego. 
+                    W NCNI odpowiada za wdrażanie najnowszych technologii (VR, BCI) do praktyki klinicznej oraz nadzór merytoryczny nad skutecznością terapii traumy i ADHD.
+                    Certyfikowany Trener Neuroróżnorodności, propagator wiedzy o potencjale ukrytym w atypowych umysłach.
+                </p>
+
+                <div class="tags-container">
+                    <span class="tag"><span>🔬</span> Biofizyka</span>
+                    <span class="tag"><span>🧠</span> Neuroinnowacje</span>
+                    <span class="tag"><span>🥽</span> VR Therapy</span>
+                    <span class="tag"><span>📈</span> Trener Neuroróżnorodności</span>
+                    <span class="tag"><span>❤️‍🩹</span> Traumatologia (Tech)</span>
+                </div>
+
+                <a href="index.html#rezerwacja" class="nav-cta cursor-trigger" style="display: inline-block; padding: 12px 32px; text-decoration: none; border-radius: 99px; font-weight: 700; color: white; background: var(--primary);">Umów konsultację ekspercką</a>
+            </div>
+        </div>
+
+        <div class="content-block cursor-trigger">
+            <h2>Specjalizacje w NCNI</h2>
+            <ul>
+                <li>Projektowanie i wdrażanie ścieżek neuroterapeutycznych opartych na VR.</li>
+                <li>Analiza sygnałów biometrycznych (EEG, HRV) w czasie rzeczywistym do monitorowania postępów terapii.</li>
+                <li>Wsparcie technologiczne w traumatologii (obiektywizacja poziomu stresu).</li>
+                <li>Dobór scenariuszy VR dla pacjentów z nadwrażliwością sensoryczną (ASD/WWO).</li>
+                <li>Mentoring i coaching dla osób neuroróżnorodnych (ADHD/ASD) w środowisku akademickim i biznesowym.</li>
+                <li>Badania B+R nad skutecznością cyfrowych terapeutyków (Digital Therapeutics).</li>
+            </ul>
+        </div>
+
+        <div class="achievements-block content-block cursor-trigger">
+            <h2>Osiągnięcia i Wyróżnienia</h2>
+            <ul>
+                <li>
+                    <strong>Europejskie Forum Inteligentnego Rozwoju:</strong> 
+                    <a href="https://irforum.pl/speaker/dr-hab-inz-sebastian-kraszewski-prof-pwr/" target="_blank">Dr hab. inż. Sebastian Kraszewski, prof. PWr - Prelegent i Ekspert</a>.
+                    Wyróżnienie za wkład w rozwój innowacyjnych technologii medycznych i nowelizację ustawy o wyrobach medycznych.
+                </li>
+                <li>
+                    <strong>Gazeta Wrocławska - Osobowość Roku:</strong> 
+                    Nominacja w kategorii "Nauka" za działalność na rzecz popularyzacji neurobiologii.
+                </li>
+                <li>
+                    <strong>Politechnika Wrocławska:</strong> 
+                    <a href="https://wppt.pwr.edu.pl/pracownicy/sebastian-kraszewski" target="_blank">Profil Naukowy na Wydziale Podstawowych Problemów Techniki</a>. 
+                    Autor licznych publikacji z zakresu biofizyki i inżynierii biomedycznej.
+                </li>
+                <li>
+                    <strong>Działalność Naukowa (ResearchGate):</strong> 
+                    <a href="https://www.researchgate.net/profile/Sebastian-Kraszewski" target="_blank">Profil badawczy i publikacje</a>.
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container" style="text-align: center; color: var(--text-muted);">
+            &copy; 2025 Naukowe Centrum Neuroinnowacji.
+        </div>
+    </footer>
+
+    <!-- Init Particles & Logic -->
+    <script>
+        function initParticles() {
+            const container = document.getElementById('bg-canvas');
+            if (!container) return;
+            const scene = new THREE.Scene();
+            scene.fog = new THREE.FogExp2(0xF8FAFC, 0.002);
+            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            camera.position.z = 10;
+            const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+            container.appendChild(renderer.domElement);
+            const geometry = new THREE.BufferGeometry();
+            const count = 200; 
+            const positions = new Float32Array(count * 3);
+            const colors = new Float32Array(count * 3);
+            for(let i = 0; i < count * 3; i+=3) {
+                positions[i] = (Math.random() - 0.5) * 25;
+                positions[i+1] = (Math.random() - 0.5) * 25;
+                positions[i+2] = (Math.random() - 0.5) * 25;
+                const mix = Math.random();
+                if(mix > 0.5) { colors[i] = 0.06; colors[i+1] = 0.46; colors[i+2] = 0.43; } 
+                else { colors[i] = 0.39; colors[i+1] = 0.4; colors[i+2] = 0.94; }
+            }
+            geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+            geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+            const material = new THREE.PointsMaterial({ size: 0.1, vertexColors: true, transparent: true, opacity: 0.4 });
+            const particles = new THREE.Points(geometry, material);
+            scene.add(particles);
+            const clock = new THREE.Clock();
+            function animate() {
+                const time = clock.getElapsedTime();
+                const scale = 1 + Math.sin(time * 0.5) * 0.02; 
+                particles.scale.set(scale, scale, scale);
+                particles.rotation.y += 0.001;
+                renderer.render(scene, camera);
+                requestAnimationFrame(animate);
+            }
+            animate();
+            window.addEventListener('resize', () => {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            });
+        }
+        document.addEventListener("DOMContentLoaded", initParticles);
+
+        const cursorDot = document.querySelector('.cursor-dot');
+        const cursorOutline = document.querySelector('.cursor-outline');
+        window.addEventListener('mousemove', (e) => {
+            const posX = e.clientX; const posY = e.clientY;
+            cursorDot.style.left = `${posX}px`; cursorDot.style.top = `${posY}px`;
+            cursorOutline.animate({ left: `${posX}px`, top: `${posY}px` }, { duration: 500, fill: "forwards" });
+        });
+
+        const triggers = document.querySelectorAll('.cursor-trigger, a, button, .content-block, .profile-img-container');
+        triggers.forEach(trigger => {
+            trigger.addEventListener('mouseenter', () => { document.body.classList.add('hovering'); });
+            trigger.addEventListener('mouseleave', () => { document.body.classList.remove('hovering'); });
+        });
+
+        const toggle = document.querySelector('.mobile-toggle');
+        const menu = document.querySelector('.mobile-menu');
+        if(toggle && menu) {
+            toggle.addEventListener('click', () => { menu.classList.toggle('active'); });
+        }
+    </script>
+</body>
+</html>
