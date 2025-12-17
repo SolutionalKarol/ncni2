@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Sitemap: https://ncni.pl/sitemap.xml
+
+# Disallow crawling of unnecessary paths
+Disallow: /admin/
+Disallow: /temp/
+Disallow: /.git/
+Disallow: /node_modules/
