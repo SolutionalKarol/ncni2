@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pełna Oferta i Cennik | NCNI Wrocław</title>
+    <meta name="description" content="Kompleksowa oferta NCNI: Diagnoza ADHD/ASD, Terapia VR, Biofeedback, Psychotraumatologia, Dietetyka. Sprawdź zakres usług i cennik.">
+    <link rel="icon" href="logo.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <style>
+        :root {
+            --bg-body: #F8FAFC;       
+            --bg-surface: rgba(255, 255, 255, 0.85);
+            --primary: #0F766E;       
+            --primary-dark: #0D5E57;
+            --primary-light: #CCFBF1;
+            --accent: #6366F1;        
+            --text-main: #1E293B;
+            --text-muted: #64748B;
+            --border: #E2E8F0;
+            --radius: 16px;
+            --trans-default: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-body); color: var(--text-main); line-height: 1.6; overflow-x: hidden; }
+        h1, h2, h3 { font-family: 'Lexend', sans-serif; }
+        
+        #bg-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; z-index: -1; opacity: 0.6; pointer-events: none; }
+        .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+        .glass { background: var(--bg-surface); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.6); box-shadow: 0 4px 20px rgba(0,0,0,0.03); }
+        
+        /* Cursor */
+        @media (min-width: 901px) { body, a, button { cursor: none !important; } }
+        @media (max-width: 900px) { .cursor-dot, .cursor-outline { display: none !important; } body { cursor: auto; } }
+        .cursor-dot { width: 8px; height: 8px; background: var(--primary); position: fixed; border-radius: 50%; z-index: 9999; pointer-events: none; }
+        .cursor-outline { width: 40px; height: 40px; border: 1px solid rgba(15,118,110,0.5); position: fixed; border-radius: 50%; z-index: 9998; pointer-events: none; transition: width 0.2s, height 0.2s; }
+        body.hovering .cursor-outline { width: 70px; height: 70px; background: rgba(15,118,110,0.05); border-width: 2px; }
+
+        /* Header */
+        header { position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid var(--border); padding: 12px 0; }
+        .nav-wrapper { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+        .brand-bar { display: flex; justify-content: center; align-items: center; width: 100%; position: relative; }
+        .logo { display: flex; align-items: center; gap: 14px; font-weight: 700; font-size: 1.6rem; color: var(--text-main); text-decoration: none; cursor: pointer; letter-spacing: -0.02em; }
+        .logo img { height: 50px; width: auto; border-radius: 8px; }
+        .nav-links { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+        .nav-item { padding: 8px 18px; border-radius: 99px; font-size: 0.95rem; font-weight: 500; color: var(--text-muted); text-decoration: none; transition: var(--trans-default); cursor: pointer; }
+        .nav-item:hover, .nav-item.active { color: var(--primary); background: var(--primary-light); }
+        .nav-cta { background: var(--primary); color: white !important; box-shadow: 0 4px 12px rgba(15, 118, 110, 0.25); margin-left: 8px; }
+        .nav-cta:hover { background: var(--primary-dark); transform: translateY(-1px); }
+        
+        /* Mobile */
+        .mobile-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; position: absolute; right: 0; top: 50%; transform: translateY(-50%); }
+        .mobile-toggle span { display: block; width: 24px; height: 2px; background: var(--text-main); margin: 5px 0; transition: 0.3s; }
+        .mobile-menu { position: fixed; top: 80px; left: 0; width: 100%; background: white; padding: 24px; border-bottom: 1px solid var(--border); transform: translateY(-150%); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); z-index: 999; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .mobile-menu.active { transform: translateY(0); }
+        .mobile-link { display: block; padding: 14px 0; font-size: 1.1rem; font-weight: 500; color: var(--text-main); text-decoration: none; border-bottom: 1px solid var(--bg-body); }
+
+        @media (max-width: 900px) {
+            .nav-wrapper { flex-direction: row; height: 60px; justify-content: space-between; padding: 0; }
+            .brand-bar { justify-content: flex-start; width: auto; }
+            .nav-links { display: none; }
+            .mobile-toggle { display: block; }
+            .logo { font-size: 1.1rem; }
+            .logo img { height: 36px; }
+        }
+
+        /* --- Offer List Style --- */
+        .offer-list { margin-top: 40px; }
+        
+        /* Sekcje nagłówkowe w ofercie */
+        .category-header {
+            font-size: 1.8rem;
+            color: var(--text-main);
+            margin: 60px 0 24px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .category-header span { color: var(--primary); }
+
+        /* Accordion */
+        details {
+            margin-bottom: 16px; border: 1px solid var(--border); border-radius: 16px;
+            background: white; overflow: hidden; transition: all 0.3s ease;
+        }
+        details:hover { border-color: var(--primary-light); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+        details[open] { border-color: var(--primary); box-shadow: 0 4px 12px rgba(15, 118, 110, 0.1); }
+        
+        summary {
+            padding: 24px; cursor: pointer; font-weight: 600; font-size: 1.1rem;
+            display: flex; justify-content: space-between; align-items: center; list-style: none;
+            color: var(--text-main); background: white;
+        }
+        summary::-webkit-details-marker { display: none; }
+        summary::after {
+            content: '+'; font-size: 1.5rem; color: var(--primary); transition: transform 0.2s; font-weight: 300;
+        }
+        details[open] summary::after { transform: rotate(45deg); }
+        details[open] summary { border-bottom: 1px solid var(--bg-body); background: #F0FDF4; /* Delikatny zielony tło po otwarciu */ }
+        
+        .details-content { padding: 32px; color: var(--text-muted); background: white; }
+        .details-content p { margin-bottom: 16px; }
+        .details-content ul { padding-left: 20px; margin-bottom: 20px; }
+        .details-content li { margin-bottom: 8px; }
+
+        .btn-small {
+            display: inline-block; padding: 10px 20px; background: var(--primary); color: white;
+            border-radius: 99px; text-decoration: none; font-size: 0.9rem; font-weight: 600;
+            margin-top: 8px; transition: 0.2s; box-shadow: 0 4px 6px rgba(15, 118, 110, 0.2);
+        }
+        .btn-small:hover { background: #0D9488; transform: translateY(-2px); }
+
+        /* Footer */
+        footer { background: white; border-top: 1px solid var(--border); padding: 60px 0 20px; margin-top: 80px; text-align: center; }
+    </style>
+</head>
+<body>
+
+    <div id="bg-canvas"></div>
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <header class="glass">
+        <div class="container nav-wrapper">
+            <div class="brand-bar">
+                <a href="index.html" class="logo cursor-trigger">
+                    <img src="logo.png" alt="NCNI">
+                    <span>Naukowe Centrum Neuroinnowacji</span>
+                </a>
+                <button class="mobile-toggle cursor-trigger" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+            <nav class="nav-links">
+                <a href="o-nas.html" class="nav-item cursor-trigger">O nas</a>
+                <a href="neuroroznorodnosc.html" class="nav-item cursor-trigger">Neuroróżnorodność</a>
+                <a href="psychologia.html" class="nav-item cursor-trigger">Psychologia</a>
+                <a href="technologie.html" class="nav-item cursor-trigger">Technologie</a>
+                <a href="oferta.html" class="nav-item cursor-trigger active">Oferta</a>
+                <a href="index.html#rezerwacja" class="nav-item nav-cta cursor-trigger">Umów wizytę</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="mobile-menu">
+        <a href="o-nas.html" class="mobile-link">O nas</a>
+        <a href="neuroroznorodnosc.html" class="mobile-link">Neuroróżnorodność</a>
+        <a href="psychologia.html" class="mobile-link">Psychologia</a>
+        <a href="technologie.html" class="mobile-link">Technologie</a>
+        <a href="oferta.html" class="mobile-link">Pełna Oferta</a>
+        <a href="index.html#rezerwacja" class="mobile-link" style="color: var(--primary); font-weight: 700;">Umów wizytę</a>
+    </div>
+
+    <section class="container" style="padding: 80px 24px;">
+        <div style="text-align: center; margin-bottom: 40px;">
+            <span style="background: var(--primary-light); color: var(--primary); padding: 6px 12px; border-radius: 99px; font-size: 0.9rem; font-weight: 600;">Pełny Zakres Usług</span>
+            <h1 style="font-size: 3rem; margin-top: 16px;">Oferta NCNI</h1>
+            <p style="color: var(--text-muted); font-size: 1.2rem; margin-top: 16px; max-width: 700px; margin-left: auto; margin-right: auto;">
+                Scentralizowany katalog wszystkich naszych usług. Od diagnostyki, przez terapię psychologiczną, aż po nowoczesne treningi VR i wsparcie dietetyczne.
+            </p>
+        </div>
+
+        <div class="offer-list">
+            
+            <!-- 1. PSYCHOLOGIA & PSYCHOTRAUMATOLOGIA -->
+            <h2 class="category-header"><span>01.</span> Psychologia & Psychotraumatologia</h2>
+
+            <details class="cursor-trigger">
+                <summary>Psychoterapia Indywidualna</summary>
+                <div class="details-content">
+                    <p>Indywidualne sesje terapeutyczne dla osób dorosłych zmagających się z kryzysem, depresją, lękiem lub trudnościami życiowymi.</p>
+                    <a href="psychologia.html" class="btn-small">Więcej o psychoterapii</a>
+                </div>
+            </details>
+
+            <details class="cursor-trigger">
+                <summary>Psychoterapia Traumy (EMDR / SE)</summary>
+                <div class="details-content">
+                    <p>Specjalistyczna praca z traumą (PTSD, trauma złożona) z wykorzystaniem metod przetwarzania pamięci i pracy z ciałem (Somatic Experiencing).</p>
+                    <a href="psychologia.html" class="btn-small">O leczeniu traumy</a>
+                </div>
+            </details>
+
+            <details class="cursor-trigger">
+                <summary>Psychoterapia Par</summary>
+                <div class="details-content">
+                    <p>Wsparcie dla związków w kryzysie. Praca nad komunikacją, bliskością i rozwiązywaniem konfliktów.</p>
+                    <a href="psychologia.html" class="btn-small">Szczegóły terapii par</a>
+                </div>
+            </details>
+
+            <details class="cursor-trigger">
+                <summary>Psychoterapia Uzależnień</summary>
+                <div class="details-content">
+                    <p>Pomoc w wychodzeniu z nałogów behawioralnych i substancjalnych. Praca nad mechanizmami uzależnienia i prewencją nawrotów.</p>
+                </div>
+            </details>
+
+             <details class="cursor-trigger">
+                <summary>Psychologia Dzieci i Młodzieży</summary>
+                <div class="details-content">
+                    <p>Wsparcie w problemach wychowawczych, szkolnych i emocjonalnych. Konsultacje rodzicielskie i terapia młodzieży.</p>
+                </div>
+            </details>
+
+
+            <!-- 2. DIAGNOSTYKA -->
+            <h2 class="category-header" style="border-bottom-color: var(--accent);"><span>02.</span> Diagnostyka Kliniczna</h2>
+            
+            <details class="cursor-trigger">
+                <summary>Diagnoza ADHD (Dorośli i Dzieci)</summary>
+                <div class="details-content">
+                    <p>Kompleksowy proces diagnostyczny (3-4 spotkania). Obejmuje wywiad kliniczny (DIVA-5), testy komputerowe (MOXO) i obserwację. Pełny raport z zaleceniami.</p>
+                    <a href="adhd.html" class="btn-small">Więcej o diagnozie ADHD</a>
+                </div>
+            </details>
+
+            <details class="cursor-trigger">
+                <summary>Diagnoza Spektrum Autyzmu (ASD)</summary>
+                <div class="details-content">
+                    <p>Wielospecjalistyczna diagnoza z udziałem psychologa i psychiatry. Wykorzystujemy złoty standard diagnostyczny ADOS-2.</p>
+                    <a href="asd.html" class="btn-small">Szczegóły diagnozy ASD</a>
+                </div>
+            </details>
+
+
+            <!-- 3. TECHNOLOGIE & TRENINGI (VR/BIOFEEDBACK) -->
+            <h2 class="category-header" style="border-bottom-color: #10B981;"><span>03.</span> Technologie VR & Treningi</h2>
+
+            <details class="cursor-trigger">
+                <summary>Terapia VR (Wirtualna Rzeczywistość)</summary>
+                <div class="details-content">
+                    <p>Terapia ekspozycyjna w wirtualnym środowisku. Leczenie fobii (lęk wysokości, pająki, samoloty), lęku społecznego i wystąpień publicznych.</p>
+                    <a href="technologie.html" class="btn-small">Zobacz laboratorium VR</a>
+                </div>
+            </details>
+
+            <details class="cursor-trigger">
+                <summary>Biofeedback HRV</summary>
+                <div class="details-content">
+                    <p>Trening koherencji serca. Nauka świadomej redukcji stresu poprzez oddech, z podglądem parametrów fizjologicznych na żywo.</p>
+                    <a href="technologie.html" class="btn-small">O Biofeedbacku</a>
+                </div>
+            </details>
+
+            <details class="cursor-trigger">
+                <summary>Neurofeedback EEG</summary>
+                <div class="details-content">
+                    <p>Trening mózgu poprawiający koncentrację, pamięć i jakość snu. Bezinwazyjna metoda oparta na plastyczności mózgu.</p>
+                </div>
+            </details>
+
+            <details class="cursor-trigger">
+                <summary>Metoda Kraszewskiego</summary>
+                <div class="details-content">
+                    <p>Autorska metoda integracji sensoryczno-poznawczej. Treningi wspierające rozwój funkcji poznawczych.</p>
+                    <a href="metoda-kraszewskiego.html" class="btn-small">Poznaj metodę</a>
+                </div>
+            </details>
+
+
+            <!-- 4. WSPARCIE HOLISTYCZNE -->
+            <h2 class="category-header" style="border-bottom-color: #F59E0B;"><span>04.</span> Wsparcie Holistyczne (Ciało & Dieta)</h2>
+
+            <details class="cursor-trigger">
+                <summary>Dietetyka Kliniczna i Psychodietetyka</summary>
+                <div class="details-content">
+                    <p>Wsparcie żywieniowe w zaburzeniach nastroju, ADHD i spektrum autyzmu. Praca z osią jelito-mózg.</p>
+                    <a href="dietetyk.html" class="btn-small">Profil Dietetyka</a>
+                </div>
+            </details>
+
+            <details class="cursor-trigger">
+                <summary>Fizjoterapia Somatyczna</summary>
+                <div class="details-content">
+                    <p>Praca z napięciami w ciele wynikającymi z przewlekłego stresu i traumy. Uwalnianie blokad mięśniowych.</p>
+                    <a href="fizjoterapia.html" class="btn-small">Profil Fizjoterapeuty</a>
+                </div>
+            </details>
+
+             <details class="cursor-trigger">
+                <summary>Migrena i Bóle Głowy</summary>
+                <div class="details-content">
+                    <p>Niefarmakologiczne metody leczenia bólu (biofeedback termiczny, relaksacja) wspierające farmakoterapię.</p>
+                    <a href="migrena.html" class="btn-small">Więcej o migrenie</a>
+                </div>
+            </details>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="container" style="color: var(--text-muted);">
+            &copy; 2025 Naukowe Centrum Neuroinnowacji.
+        </div>
+    </footer>
+
+    <!-- Init Particles (Copy from index) -->
+    <script>
+        function initParticles() {
+            const container = document.getElementById('bg-canvas');
+            if (!container) return;
+            const scene = new THREE.Scene();
+            scene.fog = new THREE.FogExp2(0xF8FAFC, 0.002);
+            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            camera.position.z = 10;
+            const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+            container.appendChild(renderer.domElement);
+            const geometry = new THREE.BufferGeometry();
+            const count = 200; 
+            const positions = new Float32Array(count * 3);
+            const colors = new Float32Array(count * 3);
+            for(let i = 0; i < count * 3; i+=3) {
+                positions[i] = (Math.random() - 0.5) * 25;
+                positions[i+1] = (Math.random() - 0.5) * 25;
+                positions[i+2] = (Math.random() - 0.5) * 25;
+                const mix = Math.random();
+                if(mix > 0.5) { colors[i] = 0.06; colors[i+1] = 0.46; colors[i+2] = 0.43; } 
+                else { colors[i] = 0.39; colors[i+1] = 0.4; colors[i+2] = 0.94; }
+            }
+            geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+            geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+            const material = new THREE.PointsMaterial({ size: 0.1, vertexColors: true, transparent: true, opacity: 0.4 });
+            const particles = new THREE.Points(geometry, material);
+            scene.add(particles);
+            const clock = new THREE.Clock();
+            function animate() {
+                const time = clock.getElapsedTime();
+                const scale = 1 + Math.sin(time * 0.5) * 0.02; 
+                particles.scale.set(scale, scale, scale);
+                particles.rotation.y += 0.001;
+                renderer.render(scene, camera);
+                requestAnimationFrame(animate);
+            }
+            animate();
+            window.addEventListener('resize', () => {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            });
+        }
+        document.addEventListener("DOMContentLoaded", initParticles);
+
+        // Custom Cursor
+        const cursorDot = document.querySelector('.cursor-dot');
+        const cursorOutline = document.querySelector('.cursor-outline');
+        window.addEventListener('mousemove', (e) => {
+            const posX = e.clientX; const posY = e.clientY;
+            cursorDot.style.left = `${posX}px`; cursorDot.style.top = `${posY}px`;
+            cursorOutline.animate({ left: `${posX}px`, top: `${posY}px` }, { duration: 500, fill: "forwards" });
+        });
+        const triggers = document.querySelectorAll('.cursor-trigger, a, button, summary, .btn-small');
+        triggers.forEach(trigger => {
+            trigger.addEventListener('mouseenter', () => { document.body.classList.add('hovering'); });
+            trigger.addEventListener('mouseleave', () => { document.body.classList.remove('hovering'); });
+        });
+
+        // Mobile Menu
+        const toggle = document.querySelector('.mobile-toggle');
+        const menu = document.querySelector('.mobile-menu');
+        if (toggle && menu) {
+            toggle.addEventListener('click', () => {
+                menu.classList.toggle('active');
+            });
+            menu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => menu.classList.remove('active'));
+            });
+        }
+    </script>
+</body>
+</html>
