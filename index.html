@@ -571,7 +571,7 @@
 
 <script>
 (function() {
-  // --- TU WKLEJ SWÓJ KLUCZ API ---
+  // --- KLUCZ API WKLEJONY PONIŻEJ ---
   const API_KEY = "AIzaSyC0Ha5dzQGexMLgErPBSVWfz6QnG4ipA-Y"; 
   
   // BAZA WIEDZY ANI (WERSJA PEŁNA EBM + VR)
@@ -657,7 +657,7 @@
   }
 
   async function chatWithGemini(userText) {
-      if (API_KEY === "AIzaSyC0Ha5dzQGexMLgErPBSVWfz6QnG4ipA-Y" || API_KEY.length < 10) {
+      if (!API_KEY || API_KEY.length < 10) {
           addMessage("BŁĄD: Brak klucza API. Skonfiguruj plik.", false);
           return;
       }
