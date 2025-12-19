@@ -861,5 +861,205 @@
       initBookingMailto();
     });
   </script>
+  <div id="ncni-ania-widget">
+    <button id="ania-trigger-btn" aria-label="Otwórz czat z Anią">
+        <div class="ania-avatar-circle">
+            <img src="ania.jpg" alt="Ania NCNI" onerror="this.src='https://ui-avatars.com/api/?name=Ania+NCNI&background=0F766E&color=fff'">
+             <span class="ania-status-dot"></span>
+        </div>
+    </button>
+
+    <div id="ania-chat-window">
+        <div class="ania-chat-header">
+            <div class="header-details">
+                <span class="assistant-name">Ania AI 🧠</span>
+                <span class="assistant-role">Neuro-Concierge NCNI</span>
+            </div>
+            <button id="ania-close-btn" aria-label="Zamknij czat">✕</button>
+        </div>
+        
+        <div class="ania-chat-body">
+            <div class="ania-message-container welcome-message">
+                <div class="ania-message-avatar">
+                    <img src="ania.jpg" alt="Ania" onerror="this.src='https://ui-avatars.com/api/?name=A&background=0F766E&color=fff'">
+                </div>
+                <div class="ania-message-bubble glow-effect">
+                    Witaj! 👋 <br>
+                    Jestem Ania, Twoja wirtualna asystentka w świecie neuroinnowacji.
+                    <br><br>
+                    Czekam tutaj, aby pomóc Ci zadbać o harmonię Twojego umysłu i ciała.
+                </div>
+            </div>
+        </div>
+
+        <div class="ania-chat-input-area">
+            <input type="text" placeholder="W czym mogę pomóc..." disabled style="cursor: not-allowed; opacity: 0.7;">
+            <button disabled>➤</button>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Zmienne dopasowane do brandingu NCNI */
+    :root {
+        --ania-primary: #0F766E; /* Kolor przewodni z Twojej strony */
+        --ania-secondary: #134e4a;
+        --ania-bg: #ffffff;
+        --ania-text: #333333;
+        --ania-shadow: 0 12px 28px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(15, 118, 110, 0.1);
+    }
+
+    #ncni-ania-widget {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        z-index: 9999;
+        font-family: 'Inter', sans-serif; /* Zakładam, że używasz Inter lub podobnego fontu */
+    }
+
+    /* --- TRIGGER BUTTON --- */
+    #ania-trigger-btn {
+        background: none; border: none; cursor: pointer; padding: 0;
+        transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    #ania-trigger-btn:hover { transform: scale(1.1) rotate(-5deg); }
+    
+    .ania-avatar-circle {
+        width: 65px; height: 65px;
+        border-radius: 50%;
+        border: 3px solid var(--ania-bg);
+        box-shadow: var(--ania-shadow);
+        overflow: hidden; position: relative;
+        background: var(--ania-secondary);
+    }
+    .ania-avatar-circle img { width: 100%; height: 100%; object-fit: cover; }
+    .ania-status-dot {
+        position: absolute; bottom: 4px; right: 4px;
+        width: 14px; height: 14px; background: #22c55e;
+        border: 2px solid var(--ania-bg); border-radius: 50%;
+        animation: pulse-green 2s infinite;
+    }
+
+    /* --- CHAT WINDOW --- */
+    #ania-chat-window {
+        position: absolute; bottom: 80px; right: 0;
+        width: 360px; height: auto; max-height: 600px;
+        background: var(--ania-bg);
+        border-radius: 24px;
+        box-shadow: var(--ania-shadow);
+        overflow: hidden;
+        display: flex; flex-direction: column;
+        /* Stany początkowe do animacji */
+        opacity: 0; visibility: hidden;
+        transform: translateY(20px) scale(0.95);
+        transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    /* Klasa dodawana przez JS, żeby otworzyć okno */
+    #ania-chat-window.ania-open {
+        opacity: 1; visibility: visible;
+        transform: translateY(0) scale(1);
+    }
+
+    /* Header */
+    .ania-chat-header {
+        background: linear-gradient(135deg, var(--ania-primary), var(--ania-secondary));
+        color: white; padding: 18px 20px;
+        display: flex; justify-content: space-between; align-items: center;
+    }
+    .assistant-name { font-weight: 700; font-size: 1.1rem; display: block; }
+    .assistant-role { font-size: 0.8rem; opacity: 0.9; letter-spacing: 0.5px; }
+    #ania-close-btn {
+        background: rgba(255,255,255,0.2); border: none; color: white;
+        width: 32px; height: 32px; border-radius: 50%; font-size: 1.2rem; cursor: pointer;
+        display: flex; align-items: center; justify-content: center; transition: 0.2s;
+    }
+    #ania-close-btn:hover { background: rgba(255,255,255,0.4); }
+
+    /* Body & Messages */
+    .ania-chat-body { padding: 20px; background: #f8fafc; flex-grow: 1; }
+    
+    .ania-message-container {
+        display: flex; gap: 12px; align-items: flex-start;
+        animation: slide-in-up 0.6s ease-out forwards;
+    }
+    .ania-message-avatar {
+        width: 40px; height: 40px; border-radius: 50%; overflow: hidden; flex-shrink: 0;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .ania-message-avatar img { width: 100%; height: 100%; object-fit: cover; }
+    
+    .ania-message-bubble {
+        background: white; padding: 16px; border-radius: 4px 20px 20px 20px;
+        color: var(--ania-text); line-height: 1.5; font-size: 0.95rem;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05); border: 1px solid #e2e8f0;
+        position: relative;
+    }
+    /* Subtelny efekt "glow" dla powitania */
+    .glow-effect::after {
+        content: ''; position: absolute; inset: 0; border-radius: inherit;
+        box-shadow: 0 0 20px rgba(15, 118, 110, 0.15); opacity: 0.7; pointer-events: none;
+    }
+
+    /* Mock Input Area */
+    .ania-chat-input-area {
+        padding: 15px; background: white; border-top: 1px solid #eee; display: flex; gap: 10px;
+    }
+    .ania-chat-input-area input {
+        flex: 1; padding: 12px 16px; border-radius: 30px; border: 1px solid #ddd; background: #f9f9f9;
+    }
+    .ania-chat-input-area button {
+        width: 45px; height: 45px; border-radius: 50%; background: var(--ania-primary); color: white; border: none;
+        display: flex; align-items: center; justify-content: center; opacity: 0.7;
+    }
+
+    /* Animacje */
+    @keyframes pulse-green { 0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4); } 70% { box-shadow: 0 0 0 10px rgba(34, 197, 94, 0); } 100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); } }
+    @keyframes slide-in-up { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* RWD na telefony */
+    @media (max-width: 480px) {
+        #ania-chat-window { width: calc(100vw - 40px); right: -10px; bottom: 70px; }
+    }
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const aniaWindow = document.getElementById('ania-chat-window');
+    const triggerBtn = document.getElementById('ania-trigger-btn');
+    const closeBtn = document.getElementById('ania-close-btn');
+
+    // Funkcje otwierania i zamykania
+    function openAnia() {
+        aniaWindow.classList.add('ania-open');
+        // Zapisz w sesji, że Ania już witała
+        sessionStorage.setItem('aniaGreetingsShown', 'true');
+    }
+
+    function closeAnia() {
+        aniaWindow.classList.remove('ania-open');
+    }
+
+    // Event listenery dla przycisków
+    triggerBtn.addEventListener('click', () => {
+        if (aniaWindow.classList.contains('ania-open')) {
+            closeAnia();
+        } else {
+            openAnia();
+        }
+    });
+    closeBtn.addEventListener('click', closeAnia);
+
+    // --- MASTER CLASS AUTO-OPEN LOGIC ---
+    // Sprawdzamy, czy użytkownik widział już powitanie w tej sesji przeglądarki.
+    // Jeśli NIE, uruchamiamy timer. Jeśli TAK, nie robimy nic (nie irytujemy).
+    if (!sessionStorage.getItem('aniaGreetingsShown')) {
+        setTimeout(() => {
+            openAnia();
+            // Opcjonalnie: odtwórz delikatny dźwięk powiadomienia
+            // new Audio('assets/sounds/notification.mp3').play(); 
+        }, 5000); // 5000 ms = 5 sekund opóźnienia
+    }
+});
+</script>
 </body>
 </html>
