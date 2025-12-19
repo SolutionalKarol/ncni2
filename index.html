@@ -1,277 +1,567 @@
-<div id="ncni-ania-widget">
-    <button id="ania-trigger-btn" aria-label="Otwórz czat z Anią">
-        <div class="ania-avatar-circle">
-            <img src="ania.jpg" alt="Ania NCNI" onerror="this.src='https://ui-avatars.com/api/?name=Ania+NCNI&background=0F766E&color=fff'">
-             <span class="ania-status-dot"></span>
-        </div>
-        <div class="ania-tooltip-start">Kliknij, aby porozmawiać 💬</div>
-    </button>
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    
+    <title>NCNI Wrocław | Dr Sebastian Kraszewski: ADHD, Innowacje & Neurocoaching</title>
+    <meta name="description" content="NCNI Wrocław: Centrum Terapii ADHD i Neuroróżnorodności. Dr hab. inż. Sebastian Kraszewski i Karol Kiszło. Skuteczny coaching neuroróżnorodności, VR, Biofeedback.">
+    <link rel="canonical" href="https://ncni.pl">
+    <link rel="icon" href="logo.png" type="image/png">
 
-    <div id="ania-chat-window">
-        <div class="ania-chat-header">
-            <div class="header-details">
-                <div class="header-avatar-small">
-                    <img src="ania.jpg" onerror="this.src='https://ui-avatars.com/api/?name=A&background=fff&color=0F766E'">
-                </div>
-                <div>
-                    <span class="assistant-name">Ania (NCNI AI)</span>
-                    <span class="assistant-role">Neuro-Concierge</span>
-                </div>
-            </div>
-            <button id="ania-close-btn" aria-label="Zamknij czat">✕</button>
-        </div>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <style>
+        :root {
+            /* Palette */
+            --bg-body: #F8FAFC;       
+            --bg-surface: rgba(255, 255, 255, 0.85);
+            --primary: #0F766E;       
+            --primary-dark: #0D5E57;
+            --primary-light: #CCFBF1;
+            --accent: #6366F1;        
+            --text-main: #1E293B;
+            --text-muted: #64748B;
+            --border: #E2E8F0;
+            --radius: 16px;
+            --trans-default: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            
+            /* Ania Colors */
+            --ania-primary: #0F766E;
+            --ania-bg: #ffffff;
+            --ania-msg-bot: #f1f5f9;
+            --ania-msg-user: #0F766E;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; font-size: 16px; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+            width: 100%;
+            /* KURSOR SYSTEMOWY - brak udziwnień */
+            cursor: auto; 
+        }
+
+        /* Typography */
+        h1 { font-family: 'Lexend', sans-serif; line-height: 1.1; letter-spacing: -0.02em; }
+        h2, h3, h4 { font-family: 'Lexend', sans-serif; }
+
+        /* Background */
+        #bg-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; z-index: -1; opacity: 0.6; pointer-events: none; }
+
+        /* Layout Utils */
+        .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        @media (max-width: 768px) { .container { padding: 0 16px; } }
+        .section { padding: 80px 0; position: relative; }
+        .glass {
+            background: var(--bg-surface); backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+        }
+
+        /* Header */
+        header {
+            position: sticky; top: 0; z-index: 1000;
+            border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+            padding: 12px 0; background: rgba(255,255,255,0.95);
+        }
+        .nav-wrapper { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+        .brand-bar { display: flex; justify-content: center; align-items: center; width: 100%; }
+        .logo { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 1.4rem; color: var(--text-main); text-decoration: none; }
+        .logo img { height: 40px; width: auto; border-radius: 8px; }
+
+        .nav-links { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+        .nav-item {
+            padding: 8px 16px; border-radius: 99px; font-size: 0.9rem; font-weight: 500;
+            color: var(--text-muted); text-decoration: none; transition: var(--trans-default);
+        }
+        .nav-item:hover { color: var(--primary); background: var(--primary-light); }
+        .nav-cta { background: var(--primary); color: white !important; margin-left: 8px; }
         
-        <div id="ania-messages-area" class="ania-chat-body">
+        @media (max-width: 900px) {
+            .nav-wrapper { flex-direction: row; height: 50px; justify-content: center; padding: 0; }
+            .nav-links { display: none; } 
+            .logo { font-size: 1.1rem; }
+        }
+
+        /* Hero */
+        .hero { padding: 80px 0 60px; text-align: center; }
+        h1 {
+            font-size: clamp(2rem, 6vw, 3.5rem); margin-bottom: 24px;
+            background: linear-gradient(135deg, var(--text-main) 0%, var(--primary) 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .hero-lead { font-size: clamp(1rem, 4vw, 1.25rem); color: var(--text-muted); max-width: 700px; margin: 0 auto 32px; }
+        .hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+        .btn {
+            display: inline-flex; align-items: center; justify-content: center;
+            padding: 12px 24px; border-radius: 99px; font-weight: 600; cursor: pointer;
+            border: none; font-family: 'Lexend', sans-serif; transition: 0.2s;
+        }
+        .btn-primary { background-color: var(--primary); color: white; }
+        .btn-outline { background: white; border: 1px solid var(--border); color: var(--text-main); }
+
+        /* Marquee */
+        .marquee-wrapper { background: var(--primary); color: white; padding: 10px 0; overflow: hidden; white-space: nowrap; font-family: 'Lexend', sans-serif; font-size: 0.85rem; text-transform: uppercase; }
+        .marquee-content { display: inline-block; animation: scroll 40s linear infinite; }
+        .marquee-item { margin: 0 16px; }
+        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        /* Tabs & Grid */
+        .tabs-nav { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-bottom: 30px; }
+        .tab-btn { background: white; border: 1px solid var(--border); padding: 10px 20px; border-radius: 99px; font-weight: 600; cursor: pointer; color: var(--text-muted); }
+        .tab-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
+        .tab-content { display: none; animation: fadeIn 0.5s ease; }
+        .tab-content.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .grid-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .feature-card { border-radius: 20px; padding: 24px; background: white; border: 2px solid transparent; text-decoration: none; display: block; transition: 0.3s; }
+        .feature-card:hover { transform: translateY(-3px); border-color: var(--primary); }
+        .feature-card h3 { font-size: 1.3rem; margin-bottom: 10px; color: var(--text-main); }
+        .feature-card p { color: var(--text-muted); margin-bottom: 20px; font-size: 0.95rem; }
+        .read-more { font-weight: 600; color: var(--primary); font-size: 0.9rem; }
+        .card-icon { font-size: 24px; margin-bottom: 16px; width: 48px; height: 48px; background: #EEF2FF; display: flex; align-items: center; justify-content: center; border-radius: 14px; }
+
+        /* Team */
+        .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+        .team-card { border-radius: 20px; overflow: hidden; background: white; text-decoration: none; display: flex; flex-direction: column; }
+        .team-img-wrapper { height: 280px; background: #E2E8F0; }
+        .team-img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%); transition: 0.5s; }
+        .team-card:hover .team-img { filter: grayscale(0%); }
+        .team-info { padding: 20px; }
+
+        /* Footer */
+        footer { background: white; border-top: 1px solid var(--border); padding: 50px 0 20px; margin-top: 60px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
+        
+        /* =========================================
+           ANIA WIDGET STYLES (Fixed & Clean)
+           ========================================= */
+        #ncni-ania-widget {
+            position: fixed; bottom: 30px; right: 30px; z-index: 9999;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        /* Trigger Button */
+        #ania-trigger-btn {
+            background: none; border: none; cursor: pointer; padding: 0; position: relative;
+            transition: transform 0.3s;
+        }
+        #ania-trigger-btn:hover { transform: scale(1.05); }
+        
+        .ania-avatar-circle {
+            width: 70px; height: 70px; border-radius: 50%; 
+            border: 3px solid white; box-shadow: 0 8px 20px rgba(0,0,0,0.15); 
+            overflow: hidden; position: relative; background: #0F766E;
+        }
+        /* ZDJĘCIE ANI - Poprawione */
+        .ania-avatar-circle img { 
+            width: 100%; height: 100%; 
+            object-fit: cover; object-position: center top; 
+        }
+        .ania-status-dot {
+            position: absolute; bottom: 5px; right: 5px; width: 14px; height: 14px;
+            background: #22c55e; border: 2px solid white; border-radius: 50%;
+        }
+
+        /* Tooltip */
+        .ania-tooltip-start {
+            position: absolute; right: 85px; top: 50%; transform: translateY(-50%);
+            background: white; padding: 8px 14px; border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); font-size: 0.85rem; color: #333;
+            opacity: 0; pointer-events: none; transition: 0.3s; white-space: nowrap; font-weight: 500;
+        }
+        #ania-trigger-btn:hover .ania-tooltip-start { opacity: 1; transform: translateX(-5px) translateY(-50%); }
+
+        /* Chat Window */
+        #ania-chat-window {
+            position: absolute; bottom: 90px; right: 0; width: 360px; height: 500px;
+            background: white; border-radius: 20px; box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+            display: flex; flex-direction: column; overflow: hidden;
+            opacity: 0; visibility: hidden; transform: translateY(20px) scale(0.95);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        #ania-chat-window.ania-open { opacity: 1; visibility: visible; transform: translateY(0) scale(1); }
+
+        .ania-chat-header {
+            background: var(--primary); color: white; padding: 16px;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .header-details { display: flex; align-items: center; gap: 10px; }
+        .header-avatar-small { width: 36px; height: 36px; border-radius: 50%; overflow: hidden; border: 1px solid rgba(255,255,255,0.3); }
+        .header-avatar-small img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+        .assistant-name { font-weight: 700; font-size: 0.95rem; display: block; }
+        .assistant-role { font-size: 0.75rem; opacity: 0.9; }
+        #ania-close-btn { background: none; border: none; color: white; font-size: 1.2rem; cursor: pointer; }
+
+        .ania-chat-body { flex: 1; padding: 16px; overflow-y: auto; background: #f8fafc; display: flex; flex-direction: column; gap: 12px; }
+        
+        .ania-msg {
+            max-width: 85%; padding: 10px 14px; border-radius: 16px; font-size: 0.9rem; line-height: 1.5;
+            position: relative; word-wrap: break-word;
+        }
+        .ania-msg.bot { background: var(--ania-msg-bot); color: #333; border-bottom-left-radius: 4px; border: 1px solid #e2e8f0; }
+        .ania-msg.user { background: var(--ania-msg-user); color: white; align-self: flex-end; border-bottom-right-radius: 4px; }
+
+        .ania-chips { padding: 10px 16px; display: flex; gap: 8px; overflow-x: auto; background: white; border-top: 1px solid #eee; }
+        .chip {
+            background: #f1f5f9; border: 1px solid #e2e8f0; padding: 6px 12px; border-radius: 99px;
+            font-size: 0.75rem; color: var(--primary); font-weight: 600; cursor: pointer; white-space: nowrap; transition: 0.2s;
+        }
+        .chip:hover { background: var(--primary); color: white; }
+
+        .ania-chat-input-area { padding: 12px; background: white; display: flex; gap: 8px; border-top: 1px solid #eee; }
+        #ania-user-input { flex: 1; padding: 10px 16px; border-radius: 20px; border: 1px solid #cbd5e1; outline: none; font-size: 0.95rem; }
+        #ania-user-input:focus { border-color: var(--primary); }
+        #ania-send-btn {
+            width: 40px; height: 40px; border-radius: 50%; background: var(--primary);
+            color: white; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center;
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 480px) {
+            #ania-chat-window { width: calc(100vw - 40px); right: -10px; bottom: 85px; height: 60vh; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="bg-canvas"></div>
+
+    <header class="glass">
+        <div class="container nav-wrapper">
+            <div class="brand-bar">
+                <a href="#" class="logo">
+                    <img src="logo.png" alt="NCNI">
+                    <span>Naukowe Centrum Neuroinnowacji</span>
+                </a>
             </div>
 
-        <div class="ania-chat-input-area">
-            <input type="text" id="ania-user-input" placeholder="Zapytaj o adres, cennik, stres..." autocomplete="off">
-            <button id="ania-send-btn">➤</button>
+            <nav class="nav-links">
+                <a href="o-nas.html" class="nav-item">O nas</a>
+                <a href="oferta.html" class="nav-item">Oferta</a>
+                <a href="neuroroznorodnosc.html" class="nav-item">Neuroróżnorodność</a>
+                <a href="psychologia.html" class="nav-item">Psychologia</a>
+                <a href="technologie.html" class="nav-item">Technologie</a>
+                <a href="#rezerwacja" class="nav-item nav-cta">Umów wizytę</a>
+            </nav>
         </div>
-        
-        <div class="ania-chips">
-            <button class="chip" onclick="askAnia('Gdzie was znajdę?')">📍 Adres</button>
-            <button class="chip" onclick="askAnia('Ile to kosztuje?')">💰 Cennik</button>
-            <button class="chip" onclick="askAnia('Mam ADHD')">🧠 ADHD</button>
-            <button class="chip" onclick="askAnia('Opowiedz ciekawostkę')">💡 Ciekawostka</button>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div style="display:inline-block; padding: 6px 14px; background: white; border: 1px solid var(--primary-light); border-radius: 99px; font-size: 0.85rem; font-weight: 600; color: var(--primary); margin-bottom: 20px;">
+                Nowoczesna medycyna & technologia
+            </div>
+            <h1>Twoja równowaga.<br>Potwierdzona nauką.</h1>
+            <p class="hero-lead">
+                Łączymy psychologię kliniczną i technologie (VR, Biofeedback), aby skutecznie wspierać neuroróżnorodność i leczyć stres.
+            </p>
+            <div class="hero-btns">
+                <button class="btn btn-primary" onclick="openTab('neuroroznorodnosc')">Dla Neuroróżnorodnych</button>
+                <button class="btn btn-outline" onclick="openTab('psychologia')">Wsparcie Psychologiczne</button>
+            </div>
+        </div>
+    </section>
+
+    <div class="marquee-wrapper">
+        <div class="marquee-content">
+            <span class="marquee-item">Evidence Based Medicine</span>
+            <span class="marquee-item">Neuroróżnorodność (ADHD / ASD)</span>
+            <span class="marquee-item">Psychotraumatologia</span>
+            <span class="marquee-item">Fizjoterapia</span>
+            <span class="marquee-item">Terapie VR</span>
+            <span class="marquee-item">Biofeedback HRV</span>
+            <span class="marquee-item">Zero-Gravity</span>
+            
+            <span class="marquee-item">Evidence Based Medicine</span>
+            <span class="marquee-item">Neuroróżnorodność (ADHD / ASD)</span>
+            <span class="marquee-item">Psychotraumatologia</span>
+            <span class="marquee-item">Fizjoterapia</span>
+            <span class="marquee-item">Terapie VR</span>
+            <span class="marquee-item">Biofeedback HRV</span>
+            <span class="marquee-item">Zero-Gravity</span>
         </div>
     </div>
-</div>
 
-<style>
-    /* Zmienne */
-    :root {
-        --ania-primary: #0F766E; 
-        --ania-secondary: #0d5e57;
-        --ania-bg: #ffffff;
-        --ania-msg-bot: #f1f5f9;
-        --ania-msg-user: #0F766E;
-        --ania-shadow: 0 12px 28px rgba(0, 0, 0, 0.2), 0 2px 4px rgba(15, 118, 110, 0.1);
-    }
+    <section class="section" id="oferta">
+        <div class="container">
+            <div class="tabs-nav">
+                <button class="tab-btn active" onclick="openTab('neuroroznorodnosc')">Neuroróżnorodność</button>
+                <button class="tab-btn" onclick="openTab('psychologia')">Psychologia</button>
+                <button class="tab-btn" onclick="openTab('technologie')">Technologie (VR)</button>
+            </div>
 
-    #ncni-ania-widget {
-        position: fixed; bottom: 30px; right: 30px; z-index: 10001;
-        font-family: 'Inter', sans-serif;
-    }
+            <div id="neuroroznorodnosc" class="tab-content active">
+                <div class="grid-cards">
+                    <a href="adhd.html" class="feature-card glass">
+                        <div class="card-icon">🧠</div>
+                        <h3>ADHD / ADD</h3>
+                        <p>Treningi funkcji wykonawczych i zarządzania uwagą (VR + Biofeedback).</p>
+                        <span class="read-more">Zobacz program →</span>
+                    </a>
+                    <a href="asd.html" class="feature-card glass">
+                        <div class="card-icon">🧩</div>
+                        <h3>Spektrum Autyzmu (ASD)</h3>
+                        <p>Przestrzeń ND-affirming. Treningi kompetencji i regulacja napięcia.</p>
+                        <span class="read-more">Zobacz program →</span>
+                    </a>
+                    <a href="wysoka-wrazliwosc.html" class="feature-card glass">
+                        <div class="card-icon">🦋</div>
+                        <h3>Wysoka Wrażliwość</h3>
+                        <p>Nauka higieny układu nerwowego i zarządzania energią.</p>
+                        <span class="read-more">Zobacz program →</span>
+                    </a>
+                </div>
+            </div>
 
-    /* --- TRIGGER BUTTON & AVATAR FIX --- */
-    #ania-trigger-btn {
-        background: none; border: none; cursor: pointer; padding: 0; position: relative;
-        transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
-    #ania-trigger-btn:hover { transform: scale(1.08); }
-    
-    .ania-avatar-circle {
-        width: 70px; height: 70px;
-        border-radius: 50%;
-        border: 3px solid white;
-        box-shadow: var(--ania-shadow);
-        overflow: hidden; position: relative;
-        background: var(--ania-secondary);
-    }
-    /* NAPRAWA "PISOOROWEGO" ZDJĘCIA */
-    .ania-avatar-circle img { 
-        width: 100%; height: 100%; 
-        object-fit: cover;        /* Kluczowe: wypełnia kółko bez rozciągania */
-        object-position: center top; /* Kluczowe: centruje na twarzy */
-    }
-    .ania-status-dot {
-        position: absolute; bottom: 5px; right: 5px;
-        width: 14px; height: 14px; background: #22c55e;
-        border: 2px solid white; border-radius: 50%;
-        animation: pulse-green 2s infinite;
-    }
+            <div id="psychologia" class="tab-content">
+                <div class="grid-cards">
+                    <a href="psychologia.html" class="feature-card glass">
+                        <div class="card-icon">❤️‍🩹</div>
+                        <h3>Psychotraumatologia</h3>
+                        <p>Terapia traumy i PTSD. Praca z ciałem i umysłem.</p>
+                        <span class="read-more">Więcej informacji →</span>
+                    </a>
+                    <a href="psychologia.html" class="feature-card glass">
+                        <div class="card-icon">🌬️</div>
+                        <h3>Stres i Wypalenie</h3>
+                        <p>Mierzalna redukcja kortyzolu. Treningi oddechowe i Zero-Gravity.</p>
+                        <span class="read-more">Więcej informacji →</span>
+                    </a>
+                </div>
+            </div>
 
-    .ania-tooltip-start {
-        position: absolute; right: 85px; top: 50%; transform: translateY(-50%);
-        background: white; padding: 6px 12px; border-radius: 12px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.1); font-size: 0.85rem; color: #333;
-        white-space: nowrap; opacity: 0; pointer-events: none; transition: 0.3s;
-    }
-    #ania-trigger-btn:hover .ania-tooltip-start { opacity: 1; transform: translateY(-50%) translateX(-5px); }
+            <div id="technologie" class="tab-content">
+                <div class="grid-cards">
+                    <a href="technologie.html" class="feature-card glass">
+                        <div class="card-icon">🥽</div>
+                        <h3>Terapia VR</h3>
+                        <p>Immersyjne środowiska terapeutyczne. Leczenie fobii i stresu.</p>
+                        <span class="read-more">Sprawdź sprzęt →</span>
+                    </a>
+                    <a href="technologie.html" class="feature-card glass">
+                        <div class="card-icon">📊</div>
+                        <h3>Biofeedback HRV</h3>
+                        <p>Trenuj swoje serce i mózg. Obserwuj wpływ oddechu na stres.</p>
+                        <span class="read-more">Sprawdź sprzęt →</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    /* --- OKNO CZATU --- */
-    #ania-chat-window {
-        position: absolute; bottom: 90px; right: 0;
-        width: 360px; height: 520px;
-        background: var(--ania-bg);
-        border-radius: 20px;
-        box-shadow: var(--ania-shadow);
-        display: flex; flex-direction: column; overflow: hidden;
-        opacity: 0; visibility: hidden;
-        transform: translateY(20px) scale(0.95);
-        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    #ania-chat-window.ania-open { opacity: 1; visibility: visible; transform: translateY(0) scale(1); }
+    <section id="o-nas" class="section">
+        <div class="container">
+            <h2 style="text-align:center; margin-bottom:40px;">Nasi Eksperci</h2>
+            <div class="team-grid">
+                <a href="kraszewski.html" class="team-card glass">
+                    <div class="team-img-wrapper">
+                        <img src="sk.jpg" alt="Sebastian Kraszewski" class="team-img" onerror="this.src='https://ui-avatars.com/api/?name=Sebastian+Kraszewski&background=6366F1&color=fff&size=400'">
+                    </div>
+                    <div class="team-info">
+                        <h3>dr hab. inż. Sebastian Kraszewski</h3>
+                        <p>Dyrektor Naukowy</p>
+                    </div>
+                </a>
+                <a href="kiszlo.html" class="team-card glass">
+                    <div class="team-img-wrapper">
+                        <img src="kk.jpg" alt="Karol Kiszło" class="team-img" onerror="this.src='https://ui-avatars.com/api/?name=Karol+Kiszlo&background=0F766E&color=fff&size=400'">
+                    </div>
+                    <div class="team-info">
+                        <h3>Karol Kiszło</h3>
+                        <p>Head of NeuroPerformance</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
 
-    /* Header */
-    .ania-chat-header {
-        background: linear-gradient(135deg, var(--ania-primary), var(--ania-secondary));
-        color: white; padding: 16px;
-        display: flex; justify-content: space-between; align-items: center;
-    }
-    .header-details { display: flex; align-items: center; gap: 10px; }
-    .header-avatar-small { width: 32px; height: 32px; border-radius: 50%; overflow: hidden; border: 1px solid rgba(255,255,255,0.5); }
-    .header-avatar-small img { width: 100%; height: 100%; object-fit: cover; }
-    .assistant-name { font-weight: 700; font-size: 0.95rem; display: block; }
-    .assistant-role { font-size: 0.75rem; opacity: 0.9; }
-    #ania-close-btn { background: none; border: none; color: white; font-size: 1.2rem; cursor: pointer; opacity: 0.8; }
-    #ania-close-btn:hover { opacity: 1; }
+    <footer id="kontakt">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h4 style="margin-bottom: 16px;">NCNI Wrocław</h4>
+                    <p style="color: var(--text-muted);">
+                        ul. Stefana Żeromskiego 60/5a<br>
+                        50-312 Wrocław<br><br>
+                        <a href="tel:+48600608333" style="color:var(--primary); font-weight:700; text-decoration:none;">📞 600 608 333</a><br>
+                        <a href="mailto:kontakt@ncni.pl" style="color:var(--text-main); text-decoration:none;">✉️ kontakt@ncni.pl</a>
+                    </p>
+                </div>
+                <div>
+                    <h4 style="margin-bottom: 16px;">Informacje</h4>
+                    <ul style="list-style: none; padding: 0; color: var(--text-muted);">
+                        <li><a href="cennik.html" style="text-decoration: none; color: inherit;">Cennik</a></li>
+                        <li><a href="o-nas.html" style="text-decoration: none; color: inherit;">O nas</a></li>
+                        <li><a href="rodo.html" style="text-decoration: none; color: inherit;">Polityka Prywatności</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div style="border-top: 1px solid var(--border); padding-top: 24px; margin-top: 40px; text-align: center; color: var(--text-muted); font-size: 0.85rem;">
+                &copy; 2025 Naukowe Centrum Neuroinnowacji
+            </div>
+        </div>
+    </footer>
 
-    /* Body */
-    .ania-chat-body { 
-        flex: 1; padding: 16px; overflow-y: auto; background: #f8fafc;
-        display: flex; flex-direction: column; gap: 12px;
-    }
+    <div id="ncni-ania-widget">
+        <button id="ania-trigger-btn" aria-label="Otwórz czat">
+            <div class="ania-avatar-circle">
+                <img src="ania.jpg" alt="Ania" onerror="this.src='https://ui-avatars.com/api/?name=Ania&background=0F766E&color=fff'">
+                <span class="ania-status-dot"></span>
+            </div>
+            <div class="ania-tooltip-start">Kliknij, aby porozmawiać 💬</div>
+        </button>
 
-    /* Dymki wiadomości */
-    .ania-msg {
-        max-width: 85%; padding: 10px 14px; border-radius: 16px;
-        font-size: 0.9rem; line-height: 1.5; position: relative;
-        animation: slideUp 0.3s ease;
-    }
-    .ania-msg.bot {
-        background: var(--ania-msg-bot); color: #333;
-        border-bottom-left-radius: 4px; border: 1px solid #e2e8f0;
-    }
-    .ania-msg.user {
-        background: var(--ania-msg-user); color: white;
-        align-self: flex-end; border-bottom-right-radius: 4px;
-    }
+        <div id="ania-chat-window">
+            <div class="ania-chat-header">
+                <div class="header-details">
+                    <div class="header-avatar-small">
+                        <img src="ania.jpg" onerror="this.src='https://ui-avatars.com/api/?name=A&background=fff&color=0F766E'">
+                    </div>
+                    <div>
+                        <span class="assistant-name">Ania (NCNI)</span>
+                        <span class="assistant-role">Wirtualna Asystentka</span>
+                    </div>
+                </div>
+                <button id="ania-close-btn">✕</button>
+            </div>
+            
+            <div id="ania-messages-area" class="ania-chat-body">
+                </div>
 
-    /* Input & Chips */
-    .ania-chips {
-        padding: 8px 16px; display: flex; gap: 8px; overflow-x: auto;
-        background: white; border-top: 1px solid #f1f5f9;
-    }
-    .chip {
-        background: #f1f5f9; border: 1px solid #e2e8f0; padding: 6px 12px;
-        border-radius: 99px; font-size: 0.75rem; cursor: pointer; white-space: nowrap;
-        color: var(--ania-primary); font-weight: 500; transition: 0.2s;
-    }
-    .chip:hover { background: var(--ania-primary); color: white; }
+            <div class="ania-chips">
+                <button class="chip" onclick="askAnia('Gdzie jesteście?')">📍 Adres</button>
+                <button class="chip" onclick="askAnia('Jaki jest cennik?')">💰 Cennik</button>
+                <button class="chip" onclick="askAnia('Co na stres?')">🌿 Stres</button>
+                <button class="chip" onclick="askAnia('Mam ADHD')">🧠 ADHD</button>
+            </div>
 
-    .ania-chat-input-area {
-        padding: 12px; background: white; display: flex; gap: 8px; border-top: 1px solid #f1f5f9;
-    }
-    #ania-user-input {
-        flex: 1; padding: 10px 16px; border-radius: 20px; border: 1px solid #cbd5e1;
-        outline: none; font-size: 0.9rem;
-    }
-    #ania-user-input:focus { border-color: var(--ania-primary); }
-    #ania-send-btn {
-        width: 40px; height: 40px; border-radius: 50%; background: var(--ania-primary);
-        color: white; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center;
-    }
+            <div class="ania-chat-input-area">
+                <input type="text" id="ania-user-input" placeholder="Wpisz pytanie..." autocomplete="off">
+                <button id="ania-send-btn">➤</button>
+            </div>
+        </div>
+    </div>
 
-    @keyframes slideUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes pulse-green { 0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4); } 70% { box-shadow: 0 0 0 10px rgba(34, 197, 94, 0); } 100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); } }
+    <script>
+        // 1. TŁO (Particles)
+        function initParticles(){const container=document.getElementById('bg-canvas');if(!container)return;const scene=new THREE.Scene();scene.fog=new THREE.FogExp2(0xF8FAFC,0.002);const camera=new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,1000);camera.position.z=10;const renderer=new THREE.WebGLRenderer({alpha:true,antialias:true});renderer.setSize(window.innerWidth,window.innerHeight);renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));container.appendChild(renderer.domElement);const geometry=new THREE.BufferGeometry();const count=200;const positions=new Float32Array(count*3);const colors=new Float32Array(count*3);for(let i=0;i<count*3;i+=3){positions[i]=(Math.random()-0.5)*25;positions[i+1]=(Math.random()-0.5)*25;positions[i+2]=(Math.random()-0.5)*25;const mix=Math.random();if(mix>0.5){colors[i]=0.06;colors[i+1]=0.46;colors[i+2]=0.43;}else{colors[i]=0.39;colors[i+1]=0.4;colors[i+2]=0.94;}}geometry.setAttribute('position',new THREE.BufferAttribute(positions,3));geometry.setAttribute('color',new THREE.BufferAttribute(colors,3));const material=new THREE.PointsMaterial({size:0.1,vertexColors:true,transparent:true,opacity:0.4});const particles=new THREE.Points(geometry,material);scene.add(particles);let mouseX=0,mouseY=0,targetX=0,targetY=0;const windowHalfX=window.innerWidth/2;const windowHalfY=window.innerHeight/2;document.addEventListener('mousemove',(e)=>{mouseX=(e.clientX-windowHalfX);mouseY=(e.clientY-windowHalfY);});const clock=new THREE.Clock();function animate(){const time=clock.getElapsedTime();targetX=mouseX*0.0001;targetY=mouseY*0.0001;particles.rotation.y+=0.01*(targetX-particles.rotation.y);particles.rotation.x+=0.01*(targetY-particles.rotation.x);particles.rotation.z+=0.0005;const scale=1+Math.sin(time*0.5)*0.02;particles.scale.set(scale,scale,scale);renderer.render(scene,camera);requestAnimationFrame(animate);}animate();window.addEventListener('resize',()=>{camera.aspect=window.innerWidth/window.innerHeight;camera.updateProjectionMatrix();renderer.setSize(window.innerWidth,window.innerHeight);});}document.addEventListener("DOMContentLoaded",initParticles);
 
-    /* Mobile Responsive */
-    @media (max-width: 480px) {
-        #ania-chat-window { width: calc(100vw - 40px); right: -10px; bottom: 80px; height: 60vh; }
-    }
-</style>
-
-<script>
-    // Global function for chips
-    window.askAnia = function(question) {
-        const input = document.getElementById('ania-user-input');
-        input.value = question;
-        document.getElementById('ania-send-btn').click();
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
-        const widget = document.getElementById('ania-chat-window');
-        const trigger = document.getElementById('ania-trigger-btn');
-        const closeBtn = document.getElementById('ania-close-btn');
-        const msgArea = document.getElementById('ania-messages-area');
-        const input = document.getElementById('ania-user-input');
-        const sendBtn = document.getElementById('ania-send-btn');
-
-        // 1. Toggle Window
-        const toggleChat = () => widget.classList.toggle('ania-open');
-        trigger.addEventListener('click', toggleChat);
-        closeBtn.addEventListener('click', toggleChat);
-
-        // 2. Dodawanie wiadomości
-        function addMessage(text, sender) {
-            const div = document.createElement('div');
-            div.classList.add('ania-msg', sender);
-            div.innerHTML = text;
-            msgArea.appendChild(div);
-            msgArea.scrollTop = msgArea.scrollHeight;
+        // 2. TABS
+        function openTab(id) {
+            document.querySelectorAll('.tab-content').forEach(el=>el.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+            const t = document.getElementById(id);
+            if(t) t.classList.add('active');
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                if(btn.textContent.toLowerCase().includes(id.substring(0,4))) btn.classList.add('active');
+            });
         }
 
-        // 3. POWITANIE NA START
-        setTimeout(() => {
-            if (msgArea.children.length === 0) {
-                addMessage(`
-                    Witaj! 👋 Jestem Ania, Twoja wirtualna asystentka w Naukowym Centrum Neuroinnowacji.
-                    <br><br>
-                    Chętnie opowiem Ci o naszych innowacyjnych terapiach, sprawdzę cennik lub podpowiem, jak dojechać.
-                    <br><br>
-                    <strong>W czym mogę pomóc?</strong>
-                `, 'bot');
-            }
-        }, 500);
-
-        // 4. MÓZG ANI - BAZA WIEDZY (Na podstawie Handbooka i Twoich plików)
-        function getBotResponse(userText) {
-            const lower = userText.toLowerCase();
-
-            // Słowa kluczowe
-            if (lower.includes('adres') || lower.includes('gdzie') || lower.includes('dojazd') || lower.includes('ulic')) {
-                return "Znajdziesz nas we Wrocławiu przy <b>ul. Stefana Żeromskiego 60/5a</b>. 🏢<br>Czekamy na Ciebie!";
-            }
-            
-            if (lower.includes('cennik') || lower.includes('koszt') || lower.includes('cena') || lower.includes('płatn')) {
-                return "Oto przykładowe ceny z naszego cennika:<br>🔹 <b>NeuroStart (30 min)</b> - 190 PLN (idealne na początek)<br>🔹 <b>Głębia Spokoju (90 min)</b> - 640 PLN<br>🔹 <b>Terapia VR/Biofeedback</b> - pakiety od 150 PLN/sesja.<br><br>Pełny cennik dostępny w recepcji.";
-            }
-
-            if (lower.includes('adhd') || lower.includes('skupienie') || lower.includes('koncentrac')) {
-                return "Specjalizujemy się w neuroróżnorodności! 🧠<br>Dla ADHD polecamy treningi <b>Focus & Flow</b> w VR oraz Biofeedback HRV. To nauka skupienia poprzez grę, w bezpiecznym środowisku ND-affirming.";
-            }
-
-            if (lower.includes('stres') || lower.includes('nerw') || lower.includes('spokój')) {
-                return "Rozumiem. Na wysoki poziom stresu rekomenduję sesję <b>NeuroSanctum</b> w fotelu Zero-Gravity. 🌌<br>To całkowite odciążenie kręgosłupa i wyciszenie układu nerwowego. Już 20 minut działa jak głęboka drzemka.";
-            }
-
-            if (lower.includes('ciekawostka') || lower.includes('wiedza') || lower.includes('coś ciekawego')) {
-                const facts = [
-                    "💡 <b>Czy wiesz, że?</b> 20 minut w pozycji Zero-Gravity regeneruje kręgosłup tak, jak kilka godzin snu.",
-                    "💡 <b>Ciekawostka:</b> Nasz mózg zużywa aż 20% energii całego ciała. Dlatego 'brain fog' jest tak męczący!",
-                    "💡 <b>Nauka:</b> Biofeedback pozwala Ci zobaczyć na ekranie pracę własnego serca i nauczyć się nią sterować oddechem."
-                ];
-                return facts[Math.floor(Math.random() * facts.length)];
-            }
-            
-            if (lower.includes('kontakt') || lower.includes('telefon')) {
-                return "Skontaktuj się z nami:<br>📞 <b>600 608 333</b><br>✉️ kontakt@ncni.pl";
-            }
-
-            // Fallback
-            return "To ciekawe pytanie! 🤔 Jako wirtualna asystentka wciąż się uczę. Najlepiej będzie, jeśli zadzwonisz do Karoliny lub Sebastiana pod numer <b>600 608 333</b>, a oni rozwieją wszelkie wątpliwości.";
+        // 3. ANIA LOGIC (FAKTY Z HANDBOOKA - BEZ ŚCIEMY)
+        window.askAnia = function(q) {
+            const input = document.getElementById('ania-user-input');
+            const btn = document.getElementById('ania-send-btn');
+            if(input && btn) { input.value = q; btn.click(); }
         }
 
-        // 5. Obsługa wysyłania
-        function handleSend() {
-            const text = input.value.trim();
-            if (!text) return;
+        document.addEventListener('DOMContentLoaded', () => {
+            const win = document.getElementById('ania-chat-window');
+            const trig = document.getElementById('ania-trigger-btn');
+            const close = document.getElementById('ania-close-btn');
+            const msgs = document.getElementById('ania-messages-area');
+            const input = document.getElementById('ania-user-input');
+            const send = document.getElementById('ania-send-btn');
 
-            addMessage(text, 'user');
-            input.value = '';
+            if(!win) return;
 
-            // Symulacja "pisania"
+            // Toggle
+            const toggle = () => { win.classList.toggle('ania-open'); };
+            trig.addEventListener('click', toggle);
+            close.addEventListener('click', toggle);
+
+            // Add Msg
+            const addMsg = (txt, sender) => {
+                const d = document.createElement('div');
+                d.className = `ania-msg ${sender}`;
+                d.innerHTML = txt;
+                msgs.appendChild(d);
+                msgs.scrollTop = msgs.scrollHeight;
+            }
+
+            // AUTO-OPEN (Zabezpieczone - wyskoczy tylko raz na sesję przeglądarki)
             setTimeout(() => {
-                const response = getBotResponse(text);
-                addMessage(response, 'bot');
-            }, 600);
-        }
+                if (!sessionStorage.getItem('ania_greeted')) {
+                    win.classList.add('ania-open');
+                    sessionStorage.setItem('ania_greeted', 'true');
+                }
+                
+                if (msgs.children.length === 0) {
+                    addMsg(`
+                        <b>Dzień dobry! 👋</b><br>
+                        Jestem Ania, wirtualna asystentka NCNI. 
+                        <br><br>
+                        Mogę podać adres, cennik lub opisać terapie na ADHD i stres.
+                        Słucham?
+                    `, 'bot');
+                }
+            }, 3000);
 
-        sendBtn.addEventListener('click', handleSend);
-        input.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') handleSend();
+            // BAZA WIEDZY - FAKTY (Na podstawie Handbooka i strony NCNI)
+            const getResponse = (txt) => {
+                const t = txt.toLowerCase();
+
+                // ADRES
+                if(t.includes('adres') || t.includes('gdzie') || t.includes('dojazd') || t.includes('ulic')) 
+                    return "Jesteśmy we Wrocławiu przy <b>ul. Stefana Żeromskiego 60/5a</b>. Zapraszamy!";
+                
+                // CENNIK
+                if(t.includes('cena') || t.includes('koszt') || t.includes('ile')) 
+                    return "Przykładowe ceny:<br>🔹 <b>NeuroStart (30 min)</b>: 190 PLN<br>🔹 <b>Głębia Spokoju (90 min)</b>: 640 PLN<br>Pełny cennik dostępny jest w recepcji.";
+                
+                // STRES/RELAKS
+                if(t.includes('stres') || t.includes('napięcie') || t.includes('relaks')) 
+                    return "Na stres polecamy sesje w fotelu Zero-Gravity (odciążenie kręgosłupa) połączone z VR lub audio relaksacyjnym. To skuteczna redukcja kortyzolu.";
+
+                // ADHD/SKUPIENIE
+                if(t.includes('adhd') || t.includes('skupienie') || t.includes('koncentrac')) 
+                    return "Wspieramy neuroróżnorodność. Oferujemy treningi <b>Focus & Flow</b> z wykorzystaniem VR i Biofeedbacku, pomagające trenować koncentrację.";
+
+                // KONTAKT
+                if(t.includes('telefon') || t.includes('kontakt') || t.includes('numer') || t.includes('zadzwoń')) 
+                    return "Zadzwoń do nas pod numer: <b>600 608 333</b> lub napisz na kontakt@ncni.pl.";
+
+                // FALLBACK
+                return "Nie jestem pewna odpowiedzi na to pytanie. Proszę, zadzwoń do nas: <b>600 608 333</b>, a zespół NCNI udzieli dokładnych informacji.";
+            }
+
+            // Send
+            const handleSend = () => {
+                const v = input.value.trim();
+                if(!v) return;
+                addMsg(v, 'user');
+                input.value = '';
+                
+                // Symulacja myślenia
+                setTimeout(() => { 
+                    addMsg(getResponse(v), 'bot'); 
+                }, 500);
+            }
+
+            send.addEventListener('click', handleSend);
+            input.addEventListener('keypress', (e) => { if(e.key === 'Enter') handleSend(); });
         });
-    });
-</script>
+    </script>
+</body>
+</html>
