@@ -45,8 +45,7 @@
             line-height: 1.6;
             overflow-x: hidden;
             width: 100%;
-            /* KURSOR SYSTEMOWY - przywrócony domyślny */
-            cursor: auto; 
+            cursor: auto; /* Standardowy kursor */
         }
 
         /* Typography */
@@ -104,6 +103,7 @@
             display: inline-flex; align-items: center; justify-content: center;
             padding: 12px 24px; border-radius: 99px; font-weight: 600; cursor: pointer;
             border: none; font-family: 'Lexend', sans-serif; transition: 0.2s;
+            text-decoration: none;
         }
         .btn-primary { background-color: var(--primary); color: white; }
         .btn-outline { background: white; border: 1px solid var(--border); color: var(--text-main); }
@@ -143,16 +143,13 @@
         .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
         
         /* =========================================
-           ANIA WIDGET STYLES 
+           ANIA WIDGET STYLES (PREMIUM)
            ========================================= */
         #ncni-ania-widget {
             position: fixed; bottom: 30px; right: 30px; z-index: 9999;
             font-family: 'Inter', sans-serif;
-            /* Upewnienie się, że kursor jest normalny */
-            cursor: auto;
         }
         
-        /* Trigger Button */
         #ania-trigger-btn {
             background: none; border: none; cursor: pointer; padding: 0; position: relative;
             transition: transform 0.3s;
@@ -173,7 +170,6 @@
             background: #22c55e; border: 2px solid white; border-radius: 50%;
         }
 
-        /* Tooltip */
         .ania-tooltip-start {
             position: absolute; right: 85px; top: 50%; transform: translateY(-50%);
             background: white; padding: 8px 14px; border-radius: 12px;
@@ -182,7 +178,6 @@
         }
         #ania-trigger-btn:hover .ania-tooltip-start { opacity: 1; transform: translateX(-5px) translateY(-50%); }
 
-        /* Chat Window */
         #ania-chat-window {
             position: absolute; bottom: 90px; right: 0; width: 360px; height: 500px;
             background: white; border-radius: 20px; box-shadow: 0 12px 40px rgba(0,0,0,0.2);
@@ -207,10 +202,19 @@
         
         .ania-msg {
             max-width: 85%; padding: 10px 14px; border-radius: 16px; font-size: 0.9rem; line-height: 1.5;
-            position: relative; word-wrap: break-word;
+            position: relative; word-wrap: break-word; margin-bottom: 4px;
         }
         .ania-msg.bot { background: var(--ania-msg-bot); color: #333; border-bottom-left-radius: 4px; border: 1px solid #e2e8f0; }
         .ania-msg.user { background: var(--ania-msg-user); color: white; align-self: flex-end; border-bottom-right-radius: 4px; }
+        
+        /* Styl dla linków/przycisków w czacie */
+        .ania-chat-btn {
+            display: inline-block; margin-top: 8px; padding: 6px 12px; 
+            background: white; border: 1px solid var(--primary); color: var(--primary);
+            border-radius: 8px; font-size: 0.8rem; font-weight: 600; text-decoration: none;
+            transition: 0.2s;
+        }
+        .ania-chat-btn:hover { background: var(--primary); color: white; }
 
         .ania-chips { padding: 10px 16px; display: flex; gap: 8px; overflow-x: auto; background: white; border-top: 1px solid #eee; }
         .chip {
@@ -387,7 +391,7 @@
     </section>
 
     <div class="container">
-        <section class="section cursor-trigger" style="background:#0F172A; color:white; border-radius:24px; text-align:center; padding:60px 24px;">
+        <section class="section" style="background:#0F172A; color:white; border-radius:24px; text-align:center; padding:60px 24px;">
             <div class="vr-tech-content">
                 <span style="display:inline-block; border:1px solid rgba(103,232,249,0.3); color:#67E8F9; padding:6px 14px; border-radius:99px; font-size:0.85rem; margin-bottom:20px;">INNOWACJA NCNI</span>
                 <h2 style="margin-bottom:20px;">Neuro-Immersja:<br>VR + Zero Gravity</h2>
@@ -454,9 +458,9 @@
                 </div>
 
             <div class="ania-chips">
+                <button class="chip" onclick="askAnia('Umów wizytę')">📅 Wizyta</button>
+                <button class="chip" onclick="askAnia('Co na depresję?')">😔 Depresja</button>
                 <button class="chip" onclick="askAnia('Gdzie jesteście?')">📍 Adres</button>
-                <button class="chip" onclick="askAnia('Jaki jest telefon?')">📞 Kontakt</button>
-                <button class="chip" onclick="askAnia('Co na stres?')">🌿 Stres</button>
                 <button class="chip" onclick="askAnia('Mam ADHD')">🧠 ADHD</button>
             </div>
 
@@ -468,7 +472,7 @@
     </div>
 
     <script>
-        // 1. TŁO (Particles) - czyste three.js
+        // 1. TŁO (Particles)
         function initParticles(){const container=document.getElementById('bg-canvas');if(!container)return;const scene=new THREE.Scene();scene.fog=new THREE.FogExp2(0xF8FAFC,0.002);const camera=new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,1000);camera.position.z=10;const renderer=new THREE.WebGLRenderer({alpha:true,antialias:true});renderer.setSize(window.innerWidth,window.innerHeight);renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));container.appendChild(renderer.domElement);const geometry=new THREE.BufferGeometry();const count=200;const positions=new Float32Array(count*3);const colors=new Float32Array(count*3);for(let i=0;i<count*3;i+=3){positions[i]=(Math.random()-0.5)*25;positions[i+1]=(Math.random()-0.5)*25;positions[i+2]=(Math.random()-0.5)*25;const mix=Math.random();if(mix>0.5){colors[i]=0.06;colors[i+1]=0.46;colors[i+2]=0.43;}else{colors[i]=0.39;colors[i+1]=0.4;colors[i+2]=0.94;}}geometry.setAttribute('position',new THREE.BufferAttribute(positions,3));geometry.setAttribute('color',new THREE.BufferAttribute(colors,3));const material=new THREE.PointsMaterial({size:0.1,vertexColors:true,transparent:true,opacity:0.4});const particles=new THREE.Points(geometry,material);scene.add(particles);let mouseX=0,mouseY=0,targetX=0,targetY=0;const windowHalfX=window.innerWidth/2;const windowHalfY=window.innerHeight/2;document.addEventListener('mousemove',(e)=>{mouseX=(e.clientX-windowHalfX);mouseY=(e.clientY-windowHalfY);});const clock=new THREE.Clock();function animate(){const time=clock.getElapsedTime();targetX=mouseX*0.0001;targetY=mouseY*0.0001;particles.rotation.y+=0.01*(targetX-particles.rotation.y);particles.rotation.x+=0.01*(targetY-particles.rotation.x);particles.rotation.z+=0.0005;const scale=1+Math.sin(time*0.5)*0.02;particles.scale.set(scale,scale,scale);renderer.render(scene,camera);requestAnimationFrame(animate);}animate();window.addEventListener('resize',()=>{camera.aspect=window.innerWidth/window.innerHeight;camera.updateProjectionMatrix();renderer.setSize(window.innerWidth,window.innerHeight);});}document.addEventListener("DOMContentLoaded",initParticles);
 
         // 2. TABS
@@ -482,7 +486,7 @@
             });
         }
 
-        // 3. ANIA LOGIC (Bez ściemy, tylko fakty z index.html)
+        // 3. ANIA LOGIC (PRO)
         window.askAnia = function(q) {
             const input = document.getElementById('ania-user-input');
             const btn = document.getElementById('ania-send-btn');
@@ -512,42 +516,65 @@
                 msgs.scrollTop = msgs.scrollHeight;
             }
 
-            // AUTO-OPEN
+            // Auto-Open (raz na sesję)
             setTimeout(() => {
-                if (!sessionStorage.getItem('ania_greeted')) {
+                if (!sessionStorage.getItem('ania_greeted_v2')) {
                     win.classList.add('ania-open');
-                    sessionStorage.setItem('ania_greeted', 'true');
+                    sessionStorage.setItem('ania_greeted_v2', 'true');
                 }
                 if (msgs.children.length === 0) {
-                    addMsg(`Witaj. Jestem Ania, wirtualna asystentka NCNI. Służę informacją na temat adresu i oferty.`, 'bot');
+                    addMsg(`Witaj! 🌿<br>Jestem Ania, wirtualna asystentka NCNI.<br>Służę pomocą w sprawach terapii, terminów i dojazdu.`, 'bot');
                 }
             }, 3000);
 
-            // LOGIKA OPARTA TYLKO O INDEX.HTML
+            // GŁÓWNA LOGIKA ODPOWIEDZI
             const getResponse = (txt) => {
                 const t = txt.toLowerCase();
 
-                // ADRES
-                if(t.includes('adres') || t.includes('gdzie') || t.includes('dojazd')) 
-                    return "Znajdziesz nas we Wrocławiu: ul. Stefana Żeromskiego 60/5a.";
-                
-                // KONTAKT
-                if(t.includes('telefon') || t.includes('kontakt') || t.includes('numer')) 
-                    return "Numer telefonu to: 600 608 333. E-mail: kontakt@ncni.pl.";
+                // 1. TERMINY / WIZYTA / PSYCHOLOG
+                if(t.includes('termin') || t.includes('kiedy') || t.includes('wolny') || t.includes('wizyt') || t.includes('umów') || (t.includes('psycholog') && t.includes('przyjmuje'))) {
+                    return `
+                        Wizyty umawiamy telefonicznie, co pozwala najlepiej dobrać specjalistę. 📅<br>
+                        Zadzwoń do nas: <b>600 608 333</b>.
+                        <a href="tel:+48600608333" class="ania-chat-btn">Zadzwoń teraz</a>
+                    `;
+                }
 
-                // STRES
-                if(t.includes('stres') || t.includes('napięcie')) 
-                    return "W przypadku stresu i wypalenia oferujemy treningi oddechowe i sesje Zero-Gravity, które pomagają w redukcji napięcia.";
+                // 2. DEPRESJA / POMOC PSYCHOLOGICZNA
+                if(t.includes('depresj') || t.includes('smut') || t.includes('leczysz')) {
+                    return `
+                        W NCNI zajmujemy się psychologią i wsparciem w depresji, łącząc terapię z technologią (jak Zero-Gravity dla regeneracji). 🧠<br>
+                        Jeśli czujesz, że potrzebujesz pomocy, zapraszamy na konsultację.
+                        <a href="psychologia.html" class="ania-chat-btn">Zobacz ofertę Psychologii</a>
+                    `;
+                }
 
-                // ADHD
-                if(t.includes('adhd') || t.includes('skupienie')) 
-                    return "Dla osób z ADHD oferujemy treningi funkcji wykonawczych i zarządzania uwagą, wykorzystując VR oraz Biofeedback.";
-                
-                // CENNIK (Brak cen w index.html -> odesłanie do kontaktu)
-                if(t.includes('cena') || t.includes('koszt') || t.includes('ile'))
-                    return "Szczegółowe informacje o cenach uzyskasz kontaktując się z nami telefonicznie: 600 608 333.";
+                // 3. ADRES / DOJAZD
+                if(t.includes('adres') || t.includes('gdzie') || t.includes('dojazd')) {
+                    return "Nasze centrum znajduje się we Wrocławiu przy <b>ul. Stefana Żeromskiego 60/5a</b>.";
+                }
 
-                return "Proszę o kontakt telefoniczny (600 608 333) w celu uzyskania szczegółowych informacji.";
+                // 4. ADHD / NEURORÓŻNORODNOŚĆ
+                if(t.includes('adhd') || t.includes('asd') || t.includes('skupienie')) {
+                    return `
+                        Tak, specjalizujemy się w neuroróżnorodności! Oferujemy treningi funkcji wykonawczych i wsparcie ND-affirming.<br>
+                        <a href="neuroroznorodnosc.html" class="ania-chat-btn">Sprawdź ofertę ADHD</a>
+                    `;
+                }
+
+                // 5. OBSŁUGA WULGARYZMÓW / ZACZEPEK (SAFETY & INTELLIGENT BOUNDARIES)
+                // Lista słów kluczowych (triggerów)
+                if(t.includes('ruchac') || t.includes('loda') || t.includes('seks') || t.includes('cip') || t.includes('kutas') || t.includes('dupa')) {
+                    return "Jesteśmy placówką medyczną i dbamy o profesjonalną atmosferę. 🏥<br>Zajmujemy się psychologią, neuroinnowacjami i zdrowiem psychicznym. Jeśli masz pytanie dotyczące oferty NCNI, chętnie na nie odpowiem.";
+                }
+
+                // 6. CENNIK (Odsyłacz)
+                if(t.includes('cena') || t.includes('koszt') || t.includes('ile')) {
+                    return "Szczegóły cennika omawiamy indywidualnie, w zależności od planu terapii. Prosimy o kontakt: <b>600 608 333</b>.";
+                }
+
+                // FALLBACK
+                return "Nie jestem pewna odpowiedzi na to pytanie. 🤔<br>Najlepiej będzie, jeśli zadzwonisz do nas (600 608 333) lub napiszesz na kontakt@ncni.pl.";
             }
 
             const handleSend = () => {
@@ -556,9 +583,10 @@
                 addMsg(v, 'user');
                 input.value = '';
                 
+                // Symulacja "pisania"
                 setTimeout(() => { 
                     addMsg(getResponse(v), 'bot'); 
-                }, 500);
+                }, 600);
             }
 
             send.addEventListener('click', handleSend);
