@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     
     <title>NCNI Wrocław | Dr Sebastian Kraszewski: ADHD, Innowacje & Neurocoaching</title>
-    <meta name="description" content="NCNI Wrocław: Centrum Terapii ADHD i Neuroróżnorodności. Dr hab. inż. Sebastian Kraszewski i Karol Kiszło. Skuteczny coaching neuroróżnorodności, VR, Biofeedback.">
+    <meta name="description" content="NCNI Wrocław: Centrum Terapii ADHD i Neuroróżnorodności. Dr hab. inż. Sebastian Kraszewski i Karol Kiszło łączą naukę z innowacjami (VR, Biofeedback). Skuteczny coaching neuroróżnorodności i leczenie stresu.">
+    <meta name="keywords" content="Sebastian Kraszewski ADHD, Karol Kiszło, Neurocoaching Wrocław, Terapia ADHD dorośli, Innowacje w terapii, Biofeedback VR, Neuroróżnorodność, Psychotraumatologia">
     <link rel="canonical" href="https://ncni.pl">
     <link rel="icon" href="logo.png" type="image/png">
 
@@ -14,6 +15,33 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "MedicalClinic",
+          "name": "NCNI - Naukowe Centrum Neuroinnowacji",
+          "url": "https://ncni.pl",
+          "logo": "https://ncni.pl/logo.png",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "ul. Żeromskiego 60/5a",
+            "addressLocality": "Wrocław",
+            "postalCode": "50-312",
+            "addressCountry": "PL"
+          },
+          "telephone": "+48600608333",
+          "email": "kontakt@ncni.pl",
+          "sameAs": [
+            "https://youtube.com/@neuroinnowacje",
+            "https://x.com/neuroinnowacje"
+          ]
+        }
+      ]
+    }
+    </script>
 
     <style>
         :root {
@@ -24,11 +52,14 @@
             --primary-dark: #0D5E57;
             --primary-light: #CCFBF1;
             --accent: #6366F1;        
+            --accent-glow: rgba(99, 102, 241, 0.3);
             --text-main: #1E293B;
             --text-muted: #64748B;
             --border: #E2E8F0;
+            --radius: 16px;
+            --trans-default: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
             
-            /* Ania Colors */
+            /* Ania Widget Colors */
             --ania-primary: #0F766E;
             --ania-bg: #ffffff;
             --ania-msg-bot: #f1f5f9;
@@ -48,108 +79,253 @@
             cursor: auto; /* Standardowy kursor */
         }
 
-        /* Typography */
+        /* --- TYPOGRAPHY RESPONSIVE --- */
         h1 { font-family: 'Lexend', sans-serif; line-height: 1.1; letter-spacing: -0.02em; }
         h2, h3, h4 { font-family: 'Lexend', sans-serif; }
 
-        /* Background */
+        /* --- BACKGROUND --- */
         #bg-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; z-index: -1; opacity: 0.6; pointer-events: none; }
 
-        /* Layout Utils */
-        .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        /* --- LAYOUT UTILS --- */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
         @media (max-width: 768px) { .container { padding: 0 16px; } }
+
         .section { padding: 80px 0; position: relative; }
+        @media (max-width: 768px) { .section { padding: 50px 0; } }
+
         .glass {
             background: var(--bg-surface); backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.6);
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
         }
 
-        /* Header */
+        /* --- HEADER --- */
         header {
             position: sticky; top: 0; z-index: 1000;
+            transition: var(--trans-default);
             border-bottom: 1px solid rgba(226, 232, 240, 0.6);
-            padding: 12px 0; background: rgba(255,255,255,0.95);
+            padding: 12px 0;
+            background: rgba(255,255,255,0.95);
         }
-        .nav-wrapper { display: flex; flex-direction: column; align-items: center; gap: 16px; }
-        .brand-bar { display: flex; justify-content: center; align-items: center; width: 100%; }
-        .logo { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 1.4rem; color: var(--text-main); text-decoration: none; }
+        
+        .nav-wrapper {
+            display: flex;
+            flex-direction: column; 
+            align-items: center;
+            gap: 16px;
+        }
+        
+        .brand-bar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            position: relative; 
+        }
+
+        .logo {
+            display: flex; align-items: center; gap: 10px;
+            font-weight: 700; font-size: 1.4rem; color: var(--text-main);
+            text-decoration: none; cursor: pointer; letter-spacing: -0.02em;
+        }
         .logo img { height: 40px; width: auto; border-radius: 8px; }
 
+        /* Navigation Links (Desktop) */
         .nav-links { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
         .nav-item {
             padding: 8px 16px; border-radius: 99px; font-size: 0.9rem; font-weight: 500;
-            color: var(--text-muted); text-decoration: none; transition: 0.3s;
+            color: var(--text-muted); text-decoration: none; transition: var(--trans-default); cursor: pointer;
+            white-space: nowrap;
         }
         .nav-item:hover { color: var(--primary); background: var(--primary-light); }
-        .nav-cta { background: var(--primary); color: white !important; margin-left: 8px; }
+        .nav-cta {
+            background: var(--primary); color: white !important;
+            box-shadow: 0 4px 12px rgba(15, 118, 110, 0.25); margin-left: 8px;
+        }
         
+        /* Mobile Header Clean Up */
         @media (max-width: 900px) {
+            header { padding: 10px 0; }
             .nav-wrapper { flex-direction: row; height: 50px; justify-content: center; padding: 0; }
+            .brand-bar { width: auto; }
             .nav-links { display: none; } 
             .logo { font-size: 1.1rem; }
+            .logo img { height: 32px; }
+            .logo span { display: inline-block; max-width: 200px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
         }
 
-        /* Hero */
+        /* --- FLOATING MOBILE MENU (FAB) --- */
+        .fab-container {
+            position: fixed; bottom: 24px; right: 24px; z-index: 2000;
+            display: none; /* Hidden on desktop */
+        }
+        @media (max-width: 900px) { .fab-container { display: flex; flex-direction: column-reverse; align-items: flex-end; gap: 12px; } }
+
+        .fab-btn {
+            width: 60px; height: 60px; background: var(--primary); color: white;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 4px 15px rgba(15, 118, 110, 0.4); cursor: pointer; border: none;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); font-size: 24px;
+        }
+        .fab-btn:active { transform: scale(0.9); }
+        .fab-btn.open { transform: rotate(45deg); background: var(--text-main); }
+
+        .fab-menu {
+            display: flex; flex-direction: column; gap: 12px; align-items: flex-end;
+            opacity: 0; pointer-events: none; transform: translateY(20px);
+            transition: all 0.3s ease; margin-bottom: 8px;
+        }
+        .fab-menu.active { opacity: 1; pointer-events: all; transform: translateY(0); }
+
+        .fab-item {
+            background: white; padding: 10px 20px; border-radius: 20px; text-decoration: none;
+            color: var(--text-main); font-weight: 600; font-size: 0.95rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1); display: flex; align-items: center; gap: 8px;
+            transform: translateX(20px); opacity: 0; transition: all 0.3s ease;
+        }
+        .fab-menu.active .fab-item { transform: translateX(0); opacity: 1; }
+        .fab-menu.active .fab-item:nth-child(1) { transition-delay: 0.05s; }
+        .fab-menu.active .fab-item:nth-child(2) { transition-delay: 0.1s; }
+        .fab-menu.active .fab-item:nth-child(3) { transition-delay: 0.15s; }
+        .fab-menu.active .fab-item:nth-child(4) { transition-delay: 0.2s; }
+        .fab-menu.active .fab-item:nth-child(5) { transition-delay: 0.25s; }
+
+        /* --- HERO --- */
         .hero { padding: 80px 0 60px; text-align: center; }
         h1 {
             font-size: clamp(2rem, 6vw, 3.5rem); margin-bottom: 24px;
             background: linear-gradient(135deg, var(--text-main) 0%, var(--primary) 100%);
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
-        .hero-lead { font-size: clamp(1rem, 4vw, 1.25rem); color: var(--text-muted); max-width: 700px; margin: 0 auto 32px; }
+        .hero-lead {
+            font-size: clamp(1rem, 4vw, 1.25rem); color: var(--text-muted);
+            max-width: 700px; margin: 0 auto 32px;
+        }
         .hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
         .btn {
             display: inline-flex; align-items: center; justify-content: center;
             padding: 12px 24px; border-radius: 99px; font-weight: 600; cursor: pointer;
-            border: none; font-family: 'Lexend', sans-serif; transition: 0.2s;
-            text-decoration: none;
+            border: none; font-family: 'Lexend', sans-serif; transition: 0.2s; width: auto; text-decoration: none;
         }
+        @media (max-width: 480px) { .btn { width: 100%; } }
+
         .btn-primary { background-color: var(--primary); color: white; }
         .btn-outline { background: white; border: 1px solid var(--border); color: var(--text-main); }
 
-        /* Marquee */
-        .marquee-wrapper { background: var(--primary); color: white; padding: 10px 0; overflow: hidden; white-space: nowrap; font-family: 'Lexend', sans-serif; font-size: 0.85rem; text-transform: uppercase; }
+        /* --- MARQUEE --- */
+        .marquee-wrapper {
+            background: var(--primary); color: white; padding: 10px 0; overflow: hidden;
+            position: relative; font-family: 'Lexend', sans-serif; font-size: 0.85rem;
+            letter-spacing: 0.05em; text-transform: uppercase; white-space: nowrap;
+        }
         .marquee-content { display: inline-block; animation: scroll 40s linear infinite; }
-        .marquee-item { margin: 0 16px; }
+        .marquee-item { margin: 0 16px; display: inline-flex; align-items: center; gap: 6px; }
         @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-        /* Tabs & Grid */
+        /* --- TABS --- */
+        .tabs-container { margin-top: 40px; }
         .tabs-nav { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-bottom: 30px; }
-        .tab-btn { background: white; border: 1px solid var(--border); padding: 10px 20px; border-radius: 99px; font-weight: 600; cursor: pointer; color: var(--text-muted); }
+        .tab-btn {
+            background: white; border: 1px solid var(--border); padding: 10px 20px;
+            border-radius: 99px; font-weight: 600; color: var(--text-muted); cursor: pointer;
+            font-family: 'Lexend', sans-serif; flex-grow: 1; text-align: center;
+        }
+        @media (min-width: 600px) { .tab-btn { flex-grow: 0; } }
+
         .tab-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
         .tab-content { display: none; animation: fadeIn 0.5s ease; }
         .tab-content.active { display: block; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        .grid-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-        .feature-card { border-radius: 20px; padding: 24px; background: white; border: 2px solid transparent; text-decoration: none; display: block; transition: 0.3s; }
+        /* --- CARDS (GRID) --- */
+        .grid-cards {
+            display: grid; grid-template-columns: 1fr; gap: 20px;
+        }
+        @media (min-width: 640px) { .grid-cards { grid-template-columns: repeat(2, 1fr); } }
+        @media (min-width: 1024px) { .grid-cards { grid-template-columns: repeat(3, 1fr); } }
+
+        .feature-card {
+            border-radius: 20px; padding: 24px; position: relative; overflow: hidden;
+            transition: var(--trans-default); border: 2px solid transparent; background: white;
+            text-decoration: none; display: block;
+        }
         .feature-card:hover { transform: translateY(-3px); border-color: var(--primary); }
+        .card-icon {
+            width: 48px; height: 48px; background: linear-gradient(135deg, #EEF2FF, #E0F2FE);
+            border-radius: 14px; display: flex; align-items: center; justify-content: center;
+            margin-bottom: 16px; font-size: 24px;
+        }
         .feature-card h3 { font-size: 1.3rem; margin-bottom: 10px; color: var(--text-main); }
         .feature-card p { color: var(--text-muted); margin-bottom: 20px; font-size: 0.95rem; }
         .read-more { font-weight: 600; color: var(--primary); font-size: 0.9rem; }
-        .card-icon { font-size: 24px; margin-bottom: 16px; width: 48px; height: 48px; background: #EEF2FF; display: flex; align-items: center; justify-content: center; border-radius: 14px; }
 
-        /* Team */
-        .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
-        .team-card { border-radius: 20px; overflow: hidden; background: white; text-decoration: none; display: flex; flex-direction: column; }
-        .team-img-wrapper { height: 280px; background: #E2E8F0; }
-        .team-img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%); transition: 0.5s; }
-        .team-card:hover .team-img { filter: grayscale(0%); }
+        .oval-card {
+            border-radius: 40px; padding: 32px; background: linear-gradient(145deg, #FFFFFF, #F0F9FF);
+            border: 2px solid var(--primary-light); text-align: center;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            text-decoration: none;
+        }
+        @media (min-width: 768px) { .oval-card { grid-column: span 1; } }
+
+        /* --- VR SECTION --- */
+        .vr-tech-section {
+            background: #0F172A; color: white; padding: 60px 24px; border-radius: 24px;
+            margin: 40px 0; text-align: center;
+        }
+        .vr-tag {
+            display: inline-block; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px);
+            padding: 6px 14px; border-radius: 99px; font-size: 0.85rem; color: #67E8F9;
+            border: 1px solid rgba(103, 232, 249, 0.3); margin-bottom: 20px;
+        }
+        .vr-tech-section h2 { font-size: clamp(2rem, 5vw, 2.5rem); margin-bottom: 20px; color: white; }
+        .vr-tech-section p { font-size: 1.1rem; color: #CBD5E1; margin-bottom: 30px; }
+
+        /* --- TEAM GRID --- */
+        .team-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;
+        }
+        .team-card {
+            border-radius: 20px; overflow: hidden; background: white; text-decoration: none;
+            display: flex; flex-direction: column;
+        }
+        .team-img-wrapper { height: 280px; overflow: hidden; background: #E2E8F0; }
+        .team-img { width: 100%; height: 100%; object-fit: cover; object-position: top center; filter: grayscale(100%); transition: 0.5s; }
+        .team-card:hover .team-img { filter: grayscale(0%); transform: scale(1.05); }
         .team-info { padding: 20px; }
 
-        /* Footer */
+        /* --- RESERVATION FORM --- */
+        .reservation-section {
+            background: white; border: 1px solid var(--border); border-radius: 20px;
+            padding: 32px 20px; margin: 50px auto; max-width: 600px;
+        }
+        .form-group { margin-bottom: 16px; text-align: left; }
+        .form-group label { display: block; margin-bottom: 6px; font-weight: 600; font-size: 0.9rem; }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%; padding: 12px; border-radius: 10px; border: 1px solid var(--border);
+            background: #FAFAFA; font-size: 1rem;
+        }
+        .form-btn {
+            width: 100%; padding: 14px; background: var(--primary); color: white;
+            border: none; border-radius: 10px; font-weight: 700; font-size: 1rem; cursor: pointer;
+        }
+
+        /* --- FOOTER --- */
         footer { background: white; border-top: 1px solid var(--border); padding: 50px 0 20px; margin-top: 60px; }
-        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
+        .footer-grid { display: grid; grid-template-columns: 1fr; gap: 30px; text-align: center; }
+        @media (min-width: 768px) { .footer-grid { grid-template-columns: repeat(3, 1fr); text-align: left; } }
         
         /* =========================================
-           ANIA WIDGET STYLES (PREMIUM)
+           ANIA WIDGET STYLES (PREMIUM FIXED)
            ========================================= */
         #ncni-ania-widget {
-            position: fixed; bottom: 30px; right: 30px; z-index: 9999;
-            font-family: 'Inter', sans-serif;
+            position: fixed; bottom: 30px; right: 30px; z-index: 10001;
+            font-family: 'Inter', sans-serif; cursor: auto !important;
         }
-        
         #ania-trigger-btn {
             background: none; border: none; cursor: pointer; padding: 0; position: relative;
             transition: transform 0.3s;
@@ -161,15 +337,11 @@
             border: 3px solid white; box-shadow: 0 8px 20px rgba(0,0,0,0.15); 
             overflow: hidden; position: relative; background: #0F766E;
         }
-        .ania-avatar-circle img { 
-            width: 100%; height: 100%; 
-            object-fit: cover; object-position: center top; 
-        }
+        .ania-avatar-circle img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
         .ania-status-dot {
             position: absolute; bottom: 5px; right: 5px; width: 14px; height: 14px;
             background: #22c55e; border: 2px solid white; border-radius: 50%;
         }
-
         .ania-tooltip-start {
             position: absolute; right: 85px; top: 50%; transform: translateY(-50%);
             background: white; padding: 8px 14px; border-radius: 12px;
@@ -188,7 +360,7 @@
         #ania-chat-window.ania-open { opacity: 1; visibility: visible; transform: translateY(0) scale(1); }
 
         .ania-chat-header {
-            background: var(--primary); color: white; padding: 16px;
+            background: var(--ania-primary); color: white; padding: 16px;
             display: flex; justify-content: space-between; align-items: center;
         }
         .header-details { display: flex; align-items: center; gap: 10px; }
@@ -199,7 +371,6 @@
         #ania-close-btn { background: none; border: none; color: white; font-size: 1.2rem; cursor: pointer; }
 
         .ania-chat-body { flex: 1; padding: 16px; overflow-y: auto; background: #f8fafc; display: flex; flex-direction: column; gap: 12px; }
-        
         .ania-msg {
             max-width: 85%; padding: 10px 14px; border-radius: 16px; font-size: 0.9rem; line-height: 1.5;
             position: relative; word-wrap: break-word; margin-bottom: 4px;
@@ -207,31 +378,27 @@
         .ania-msg.bot { background: var(--ania-msg-bot); color: #333; border-bottom-left-radius: 4px; border: 1px solid #e2e8f0; }
         .ania-msg.user { background: var(--ania-msg-user); color: white; align-self: flex-end; border-bottom-right-radius: 4px; }
         
-        /* Styl dla linków/przycisków w czacie */
         .ania-chat-btn {
             display: inline-block; margin-top: 8px; padding: 6px 12px; 
-            background: white; border: 1px solid var(--primary); color: var(--primary);
-            border-radius: 8px; font-size: 0.8rem; font-weight: 600; text-decoration: none;
-            transition: 0.2s;
+            background: white; border: 1px solid var(--ania-primary); color: var(--ania-primary);
+            border-radius: 8px; font-size: 0.8rem; font-weight: 600; text-decoration: none; transition: 0.2s;
         }
-        .ania-chat-btn:hover { background: var(--primary); color: white; }
+        .ania-chat-btn:hover { background: var(--ania-primary); color: white; }
 
         .ania-chips { padding: 10px 16px; display: flex; gap: 8px; overflow-x: auto; background: white; border-top: 1px solid #eee; }
         .chip {
             background: #f1f5f9; border: 1px solid #e2e8f0; padding: 6px 12px; border-radius: 99px;
-            font-size: 0.75rem; color: var(--primary); font-weight: 600; cursor: pointer; white-space: nowrap; transition: 0.2s;
+            font-size: 0.75rem; color: var(--ania-primary); font-weight: 600; cursor: pointer; white-space: nowrap; transition: 0.2s;
         }
-        .chip:hover { background: var(--primary); color: white; }
+        .chip:hover { background: var(--ania-primary); color: white; }
 
         .ania-chat-input-area { padding: 12px; background: white; display: flex; gap: 8px; border-top: 1px solid #eee; }
         #ania-user-input { flex: 1; padding: 10px 16px; border-radius: 20px; border: 1px solid #cbd5e1; outline: none; font-size: 0.95rem; }
-        #ania-user-input:focus { border-color: var(--primary); }
+        #ania-user-input:focus { border-color: var(--ania-primary); }
         #ania-send-btn {
-            width: 40px; height: 40px; border-radius: 50%; background: var(--primary);
+            width: 40px; height: 40px; border-radius: 50%; background: var(--ania-primary);
             color: white; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center;
         }
-
-        /* Mobile Adjustments */
         @media (max-width: 480px) {
             #ania-chat-window { width: calc(100vw - 40px); right: -10px; bottom: 85px; height: 60vh; }
         }
@@ -244,22 +411,40 @@
     <header class="glass">
         <div class="container nav-wrapper">
             <div class="brand-bar">
-                <a href="#" class="logo">
+                <a href="#" class="logo cursor-trigger">
                     <img src="logo.png" alt="NCNI">
                     <span>Naukowe Centrum Neuroinnowacji</span>
                 </a>
             </div>
 
             <nav class="nav-links">
-                <a href="o-nas.html" class="nav-item">O nas</a>
-                <a href="oferta.html" class="nav-item">Oferta</a>
-                <a href="neuroroznorodnosc.html" class="nav-item">Neuroróżnorodność</a>
-                <a href="psychologia.html" class="nav-item">Psychologia</a>
-                <a href="technologie.html" class="nav-item">Technologie</a>
-                <a href="#rezerwacja" class="nav-item nav-cta">Umów wizytę</a>
+                <div style="margin-right: 20px; font-size: 0.9rem; font-weight: 600;">
+                    <a href="tel:+48600608333" style="margin-right: 15px; color: var(--text-main);">📞 600 608 333</a>
+                    <a href="mailto:kontakt@ncni.pl" style="color: var(--text-main);">✉️ kontakt@ncni.pl</a>
+                </div>
+                <a href="o-nas.html" class="nav-item cursor-trigger">O nas</a>
+                <a href="oferta.html" class="nav-item cursor-trigger">Oferta</a>
+                <a href="neuroroznorodnosc.html" class="nav-item cursor-trigger">Neuroróżnorodność</a>
+                <a href="psychologia.html" class="nav-item cursor-trigger">Psychologia</a>
+                <a href="technologie.html" class="nav-item cursor-trigger">Technologie</a>
+                <a href="#rezerwacja" class="nav-item nav-cta cursor-trigger">Umów wizytę</a>
             </nav>
         </div>
     </header>
+
+    <div class="fab-container">
+        <div class="fab-menu">
+            <a href="#rezerwacja" class="fab-item" style="color: var(--primary);">📅 Umów wizytę</a>
+            <a href="oferta.html" class="fab-item">📋 Oferta</a>
+            <a href="neuroroznorodnosc.html" class="fab-item">🧠 Neuroróżnorodność</a>
+            <a href="psychologia.html" class="fab-item">❤️ Psychologia</a>
+            <a href="o-nas.html" class="fab-item">👥 O nas</a>
+            <a href="tel:+48600608333" class="fab-item">📞 Zadzwoń</a>
+        </div>
+        <button class="fab-btn cursor-trigger">
+            <span>+</span>
+        </button>
+    </div>
 
     <section class="hero">
         <div class="container">
@@ -268,11 +453,11 @@
             </div>
             <h1>Twoja równowaga.<br>Potwierdzona nauką.</h1>
             <p class="hero-lead">
-                Łączymy psychologię kliniczną, dietetykę, fizjoterapię i technologie (VR, Biofeedback), aby skutecznie wspierać neuroróżnorodność.
+                Łączymy psychologię kliniczną, dietetykę, fizjoterapię i technologie (VR, Biofeedback), aby skutecznie wspierać neuroróżnorodność, leczyć stres i traumę.
             </p>
             <div class="hero-btns">
-                <button class="btn btn-primary" onclick="openTab('neuroroznorodnosc')">Dla Neuroróżnorodnych</button>
-                <button class="btn btn-outline" onclick="openTab('psychologia')">Wsparcie Psychologiczne</button>
+                <button class="btn btn-primary cursor-trigger" onclick="openTab('neuroroznorodnosc')">Dla Neuroróżnorodnych</button>
+                <button class="btn btn-outline cursor-trigger" style="border: 1px solid var(--border); background: white;" onclick="openTab('psychologia')">Wsparcie Psychologiczne</button>
             </div>
         </div>
     </section>
@@ -282,6 +467,7 @@
             <span class="marquee-item">Evidence Based Medicine</span>
             <span class="marquee-item">Neuroróżnorodność (ADHD / ASD)</span>
             <span class="marquee-item">Psychotraumatologia</span>
+            <span class="marquee-item">Dietetyka Kliniczna</span>
             <span class="marquee-item">Fizjoterapia</span>
             <span class="marquee-item">Terapie VR</span>
             <span class="marquee-item">Biofeedback HRV</span>
@@ -290,6 +476,7 @@
             <span class="marquee-item">Evidence Based Medicine</span>
             <span class="marquee-item">Neuroróżnorodność (ADHD / ASD)</span>
             <span class="marquee-item">Psychotraumatologia</span>
+            <span class="marquee-item">Dietetyka Kliniczna</span>
             <span class="marquee-item">Fizjoterapia</span>
             <span class="marquee-item">Terapie VR</span>
             <span class="marquee-item">Biofeedback HRV</span>
@@ -300,46 +487,95 @@
     <section class="section" id="oferta">
         <div class="container">
             <div class="tabs-nav">
-                <button class="tab-btn active" onclick="openTab('neuroroznorodnosc')">Neuroróżnorodność</button>
-                <button class="tab-btn" onclick="openTab('psychologia')">Psychologia</button>
-                <button class="tab-btn" onclick="openTab('technologie')">Technologie (VR)</button>
+                <button class="tab-btn active cursor-trigger" onclick="openTab('neuroroznorodnosc')">Neuroróżnorodność</button>
+                <button class="tab-btn cursor-trigger" onclick="openTab('psychologia')">Psychologia</button>
+                <button class="tab-btn cursor-trigger" onclick="openTab('technologie')">Technologie (VR/AI)</button>
             </div>
 
             <div id="neuroroznorodnosc" class="tab-content active">
                 <div class="grid-cards">
-                    <a href="adhd.html" class="feature-card glass">
+                    <a href="psychologia.html" class="oval-card cursor-trigger" style="text-decoration: none;">
+                        <div class="card-icon" style="color: var(--accent);">🫂</div>
+                        <h3>Wsparcie Psychologiczne</h3>
+                        <p style="color: var(--text-muted);">Dedykowana pomoc dla osób neuroatypowych. Zrozumienie, akceptacja i narzędzia.</p>
+                        <span class="read-more" style="margin-top:10px; display:inline-block;">Sprawdź ofertę →</span>
+                    </a>
+                    <a href="technologie.html" class="oval-card cursor-trigger" style="text-decoration: none;">
+                        <div class="card-icon" style="color: var(--primary);">🥽</div>
+                        <h3>Technologia VR</h3>
+                        <p style="color: var(--text-muted);">Treningi kompetencji w VR. Nauka przez doświadczanie bez stresu.</p>
+                        <span class="read-more" style="margin-top:10px; display:inline-block;">Poznaj VR →</span>
+                    </a>
+
+                    <a href="adhd.html" class="feature-card glass cursor-trigger">
                         <div class="card-icon">🧠</div>
                         <h3>ADHD / ADD</h3>
                         <p>Treningi funkcji wykonawczych i zarządzania uwagą (VR + Biofeedback).</p>
                         <span class="read-more">Zobacz program →</span>
                     </a>
-                    <a href="asd.html" class="feature-card glass">
+                    <a href="asd.html" class="feature-card glass cursor-trigger">
                         <div class="card-icon">🧩</div>
                         <h3>Spektrum Autyzmu (ASD)</h3>
                         <p>Przestrzeń ND-affirming. Treningi kompetencji i regulacja napięcia.</p>
                         <span class="read-more">Zobacz program →</span>
                     </a>
-                    <a href="wysoka-wrazliwosc.html" class="feature-card glass">
+                    <a href="wysoka-wrazliwosc.html" class="feature-card glass cursor-trigger">
                         <div class="card-icon">🦋</div>
                         <h3>Wysoka Wrażliwość</h3>
                         <p>Nauka higieny układu nerwowego i zarządzania energią.</p>
                         <span class="read-more">Zobacz program →</span>
+                    </a>
+                    <a href="dysleksja.html" class="feature-card glass cursor-trigger">
+                        <div class="card-icon">📖</div>
+                        <h3>Dysleksja</h3>
+                        <p>Wsparcie w trudnościach z czytaniem. Nowoczesne metody treningowe.</p>
+                        <span class="read-more">Zobacz program →</span>
+                    </a>
+                    <a href="dyskalkulia.html" class="feature-card glass cursor-trigger">
+                        <div class="card-icon">🔢</div>
+                        <h3>Dyskalkulia</h3>
+                        <p>Pomoc w trudnościach z matematyką. Treningi poznawcze.</p>
+                        <span class="read-more">Zobacz program →</span>
+                    </a>
+                    <a href="dcd.html" class="feature-card glass cursor-trigger">
+                        <div class="card-icon">🤸</div>
+                        <h3>Dyspraksja (DCD)</h3>
+                        <p>Wsparcie w koordynacji ruchowej i planowaniu motorycznym.</p>
+                        <span class="read-more">Zobacz program →</span>
+                    </a>
+                    <a href="tourette.html" class="feature-card glass cursor-trigger">
+                        <div class="card-icon">⚡</div>
+                        <h3>Tiki / Tourette</h3>
+                        <p>Terapie behawioralne i relaksacyjne dla redukcji napięcia.</p>
+                        <span class="read-more">Zobacz program →</span>
+                    </a>
+                    <a href="metoda-kraszewskiego.html" class="feature-card glass cursor-trigger">
+                        <div class="card-icon">🎓</div>
+                        <h3>Metoda Kraszewskiego</h3>
+                        <p>Autorska metoda integracji sensorycznej i poznawczej.</p>
+                        <span class="read-more">Czytaj więcej →</span>
                     </a>
                 </div>
             </div>
 
             <div id="psychologia" class="tab-content">
                 <div class="grid-cards">
-                    <a href="psychologia.html" class="feature-card glass">
+                    <a href="psychologia.html" class="feature-card glass cursor-trigger">
                         <div class="card-icon">❤️‍🩹</div>
                         <h3>Psychotraumatologia</h3>
                         <p>Terapia traumy i PTSD. Praca z ciałem i umysłem.</p>
                         <span class="read-more">Więcej informacji →</span>
                     </a>
-                    <a href="psychologia.html" class="feature-card glass">
+                    <a href="psychologia.html" class="feature-card glass cursor-trigger">
                         <div class="card-icon">🌬️</div>
                         <h3>Stres i Wypalenie</h3>
                         <p>Mierzalna redukcja kortyzolu. Treningi oddechowe i Zero-Gravity.</p>
+                        <span class="read-more">Więcej informacji →</span>
+                    </a>
+                    <a href="psychologia.html" class="feature-card glass cursor-trigger">
+                        <div class="card-icon">💬</div>
+                        <h3>Konsultacje</h3>
+                        <p>Indywidualne wsparcie w kryzysie, lęku i depresji.</p>
                         <span class="read-more">Więcej informacji →</span>
                     </a>
                 </div>
@@ -347,13 +583,13 @@
 
             <div id="technologie" class="tab-content">
                 <div class="grid-cards">
-                    <a href="technologie.html" class="feature-card glass">
+                    <a href="technologie.html" class="feature-card glass cursor-trigger">
                         <div class="card-icon">🥽</div>
                         <h3>Terapia VR</h3>
                         <p>Immersyjne środowiska terapeutyczne. Leczenie fobii.</p>
                         <span class="read-more">Sprawdź sprzęt →</span>
                     </a>
-                    <a href="technologie.html" class="feature-card glass">
+                    <a href="technologie.html" class="feature-card glass cursor-trigger">
                         <div class="card-icon">📊</div>
                         <h3>Biofeedback HRV</h3>
                         <p>Trenuj swoje serce i mózg. Obserwuj wpływ oddechu na stres.</p>
@@ -366,24 +602,79 @@
 
     <section id="o-nas" class="section">
         <div class="container">
-            <h2 style="text-align:center; margin-bottom:40px;">Nasi Eksperci</h2>
+            <div style="text-align: center; max-width: 800px; margin: 0 auto 60px;">
+                <span style="color: var(--primary); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; font-size: 0.9rem;">Eksperci NCNI</span>
+                <h2 style="font-size: 2.5rem; margin-top: 10px;">Ludzie i Nauka</h2>
+                <p style="color: var(--text-muted); font-size: 1.1rem; margin-bottom: 24px;">
+                    Poznaj zespół łączący medycynę, inżynierię i psychologię. 
+                </p>
+                <a href="o-nas.html" class="btn btn-outline cursor-trigger" style="border-color: var(--primary); color: var(--primary);">Poznaj pełną historię i misję →</a>
+            </div>
+
             <div class="team-grid">
-                <a href="kraszewski.html" class="team-card glass">
+                <a href="kraszewski.html" class="team-card glass cursor-trigger">
                     <div class="team-img-wrapper">
                         <img src="sk.jpg" alt="Sebastian Kraszewski" class="team-img" onerror="this.src='https://ui-avatars.com/api/?name=Sebastian+Kraszewski&background=6366F1&color=fff&size=400'">
                     </div>
                     <div class="team-info">
+                        <span class="team-role">Dyrektor Naukowy</span>
                         <h3>dr hab. inż. Sebastian Kraszewski</h3>
-                        <p>Dyrektor Naukowy</p>
+                        <p style="font-size: 0.9rem; color: var(--text-muted);">Zobacz profil →</p>
                     </div>
                 </a>
-                <a href="kiszlo.html" class="team-card glass">
+                
+                <a href="kiszlo.html" class="team-card glass cursor-trigger">
                     <div class="team-img-wrapper">
                         <img src="kk.jpg" alt="Karol Kiszło" class="team-img" onerror="this.src='https://ui-avatars.com/api/?name=Karol+Kiszlo&background=0F766E&color=fff&size=400'">
                     </div>
                     <div class="team-info">
+                        <span class="team-role">Head of NeuroPerformance</span>
                         <h3>Karol Kiszło</h3>
-                        <p>Head of NeuroPerformance</p>
+                        <p style="font-size: 0.9rem; color: var(--text-muted);">Zobacz profil →</p>
+                    </div>
+                </a>
+
+                <a href="psycholog.html" class="team-card glass cursor-trigger">
+                    <div class="team-img-wrapper">
+                        <img src="psycholog.jpg" alt="Psycholog NCNI" class="team-img" onerror="this.src='https://ui-avatars.com/api/?name=Psycholog&background=0F766E&color=fff&size=400'">
+                    </div>
+                    <div class="team-info">
+                        <span class="team-role">Psychologia Kliniczna</span>
+                        <h3>Zespół Psychologów</h3>
+                        <p style="font-size: 0.9rem; color: var(--text-muted);">Zobacz specjalizacje →</p>
+                    </div>
+                </a>
+
+                <a href="dietetyk.html" class="team-card glass cursor-trigger">
+                    <div class="team-img-wrapper">
+                        <img src="https://ui-avatars.com/api/?name=Dietetyk+Kliniczny&background=10B981&color=fff&size=400" alt="Dietetyk NCNI" class="team-img">
+                    </div>
+                    <div class="team-info">
+                        <span class="team-role">Psychodietetyka</span>
+                        <h3>Dietetyk Kliniczny</h3>
+                        <p style="font-size: 0.9rem; color: var(--text-muted);">Zobacz ofertę →</p>
+                    </div>
+                </a>
+                
+                <a href="fizjoterapia.html" class="team-card glass cursor-trigger">
+                    <div class="team-img-wrapper">
+                        <img src="https://ui-avatars.com/api/?name=Fizjo+NCNI&background=F59E0B&color=fff&size=400" alt="Fizjoterapeuta NCNI" class="team-img">
+                    </div>
+                    <div class="team-info">
+                        <span class="team-role">Fizjoterapia</span>
+                        <h3>Fizjoterapeuta</h3>
+                        <p style="font-size: 0.9rem; color: var(--text-muted);">Zobacz ofertę →</p>
+                    </div>
+                </a>
+
+                <a href="szablon-profil.html" class="team-card glass cursor-trigger">
+                    <div class="team-img-wrapper">
+                        <img src="https://ui-avatars.com/api/?name=Do%C5%82%C4%85cz+do+nas&background=CBD5E1&color=fff&size=400" alt="Placeholder" class="team-img">
+                    </div>
+                    <div class="team-info">
+                        <span class="team-role" style="color: var(--text-muted);">Rekrutacja</span>
+                        <h3>Twój Specjalista</h3>
+                        <p style="font-size: 0.9rem; color: var(--text-muted);">Miejsce na nowego eksperta.</p>
                     </div>
                 </a>
             </div>
@@ -391,42 +682,116 @@
     </section>
 
     <div class="container">
-        <section class="section" style="background:#0F172A; color:white; border-radius:24px; text-align:center; padding:60px 24px;">
+        <section class="vr-tech-section cursor-trigger">
             <div class="vr-tech-content">
-                <span style="display:inline-block; border:1px solid rgba(103,232,249,0.3); color:#67E8F9; padding:6px 14px; border-radius:99px; font-size:0.85rem; margin-bottom:20px;">INNOWACJA NCNI</span>
-                <h2 style="margin-bottom:20px;">Neuro-Immersja:<br>VR + Zero Gravity</h2>
-                <p style="color:#CBD5E1; margin-bottom:30px;">
-                    Połączenie całkowitego odciążenia ciała (Zero-G) z cyfrową stymulacją (VR). 
+                <span class="vr-tag">INNOWACJA NCNI</span>
+                <h2>Neuro-Immersja:<br>VR + Zero Gravity</h2>
+                <p>
+                    Połączenie całkowitego odciążenia ciała (Zero-G) z cyfrową stymulacją mózgu (VR). 
+                    To najgłębsza forma regeneracji układu nerwowego dostępna we Wrocławiu.
                 </p>
                 <div style="display: flex; gap: 16px; justify-content: center;">
-                    <a href="#rezerwacja" class="btn btn-primary" style="background: #67E8F9; color: #0F172A;">Rezerwuj Sesję</a>
+                    <a href="#rezerwacja" class="btn btn-primary cursor-trigger" style="background: #67E8F9; color: #0F172A; box-shadow: 0 0 20px rgba(103, 232, 249, 0.4);">Rezerwuj Sesję</a>
                 </div>
             </div>
         </section>
     </div>
 
+    <section id="faq" class="section">
+        <div class="container" style="max-width: 800px;">
+            <h2 style="margin-bottom: 40px; text-align: center;">Pytania i Odpowiedzi</h2>
+            <details class="cursor-trigger">
+                <summary>Jak wygląda pierwsza wizyta?</summary>
+                <div class="details-content">
+                    Pierwsza wizyta to konsultacja diagnostyczna (60 min). Omawiamy Twoje potrzeby, historię medyczną i dobieramy odpowiednią ścieżkę.
+                </div>
+            </details>
+            <details class="cursor-trigger">
+                <summary>Czy terapie VR są bezpieczne?</summary>
+                <div class="details-content">
+                    Tak. Przed sesją VR przeprowadzamy wywiad kwalifikacyjny. Dla osób z epilepsją światłoczułą mamy alternatywne metody (Biofeedback bez VR).
+                </div>
+            </details>
+        </div>
+    </section>
+
+    <section id="rezerwacja" class="reservation-section">
+        <h2 style="text-align: center; margin-bottom: 12px; color: var(--primary-dark);">Zarezerwuj Wizytę</h2>
+        <p style="text-align: center; color: var(--text-muted); margin-bottom: 32px;">Wypełnij formularz – skontaktujemy się, by potwierdzić termin.</p>
+        
+        <form id="bookingForm" class="cursor-trigger">
+            <div class="form-group">
+                <label>Imię i Nazwisko</label>
+                <input type="text" id="name" required placeholder="np. Jan Kowalski">
+            </div>
+            <div class="form-group">
+                <label>Telefon</label>
+                <input type="tel" id="phone" required placeholder="np. 600 608 333">
+            </div>
+            <div class="form-group">
+                <label>Rodzaj wizyty</label>
+                <select id="service">
+                    <option value="Konsultacja Psychologiczna">Konsultacja Psychologiczna</option>
+                    <option value="Terapia ADHD/ASD">Terapia ADHD/ASD</option>
+                    <option value="Biofeedback / VR">Biofeedback / VR</option>
+                    <option value="Dietetyka Kliniczna">Dietetyka Kliniczna</option>
+                    <option value="Fizjoterapia">Fizjoterapia</option>
+                    <option value="Inne">Inne</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Wiadomość (opcjonalnie)</label>
+                <textarea id="msg" rows="3" placeholder="Preferowane godziny..."></textarea>
+            </div>
+            <button type="submit" class="form-btn cursor-trigger">Wyślij Zgłoszenie (Otwórz Email)</button>
+        </form>
+    </section>
+
     <footer id="kontakt">
         <div class="container">
             <div class="footer-grid">
                 <div>
-                    <h4 style="margin-bottom: 16px;">NCNI Wrocław</h4>
-                    <p style="color: var(--text-muted);">
-                        ul. Stefana Żeromskiego 60/5a<br>
-                        50-312 Wrocław<br><br>
-                        <a href="tel:+48600608333" style="color:var(--primary); font-weight:700; text-decoration:none;">📞 600 608 333</a><br>
-                        <a href="mailto:kontakt@ncni.pl" style="color:var(--text-main); text-decoration:none;">✉️ kontakt@ncni.pl</a>
+                    <a href="#" class="logo cursor-trigger" style="margin-bottom: 20px; display: inline-block;">
+                        <img src="logo.png" alt="NCNI">
+                        NCNI
+                    </a>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">
+                        Naukowe Centrum Neuroinnowacji.<br>
+                        Twój partner w zdrowiu psychicznym.
                     </p>
                 </div>
                 <div>
-                    <h4 style="margin-bottom: 16px;">Informacje</h4>
-                    <ul style="list-style: none; padding: 0; color: var(--text-muted);">
-                        <li><a href="oferta.html" style="text-decoration: none; color: inherit;">Oferta</a></li>
-                        <li><a href="o-nas.html" style="text-decoration: none; color: inherit;">O nas</a></li>
+                    <h4 style="margin-bottom: 16px;">Kontakt</h4>
+                    <p style="color: var(--text-muted); margin-bottom: 8px;">ul. Stefana Żeromskiego 60/5a</p>
+                    <p style="color: var(--text-muted); margin-bottom: 8px;">50-312 Wrocław</p>
+                    
+                    <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 16px;">
+                        <a href="mailto:kontakt@ncni.pl" class="cursor-trigger" style="color: var(--text-main); font-weight: 600; text-decoration: none;">
+                            ✉️ kontakt@ncni.pl
+                        </a>
+                        <a href="tel:+48600608333" class="cursor-trigger" style="color: var(--primary); font-weight: 600; text-decoration: none; font-size: 1.1rem;">
+                            📞 600 608 333
+                        </a>
+                    </div>
+                    
+                    <div style="margin-top: 24px; display: flex; gap: 16px; align-items: center;">
+                        <a href="https://youtube.com/@neuroinnowacje" target="_blank" class="cursor-trigger" style="color: var(--text-muted); text-decoration: none; font-weight: 600;">YouTube</a>
+                        <span style="color: var(--border);">|</span>
+                        <a href="https://x.com/neuroinnowacje" target="_blank" class="cursor-trigger" style="color: var(--text-muted); text-decoration: none; font-weight: 600;">X (Twitter)</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 style="margin-bottom: 16px;">Mapa Strony</h4>
+                    <ul style="color: var(--text-muted); font-size: 0.95rem; list-style: none; padding: 0;">
+                        <li style="margin-bottom: 8px;"><a href="adhd.html" class="cursor-trigger">ADHD</a></li>
+                        <li style="margin-bottom: 8px;"><a href="asd.html" class="cursor-trigger">Autyzm</a></li>
+                        <li style="margin-bottom: 8px;"><a href="psychologia.html" class="cursor-trigger">Psychologia</a></li>
+                        <li style="margin-bottom: 8px;"><a href="technologie.html" class="cursor-trigger">VR Lab</a></li>
                     </ul>
                 </div>
             </div>
             <div style="border-top: 1px solid var(--border); padding-top: 24px; margin-top: 40px; text-align: center; color: var(--text-muted); font-size: 0.85rem;">
-                &copy; 2025 Naukowe Centrum Neuroinnowacji
+                &copy; 2025 Naukowe Centrum Neuroinnowacji | Designed and built by NCNI.agency Karol Kiszło
             </div>
         </div>
     </footer>
@@ -459,9 +824,9 @@
 
             <div class="ania-chips">
                 <button class="chip" onclick="askAnia('Umów wizytę')">📅 Wizyta</button>
-                <button class="chip" onclick="askAnia('Co na depresję?')">😔 Depresja</button>
-                <button class="chip" onclick="askAnia('Gdzie jesteście?')">📍 Adres</button>
                 <button class="chip" onclick="askAnia('Mam ADHD')">🧠 ADHD</button>
+                <button class="chip" onclick="askAnia('Dietetyk')">🥗 Dietetyk</button>
+                <button class="chip" onclick="askAnia('Gdzie jesteście?')">📍 Adres</button>
             </div>
 
             <div class="ania-chat-input-area">
@@ -474,19 +839,18 @@
     <script>
         // 1. TŁO (Particles)
         function initParticles(){const container=document.getElementById('bg-canvas');if(!container)return;const scene=new THREE.Scene();scene.fog=new THREE.FogExp2(0xF8FAFC,0.002);const camera=new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,1000);camera.position.z=10;const renderer=new THREE.WebGLRenderer({alpha:true,antialias:true});renderer.setSize(window.innerWidth,window.innerHeight);renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));container.appendChild(renderer.domElement);const geometry=new THREE.BufferGeometry();const count=200;const positions=new Float32Array(count*3);const colors=new Float32Array(count*3);for(let i=0;i<count*3;i+=3){positions[i]=(Math.random()-0.5)*25;positions[i+1]=(Math.random()-0.5)*25;positions[i+2]=(Math.random()-0.5)*25;const mix=Math.random();if(mix>0.5){colors[i]=0.06;colors[i+1]=0.46;colors[i+2]=0.43;}else{colors[i]=0.39;colors[i+1]=0.4;colors[i+2]=0.94;}}geometry.setAttribute('position',new THREE.BufferAttribute(positions,3));geometry.setAttribute('color',new THREE.BufferAttribute(colors,3));const material=new THREE.PointsMaterial({size:0.1,vertexColors:true,transparent:true,opacity:0.4});const particles=new THREE.Points(geometry,material);scene.add(particles);let mouseX=0,mouseY=0,targetX=0,targetY=0;const windowHalfX=window.innerWidth/2;const windowHalfY=window.innerHeight/2;document.addEventListener('mousemove',(e)=>{mouseX=(e.clientX-windowHalfX);mouseY=(e.clientY-windowHalfY);});const clock=new THREE.Clock();function animate(){const time=clock.getElapsedTime();targetX=mouseX*0.0001;targetY=mouseY*0.0001;particles.rotation.y+=0.01*(targetX-particles.rotation.y);particles.rotation.x+=0.01*(targetY-particles.rotation.x);particles.rotation.z+=0.0005;const scale=1+Math.sin(time*0.5)*0.02;particles.scale.set(scale,scale,scale);renderer.render(scene,camera);requestAnimationFrame(animate);}animate();window.addEventListener('resize',()=>{camera.aspect=window.innerWidth/window.innerHeight;camera.updateProjectionMatrix();renderer.setSize(window.innerWidth,window.innerHeight);});}document.addEventListener("DOMContentLoaded",initParticles);
-
-        // 2. TABS
+        
+        // 2. Floating Menu & Tabs
+        const fabBtn=document.querySelector('.fab-btn');const fabMenu=document.querySelector('.fab-menu');if(fabBtn&&fabMenu){fabBtn.addEventListener('click',()=>{fabMenu.classList.toggle('active');fabBtn.classList.toggle('open');});document.addEventListener('click',(e)=>{if(!fabBtn.contains(e.target)&&!fabMenu.contains(e.target)){fabMenu.classList.remove('active');fabBtn.classList.remove('open');}});fabMenu.querySelectorAll('a').forEach(link=>{link.addEventListener('click',()=>{fabMenu.classList.remove('active');fabBtn.classList.remove('open');});});}
+        
         function openTab(id) {
             document.querySelectorAll('.tab-content').forEach(el=>el.classList.remove('active'));
             document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
-            const t = document.getElementById(id);
-            if(t) t.classList.add('active');
-            document.querySelectorAll('.tab-btn').forEach(btn => {
-                if(btn.textContent.toLowerCase().includes(id.substring(0,4))) btn.classList.add('active');
-            });
+            const t = document.getElementById(id); if(t) t.classList.add('active');
+            document.querySelectorAll('.tab-btn').forEach(btn => { if(btn.textContent.toLowerCase().includes(id.substring(0,4))) btn.classList.add('active'); });
         }
 
-        // 3. ANIA LOGIC (PRO)
+        // 3. ANIA LOGIC (PRO VERSION - ROZWINIĘTA O WSZYSTKIE PODSTRONY)
         window.askAnia = function(q) {
             const input = document.getElementById('ania-user-input');
             const btn = document.getElementById('ania-send-btn');
@@ -503,11 +867,12 @@
 
             if(!win) return;
 
-            // Toggle
+            // Toggle logic
             const toggle = () => { win.classList.toggle('ania-open'); };
             trig.addEventListener('click', toggle);
             close.addEventListener('click', toggle);
 
+            // Helper: Add Message
             const addMsg = (txt, sender) => {
                 const d = document.createElement('div');
                 d.className = `ania-msg ${sender}`;
@@ -516,65 +881,80 @@
                 msgs.scrollTop = msgs.scrollHeight;
             }
 
-            // Auto-Open (raz na sesję)
+            // AUTO-OPEN: Raz na sesję
             setTimeout(() => {
-                if (!sessionStorage.getItem('ania_greeted_v2')) {
+                if (!sessionStorage.getItem('ania_pro_greeted')) {
                     win.classList.add('ania-open');
-                    sessionStorage.setItem('ania_greeted_v2', 'true');
+                    sessionStorage.setItem('ania_pro_greeted', 'true');
                 }
                 if (msgs.children.length === 0) {
-                    addMsg(`Witaj! 🌿<br>Jestem Ania, wirtualna asystentka NCNI.<br>Służę pomocą w sprawach terapii, terminów i dojazdu.`, 'bot');
+                    addMsg(`
+                        <b>Witaj! 👋</b><br>
+                        Jestem Ania, wirtualna asystentka NCNI.<br>
+                        Pomagam dobrać terapię, znaleźć dietetyka, psychologa czy wsparcie w ADHD/ASD.
+                        <br><br>
+                        W czym mogę Ci pomóc?
+                    `, 'bot');
                 }
             }, 3000);
 
-            // GŁÓWNA LOGIKA ODPOWIEDZI
+            // --- BAZA WIEDZY (MÓZG ANI) ---
             const getResponse = (txt) => {
                 const t = txt.toLowerCase();
 
-                // 1. TERMINY / WIZYTA / PSYCHOLOG
-                if(t.includes('termin') || t.includes('kiedy') || t.includes('wolny') || t.includes('wizyt') || t.includes('umów') || (t.includes('psycholog') && t.includes('przyjmuje'))) {
-                    return `
-                        Wizyty umawiamy telefonicznie, co pozwala najlepiej dobrać specjalistę. 📅<br>
-                        Zadzwoń do nas: <b>600 608 333</b>.
-                        <a href="tel:+48600608333" class="ania-chat-btn">Zadzwoń teraz</a>
-                    `;
+                // 1. NEURORÓŻNORODNOŚĆ (ADHD, ASD, Tourette, Dysleksja)
+                if(t.includes('adhd') || t.includes('skupienie') || t.includes('koncentrac')) {
+                    return `Zajmujemy się diagnozą i terapią ADHD u dorosłych i młodzieży. Oferujemy treningi <b>Focus & Flow</b> oraz Biofeedback.<br><a href="adhd.html" class="ania-chat-btn">Zobacz ofertę ADHD</a>`;
+                }
+                if(t.includes('asd') || t.includes('autyzm') || t.includes('spektrum')) {
+                    return `Tworzymy przestrzeń przyjazną osobom w spektrum (ND-affirming). Oferujemy wsparcie w regulacji i komunikacji.<br><a href="asd.html" class="ania-chat-btn">Zobacz ofertę ASD</a>`;
+                }
+                if(t.includes('tourette') || t.includes('tiki')) {
+                    return `Prowadzimy terapie behawioralne pomagające w radzeniu sobie z tikami i napięciem.<br><a href="tourette.html" class="ania-chat-btn">Więcej o Tourette</a>`;
+                }
+                if(t.includes('dysleksja') || t.includes('czytanie') || t.includes('dyslek')) {
+                    return `Wspieramy osoby z dysleksją poprzez nowoczesne metody treningowe.<br><a href="dysleksja.html" class="ania-chat-btn">Więcej o Dysleksji</a>`;
                 }
 
-                // 2. DEPRESJA / POMOC PSYCHOLOGICZNA
-                if(t.includes('depresj') || t.includes('smut') || t.includes('leczysz')) {
-                    return `
-                        W NCNI zajmujemy się psychologią i wsparciem w depresji, łącząc terapię z technologią (jak Zero-Gravity dla regeneracji). 🧠<br>
-                        Jeśli czujesz, że potrzebujesz pomocy, zapraszamy na konsultację.
-                        <a href="psychologia.html" class="ania-chat-btn">Zobacz ofertę Psychologii</a>
-                    `;
+                // 2. CIAŁO & DIETA (Fizjo, Dietetyk)
+                if(t.includes('diet') || t.includes('jedzen') || t.includes('waga') || t.includes('odżyw')) {
+                    return `Nasz <b>Dietetyk Kliniczny</b> i Psychodietetyk pomogą Ci zadbać o zdrowie jelit i relację z jedzeniem.<br><a href="dietetyk.html" class="ania-chat-btn">Sprawdź Dietetykę</a>`;
+                }
+                if(t.includes('fizjo') || t.includes('ból') || t.includes('plecy') || t.includes('ciało')) {
+                    return `Nasz zespół fizjoterapeutów łączy pracę manualną z technologią (Zero-Gravity) dla pełnej regeneracji.<br><a href="fizjoterapia.html" class="ania-chat-btn">Fizjoterapia NCNI</a>`;
                 }
 
-                // 3. ADRES / DOJAZD
+                // 3. PSYCHOLOGIA & TRAUMA
+                if(t.includes('psycholog') || t.includes('terapi') || t.includes('konsultac')) {
+                    return `Nasi psycholodzy kliniczni oferują wsparcie w kryzysie, depresji i lęku. <br><a href="psychologia.html" class="ania-chat-btn">Zespół Psychologów</a>`;
+                }
+                if(t.includes('trauma') || t.includes('ptsd') || t.includes('przeżyci')) {
+                    return `Specjalizujemy się w <b>Psychotraumatologii</b>. Pracujemy z traumą, aby przywrócić poczucie bezpieczeństwa.<br><a href="psychologia.html" class="ania-chat-btn">Więcej o Traumie</a>`;
+                }
+
+                // 4. TECHNOLOGIA (VR, Biofeedback)
+                if(t.includes('vr') || t.includes('gogle') || t.includes('wirtualn')) {
+                    return `Wykorzystujemy VR do bezpiecznej ekspozycji na lęki oraz treningów funkcji poznawczych.<br><a href="technologie.html" class="ania-chat-btn">Nasze Technologie</a>`;
+                }
+
+                // 5. TERMINY & KONTAKT & CENNIK
+                if(t.includes('termin') || t.includes('umów') || t.includes('wizyt') || t.includes('wolny')) {
+                    return `Wizyty umawiamy telefonicznie, aby idealnie dobrać specjalistę do Twoich potrzeb.<br>Zadzwoń: <b>600 608 333</b>.<br><a href="tel:+48600608333" class="ania-chat-btn">Zadzwoń teraz</a>`;
+                }
                 if(t.includes('adres') || t.includes('gdzie') || t.includes('dojazd')) {
-                    return "Nasze centrum znajduje się we Wrocławiu przy <b>ul. Stefana Żeromskiego 60/5a</b>.";
+                    return `Zapraszamy do Wrocławia: <b>ul. Stefana Żeromskiego 60/5a</b>.`;
                 }
-
-                // 4. ADHD / NEURORÓŻNORODNOŚĆ
-                if(t.includes('adhd') || t.includes('asd') || t.includes('skupienie')) {
-                    return `
-                        Tak, specjalizujemy się w neuroróżnorodności! Oferujemy treningi funkcji wykonawczych i wsparcie ND-affirming.<br>
-                        <a href="neuroroznorodnosc.html" class="ania-chat-btn">Sprawdź ofertę ADHD</a>
-                    `;
-                }
-
-                // 5. OBSŁUGA WULGARYZMÓW / ZACZEPEK (SAFETY & INTELLIGENT BOUNDARIES)
-                // Lista słów kluczowych (triggerów)
-                if(t.includes('ruchac') || t.includes('loda') || t.includes('seks') || t.includes('cip') || t.includes('kutas') || t.includes('dupa')) {
-                    return "Jesteśmy placówką medyczną i dbamy o profesjonalną atmosferę. 🏥<br>Zajmujemy się psychologią, neuroinnowacjami i zdrowiem psychicznym. Jeśli masz pytanie dotyczące oferty NCNI, chętnie na nie odpowiem.";
-                }
-
-                // 6. CENNIK (Odsyłacz)
                 if(t.includes('cena') || t.includes('koszt') || t.includes('ile')) {
-                    return "Szczegóły cennika omawiamy indywidualnie, w zależności od planu terapii. Prosimy o kontakt: <b>600 608 333</b>.";
+                    return `Ceny zależą od rodzaju usługi. Prosimy o kontakt z recepcją (600 608 333) w celu uzyskania szczegółów.`;
+                }
+
+                // 6. FILTRY BEZPIECZEŃSTWA (Anty-Troll)
+                if(t.includes('ruchac') || t.includes('loda') || t.includes('seks') || t.includes('cip') || t.includes('kutas') || t.includes('dupa')) {
+                    return `Jesteśmy placówką medyczną NCNI. Dbamy o profesjonalizm i szacunek. Służymy pomocą w zakresie zdrowia psychicznego i fizycznego.`;
                 }
 
                 // FALLBACK
-                return "Nie jestem pewna odpowiedzi na to pytanie. 🤔<br>Najlepiej będzie, jeśli zadzwonisz do nas (600 608 333) lub napiszesz na kontakt@ncni.pl.";
+                return `To ciekawe pytanie. 🤔 Najlepiej skontaktuj się z nami bezpośrednio (600 608 333) lub sprawdź naszą ofertę na stronie.<br><a href="oferta.html" class="ania-chat-btn">Pełna Oferta</a>`;
             }
 
             const handleSend = () => {
@@ -582,11 +962,7 @@
                 if(!v) return;
                 addMsg(v, 'user');
                 input.value = '';
-                
-                // Symulacja "pisania"
-                setTimeout(() => { 
-                    addMsg(getResponse(v), 'bot'); 
-                }, 600);
+                setTimeout(() => { addMsg(getResponse(v), 'bot'); }, 600);
             }
 
             send.addEventListener('click', handleSend);
