@@ -9,7 +9,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
-    <!-- Schema.org for Organization -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -218,7 +217,6 @@
         </div>
     </section>
 
-    <!-- HISTORIA I MISJA (Nowa sekcja) -->
     <section class="container story-section">
         <div class="story-block cursor-trigger">
             <h2>Nasza Misja</h2>
@@ -246,14 +244,12 @@
         </div>
     </section>
 
-    <!-- ZESPÓŁ -->
     <section class="container">
         <div style="text-align: center; max-width: 800px; margin: 0 auto 40px;">
             <h2 style="font-size: 2.5rem;">Nasz Zespół</h2>
         </div>
 
         <div class="team-grid">
-            <!-- 1: Sebastian Kraszewski -->
             <a href="kraszewski.html" class="team-card glass cursor-trigger">
                 <div class="team-img-wrapper">
                     <img src="sk.jpg" alt="Sebastian Kraszewski" class="team-img" onerror="this.src='https://ui-avatars.com/api/?name=Sebastian+Kraszewski&background=6366F1&color=fff&size=400'">
@@ -265,7 +261,6 @@
                 </div>
             </a>
 
-            <!-- 2: Psycholog -->
             <a href="psycholog.html" class="team-card glass cursor-trigger">
                 <div class="team-img-wrapper">
                     <img src="psycholog.jpg" alt="Psycholog NCNI" class="team-img" onerror="this.src='https://ui-avatars.com/api/?name=Psycholog&background=0F766E&color=fff&size=400'">
@@ -277,10 +272,9 @@
                 </div>
             </a>
 
-            <!-- 3: Dietetyk -->
             <a href="dietetyk.html" class="team-card glass cursor-trigger">
                 <div class="team-img-wrapper">
-                    <img src="https://ui-avatars.com/api/?name=Dietetyk+Kliniczny&background=10B981&color=fff&size=400" alt="Dietetyk NCNI" class="team-img">
+                    <img src="dietetyk.jpg" alt="Dietetyk NCNI" class="team-img">
                 </div>
                 <div class="team-info">
                     <span class="team-role" style="color: #10B981;">Psychodietetyka</span>
@@ -289,10 +283,9 @@
                 </div>
             </a>
 
-            <!-- 4: Fizjoterapeuta -->
             <a href="fizjoterapia.html" class="team-card glass cursor-trigger">
                 <div class="team-img-wrapper">
-                    <img src="https://ui-avatars.com/api/?name=Fizjo+NCNI&background=F59E0B&color=fff&size=400" alt="Fizjoterapeuta NCNI" class="team-img">
+                    <img src="fizjoterapeuta.jpg" alt="Fizjoterapeuta NCNI" class="team-img">
                 </div>
                 <div class="team-info">
                     <span class="team-role" style="color: #F59E0B;">Fizjoterapia Somatyczna</span>
@@ -301,7 +294,6 @@
                 </div>
             </a>
 
-            <!-- 5: Karol Kiszło (Na końcu, jako klamra) -->
             <a href="kiszlo.html" class="team-card glass cursor-trigger">
                 <div class="team-img-wrapper">
                     <img src="kk.jpg" alt="Karol Kiszło" class="team-img" onerror="this.src='https://ui-avatars.com/api/?name=Karol+Kiszlo&background=0F766E&color=fff&size=400'">
@@ -313,7 +305,6 @@
                 </div>
             </a>
 
-            <!-- 6: SZABLON / REKRUTACJA -->
             <a href="szablon-profil.html" class="team-card glass cursor-trigger">
                 <div class="team-img-wrapper">
                     <img src="https://ui-avatars.com/api/?name=Do%C5%82%C4%85cz+do+nas&background=CBD5E1&color=fff&size=400" alt="Placeholder" class="team-img">
@@ -327,7 +318,6 @@
         </div>
     </section>
 
-    <!-- DANE REJESTROWE FIRMY -->
     <section class="company-data">
         <div class="container">
             <h4>Dane Rejestrowe</h4>
@@ -386,7 +376,6 @@
         </div>
     </footer>
 
-    <!-- Scripts -->
     <script>
         function initParticles(){const container=document.getElementById('bg-canvas');if(!container)return;const scene=new THREE.Scene();scene.fog=new THREE.FogExp2(0xF8FAFC,0.002);const camera=new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,1000);camera.position.z=10;const renderer=new THREE.WebGLRenderer({alpha:true,antialias:true});renderer.setSize(window.innerWidth,window.innerHeight);renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));container.appendChild(renderer.domElement);const geometry=new THREE.BufferGeometry();const count=200;const positions=new Float32Array(count*3);const colors=new Float32Array(count*3);for(let i=0;i<count*3;i+=3){positions[i]=(Math.random()-0.5)*25;positions[i+1]=(Math.random()-0.5)*25;positions[i+2]=(Math.random()-0.5)*25;const mix=Math.random();if(mix>0.5){colors[i]=0.06;colors[i+1]=0.46;colors[i+2]=0.43;}else{colors[i]=0.39;colors[i+1]=0.4;colors[i+2]=0.94;}}geometry.setAttribute('position',new THREE.BufferAttribute(positions,3));geometry.setAttribute('color',new THREE.BufferAttribute(colors,3));const material=new THREE.PointsMaterial({size:0.1,vertexColors:true,transparent:true,opacity:0.4});const particles=new THREE.Points(geometry,material);scene.add(particles);let mouseX=0,mouseY=0,targetX=0,targetY=0;const windowHalfX=window.innerWidth/2;const windowHalfY=window.innerHeight/2;document.addEventListener('mousemove',(e)=>{mouseX=(e.clientX-windowHalfX);mouseY=(e.clientY-windowHalfY);});const clock=new THREE.Clock();function animate(){const time=clock.getElapsedTime();targetX=mouseX*0.0001;targetY=mouseY*0.0001;particles.rotation.y+=0.01*(targetX-particles.rotation.y);particles.rotation.x+=0.01*(targetY-particles.rotation.x);particles.rotation.z+=0.0005;const scale=1+Math.sin(time*0.5)*0.02;particles.scale.set(scale,scale,scale);renderer.render(scene,camera);requestAnimationFrame(animate);}animate();window.addEventListener('resize',()=>{camera.aspect=window.innerWidth/window.innerHeight;camera.updateProjectionMatrix();renderer.setSize(window.innerWidth,window.innerHeight);});}document.addEventListener("DOMContentLoaded",initParticles);
         
