@@ -15,14 +15,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-     <!-- Google Analytics 4 -->
-     <script async src="https://www.googletagmanager.com/gtag/js?id=G-56VR40VHHV"></script>
-     <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-56VR40VHHV');
-          </script>
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-56VR40VHHV"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-56VR40VHHV');
+    </script>
 
     <script type="application/ld+json">
     {
@@ -172,78 +172,6 @@
             .logo span { display: inline-block; max-width: 200px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
         }
 
-        /* --- FLOATING MOBILE MENU (NEW) --- */
-        .fab-container {
-            position: fixed;
-            bottom: 24px;
-            right: 24px;
-            z-index: 2000;
-            display: none; /* Hidden on desktop */
-        }
-        @media (max-width: 900px) { .fab-container { display: flex; flex-direction: column-reverse; align-items: flex-end; gap: 12px; } }
-
-        .fab-btn {
-            width: 60px;
-            height: 60px;
-            background: var(--primary);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 15px rgba(15, 118, 110, 0.4);
-            cursor: pointer;
-            border: none;
-            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            font-size: 24px;
-        }
-        .fab-btn:active { transform: scale(0.9); }
-        .fab-btn.open { transform: rotate(45deg); background: var(--text-main); }
-
-        .fab-menu {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            align-items: flex-end;
-            opacity: 0;
-            pointer-events: none;
-            transform: translateY(20px);
-            transition: all 0.3s ease;
-            margin-bottom: 8px;
-        }
-        .fab-menu.active {
-            opacity: 1;
-            pointer-events: all;
-            transform: translateY(0);
-        }
-
-        .fab-item {
-            background: white;
-            padding: 10px 20px;
-            border-radius: 20px;
-            text-decoration: none;
-            color: var(--text-main);
-            font-weight: 600;
-            font-size: 0.95rem;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transform: translateX(20px);
-            opacity: 0;
-            transition: all 0.3s ease;
-        }
-        .fab-menu.active .fab-item {
-            transform: translateX(0);
-            opacity: 1;
-        }
-        /* Staggered animation delays */
-        .fab-menu.active .fab-item:nth-child(1) { transition-delay: 0.05s; }
-        .fab-menu.active .fab-item:nth-child(2) { transition-delay: 0.1s; }
-        .fab-menu.active .fab-item:nth-child(3) { transition-delay: 0.15s; }
-        .fab-menu.active .fab-item:nth-child(4) { transition-delay: 0.2s; }
-        .fab-menu.active .fab-item:nth-child(5) { transition-delay: 0.25s; }
-
         /* --- HERO --- */
         .hero { padding: 80px 0 60px; text-align: center; }
         h1 {
@@ -381,6 +309,30 @@
         @media (min-width: 768px) {
             .footer-grid { grid-template-columns: repeat(3, 1fr); text-align: left; }
         }
+
+        /* --- ANIA (WIRTUALNA ASYSTENTKA) CSS --- */
+        .ania-container { position: fixed; bottom: 24px; right: 24px; z-index: 2000; display: flex; flex-direction: column; align-items: flex-end; font-family: 'Inter', sans-serif; }
+        .ania-avatar { width: 65px; height: 65px; border-radius: 50%; border: 3px solid white; box-shadow: 0 4px 20px rgba(15, 118, 110, 0.3); cursor: pointer; position: relative; transition: transform 0.3s; background: #fff; overflow: hidden; }
+        .ania-avatar:hover { transform: scale(1.1); }
+        .ania-avatar img { width: 100%; height: 100%; object-fit: cover; }
+        .status-dot { width: 14px; height: 14px; background: #10B981; border: 2px solid white; border-radius: 50%; position: absolute; bottom: 4px; right: 4px; animation: pulse-dot 2s infinite; }
+        .status-dot-small { width: 10px; height: 10px; background: #10B981; border: 1.5px solid white; border-radius: 50%; position: absolute; bottom: 0; right: 0; }
+        @keyframes pulse-dot { 0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); } 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); } }
+        .ania-bubble { background: white; padding: 12px 16px; border-radius: 12px 12px 0 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin-bottom: 12px; font-size: 0.9rem; color: var(--text-main); font-weight: 500; max-width: 260px; position: relative; opacity: 0; transform: translateY(10px); transition: all 0.4s ease; pointer-events: none; }
+        .ania-bubble.visible { opacity: 1; transform: translateY(0); pointer-events: all; }
+        .ania-close-bubble { position: absolute; top: -8px; right: -8px; background: #eee; width: 20px; height: 20px; border-radius: 50%; font-size: 12px; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #666; }
+        .ania-chat-window { position: absolute; bottom: 80px; right: 0; width: 360px; height: 500px; background: white; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.15); display: flex; flex-direction: column; overflow: hidden; opacity: 0; transform: translateY(20px) scale(0.95); pointer-events: none; transition: all 0.3s; border: 1px solid var(--border); }
+        .ania-chat-window.active { opacity: 1; transform: translateY(0) scale(1); pointer-events: all; }
+        .ania-header { background: #F8FAFC; padding: 16px; border-bottom: 1px solid #E2E8F0; display: flex; justify-content: space-between; align-items: center; }
+        .ania-messages { flex: 1; padding: 16px; overflow-y: auto; background: #fff; display: flex; flex-direction: column; gap: 12px; }
+        .msg { padding: 10px 14px; border-radius: 12px; font-size: 0.9rem; line-height: 1.5; max-width: 85%; animation: popIn 0.3s ease; }
+        .msg.bot { background: #F1F5F9; color: var(--text-main); border-bottom-left-radius: 2px; align-self: flex-start; }
+        .msg.user { background: var(--primary); color: white; border-bottom-right-radius: 2px; align-self: flex-end; }
+        .ania-options-area { padding: 12px; background: #F8FAFC; border-top: 1px solid #E2E8F0; display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; }
+        .chat-btn { background: white; border: 1px solid var(--primary); color: var(--primary); padding: 8px 14px; border-radius: 99px; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: 0.2s; }
+        .chat-btn:hover { background: var(--primary); color: white; }
+        @keyframes popIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+        @media (max-width: 480px) { .ania-chat-window { width: 300px; right: -10px; height: 450px; } }
     </style>
 </head>
 <body>
@@ -413,20 +365,6 @@
             </nav>
         </div>
     </header>
-
-    <div class="fab-container">
-        <div class="fab-menu">
-            <a href="#rezerwacja" class="fab-item" style="color: var(--primary);">📅 Umów wizytę</a>
-            <a href="oferta.html" class="fab-item">📋 Oferta</a>
-            <a href="neuroroznorodnosc.html" class="fab-item">🧠 Neuroróżnorodność</a>
-            <a href="psychologia.html" class="fab-item">❤️ Psychologia</a>
-            <a href="o-nas.html" class="fab-item">👥 O nas</a>
-            <a href="tel:+48600608333" class="fab-item">📞 Zadzwoń</a>
-        </div>
-        <button class="fab-btn cursor-trigger">
-            <span>+</span>
-        </button>
-    </div>
 
     <section class="hero">
         <div class="container">
@@ -778,40 +716,199 @@
         </div>
     </footer>
 
+    <div id="ania-widget" class="ania-container">
+        
+        <div class="ania-bubble" id="ania-greeting">
+            Dzień dobry! ☀️ Jestem Wirtualną Asystentką NCNI. Kliknij we mnie, a odpowiem na Twoje pytania.
+            <span class="ania-close-bubble" onclick="closeGreeting(event)">✕</span>
+        </div>
+
+        <div class="ania-chat-window glass" id="ania-window">
+            <div class="ania-header">
+                <div style="display:flex; align-items:center; gap:10px;">
+                    <div style="position:relative;">
+                        <img src="ania.jpg" alt="Ania" style="width:35px; height:35px; border-radius:50%; object-fit:cover;">
+                        <div class="status-dot-small"></div>
+                    </div>
+                    <div>
+                        <strong style="display:block; line-height:1.1;">Ania NCNI</strong>
+                        <span style="font-size: 0.75rem; color: var(--primary);">Wirtualny Asystent</span>
+                    </div>
+                </div>
+                <button onclick="toggleAnia()" style="background:none; border:none; cursor:pointer; font-size:1.2rem; color: var(--text-muted);">✕</button>
+            </div>
+
+            <div class="ania-messages" id="ania-messages-area">
+                </div>
+
+            <div class="ania-options-area" id="ania-options-area">
+                </div>
+        </div>
+
+        <div class="ania-avatar cursor-trigger" onclick="toggleAnia()">
+            <img src="ania.jpg" alt="Ania Chat">
+            <div class="status-dot"></div>
+        </div>
+    </div>
+
     <script>
+        // --- LOGIKA ANI (CHATBOT) ---
+        const chatKnowledge = {
+            'start': {
+                text: "Cześć! 👋 W czym mogę Ci pomóc? Możesz pytać o nasze specjalizacje lub umówić wizytę.",
+                options: [
+                    { label: "🧠 ADHD / ADD", next: 'adhd_info' },
+                    { label: "🧩 Autyzm (ASD)", next: 'asd_info' },
+                    { label: "💰 Cennik / Oferta", next: 'oferta' },
+                    { label: "📅 Umów wizytę", action: 'booking' }
+                ]
+            },
+            'adhd_info': {
+                text: "W NCNI podchodzimy do ADHD holistycznie. Nie leczymy 'choroby', ale uczymy obsługi Twojego układu nerwowego. Oferujemy pełną diagnozę (DIVA-5, MOXO) oraz treningi (VR, Biofeedback). Co Cię interesuje?",
+                options: [
+                    { label: "Jak wygląda diagnoza?", next: 'adhd_diagnoza' },
+                    { label: "Na czym polega terapia?", next: 'adhd_terapia' },
+                    { label: "Wróć do początku", next: 'start' }
+                ]
+            },
+            'adhd_diagnoza': {
+                text: "Nasz proces diagnostyczny jest zgodny ze światowymi standardami. Obejmuje:\n1. Wywiad kliniczny (DIVA-5).\n2. Komputerowy test uwagi MOXO.\n3. Raport końcowy z zaleceniami.",
+                options: [
+                    { label: "Chcę się zapisać", action: 'booking' },
+                    { label: "Co to jest test MOXO?", next: 'moxo' }
+                ]
+            },
+            'moxo': {
+                text: "Test MOXO to obiektywne badanie komputerowe. Sprawdza Twój poziom uwagi, czasu reakcji i impulsywności. Trwa tylko kilkanaście minut i daje nam twarde dane o działaniu Twojego mózgu.",
+                options: [
+                    { label: "Rozumiem, dzięki!", next: 'start' },
+                    { label: "Umów badanie", action: 'booking' }
+                ]
+            },
+            'adhd_terapia': {
+                text: "Stawiamy na nowoczesne metody! 🥽 Wykorzystujemy Wirtualną Rzeczywistość (VR) do treningu skupienia w trudnych warunkach oraz Biofeedback HRV, by nauczyć Cię opanowania stresu oddechem.",
+                options: [
+                    { label: "Brzmi super, zapisz mnie", action: 'booking' },
+                    { label: "Inne pytania", next: 'start' }
+                ]
+            },
+            'asd_info': {
+                text: "Jesteśmy miejscem przyjaznym osobom w spektrum (Neurodiversity Affirming). Pomagamy w treningu kompetencji społecznych i regulacji napięcia, szanując Twoją wyjątkowość.",
+                options: [
+                    { label: "Umów konsultację", action: 'booking' },
+                    { label: "Wróć do menu", next: 'start' }
+                ]
+            },
+            'oferta': {
+                text: "Nasza oferta obejmuje:\n- Diagnozę ADHD/ASD\n- Terapię Psychologiczną\n- Treningi VR i Biofeedback\n- Dietetykę Kliniczną\nSzczegóły ustalamy podczas pierwszej wizyty.",
+                options: [
+                    { label: "Jak dojechać?", next: 'adres' },
+                    { label: "Umów wizytę", action: 'booking' }
+                ]
+            },
+            'adres': {
+                text: "Znajdziesz nas we Wrocławiu przy ul. Stefana Żeromskiego 60/5a. Zapraszamy!",
+                options: [
+                    { label: "Okej, dzięki!", next: 'start' }
+                ]
+            }
+        };
+
+        const chatWindow = document.getElementById('ania-window');
+        const messagesArea = document.getElementById('ania-messages-area');
+        const optionsArea = document.getElementById('ania-options-area');
+        const bubble = document.getElementById('ania-greeting');
+        let isChatOpen = false;
+
+        function toggleAnia() {
+            isChatOpen = !isChatOpen;
+            chatWindow.classList.toggle('active', isChatOpen);
+            bubble.classList.remove('visible'); // Ukryj dymek jak otwierasz
+            
+            // Jeśli czat jest pusty, zacznij rozmowę
+            if(isChatOpen && messagesArea.children.length === 0) {
+                loadScenario('start');
+            }
+        }
+
+        function closeGreeting(e) {
+            e.stopPropagation();
+            bubble.classList.remove('visible');
+        }
+
+        setTimeout(() => {
+            if(!isChatOpen) bubble.classList.add('visible');
+        }, 3000);
+
+        function addMessage(text, sender) {
+            const div = document.createElement('div');
+            div.classList.add('msg', sender);
+            div.innerHTML = text.replace(/\n/g, '<br>');
+            messagesArea.appendChild(div);
+            messagesArea.scrollTop = messagesArea.scrollHeight;
+        }
+
+        function loadScenario(key) {
+            const data = chatKnowledge[key];
+            if(!data) return;
+
+            showTypingIndicator();
+            setTimeout(() => {
+                removeTypingIndicator();
+                addMessage(data.text, 'bot');
+                renderOptions(data.options);
+            }, 600);
+        }
+
+        function renderOptions(options) {
+            optionsArea.innerHTML = '';
+            if(!options) return;
+
+            options.forEach(opt => {
+                const btn = document.createElement('button');
+                btn.classList.add('chat-btn');
+                btn.innerText = opt.label;
+                btn.onclick = () => handleUserChoice(opt);
+                optionsArea.appendChild(btn);
+            });
+        }
+
+        function handleUserChoice(opt) {
+            addMessage(opt.label, 'user');
+            optionsArea.innerHTML = '';
+
+            if (opt.action === 'booking') {
+                window.location.href = '#rezerwacja';
+                if(window.innerWidth < 480) toggleAnia();
+                
+                setTimeout(() => {
+                    addMessage("Przeniosłam Cię do formularza. Powodzenia! 😊", 'bot');
+                }, 500);
+            } else if (opt.next) {
+                loadScenario(opt.next);
+            }
+        }
+
+        function showTypingIndicator() {
+            const loader = document.createElement('div');
+            loader.id = 'typing-loader';
+            loader.className = 'msg bot';
+            loader.style.color = '#aaa';
+            loader.innerText = '...';
+            messagesArea.appendChild(loader);
+            messagesArea.scrollTop = messagesArea.scrollHeight;
+        }
+        function removeTypingIndicator() {
+            const loader = document.getElementById('typing-loader');
+            if(loader) loader.remove();
+        }
+
         // --- PARTICLES (TŁO) ---
         function initParticles(){const container=document.getElementById('bg-canvas');if(!container)return;const scene=new THREE.Scene();scene.fog=new THREE.FogExp2(0xF8FAFC,0.002);const camera=new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,1000);camera.position.z=10;const renderer=new THREE.WebGLRenderer({alpha:true,antialias:true});renderer.setSize(window.innerWidth,window.innerHeight);renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));container.appendChild(renderer.domElement);const geometry=new THREE.BufferGeometry();const count=200;const positions=new Float32Array(count*3);const colors=new Float32Array(count*3);for(let i=0;i<count*3;i+=3){positions[i]=(Math.random()-0.5)*25;positions[i+1]=(Math.random()-0.5)*25;positions[i+2]=(Math.random()-0.5)*25;const mix=Math.random();if(mix>0.5){colors[i]=0.06;colors[i+1]=0.46;colors[i+2]=0.43;}else{colors[i]=0.39;colors[i+1]=0.4;colors[i+2]=0.94;}}geometry.setAttribute('position',new THREE.BufferAttribute(positions,3));geometry.setAttribute('color',new THREE.BufferAttribute(colors,3));const material=new THREE.PointsMaterial({size:0.1,vertexColors:true,transparent:true,opacity:0.4});const particles=new THREE.Points(geometry,material);scene.add(particles);let mouseX=0,mouseY=0,targetX=0,targetY=0;const windowHalfX=window.innerWidth/2;const windowHalfY=window.innerHeight/2;document.addEventListener('mousemove',(e)=>{mouseX=(e.clientX-windowHalfX);mouseY=(e.clientY-windowHalfY);});const clock=new THREE.Clock();function animate(){const time=clock.getElapsedTime();targetX=mouseX*0.0001;targetY=mouseY*0.0001;particles.rotation.y+=0.01*(targetX-particles.rotation.y);particles.rotation.x+=0.01*(targetY-particles.rotation.x);particles.rotation.z+=0.0005;const scale=1+Math.sin(time*0.5)*0.02;particles.scale.set(scale,scale,scale);renderer.render(scene,camera);requestAnimationFrame(animate);}animate();window.addEventListener('resize',()=>{camera.aspect=window.innerWidth/window.innerHeight;camera.updateProjectionMatrix();renderer.setSize(window.innerWidth,window.innerHeight);});}document.addEventListener("DOMContentLoaded",initParticles);
         
         // --- KURSOR ---
-        const cursorDot=document.querySelector('.cursor-dot');const cursorOutline=document.querySelector('.cursor-outline');window.addEventListener('mousemove',(e)=>{const posX=e.clientX;const posY=e.clientY;cursorDot.style.left=`${posX}px`;cursorDot.style.top=`${posY}px`;cursorOutline.animate({left:`${posX}px`,top:`${posY}px`},{duration:500,fill:"forwards"});});const triggers=document.querySelectorAll('.cursor-trigger, a, button, .story-block, .team-card, .value-card');triggers.forEach(trigger=>{trigger.addEventListener('mouseenter',()=>{document.body.classList.add('hovering');});trigger.addEventListener('mouseleave',()=>{document.body.classList.remove('hovering');});});
+        const cursorDot=document.querySelector('.cursor-dot');const cursorOutline=document.querySelector('.cursor-outline');window.addEventListener('mousemove',(e)=>{const posX=e.clientX;const posY=e.clientY;cursorDot.style.left=`${posX}px`;cursorDot.style.top=`${posY}px`;cursorOutline.animate({left:`${posX}px`,top:`${posY}px`},{duration:500,fill:"forwards"});});const triggers=document.querySelectorAll('.cursor-trigger, a, button, .story-block, .team-card, .value-card, .ania-avatar, .ania-bubble, .ania-chat-window');triggers.forEach(trigger=>{trigger.addEventListener('mouseenter',()=>{document.body.classList.add('hovering');});trigger.addEventListener('mouseleave',()=>{document.body.classList.remove('hovering');});});
         
-        // --- FLOATING MENU (MOBILE) ---
-        const fabBtn = document.querySelector('.fab-btn');
-        const fabMenu = document.querySelector('.fab-menu');
-
-        if (fabBtn && fabMenu) {
-            fabBtn.addEventListener('click', () => {
-                fabMenu.classList.toggle('active');
-                fabBtn.classList.toggle('open');
-            });
-
-            // Close menu when clicking outside
-            document.addEventListener('click', (e) => {
-                if (!fabBtn.contains(e.target) && !fabMenu.contains(e.target)) {
-                    fabMenu.classList.remove('active');
-                    fabBtn.classList.remove('open');
-                }
-            });
-
-            // Close menu when clicking a link
-            fabMenu.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', () => {
-                    fabMenu.classList.remove('active');
-                    fabBtn.classList.remove('open');
-                });
-            });
-        }
-
         // --- ZAKŁADKI (TABS) ---
         function openTab(tabId) {
             document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
@@ -824,19 +921,16 @@
             });
         }
 
-        // --- OBSŁUGA FORMULARZA (NOWOŚĆ) ---
+        // --- OBSŁUGA FORMULARZA ---
         const bookingForm = document.getElementById('bookingForm');
         if(bookingForm) {
             bookingForm.addEventListener('submit', function(e) {
-                e.preventDefault(); // Zatrzymaj przeładowanie strony
-                
-                // Pobierz dane
+                e.preventDefault(); 
                 const name = document.getElementById('name').value;
                 const phone = document.getElementById('phone').value;
                 const service = document.getElementById('service').value;
                 const msg = document.getElementById('msg').value;
 
-                // Utwórz link mailto
                 const subject = encodeURIComponent(`Rezerwacja NCNI: ${name}`);
                 const body = encodeURIComponent(
                     `Imię i Nazwisko: ${name}\n` +
@@ -845,13 +939,9 @@
                     `Wiadomość dodatkowa: ${msg}\n\n` +
                     `---\nWyłane ze strony ncni.pl`
                 );
-
-                // Otwórz klienta poczty
                 window.location.href = `mailto:kontakt@ncni.pl?subject=${subject}&body=${body}`;
             });
         }
     </script>
 </body>
-
-    
 </html>
