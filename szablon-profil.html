@@ -1,34 +1,11 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-56VR40VHHV"></script>
- <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-56VR40VHHV');
-      </script>
-
     <meta charset="UTF-8">
- <script async src="https://www.googletagmanager.com/gtag/js?id=G-56VR40VHHV"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-56VR40VHHV');
-    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <title>Kariera i Rekrutacja | Dołącz do NCNI Wrocław</title>
-    <meta name="description" content="Dołącz do zespołu Naukowego Centrum Neuroinnowacji. Szukamy psychologów, terapeutów i pasjonatów neuronauki. Sprawdź kogo szukamy.">
-    
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://ncni.pl/kariera.html">
-    <meta property="og:title" content="Twoja Kariera w NCNI Wrocław">
-    <meta property="og:description" content="Twórz z nami przyszłość terapii. Łączymy naukę, empatię i technologie.">
-    <meta property="og:image" content="https://ncni.pl/logo.png">
-
+    <meta name="description" content="Profil specjalisty NCNI. Dowiedz się więcej o doświadczeniu, metodach pracy i specjalizacjach naszego eksperta.">
     <link rel="icon" href="logo.png" type="image/png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -36,6 +13,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-56VR40VHHV"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-56VR40VHHV');
+    </script>
 
     <style>
         /* CORE STYLES (Spójne z bazą) */
@@ -120,23 +106,17 @@
             position: relative;
             border-radius: 24px;
             overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-            background: white;
-            padding: 40px; /* Dodatkowy padding dla logo */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid var(--border);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
         }
         
         .profile-img {
             width: 100%; height: auto; display: block;
-            /* Usunięty filtr grayscale dla logo */
-            transition: transform 0.6s ease;
-            max-width: 200px; /* Zmniejszone, żeby logo wyglądało estetycznie */
+            filter: grayscale(100%);
+            transition: filter 0.6s ease, transform 0.6s ease;
         }
         .profile-img-container:hover .profile-img {
-            transform: scale(1.05);
+            filter: grayscale(0%);
+            transform: scale(1.03);
         }
 
         .role-badge {
@@ -145,7 +125,7 @@
             margin-bottom: 20px; letter-spacing: 0.05em; text-transform: uppercase;
         }
 
-        .profile-name { font-size: clamp(2rem, 5vw, 3rem); line-height: 1.1; margin-bottom: 16px; color: var(--text-main); }
+        .profile-name { font-size: 3rem; line-height: 1.1; margin-bottom: 16px; color: var(--text-main); }
         .profile-titles { font-size: 1.2rem; color: var(--primary); font-weight: 500; margin-bottom: 24px; display: block; }
         
         .bio-text { font-size: 1.1rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 32px; }
@@ -179,7 +159,7 @@
 
         @media (max-width: 900px) {
             .profile-header { grid-template-columns: 1fr; gap: 32px; text-align: center; }
-            .profile-img-container { max-width: 300px; margin: 0 auto; padding: 20px; }
+            .profile-img-container { max-width: 400px; margin: 0 auto; }
             .tags-container { justify-content: center; }
             .profile-name { font-size: 2.2rem; }
         }
@@ -187,6 +167,31 @@
         /* Footer */
         footer { background: white; border-top: 1px solid var(--border); padding: 60px 0 20px; margin-top: 80px; text-align: center; }
         .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; text-align: left; }
+    </style>
+    
+    <style>
+        .ania-container { position: fixed; bottom: 24px; right: 24px; z-index: 2000; display: flex; flex-direction: column; align-items: flex-end; font-family: 'Inter', sans-serif; }
+        .ania-avatar { width: 65px; height: 65px; border-radius: 50%; border: 3px solid white; box-shadow: 0 4px 20px rgba(15, 118, 110, 0.3); cursor: pointer; position: relative; transition: transform 0.3s; background: #fff; overflow: hidden; }
+        .ania-avatar:hover { transform: scale(1.1); }
+        .ania-avatar img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+        .status-dot { width: 14px; height: 14px; background: #10B981; border: 2px solid white; border-radius: 50%; position: absolute; bottom: 4px; right: 4px; animation: pulse-dot 2s infinite; }
+        .status-dot-small { width: 10px; height: 10px; background: #10B981; border: 1.5px solid white; border-radius: 50%; position: absolute; bottom: 0; right: 0; }
+        @keyframes pulse-dot { 0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); } 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); } }
+        .ania-bubble { background: white; padding: 12px 16px; border-radius: 12px 12px 0 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin-bottom: 12px; font-size: 0.9rem; color: var(--text-main); font-weight: 500; max-width: 260px; position: relative; opacity: 0; transform: translateY(10px); transition: all 0.4s ease; pointer-events: none; }
+        .ania-bubble.visible { opacity: 1; transform: translateY(0); pointer-events: all; }
+        .ania-close-bubble { position: absolute; top: -8px; right: -8px; background: #eee; width: 20px; height: 20px; border-radius: 50%; font-size: 12px; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #666; }
+        .ania-chat-window { position: absolute; bottom: 80px; right: 0; width: 360px; height: 500px; background: white; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.15); display: flex; flex-direction: column; overflow: hidden; opacity: 0; transform: translateY(20px) scale(0.95); pointer-events: none; transition: all 0.3s; border: 1px solid var(--border); }
+        .ania-chat-window.active { opacity: 1; transform: translateY(0) scale(1); pointer-events: all; }
+        .ania-header { background: #F8FAFC; padding: 16px; border-bottom: 1px solid #E2E8F0; display: flex; justify-content: space-between; align-items: center; }
+        .ania-messages { flex: 1; padding: 16px; overflow-y: auto; background: #fff; display: flex; flex-direction: column; gap: 12px; }
+        .msg { padding: 10px 14px; border-radius: 12px; font-size: 0.9rem; line-height: 1.5; max-width: 85%; animation: popIn 0.3s ease; }
+        .msg.bot { background: #F1F5F9; color: var(--text-main); border-bottom-left-radius: 2px; align-self: flex-start; }
+        .msg.user { background: var(--primary); color: white; border-bottom-right-radius: 2px; align-self: flex-end; }
+        .ania-options-area { padding: 12px; background: #F8FAFC; border-top: 1px solid #E2E8F0; display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; }
+        .chat-btn { background: white; border: 1px solid var(--primary); color: var(--primary); padding: 8px 14px; border-radius: 99px; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: 0.2s; }
+        .chat-btn:hover { background: var(--primary); color: white; }
+        @keyframes popIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+        @media (max-width: 480px) { .ania-chat-window { width: 300px; right: -10px; height: 450px; } }
     </style>
 </head>
 <body>
@@ -232,65 +237,55 @@
 
     <div class="container">
         <div class="profile-header">
-            <div class="profile-img-container cursor-trigger">
-                <img src="logo.png" alt="Dołącz do NCNI" class="profile-img">
+            <div class="profile-img-container cursor-trigger" style="background: white; display: flex; align-items: center; justify-content: center;">
+                <img src="logo.png" alt="Dołącz do NCNI" class="profile-img" style="width: 70%; height: auto; object-fit: contain; filter: none;">
             </div>
             
             <div>
-                <span class="role-badge">Rekrutacja / Kariera</span>
+                <span class="role-badge">Nowy Specjalista</span>
                 
-                <h1 class="profile-name">To miejsce czeka<br>na Ciebie.</h1>
+                <h1 class="profile-name">Dołącz do Zespołu</h1>
                 
-                <span class="profile-titles">Poszukujemy Specjalistów & Pasjonatów</span>
+                <span class="profile-titles">Rekrutacja | Kariera</span>
                 
                 <p class="bio-text">
-                    Wierzysz, że skuteczna terapia wymaga połączenia twardej nauki (EBM) z ludzką empatią? Chcesz pracować w miejscu, gdzie technologia (VR, Biofeedback) wspiera proces leczenia, a nie go zastępuje? Jeśli tak – <strong>dołącz do zespołu NCNI Wrocław.</strong>
+                    Szukamy pasjonatów, którzy chcą łączyć psychologię z nowoczesną technologią. Jeśli wierzysz w EBM i empatię – to miejsce dla Ciebie.
                 </p>
 
                 <div class="tags-container">
-                    <span class="tag"><span>🧠</span> Psychologia</span>
-                    <span class="tag"><span>🧩</span> Terapia ASD/ADHD</span>
-                    <span class="tag"><span>💡</span> Neuroinnowacje</span>
-                    <span class="tag"><span>🤝</span> Praca Zespołowa</span>
+                    <span class="tag"><span>🎓</span> Rozwój</span>
+                    <span class="tag"><span>🧠</span> Neurobiologia</span>
+                    <span class="tag"><span>💡</span> Innowacje</span>
                 </div>
 
-                <a href="mailto:rekrutacja@ncni.pl?subject=Aplikacja%20NCNI" class="nav-cta cursor-trigger" style="display: inline-block; padding: 14px 36px; text-decoration: none; border-radius: 99px; font-weight: 700; color: white; background: var(--primary); box-shadow: 0 4px 15px rgba(15, 118, 110, 0.4);">
-                    Wyślij swoje CV
-                </a>
+                <a href="mailto:rekrutacja@ncni.pl" class="nav-cta cursor-trigger" style="display: inline-block; padding: 12px 32px; text-decoration: none; border-radius: 99px; font-weight: 700; color: white; background: var(--primary);">Aplikuj teraz</a>
             </div>
         </div>
 
         <div class="content-block cursor-trigger">
             <h2>Kogo szukamy?</h2>
-            <p style="color: var(--text-muted); margin-bottom: 20px;">
-                Aktualnie rozszerzamy nasz interdyscyplinarny zespół. Szukamy osób otwartych na nową wiedzę, które chcą wyjść poza schemat gabinetu "starej daty".
+            <p style="color: var(--text-muted);">
+                Aktualnie poszukujemy psychologów, psychoterapeutów oraz fizjoterapeutów otwartych na pracę z nowymi technologiami (VR, Biofeedback).
             </p>
-            <ul class="services-list">
-                <li>Psychologów i Psychoterapeutów (różne nurty)</li>
-                <li>Terapeutów Neuroróżnorodności (ADHD, Spektrum Autyzmu)</li>
-                <li>Dietetyków Klinicznych i Psychodietetyków</li>
-                <li>Fizjoterapeutów (praca z ciałem, psychosomatyka)</li>
-            </ul>
         </div>
 
         <div class="content-block cursor-trigger">
             <h2>Co oferujemy?</h2>
             <ul class="services-list">
-                <li><strong>Dostęp do technologii:</strong> Nauczymy Cię pracy z VR i Biofeedbackiem.</li>
-                <li><strong>Superwizja i Mentoring:</strong> Wsparcie dr. hab. Sebastiana Kraszewskiego i zespołu.</li>
-                <li><strong>Elastyczność:</strong> Nowoczesny gabinet we Wrocławiu i system rezerwacji online.</li>
-                <li><strong>Marketing:</strong> Bierzemy na siebie promocję i pozyskiwanie pacjentów.</li>
+                <li>Dostęp do nowoczesnego sprzętu (VR, Biofeedback)</li>
+                <li>Superwizje i wsparcie merytoryczne</li>
+                <li>Elastyczne godziny pracy</li>
+                <li>Pracę w interdyscyplinarnym zespole</li>
             </ul>
         </div>
 
         <div class="content-block cursor-trigger" style="border-left: 4px solid var(--accent);">
-            <h2 style="color: var(--accent);">Jak aplikować?</h2>
-            <p style="color: var(--text-muted); margin-bottom: 16px;">
-                Cenimy konkret i pasję. Wyślij nam swoje CV oraz kilka słów o tym, dlaczego chcesz pracować właśnie w modelu neuroinnowacyjnym.
-            </p>
-            <p style="font-weight: 600; color: var(--text-main);">
-                ✉️ Napisz na: <a href="mailto:kontakt@ncni.pl" style="color: var(--primary); text-decoration: none;">kontakt@ncni.pl</a>
-            </p>
+            <h2 style="color: var(--accent);">Wymagania</h2>
+            <ul class="services-list" style="grid-template-columns: 1fr;">
+                <li>Ukończone studia magisterskie (Psychologia / Fizjoterapia)</li>
+                <li>Chęć rozwoju w nurcie neuronauki</li>
+                <li>Wysoka kultura osobista i empatia</li>
+            </ul>
         </div>
     </div>
 
@@ -343,14 +338,7 @@
         </div>
     </footer>
 
-    <script>
-        function initParticles(){const container=document.getElementById('bg-canvas');if(!container)return;const scene=new THREE.Scene();scene.fog=new THREE.FogExp2(0xF8FAFC,0.002);const camera=new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,1000);camera.position.z=10;const renderer=new THREE.WebGLRenderer({alpha:true,antialias:true});renderer.setSize(window.innerWidth,window.innerHeight);renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));container.appendChild(renderer.domElement);const geometry=new THREE.BufferGeometry();const count=200;const positions=new Float32Array(count*3);const colors=new Float32Array(count*3);for(let i=0;i<count*3;i+=3){positions[i]=(Math.random()-0.5)*25;positions[i+1]=(Math.random()-0.5)*25;positions[i+2]=(Math.random()-0.5)*25;const mix=Math.random();if(mix>0.5){colors[i]=0.06;colors[i+1]=0.46;colors[i+2]=0.43;}else{colors[i]=0.39;colors[i+1]=0.4;colors[i+2]=0.94;}}geometry.setAttribute('position',new THREE.BufferAttribute(positions,3));geometry.setAttribute('color',new THREE.BufferAttribute(colors,3));const material=new THREE.PointsMaterial({size:0.1,vertexColors:true,transparent:true,opacity:0.4});const particles=new THREE.Points(geometry,material);scene.add(particles);let mouseX=0,mouseY=0,targetX=0,targetY=0;const windowHalfX=window.innerWidth/2;const windowHalfY=window.innerHeight/2;document.addEventListener('mousemove',(e)=>{mouseX=(e.clientX-windowHalfX);mouseY=(e.clientY-windowHalfY);});const clock=new THREE.Clock();function animate(){const time=clock.getElapsedTime();targetX=mouseX*0.0001;targetY=mouseY*0.0001;particles.rotation.y+=0.01*(targetX-particles.rotation.y);particles.rotation.x+=0.01*(targetY-particles.rotation.x);particles.rotation.z+=0.0005;const scale=1+Math.sin(time*0.5)*0.02;particles.scale.set(scale,scale,scale);renderer.render(scene,camera);requestAnimationFrame(animate);}animate();window.addEventListener('resize',()=>{camera.aspect=window.innerWidth/window.innerHeight;camera.updateProjectionMatrix();renderer.setSize(window.innerWidth,window.innerHeight);});}document.addEventListener("DOMContentLoaded",initParticles);
-        
-        const cursorDot=document.querySelector('.cursor-dot');const cursorOutline=document.querySelector('.cursor-outline');window.addEventListener('mousemove',(e)=>{const posX=e.clientX;const posY=e.clientY;cursorDot.style.left=`${posX}px`;cursorDot.style.top=`${posY}px`;cursorOutline.animate({left:`${posX}px`,top:`${posY}px`},{duration:500,fill:"forwards"});});const triggers=document.querySelectorAll('.cursor-trigger, a, button, .content-block, .profile-img-container');triggers.forEach(trigger=>{trigger.addEventListener('mouseenter',()=>{document.body.classList.add('hovering');});trigger.addEventListener('mouseleave',()=>{document.body.classList.remove('hovering');});});
-        
-        const toggle=document.querySelector('.mobile-toggle');const menu=document.querySelector('.mobile-menu');if(toggle&&menu){toggle.addEventListener('click',()=>{menu.classList.toggle('active');});}
-    </script>
- <div id="ania-widget" class="ania-container">
+    <div id="ania-widget" class="ania-container">
         
         <div class="ania-bubble" id="ania-greeting">
             Dzień dobry! ☀️ Jestem Wirtualną Asystentką NCNI. Kliknij we mnie, a odpowiem na Twoje pytania.
@@ -382,41 +370,67 @@
         </div>
     </div>
 
-    <style>
-        .ania-container { position: fixed; bottom: 24px; right: 24px; z-index: 2000; display: flex; flex-direction: column; align-items: flex-end; font-family: 'Inter', sans-serif; }
-        .ania-avatar { width: 65px; height: 65px; border-radius: 50%; border: 3px solid white; box-shadow: 0 4px 20px rgba(15, 118, 110, 0.3); cursor: pointer; position: relative; transition: transform 0.3s; background: #fff; overflow: hidden; }
-        .ania-avatar:hover { transform: scale(1.1); }
-        .ania-avatar img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
-        .status-dot { width: 14px; height: 14px; background: #10B981; border: 2px solid white; border-radius: 50%; position: absolute; bottom: 4px; right: 4px; animation: pulse-dot 2s infinite; }
-        .status-dot-small { width: 10px; height: 10px; background: #10B981; border: 1.5px solid white; border-radius: 50%; position: absolute; bottom: 0; right: 0; }
-        @keyframes pulse-dot { 0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); } 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); } }
-        .ania-bubble { background: white; padding: 12px 16px; border-radius: 12px 12px 0 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin-bottom: 12px; font-size: 0.9rem; color: var(--text-main); font-weight: 500; max-width: 260px; position: relative; opacity: 0; transform: translateY(10px); transition: all 0.4s ease; pointer-events: none; }
-        .ania-bubble.visible { opacity: 1; transform: translateY(0); pointer-events: all; }
-        .ania-close-bubble { position: absolute; top: -8px; right: -8px; background: #eee; width: 20px; height: 20px; border-radius: 50%; font-size: 12px; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #666; }
-        .ania-chat-window { position: absolute; bottom: 80px; right: 0; width: 360px; height: 500px; background: white; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.15); display: flex; flex-direction: column; overflow: hidden; opacity: 0; transform: translateY(20px) scale(0.95); pointer-events: none; transition: all 0.3s; border: 1px solid var(--border); }
-        .ania-chat-window.active { opacity: 1; transform: translateY(0) scale(1); pointer-events: all; }
-        .ania-header { background: #F8FAFC; padding: 16px; border-bottom: 1px solid #E2E8F0; display: flex; justify-content: space-between; align-items: center; }
-        .ania-messages { flex: 1; padding: 16px; overflow-y: auto; background: #fff; display: flex; flex-direction: column; gap: 12px; }
-        .msg { padding: 10px 14px; border-radius: 12px; font-size: 0.9rem; line-height: 1.5; max-width: 85%; animation: popIn 0.3s ease; }
-        .msg.bot { background: #F1F5F9; color: var(--text-main); border-bottom-left-radius: 2px; align-self: flex-start; }
-        .msg.user { background: var(--primary); color: white; border-bottom-right-radius: 2px; align-self: flex-end; }
-        .ania-options-area { padding: 12px; background: #F8FAFC; border-top: 1px solid #E2E8F0; display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; }
-        .chat-btn { background: white; border: 1px solid var(--primary); color: var(--primary); padding: 8px 14px; border-radius: 99px; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: 0.2s; }
-        .chat-btn:hover { background: var(--primary); color: white; }
-        @keyframes popIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
-        @media (max-width: 480px) { .ania-chat-window { width: 300px; right: -10px; height: 450px; } }
-    </style>
-
     <script>
+        // --- LOGIKA ANI (CHATBOT) ---
         const chatKnowledge = {
-            'start': { text: "Cześć! 👋 W czym mogę Ci pomóc?", options: [{ label: "🧠 ADHD / ADD", next: 'adhd_info' }, { label: "🧩 Autyzm (ASD)", next: 'asd_info' }, { label: "💰 Cennik / Oferta", next: 'oferta' }, { label: "📅 Umów wizytę", action: 'booking' }] },
-            'adhd_info': { text: "Oferujemy pełną diagnozę (DIVA-5, MOXO) oraz treningi VR i Biofeedback.", options: [{ label: "Jak wygląda diagnoza?", next: 'adhd_diagnoza' }, { label: "Na czym polega terapia?", next: 'adhd_terapia' }, { label: "Wróć", next: 'start' }] },
-            'adhd_diagnoza': { text: "1. Wywiad kliniczny (DIVA-5).\n2. Test MOXO.\n3. Raport końcowy.", options: [{ label: "Chcę się zapisać", action: 'booking' }, { label: "Co to jest MOXO?", next: 'moxo' }] },
-            'moxo': { text: "MOXO to komputerowy test badający uwagę, czas reakcji i impulsywność.", options: [{ label: "Rozumiem", next: 'start' }, { label: "Umów badanie", action: 'booking' }] },
-            'adhd_terapia': { text: "Wykorzystujemy VR (Wirtualną Rzeczywistość) i Biofeedback HRV do treningu skupienia.", options: [{ label: "Zapisz mnie", action: 'booking' }, { label: "Wróć", next: 'start' }] },
-            'asd_info': { text: "Jesteśmy miejscem przyjaznym osobom w spektrum (Neurodiversity Affirming).", options: [{ label: "Umów konsultację", action: 'booking' }, { label: "Wróć", next: 'start' }] },
-            'oferta': { text: "Oferujemy diagnozę, psychoterapię, VR, Biofeedback i dietetykę.", options: [{ label: "Adres?", next: 'adres' }, { label: "Umów wizytę", action: 'booking' }] },
-            'adres': { text: "Wrocław, ul. Stefana Żeromskiego 60/5a.", options: [{ label: "Dzięki!", next: 'start' }] }
+            'start': {
+                text: "Cześć! 👋 W czym mogę Ci pomóc? Możesz pytać o nasze specjalizacje lub umówić wizytę.",
+                options: [
+                    { label: "🧠 ADHD / ADD", next: 'adhd_info' },
+                    { label: "🧩 Autyzm (ASD)", next: 'asd_info' },
+                    { label: "💰 Cennik / Oferta", next: 'oferta' },
+                    { label: "📅 Umów wizytę", action: 'booking' }
+                ]
+            },
+            'adhd_info': {
+                text: "W NCNI podchodzimy do ADHD holistycznie. Nie leczymy 'choroby', ale uczymy obsługi Twojego układu nerwowego. Oferujemy pełną diagnozę (DIVA-5, MOXO) oraz treningi (VR, Biofeedback). Co Cię interesuje?",
+                options: [
+                    { label: "Jak wygląda diagnoza?", next: 'adhd_diagnoza' },
+                    { label: "Na czym polega terapia?", next: 'adhd_terapia' },
+                    { label: "Wróć do początku", next: 'start' }
+                ]
+            },
+            'adhd_diagnoza': {
+                text: "Nasz proces diagnostyczny jest zgodny ze światowymi standardami. Obejmuje:\n1. Wywiad kliniczny (DIVA-5).\n2. Komputerowy test uwagi MOXO.\n3. Raport końcowy z zaleceniami.",
+                options: [
+                    { label: "Chcę się zapisać", action: 'booking' },
+                    { label: "Co to jest test MOXO?", next: 'moxo' }
+                ]
+            },
+            'moxo': {
+                text: "Test MOXO to obiektywne badanie komputerowe. Sprawdza Twój poziom uwagi, czasu reakcji i impulsywności. Trwa tylko kilkanaście minut i daje nam twarde dane o działaniu Twojego mózgu.",
+                options: [
+                    { label: "Rozumiem, dzięki!", next: 'start' },
+                    { label: "Umów badanie", action: 'booking' }
+                ]
+            },
+            'adhd_terapia': {
+                text: "Stawiamy na nowoczesne metody! 🥽 Wykorzystujemy Wirtualną Rzeczywistość (VR) do treningu skupienia w trudnych warunkach oraz Biofeedback HRV, by nauczyć Cię opanowania stresu oddechem.",
+                options: [
+                    { label: "Brzmi super, zapisz mnie", action: 'booking' },
+                    { label: "Inne pytania", next: 'start' }
+                ]
+            },
+            'asd_info': {
+                text: "Jesteśmy miejscem przyjaznym osobom w spektrum (Neurodiversity Affirming). Pomagamy w treningu kompetencji społecznych i regulacji napięcia, szanując Twoją wyjątkowość.",
+                options: [
+                    { label: "Umów konsultację", action: 'booking' },
+                    { label: "Wróć do menu", next: 'start' }
+                ]
+            },
+            'oferta': {
+                text: "Nasza oferta obejmuje:\n- Diagnozę ADHD/ASD\n- Terapię Psychologiczną\n- Treningi VR i Biofeedback\n- Dietetykę Kliniczną\nSzczegóły ustalamy podczas pierwszej wizyty.",
+                options: [
+                    { label: "Jak dojechać?", next: 'adres' },
+                    { label: "Umów wizytę", action: 'booking' }
+                ]
+            },
+            'adres': {
+                text: "Znajdziesz nas we Wrocławiu przy ul. Stefana Żeromskiego 60/5a. Zapraszamy!",
+                options: [
+                    { label: "Okej, dzięki!", next: 'start' }
+                ]
+            }
         };
 
         const chatWindow = document.getElementById('ania-window');
@@ -428,44 +442,94 @@
         function toggleAnia() {
             isChatOpen = !isChatOpen;
             chatWindow.classList.toggle('active', isChatOpen);
-            bubble.classList.remove('visible');
-            if(isChatOpen && messagesArea.children.length === 0) loadScenario('start');
+            bubble.classList.remove('visible'); // Ukryj dymek jak otwierasz
+            
+            // Jeśli czat jest pusty, zacznij rozmowę
+            if(isChatOpen && messagesArea.children.length === 0) {
+                loadScenario('start');
+            }
         }
-        function closeGreeting(e) { e.stopPropagation(); bubble.classList.remove('visible'); }
-        setTimeout(() => { if(!isChatOpen) bubble.classList.add('visible'); }, 3000);
+
+        function closeGreeting(e) {
+            e.stopPropagation();
+            bubble.classList.remove('visible');
+        }
+
+        setTimeout(() => {
+            if(!isChatOpen) bubble.classList.add('visible');
+        }, 3000);
 
         function addMessage(text, sender) {
-            const div = document.createElement('div'); div.classList.add('msg', sender);
+            const div = document.createElement('div');
+            div.classList.add('msg', sender);
             div.innerHTML = text.replace(/\n/g, '<br>');
-            messagesArea.appendChild(div); messagesArea.scrollTop = messagesArea.scrollHeight;
+            messagesArea.appendChild(div);
+            messagesArea.scrollTop = messagesArea.scrollHeight;
         }
+
         function loadScenario(key) {
-            const data = chatKnowledge[key]; if(!data) return;
+            const data = chatKnowledge[key];
+            if(!data) return;
+
             showTypingIndicator();
-            setTimeout(() => { removeTypingIndicator(); addMessage(data.text, 'bot'); renderOptions(data.options); }, 600);
+            setTimeout(() => {
+                removeTypingIndicator();
+                addMessage(data.text, 'bot');
+                renderOptions(data.options);
+            }, 600);
         }
+
         function renderOptions(options) {
             optionsArea.innerHTML = '';
             if(!options) return;
+
             options.forEach(opt => {
-                const btn = document.createElement('button'); btn.classList.add('chat-btn'); btn.innerText = opt.label;
-                btn.onclick = () => handleUserChoice(opt); optionsArea.appendChild(btn);
+                const btn = document.createElement('button');
+                btn.classList.add('chat-btn');
+                btn.innerText = opt.label;
+                btn.onclick = () => handleUserChoice(opt);
+                optionsArea.appendChild(btn);
             });
         }
+
         function handleUserChoice(opt) {
-            addMessage(opt.label, 'user'); optionsArea.innerHTML = '';
+            addMessage(opt.label, 'user');
+            optionsArea.innerHTML = '';
+
             if (opt.action === 'booking') {
+                // Przekieruj do sekcji rezerwacji i zamknij czat na mobile
                 window.location.href = 'index.html#rezerwacja';
                 if(window.innerWidth < 480) toggleAnia();
-                setTimeout(() => { addMessage("Przeniosłam Cię do formularza. Powodzenia! 😊", 'bot'); }, 500);
-            } else if (opt.next) { loadScenario(opt.next); }
+                
+                setTimeout(() => {
+                    addMessage("Przeniosłam Cię do formularza. Powodzenia! 😊", 'bot');
+                }, 500);
+            } else if (opt.next) {
+                loadScenario(opt.next);
+            }
         }
+
         function showTypingIndicator() {
-            const loader = document.createElement('div'); loader.id = 'typing-loader'; loader.className = 'msg bot';
-            loader.style.color = '#aaa'; loader.innerText = '...';
-            messagesArea.appendChild(loader); messagesArea.scrollTop = messagesArea.scrollHeight;
+            const loader = document.createElement('div');
+            loader.id = 'typing-loader';
+            loader.className = 'msg bot';
+            loader.style.color = '#aaa';
+            loader.innerText = '...';
+            messagesArea.appendChild(loader);
+            messagesArea.scrollTop = messagesArea.scrollHeight;
         }
-        function removeTypingIndicator() { const loader = document.getElementById('typing-loader'); if(loader) loader.remove(); }
+        function removeTypingIndicator() {
+            const loader = document.getElementById('typing-loader');
+            if(loader) loader.remove();
+        }
+    </script>
+
+    <script>
+        function initParticles(){const container=document.getElementById('bg-canvas');if(!container)return;const scene=new THREE.Scene();scene.fog=new THREE.FogExp2(0xF8FAFC,0.002);const camera=new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,1000);camera.position.z=10;const renderer=new THREE.WebGLRenderer({alpha:true,antialias:true});renderer.setSize(window.innerWidth,window.innerHeight);renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));container.appendChild(renderer.domElement);const geometry=new THREE.BufferGeometry();const count=200;const positions=new Float32Array(count*3);const colors=new Float32Array(count*3);for(let i=0;i<count*3;i+=3){positions[i]=(Math.random()-0.5)*25;positions[i+1]=(Math.random()-0.5)*25;positions[i+2]=(Math.random()-0.5)*25;const mix=Math.random();if(mix>0.5){colors[i]=0.06;colors[i+1]=0.46;colors[i+2]=0.43;}else{colors[i]=0.39;colors[i+1]=0.4;colors[i+2]=0.94;}}geometry.setAttribute('position',new THREE.BufferAttribute(positions,3));geometry.setAttribute('color',new THREE.BufferAttribute(colors,3));const material=new THREE.PointsMaterial({size:0.1,vertexColors:true,transparent:true,opacity:0.4});const particles=new THREE.Points(geometry,material);scene.add(particles);let mouseX=0,mouseY=0,targetX=0,targetY=0;const windowHalfX=window.innerWidth/2;const windowHalfY=window.innerHeight/2;document.addEventListener('mousemove',(e)=>{mouseX=(e.clientX-windowHalfX);mouseY=(e.clientY-windowHalfY);});const clock=new THREE.Clock();function animate(){const time=clock.getElapsedTime();targetX=mouseX*0.0001;targetY=mouseY*0.0001;particles.rotation.y+=0.01*(targetX-particles.rotation.y);particles.rotation.x+=0.01*(targetY-particles.rotation.x);particles.rotation.z+=0.0005;const scale=1+Math.sin(time*0.5)*0.02;particles.scale.set(scale,scale,scale);renderer.render(scene,camera);requestAnimationFrame(animate);}animate();window.addEventListener('resize',()=>{camera.aspect=window.innerWidth/window.innerHeight;camera.updateProjectionMatrix();renderer.setSize(window.innerWidth,window.innerHeight);});}document.addEventListener("DOMContentLoaded",initParticles);
+        
+        const cursorDot=document.querySelector('.cursor-dot');const cursorOutline=document.querySelector('.cursor-outline');window.addEventListener('mousemove',(e)=>{const posX=e.clientX;const posY=e.clientY;cursorDot.style.left=`${posX}px`;cursorDot.style.top=`${posY}px`;cursorOutline.animate({left:`${posX}px`,top:`${posY}px`},{duration:500,fill:"forwards"});});const triggers=document.querySelectorAll('.cursor-trigger, a, button, .content-block, .profile-img-container, .ania-avatar, .ania-bubble, .ania-chat-window');triggers.forEach(trigger=>{trigger.addEventListener('mouseenter',()=>{document.body.classList.add('hovering');});trigger.addEventListener('mouseleave',()=>{document.body.classList.remove('hovering');});});
+        
+        const toggle=document.querySelector('.mobile-toggle');const menu=document.querySelector('.mobile-menu');if(toggle&&menu){toggle.addEventListener('click',()=>{menu.classList.toggle('active');});}
     </script>
 </body>
 </html>
