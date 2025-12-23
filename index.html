@@ -148,6 +148,9 @@
         }
         .logo img { height: 40px; width: auto; border-radius: 8px; }
 
+        /* Text switcher classes */
+        .mobile-text { display: none; }
+
         /* Navigation Links (Desktop) */
         .nav-links { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
         .nav-item {
@@ -161,15 +164,31 @@
             box-shadow: 0 4px 12px rgba(15, 118, 110, 0.25); margin-left: 8px;
         }
         
-        /* Mobile Header Clean Up */
+        /* --- MOBILE MENU (Hamburger) --- */
+        .mobile-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; position: absolute; right: 0; top: 50%; transform: translateY(-50%); }
+        .mobile-toggle span { display: block; width: 24px; height: 2px; background: var(--text-main); margin: 5px 0; transition: 0.3s; }
+        .mobile-menu { position: fixed; top: 80px; left: 0; width: 100%; background: white; padding: 24px; border-bottom: 1px solid var(--border); transform: translateY(-150%); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); z-index: 999; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .mobile-menu.active { transform: translateY(0); }
+        .mobile-link { display: block; padding: 14px 0; font-size: 1.1rem; font-weight: 500; color: var(--text-main); text-decoration: none; border-bottom: 1px solid var(--bg-body); }
+
         @media (max-width: 900px) {
             header { padding: 10px 0; }
             .nav-wrapper { flex-direction: row; height: 50px; justify-content: center; padding: 0; }
-            .brand-bar { width: auto; }
+            
+            /* ZMIANA: Szerokość 100% aby hamburger był przy krawędzi */
+            .brand-bar { width: 100%; } 
+            
             .nav-links { display: none; } 
-            .logo { font-size: 1.1rem; }
+            
+            /* Pokaż hamburgera na mobile */
+            .mobile-toggle { display: block; }
+            
+            .logo { font-size: 1.3rem; }
             .logo img { height: 32px; }
-            .logo span { display: inline-block; max-width: 200px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+            
+            /* ZMIANA: Skrócona nazwa na mobile */
+            .desktop-text { display: none; }
+            .mobile-text { display: inline; }
         }
 
         /* --- HERO --- */
@@ -347,8 +366,13 @@
             <div class="brand-bar">
                 <a href="#" class="logo cursor-trigger">
                     <img src="logo.png" alt="NCNI">
-                    <span>Naukowe Centrum Neuroinnowacji</span>
+                    <span class="desktop-text">Naukowe Centrum Neuroinnowacji</span>
+                    <span class="mobile-text">NCNI</span>
                 </a>
+                
+                <button class="mobile-toggle cursor-trigger" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
             </div>
 
             <nav class="nav-links">
@@ -365,6 +389,16 @@
             </nav>
         </div>
     </header>
+
+    <div class="mobile-menu">
+        <a href="o-nas.html" class="mobile-link">O nas</a>
+        <a href="oferta.html" class="mobile-link">Oferta</a>
+        <a href="neuroroznorodnosc.html" class="mobile-link">Neuroróżnorodność</a>
+        <a href="psychologia.html" class="mobile-link">Psychologia</a>
+        <a href="technologie.html" class="mobile-link">Technologie</a>
+        <a href="tel:+48600608333" class="mobile-link" style="color: var(--primary);">📞 Zadzwoń: 600 608 333</a>
+        <a href="#rezerwacja" class="mobile-link" style="color: var(--primary); font-weight: 700;">Umów wizytę</a>
+    </div>
 
     <section class="hero">
         <div class="container">
@@ -872,6 +906,20 @@
                     `---\nWyłane ze strony ncni.pl`
                 );
                 window.location.href = `mailto:kontakt@ncni.pl?subject=${subject}&body=${body}`;
+            });
+        }
+
+        // --- OBSŁUGA MENU MOBILNEGO (NOWE) ---
+        const toggle = document.querySelector('.mobile-toggle');
+        const menu = document.querySelector('.mobile-menu');
+        if(toggle && menu) {
+            toggle.addEventListener('click', () => {
+                menu.classList.toggle('active');
+            });
+            menu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    menu.classList.remove('active');
+                });
             });
         }
     </script>
