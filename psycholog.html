@@ -4,22 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- SEO & AI Optimization -->
     <title>Psychoterapia i Diagnoza | Psycholog Wrocław | NCNI</title>
     <meta name="description" content="Zespół psychologów NCNI. Leczymy: depresję, nerwice, traumę, ADHD, zaburzenia lękowe. Terapia par, dzieci i młodzieży. Konsultacje online.">
     <meta name="keywords" content="Psychoterapia Wrocław, Terapia par, Leczenie depresji, Nerwica natręctw, Fobia społeczna, Psychotraumatologia, Psycholog dziecięcy, NCNI">
     <link rel="canonical" href="https://ncni.pl/psycholog.html">
     <link rel="icon" href="logo.png" type="image/png">
 
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- Libraries (Three.js for particles) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
-    <!-- Schema.org for Medical Services -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -335,7 +331,6 @@
             </ul>
         </div>
 
-        <!-- Rozwijane szczegóły (Dla chętnych) -->
         <div style="max-width: 800px; margin: 0 auto; margin-bottom: 60px;">
             <details class="cursor-trigger">
                 <summary>Więcej o metodach pracy</summary>
@@ -348,7 +343,6 @@
             </details>
         </div>
 
-        <!-- NOWA SEKCJA: GALERIA / PRZESTRZEŃ -->
         <section class="container" style="margin-bottom: 80px;">
             <div class="content-block glass" style="border: none; background: transparent; padding: 0; box-shadow: none;">
                 <h2 style="text-align: center; border: none; margin-bottom: 40px; color: var(--text-main);">Przestrzeń Terapeutyczna</h2>
@@ -357,21 +351,18 @@
                 </p>
                 <div class="gallery-grid">
                     <div class="gallery-item cursor-trigger">
-                        <!-- Placeholder for Gabinet -->
                         <img src="gabinet.jpg" alt="Gabinet Psychologiczny" onerror="this.src='https://placehold.co/600x400/E2E8F0/1E293B?text=Gabinet'">
                         <div class="gallery-overlay">
                             <h3>Gabinet</h3>
                         </div>
                     </div>
                     <div class="gallery-item cursor-trigger">
-                        <!-- Placeholder for Strefa -->
                         <img src="strefa.jpg" alt="Strefa Relaksu" onerror="this.src='https://placehold.co/600x400/E2E8F0/1E293B?text=Strefa+Relaksu'">
                         <div class="gallery-overlay">
                             <h3>Strefa Relaksu</h3>
                         </div>
                     </div>
                     <div class="gallery-item cursor-trigger">
-                        <!-- Placeholder for Klinika -->
                         <img src="klinika.jpg" alt="Klinika NCNI" onerror="this.src='https://placehold.co/600x400/E2E8F0/1E293B?text=Klinika'">
                         <div class="gallery-overlay">
                             <h3>Klinika</h3>
@@ -432,13 +423,24 @@
         </div>
     </footer>
 
-    <!-- Scripts -->
     <script>
+        // --- PARTICLES (TŁO) ---
         function initParticles(){const container=document.getElementById('bg-canvas');if(!container)return;const scene=new THREE.Scene();scene.fog=new THREE.FogExp2(0xF8FAFC,0.002);const camera=new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,1000);camera.position.z=10;const renderer=new THREE.WebGLRenderer({alpha:true,antialias:true});renderer.setSize(window.innerWidth,window.innerHeight);renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));container.appendChild(renderer.domElement);const geometry=new THREE.BufferGeometry();const count=200;const positions=new Float32Array(count*3);const colors=new Float32Array(count*3);for(let i=0;i<count*3;i+=3){positions[i]=(Math.random()-0.5)*25;positions[i+1]=(Math.random()-0.5)*25;positions[i+2]=(Math.random()-0.5)*25;const mix=Math.random();if(mix>0.5){colors[i]=0.06;colors[i+1]=0.46;colors[i+2]=0.43;}else{colors[i]=0.39;colors[i+1]=0.4;colors[i+2]=0.94;}}geometry.setAttribute('position',new THREE.BufferAttribute(positions,3));geometry.setAttribute('color',new THREE.BufferAttribute(colors,3));const material=new THREE.PointsMaterial({size:0.1,vertexColors:true,transparent:true,opacity:0.4});const particles=new THREE.Points(geometry,material);scene.add(particles);let mouseX=0,mouseY=0,targetX=0,targetY=0;const windowHalfX=window.innerWidth/2;const windowHalfY=window.innerHeight/2;document.addEventListener('mousemove',(e)=>{mouseX=(e.clientX-windowHalfX);mouseY=(e.clientY-windowHalfY);});const clock=new THREE.Clock();function animate(){const time=clock.getElapsedTime();targetX=mouseX*0.0001;targetY=mouseY*0.0001;particles.rotation.y+=0.01*(targetX-particles.rotation.y);particles.rotation.x+=0.01*(targetY-particles.rotation.x);particles.rotation.z+=0.0005;const scale=1+Math.sin(time*0.5)*0.02;particles.scale.set(scale,scale,scale);renderer.render(scene,camera);requestAnimationFrame(animate);}animate();window.addEventListener('resize',()=>{camera.aspect=window.innerWidth/window.innerHeight;camera.updateProjectionMatrix();renderer.setSize(window.innerWidth,window.innerHeight);});}document.addEventListener("DOMContentLoaded",initParticles);
         
+        // --- KURSOR ---
         const cursorDot=document.querySelector('.cursor-dot');const cursorOutline=document.querySelector('.cursor-outline');window.addEventListener('mousemove',(e)=>{const posX=e.clientX;const posY=e.clientY;cursorDot.style.left=`${posX}px`;cursorDot.style.top=`${posY}px`;cursorOutline.animate({left:`${posX}px`,top:`${posY}px`},{duration:500,fill:"forwards"});});const triggers=document.querySelectorAll('.cursor-trigger, a, button, .content-block, .profile-img-container, .gallery-item');triggers.forEach(trigger=>{trigger.addEventListener('mouseenter',()=>{document.body.classList.add('hovering');});trigger.addEventListener('mouseleave',()=>{document.body.classList.remove('hovering');});});
         
-        const toggle=document.querySelector('.mobile-toggle');const menu=document.querySelector('.mobile-menu');if(toggle&&menu){toggle.addEventListener('click',()=>{menu.classList.toggle('active');});}
+        // --- MOBILE MENU ---
+        const toggle = document.querySelector('.mobile-toggle');
+        const menu = document.querySelector('.mobile-menu');
+        if (toggle && menu) {
+            toggle.addEventListener('click', () => {
+                menu.classList.toggle('active');
+            });
+            menu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => menu.classList.remove('active'));
+            });
+        }
     </script>
 </body>
 </html>
