@@ -26,7 +26,6 @@
 
     <!-- Libraries (Three.js for particles) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<!-- GA4 --><script async src="https://www.googletagmanager.com/gtag/js?id=G-56VR40VHHV"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-56VR40VHHV');</script>
 
     <!-- Schema.org for Person -->
     <script type="application/ld+json">
@@ -64,9 +63,9 @@
     <style>
         /* CORE STYLES (Spójne z resztą) */
         :root {
-            --bg-body: #F8FAFC;       
+            --bg-body: #F8FAFC;        
             --bg-surface: rgba(255, 255, 255, 0.85);
-            --primary: #0F766E;       
+            --primary: #0F766E;        
             --primary-dark: #0D5E57;
             --primary-light: #CCFBF1;
             --accent: #6366F1;        
@@ -78,20 +77,20 @@
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Inter', sans-serif; background-color: var(--bg-body); color: var(--text-main); line-height: 1.6; overflow-x: hidden; }
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: var(--bg-body); 
+            color: var(--text-main); 
+            line-height: 1.6; 
+            overflow-x: hidden; 
+            cursor: auto; /* Standardowy kursor */
+        }
         h1, h2, h3 { font-family: 'Lexend', sans-serif; }
         
         #bg-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; z-index: -1; opacity: 0.6; pointer-events: none; }
         .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
         .glass { background: var(--bg-surface); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.6); box-shadow: 0 4px 20px rgba(0,0,0,0.03); }
         
-        /* Cursor */
-        @media (min-width: 901px) { body, a, button { cursor: none !important; } }
-        @media (max-width: 900px) { .cursor-dot, .cursor-outline { display: none !important; } body { cursor: auto; } }
-        .cursor-dot { width: 8px; height: 8px; background: var(--primary); position: fixed; border-radius: 50%; z-index: 9999; pointer-events: none; }
-        .cursor-outline { width: 40px; height: 40px; border: 1px solid rgba(15,118,110,0.5); position: fixed; border-radius: 50%; z-index: 9998; pointer-events: none; transition: width 0.2s, height 0.2s; }
-        body.hovering .cursor-outline { width: 70px; height: 70px; background: rgba(15,118,110,0.05); border-width: 2px; }
-
         /* Header */
         header { position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid var(--border); padding: 12px 0; }
         .nav-wrapper { display: flex; flex-direction: column; align-items: center; gap: 16px; }
@@ -198,18 +197,18 @@
 <body>
 
     <div id="bg-canvas"></div>
-    <div class="cursor-dot"></div>
-    <div class="cursor-outline"></div>
+    
+    <!-- Usunięto niestandardowy kursor (div class="cursor-dot" i "cursor-outline") -->
 
     <header class="glass">
         <div class="container nav-wrapper">
             <div class="brand-bar">
-                <a href="o-nas.html" class="nav-link-back cursor-trigger">← Zespół</a>
-                <a href="index.html" class="logo cursor-trigger">
+                <a href="o-nas.html" class="nav-link-back">← Zespół</a>
+                <a href="index.html" class="logo">
                     <img src="logo.png" alt="NCNI">
                     <span>NCNI Wrocław</span>
                 </a>
-                <button class="mobile-toggle cursor-trigger" aria-label="Menu">
+                <button class="mobile-toggle" aria-label="Menu">
                     <span></span><span></span><span></span>
                 </button>
             </div>
@@ -224,7 +223,7 @@
 
     <div class="container">
         <div class="profile-header">
-            <div class="profile-img-container cursor-trigger">
+            <div class="profile-img-container">
                 <!-- Zdjęcie Sebastiana: B&W domyślnie, Kolor po najechaniu -->
                 <img src="sk.jpg" alt="Dr hab. inż. Sebastian Kraszewski" class="profile-img" onerror="this.src='https://ui-avatars.com/api/?name=Sebastian+Kraszewski&background=6366F1&color=fff&size=400'">
             </div>
@@ -248,11 +247,11 @@
                     <span class="tag"><span>❤️‍🩹</span> Traumatologia (Tech)</span>
                 </div>
 
-                <a href="index.html#rezerwacja" class="nav-cta cursor-trigger" style="display: inline-block; padding: 12px 32px; text-decoration: none; border-radius: 99px; font-weight: 700; color: white; background: var(--primary);">Umów konsultację ekspercką</a>
+                <a href="index.html#rezerwacja" class="nav-cta" style="display: inline-block; padding: 12px 32px; text-decoration: none; border-radius: 99px; font-weight: 700; color: white; background: var(--primary);">Umów konsultację ekspercką</a>
             </div>
         </div>
 
-        <div class="content-block cursor-trigger">
+        <div class="content-block">
             <h2>Specjalizacje w NCNI</h2>
             <ul>
                 <li>Projektowanie i wdrażanie ścieżek neuroterapeutycznych opartych na VR.</li>
@@ -264,26 +263,38 @@
             </ul>
         </div>
 
-        <div class="achievements-block content-block cursor-trigger">
+        <div class="achievements-block content-block">
             <h2>Osiągnięcia i Wyróżnienia</h2>
             <ul>
                 <li>
-                    <strong>Europejskie Forum Inteligentnego Rozwoju:</strong> 
-                    <a href="https://irforum.pl/speaker/dr-hab-inz-sebastian-kraszewski-prof-pwr/" target="_blank">Dr hab. inż. Sebastian Kraszewski, prof. PWr - Prelegent i Ekspert</a>.
-                    Wyróżnienie za wkład w rozwój innowacyjnych technologii medycznych i nowelizację ustawy o wyrobach medycznych.
+                    <strong>2024:</strong> Wyróżnienie dla <strong>TOP 1% naukowców Politechniki Wrocławskiej</strong> – dwuletnie członkostwo w elitarnej <em>Academia Professorum Iuniorum</em>.
                 </li>
                 <li>
-                    <strong>Gazeta Wrocławska - Osobowość Roku:</strong> 
-                    Nominacja w kategorii "Nauka" za działalność na rzecz popularyzacji neurobiologii.
+                    <strong>2023:</strong> Laureat tytułu <strong>"Naukowiec Przyszłości 2023"</strong> podczas <em>Europejskiego Forum Inteligentnego Rozwoju</em>. Prof. Sebastian Kraszewski (WUST, D.Sc. Ph.D. Med.Res.Eng.) został wyróżniony za wykorzystanie metod sztucznej inteligencji w podnoszeniu jakości usług medycznych.
                 </li>
                 <li>
-                    <strong>Politechnika Wrocławska:</strong> 
-                    <a href="https://wppt.pwr.edu.pl/pracownicy/sebastian-kraszewski" target="_blank">Profil Naukowy na Wydziale Podstawowych Problemów Techniki</a>. 
-                    Autor licznych publikacji z zakresu biofizyki i inżynierii biomedycznej.
+                    <strong>2020:</strong> Nominacja do Jubileuszowej Nagrody <strong>"Zasłużony dla Inteligentnego Rozwoju"</strong> za aplikację metod AI w projektowaniu nowych leków (Centrum Inteligentnego Rozwoju).
                 </li>
                 <li>
-                    <strong>Działalność Naukowa (ResearchGate):</strong> 
-                    <a href="https://www.researchgate.net/profile/Sebastian-Kraszewski" target="_blank">Profil badawczy i publikacje</a>.
+                    <strong>2019:</strong> Laureat <strong>Polskiej Nagrody Inteligentnego Rozwoju</strong> (kategoria: Naukowiec Przyszłości) za projekt INNOSEPT. Wyróżnienie wręczono podczas <em>Europejskiego Forum Inteligentnego Rozwoju - Kongres Projektów Przyszłości w Uniejowie</em>.
+                </li>
+                <li>
+                    <strong>2019:</strong> Członek Komisji Ekspertów <strong>Narodowego Centrum Nauki (NCN)</strong> w panelu Life Sciences (ocena wniosków PRELUDIUM, SONATA, MINIATURA).
+                </li>
+                <li>
+                    <strong>2017:</strong> I miejsce w konkursie <strong>"Pokolenie W"</strong> (kategoria Nauka) za projekty zmieniające Wrocław (projekt INNOSEPT). <a href="https://www.youtube.com/results?search_query=Sebastian+Kraszewski+Pokolenie+W" target="_blank" rel="noopener">(Zobacz wystąpienie na YouTube)</a>
+                </li>
+                <li>
+                    <strong>2015-2018:</strong> Stypendium <strong>Ministra Nauki i Szkolnictwa Wyższego</strong> dla Wybitnych Młodych Naukowców.
+                </li>
+                 <li>
+                    <strong>2009-2013:</strong> Członek komitetu naukowego regionalnego centrum obliczeniowego <strong>Mésocentre de Franche-Comté</strong> (Francja).
+                </li>
+                <li>
+                    <strong>Od 2013:</strong> Liczne nagrody Rektora i Dziekana Politechniki Wrocławskiej za wybitne osiągnięcia naukowe.
+                </li>
+                <li>
+                   Działalność naukowa i publikacje dostępne na profilu: <a href="https://www.researchgate.net/profile/Sebastian-Kraszewski" target="_blank">ResearchGate</a>.
                 </li>
             </ul>
         </div>
@@ -343,13 +354,7 @@
         }
         document.addEventListener("DOMContentLoaded", initParticles);
 
-        const cursorDot = document.querySelector('.cursor-dot');
-        const cursorOutline = document.querySelector('.cursor-outline');
-        window.addEventListener('mousemove', (e) => {
-            const posX = e.clientX; const posY = e.clientY;
-            cursorDot.style.left = `${posX}px`; cursorDot.style.top = `${posY}px`;
-            cursorOutline.animate({ left: `${posX}px`, top: `${posY}px` }, { duration: 500, fill: "forwards" });
-        });
+        /* USUNIĘTO KOD JS ODPOWIEDZIALNY ZA KURSOR (addEventListener 'mousemove') */
 
         const triggers = document.querySelectorAll('.cursor-trigger, a, button, .content-block, .profile-img-container');
         triggers.forEach(trigger => {
@@ -389,7 +394,7 @@
             <div class="ania-options-area" id="ania-options-area"></div>
         </div>
 
-        <div class="ania-avatar cursor-trigger" onclick="toggleAnia()">
+        <div class="ania-avatar" onclick="toggleAnia()">
             <img src="ania.jpg" alt="Ania Chat">
             <div class="status-dot"></div>
         </div>
