@@ -2,6 +2,8 @@
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
+    
+    <!-- Google Analytics (KRYTYCZNE) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-56VR40VHHV"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -10,10 +12,16 @@
 
       gtag('config', 'G-56VR40VHHV');
     </script>
+    
+    <!-- Meta Tags dla Robotów i AI -->
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>Cennik Usług | NCNI Wrocław</title>
-    <meta name="description" content="Oficjalny cennik NCNI 2026. Psychoterapia, Diagnoza, Pakiety. Sprawdź aktualne ceny wizyt.">
+    <meta name="description" content="Aktualny cennik NCNI 2026. Metoda Kraszewskiego, Terapia VR, Biofeedback EEG/HRV, Zero Gravity. Sprawdź nowe pakiety.">
     <link rel="icon" href="logo.png" type="image/png">
+    
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
@@ -28,6 +36,8 @@
             --text-main: #1E293B;
             --text-muted: #64748B;
             --border: #E2E8F0;
+            --highlight-bg: #F0FDF4;
+            --highlight-border: #0F766E;
         }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { 
@@ -95,7 +105,7 @@
         .fc-price .amount { font-size: 2.2rem; font-weight: 700; display: block; line-height: 1; }
         .fc-price .unit { font-size: 0.9rem; opacity: 0.9; font-weight: 400; }
 
-        .section-title { font-size: 1.4rem; color: var(--primary); margin: 50px 0 20px; border-bottom: 2px solid var(--border); padding-bottom: 10px; }
+        .section-title { font-size: 1.4rem; color: var(--primary); margin: 60px 0 20px; border-bottom: 2px solid var(--border); padding-bottom: 10px; }
         
         .price-row {
             display: flex; justify-content: space-between; align-items: baseline;
@@ -103,10 +113,23 @@
             transition: background 0.2s;
         }
         .price-row:hover { background: rgba(255,255,255,0.5); }
+        .price-row.highlighted {
+            background: var(--highlight-bg);
+            border: 1px solid var(--primary-light);
+            border-left: 4px solid var(--primary);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
         .pr-service { flex: 1; padding-right: 20px; }
         .pr-name { font-weight: 600; font-size: 1.05rem; color: var(--text-main); }
         .pr-desc { font-size: 0.9rem; color: var(--text-muted); margin-top: 4px; display: block; }
         .pr-amount { font-weight: 700; color: var(--text-main); font-family: 'Lexend', sans-serif; font-size: 1.1rem; white-space: nowrap; }
+        .pr-amount.subtle { color: var(--text-muted); font-size: 1rem; }
+        .pr-amount .old-price { text-decoration: line-through; color: var(--text-muted); font-size: 0.9rem; margin-right: 8px; opacity: 0.7; }
+
+        /* Badge for new items */
+        .new-badge { display: inline-block; background: var(--accent); color: white; font-size: 0.7rem; padding: 2px 6px; border-radius: 4px; vertical-align: middle; margin-left: 8px; font-weight: 600; }
 
         .payment-methods {
             margin-top: 60px;
@@ -171,11 +194,32 @@
             .pr-amount { align-self: flex-end; color: var(--primary); }
         }
 
-        /* Ania */
-        .ania-container { position: fixed; bottom: 24px; right: 24px; z-index: 2000; }
-        .ania-avatar { width: 60px; height: 60px; border-radius: 50%; border: 3px solid white; box-shadow: 0 4px 20px rgba(15, 118, 110, 0.3); cursor: pointer; overflow: hidden; background: white; }
+        /* Ania Widget Styles */
+        .ania-container { position: fixed; bottom: 24px; right: 24px; z-index: 2000; display: flex; flex-direction: column; align-items: flex-end; }
+        .ania-avatar { width: 60px; height: 60px; border-radius: 50%; border: 3px solid white; box-shadow: 0 4px 20px rgba(15, 118, 110, 0.3); cursor: pointer; overflow: hidden; background: white; transition: transform 0.3s ease; }
+        .ania-avatar:hover { transform: scale(1.05); }
         .ania-avatar img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
         
+        .ania-bubble {
+            display: none; /* Hidden by default */
+            background: white;
+            padding: 16px;
+            border-radius: 16px 16px 4px 16px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.15);
+            margin-bottom: 12px;
+            max-width: 250px;
+            font-size: 0.95rem;
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            animation: fadeIn 0.3s ease-out;
+        }
+        .ania-bubble.active { display: block; }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         footer { background: white; border-top: 1px solid var(--border); padding: 50px 0; margin-top: 80px; text-align: center; font-size: 0.9rem; color: var(--text-muted); }
     </style>
 </head>
@@ -220,30 +264,212 @@
         
         <div style="text-align: center; margin-top: 60px; margin-bottom: 20px;">
             <h1 style="font-size: 3rem; margin-bottom: 10px;">Cennik Usług</h1>
-            <p style="background: #EEF2FF; color: var(--accent); display: inline-block; padding: 6px 16px; border-radius: 99px; font-weight: 600; font-size: 0.9rem;">
+            <p style="background: #EEF2FF; color: var(--accent); display: inline-block; padding: 6px 16px; border-radius: 99px; font-weight: 600; font-size: 0.9rem; margin-bottom: 12px;">
                 Cennik obowiązuje od 01.01.2026
             </p>
+            <div style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.4;">
+                All services available in English<br>
+                Tous les services disponibles en français
+            </div>
         </div>
 
         <!-- FEATURED: KRASZEWSKI -->
         <div class="featured-card">
             <div class="fc-content">
                 <h3><span class="fc-badge">PREMIUM</span> Metoda Kraszewskiego</h3>
-                <p style="opacity: 0.9; margin-top: 5px;">Autorska metoda holistyczna (Ciało + Umysł).</p>
+                <p style="opacity: 0.9; margin-top: 5px;">Autorska metoda holistyczna (Ciało + Umysł). Diagnoza + Plan terapeutyczny.</p>
             </div>
             <div class="fc-price">
-                <span class="amount">350 zł</span>
+                <span class="amount">420 zł</span>
                 <span class="unit">Konsultacja wstępna (60 min)</span>
             </div>
         </div>
 
-        <!-- SEKCJA DOROŚLI -->
+        <!-- TECHNOLOGIE I NEURO-TERAPIE -->
+        <h2 class="section-title">Neuro-Technologie & VR</h2>
+        
+        <div class="price-row">
+            <div class="pr-service">
+                <div class="pr-name">Biofeedback HRV</div>
+                <span class="pr-desc">Trening zmienności rytmu serca, synchronizacja oddechu.</span>
+            </div>
+            <div class="pr-amount">150 zł</div>
+        </div>
+
+        <div class="price-row">
+            <div class="pr-service">
+                <div class="pr-name">Biofeedback EEG (Neurofeedback) <span class="new-badge">NOWOŚĆ</span></div>
+                <span class="pr-desc">Trening fal mózgowych dla poprawy koncentracji i redukcji lęku.</span>
+            </div>
+            <div class="pr-amount">160 zł</div>
+        </div>
+
+        <div class="price-row">
+            <div class="pr-service">
+                <div class="pr-name">Biofeedback EMG <span class="new-badge">NOWOŚĆ</span></div>
+                <span class="pr-desc">Trening relaksacji mięśniowej (redukcja napięć somatycznych).</span>
+            </div>
+            <div class="pr-amount">140 zł</div>
+        </div>
+
+        <div class="price-row">
+            <div class="pr-service">
+                <div class="pr-name">PAKIET: Biofeedback (10 sesji)</div>
+                <span class="pr-desc">Pełny cykl treningowy (HRV / EEG / EMG do wyboru).</span>
+            </div>
+            <div class="pr-amount">1400 zł</div>
+        </div>
+
+        <div class="price-row">
+            <div class="pr-service">
+                <div class="pr-name">Terapia VR – Sesja Pojedyncza</div>
+                <span class="pr-desc">Ekspozycja w wirtualnej rzeczywistości (Fobie, Lęki, Trening poznawczy).</span>
+            </div>
+            <div class="pr-amount">280 zł</div>
+        </div>
+
+        <div class="price-row">
+            <div class="pr-service">
+                <div class="pr-name">Pakiet VR (5 sesji)</div>
+                <span class="pr-desc">Cykl 5 spotkań terapeutycznych w wirtualnej rzeczywistości.</span>
+            </div>
+            <div class="pr-amount">1300 zł</div>
+        </div>
+
+        <!-- HIGHLIGHTED PACKAGES -->
+        <div class="price-row highlighted">
+            <div class="pr-service">
+                <div class="pr-name" style="color: var(--primary); font-size: 1.2rem;">⭐ Pakiet: Biofeedback Premium + VR + Psycholog</div>
+                <span class="pr-desc" style="color: var(--text-main); margin-top: 8px;">
+                    Intensywna sesja terapeutyczna (60 min):<br>
+                    • 20 min Biofeedback + 20 min VR + 20 min Konsultacja
+                </span>
+            </div>
+            <div class="pr-amount" style="font-size: 1.4rem;">450 zł</div>
+        </div>
+
+        <div class="price-row highlighted" style="background: #EEF2FF; border-color: var(--accent); border-left-color: var(--accent);">
+            <div class="pr-service">
+                <div class="pr-name" style="color: var(--accent); font-size: 1.2rem;">🚀 PAKIET: Intensywna Neuro-Immersja</div>
+                <span class="pr-desc" style="color: var(--text-main); margin-top: 8px;">
+                    Długoterminowy program terapeutyczny łączący VR i Biofeedback (Kompleksowy cykl).
+                </span>
+            </div>
+            <div class="pr-amount" style="font-size: 1.4rem;">2650 zł</div>
+        </div>
+
+        <div class="price-row">
+            <div class="pr-service">
+                <div class="pr-name">CIRCLE Method</div>
+                <span class="pr-desc">Autorska metoda NCNI: EEG + biosygnały + VR + dźwięk + stymulacja haptyczna (90 min).</span>
+            </div>
+            <div class="pr-amount">500 zł</div>
+        </div>
+
+        <!-- STREFA ZERO GRAVITY (NOWA SEKCJA) -->
+        <h2 class="section-title">Strefa Zero Gravity</h2>
+
+        <div class="price-row">
+            <div class="pr-service">
+                <div class="pr-name">Relaks Zero Gravity (25 min)</div>
+                <span class="pr-desc">Krótka, intensywna sesja relaksacji (Stress relief / Quick recovery).</span>
+            </div>
+            <div class="pr-amount">120 zł</div>
+        </div>
+
+        <div class="price-row">
+            <div class="pr-service">
+                <div class="pr-name">Zero Gravity Recovery (50 min)</div>
+                <span class="pr-desc">Pełna sesja recuperacji z wybranym programem masażu i ogrzewaniem.</span>
+            </div>
+            <div class="pr-amount">210 zł</div>
+        </div>
+
+        <div class="price-row">
+            <div class="pr-service">
+                <div class="pr-name">Premium Zero Gravity + Biofeedback (80 min)</div>
+                <span class="pr-desc">Kompleksowy program rehabilitacyjny: 50 min Zero Gravity + 30 min Biofeedback HRV.</span>
+            </div>
+            <div class="pr-amount">380 zł</div>
+        </div>
+
+        <!-- DIAGNOSTYKA SPECJALISTYCZNA -->
+        <h2 class="section-title">Diagnostyka Specjalistyczna</h2>
+
+        <div class="price-row">
+            <div class="pr-service">
+                <div class="pr-name">Diagnoza ASD (ADOS-2) - Pojedyncze badanie</div>
+                <span class="pr-desc">Złoty standard w diagnozie spektrum autyzmu.</span>
+            </div>
+            <div class="pr-amount">1200 zł</div>
+        </div>
+
+        <div class="price-row">
+            <div class="pr-service">
+                <div class="pr-name">Test Inteligencji Stanford-Binet 5 <span class="new-badge">NOWOŚĆ</span></div>
+                <span class="pr-desc">Pełne badanie inteligencji i zdolności poznawczych (Dzieci i Dorośli).</span>
+            </div>
+            <div class="pr-amount">520 zł</div>
+        </div>
+
+        <div class="price-row">
+            <div class="pr-service">
+                <div class="pr-name">Diagnoza Neuropsychologiczna</div>
+                <span class="pr-desc">Ocena funkcji poznawczych, pamięci i uwagi.</span>
+            </div>
+            <div class="pr-amount">440 zł</div>
+        </div>
+
+        <div class="price-row">
+            <div class="pr-service">
+                <div class="pr-name">Test osobowości MMPI-2</div>
+                <span class="pr-desc">Wielowymiarowy Inwentarz Osobowości Minnesota (Dorośli).</span>
+            </div>
+            <div class="pr-amount">480 zł</div>
+        </div>
+
+        <div class="price-row">
+            <div class="pr-service">
+                <div class="pr-name">Test osobowości NEO-PI-R</div>
+                <span class="pr-desc">Inwentarz Osobowości (Model Wielkiej Piątki).</span>
+            </div>
+            <div class="pr-amount">280 zł</div>
+        </div>
+
+        <!-- PROGRAMY KLINICZNE: ADHD -->
+        <h2 class="section-title">Programy Kliniczne: ADHD</h2>
+
+        <div class="price-row">
+            <div class="pr-service">
+                <div class="pr-name">Program Diagnostyczny ADHD</div>
+                <span class="pr-desc">Wywiad kliniczny (DIVA-5) + Test MOXO/QEEG + Opinia pisemna.</span>
+            </div>
+            <div class="pr-amount">850 zł</div>
+        </div>
+
+        <div class="price-row">
+            <div class="pr-service">
+                <div class="pr-name">VR Training dla ADHD</div>
+                <span class="pr-desc">Trening funkcji wykonawczych (Scenariusz "Klasa Szkolna").</span>
+            </div>
+            <div class="pr-amount">220 zł</div>
+        </div>
+
+        <!-- PSYCHOLOGIA & TERAPIA -->
         <h2 class="section-title">Psychologia i Psychoterapia Dorosłych</h2>
         
         <div class="price-row">
             <div class="pr-service">
-                <div class="pr-name">Konsultacja psychologiczna / Psychoterapia (Pierwsza wizyta)</div>
-                <span class="pr-desc">Interwencja kryzysowa.</span>
+                <div class="pr-name">Psychoterapia indywidualna (Pierwsza wizyta)</div>
+                <span class="pr-desc">Konsultacja wstępna / Interwencja kryzysowa.</span>
+            </div>
+            <div class="pr-amount">230 zł</div>
+        </div>
+
+        <div class="price-row">
+            <div class="pr-service">
+                <div class="pr-name">Psychoterapia indywidualna (Kolejne wizyty)</div>
+                <span class="pr-desc">Sesja terapeutyczna (50 min).</span>
             </div>
             <div class="pr-amount">220 zł</div>
         </div>
@@ -251,177 +477,87 @@
         <div class="price-row">
             <div class="pr-service">
                 <div class="pr-name">Psychoterapia par</div>
+                <span class="pr-desc">Terapia małżeńska / partnerska (60-75 min).</span>
             </div>
-            <div class="pr-amount">300 zł</div>
+            <div class="pr-amount">315 zł</div>
         </div>
 
         <div class="price-row">
             <div class="pr-service">
                 <div class="pr-name">Psychoterapia rodzinna</div>
+                <span class="pr-desc">Sesja z systemem rodzinnym.</span>
             </div>
-            <div class="pr-amount">350 zł</div>
+            <div class="pr-amount">375 zł</div>
         </div>
 
         <div class="price-row">
             <div class="pr-service">
                 <div class="pr-name">Terapia EMDR</div>
-                <span class="pr-desc">Leczenie traumy i zespołu stresu pourazowego (PTSD).</span>
+                <span class="pr-desc">Terapia traumy i PTSD.</span>
             </div>
             <div class="pr-amount">220 zł</div>
         </div>
 
+        <!-- PAKIETY SPECJALNE -->
+        <h2 class="section-title">Pakiety Specjalne</h2>
+
         <div class="price-row">
             <div class="pr-service">
-                <div class="pr-name">Terapia DDA / Uzależnień / Współuzależnienia</div>
+                <div class="pr-name">Pakiet: Metoda Kraszewskiego + Terapia</div>
+                <span class="pr-desc">Diagnoza holistyczna + Cykl terapeutyczny startowy.</span>
             </div>
-            <div class="pr-amount">220 zł</div>
+            <div class="pr-amount">1520 zł</div>
         </div>
 
         <div class="price-row">
             <div class="pr-service">
-                <div class="pr-name">Konsultacja rodzinna w uzależnieniach</div>
+                <div class="pr-name">Pakiet Diagnostyczny ASD (Kompleksowy)</div>
+                <span class="pr-desc">ADOS-2 + ADI-R + Opinia.</span>
             </div>
-            <div class="pr-amount">420 zł</div>
+            <div class="pr-amount">1600 zł</div>
+        </div>
+
+        <!-- WSPARCIE HOLISTYCZNE -->
+        <h2 class="section-title">Wsparcie Holistyczne (Ciało & Dieta)</h2>
+
+        <div class="price-row">
+            <div class="pr-service">
+                <div class="pr-name">Psychodietetyka – Konsultacja</div>
+            </div>
+            <div class="pr-amount">280 zł</div>
         </div>
 
         <div class="price-row">
             <div class="pr-service">
-                <div class="pr-name">Konsultacja transformacyjna</div>
+                <div class="pr-name">Dietetyka Kliniczna – Pierwsza wizyta</div>
             </div>
             <div class="pr-amount">250 zł</div>
         </div>
 
-        <!-- DIAGNOSTYKA DOROŚLI -->
-        <h2 class="section-title">Diagnostyka Dorosłych</h2>
-
         <div class="price-row">
             <div class="pr-service">
-                <div class="pr-name">Diagnoza ogólna dorosłych</div>
+                <div class="pr-name">Fizjoterapia Neuro – Sesja</div>
             </div>
-            <div class="pr-amount">220 zł</div>
+            <div class="pr-amount">300 zł</div>
         </div>
-
-        <div class="price-row">
-            <div class="pr-service">
-                <div class="pr-name">Diagnoza neuropsychologiczna</div>
-            </div>
-            <div class="pr-amount">400 zł</div>
-        </div>
-
-        <div class="price-row">
-            <div class="pr-service">
-                <div class="pr-name">PAKIET: Stworzenie profilu osobowościowego (2 wizyty)</div>
-                <span class="pr-desc">Wywiad podstawowy + Test NEO-PI-R + Przekazanie wyników (łącznie 2,5h)</span>
-            </div>
-            <div class="pr-amount">500 zł</div>
-        </div>
-
-        <div class="price-row">
-            <div class="pr-service">
-                <div class="pr-name">PAKIET: Diagnoza zaburzeń osobowości (3 wizyty)</div>
-                <span class="pr-desc">Wywiad + Badanie SCID-5-PD + Omówienie (łącznie 4h)</span>
-            </div>
-            <div class="pr-amount">900 zł</div>
-        </div>
-
-        <div class="price-row">
-            <div class="pr-service">
-                <div class="pr-name">PAKIET: Diagnoza zaburzeń osobowości (4 wizyty)</div>
-                <span class="pr-desc">Wywiad + Wywiad DSM-5 + Test MMPI-2 + Omówienie (łącznie 5,5h)</span>
-            </div>
-            <div class="pr-amount">900 zł</div>
-        </div>
-
-
-        <!-- DZIECI I MŁODZIEŻ -->
-        <h2 class="section-title">Dzieci, Młodzież i Rodzice</h2>
-
-        <div class="price-row">
-            <div class="pr-service">
-                <div class="pr-name">Psychoterapia / Konsultacja / Interwencja (Dzieci i Młodzież)</div>
-            </div>
-            <div class="pr-amount">220 zł</div>
-        </div>
-
-        <div class="price-row">
-            <div class="pr-service">
-                <div class="pr-name">Konsultacja psychologiczna dla rodziców</div>
-                <span class="pr-desc">Pierwsze spotkanie dla dzieci w wieku 3-12 lat odbywa się bez udziału dziecka.</span>
-            </div>
-            <div class="pr-amount">220 zł</div>
-        </div>
-
-        <div class="price-row">
-            <div class="pr-service">
-                <div class="pr-name">Diagnoza ogólna dzieci i młodzieży (od 4 r.ż.)</div>
-            </div>
-            <div class="pr-amount">220 zł</div>
-        </div>
-
-        <div class="price-row">
-            <div class="pr-service">
-                <div class="pr-name">Wsparcie psychologiczne po diagnozie ADOS / Spektrum Autyzmu</div>
-            </div>
-            <div class="pr-amount">220 zł</div>
-        </div>
-
-        <div class="price-row">
-            <div class="pr-service">
-                <div class="pr-name">Badanie zdolności poznawczych (Test Stanford-Binet 5)</div>
-            </div>
-            <div class="pr-amount">500 zł</div>
-        </div>
-
-        <div class="price-row">
-            <div class="pr-service">
-                <div class="pr-name">PAKIET: Diagnostyka intelektu (od 2 r.ż.)</div>
-                <span class="pr-desc">4 spotkania: Rodzice (1h) + Dziecko (1,5h + 1h) + Omówienie (1h)</span>
-            </div>
-            <div class="pr-amount">900 zł</div>
-        </div>
-
 
         <!-- INNE JĘZYKI -->
-        <h2 class="section-title">Inne Języki / Other Languages / Autres Langues</h2>
-
-        <div style="margin-bottom: 30px; background: #F0F9FF; padding: 20px; border-radius: 12px; border-left: 4px solid var(--accent); color: var(--text-main);">
-            <p style="margin-bottom: 5px; font-weight: 600;">Wszystkie usługi z naszej oferty są dostępne w języku angielskim i francuskim.</p>
-            <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">
-                All services from our offer are available in English and French.<br>
-                Tous les services de notre offre sont disponibles en anglais et en français.
-            </p>
-        </div>
+        <h2 class="section-title">Konsultacje w językach obcych (EN / FR)</h2>
 
         <div class="price-row">
             <div class="pr-service">
-                <div class="pr-name">Psychological consultation / Consultation psychologique</div>
-                <span class="pr-desc">Individual therapy, Crisis intervention (EN / FR)</span>
+                <div class="pr-name">Consultation psychologique / Psychological consultation</div>
+                <span class="pr-desc">Indywidualna sesja w języku obcym.</span>
             </div>
             <div class="pr-amount">240 zł</div>
         </div>
 
         <div class="price-row">
             <div class="pr-service">
-                <div class="pr-name">Couple’s therapy / Thérapie de couple</div>
-                <span class="pr-desc">Psychotherapy for couples (EN / FR)</span>
+                <div class="pr-name">Specialist Diagnosis (ADOS-2 / Neuropsychology)</div>
+                <span class="pr-desc">Specjalistyczna diagnoza w języku obcym.</span>
             </div>
-            <div class="pr-amount">320 zł</div>
-        </div>
-
-        <div class="price-row">
-            <div class="pr-service">
-                <div class="pr-name">Addiction therapy / Thérapie des addictions</div>
-                <span class="pr-desc">Support for addiction and co-dependency (EN / FR)</span>
-            </div>
-            <div class="pr-amount">320 zł</div>
-        </div>
-
-        <div class="price-row">
-            <div class="pr-service">
-                <div class="pr-name">Full Diagnostic Package / Forfait Diagnostic Complet</div>
-                <span class="pr-desc">Personality disorders, ADHD, ASD diagnosis (EN / FR). Total ~5.5h</span>
-            </div>
-            <div class="pr-amount">1000 zł</div>
+            <div class="pr-amount">Od 420 zł</div>
         </div>
 
         <!-- METODY PŁATNOŚCI -->
@@ -438,40 +574,41 @@
             </div>
         </div>
 
-        <!-- FAQ & RODO -->
-        <h2 class="section-title" style="margin-top: 60px;">Ważne Informacje (FAQ & RODO)</h2>
+        <!-- FAQ PRAKTYCZNE -->
+        <h2 class="section-title" style="margin-top: 60px;">Informacje Praktyczne (FAQ)</h2>
 
         <details>
-            <summary>Polityka Odwoływania Wizyt</summary>
+            <summary>Ile trwa wizyta i sesja VR? (Time = Money)</summary>
             <div class="details-content">
-                <p>Wizytę można bezpłatnie odwołać najpóźniej na 24 godziny przed jej planowanym terminem. W przypadku odwołania w czasie krótszym niż 24h lub niestawienia się na wizytę, obowiązuje płatność w wysokości 100% ceny wizyty.</p>
+                <p>Standardowa konsultacja psychologiczna trwa 50 minut. Sesje technologiczne (VR, Biofeedback) trwają od 50 do 60 minut, w tym czas na podłączenie aparatury (ok. 5-10 min) i aktywny trening.</p>
             </div>
         </details>
 
         <details>
-            <summary>Jak przygotować się do pierwszej wizyty?</summary>
+            <summary>Czy pierwsza wizyta kosztuje tyle samo?</summary>
             <div class="details-content">
-                <p>Na pierwszą wizytę diagnostyczną lub psychoterapeutyczną nie trzeba się specjalnie przygotowywać. W przypadku diagnozy dziecięcej, na pierwsze spotkanie zapraszamy wyłącznie rodziców (bez dziecka), chyba że specjalista wskaże inaczej.</p>
+                <p>Pierwsza wizyta (konsultacyjna/diagnostyczna) kosztuje 230 zł. Kolejne sesje terapeutyczne to koszt 220 zł. Wizyty specjalistyczne (np. Metoda Kraszewskiego) mają odrębny cennik.</p>
             </div>
         </details>
 
         <details>
-            <summary>Czy prowadzicie terapię online?</summary>
+            <summary>Wizyty Online vs. Stacjonarne</summary>
             <div class="details-content">
-                <p>Tak, większość naszych usług (psychoterapia indywidualna, konsultacje) jest dostępna w formie online (Skype, Google Meet, Zoom). Diagnostyka (np. ADOS-2, testy IQ) wymaga zazwyczaj obecności w gabinecie.</p>
+                <p>Cena wizyt online i stacjonarnych jest taka sama. Oferujemy pełne wsparcie psychoterapeutyczne zdalnie, jednak diagnostyka instrumentalna (VR, Biofeedback, ADOS-2) wymaga obecności w gabinecie.</p>
             </div>
         </details>
 
         <details>
-            <summary>Informacja RODO / Ochrona Danych Osobowych</summary>
+            <summary>Opłaty za rezerwację i odwoływanie</summary>
             <div class="details-content">
-                <p><strong>Administrator Danych:</strong><br>
-                Administratorem Państwa danych osobowych jest Naukowe Centrum Neuroinnowacji (NCNI) z siedzibą we Wrocławiu przy ul. Stefana Żeromskiego 60/5a.</p>
-                <p style="margin-top: 10px;"><strong>Cel przetwarzania:</strong><br>
-                Dane przetwarzane są w celu realizacji usług medycznych i terapeutycznych, prowadzenia dokumentacji medycznej (zgodnie z wymogami prawa), rezerwacji wizyt oraz kontaktu z pacjentem.</p>
-                <p style="margin-top: 10px;"><strong>Prawa pacjenta:</strong><br>
-                Posiadają Państwo prawo dostępu do treści swoich danych, ich sprostowania, usunięcia (w zakresie nieograniczonym przepisami o dokumentacji medycznej) oraz ograniczenia przetwarzania.</p>
-                <p style="margin-top: 10px;">Pełna treść klauzuli informacyjnej dostępna jest w rejestracji NCNI.</p>
+                <p>Rezerwacja terminu nie wymaga przedpłaty (chyba że regulamin promocji stanowi inaczej). Odwołanie wizyty jest bezpłatne do 24h przed terminem. Późniejsze odwołanie wiąże się z opłatą 100% wartości wizyty.</p>
+            </div>
+        </details>
+
+        <details>
+            <summary>Dokumentacja i Raporty</summary>
+            <div class="details-content">
+                <p>Krótkie zaświadczenie o uczestnictwie w terapii jest bezpłatne. Szczegółowe opinie kliniczne, raporty z diagnozy (poza pakietami diagnostycznymi) oraz kserokopie dokumentacji są dodatkowo płatne (wg cennika administracyjnego dostępnego w recepcji).</p>
             </div>
         </details>
 
@@ -484,14 +621,26 @@
         </div>
     </footer>
 
+    <!-- ANIA WIDGET & SCRIPT -->
     <div id="ania-widget" class="ania-container">
-        <div class="ania-avatar">
+        <div class="ania-bubble" id="ania-message">
+            <strong>Cześć!</strong><br>
+            Potrzebujesz pomocy w wyborze usługi lub chcesz umówić wizytę?<br><br>
+            <a href="index.html#rezerwacja" style="color: var(--primary); font-weight: 700; text-decoration: none;">Umów wizytę online &rarr;</a>
+        </div>
+        <div class="ania-avatar" onclick="toggleAnia()">
             <img src="ania.jpg" alt="Ania">
         </div>
     </div>
 
     <script>
-        // TŁO
+        // ANIA INTERACTION
+        function toggleAnia() {
+            const bubble = document.getElementById('ania-message');
+            bubble.classList.toggle('active');
+        }
+
+        // TŁO - THREE.JS
         function initParticles(){const container=document.getElementById('bg-canvas');if(!container)return;const scene=new THREE.Scene();scene.fog=new THREE.FogExp2(0xF8FAFC,0.002);const camera=new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,1000);camera.position.z=10;const renderer=new THREE.WebGLRenderer({alpha:true,antialias:true});renderer.setSize(window.innerWidth,window.innerHeight);renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));container.appendChild(renderer.domElement);const geometry=new THREE.BufferGeometry();const count=200;const positions=new Float32Array(count*3);const colors=new Float32Array(count*3);for(let i=0;i<count*3;i+=3){positions[i]=(Math.random()-0.5)*25;positions[i+1]=(Math.random()-0.5)*25;positions[i+2]=(Math.random()-0.5)*25;const mix=Math.random();if(mix>0.5){colors[i]=0.06;colors[i+1]=0.46;colors[i+2]=0.43;}else{colors[i]=0.39;colors[i+1]=0.4;colors[i+2]=0.94;}}geometry.setAttribute('position',new THREE.BufferAttribute(positions,3));geometry.setAttribute('color',new THREE.BufferAttribute(colors,3));const material=new THREE.PointsMaterial({size:0.1,vertexColors:true,transparent:true,opacity:0.4});const particles=new THREE.Points(geometry,material);scene.add(particles);let mouseX=0,mouseY=0,targetX=0,targetY=0;const windowHalfX=window.innerWidth/2;const windowHalfY=window.innerHeight/2;document.addEventListener('mousemove',(e)=>{mouseX=(e.clientX-windowHalfX);mouseY=(e.clientY-windowHalfY);});const clock=new THREE.Clock();function animate(){const time=clock.getElapsedTime();targetX=mouseX*0.0001;targetY=mouseY*0.0001;particles.rotation.y+=0.01*(targetX-particles.rotation.y);particles.rotation.x+=0.01*(targetY-particles.rotation.x);particles.rotation.z+=0.0005;const scale=1+Math.sin(time*0.5)*0.02;particles.scale.set(scale,scale,scale);renderer.render(scene,camera);requestAnimationFrame(animate);}animate();window.addEventListener('resize',()=>{camera.aspect=window.innerWidth/window.innerHeight;camera.updateProjectionMatrix();renderer.setSize(window.innerWidth,window.innerHeight);});}document.addEventListener("DOMContentLoaded",initParticles);
 
         // MENU
