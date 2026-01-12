@@ -2,13 +2,36 @@
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
+    
+    <!-- Google Analytics (GA4) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-56VR40VHHV"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-56VR40VHHV');
+    </script>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     
     <title>NCNI Wrocław | Dr hab. inż. Sebastian Kraszewski: ADHD, Innowacje & Neurocoaching</title>
     <meta name="description" content="NCNI Wrocław: Centrum Terapii ADHD i Neuroróżnorodności. Dr hab. inż. Sebastian Kraszewski i Karol Kiszło łączą naukę z innowacjami (VR, Biofeedback). Skuteczny coaching neuroróżnorodności i leczenie stresu.">
     <meta name="keywords" content="Sebastian Kraszewski ADHD, Karol Kiszło, Neurocoaching Wrocław, Terapia ADHD dorośli, Innowacje w terapii, Biofeedback VR, Neuroróżnorodność, Psychotraumatologia">
-    <link rel="canonical" href="https://ncni.pl">
+    <link rel="canonical" href="https://ncni.pl/index.html">
     <link rel="icon" href="logo.png" type="image/png">
+
+    <!-- Open Graph / Facebook & LinkedIn -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ncni.pl/">
+    <meta property="og:title" content="NCNI Wrocław | Nowoczesna Terapia ADHD i Neuroróżnorodności">
+    <meta property="og:description" content="Dr hab. inż. Sebastian Kraszewski i Karol Kiszło zapraszają. Łączymy naukę z innowacjami (VR, Biofeedback) dla skutecznego leczenia.">
+    <meta property="og:image" content="https://ncni.pl/logo.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="NCNI Wrocław | Innowacje w Zdrowiu Psychicznym">
+    <meta property="twitter:description" content="Centrum Terapii ADHD i Neuroróżnorodności. VR, Biofeedback, Neurocoaching.">
+    <meta property="twitter:image" content="https://ncni.pl/logo.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,37 +39,36 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-56VR40VHHV"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-56VR40VHHV');
-    </script>
-
+    <!-- Schema.org (AI SEO) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@graph": [
+      "@type": "MedicalClinic",
+      "name": "NCNI - Naukowe Centrum Neuroinnowacji",
+      "url": "https://ncni.pl",
+      "logo": "https://ncni.pl/logo.png",
+      "image": "https://ncni.pl/gabinet.jpg",
+      "description": "Centrum terapii neuroróżnorodności (ADHD, ASD) wykorzystujące nowoczesne technologie: VR, Biofeedback i Zero Gravity.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "ul. Stefana Żeromskiego 60/5a",
+        "addressLocality": "Wrocław",
+        "postalCode": "50-312",
+        "addressCountry": "PL"
+      },
+      "telephone": "+48600608333",
+      "email": "kontakt@ncni.pl",
+      "openingHoursSpecification": [
         {
-          "@type": "MedicalClinic",
-          "name": "NCNI - Naukowe Centrum Neuroinnowacji",
-          "url": "https://ncni.pl",
-          "logo": "https://ncni.pl/logo.png",
-          "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "ul. Żeromskiego 60/5a",
-            "addressLocality": "Wrocław",
-            "postalCode": "50-312",
-            "addressCountry": "PL"
-          },
-          "telephone": "+48600608333",
-          "email": "kontakt@ncni.pl",
-          "sameAs": [
-            "https://youtube.com/@neuroinnowacje",
-            "https://x.com/neuroinnowacje"
-          ]
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "09:00",
+          "closes": "20:00"
         }
+      ],
+      "sameAs": [
+        "https://youtube.com/@neuroinnowacje",
+        "https://x.com/neuroinnowacje"
       ]
     }
     </script>
@@ -756,7 +778,6 @@
 
     <style>
         .ania-container { position: fixed; bottom: 24px; right: 24px; z-index: 2000; display: flex; flex-direction: column; align-items: flex-end; font-family: 'Inter', sans-serif; }
-        /* POPRAWKA 2: object-position: top w stylu poniżej */
         .ania-avatar { width: 65px; height: 65px; border-radius: 50%; border: 3px solid white; box-shadow: 0 4px 20px rgba(15, 118, 110, 0.3); cursor: pointer; position: relative; transition: transform 0.3s; background: #fff; overflow: hidden; }
         .ania-avatar:hover { transform: scale(1.1); }
         .ania-avatar img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
