@@ -2,19 +2,24 @@
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
+    <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-56VR40VHHV"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'G-56VR40VHHV');
     </script>
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pełna Oferta i Usługi | NCNI Wrocław</title>
     <meta name="description" content="Kompleksowy katalog usług NCNI: Metoda Kraszewskiego, Diagnoza ADHD/ASD, Terapia VR, Biofeedback, Psychoterapia i Dietetyka. Sprawdź szczegóły.">
     <link rel="icon" href="logo.png" type="image/png">
+    
+    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Three.js for background -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
     <style>
@@ -32,7 +37,9 @@
             --radius: 16px;
             --trans-default: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
+
         * { box-sizing: border-box; margin: 0; padding: 0; }
+        
         body { 
             font-family: 'Inter', sans-serif; 
             background-color: var(--bg-body); 
@@ -41,6 +48,7 @@
             overflow-x: hidden;
             cursor: auto;
         }
+
         h1, h2, h3 { font-family: 'Lexend', sans-serif; }
         
         #bg-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; z-index: -1; opacity: 0.6; pointer-events: none; }
@@ -73,6 +81,34 @@
             .mobile-toggle { display: block; }
             .logo { font-size: 1.1rem; }
             .logo img { height: 36px; }
+        }
+
+        /* --- PAGE HEADER STYLE --- */
+        .page-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .header-badge {
+            background: var(--primary-light); 
+            color: var(--primary); 
+            padding: 6px 12px; 
+            border-radius: 99px; 
+            font-size: 0.9rem; 
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 16px;
+        }
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 16px;
+            color: var(--text-main);
+            letter-spacing: -0.03em;
+        }
+        .page-header p {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
         /* --- Offer List Style --- */
@@ -127,32 +163,109 @@
             opacity: 0.9;
         }
 
-        /* FEATURED CARD (Metoda Kraszewskiego) */
+        /* FEATURED CARD (Metoda Kraszewskiego - MASTER CLASS DESIGN) */
         .featured-card {
             background: linear-gradient(135deg, #0F766E 0%, #115E59 100%);
             color: white;
             border-radius: 24px;
-            padding: 32px;
+            padding: 40px;
             margin-bottom: 40px;
             position: relative;
             overflow: hidden;
             box-shadow: 0 20px 40px rgba(15, 118, 110, 0.25);
             border: 1px solid rgba(255,255,255,0.1);
+            
+            /* Flex layout for image + text */
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 32px;
         }
+
+        /* Decorative blur */
         .featured-card::before {
-            content: ''; position: absolute; top: -50px; right: -50px;
-            width: 200px; height: 200px; background: rgba(255,255,255,0.1);
-            border-radius: 50%; filter: blur(40px);
+            content: ''; position: absolute; top: -50px; left: -50px;
+            width: 250px; height: 250px; background: rgba(255,255,255,0.07);
+            border-radius: 50%; filter: blur(60px); pointer-events: none;
         }
-        .featured-card h3 { font-size: 1.8rem; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
-        .featured-badge { background: #F59E0B; color: #fff; font-size: 0.75rem; padding: 4px 10px; border-radius: 99px; text-transform: uppercase; font-weight: 700; letter-spacing: 0.05em; }
-        .featured-card p { opacity: 0.9; margin-bottom: 20px; max-width: 600px; }
+
+        /* Content side */
+        .featured-content {
+            flex: 1;
+            z-index: 1;
+        }
+        .featured-content h3 { 
+            font-size: 2rem; 
+            margin-bottom: 16px; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: flex-start; 
+            gap: 10px; 
+            line-height: 1.2;
+        }
+        .featured-badge { 
+            background: #F59E0B; 
+            color: #fff; 
+            font-size: 0.75rem; 
+            padding: 4px 10px; 
+            border-radius: 99px; 
+            text-transform: uppercase; 
+            font-weight: 700; 
+            letter-spacing: 0.05em; 
+        }
+        .featured-content p { 
+            opacity: 0.95; 
+            margin-bottom: 24px; 
+            font-size: 1.05rem; 
+            line-height: 1.7; 
+        }
+
+        /* Image side */
+        .featured-image-container {
+            flex: 0 0 260px; /* Fixed width for image container */
+            position: relative;
+            z-index: 1;
+        }
+        .featured-image-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            border: 4px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transform: rotate(2deg);
+            transition: transform 0.4s ease;
+        }
+        /* Interactive hover effect on image */
+        .featured-card:hover .featured-image-container img {
+            transform: rotate(0deg) scale(1.02);
+        }
+
         .btn-featured {
-            display: inline-block; padding: 12px 24px; background: white; color: var(--primary-dark);
+            display: inline-block; padding: 12px 28px; background: white; color: var(--primary-dark);
             border-radius: 99px; text-decoration: none; font-weight: 600; box-shadow: 0 4px 12px rgba(0,0,0,0.1);
             transition: 0.3s;
         }
         .btn-featured:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.2); }
+
+        /* Responsive stack for mobile */
+        @media (max-width: 768px) {
+            .featured-card {
+                flex-direction: column;
+                text-align: center;
+                padding: 32px 24px;
+            }
+            .featured-content h3 { align-items: center; }
+            .featured-image-container {
+                width: 100%;
+                max-width: 220px;
+                margin-top: 10px;
+                flex: auto;
+            }
+            .featured-image-container img {
+                transform: rotate(0);
+            }
+        }
+
 
         /* Accordion */
         details {
@@ -251,16 +364,14 @@
     </div>
 
     <section class="container" style="padding: 80px 24px;">
-        <div style="display: flex; align-items: center; justify-content: space-between; gap: 40px;; margin-bottom: 30px;">
-             <div style="flex: 1;">
-                 
-            <span style="background: var(--primary-light); color: var(--primary); padding: 6px 12px; border-radius: 99px; font-size: 0.9rem; font-weight: 600;">Katalog Usług NCNI</span>
-            <h1 style="font-size: 3rem; margin-top: 16px;">Scentralizowana Oferta</h1>
-            <p style="color: var(--text-muted); font-size: 1.2rem; margin-top: 16px; max-width: 700px; margin-left: auto; margin-right: auto;">
+        
+        <!-- NAGŁÓWEK STRONY (SCENTRALIZOWANA OFERTA) -->
+        <div class="page-header">
+            <span class="header-badge">Katalog Usług NCNI</span>
+            <h1>Scentralizowana Oferta</h1>
+            <p>
                 Scentralizowany katalog usług medycznych i terapeutycznych. Od diagnostyki, przez terapię psychologiczną, aż po Neuro-Immersję Premium.
             </p>
-                  </div>
-             <div style="flex: 1; display: flex; justify-content: center; align-items: center;"><img src="sk.jpg" alt="Dr. Kraszewski" style="max-width: 100%; height: auto; border-radius: 16px; box-shadow: 0 10px 40px rgba(0,0,0,0.1);"></div>
         </div>
 
         <!-- KOŁECZKO CENNIK -->
@@ -273,11 +384,21 @@
 
         <div class="offer-list">
             
-            <!-- METODA KRASZEWSKIEGO - FEATURED -->
+            <!-- METODA KRASZEWSKIEGO - FEATURED (Zdjęcie przeniesione do środka) -->
             <div class="featured-card cursor-trigger">
-                <h3><span class="featured-badge">Autorska Metoda</span> Metoda Kraszewskiego</h3>
-                <p>Holistyczna metodologia NCNI łącząca pracę z ciałem, umysłem i układem nerwowym. Unikalne podejście do regeneracji i terapii zaburzeń psychosomatycznych, dostępne wyłącznie w naszym ośrodku.</p>
-                <a href="metoda-kraszewskiego.html" class="btn-featured">Poznaj Metodę</a>
+                <!-- Lewa strona: Tekst -->
+                <div class="featured-content">
+                    <h3>
+                        <span class="featured-badge">Autorska Metoda</span> 
+                        Metoda Kraszewskiego
+                    </h3>
+                    <p>Holistyczna metodologia NCNI łącząca pracę z ciałem, umysłem i układem nerwowym. Unikalne podejście do regeneracji i terapii zaburzeń psychosomatycznych, dostępne wyłącznie w naszym ośrodku.</p>
+                    <a href="metoda-kraszewskiego.html" class="btn-featured">Poznaj Metodę</a>
+                </div>
+                <!-- Prawa strona: Zdjęcie (w dolnej przestrzeni, po prawej) -->
+                <div class="featured-image-container">
+                    <img src="sk.jpg" alt="Dr. Kraszewski - Metoda Autorska">
+                </div>
             </div>
 
             <h2 class="category-header"><span>01.</span> Psychologia & Psychotraumatologia</h2>
