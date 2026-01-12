@@ -11,15 +11,15 @@
       gtag('config', 'G-56VR40VHHV');
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pełna Oferta i Cennik | NCNI Wrocław</title>
-    <meta name="description" content="Kompleksowa oferta NCNI: Diagnoza ADHD/ASD, Terapia VR, Biofeedback, Psychotraumatologia, Dietetyka. Sprawdź zakres usług i cennik.">
+    <title>Pełna Oferta i Usługi | NCNI Wrocław</title>
+    <meta name="description" content="Kompleksowy katalog usług NCNI: Metoda Kraszewskiego, Diagnoza ADHD/ASD, Terapia VR, Biofeedback, Psychoterapia i Dietetyka. Sprawdź szczegóły.">
     <link rel="icon" href="logo.png" type="image/png">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
     <style>
         :root {
-            /* Palette - Clinical & Professional (Spójna z Indexem) */
+            /* Palette - Clinical & Professional */
             --bg-body: #F8FAFC;        
             --bg-surface: rgba(255, 255, 255, 0.85);
             --primary: #0F766E;        
@@ -39,7 +39,7 @@
             color: var(--text-main); 
             line-height: 1.6; 
             overflow-x: hidden;
-            cursor: auto; /* Standardowy kursor */
+            cursor: auto;
         }
         h1, h2, h3 { font-family: 'Lexend', sans-serif; }
         
@@ -88,7 +88,71 @@
             align-items: center;
             gap: 12px;
         }
-        .category-header span { color: var(--primary); font-family: 'Lexend', sans-serif; }
+        .category-header span { color: var(--primary); font-family: 'Lexend', sans-serif; font-weight: 300; }
+
+        /* CIRCLE LINK BUTTON */
+        .cennik-circle-wrapper {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0 50px;
+        }
+        .cennik-circle {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            font-family: 'Lexend', sans-serif;
+            font-size: 1rem;
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            z-index: 10;
+            border: 4px solid rgba(255,255,255,0.2);
+        }
+        .cennik-circle:hover {
+            transform: scale(1.15) rotate(5deg);
+            background: #4F46E5;
+            box-shadow: 0 15px 40px rgba(99, 102, 241, 0.6);
+        }
+        .cennik-circle small {
+            font-weight: 300;
+            font-size: 0.7rem;
+            opacity: 0.9;
+        }
+
+        /* FEATURED CARD (Metoda Kraszewskiego) */
+        .featured-card {
+            background: linear-gradient(135deg, #0F766E 0%, #115E59 100%);
+            color: white;
+            border-radius: 24px;
+            padding: 32px;
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(15, 118, 110, 0.25);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .featured-card::before {
+            content: ''; position: absolute; top: -50px; right: -50px;
+            width: 200px; height: 200px; background: rgba(255,255,255,0.1);
+            border-radius: 50%; filter: blur(40px);
+        }
+        .featured-card h3 { font-size: 1.8rem; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
+        .featured-badge { background: #F59E0B; color: #fff; font-size: 0.75rem; padding: 4px 10px; border-radius: 99px; text-transform: uppercase; font-weight: 700; letter-spacing: 0.05em; }
+        .featured-card p { opacity: 0.9; margin-bottom: 20px; max-width: 600px; }
+        .btn-featured {
+            display: inline-block; padding: 12px 24px; background: white; color: var(--primary-dark);
+            border-radius: 99px; text-decoration: none; font-weight: 600; box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: 0.3s;
+        }
+        .btn-featured:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.2); }
 
         /* Accordion */
         details {
@@ -187,16 +251,31 @@
     </div>
 
     <section class="container" style="padding: 80px 24px;">
-        <div style="text-align: center; margin-bottom: 40px;">
-            <span style="background: var(--primary-light); color: var(--primary); padding: 6px 12px; border-radius: 99px; font-size: 0.9rem; font-weight: 600;">Standard Kliniczny</span>
-            <h1 style="font-size: 3rem; margin-top: 16px;">Oferta NCNI</h1>
+        <div style="text-align: center; margin-bottom: 30px;">
+            <span style="background: var(--primary-light); color: var(--primary); padding: 6px 12px; border-radius: 99px; font-size: 0.9rem; font-weight: 600;">Katalog Usług NCNI</span>
+            <h1 style="font-size: 3rem; margin-top: 16px;">Scentralizowana Oferta</h1>
             <p style="color: var(--text-muted); font-size: 1.2rem; margin-top: 16px; max-width: 700px; margin-left: auto; margin-right: auto;">
                 Scentralizowany katalog usług medycznych i terapeutycznych. Od diagnostyki, przez terapię psychologiczną, aż po Neuro-Immersję Premium.
             </p>
         </div>
 
+        <!-- KOŁECZKO CENNIK -->
+        <div class="cennik-circle-wrapper">
+            <a href="cennik.html" class="cennik-circle">
+                CENNIK
+                <small>Zobacz</small>
+            </a>
+        </div>
+
         <div class="offer-list">
             
+            <!-- METODA KRASZEWSKIEGO - FEATURED -->
+            <div class="featured-card cursor-trigger">
+                <h3><span class="featured-badge">Autorska Metoda</span> Metoda Kraszewskiego</h3>
+                <p>Holistyczna metodologia NCNI łącząca pracę z ciałem, umysłem i układem nerwowym. Unikalne podejście do regeneracji i terapii zaburzeń psychosomatycznych, dostępne wyłącznie w naszym ośrodku.</p>
+                <a href="metoda-kraszewskiego.html" class="btn-featured">Poznaj Metodę</a>
+            </div>
+
             <h2 class="category-header"><span>01.</span> Psychologia & Psychotraumatologia</h2>
 
             <details class="cursor-trigger">
@@ -227,7 +306,12 @@
             <details class="cursor-trigger">
                 <summary>Diagnoza ADHD (Dorośli i Dzieci)</summary>
                 <div class="details-content">
-                    <p>Kompleksowy proces diagnostyczny (3-4 spotkania). Obejmuje wywiad kliniczny (DIVA-5), testy komputerowe (MOXO) i obserwację. Pełny raport z zaleceniami.</p>
+                    <p>Kompleksowy proces diagnostyczny (3-4 spotkania). Obejmuje wywiad kliniczny (DIVA-5), testy komputerowe (MOXO) i obserwację.</p>
+                    <ul>
+                        <li>Wywiad rozwojowy</li>
+                        <li>Testy neuropsychologiczne</li>
+                        <li>Pełny raport z zaleceniami</li>
+                    </ul>
                     <a href="adhd.html" class="btn-small">Więcej o diagnozie ADHD</a>
                 </div>
             </details>
@@ -237,6 +321,54 @@
                 <div class="details-content">
                     <p>Wielospecjalistyczna diagnoza z udziałem psychologa i psychiatry. Wykorzystujemy złoty standard diagnostyczny ADOS-2.</p>
                     <a href="asd.html" class="btn-small">Szczegóły diagnozy ASD</a>
+                </div>
+            </details>
+
+            <details class="cursor-trigger">
+                <summary>Diagnoza Neuropsychologiczna i IQ</summary>
+                <div class="details-content">
+                    <p>Ocena funkcji poznawczych mózgu oraz potencjału intelektualnego.</p>
+                    <ul>
+                        <li>Badanie zdolności poznawczych / IQ (Test Wechslera)</li>
+                        <li>Diagnoza procesów pamięci i uwagi</li>
+                        <li>Diagnoza neuropsychologiczna ogólna (po urazach, udarach)</li>
+                    </ul>
+                </div>
+            </details>
+
+            <details class="cursor-trigger">
+                <summary>Diagnostyka Zaburzeń (Lękowe, Nastroju, Osobowości)</summary>
+                <div class="details-content">
+                    <p>Profesjonalna ocena kliniczna w kierunku:</p>
+                    <ul>
+                        <li>Zaburzeń osobowości (np. borderline, narcystyczna)</li>
+                        <li>Zaburzeń nastroju (depresja, CHAD)</li>
+                        <li>Zaburzeń lękowych (uogólnione, napadowe)</li>
+                    </ul>
+                </div>
+            </details>
+
+            <details class="cursor-trigger">
+                <summary>Diagnostyka Trudności Szkolnych i Rozwojowych</summary>
+                <div class="details-content">
+                    <p>Specjalistyczne badania dla dzieci i młodzieży:</p>
+                    <ul>
+                        <li>Diagnoza Dysleksji (trudności w czytaniu)</li>
+                        <li>Diagnoza Dyskalkulii (trudności matematyczne)</li>
+                        <li>Diagnoza Dyspraksji (DCD - zaburzenia koordynacji)</li>
+                        <li>Diagnoza Zespołu Tourette'a / Tików</li>
+                    </ul>
+                </div>
+            </details>
+            
+            <details class="cursor-trigger">
+                <summary>Pakiety Diagnostyczne</summary>
+                <div class="details-content">
+                    <p>Oszczędź czas i środki, wybierając kompleksowe pakiety badań.</p>
+                    <ul>
+                        <li><strong>Pakiet "Neuroróżnorodność Complex":</strong> Łączna diagnoza ADHD + ASD.</li>
+                        <li><strong>Pakiet "Start Szkolny":</strong> Badanie gotowości szkolnej + IQ.</li>
+                    </ul>
                 </div>
             </details>
 
@@ -251,35 +383,120 @@
             </details>
 
             <details class="cursor-trigger">
-                <summary>Terapia VR (Fobie i Lęki)</summary>
+                <summary>Terapia VR (Fobie, Lęki, OCD)</summary>
                 <div class="details-content">
-                    <p>Terapia ekspozycyjna w wirtualnym środowisku. Leczenie fobii (lęk wysokości, pająki, samoloty), lęku społecznego i wystąpień publicznych.</p>
+                    <p>Terapia ekspozycyjna w wirtualnym środowisku. Bezpieczne i kontrolowane warunki leczenia:</p>
+                    <ul>
+                        <li>Fobii specyficznych (samoloty, pająki, wysokość)</li>
+                        <li>Lęku społecznego i przed wystąpieniami publicznymi</li>
+                        <li>Zaburzeń Obsesyjno-Kompulsywnych (OCD)</li>
+                        <li>Zaburzeń Odżywiania (praca z obrazem ciała w VR)</li>
+                    </ul>
                     <a href="technologie.html" class="btn-small">Zobacz laboratorium VR</a>
+                </div>
+            </details>
+            
+            <details class="cursor-trigger">
+                <summary>Terapia VR dla Spektrum Autyzmu</summary>
+                <div class="details-content">
+                    <p>Innowacyjny trening kompetencji społecznych w wirtualnej rzeczywistości. Nauka rozpoznawania emocji, reagowania w sklepie, szkole czy pracy w bezpiecznym symulatorze.</p>
                 </div>
             </details>
 
             <details class="cursor-trigger">
-                <summary>Biofeedback HRV</summary>
+                <summary>Biofeedback i Neuromodulacja</summary>
                 <div class="details-content">
-                    <p>Trening koherencji serca. Nauka świadomej redukcji stresu poprzez oddech, z podglądem parametrów fizjologicznych na żywo.</p>
+                    <ul>
+                        <li><strong>Biofeedback HRV:</strong> Trening koherencji serca (oddechowy).</li>
+                        <li><strong>Biofeedback Termiczny:</strong> Skuteczna metoda leczenia migren i bólów napięciowych głowy.</li>
+                        <li><strong>Neurostymulacja:</strong> Wsparcie pracy mózgu (opcja po konsultacji).</li>
+                    </ul>
+                </div>
+            </details>
+            
+             <details class="cursor-trigger">
+                <summary>Pakiety Technologiczne</summary>
+                <div class="details-content">
+                    <p>Cykle terapeutyczne w niższej cenie:</p>
+                    <ul>
+                        <li>Pakiet "Wolność od Lęku" (5 sesji VR)</li>
+                        <li>Pakiet "Czysta Głowa" (10 sesji Biofeedback)</li>
+                    </ul>
                 </div>
             </details>
 
             <h2 class="category-header" style="border-bottom-color: #F59E0B;"><span>04.</span> Wsparcie Holistyczne (Ciało & Dieta)</h2>
 
             <details class="cursor-trigger">
-                <summary>Dietetyka Kliniczna</summary>
+                <summary>Dietetyka Kliniczna i Psychodietetyka</summary>
                 <div class="details-content">
-                    <p>Wsparcie żywieniowe w zaburzeniach nastroju, ADHD i spektrum autyzmu. Praca z osią jelito-mózg.</p>
+                    <p>Kompleksowe wsparcie żywieniowe uwzględniające oś jelito-mózg.</p>
+                    <ul>
+                        <li>Dietetyka w ADHD (wsparcie koncentracji dietą)</li>
+                        <li>Dietetyka w Spektrum Autyzmu (wybiórczość pokarmowa)</li>
+                        <li>Dietetyka w Zaburzeniach Lękowych i Depresji</li>
+                        <li>Konsultacje pierwsze i follow-up (kontrolne)</li>
+                    </ul>
                     <a href="dietetyk.html" class="btn-small">Profil Dietetyka</a>
                 </div>
             </details>
 
             <details class="cursor-trigger">
-                <summary>Fizjoterapia Somatyczna</summary>
+                <summary>Fizjoterapia i Praca z Ciałem</summary>
                 <div class="details-content">
-                    <p>Praca z napięciami w ciele wynikającymi z przewlekłego stresu i traumy. Uwalnianie blokad mięśniowych.</p>
+                    <ul>
+                        <li><strong>Fizjoterapia Somatyczna:</strong> Uwalnianie napięć stresowych i traumatycznych.</li>
+                        <li><strong>Masaż Zero-Gravity:</strong> Głęboka relaksacja w fotelu 4D z technologią skanowania ciała.</li>
+                        <li><strong>CIRCLE Method:</strong> Autorska metodologia łączenia ruchu i oddechu.</li>
+                    </ul>
                     <a href="fizjoterapia.html" class="btn-small">Profil Fizjoterapeuty</a>
+                </div>
+            </details>
+            
+            <details class="cursor-trigger">
+                <summary>Relaksacja i Mindfulness</summary>
+                <div class="details-content">
+                    <p>Indywidualne i grupowe treningi uważności, redukcji stresu oraz techniki oddechowe.</p>
+                </div>
+            </details>
+            
+            <h2 class="category-header" style="border-bottom-color: #8B5CF6;"><span>05.</span> Programy Specjalistyczne (Neuroróżnorodność)</h2>
+            
+            <details class="cursor-trigger">
+                <summary>Programy dla ADHD / ADD</summary>
+                <div class="details-content">
+                    <ul>
+                        <li>Treningi funkcji wykonawczych (planowanie, organizacja)</li>
+                        <li>Coaching ADHD dla dorosłych</li>
+                        <li>Grupy wsparcia</li>
+                    </ul>
+                    <a href="adhd.html" class="btn-small">Centrum ADHD</a>
+                </div>
+            </details>
+            
+            <details class="cursor-trigger">
+                <summary>Programy dla Spektrum Autyzmu (ASD)</summary>
+                <div class="details-content">
+                    <ul>
+                        <li>Trening Umiejętności Społecznych (TUS) w VR</li>
+                        <li>Wsparcie w samodzielności dla młodych dorosłych</li>
+                    </ul>
+                    <a href="asd.html" class="btn-small">Centrum ASD</a>
+                </div>
+            </details>
+            
+            <details class="cursor-trigger">
+                <summary>Wsparcie w Innych Trudnościach (Dysleksja, Tiki, Migreny)</summary>
+                <div class="details-content">
+                    <ul>
+                        <li><strong>Wysoka Wrażliwość (WWO):</strong> Program regulacji układu nerwowego.</li>
+                        <li><strong>Dysleksja:</strong> Treningi czytania i przetwarzania wzrokowego.</li>
+                        <li><strong>Dyskalkulia:</strong> Treningi poznawcze matematyki.</li>
+                        <li><strong>Dyspraksja (DCD):</strong> Wsparcie koordynacji ruchowej.</li>
+                        <li><strong>Zespół Tourette'a / Tiki:</strong> Terapie behawioralne (CBIT).</li>
+                        <li><strong>Migrena:</strong> Biofeedback termiczny i relaksacja.</li>
+                    </ul>
+                    <a href="neuroroznorodnosc.html" class="btn-small">Więcej o Neuroróżnorodności</a>
                 </div>
             </details>
 
@@ -288,14 +505,15 @@
 
     <footer>
         <div class="container" style="color: var(--text-muted);">
-            &copy; 2025 Naukowe Centrum Neuroinnowacji.
+            &copy; 2025 Naukowe Centrum Neuroinnowacji. <br>
+            ul. Stefana Żeromskiego 60/5a, Wrocław
         </div>
     </footer>
 
     <div id="ania-widget" class="ania-container">
         
         <div class="ania-bubble" id="ania-greeting">
-            Dzień dobry! ☀️ Jestem Wirtualną Asystentką NCNI. Kliknij we mnie, a odpowiem na Twoje pytania.
+            Dzień dobry! ☀️ Jestem Wirtualną Asystentką NCNI. Kliknij we mnie, a pomogę Ci znaleźć odpowiednią terapię.
             <span class="ania-close-bubble" onclick="closeGreeting(event)">✕</span>
         </div>
 
@@ -326,14 +544,14 @@
 
     <script>
         const chatKnowledge = {
-            'start': { text: "Cześć! 👋 W czym mogę Ci pomóc?", options: [{ label: "🧠 ADHD / ADD", next: 'adhd_info' }, { label: "🧩 Autyzm (ASD)", next: 'asd_info' }, { label: "💰 Cennik / Oferta", next: 'oferta' }, { label: "📅 Umów wizytę", action: 'booking' }] },
-            'adhd_info': { text: "Oferujemy pełną diagnozę (DIVA-5, MOXO) oraz treningi VR i Biofeedback.", options: [{ label: "Jak wygląda diagnoza?", next: 'adhd_diagnoza' }, { label: "Na czym polega terapia?", next: 'adhd_terapia' }, { label: "Wróć", next: 'start' }] },
-            'adhd_diagnoza': { text: "1. Wywiad kliniczny (DIVA-5).\n2. Test MOXO.\n3. Raport końcowy.", options: [{ label: "Chcę się zapisać", action: 'booking' }, { label: "Co to jest MOXO?", next: 'moxo' }] },
-            'moxo': { text: "MOXO to komputerowy test badający uwagę, czas reakcji i impulsywność.", options: [{ label: "Rozumiem", next: 'start' }, { label: "Umów badanie", action: 'booking' }] },
-            'adhd_terapia': { text: "Wykorzystujemy VR (Wirtualną Rzeczywistość) i Biofeedback HRV do treningu skupienia.", options: [{ label: "Zapisz mnie", action: 'booking' }, { label: "Wróć", next: 'start' }] },
-            'asd_info': { text: "Jesteśmy miejscem przyjaznym osobom w spektrum (Neurodiversity Affirming).", options: [{ label: "Umów konsultację", action: 'booking' }, { label: "Wróć", next: 'start' }] },
-            'oferta': { text: "Oferujemy diagnozę, psychoterapię, VR, Biofeedback i dietetykę.", options: [{ label: "Adres?", next: 'adres' }, { label: "Umów wizytę", action: 'booking' }] },
-            'adres': { text: "Wrocław, ul. Stefana Żeromskiego 60/5a.", options: [{ label: "Dzięki!", next: 'start' }] }
+            'start': { text: "Cześć! 👋 W czym mogę Ci pomóc? Przeglądasz właśnie pełny katalog naszych usług.", options: [{ label: "💰 Cennik", next: 'cennik_info' }, { label: "🧠 Diagnoza ADHD/ASD", next: 'diagnoza_info' }, { label: "🕶️ Terapie VR", next: 'vr_info' }, { label: "📅 Umów wizytę", action: 'booking' }] },
+            'cennik_info': { text: "Pełny cennik znajdziesz klikając w duże fioletowe kółko na górze strony. Czy chcesz, abym przeniosła Cię tam teraz?", options: [{ label: "Tak, pokaż cennik", action: 'goto_cennik' }, { label: "Nie, szukam czegoś innego", next: 'start' }] },
+            'diagnoza_info': { text: "Wykonujemy kompleksową diagnozę ADHD (DIVA-5, MOXO) oraz spektrum autyzmu (ADOS-2). Posiadamy też pakiety łączone.", options: [{ label: "Szczegóły ADHD", next: 'adhd_details' }, { label: "Szczegóły Autyzm", next: 'asd_details' }, { label: "Wróć", next: 'start' }] },
+            'adhd_details': { text: "Diagnoza ADHD to zazwyczaj 3-4 spotkania. Obejmuje wywiad, testy i raport. Koszt pakietu znajdziesz w Cenniku.", options: [{ label: "Umów termin", action: 'booking' }, { label: "Wróć", next: 'start' }] },
+            'asd_details': { text: "Diagnoza ASD to proces wielospecjalistyczny. Wykorzystujemy złoty standard ADOS-2.", options: [{ label: "Umów termin", action: 'booking' }, { label: "Wróć", next: 'start' }] },
+            'vr_info': { text: "W naszym laboratorium VR leczymy fobie, lęki, OCD oraz wspieramy rozwój społeczny w autyzmie.", options: [{ label: "Fobie i Lęki", next: 'vr_fobie' }, { label: "Autyzm i TUS VR", next: 'vr_tus' }] },
+            'vr_fobie': { text: "Terapia ekspozycyjna w VR pozwala bezpiecznie zmierzyć się z lękiem (np. pająki, samolot).", options: [{ label: "Chcę spróbować", action: 'booking' }, { label: "Wróć", next: 'start' }] },
+            'vr_tus': { text: "Dla osób w spektrum tworzymy symulacje sytuacji społecznych (sklep, rozmowa o pracę).", options: [{ label: "Umów konsultację", action: 'booking' }, { label: "Wróć", next: 'start' }] }
         };
 
         const chatWindow = document.getElementById('ania-window');
@@ -373,8 +591,10 @@
             addMessage(opt.label, 'user'); optionsArea.innerHTML = '';
             if (opt.action === 'booking') {
                 window.location.href = 'index.html#rezerwacja';
-                if(window.innerWidth < 480) toggleAnia();
                 setTimeout(() => { addMessage("Przeniosłam Cię do formularza. Powodzenia! 😊", 'bot'); }, 500);
+            } else if (opt.action === 'goto_cennik') {
+                window.location.href = 'cennik.html';
+                setTimeout(() => { addMessage("Otwieram cennik...", 'bot'); }, 500);
             } else if (opt.next) { loadScenario(opt.next); }
         }
         function showTypingIndicator() {
@@ -399,8 +619,8 @@
             });
         }
         
-        // --- HOVER EFFECT FOR CURSOR TRIGGERS (Since custom cursor removed, this just adds class) ---
-        const triggers = document.querySelectorAll('.cursor-trigger, a, button, summary, .btn-small, .ania-avatar');
+        // --- HOVER EFFECT ---
+        const triggers = document.querySelectorAll('.cursor-trigger, a, button, summary, .btn-small, .ania-avatar, .cennik-circle, .featured-card');
         triggers.forEach(trigger => {
             trigger.addEventListener('mouseenter', () => { document.body.classList.add('hovering'); });
             trigger.addEventListener('mouseleave', () => { document.body.classList.remove('hovering'); });
