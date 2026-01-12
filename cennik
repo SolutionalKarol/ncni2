@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-56VR40VHHV"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-56VR40VHHV');
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cennik Usług | NCNI Wrocław</title>
+    <meta name="description" content="Oficjalny cennik NCNI 2026. Psychoterapia, Diagnoza, Pakiety. Sprawdź aktualne ceny wizyt.">
+    <link rel="icon" href="logo.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <style>
+        :root {
+            --bg-body: #F8FAFC;        
+            --bg-surface: rgba(255, 255, 255, 0.95);
+            --primary: #0F766E;        
+            --primary-dark: #0D5E57;
+            --primary-light: #CCFBF1;
+            --accent: #6366F1;        
+            --text-main: #1E293B;
+            --text-muted: #64748B;
+            --border: #E2E8F0;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: var(--bg-body); 
+            color: var(--text-main); 
+            line-height: 1.6; 
+            overflow-x: hidden;
+        }
+        h1, h2, h3 { font-family: 'Lexend', sans-serif; }
+        
+        #bg-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; z-index: -1; opacity: 0.6; pointer-events: none; }
+        .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+        .glass { background: var(--bg-surface); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.6); box-shadow: 0 4px 20px rgba(0,0,0,0.03); }
+        
+        /* Header */
+        header { position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid var(--border); padding: 12px 0; }
+        .nav-wrapper { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+        .brand-bar { display: flex; justify-content: center; align-items: center; width: 100%; position: relative; }
+        .logo { display: flex; align-items: center; gap: 14px; font-weight: 700; font-size: 1.6rem; color: var(--text-main); text-decoration: none; cursor: pointer; letter-spacing: -0.02em; }
+        .logo img { height: 50px; width: auto; border-radius: 8px; }
+        .nav-links { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+        .nav-item { padding: 8px 18px; border-radius: 99px; font-size: 0.95rem; font-weight: 500; color: var(--text-muted); text-decoration: none; transition: 0.3s; }
+        .nav-item:hover, .nav-item.active { color: var(--primary); background: var(--primary-light); }
+        .nav-cta { background: var(--primary); color: white !important; box-shadow: 0 4px 12px rgba(15, 118, 110, 0.25); margin-left: 8px; }
+        .nav-cta:hover { background: var(--primary-dark); transform: translateY(-1px); }
+
+        /* Mobile Toggle */
+        .mobile-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; position: absolute; right: 0; top: 50%; transform: translateY(-50%); }
+        .mobile-toggle span { display: block; width: 24px; height: 2px; background: var(--text-main); margin: 5px 0; transition: 0.3s; }
+        .mobile-menu { position: fixed; top: 80px; left: 0; width: 100%; background: white; padding: 24px; border-bottom: 1px solid var(--border); transform: translateY(-150%); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); z-index: 999; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .mobile-menu.active { transform: translateY(0); }
+        .mobile-link { display: block; padding: 14px 0; font-size: 1.1rem; font-weight: 500; color: var(--text-main); text-decoration: none; border-bottom: 1px solid var(--bg-body); }
+        @media (max-width: 900px) {
+            .nav-wrapper { flex-direction: row; height: 60px; justify-content: space-between; padding: 0; }
+            .brand-bar { justify-content: flex-start; width: auto; }
+            .nav-links { display: none; }
+            .mobile-toggle { display: block; }
+            .logo { font-size: 1.1rem; }
+            .logo img { height: 36px; }
+        }
+
+        /* --- PRICE LIST STYLES --- */
+        .featured-card {
+            background: linear-gradient(135deg, #0F766E 0%, #115E59 100%);
+            color: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin: 40px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 15px 30px rgba(15, 118, 110, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        .featured-card::before {
+            content: ''; position: absolute; top: -50px; right: -50px;
+            width: 200px; height: 200px; background: rgba(255,255,255,0.1);
+            border-radius: 50%; filter: blur(40px);
+        }
+        .fc-content h3 { font-size: 1.6rem; margin-bottom: 5px; display: flex; align-items: center; gap: 10px; }
+        .fc-badge { background: #F59E0B; color: #fff; font-size: 0.75rem; padding: 3px 10px; border-radius: 99px; text-transform: uppercase; font-weight: 700; }
+        .fc-price { text-align: right; font-family: 'Lexend', sans-serif; }
+        .fc-price .amount { font-size: 2.2rem; font-weight: 700; display: block; line-height: 1; }
+        .fc-price .unit { font-size: 0.9rem; opacity: 0.9; font-weight: 400; }
+
+        .section-title { font-size: 1.4rem; color: var(--primary); margin: 50px 0 20px; border-bottom: 2px solid var(--border); padding-bottom: 10px; }
+        
+        .price-row {
+            display: flex; justify-content: space-between; align-items: baseline;
+            padding: 18px 0; border-bottom: 1px dashed var(--border);
+            transition: background 0.2s;
+        }
+        .price-row:hover { background: rgba(255,255,255,0.5); }
+        .pr-service { flex: 1; padding-right: 20px; }
+        .pr-name { font-weight: 600; font-size: 1.05rem; color: var(--text-main); }
+        .pr-desc { font-size: 0.9rem; color: var(--text-muted); margin-top: 4px; display: block; }
+        .pr-amount { font-weight: 700; color: var(--text-main); font-family: 'Lexend', sans-serif; font-size: 1.1rem; white-space: nowrap; }
+
+        .payment-methods {
+            margin-top: 60px;
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+        .payment-methods h3 { font-size: 1.2rem; margin-bottom: 16px; color: var(--text-main); }
+        .payment-list {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 0;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+        .payment-list li {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .payment-list li::before {
+            content: '';
+            display: block;
+            width: 8px;
+            height: 8px;
+            background: var(--primary);
+            border-radius: 50%;
+        }
+        .invoice-info {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid var(--border);
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* FAQ & RODO Accordion */
+        details {
+            margin-bottom: 16px; border: 1px solid var(--border); border-radius: 12px;
+            background: white; overflow: hidden; transition: all 0.3s ease;
+        }
+        details[open] { border-color: var(--primary); box-shadow: 0 4px 12px rgba(15, 118, 110, 0.1); }
+        summary {
+            padding: 16px 20px; cursor: pointer; font-weight: 600; font-size: 1rem;
+            display: flex; justify-content: space-between; align-items: center; list-style: none;
+            color: var(--text-main); background: white;
+        }
+        summary::-webkit-details-marker { display: none; }
+        summary::after { content: '+'; font-size: 1.5rem; color: var(--primary); transition: transform 0.2s; font-weight: 300; }
+        details[open] summary::after { transform: rotate(45deg); }
+        details[open] summary { border-bottom: 1px solid var(--bg-body); background: #F0FDF4; }
+        .details-content { padding: 20px; color: var(--text-muted); font-size: 0.95rem; }
+
+        @media (max-width: 600px) {
+            .featured-card { flex-direction: column; text-align: center; gap: 20px; }
+            .fc-price { text-align: center; }
+            .price-row { flex-direction: column; gap: 8px; }
+            .pr-amount { align-self: flex-end; color: var(--primary); }
+        }
+
+        /* Ania */
+        .ania-container { position: fixed; bottom: 24px; right: 24px; z-index: 2000; }
+        .ania-avatar { width: 60px; height: 60px; border-radius: 50%; border: 3px solid white; box-shadow: 0 4px 20px rgba(15, 118, 110, 0.3); cursor: pointer; overflow: hidden; background: white; }
+        .ania-avatar img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+        
+        footer { background: white; border-top: 1px solid var(--border); padding: 50px 0; margin-top: 80px; text-align: center; font-size: 0.9rem; color: var(--text-muted); }
+    </style>
+</head>
+<body>
+
+    <div id="bg-canvas"></div>
+
+    <header class="glass">
+        <div class="container nav-wrapper">
+            <div class="brand-bar">
+                <a href="index.html" class="logo">
+                    <img src="logo.png" alt="NCNI">
+                    <span>Naukowe Centrum Neuroinnowacji</span>
+                </a>
+                <button class="mobile-toggle" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+            <nav class="nav-links">
+                <a href="o-nas.html" class="nav-item">O nas</a>
+                <a href="neuroroznorodnosc.html" class="nav-item">Neuroróżnorodność</a>
+                <a href="psychologia.html" class="nav-item">Psychologia</a>
+                <a href="technologie.html" class="nav-item">Technologie</a>
+                <a href="oferta.html" class="nav-item">Oferta</a>
+                <a href="cennik.html" class="nav-item active">Cennik</a>
+                <a href="index.html#rezerwacja" class="nav-item nav-cta">Umów wizytę</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="mobile-menu">
+        <a href="o-nas.html" class="mobile-link">O nas</a>
+        <a href="neuroroznorodnosc.html" class="mobile-link">Neuroróżnorodność</a>
+        <a href="psychologia.html" class="mobile-link">Psychologia</a>
+        <a href="technologie.html" class="mobile-link">Technologie</a>
+        <a href="oferta.html" class="mobile-link">Oferta</a>
+        <a href="cennik.html" class="mobile-link" style="color: var(--primary);">Cennik</a>
+        <a href="index.html#rezerwacja" class="mobile-link" style="font-weight: 700;">Umów wizytę</a>
+    </div>
+
+    <section class="container">
+        
+        <div style="text-align: center; margin-top: 60px; margin-bottom: 20px;">
+            <h1 style="font-size: 3rem; margin-bottom: 10px;">Cennik Usług</h1>
+            <p style="background: #EEF2FF; color: var(--accent); display: inline-block; padding: 6px 16px; border-radius: 99px; font-weight: 600; font-size: 0.9rem;">
+                Cennik obowiązuje od 01.01.2026
+            </p>
+        </div>
+
+        <!-- FEATURED: KRASZEWSKI -->
+        <div class="featured-card">
+            <div class="fc-content">
+                <h3><span class="fc-badge">PREMIUM</span> Metoda Kraszewskiego</h3>
+                <p style="opacity: 0.9; margin-top: 5px;">Autorska metoda holistyczna (Ciało + Umysł).</p>
+            </div>
+            <div class="fc-price">
+                <span class="amount">350 zł</span>
+                <span class="unit">Konsultacja wstępna (60 min)</span>
+            </div>
+        </div>
+
+        <!-- SEKCJA DOROŚLI -->
+        <h2 class="section-title">Psychologia i Psychoterapia Dorosłych</h2>
+        
+        <div class="price-row">
+            <div class="pr-service">
+                <div class="pr-name">Konsultacja psychologiczna / Psychoterapia (Pierwsza wizyta)</div>
+                <span class="pr-desc">Interwencja kryzysowa.</span>
+            </div>
+            <div class="pr-amount">220 zł</div>
+        </div>
+
+        <div class="price-row">
+            <div class="pr-service">
+                <div class="pr-name">Psychoterapia par</div>
+            </div>
+            <div class="pr-amount">300 zł</div>
+        </div>
+
+        <div class="price-row">
+            <div class="pr-service">
+                <div class="pr-name">Psychoterapia rodzinna</div>
+            </div>
+            <div class="pr-amount">350 zł</div>
+        </div>
+
+        <div class="price-row">
+            <div class="pr-service">
+                <div class="pr-name">Terapia EMDR</div>
+                <span class="pr-desc">Leczenie traumy i zespołu stresu pourazowego (PTSD).</span>
+            </div>
+            <div class="pr-amount">220 zł</div>
+        </div>
+
+        <div class="price-row">
+            <div class="pr-service">
+                <div class="pr-name">Terapia DDA / Uzależnień / Współuzależnienia</div>
+            </div>
+            <div class="pr-amount">220 zł</div>
+        </div>
+
+        <div class="price-row">
+            <div class="pr-service">
+                <div class="pr-name">Konsultacja rodzinna w uzależnieniach</div>
+            </div>
+            <div class="pr-amount">420 zł</div>
+        </div>
+
+        <div class="price-row">
+            <div class="pr-service">
+                <div class="pr-name">Konsultacja transformacyjna</div>
+            </div>
+            <div class="pr-amount">250 zł</div>
+        </div>
+
+        <!-- DIAGNOSTYKA DOROŚLI -->
+        <h2 class="section-title">Diagnostyka Dorosłych</h2>
+
+        <div class="price-row">
+            <div class="pr-service">
+                <div class="pr-name">Diagnoza ogólna dorosłych</div>
+            </div>
+            <div class="pr-amount">220 zł</div>
+        </div>
+
+        <div class="price-row">
+            <div class="pr-service">
+                <div class="pr-name">Diagnoza neuropsychologiczna</div>
+            </div>
+            <div class="pr-amount">400 zł</div>
+        </div>
+
+        <div class="price-row">
+            <div class="pr-service">
+                <div class="pr-name">PAKIET: Stworzenie profilu osobowościowego (2 wizyty)</div>
+                <span class="pr-desc">Wywiad podstawowy + Test NEO-PI-R + Przekazanie wyników (łącznie 2,5h)</span>
+            </div>
+            <div class="pr-amount">500 zł</div>
+        </div>
+
+        <div class="price-row">
+            <div class="pr-service">
+                <div class="pr-name">PAKIET: Diagnoza zaburzeń osobowości (3 wizyty)</div>
+                <span class="pr-desc">Wywiad + Badanie SCID-5-PD + Omówienie (łącznie 4h)</span>
+            </div>
+            <div class="pr-amount">900 zł</div>
+        </div>
+
+        <div class="price-row">
+            <div class="pr-service">
+                <div class="pr-name">PAKIET: Diagnoza zaburzeń osobowości (4 wizyty)</div>
+                <span class="pr-desc">Wywiad + Wywiad DSM-5 + Test MMPI-2 + Omówienie (łącznie 5,5h)</span>
+            </div>
+            <div class="pr-amount">900 zł</div>
+        </div>
+
+
+        <!-- DZIECI I MŁODZIEŻ -->
+        <h2 class="section-title">Dzieci, Młodzież i Rodzice</h2>
+
+        <div class="price-row">
+            <div class="pr-service">
+                <div class="pr-name">Psychoterapia / Konsultacja / Interwencja (Dzieci i Młodzież)</div>
+            </div>
+            <div class="pr-amount">220 zł</div>
+        </div>
+
+        <div class="price-row">
+            <div class="pr-service">
+                <div class="pr-name">Konsultacja psychologiczna dla rodziców</div>
+                <span class="pr-desc">Pierwsze spotkanie dla dzieci w wieku 3-12 lat odbywa się bez udziału dziecka.</span>
+            </div>
+            <div class="pr-amount">220 zł</div>
+        </div>
+
+        <div class="price-row">
+            <div class="pr-service">
+                <div class="pr-name">Diagnoza ogólna dzieci i młodzieży (od 4 r.ż.)</div>
+            </div>
+            <div class="pr-amount">220 zł</div>
+        </div>
+
+        <div class="price-row">
+            <div class="pr-service">
+                <div class="pr-name">Wsparcie psychologiczne po diagnozie ADOS / Spektrum Autyzmu</div>
+            </div>
+            <div class="pr-amount">220 zł</div>
+        </div>
+
+        <div class="price-row">
+            <div class="pr-service">
+                <div class="pr-name">Badanie zdolności poznawczych (Test Stanford-Binet 5)</div>
+            </div>
+            <div class="pr-amount">500 zł</div>
+        </div>
+
+        <div class="price-row">
+            <div class="pr-service">
+                <div class="pr-name">PAKIET: Diagnostyka intelektu (od 2 r.ż.)</div>
+                <span class="pr-desc">4 spotkania: Rodzice (1h) + Dziecko (1,5h + 1h) + Omówienie (1h)</span>
+            </div>
+            <div class="pr-amount">900 zł</div>
+        </div>
+
+
+        <!-- INNE JĘZYKI -->
+        <h2 class="section-title">Inne Języki / Other Languages / Autres Langues</h2>
+
+        <div style="margin-bottom: 30px; background: #F0F9FF; padding: 20px; border-radius: 12px; border-left: 4px solid var(--accent); color: var(--text-main);">
+            <p style="margin-bottom: 5px; font-weight: 600;">Wszystkie usługi z naszej oferty są dostępne w języku angielskim i francuskim.</p>
+            <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">
+                All services from our offer are available in English and French.<br>
+                Tous les services de notre offre sont disponibles en anglais et en français.
+            </p>
+        </div>
+
+        <div class="price-row">
+            <div class="pr-service">
+                <div class="pr-name">Psychological consultation / Consultation psychologique</div>
+                <span class="pr-desc">Individual therapy, Crisis intervention (EN / FR)</span>
+            </div>
+            <div class="pr-amount">240 zł</div>
+        </div>
+
+        <div class="price-row">
+            <div class="pr-service">
+                <div class="pr-name">Couple’s therapy / Thérapie de couple</div>
+                <span class="pr-desc">Psychotherapy for couples (EN / FR)</span>
+            </div>
+            <div class="pr-amount">320 zł</div>
+        </div>
+
+        <div class="price-row">
+            <div class="pr-service">
+                <div class="pr-name">Addiction therapy / Thérapie des addictions</div>
+                <span class="pr-desc">Support for addiction and co-dependency (EN / FR)</span>
+            </div>
+            <div class="pr-amount">320 zł</div>
+        </div>
+
+        <div class="price-row">
+            <div class="pr-service">
+                <div class="pr-name">Full Diagnostic Package / Forfait Diagnostic Complet</div>
+                <span class="pr-desc">Personality disorders, ADHD, ASD diagnosis (EN / FR). Total ~5.5h</span>
+            </div>
+            <div class="pr-amount">1000 zł</div>
+        </div>
+
+        <!-- METODY PŁATNOŚCI -->
+        <div class="payment-methods">
+            <h3>Metody Płatności</h3>
+            <ul class="payment-list">
+                <li>Karta płatnicza</li>
+                <li>Gotówka</li>
+                <li>BLIK</li>
+                <li>Przelew</li>
+            </ul>
+            <div class="invoice-info">
+                * Faktura dostępna na życzenie. Prosimy o informację przed dokonaniem płatności.
+            </div>
+        </div>
+
+        <!-- FAQ & RODO -->
+        <h2 class="section-title" style="margin-top: 60px;">Ważne Informacje (FAQ & RODO)</h2>
+
+        <details>
+            <summary>Polityka Odwoływania Wizyt</summary>
+            <div class="details-content">
+                <p>Wizytę można bezpłatnie odwołać najpóźniej na 24 godziny przed jej planowanym terminem. W przypadku odwołania w czasie krótszym niż 24h lub niestawienia się na wizytę, obowiązuje płatność w wysokości 100% ceny wizyty.</p>
+            </div>
+        </details>
+
+        <details>
+            <summary>Jak przygotować się do pierwszej wizyty?</summary>
+            <div class="details-content">
+                <p>Na pierwszą wizytę diagnostyczną lub psychoterapeutyczną nie trzeba się specjalnie przygotowywać. W przypadku diagnozy dziecięcej, na pierwsze spotkanie zapraszamy wyłącznie rodziców (bez dziecka), chyba że specjalista wskaże inaczej.</p>
+            </div>
+        </details>
+
+        <details>
+            <summary>Czy prowadzicie terapię online?</summary>
+            <div class="details-content">
+                <p>Tak, większość naszych usług (psychoterapia indywidualna, konsultacje) jest dostępna w formie online (Skype, Google Meet, Zoom). Diagnostyka (np. ADOS-2, testy IQ) wymaga zazwyczaj obecności w gabinecie.</p>
+            </div>
+        </details>
+
+        <details>
+            <summary>Informacja RODO / Ochrona Danych Osobowych</summary>
+            <div class="details-content">
+                <p><strong>Administrator Danych:</strong><br>
+                Administratorem Państwa danych osobowych jest Naukowe Centrum Neuroinnowacji (NCNI) z siedzibą we Wrocławiu przy ul. Stefana Żeromskiego 60/5a.</p>
+                <p style="margin-top: 10px;"><strong>Cel przetwarzania:</strong><br>
+                Dane przetwarzane są w celu realizacji usług medycznych i terapeutycznych, prowadzenia dokumentacji medycznej (zgodnie z wymogami prawa), rezerwacji wizyt oraz kontaktu z pacjentem.</p>
+                <p style="margin-top: 10px;"><strong>Prawa pacjenta:</strong><br>
+                Posiadają Państwo prawo dostępu do treści swoich danych, ich sprostowania, usunięcia (w zakresie nieograniczonym przepisami o dokumentacji medycznej) oraz ograniczenia przetwarzania.</p>
+                <p style="margin-top: 10px;">Pełna treść klauzuli informacyjnej dostępna jest w rejestracji NCNI.</p>
+            </div>
+        </details>
+
+    </section>
+
+    <footer>
+        <div class="container">
+            &copy; 2026 Naukowe Centrum Neuroinnowacji<br>
+            ul. Stefana Żeromskiego 60/5a, Wrocław
+        </div>
+    </footer>
+
+    <div id="ania-widget" class="ania-container">
+        <div class="ania-avatar">
+            <img src="ania.jpg" alt="Ania">
+        </div>
+    </div>
+
+    <script>
+        // TŁO
+        function initParticles(){const container=document.getElementById('bg-canvas');if(!container)return;const scene=new THREE.Scene();scene.fog=new THREE.FogExp2(0xF8FAFC,0.002);const camera=new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,1000);camera.position.z=10;const renderer=new THREE.WebGLRenderer({alpha:true,antialias:true});renderer.setSize(window.innerWidth,window.innerHeight);renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));container.appendChild(renderer.domElement);const geometry=new THREE.BufferGeometry();const count=200;const positions=new Float32Array(count*3);const colors=new Float32Array(count*3);for(let i=0;i<count*3;i+=3){positions[i]=(Math.random()-0.5)*25;positions[i+1]=(Math.random()-0.5)*25;positions[i+2]=(Math.random()-0.5)*25;const mix=Math.random();if(mix>0.5){colors[i]=0.06;colors[i+1]=0.46;colors[i+2]=0.43;}else{colors[i]=0.39;colors[i+1]=0.4;colors[i+2]=0.94;}}geometry.setAttribute('position',new THREE.BufferAttribute(positions,3));geometry.setAttribute('color',new THREE.BufferAttribute(colors,3));const material=new THREE.PointsMaterial({size:0.1,vertexColors:true,transparent:true,opacity:0.4});const particles=new THREE.Points(geometry,material);scene.add(particles);let mouseX=0,mouseY=0,targetX=0,targetY=0;const windowHalfX=window.innerWidth/2;const windowHalfY=window.innerHeight/2;document.addEventListener('mousemove',(e)=>{mouseX=(e.clientX-windowHalfX);mouseY=(e.clientY-windowHalfY);});const clock=new THREE.Clock();function animate(){const time=clock.getElapsedTime();targetX=mouseX*0.0001;targetY=mouseY*0.0001;particles.rotation.y+=0.01*(targetX-particles.rotation.y);particles.rotation.x+=0.01*(targetY-particles.rotation.x);particles.rotation.z+=0.0005;const scale=1+Math.sin(time*0.5)*0.02;particles.scale.set(scale,scale,scale);renderer.render(scene,camera);requestAnimationFrame(animate);}animate();window.addEventListener('resize',()=>{camera.aspect=window.innerWidth/window.innerHeight;camera.updateProjectionMatrix();renderer.setSize(window.innerWidth,window.innerHeight);});}document.addEventListener("DOMContentLoaded",initParticles);
+
+        // MENU
+        const toggle = document.querySelector('.mobile-toggle');
+        const menu = document.querySelector('.mobile-menu');
+        if (toggle && menu) {
+            toggle.addEventListener('click', () => { menu.classList.toggle('active'); });
+            menu.querySelectorAll('a').forEach(link => { link.addEventListener('click', () => menu.classList.remove('active')); });
+        }
+    </script>
+</body>
+</html>
