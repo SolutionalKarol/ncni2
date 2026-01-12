@@ -16,21 +16,13 @@
     <link rel="icon" href="logo.png" type="image/png">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-     <!-- Google Analytics 4 -->
-     <script async src="https://www.googletagmanager.com/gtag/js?id=G-56VR40VHHV"></script>
-     <script>
-   window.dataLayer = window.dataLayer || [];
-   function gtag(){dataLayer.push(arguments);}
-   gtag('js', new Date());
-   gtag('config', 'G-56VR40VHHV');
- </script>
 
     <style>
-        /* --- COPY OF CORE STYLES (z index.html) --- */
+        /* --- CORE STYLES (Baza) --- */
         :root {
-            --bg-body: #F8FAFC;       
+            --bg-body: #F8FAFC;        
             --bg-surface: rgba(255, 255, 255, 0.85);
-            --primary: #0F766E;       
+            --primary: #0F766E;        
             --primary-dark: #0D5E57;
             --primary-light: #CCFBF1;
             --accent: #6366F1;        
@@ -53,16 +45,7 @@
             overflow-x: hidden;
         }
 
-        /* Cursor Logic */
-        @media (min-width: 901px) { body, a, button { cursor: none !important; } }
-        @media (max-width: 900px) { .cursor-dot, .cursor-outline { display: none !important; } body { cursor: auto; } }
-
         h1, h2, h3, h4 { font-family: 'Lexend', sans-serif; }
-
-        /* Custom Cursor */
-        .cursor-dot { width: 8px; height: 8px; background-color: var(--primary); position: fixed; top: 0; left: 0; transform: translate(-50%, -50%); border-radius: 50%; z-index: 9999; pointer-events: none; }
-        .cursor-outline { width: 40px; height: 40px; border: 1px solid rgba(15, 118, 110, 0.5); position: fixed; top: 0; left: 0; transform: translate(-50%, -50%); border-radius: 50%; z-index: 9998; pointer-events: none; transition: width 0.2s, height 0.2s, background-color 0.2s, border-color 0.2s; }
-        body.hovering .cursor-outline { width: 70px; height: 70px; background-color: rgba(15, 118, 110, 0.05); border-color: var(--primary); border-width: 2px; }
 
         /* Background */
         #bg-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; z-index: -1; opacity: 0.6; pointer-events: none; }
@@ -75,6 +58,10 @@
         .brand-bar { display: flex; justify-content: center; align-items: center; width: 100%; position: relative; }
         .logo { display: flex; align-items: center; gap: 14px; font-weight: 700; font-size: 1.6rem; color: var(--text-main); text-decoration: none; cursor: pointer; letter-spacing: -0.02em; }
         .logo img { height: 50px; width: auto; border-radius: 8px; }
+
+        /* Responsive Text Classes */
+        .mobile-text { display: none; } /* Domyślnie ukryte */
+        .desktop-text { display: inline; } /* Domyślnie widoczne */
 
         .nav-links { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
         .nav-item { padding: 8px 18px; border-radius: 99px; font-size: 0.95rem; font-weight: 500; color: var(--text-muted); text-decoration: none; transition: var(--trans-default); cursor: pointer; }
@@ -90,12 +77,16 @@
         .mobile-link { display: block; padding: 14px 0; font-size: 1.1rem; font-weight: 500; color: var(--text-main); text-decoration: none; border-bottom: 1px solid var(--bg-body); }
 
         @media (max-width: 900px) {
-            .nav-wrapper { flex-direction: row; height: 60px; justify-content: space-between; padding: 0; }
+            .nav-wrapper { flex-direction: row; height: 60px; justify-content: center; padding: 0; }
             .brand-bar { justify-content: flex-start; width: auto; }
             .nav-links { display: none; }
             .mobile-toggle { display: block; }
             .logo { font-size: 1.1rem; }
             .logo img { height: 36px; }
+            
+            /* Logo Text Logic for Mobile */
+            .desktop-text { display: none; }
+            .mobile-text { display: inline; }
         }
 
         /* --- Page Specific --- */
@@ -132,27 +123,26 @@
 <body>
 
     <div id="bg-canvas"></div>
-    <div class="cursor-dot"></div>
-    <div class="cursor-outline"></div>
 
     <header class="glass">
         <div class="container nav-wrapper">
             <div class="brand-bar">
-                <a href="index.html" class="logo cursor-trigger">
+                <a href="index.html" class="logo">
                     <img src="logo.png" alt="NCNI">
-                    <span>Naukowe Centrum Neuroinnowacji</span>
+                    <span class="desktop-text">Naukowe Centrum Neuroinnowacji</span>
+                    <span class="mobile-text">NCNI</span>
                 </a>
-                <button class="mobile-toggle cursor-trigger" aria-label="Menu">
+                <button class="mobile-toggle" aria-label="Menu">
                     <span></span><span></span><span></span>
                 </button>
             </div>
             <nav class="nav-links">
-                <a href="o-nas.html" class="nav-item cursor-trigger">O nas</a>
-                <a href="neuroroznorodnosc.html" class="nav-item cursor-trigger active">Neuroróżnorodność</a>
-                <a href="psychologia.html" class="nav-item cursor-trigger">Psychologia</a>
-                <a href="technologie.html" class="nav-item cursor-trigger">Technologie</a>
-                <a href="oferta.html" class="nav-item cursor-trigger">Oferta</a>
-                <a href="index.html#rezerwacja" class="nav-item nav-cta cursor-trigger">Umów wizytę</a>
+                <a href="o-nas.html" class="nav-item">O nas</a>
+                <a href="neuroroznorodnosc.html" class="nav-item active">Neuroróżnorodność</a>
+                <a href="psychologia.html" class="nav-item">Psychologia</a>
+                <a href="technologie.html" class="nav-item">Technologie</a>
+                <a href="oferta.html" class="nav-item">Oferta</a>
+                <a href="index.html#rezerwacja" class="nav-item nav-cta">Umów wizytę</a>
             </nav>
         </div>
     </header>
@@ -179,7 +169,7 @@
     <section class="container">
         <div class="grid-cards">
             <!-- ADHD -->
-            <a href="adhd.html" class="topic-card cursor-trigger">
+            <a href="adhd.html" class="topic-card">
                 <div class="card-icon">🧠</div>
                 <h3>ADHD / ADD</h3>
                 <p>Treningi funkcji wykonawczych dla dzieci i dorosłych. Zarządzanie uwagą, impulsywnością i "chaosem" w głowie przy użyciu VR i Biofeedbacku.</p>
@@ -187,7 +177,7 @@
             </a>
 
             <!-- ASD -->
-            <a href="asd.html" class="topic-card cursor-trigger">
+            <a href="asd.html" class="topic-card">
                 <div class="card-icon">🧩</div>
                 <h3>Spektrum Autyzmu (ASD)</h3>
                 <p>Treningi kompetencji społecznych w bezpiecznym, wirtualnym środowisku. Praca nad odczytywaniem emocji i regulacją napięcia.</p>
@@ -195,7 +185,7 @@
             </a>
 
             <!-- WWO -->
-            <a href="wysoka-wrazliwosc.html" class="topic-card cursor-trigger">
+            <a href="wysoka-wrazliwosc.html" class="topic-card">
                 <div class="card-icon">🦋</div>
                 <h3>Wysoka Wrażliwość (WWO)</h3>
                 <p>Jak nie ulegać przestymulowaniu? Nauka higieny układu nerwowego i zarządzania energią w intensywnym świecie.</p>
@@ -203,7 +193,7 @@
             </a>
 
             <!-- Dysleksja -->
-            <a href="dysleksja.html" class="topic-card cursor-trigger">
+            <a href="dysleksja.html" class="topic-card">
                 <div class="card-icon">📖</div>
                 <h3>Dysleksja</h3>
                 <p>Nowoczesne treningi czytania i przetwarzania wzrokowego. Przekraczamy bariery edukacyjne za pomocą technologii VR.</p>
@@ -211,7 +201,7 @@
             </a>
 
             <!-- Dyskalkulia -->
-            <a href="dyskalkulia.html" class="topic-card cursor-trigger">
+            <a href="dyskalkulia.html" class="topic-card">
                 <div class="card-icon">🔢</div>
                 <h3>Dyskalkulia</h3>
                 <p>Wsparcie w rozumieniu liczb i pojęć matematycznych. Treningi poznawcze aktywujące konkretne obszary mózgu.</p>
@@ -219,7 +209,7 @@
             </a>
 
             <!-- DCD -->
-            <a href="dcd.html" class="topic-card cursor-trigger">
+            <a href="dcd.html" class="topic-card">
                 <div class="card-icon">🤸</div>
                 <h3>Dyspraksja (DCD)</h3>
                 <p>Wsparcie koordynacji ruchowej i planowania motorycznego. Integracja ciała i umysłu w ruchu.</p>
@@ -227,7 +217,7 @@
             </a>
 
             <!-- Tourette -->
-            <a href="tourette.html" class="topic-card cursor-trigger">
+            <a href="tourette.html" class="topic-card">
                 <div class="card-icon">⚡</div>
                 <h3>Zespół Tourette'a / Tiki</h3>
                 <p>Terapie behawioralne (CBIT) i relaksacyjne wspomagające kontrolę tików i redukcję napięcia w ciele.</p>
@@ -235,7 +225,7 @@
             </a>
 
             <!-- Metoda Kraszewskiego -->
-            <a href="metoda-kraszewskiego.html" class="topic-card card-accent cursor-trigger">
+            <a href="metoda-kraszewskiego.html" class="topic-card card-accent">
                 <div class="card-icon">🎓</div>
                 <h3>Metoda Kraszewskiego</h3>
                 <p>Autorska metoda integracji sensoryczno-poznawczej opracowana w NCNI. Unikalne podejście do rozwoju mózgu.</p>
@@ -243,7 +233,7 @@
             </a>
 
             <!-- Migrena -->
-            <a href="migrena.html" class="topic-card cursor-trigger">
+            <a href="migrena.html" class="topic-card">
                 <div class="card-icon">🤕</div>
                 <h3>Migrena i Bóle Głowy</h3>
                 <p>Niefarmakologiczne wsparcie w leczeniu bólu. Biofeedback termiczny i treningi relaksacji naczyń krwionośnych.</p>
@@ -257,7 +247,7 @@
         <div class="container">
             <div class="footer-grid">
                 <div>
-                    <a href="#" class="logo cursor-trigger" style="margin-bottom: 20px; display: inline-block;">
+                    <a href="#" class="logo" style="margin-bottom: 20px; display: inline-block;">
                         <img src="logo.png" alt="NCNI">
                         NCNI
                     </a>
@@ -270,13 +260,13 @@
                     <h4 style="margin-bottom: 16px;">Kontakt</h4>
                     <p style="color: var(--text-muted); margin-bottom: 8px;">ul. Stefana Żeromskiego 60/5a</p>
                     <p style="color: var(--text-muted); margin-bottom: 8px;">50-312 Wrocław</p>
-                    <a href="mailto:kontakt@ncni.pl" class="cursor-trigger" style="color: var(--text-main);">kontakt@ncni.pl</a>
+                    <a href="mailto:kontakt@ncni.pl" style="color: var(--text-main);">kontakt@ncni.pl</a>
                 </div>
                 <div>
                     <h4 style="margin-bottom: 16px;">Social Media</h4>
                     <ul style="color: var(--text-muted); font-size: 0.95rem; list-style: none;">
-                        <li style="margin-bottom: 8px;"><a href="https://youtube.com/@neuroinnowacje" target="_blank" class="cursor-trigger">YouTube</a></li>
-                        <li style="margin-bottom: 8px;"><a href="https://x.com/neuroinnowacje" target="_blank" class="cursor-trigger">X (Twitter)</a></li>
+                        <li style="margin-bottom: 8px;"><a href="https://youtube.com/@neuroinnowacje" target="_blank">YouTube</a></li>
+                        <li style="margin-bottom: 8px;"><a href="https://x.com/neuroinnowacje" target="_blank">X (Twitter)</a></li>
                     </ul>
                 </div>
             </div>
@@ -361,21 +351,6 @@
         }
         document.addEventListener("DOMContentLoaded", initParticles);
 
-        // Custom Cursor
-        const cursorDot = document.querySelector('.cursor-dot');
-        const cursorOutline = document.querySelector('.cursor-outline');
-        window.addEventListener('mousemove', (e) => {
-            const posX = e.clientX; const posY = e.clientY;
-            cursorDot.style.left = `${posX}px`; cursorDot.style.top = `${posY}px`;
-            cursorOutline.animate({ left: `${posX}px`, top: `${posY}px` }, { duration: 500, fill: "forwards" });
-        });
-
-        const triggers = document.querySelectorAll('.cursor-trigger, a, button, .topic-card');
-        triggers.forEach(trigger => {
-            trigger.addEventListener('mouseenter', () => { document.body.classList.add('hovering'); });
-            trigger.addEventListener('mouseleave', () => { document.body.classList.remove('hovering'); });
-        });
-
         // Mobile Menu
         const toggle = document.querySelector('.mobile-toggle');
         const menu = document.querySelector('.mobile-menu');
@@ -414,7 +389,7 @@
             <div class="ania-options-area" id="ania-options-area"></div>
         </div>
 
-        <div class="ania-avatar cursor-trigger" onclick="toggleAnia()">
+        <div class="ania-avatar" onclick="toggleAnia()">
             <img src="ania.jpg" alt="Ania Chat">
             <div class="status-dot"></div>
         </div>
