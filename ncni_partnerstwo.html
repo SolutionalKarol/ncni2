@@ -38,7 +38,7 @@
       "logo": "https://ncni.pl/logo.png",
       "contactPoint": {
         "@type": "ContactPoint",
-        "telephone": "+48-690-315-719",
+        "telephone": "+48-600-335-322",
         "contactType": "customer service",
         "areaServed": "PL",
         "availableLanguage": "Polish"
@@ -66,12 +66,12 @@
     <style>
         /* --- CORE STYLES --- */
         :root {
-            --bg-body: #F8FAFC;         
+            --bg-body: #F8FAFC;          
             --bg-surface: rgba(255, 255, 255, 0.95);
-            --primary: #0F766E;         
+            --primary: #0F766E;          
             --primary-dark: #0D5E57;
             --primary-light: #CCFBF1;
-            --accent: #6366F1;         
+            --accent: #6366F1;          
             --text-main: #1E293B;
             --text-muted: #64748B;
             --border: #E2E8F0;
@@ -223,7 +223,13 @@
         @media(min-width: 768px) { .bus-content { padding: 60px; } }
         .bus-badge { background: #F59E0B; color: #000; font-weight: 800; padding: 6px 16px; border-radius: 99px; font-size: 0.8rem; text-transform: uppercase; display: inline-block; margin-bottom: 15px; }
         .bus-title { font-size: 2rem; color: white; margin-bottom: 15px; line-height: 1.1; }
-        .bus-desc { color: #D1D5DB; font-size: 1rem; margin-bottom: 20px; max-width: 500px; }
+        /* POPRAWKA KOLORÓW DLA NEUROBUSA */
+        .bus-desc { color: #F8FAFC; font-size: 1rem; margin-bottom: 20px; max-width: 500px; }
+        
+        /* Nadpisanie kolorów listy w sekcji Busa */
+        .bus-section .feature-list { border-top-color: rgba(255,255,255,0.1); }
+        .bus-section .feature-list li { color: #F1F5F9; } /* Jasny kolor tekstu na ciemnym tle */
+
         .bus-icon-large { width: 100px; height: 100px; border-radius: 50%; border: 2px dashed #F59E0B; flex-shrink: 0; overflow: hidden; background: #fff; margin: 0 auto; }
         .bus-icon-large img { width: 100%; height: 100%; object-fit: cover; }
 
@@ -438,6 +444,7 @@
                         Klinika na kołach. Nasz kamper dociera tam, gdzie potrzebna jest pomoc. 
                         Idealny na <strong>eventy firmowe (Dni Zdrowia), festiwale</strong> oraz interwencje w terenie.
                     </p>
+                    <!-- Zaktualizowany styl listy w CSS .bus-section .feature-list li -->
                     <ul class="feature-list" style="border: none; padding: 0; margin-bottom: 20px;">
                         <li><i data-lucide="check" style="color: #F59E0B;"></i> <strong>Eventy:</strong> Mobilna strefa relaksu VR.</li>
                         <li><i data-lucide="check" style="color: #F59E0B;"></i> <strong>Off-Grid:</strong> Niezależne zasilanie i sprzęt na pokładzie.</li>
@@ -540,7 +547,7 @@
         lucide.createIcons();
 
         // Background Particles
-        function initParticles(){const container=document.getElementById('bg-canvas');if(!container)return;const scene=new THREE.Scene();scene.fog=new THREE.FogExp2(0xF8FAFC,0.002);const camera=new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,1000);camera.position.z=10;const renderer=new THREE.WebGLRenderer({alpha:true,antialias:true});renderer.setSize(window.innerWidth,window.innerHeight);renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));container.appendChild(renderer.domElement);const geometry=new THREE.BufferGeometry();const count=200;const positions=new Float32Array(count*3);const colors=new Float32Array(count*3);for(let i=0;i<count*3;i+=3){positions[i]=(Math.random()-0.5)*25;positions[i+1]=(Math.random()-0.5)*25;positions[i+2]=(Math.random()-0.5)*25;const mix=Math.random();if(mix>0.5){colors[i]=0.06;colors[i+1]=0.46;colors[i+2]=0.43;}else{colors[i]=0.39;colors[i+1]=0.4;colors[i+2]=0.94;}}geometry.setAttribute('position',new THREE.BufferAttribute(positions,3));geometry.setAttribute('color',new THREE.BufferAttribute(colors,3));const material=new THREE.PointsMaterial({size:0.1,vertexColors:true,transparent:true,opacity:0.4});const particles=new THREE.Points(geometry,material);scene.add(particles);let mouseX=0,mouseY=0,targetX=0,targetY=0;const windowHalfX=window.innerWidth/2;const windowHalfY=window.innerHeight/2;document.addEventListener('mousemove',(e)=>{mouseX=(e.clientX-windowHalfX);mouseY=(e.clientY-windowHalfY);});const clock=new THREE.Clock();function animate(){const time=clock.getElapsedTime();targetX=mouseX*0.0001;targetY=mouseY*0.0001;particles.rotation.y+=0.01*(targetX-particles.rotation.y);particles.rotation.x+=0.01*(targetY-particles.rotation.x);particles.rotation.z+=0.0005;const scale=1+Math.sin(time*0.5)*0.02;particles.scale.set(scale,scale,scale);renderer.render(scene,camera);requestAnimationFrame(animate);}animate();window.addEventListener('resize',()=>{camera.aspect=window.innerWidth/window.innerHeight;camera.updateProjectionMatrix();renderer.setSize(window.innerWidth,window.innerHeight);});}document.addEventListener("DOMContentLoaded",initParticles);
+        function initParticles(){const container=document.getElementById('bg-canvas');if(!container)return;const scene=new THREE.Scene();scene.fog=new THREE.FogExp2(0xF8FAFC,0.002);const camera=new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,1000);camera.position.z=10;const renderer=new THREE.WebGLRenderer({alpha:true,antialias:true});renderer.setSize(window.innerWidth,window.innerHeight);renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));container.appendChild(renderer.domElement);const geometry=new THREE.BufferGeometry();const count=200;const positions=new Float32Array(count*3);const colors=new Float32Array(count*3);for(let i=0;i<count*3;i+=3){positions[i]=(Math.random()-0.5)*25;positions[i+1]=(Math.random()-0.5)*25;positions[i+2]=(Math.random()-0.5)*25;const mix=Math.random();if(mix>0.5){colors[i]=0.06;colors[i+1]=0.46;colors[i+2]=0.43;}else{colors[i]=0.39;colors[i+1]=0.4;colors[i+2]=0.94;}}geometry.setAttribute('position',new THREE.BufferAttribute(positions,3));geometry.setAttribute('color',new THREE.BufferAttribute(colors,3));const material=new THREE.PointsMaterial({size:0.1,vertexColors:true,transparent:true,opacity:0.4});const particles=new THREE.Points(geometry,material);scene.add(particles);let mouseX=0,mouseY=0,targetX=0,targetY=0;const windowHalfX=window.innerWidth/window.innerHeight;const windowHalfY=window.innerHeight/2;document.addEventListener('mousemove',(e)=>{mouseX=(e.clientX-windowHalfX);mouseY=(e.clientY-windowHalfY);});const clock=new THREE.Clock();function animate(){const time=clock.getElapsedTime();targetX=mouseX*0.0001;targetY=mouseY*0.0001;particles.rotation.y+=0.01*(targetX-particles.rotation.y);particles.rotation.x+=0.01*(targetY-particles.rotation.x);particles.rotation.z+=0.0005;const scale=1+Math.sin(time*0.5)*0.02;particles.scale.set(scale,scale,scale);renderer.render(scene,camera);requestAnimationFrame(animate);}animate();window.addEventListener('resize',()=>{camera.aspect=window.innerWidth/window.innerHeight;camera.updateProjectionMatrix();renderer.setSize(window.innerWidth,window.innerHeight);});}document.addEventListener("DOMContentLoaded",initParticles);
         
         // Custom Cursor
         const cursorDot=document.querySelector('.cursor-dot');const cursorOutline=document.querySelector('.cursor-outline');window.addEventListener('mousemove',(e)=>{const posX=e.clientX;const posY=e.clientY;cursorDot.style.left=`${posX}px`;cursorDot.style.top=`${posY}px`;cursorOutline.animate({left:`${posX}px`,top:`${posY}px`},{duration:500,fill:"forwards"});});const triggers=document.querySelectorAll('.cursor-trigger, a, button, .vr-dark-section, .bus-section, .method-item');triggers.forEach(trigger=>{trigger.addEventListener('mouseenter',()=>{document.body.classList.add('hovering');});trigger.addEventListener('mouseleave',()=>{document.body.classList.remove('hovering');});});
