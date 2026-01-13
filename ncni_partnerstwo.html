@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO & Meta Tags -->
+    <title>Strefa Partnera: Nauka, Biznes i VR NeuroBus | NCNI Wrocław</title>
+    <meta name="description" content="NCNI Strefa Partnera - Strategiczna współpraca dla szpitali (VR Medical Suite), nauki (Granty B+R) i biznesu. Wynajmij NCNI VR NeuroBus - nasze mobilne laboratorium terapeutyczne na eventy i interwencje.">
+    <meta name="keywords" content="NCNI, NCNI VR NeuroBus, mobilne laboratorium VR, kamper terapeutyczny, badania kliniczne VR, corporate wellness Wrocław, wdrożenia VR w szpitalach, biofeedback B2B, granty medyczne, neurotechnologia">
+    <meta name="author" content="Naukowe Centrum Neuroinnowacji">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Social Media (Facebook, LinkedIn) -->
+    <meta property="og:title" content="NCNI Partnerstwo | NeuroBus i Technologie Medyczne">
+    <meta property="og:description" content="Odkryj modele współpracy: Wdrożenia szpitalne, Granty B+R oraz nasz hit - NCNI VR NeuroBus (mobilne laboratorium terapeutyczne).">
+    <meta property="og:image" content="https://ncni.pl/bus.jpg">
+    <meta property="og:url" content="https://ncni.pl/partnerstwo">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="pl_PL">
+
+    <!-- Google Analytics (GA4) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-56VR40VHHV"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-56VR40VHHV');
+    </script>
+    
+    <!-- Structured Data (Schema.org) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "MedicalOrganization",
+      "name": "Naukowe Centrum Neuroinnowacji (NCNI)",
+      "url": "https://ncni.pl",
+      "logo": "https://ncni.pl/logo.png",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+48-690-315-719",
+        "contactType": "customer service",
+        "areaServed": "PL",
+        "availableLanguage": "Polish"
+      },
+      "knowsAbout": ["VR Therapy", "Biofeedback", "Neuroscience", "Mobile Medical Unit"],
+      "makesOffer": {
+        "@type": "Offer",
+        "name": "Wynajem NCNI VR NeuroBus",
+        "description": "Mobilne laboratorium terapeutyczne na eventy firmowe i interwencje kryzysowe."
+      }
+    }
+    </script>
+
+    <link rel="icon" href="logo.png" type="image/png">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Three.js for Background -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        /* --- CORE STYLES --- */
+        :root {
+            --bg-body: #F8FAFC;         
+            --bg-surface: rgba(255, 255, 255, 0.95);
+            --primary: #0F766E;         
+            --primary-dark: #0D5E57;
+            --primary-light: #CCFBF1;
+            --accent: #6366F1;         
+            --text-main: #1E293B;
+            --text-muted: #64748B;
+            --border: #E2E8F0;
+            --trans-default: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; font-size: 16px; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Cursor Logic */
+        @media (min-width: 901px) { body, a, button, input, select, textarea { cursor: none !important; } }
+        @media (max-width: 900px) { .cursor-dot, .cursor-outline { display: none !important; } body { cursor: auto; } }
+
+        h1, h2, h3, h4, h5 { font-family: 'Lexend', sans-serif; }
+
+        /* Custom Cursor */
+        .cursor-dot { width: 8px; height: 8px; background-color: var(--primary); position: fixed; pointer-events: none; z-index: 9999; border-radius: 50%; transform: translate(-50%, -50%); }
+        .cursor-outline { width: 40px; height: 40px; border: 1px solid rgba(15, 118, 110, 0.5); position: fixed; pointer-events: none; z-index: 9998; border-radius: 50%; transform: translate(-50%, -50%); transition: width 0.2s, height 0.2s, background-color 0.2s; }
+        body.hovering .cursor-outline { width: 70px; height: 70px; background: rgba(15, 118, 110, 0.05); border-color: var(--primary); border-width: 2px; }
+
+        /* Background */
+        #bg-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; z-index: -1; opacity: 0.6; pointer-events: none; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+        /* --- HEADER & NAVIGATION --- */
+        header {
+            position: sticky; top: 0; z-index: 1000;
+            background: var(--bg-surface);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+            padding: 12px 0;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+        }
+
+        .brand-bar {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--text-main);
+            z-index: 1001;
+        }
+        .logo img { height: 44px; width: auto; border-radius: 8px; }
+        .logo span { font-weight: 700; font-size: 1.2rem; letter-spacing: -0.02em; white-space: nowrap; }
+
+        .nav-links { display: flex; align-items: center; gap: 8px; }
+        
+        .header-contact { display: flex; gap: 20px; margin-right: 24px; font-size: 0.85rem; font-weight: 600; color: var(--text-muted); }
+        .header-contact a { display: flex; align-items: center; gap: 6px; text-decoration: none; color: inherit; transition: 0.2s; }
+        .header-contact a:hover { color: var(--primary); }
+
+        .nav-item {
+            padding: 8px 16px;
+            border-radius: 99px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: var(--trans-default);
+        }
+        .nav-item:hover, .nav-item.active { color: var(--primary); background: var(--primary-light); }
+        
+        .mobile-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; z-index: 1002; }
+        .mobile-toggle span { display: block; width: 24px; height: 2px; background: var(--text-main); margin: 5px 0; transition: 0.3s; }
+
+        .mobile-menu {
+            position: fixed; top: 0; left: 0; width: 100%; height: auto;
+            background: white;
+            padding: 80px 24px 30px;
+            border-bottom: 1px solid var(--border);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            transform: translateY(-150%);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .mobile-menu.active { transform: translateY(0); }
+        .mobile-link { font-size: 1.1rem; font-weight: 500; color: var(--text-main); text-decoration: none; padding: 12px 0; border-bottom: 1px solid var(--bg-body); }
+
+        @media (max-width: 992px) {
+            .nav-links { display: none; }
+            .mobile-toggle { display: block; }
+            .logo span { font-size: 1rem; }
+            .logo img { height: 36px; }
+        }
+
+        /* --- HERO --- */
+        .hero-mini { padding: 60px 0 40px; text-align: center; }
+        .hero-mini h1 { font-size: 2.5rem; margin-bottom: 20px; background: linear-gradient(135deg, var(--text-main), var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1.2; }
+        @media(min-width: 768px) { .hero-mini h1 { font-size: 3.5rem; } }
+        .hero-mini p { font-size: 1.1rem; color: var(--text-muted); max-width: 700px; margin: 0 auto; }
+        
+        .back-link {
+            display: inline-flex; align-items: center; gap: 6px;
+            color: var(--text-muted); font-size: 0.9rem; font-weight: 500;
+            text-decoration: none; margin-bottom: 20px;
+            background: white; padding: 6px 14px; border-radius: 99px; border: 1px solid var(--border);
+            transition: 0.2s;
+        }
+        .back-link:hover { color: var(--primary); border-color: var(--primary); transform: translateX(-3px); }
+
+        /* Models Grid */
+        .method-section { padding: 40px 0; }
+        .method-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 40px; }
+        .method-item {
+            background: white; padding: 28px; border-radius: 24px; border: 1px solid var(--border);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.02); transition: var(--trans-default);
+            display: flex; flex-direction: column; position: relative; overflow: hidden;
+        }
+        .method-item:hover { transform: translateY(-5px); border-color: var(--primary); box-shadow: 0 20px 40px rgba(15, 118, 110, 0.1); }
+        .method-icon { font-size: 2rem; margin-bottom: 20px; color: var(--primary); background: var(--primary-light); width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; border-radius: 14px; }
+        .method-item h4 { color: var(--primary); margin-bottom: 8px; font-size: 1.3rem; }
+        .role-tag { display: inline-block; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; margin-bottom: 16px; color: var(--accent); background: rgba(99, 102, 241, 0.08); padding: 4px 8px; border-radius: 6px; align-self: flex-start; }
+        .feature-list { list-style: none; border-top: 1px solid var(--border); padding-top: 16px; margin-top: auto; }
+        .feature-list li { display: flex; gap: 10px; margin-bottom: 10px; font-size: 0.85rem; color: var(--text-main); align-items: flex-start; }
+        .feature-list li i { color: #10B981; margin-top: 3px; shrink: 0; }
+
+        /* Infrastructure */
+        .vr-dark-section { background: #0F172A; color: white; padding: 60px 0; border-radius: 32px; margin: 40px 0; position: relative; overflow: hidden; }
+        .vr-dark-content { position: relative; z-index: 2; max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+        .infra-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-top: 40px; }
+        .infra-item { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 24px; border-radius: 16px; transition: var(--trans-default); }
+        .infra-item:hover { background: rgba(255,255,255,0.1); border-color: var(--accent); }
+        .infra-item h4 { color: #38BDF8; margin-bottom: 8px; font-size: 1.1rem; display: flex; align-items: center; gap: 8px; }
+        .infra-item p { font-size: 0.9rem; color: #94A3B8; margin: 0; }
+
+        /* Bus Section */
+        .bus-section {
+            background: #111827; border-radius: 32px; margin: 60px 0; position: relative; overflow: hidden;
+            border: 2px solid #F59E0B; box-shadow: 0 20px 50px rgba(245, 158, 11, 0.15);
+        }
+        .bus-content { padding: 40px; display: flex; align-items: center; justify-content: space-between; gap: 40px; flex-wrap: wrap; }
+        @media(min-width: 768px) { .bus-content { padding: 60px; } }
+        .bus-badge { background: #F59E0B; color: #000; font-weight: 800; padding: 6px 16px; border-radius: 99px; font-size: 0.8rem; text-transform: uppercase; display: inline-block; margin-bottom: 15px; }
+        .bus-title { font-size: 2rem; color: white; margin-bottom: 15px; line-height: 1.1; }
+        .bus-desc { color: #D1D5DB; font-size: 1rem; margin-bottom: 20px; max-width: 500px; }
+        .bus-icon-large { width: 100px; height: 100px; border-radius: 50%; border: 2px dashed #F59E0B; flex-shrink: 0; overflow: hidden; background: #fff; margin: 0 auto; }
+        .bus-icon-large img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* Contact & Forms */
+        .contact-section {
+            background: linear-gradient(to right, #ffffff, #f0fdfa); border: 1px solid #ccfbf1; border-radius: 32px; padding: 40px; margin: 60px 0;
+            display: grid; grid-template-columns: 1fr; gap: 40px;
+        }
+        @media(min-width: 900px) { .contact-section { grid-template-columns: 1fr 1fr; padding: 60px; } }
+        
+        .contact-form input, .contact-form select, .contact-form textarea {
+            width: 100%; padding: 12px 16px; border-radius: 12px; border: 1px solid var(--border); background: white;
+            font-family: 'Inter', sans-serif; margin-bottom: 16px; font-size: 0.95rem;
+        }
+        .btn-primary {
+            background: var(--primary); color: white; border: none; padding: 14px 32px; border-radius: 99px; font-weight: 700;
+            transition: 0.3s; display: inline-block; font-size: 1rem; cursor: pointer; width: 100%; text-align: center; text-decoration: none;
+        }
+        .btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); }
+
+        /* Floating Contact Button (Replaces Ania) */
+        .floating-contact {
+            position: fixed; bottom: 24px; right: 24px; z-index: 2000;
+            background: var(--text-main); color: white;
+            padding: 14px 28px; border-radius: 99px;
+            font-weight: 600; text-decoration: none;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: var(--trans-default);
+            display: flex; align-items: center; gap: 8px;
+            animation: pulse-shadow 3s infinite;
+        }
+        .floating-contact:hover { transform: translateY(-3px); background: var(--primary); }
+        @keyframes pulse-shadow { 0% { box-shadow: 0 0 0 0 rgba(30, 41, 59, 0.4); } 70% { box-shadow: 0 0 0 15px rgba(30, 41, 59, 0); } 100% { box-shadow: 0 0 0 0 rgba(30, 41, 59, 0); } }
+
+        /* Badges */
+        .stack-badges { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 30px; }
+        .stack-badge { background: white; border: 1px solid var(--border); padding: 6px 12px; border-radius: 8px; color: var(--text-muted); font-weight: 600; font-size: 0.85rem; }
+        .stack-badge.highlight { border-color: var(--accent); color: var(--accent); background: #EEF2FF; }
+
+        /* Footer */
+        footer { background: white; border-top: 1px solid var(--border); padding: 60px 0 20px; margin-top: 40px; text-align: center; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; text-align: left; }
+    </style>
+</head>
+<body>
+
+    <div id="bg-canvas"></div>
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <header>
+        <div class="container nav-wrapper">
+            <a href="index.html" class="brand-bar cursor-trigger">
+                <div class="logo" style="display: flex; align-items: center; gap: 10px;">
+                    <img src="logo.png" alt="NCNI Logo">
+                    <span>NCNI Partnerstwo</span>
+                </div>
+            </a>
+            
+            <nav class="nav-links">
+                <div class="header-contact">
+                    <a href="tel:+48600608333" class="cursor-trigger"><i data-lucide="phone" width="16"></i> 600 608 333</a>
+                    <a href="mailto:kontakt@ncni.pl" class="cursor-trigger"><i data-lucide="mail" width="16"></i> kontakt@ncni.pl</a>
+                </div>
+                <a href="o-nas.html" class="nav-item cursor-trigger">O nas</a>
+                <a href="technologie.html" class="nav-item cursor-trigger">Technologie</a>
+                <a href="oferta.html" class="nav-item cursor-trigger">Oferta</a>
+                <a href="#" class="nav-item cursor-trigger active">Dla Partnerów</a>
+            </nav>
+
+            <button class="mobile-toggle cursor-trigger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <div class="mobile-menu">
+        <a href="o-nas.html" class="mobile-link">O nas</a>
+        <a href="technologie.html" class="mobile-link">Technologie</a>
+        <a href="oferta.html" class="mobile-link">Oferta</a>
+        <a href="#" class="mobile-link" style="color: var(--primary);">Dla Partnerów</a>
+    </div>
+
+    <section class="hero-mini">
+        <div class="container">
+            <!-- Back to Technologies Button -->
+            <a href="technologie.html" class="back-link cursor-trigger">
+                <i data-lucide="arrow-left" width="16"></i> Wróć do Technologii
+            </a>
+
+            <div style="margin-top: 20px;">
+                <span style="background: var(--primary-light); color: var(--primary); padding: 6px 12px; border-radius: 99px; font-size: 0.85rem; font-weight: 600;">Dział Badań i Rozwoju</span>
+            </div>
+            
+            <h1>Partnerstwo Strategiczne:<br>Nauka & Biznes</h1>
+            <p>
+                Łączymy świat medycyny opartej na dowodach (EBM) z innowacyjnym biznesem. Oferujemy dostęp do infrastruktury badawczej, technologii VR oraz wspólne granty B+R.
+            </p>
+            
+            <div class="stack-badges">
+                <span class="stack-badge highlight">EBM (Evidence-Based)</span>
+                <span class="stack-badge highlight">Granty B+R</span>
+                <span class="stack-badge">Standardy SOP</span>
+                <span class="stack-badge">Normy ISO</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Models Section -->
+    <section class="container method-section" id="modele">
+        <div style="text-align: center; margin-bottom: 20px;">
+            <h2 style="font-size: 2rem; color: var(--text-main);">Modele Współpracy</h2>
+            <p style="color: var(--text-muted); max-width: 700px; margin: 10px auto;">
+                Kompleksowe ekosystemy technologiczne i merytoryczne dopasowane do Twojej organizacji.
+            </p>
+        </div>
+        
+        <div class="method-grid">
+            <!-- Szpitale -->
+            <div class="method-item cursor-trigger">
+                <div class="method-icon"><i data-lucide="hospital"></i></div>
+                <h4>NCNI VR Medical Suite</h4>
+                <span class="role-tag">Szpitale i Kliniki</span>
+                <p>Kompletny ekosystem terapeutyczny: Fotel Zero Gravity + Gogle VR + Autorski Software. Tworzymy dedykowane środowiska (np. Geriatria, PTSD).</p>
+                <ul class="feature-list">
+                    <li><i data-lucide="check-circle" width="16"></i> Pełne wdrożenie Hardware/Software</li>
+                    <li><i data-lucide="check-circle" width="16"></i> Procedury medyczne SOP</li>
+                    <li><i data-lucide="check-circle" width="16"></i> Szkolenie personelu</li>
+                </ul>
+            </div>
+
+            <!-- Nauka -->
+            <div class="method-item cursor-trigger" style="border-color: var(--accent);">
+                <div class="method-icon" style="background: #EEF2FF; color: var(--accent);"><i data-lucide="flask-conical"></i></div>
+                <h4 style="color: var(--accent);">Akademia i Nauka</h4>
+                <span class="role-tag" style="color: var(--text-muted); background: #F1F5F9;">Transfer Wiedzy</span>
+                <p>Uczymy, jak badać neuroplastyczność. Przekazujemy metodologię (Know-How) i tworzymy konsorcja do grantów NCBiR/Horyzont Europa.</p>
+                <ul class="feature-list">
+                    <li><i data-lucide="check-circle" width="16"></i> Standardyzacja badań VR</li>
+                    <li><i data-lucide="check-circle" width="16"></i> Superwizja naukowa</li>
+                    <li><i data-lucide="check-circle" width="16"></i> Partnerstwo technologiczne</li>
+                </ul>
+            </div>
+
+            <!-- Biznes -->
+            <div class="method-item cursor-trigger">
+                <div class="method-icon" style="background: #F0FDFA; color: #0D9488;"><i data-lucide="briefcase"></i></div>
+                <h4 style="color: #0D9488;">Biznes & HR</h4>
+                <span class="role-tag" style="color: #0D9488; background: #F0FDFA;">Corporate Neuro-Wellness</span>
+                <p>Mierzalna prewencja wypalenia zawodowego. Terapie stresu oparte na danych biologicznych (Biofeedback), a nie tylko ankietach.</p>
+                <ul class="feature-list">
+                    <li><i data-lucide="check-circle" width="16"></i> Terapie dla Managerów (C-Level)</li>
+                    <li><i data-lucide="check-circle" width="16"></i> Warsztaty regulacji stresu</li>
+                    <li><i data-lucide="check-circle" width="16"></i> Pakiety regeneracyjne</li>
+                </ul>
+            </div>
+
+             <!-- Gabinety -->
+             <div class="method-item cursor-trigger" style="border-color: #F59E0B;">
+                <div class="method-icon" style="background: #FEF3C7; color: #D97706;"><i data-lucide="brain-circuit"></i></div>
+                <h4 style="color: #D97706;">Gabinety</h4>
+                <span class="role-tag" style="color: #D97706; background: #FEF3C7;">Psychologia / Psychiatria</span>
+                <p>Wprowadź nowoczesną diagnostykę i terapię do swojego gabinetu. Rozwiązania "Compact" idealne do mniejszych praktyk.</p>
+                <ul class="feature-list">
+                    <li><i data-lucide="check-circle" width="16"></i> Wsparcie diagnostyczne (MOXO/DIVA)</li>
+                    <li><i data-lucide="check-circle" width="16"></i> Terapia fobii VR (VRET)</li>
+                    <li><i data-lucide="check-circle" width="16"></i> Zestawy Biofeedback Start</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Infrastructure -->
+    <section class="container">
+        <div class="vr-dark-section cursor-trigger">
+            <div class="vr-dark-content">
+                <h2>Infrastruktura Badawcza</h2>
+                <p>
+                    Nasze laboratorium to poligon doświadczalny dla neurotechnologii. Nadzór naukowy sprawuje dr hab. inż. Sebastian Kraszewski.
+                </p>
+
+                <div class="infra-grid">
+                    <div class="infra-item">
+                        <h4><i data-lucide="glasses" width="20"></i> VR & Immersja</h4>
+                        <p>Stanowiska Zero-Gravity zintegrowane z VR (Meta/HTC).</p>
+                    </div>
+                    <div class="infra-item">
+                        <h4><i data-lucide="cpu" width="20"></i> Biofeedback</h4>
+                        <p>Systemy pomiarowe HRV, GSR, EEG w czasie rzeczywistym.</p>
+                    </div>
+                    <div class="infra-item">
+                        <h4><i data-lucide="waves" width="20"></i> Neuromodulacja</h4>
+                        <p>Fotobiomodulacja (PBM), wibroakustyka, PEMF.</p>
+                    </div>
+                    <div class="infra-item">
+                        <h4><i data-lucide="wind" width="20"></i> Komora HBOT</h4>
+                        <p>Terapia tlenowa hiperbaryczna i regeneracja.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEUROBUS SECTION -->
+    <section class="container">
+        <div class="bus-section cursor-trigger">
+            <div class="bus-content">
+                <div style="flex: 1;">
+                    <span class="bus-badge">Mobilne Laboratorium Terapeutyczne</span>
+                    <h2 class="bus-title">NCNI VR NeuroBus 🚐</h2>
+                    <p class="bus-desc">
+                        Klinika na kołach. Nasz kamper dociera tam, gdzie potrzebna jest pomoc. 
+                        Idealny na <strong>eventy firmowe (Dni Zdrowia), festiwale</strong> oraz interwencje w terenie.
+                    </p>
+                    <ul class="feature-list" style="border: none; padding: 0; margin-bottom: 20px;">
+                        <li><i data-lucide="check" style="color: #F59E0B;"></i> <strong>Eventy:</strong> Mobilna strefa relaksu VR.</li>
+                        <li><i data-lucide="check" style="color: #F59E0B;"></i> <strong>Off-Grid:</strong> Niezależne zasilanie i sprzęt na pokładzie.</li>
+                        <li><i data-lucide="check" style="color: #F59E0B;"></i> <strong>Teren:</strong> Dojazd do szkół i szpitali polowych.</li>
+                    </ul>
+                    <a href="#kontakt" class="btn-primary" style="background: #F59E0B; color: black; width: auto; display: inline-block;">Zamów NeuroBusa</a>
+                </div>
+                <div class="bus-icon-large">
+                    <img src="bus.jpg" alt="NCNI VR NeuroBus">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section class="container">
+        <div class="contact-section cursor-trigger" id="kontakt">
+            <div>
+                <h2 style="color: var(--primary-dark); font-size: 2.2rem; margin-bottom: 20px;">Rozpocznijmy Współpracę</h2>
+                <p style="font-size: 1rem; color: var(--text-muted); margin-bottom: 30px;">
+                    Zapraszamy do kontaktu przedstawicieli placówek medycznych, uczelni oraz działy HR.
+                </p>
+                <div style="margin-bottom: 20px;">
+                    <strong style="display: block; color: var(--text-main);">Adres</strong>
+                    <span style="color: var(--text-muted);">ul. Żeromskiego 60/5a, Wrocław</span>
+                </div>
+                <div>
+                    <strong style="display: block; color: var(--text-main);">Email</strong>
+                    <span style="color: var(--text-muted);">kontakt@ncni.pl</span>
+                </div>
+            </div>
+
+            <form class="contact-form">
+                <label>Instytucja / Firma</label>
+                <input type="text" placeholder="Wpisz nazwę...">
+                
+                <label>Email Kontaktowy</label>
+                <input type="email" placeholder="adres@email.com">
+                
+                <label>Obszar Współpracy</label>
+                <select>
+                    <option>Wdrożenie NCNI VR Suite</option>
+                    <option>Wynajem NCNI VR NeuroBus</option>
+                    <option>Współpraca Naukowa (Granty)</option>
+                    <option>Corporate Wellness</option>
+                    <option>Oferta dla Gabinetu</option>
+                </select>
+                
+                <label>Wiadomość</label>
+                <textarea rows="4"></textarea>
+                
+                <button type="button" class="btn-primary">Wyślij Zapytanie</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
+                        <img src="logo.png" alt="Logo" style="height: 30px;">
+                        <span style="font-weight: 700;">NCNI</span>
+                    </div>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">
+                        Naukowe Centrum Neuroinnowacji.<br>
+                        Twój partner w zdrowiu psychicznym.
+                    </p>
+                </div>
+                <div>
+                    <h4 style="margin-bottom: 16px;">Kontakt</h4>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">ul. Stefana Żeromskiego 60/5a<br>50-312 Wrocław</p>
+                    <div style="margin-top: 10px;">
+                        <a href="mailto:kontakt@ncni.pl" style="color: var(--text-main); font-weight: 600; text-decoration: none; font-size: 0.9rem;">✉️ kontakt@ncni.pl</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 style="margin-bottom: 16px;">Mapa Strony</h4>
+                    <ul style="color: var(--text-muted); font-size: 0.9rem; list-style: none;">
+                        <li><a href="adhd.html" class="cursor-trigger" style="text-decoration: none; color: inherit;">ADHD</a></li>
+                        <li><a href="asd.html" class="cursor-trigger" style="text-decoration: none; color: inherit;">Autyzm</a></li>
+                        <li><a href="psychologia.html" class="cursor-trigger" style="text-decoration: none; color: inherit;">Psychologia</a></li>
+                        <li><a href="technologie.html" class="cursor-trigger" style="text-decoration: none; color: inherit;">VR Lab</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div style="border-top: 1px solid var(--border); padding-top: 20px; margin-top: 40px; text-align: center; color: var(--text-muted); font-size: 0.8rem;">
+                &copy; 2025 Naukowe Centrum Neuroinnowacji | Designed and built by NCNI.agency Karol Kiszło
+            </div>
+        </div>
+    </footer>
+
+    <!-- NEW: Floating Contact Button (Replaces Ania) -->
+    <a href="#kontakt" class="floating-contact cursor-trigger">
+        <span>📞</span> Skontaktuj się
+    </a>
+
+    <!-- Scripts -->
+    <script>
+        lucide.createIcons();
+
+        // Background Particles
+        function initParticles(){const container=document.getElementById('bg-canvas');if(!container)return;const scene=new THREE.Scene();scene.fog=new THREE.FogExp2(0xF8FAFC,0.002);const camera=new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,1000);camera.position.z=10;const renderer=new THREE.WebGLRenderer({alpha:true,antialias:true});renderer.setSize(window.innerWidth,window.innerHeight);renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));container.appendChild(renderer.domElement);const geometry=new THREE.BufferGeometry();const count=200;const positions=new Float32Array(count*3);const colors=new Float32Array(count*3);for(let i=0;i<count*3;i+=3){positions[i]=(Math.random()-0.5)*25;positions[i+1]=(Math.random()-0.5)*25;positions[i+2]=(Math.random()-0.5)*25;const mix=Math.random();if(mix>0.5){colors[i]=0.06;colors[i+1]=0.46;colors[i+2]=0.43;}else{colors[i]=0.39;colors[i+1]=0.4;colors[i+2]=0.94;}}geometry.setAttribute('position',new THREE.BufferAttribute(positions,3));geometry.setAttribute('color',new THREE.BufferAttribute(colors,3));const material=new THREE.PointsMaterial({size:0.1,vertexColors:true,transparent:true,opacity:0.4});const particles=new THREE.Points(geometry,material);scene.add(particles);let mouseX=0,mouseY=0,targetX=0,targetY=0;const windowHalfX=window.innerWidth/2;const windowHalfY=window.innerHeight/2;document.addEventListener('mousemove',(e)=>{mouseX=(e.clientX-windowHalfX);mouseY=(e.clientY-windowHalfY);});const clock=new THREE.Clock();function animate(){const time=clock.getElapsedTime();targetX=mouseX*0.0001;targetY=mouseY*0.0001;particles.rotation.y+=0.01*(targetX-particles.rotation.y);particles.rotation.x+=0.01*(targetY-particles.rotation.x);particles.rotation.z+=0.0005;const scale=1+Math.sin(time*0.5)*0.02;particles.scale.set(scale,scale,scale);renderer.render(scene,camera);requestAnimationFrame(animate);}animate();window.addEventListener('resize',()=>{camera.aspect=window.innerWidth/window.innerHeight;camera.updateProjectionMatrix();renderer.setSize(window.innerWidth,window.innerHeight);});}document.addEventListener("DOMContentLoaded",initParticles);
+        
+        // Custom Cursor
+        const cursorDot=document.querySelector('.cursor-dot');const cursorOutline=document.querySelector('.cursor-outline');window.addEventListener('mousemove',(e)=>{const posX=e.clientX;const posY=e.clientY;cursorDot.style.left=`${posX}px`;cursorDot.style.top=`${posY}px`;cursorOutline.animate({left:`${posX}px`,top:`${posY}px`},{duration:500,fill:"forwards"});});const triggers=document.querySelectorAll('.cursor-trigger, a, button, .vr-dark-section, .bus-section, .method-item');triggers.forEach(trigger=>{trigger.addEventListener('mouseenter',()=>{document.body.classList.add('hovering');});trigger.addEventListener('mouseleave',()=>{document.body.classList.remove('hovering');});});
+        
+        // Mobile Menu
+        const toggle=document.querySelector('.mobile-toggle');const menu=document.querySelector('.mobile-menu');if(toggle&&menu){toggle.addEventListener('click',()=>{menu.classList.toggle('active');});}
+    </script>
+</body>
+</html>
