@@ -233,36 +233,11 @@
         .bus-icon-large { width: 100px; height: 100px; border-radius: 50%; border: 2px dashed #F59E0B; flex-shrink: 0; overflow: hidden; background: #fff; margin: 0 auto; }
         .bus-icon-large img { width: 100%; height: 100%; object-fit: cover; }
 
-        /* Contact & Forms */
-        .contact-section {
-            background: linear-gradient(to right, #ffffff, #f0fdfa); border: 1px solid #ccfbf1; border-radius: 32px; padding: 40px; margin: 60px 0;
-            display: grid; grid-template-columns: 1fr; gap: 40px;
-        }
-        @media(min-width: 900px) { .contact-section { grid-template-columns: 1fr 1fr; padding: 60px; } }
-        
-        .contact-form input, .contact-form select, .contact-form textarea {
-            width: 100%; padding: 12px 16px; border-radius: 12px; border: 1px solid var(--border); background: white;
-            font-family: 'Inter', sans-serif; margin-bottom: 16px; font-size: 0.95rem;
-        }
         .btn-primary {
             background: var(--primary); color: white; border: none; padding: 14px 32px; border-radius: 99px; font-weight: 700;
             transition: 0.3s; display: inline-block; font-size: 1rem; cursor: pointer; width: 100%; text-align: center; text-decoration: none;
         }
         .btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); }
-
-        /* Floating Contact Button (Replaces Ania) */
-        .floating-contact {
-            position: fixed; bottom: 24px; right: 24px; z-index: 2000;
-            background: var(--text-main); color: white;
-            padding: 14px 28px; border-radius: 99px;
-            font-weight: 600; text-decoration: none;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            transition: var(--trans-default);
-            display: flex; align-items: center; gap: 8px;
-            animation: pulse-shadow 3s infinite;
-        }
-        .floating-contact:hover { transform: translateY(-3px); background: var(--primary); }
-        @keyframes pulse-shadow { 0% { box-shadow: 0 0 0 0 rgba(30, 41, 59, 0.4); } 70% { box-shadow: 0 0 0 15px rgba(30, 41, 59, 0); } 100% { box-shadow: 0 0 0 0 rgba(30, 41, 59, 0); } }
 
         /* Badges */
         .stack-badges { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 30px; }
@@ -450,54 +425,12 @@
                         <li><i data-lucide="check" style="color: #F59E0B;"></i> <strong>Off-Grid:</strong> Niezależne zasilanie i sprzęt na pokładzie.</li>
                         <li><i data-lucide="check" style="color: #F59E0B;"></i> <strong>Teren:</strong> Dojazd do szkół i szpitali polowych.</li>
                     </ul>
-                    <a href="#kontakt" class="btn-primary" style="background: #F59E0B; color: black; width: auto; display: inline-block;">Zamów NeuroBusa</a>
+                    <a href="mailto:kontakt@ncni.pl" class="btn-primary" style="background: #F59E0B; color: black; width: auto; display: inline-block;">Zamów NeuroBusa</a>
                 </div>
                 <div class="bus-icon-large">
                     <img src="bus.jpg" alt="NCNI VR NeuroBus">
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Contact Form -->
-    <section class="container">
-        <div class="contact-section cursor-trigger" id="kontakt">
-            <div>
-                <h2 style="color: var(--primary-dark); font-size: 2.2rem; margin-bottom: 20px;">Rozpocznijmy Współpracę</h2>
-                <p style="font-size: 1rem; color: var(--text-muted); margin-bottom: 30px;">
-                    Zapraszamy do kontaktu przedstawicieli placówek medycznych, uczelni oraz działy HR.
-                </p>
-                <div style="margin-bottom: 20px;">
-                    <strong style="display: block; color: var(--text-main);">Adres</strong>
-                    <span style="color: var(--text-muted);">ul. Żeromskiego 60/5a, Wrocław</span>
-                </div>
-                <div>
-                    <strong style="display: block; color: var(--text-main);">Email</strong>
-                    <span style="color: var(--text-muted);">kontakt@ncni.pl</span>
-                </div>
-            </div>
-
-            <form class="contact-form">
-                <label>Instytucja / Firma</label>
-                <input type="text" placeholder="Wpisz nazwę...">
-                
-                <label>Email Kontaktowy</label>
-                <input type="email" placeholder="adres@email.com">
-                
-                <label>Obszar Współpracy</label>
-                <select>
-                    <option>Wdrożenie NCNI VR Suite</option>
-                    <option>Wynajem NCNI VR NeuroBus</option>
-                    <option>Współpraca Naukowa (Granty)</option>
-                    <option>Corporate Wellness</option>
-                    <option>Oferta dla Gabinetu</option>
-                </select>
-                
-                <label>Wiadomość</label>
-                <textarea rows="4"></textarea>
-                
-                <button type="button" class="btn-primary">Wyślij Zapytanie</button>
-            </form>
         </div>
     </section>
 
@@ -536,11 +469,6 @@
             </div>
         </div>
     </footer>
-
-    <!-- NEW: Floating Contact Button (Replaces Ania) -->
-    <a href="#kontakt" class="floating-contact cursor-trigger">
-        <span>📞</span> Skontaktuj się
-    </a>
 
     <!-- Scripts -->
     <script>
