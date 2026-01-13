@@ -76,12 +76,12 @@
     <style>
         :root {
             /* Palette */
-            --bg-body: #F8FAFC;        
+            --bg-body: #F8FAFC;         
             --bg-surface: rgba(255, 255, 255, 0.85);
-            --primary: #0F766E;        
+            --primary: #0F766E;         
             --primary-dark: #0D5E57;
             --primary-light: #CCFBF1;
-            --accent: #6366F1;        
+            --accent: #6366F1;         
             --accent-glow: rgba(99, 102, 241, 0.3);
             --text-main: #1E293B;
             --text-muted: #64748B;
@@ -237,6 +237,32 @@
         .marquee-content { display: inline-block; animation: scroll 40s linear infinite; } /* Slower scroll */
         .marquee-item { margin: 0 16px; display: inline-flex; align-items: center; gap: 6px; }
         @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        /* --- PARTNERSHIP BANNER (NEW) --- */
+        .partnership-banner {
+            display: flex; align-items: center; justify-content: space-between;
+            background: linear-gradient(to right, #1E293B, #0F172A);
+            border-radius: 20px; padding: 24px 32px;
+            color: white; text-decoration: none;
+            transition: var(--trans-default);
+            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+        .partnership-banner:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(15, 23, 42, 0.15); border-color: var(--primary); }
+        .partnership-content h2 { font-size: 1.4rem; margin: 8px 0 4px; color: white; }
+        .partnership-content p { color: #94A3B8; margin: 0; font-size: 0.95rem; }
+        .partnership-tag {
+            background: rgba(16, 185, 129, 0.15); color: #34D399;
+            padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;
+        }
+        .partnership-arrow {
+            background: rgba(255,255,255,0.1); padding: 10px 20px; border-radius: 99px;
+            font-weight: 600; font-size: 0.9rem; white-space: nowrap; margin-left: 20px;
+        }
+        @media (max-width: 600px) {
+            .partnership-banner { flex-direction: column; text-align: center; gap: 16px; padding: 24px; }
+            .partnership-arrow { margin-left: 0; width: 100%; text-align: center; }
+        }
 
         /* --- TABS --- */
         .tabs-container { margin-top: 40px; }
@@ -446,6 +472,20 @@
             <span class="marquee-item">Zero-Gravity</span>
         </div>
     </div>
+
+    <!-- PARTNERSHIP BANNER (New) -->
+    <section class="container" style="margin-top: 40px; margin-bottom: 20px;">
+        <a href="partnerstwo.html" class="partnership-banner cursor-trigger">
+            <div class="partnership-content">
+                <span class="partnership-tag">Strefa B2B</span>
+                <h2>Partnerstwo Strategiczne: Nauka & Biznes</h2>
+                <p>Granty B+R, Wdrożenia Szpitalne i VR NeuroBus dla firm.</p>
+            </div>
+            <div class="partnership-arrow">
+                Sprawdź →
+            </div>
+        </a>
+    </section>
 
     <section class="section" id="oferta">
         <div class="container">
