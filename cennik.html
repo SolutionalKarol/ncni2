@@ -13,13 +13,16 @@
       gtag('config', 'G-56VR40VHHV');
     </script>
     
-    <!-- Meta Tags dla Robotów i AI -->
+    <!-- Meta Tags dla Robotów i AI (SEO) -->
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="googlebot" content="index, follow">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0"> 
+    <!-- Added maximum-scale for accessibility but ensured initial is 1.0 -->
     
-    <title>Cennik Usług | NCNI Wrocław</title>
-    <meta name="description" content="Aktualny cennik NCNI 2026. Metoda Kraszewskiego, Terapia VR, Biofeedback EEG/HRV, Zero Gravity. Sprawdź nowe pakiety.">
+    <title>Cennik Usług | NCNI Wrocław - Metoda Kraszewskiego & Neuro-Tech</title>
+    <meta name="description" content="Aktualny cennik NCNI 2026. Metoda Kraszewskiego (CIRCLE Method), Konsultacja Ekspercka, Terapia VR, Biofeedback EEG/HRV, Zero Gravity. Nowoczesna diagnostyka.">
+    <meta name="keywords" content="Metoda Kraszewskiego, CIRCLE Method, Neurofeedback Wrocław, Terapia VR, Biofeedback cennik, Zero Gravity Wrocław, ADOS-2 cena">
+    
     <link rel="icon" href="logo.png" type="image/png">
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -46,12 +49,13 @@
             color: var(--text-main); 
             line-height: 1.6; 
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased; /* Better font rendering on mobile */
         }
         h1, h2, h3 { font-family: 'Lexend', sans-serif; }
         
         #bg-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; z-index: -1; opacity: 0.6; pointer-events: none; }
         .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
-        .glass { background: var(--bg-surface); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.6); box-shadow: 0 4px 20px rgba(0,0,0,0.03); }
+        .glass { background: var(--bg-surface); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.6); box-shadow: 0 4px 20px rgba(0,0,0,0.03); }
         
         /* Header */
         header { position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid var(--border); padding: 12px 0; }
@@ -71,6 +75,7 @@
         .mobile-menu { position: fixed; top: 80px; left: 0; width: 100%; background: white; padding: 24px; border-bottom: 1px solid var(--border); transform: translateY(-150%); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); z-index: 999; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
         .mobile-menu.active { transform: translateY(0); }
         .mobile-link { display: block; padding: 14px 0; font-size: 1.1rem; font-weight: 500; color: var(--text-main); text-decoration: none; border-bottom: 1px solid var(--bg-body); }
+        
         @media (max-width: 900px) {
             .nav-wrapper { flex-direction: row; height: 60px; justify-content: space-between; padding: 0; }
             .brand-bar { justify-content: flex-start; width: auto; }
@@ -81,12 +86,14 @@
         }
 
         /* --- PRICE LIST STYLES --- */
+        
+        /* STANDARD FEATURED CARD (Consultation) */
         .featured-card {
             background: linear-gradient(135deg, #0F766E 0%, #115E59 100%);
             color: white;
             border-radius: 20px;
             padding: 30px;
-            margin: 40px 0;
+            margin: 30px 0;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -99,13 +106,60 @@
             width: 200px; height: 200px; background: rgba(255,255,255,0.1);
             border-radius: 50%; filter: blur(40px);
         }
-        .fc-content h3 { font-size: 1.6rem; margin-bottom: 5px; display: flex; align-items: center; gap: 10px; }
-        .fc-badge { background: #F59E0B; color: #fff; font-size: 0.75rem; padding: 3px 10px; border-radius: 99px; text-transform: uppercase; font-weight: 700; }
-        .fc-price { text-align: right; font-family: 'Lexend', sans-serif; }
+
+        /* BANNER 1: METODA KRASZEWSKIEGO (Green) */
+        .circle-banner {
+            background: linear-gradient(135deg, #059669 0%, #047857 100%); /* Emerald/Green gradient */
+            color: white;
+            border-radius: 20px;
+            padding: 35px;
+            margin: 40px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 15px 30px rgba(16, 185, 129, 0.25);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .circle-banner::after {
+            content: ''; position: absolute; bottom: -30px; left: -30px;
+            width: 150px; height: 150px; background: rgba(255,255,255,0.15);
+            border-radius: 50%; filter: blur(30px);
+        }
+
+        /* BANNER 2: VR THERAPY (Purple/Tech) */
+        .vr-banner {
+            background: linear-gradient(135deg, #6366F1 0%, #4338CA 100%); /* Indigo/Purple gradient */
+            color: white;
+            border-radius: 20px;
+            padding: 35px;
+            margin: 30px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 15px 30px rgba(99, 102, 241, 0.3);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .vr-banner::before {
+            content: ''; position: absolute; top: -50px; right: -20px;
+            width: 180px; height: 180px; background: rgba(255,255,255,0.1);
+            border-radius: 50%; filter: blur(40px);
+        }
+
+        /* Typography inside banners */
+        .fc-content h3 { font-size: 1.6rem; margin-bottom: 5px; display: flex; flex-direction: column; align-items: flex-start; gap: 5px; line-height: 1.2; }
+        .fc-badge { background: #F59E0B; color: #fff; font-size: 0.75rem; padding: 3px 10px; border-radius: 99px; text-transform: uppercase; font-weight: 700; align-self: flex-start; }
+        .circle-badge { background: #FFFFFF; color: #047857; font-size: 0.75rem; padding: 3px 10px; border-radius: 99px; text-transform: uppercase; font-weight: 800; letter-spacing: 0.05em; align-self: flex-start; }
+        .vr-badge { background: #FFFFFF; color: #4338CA; font-size: 0.75rem; padding: 3px 10px; border-radius: 99px; text-transform: uppercase; font-weight: 800; letter-spacing: 0.05em; align-self: flex-start; }
+        
+        .fc-price { text-align: right; font-family: 'Lexend', sans-serif; position: relative; z-index: 2; min-width: 120px; }
         .fc-price .amount { font-size: 2.2rem; font-weight: 700; display: block; line-height: 1; }
         .fc-price .unit { font-size: 0.9rem; opacity: 0.9; font-weight: 400; }
 
-        .section-title { font-size: 1.4rem; color: var(--primary); margin: 60px 0 20px; border-bottom: 2px solid var(--border); padding-bottom: 10px; }
+        .section-title { font-size: 1.4rem; color: var(--primary); margin: 60px 0 20px; border-bottom: 2px solid var(--border); padding-bottom: 10px; clear: both; }
         
         .price-row {
             display: flex; justify-content: space-between; align-items: baseline;
@@ -121,105 +175,68 @@
             border-radius: 8px;
             margin: 10px 0;
         }
+        .price-row.premium-tech {
+            background: #F5F3FF;
+            border: 1px solid #C7D2FE;
+            border-left: 4px solid #6366F1;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+
         .pr-service { flex: 1; padding-right: 20px; }
         .pr-name { font-weight: 600; font-size: 1.05rem; color: var(--text-main); }
         .pr-desc { font-size: 0.9rem; color: var(--text-muted); margin-top: 4px; display: block; }
         .pr-amount { font-weight: 700; color: var(--text-main); font-family: 'Lexend', sans-serif; font-size: 1.1rem; white-space: nowrap; }
-        .pr-amount.subtle { color: var(--text-muted); font-size: 1rem; }
-        .pr-amount .old-price { text-decoration: line-through; color: var(--text-muted); font-size: 0.9rem; margin-right: 8px; opacity: 0.7; }
-
-        /* Badge for new items */
+        
         .new-badge { display: inline-block; background: var(--accent); color: white; font-size: 0.7rem; padding: 2px 6px; border-radius: 4px; vertical-align: middle; margin-left: 8px; font-weight: 600; }
 
-        .payment-methods {
-            margin-top: 60px;
-            background: white;
-            padding: 30px;
-            border-radius: 16px;
-            border: 1px solid var(--border);
-            text-align: left;
-        }
-        .payment-methods h3 { font-size: 1.2rem; margin-bottom: 16px; color: var(--text-main); }
-        .payment-list {
-            list-style: none;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            padding: 0;
-            color: var(--text-muted);
-            font-weight: 500;
-        }
-        .payment-list li {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .payment-list li::before {
-            content: '';
-            display: block;
-            width: 8px;
-            height: 8px;
-            background: var(--primary);
-            border-radius: 50%;
-        }
-        .invoice-info {
-            margin-top: 20px;
-            padding-top: 15px;
-            border-top: 1px solid var(--border);
-            font-size: 0.9rem;
-            color: var(--text-muted);
-        }
-
-        /* FAQ & RODO Accordion */
-        details {
-            margin-bottom: 16px; border: 1px solid var(--border); border-radius: 12px;
-            background: white; overflow: hidden; transition: all 0.3s ease;
-        }
-        details[open] { border-color: var(--primary); box-shadow: 0 4px 12px rgba(15, 118, 110, 0.1); }
-        summary {
-            padding: 16px 20px; cursor: pointer; font-weight: 600; font-size: 1rem;
-            display: flex; justify-content: space-between; align-items: center; list-style: none;
-            color: var(--text-main); background: white;
-        }
-        summary::-webkit-details-marker { display: none; }
-        summary::after { content: '+'; font-size: 1.5rem; color: var(--primary); transition: transform 0.2s; font-weight: 300; }
-        details[open] summary::after { transform: rotate(45deg); }
-        details[open] summary { border-bottom: 1px solid var(--bg-body); background: #F0FDF4; }
+        .payment-methods { margin-top: 60px; background: white; padding: 30px; border-radius: 16px; border: 1px solid var(--border); }
+        .payment-list { list-style: none; display: flex; flex-wrap: wrap; gap: 20px; padding: 0; color: var(--text-muted); font-weight: 500; }
+        .payment-list li { display: flex; align-items: center; gap: 8px; }
+        .payment-list li::before { content: ''; display: block; width: 8px; height: 8px; background: var(--primary); border-radius: 50%; }
+        
+        /* FAQ Styles */
+        details { margin-bottom: 16px; border: 1px solid var(--border); border-radius: 12px; background: white; overflow: hidden; }
+        summary { padding: 16px 20px; cursor: pointer; font-weight: 600; display: flex; justify-content: space-between; align-items: center; color: var(--text-main); }
         .details-content { padding: 20px; color: var(--text-muted); font-size: 0.95rem; }
 
+        /* --- MOBILE OPTIMIZATION --- */
         @media (max-width: 600px) {
-            .featured-card { flex-direction: column; text-align: center; gap: 20px; }
-            .fc-price { text-align: center; }
-            .price-row { flex-direction: column; gap: 8px; }
-            .pr-amount { align-self: flex-end; color: var(--primary); }
+            .circle-banner, .vr-banner, .featured-card { 
+                flex-direction: column; 
+                text-align: center; 
+                gap: 20px; 
+                padding: 25px 20px;
+            }
+            .fc-content h3 { 
+                align-items: center; 
+                font-size: 1.4rem;
+            }
+            .fc-price { 
+                text-align: center; 
+                margin-top: 10px;
+            }
+            .price-row { 
+                flex-direction: column; 
+                gap: 8px; 
+            }
+            .pr-amount { 
+                align-self: flex-end; 
+                color: var(--primary); 
+                font-size: 1.2rem;
+            }
+            .nav-item { display: none; } /* Hide desktop nav items if not hidden */
+            h1 { font-size: 2.2rem !important; } /* Smaller H1 on mobile */
         }
 
-        /* Ania Widget Styles */
+        /* Ania Widget */
         .ania-container { position: fixed; bottom: 24px; right: 24px; z-index: 2000; display: flex; flex-direction: column; align-items: flex-end; }
-        .ania-avatar { width: 60px; height: 60px; border-radius: 50%; border: 3px solid white; box-shadow: 0 4px 20px rgba(15, 118, 110, 0.3); cursor: pointer; overflow: hidden; background: white; transition: transform 0.3s ease; }
-        .ania-avatar:hover { transform: scale(1.05); }
+        .ania-avatar { width: 60px; height: 60px; border-radius: 50%; border: 3px solid white; box-shadow: 0 4px 20px rgba(15, 118, 110, 0.3); cursor: pointer; overflow: hidden; background: white; }
         .ania-avatar img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
-        
-        .ania-bubble {
-            display: none; /* Hidden by default */
-            background: white;
-            padding: 16px;
-            border-radius: 16px 16px 4px 16px;
-            box-shadow: 0 5px 25px rgba(0,0,0,0.15);
-            margin-bottom: 12px;
-            max-width: 250px;
-            font-size: 0.95rem;
-            color: var(--text-main);
-            border: 1px solid var(--border);
-            animation: fadeIn 0.3s ease-out;
-        }
+        .ania-bubble { display: none; background: white; padding: 16px; border-radius: 16px 16px 4px 16px; box-shadow: 0 5px 25px rgba(0,0,0,0.15); margin-bottom: 12px; max-width: 250px; font-size: 0.95rem; border: 1px solid var(--border); }
         .ania-bubble.active { display: block; }
         
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
         footer { background: white; border-top: 1px solid var(--border); padding: 50px 0; margin-top: 80px; text-align: center; font-size: 0.9rem; color: var(--text-muted); }
     </style>
 </head>
@@ -273,59 +290,95 @@
             </div>
         </div>
 
-        <!-- FEATURED: KRASZEWSKI -->
+        <!-- BANNER 1: METODA KRASZEWSKIEGO (Green) -->
+        <div class="circle-banner">
+            <div class="fc-content">
+                <h3>
+                    <span class="circle-badge">PREMIUM</span> 
+                    Metoda Kraszewskiego
+                    <span style="font-size: 0.9rem; opacity: 0.9; font-weight: 400; display: block; margin-top: 2px;">(CIRCLE Method)</span>
+                </h3>
+                <p style="opacity: 0.95; margin-top: 8px; font-size: 1.05rem;">
+                    <strong>Konsultacja ekspercka.</strong> Pełna integracja: EEG + biosygnały + VR + dźwięk 8D + stymulacja haptyczna.
+                </p>
+                <p style="opacity: 0.8; font-size: 0.9rem; margin-top: 5px;">Czas trwania: 90 min</p>
+            </div>
+            <div class="fc-price">
+                <span class="amount">530 zł</span>
+                <span class="unit">Pełna sesja diagnostyczno-terapeutyczna</span>
+            </div>
+        </div>
+
+        <!-- STANDARD FEATURED: KONSULTACJA WSTĘPNA -->
         <div class="featured-card">
             <div class="fc-content">
-                <h3><span class="fc-badge">PREMIUM</span> Metoda Kraszewskiego</h3>
-                <p style="opacity: 0.9; margin-top: 5px;">Autorska metoda holistyczna (Ciało + Umysł). Diagnoza + Plan terapeutyczny.</p>
+                <h3><span class="fc-badge">START</span> Konsultacja Wstępna Ekspercka</h3>
+                <p style="opacity: 0.9; margin-top: 5px;">Kompleksowa diagnoza funkcjonalna + Plan terapeutyczny (Ciało + Umysł).</p>
             </div>
             <div class="fc-price">
                 <span class="amount">420 zł</span>
-                <span class="unit">Konsultacja wstępna (60 min)</span>
+                <span class="unit">Konsultacja (60 min)</span>
             </div>
         </div>
 
-        <!-- TECHNOLOGIE I NEURO-TERAPIE -->
-        <h2 class="section-title">Neuro-Technologie & VR</h2>
+        <!-- SECTION TITLE UPDATED -->
+        <h2 class="section-title">NCNI Neuro-Tech & VR</h2>
         
+        <!-- BANNER 2: TERAPIA VR (Colorful/Purple) -->
+        <div class="vr-banner">
+            <div class="fc-content">
+                <h3>
+                    <span class="vr-badge">TECHNOLOGIA</span> 
+                    Terapia VR (Virtual Reality)
+                </h3>
+                <p style="opacity: 0.95; margin-top: 8px; font-size: 1.05rem;">
+                    Ekspozycja w wirtualnej rzeczywistości. Skuteczna w leczeniu fobii, lęków społecznych i treningu funkcji poznawczych.
+                </p>
+            </div>
+            <div class="fc-price">
+                <span class="amount">340 zł</span>
+                <span class="unit">Sesja terapeutyczna (50 min)</span>
+            </div>
+        </div>
+
         <div class="price-row">
             <div class="pr-service">
                 <div class="pr-name">Biofeedback HRV</div>
-                <span class="pr-desc">Trening zmienności rytmu serca, synchronizacja oddechu.</span>
+                <span class="pr-desc">Trening zmienności rytmu serca, synchronizacja oddechu (Koherencja serca).</span>
             </div>
-            <div class="pr-amount">150 zł</div>
+            <div class="pr-amount">180 zł</div>
         </div>
 
         <div class="price-row">
             <div class="pr-service">
-                <div class="pr-name">Biofeedback EEG (Neurofeedback) <span class="new-badge">NOWOŚĆ</span></div>
-                <span class="pr-desc">Trening fal mózgowych dla poprawy koncentracji i redukcji lęku.</span>
+                <div class="pr-name">Biofeedback EEG (Neurofeedback)</div>
+                <span class="pr-desc">Zaawansowany trening fal mózgowych dla poprawy koncentracji i redukcji lęku.</span>
+            </div>
+            <div class="pr-amount">200 zł</div>
+        </div>
+
+        <div class="price-row">
+            <div class="pr-service">
+                <div class="pr-name">Biofeedback EMG</div>
+                <span class="pr-desc">Trening relaksacji mięśniowej (redukcja napięć psychosomatycznych).</span>
+            </div>
+            <div class="pr-amount">170 zł</div>
+        </div>
+
+        <div class="price-row">
+            <div class="pr-service">
+                <div class="pr-name">Trening Uważności z Muse 2 <span class="new-badge">HIT</span></div>
+                <span class="pr-desc">Medytacja technologiczna. Urządzenie przetwarza Twoje fale mózgowe na dźwięki natury (np. wiatr, deszcz).</span>
             </div>
             <div class="pr-amount">160 zł</div>
         </div>
 
         <div class="price-row">
             <div class="pr-service">
-                <div class="pr-name">Biofeedback EMG <span class="new-badge">NOWOŚĆ</span></div>
-                <span class="pr-desc">Trening relaksacji mięśniowej (redukcja napięć somatycznych).</span>
-            </div>
-            <div class="pr-amount">140 zł</div>
-        </div>
-
-        <div class="price-row">
-            <div class="pr-service">
                 <div class="pr-name">PAKIET: Biofeedback (10 sesji)</div>
-                <span class="pr-desc">Pełny cykl treningowy (HRV / EEG / EMG do wyboru).</span>
+                <span class="pr-desc">Pełny cykl treningowy (HRV / EEG / EMG / Muse do wyboru).</span>
             </div>
-            <div class="pr-amount">1400 zł</div>
-        </div>
-
-        <div class="price-row">
-            <div class="pr-service">
-                <div class="pr-name">Terapia VR – Sesja Pojedyncza</div>
-                <span class="pr-desc">Ekspozycja w wirtualnej rzeczywistości (Fobie, Lęki, Trening poznawczy).</span>
-            </div>
-            <div class="pr-amount">280 zł</div>
+            <div class="pr-amount">1700 zł</div>
         </div>
 
         <div class="price-row">
@@ -333,40 +386,45 @@
                 <div class="pr-name">Pakiet VR (5 sesji)</div>
                 <span class="pr-desc">Cykl 5 spotkań terapeutycznych w wirtualnej rzeczywistości.</span>
             </div>
-            <div class="pr-amount">1300 zł</div>
+            <div class="pr-amount">1550 zł</div>
         </div>
 
-        <!-- HIGHLIGHTED PACKAGES -->
+        <!-- PREMIUM FUSION PACKAGES -->
+        <h2 class="section-title">Premium Fusion: Neuro + Body + Space</h2>
+
+        <div class="price-row premium-tech">
+            <div class="pr-service">
+                <div class="pr-name" style="color: #4F46E5; font-size: 1.2rem;">🌌 PAKIET: Zero G + VR + EEG (Neuro-Float)</div>
+                <span class="pr-desc" style="color: var(--text-main); margin-top: 8px;">
+                    <strong>Absolutna innowacja.</strong> Połączenie stanu nieważkości ciała (Zero Gravity), immersji wizualnej (VR) i monitoringu fal mózgowych (EEG).<br>
+                    Cel: Głęboki reset układu nerwowego i wejście w stan Flow.
+                </span>
+            </div>
+            <div class="pr-amount" style="font-size: 1.4rem;">550 zł</div>
+        </div>
+
         <div class="price-row highlighted">
             <div class="pr-service">
                 <div class="pr-name" style="color: var(--primary); font-size: 1.2rem;">⭐ Pakiet: Biofeedback Premium + VR + Psycholog</div>
                 <span class="pr-desc" style="color: var(--text-main); margin-top: 8px;">
                     Intensywna sesja terapeutyczna (60 min):<br>
-                    • 20 min Biofeedback + 20 min VR + 20 min Konsultacja
+                    • 20 min Biofeedback + 20 min VR + 20 min Konsultacja Specjalistyczna
                 </span>
             </div>
-            <div class="pr-amount" style="font-size: 1.4rem;">450 zł</div>
+            <div class="pr-amount" style="font-size: 1.4rem;">550 zł</div>
         </div>
 
         <div class="price-row highlighted" style="background: #EEF2FF; border-color: var(--accent); border-left-color: var(--accent);">
             <div class="pr-service">
                 <div class="pr-name" style="color: var(--accent); font-size: 1.2rem;">🚀 PAKIET: Intensywna Neuro-Immersja</div>
                 <span class="pr-desc" style="color: var(--text-main); margin-top: 8px;">
-                    Długoterminowy program terapeutyczny łączący VR i Biofeedback (Kompleksowy cykl).
+                    Długoterminowy program terapeutyczny łączący VR, Biofeedback i Terapię (Kompleksowy cykl).
                 </span>
             </div>
-            <div class="pr-amount" style="font-size: 1.4rem;">2650 zł</div>
+            <div class="pr-amount" style="font-size: 1.4rem;">3200 zł</div>
         </div>
 
-        <div class="price-row">
-            <div class="pr-service">
-                <div class="pr-name">CIRCLE Method</div>
-                <span class="pr-desc">Autorska metoda NCNI: EEG + biosygnały + VR + dźwięk + stymulacja haptyczna (90 min).</span>
-            </div>
-            <div class="pr-amount">500 zł</div>
-        </div>
-
-        <!-- STREFA ZERO GRAVITY (NOWA SEKCJA) -->
+        <!-- STREFA ZERO GRAVITY -->
         <h2 class="section-title">Strefa Zero Gravity</h2>
 
         <div class="price-row">
@@ -374,15 +432,15 @@
                 <div class="pr-name">Relaks Zero Gravity (25 min)</div>
                 <span class="pr-desc">Krótka, intensywna sesja relaksacji (Stress relief / Quick recovery).</span>
             </div>
-            <div class="pr-amount">120 zł</div>
+            <div class="pr-amount">150 zł</div>
         </div>
 
         <div class="price-row">
             <div class="pr-service">
                 <div class="pr-name">Zero Gravity Recovery (50 min)</div>
-                <span class="pr-desc">Pełna sesja recuperacji z wybranym programem masażu i ogrzewaniem.</span>
+                <span class="pr-desc">Pełna sesja recuperacji z wybranym programem masażu 4D i ogrzewaniem IR.</span>
             </div>
-            <div class="pr-amount">210 zł</div>
+            <div class="pr-amount">250 zł</div>
         </div>
 
         <div class="price-row">
@@ -390,7 +448,7 @@
                 <div class="pr-name">Premium Zero Gravity + Biofeedback (80 min)</div>
                 <span class="pr-desc">Kompleksowy program rehabilitacyjny: 50 min Zero Gravity + 30 min Biofeedback HRV.</span>
             </div>
-            <div class="pr-amount">380 zł</div>
+            <div class="pr-amount">450 zł</div>
         </div>
 
         <!-- DIAGNOSTYKA SPECJALISTYCZNA -->
@@ -406,7 +464,7 @@
 
         <div class="price-row">
             <div class="pr-service">
-                <div class="pr-name">Test Inteligencji Stanford-Binet 5 <span class="new-badge">NOWOŚĆ</span></div>
+                <div class="pr-name">Test Inteligencji Stanford-Binet 5</div>
                 <span class="pr-desc">Pełne badanie inteligencji i zdolności poznawczych (Dzieci i Dorośli).</span>
             </div>
             <div class="pr-amount">520 zł</div>
@@ -422,18 +480,10 @@
 
         <div class="price-row">
             <div class="pr-service">
-                <div class="pr-name">Test osobowości MMPI-2</div>
-                <span class="pr-desc">Wielowymiarowy Inwentarz Osobowości Minnesota (Dorośli).</span>
+                <div class="pr-name">Test osobowości MMPI-2 / NEO-PI-R</div>
+                <span class="pr-desc">Wielowymiarowy Inwentarz Osobowości (Dorośli).</span>
             </div>
             <div class="pr-amount">480 zł</div>
-        </div>
-
-        <div class="price-row">
-            <div class="pr-service">
-                <div class="pr-name">Test osobowości NEO-PI-R</div>
-                <span class="pr-desc">Inwentarz Osobowości (Model Wielkiej Piątki).</span>
-            </div>
-            <div class="pr-amount">280 zł</div>
         </div>
 
         <!-- PROGRAMY KLINICZNE: ADHD -->
@@ -452,7 +502,7 @@
                 <div class="pr-name">VR Training dla ADHD</div>
                 <span class="pr-desc">Trening funkcji wykonawczych (Scenariusz "Klasa Szkolna").</span>
             </div>
-            <div class="pr-amount">220 zł</div>
+            <div class="pr-amount">250 zł</div>
         </div>
 
         <!-- PSYCHOLOGIA & TERAPIA -->
@@ -490,14 +540,6 @@
             <div class="pr-amount">375 zł</div>
         </div>
 
-        <div class="price-row">
-            <div class="pr-service">
-                <div class="pr-name">Terapia EMDR</div>
-                <span class="pr-desc">Terapia traumy i PTSD.</span>
-            </div>
-            <div class="pr-amount">220 zł</div>
-        </div>
-
         <!-- PAKIETY SPECJALNE -->
         <h2 class="section-title">Pakiety Specjalne</h2>
 
@@ -506,7 +548,7 @@
                 <div class="pr-name">Pakiet: Metoda Kraszewskiego + Terapia</div>
                 <span class="pr-desc">Diagnoza holistyczna + Cykl terapeutyczny startowy.</span>
             </div>
-            <div class="pr-amount">1520 zł</div>
+            <div class="pr-amount">1650 zł</div>
         </div>
 
         <div class="price-row">
@@ -557,7 +599,7 @@
                 <div class="pr-name">Specialist Diagnosis (ADOS-2 / Neuropsychology)</div>
                 <span class="pr-desc">Specjalistyczna diagnoza w języku obcym.</span>
             </div>
-            <div class="pr-amount">Od 420 zł</div>
+            <div class="pr-amount">Od 450 zł</div>
         </div>
 
         <!-- METODY PŁATNOŚCI -->
@@ -580,7 +622,7 @@
         <details>
             <summary>Ile trwa wizyta i sesja VR? (Time = Money)</summary>
             <div class="details-content">
-                <p>Standardowa konsultacja psychologiczna trwa 50 minut. Sesje technologiczne (VR, Biofeedback) trwają od 50 do 60 minut, w tym czas na podłączenie aparatury (ok. 5-10 min) i aktywny trening.</p>
+                <p>Standardowa konsultacja psychologiczna trwa 50 minut. Sesje technologiczne (VR, Biofeedback, Muse 2) trwają od 50 do 60 minut, w tym czas na podłączenie aparatury (ok. 5-10 min) i aktywny trening.</p>
             </div>
         </details>
 
@@ -641,7 +683,7 @@
         }
 
         // TŁO - THREE.JS
-        function initParticles(){const container=document.getElementById('bg-canvas');if(!container)return;const scene=new THREE.Scene();scene.fog=new THREE.FogExp2(0xF8FAFC,0.002);const camera=new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,1000);camera.position.z=10;const renderer=new THREE.WebGLRenderer({alpha:true,antialias:true});renderer.setSize(window.innerWidth,window.innerHeight);renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));container.appendChild(renderer.domElement);const geometry=new THREE.BufferGeometry();const count=200;const positions=new Float32Array(count*3);const colors=new Float32Array(count*3);for(let i=0;i<count*3;i+=3){positions[i]=(Math.random()-0.5)*25;positions[i+1]=(Math.random()-0.5)*25;positions[i+2]=(Math.random()-0.5)*25;const mix=Math.random();if(mix>0.5){colors[i]=0.06;colors[i+1]=0.46;colors[i+2]=0.43;}else{colors[i]=0.39;colors[i+1]=0.4;colors[i+2]=0.94;}}geometry.setAttribute('position',new THREE.BufferAttribute(positions,3));geometry.setAttribute('color',new THREE.BufferAttribute(colors,3));const material=new THREE.PointsMaterial({size:0.1,vertexColors:true,transparent:true,opacity:0.4});const particles=new THREE.Points(geometry,material);scene.add(particles);let mouseX=0,mouseY=0,targetX=0,targetY=0;const windowHalfX=window.innerWidth/2;const windowHalfY=window.innerHeight/2;document.addEventListener('mousemove',(e)=>{mouseX=(e.clientX-windowHalfX);mouseY=(e.clientY-windowHalfY);});const clock=new THREE.Clock();function animate(){const time=clock.getElapsedTime();targetX=mouseX*0.0001;targetY=mouseY*0.0001;particles.rotation.y+=0.01*(targetX-particles.rotation.y);particles.rotation.x+=0.01*(targetY-particles.rotation.x);particles.rotation.z+=0.0005;const scale=1+Math.sin(time*0.5)*0.02;particles.scale.set(scale,scale,scale);renderer.render(scene,camera);requestAnimationFrame(animate);}animate();window.addEventListener('resize',()=>{camera.aspect=window.innerWidth/window.innerHeight;camera.updateProjectionMatrix();renderer.setSize(window.innerWidth,window.innerHeight);});}document.addEventListener("DOMContentLoaded",initParticles);
+        function initParticles(){const container=document.getElementById('bg-canvas');if(!container)return;const scene=new THREE.Scene();scene.fog=new THREE.FogExp2(0xF8FAFC,0.002);const camera=new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,1000);camera.position.z=10;const renderer=new THREE.WebGLRenderer({alpha:true,antialias:true});renderer.setSize(window.innerWidth,window.innerHeight);renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));container.appendChild(renderer.domElement);const geometry=new THREE.BufferGeometry();const count=200;const positions=new Float32Array(count*3);const colors=new Float32Array(count*3);for(let i=0;i<count*3;i+=3){positions[i]=(Math.random()-0.5)*25;positions[i+1]=(Math.random()-0.5)*25;positions[i+2]=(Math.random()-0.5)*25;const mix=Math.random();if(mix>0.5){colors[i]=0.06;colors[i+1]=0.46;colors[i+2]=0.43;}else{colors[i]=0.39;colors[i+1]=0.4;colors[i+2]=0.94;}}geometry.setAttribute('position',new THREE.BufferAttribute(positions,3));geometry.setAttribute('color',new THREE.BufferAttribute(colors,3));const material=new THREE.PointsMaterial({size:0.1,vertexColors:true,transparent:true,opacity:0.4});const particles=new THREE.Points(geometry,material);scene.add(particles);let mouseX=0,mouseY=0,targetX=0,targetY=0;const windowHalfX=window.innerWidth/window.innerHeight;const windowHalfY=window.innerHeight/2;document.addEventListener('mousemove',(e)=>{mouseX=(e.clientX-windowHalfX);mouseY=(e.clientY-windowHalfY);});const clock=new THREE.Clock();function animate(){const time=clock.getElapsedTime();targetX=mouseX*0.0001;targetY=mouseY*0.0001;particles.rotation.y+=0.01*(targetX-particles.rotation.y);particles.rotation.x+=0.01*(targetY-particles.rotation.x);particles.rotation.z+=0.0005;const scale=1+Math.sin(time*0.5)*0.02;particles.scale.set(scale,scale,scale);renderer.render(scene,camera);requestAnimationFrame(animate);}animate();window.addEventListener('resize',()=>{camera.aspect=window.innerWidth/window.innerHeight;camera.updateProjectionMatrix();renderer.setSize(window.innerWidth,window.innerHeight);});}document.addEventListener("DOMContentLoaded",initParticles);
 
         // MENU
         const toggle = document.querySelector('.mobile-toggle');
