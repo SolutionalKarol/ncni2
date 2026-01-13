@@ -2,17 +2,34 @@
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
+    
+    <!-- Google Analytics (Bez zmian) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-56VR40VHHV"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'G-56VR40VHHV');
     </script>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>O Nas | Misja i Zespół NCNI Wrocław</title>
-    <meta name="description" content="Poznaj misję i historię NCNI. Zespół ekspertów: Dr hab. inż. Sebastian Kraszewski, Karol Kiszło i specjaliści. Łączymy medycynę z technologią dla Twojego zdrowia.">
+    
+    <!-- SEO: Zoptymalizowany Title -->
+    <title>O Nas | Misja i Zespół NCNI Wrocław - Psychologia i Technologia</title>
+    
+    <!-- SEO: Meta Description -->
+    <meta name="description" content="Poznaj misję i zespół NCNI we Wrocławiu. Łączymy psychologię z technologią (VR, Biofeedback). Eksperci: dr hab. inż. Sebastian Kraszewski, Karol Kiszło i inni.">
+    
+    <!-- SEO: Canonical Tag (Zapobiega duplikacji treści) -->
+    <link rel="canonical" href="https://ncni.pl/o-nas.html">
+
+    <!-- SEO: Open Graph (Wygląd na Facebook/LinkedIn) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ncni.pl/o-nas.html">
+    <meta property="og:title" content="O Nas | Misja i Zespół NCNI Wrocław">
+    <meta property="og:description" content="Poznaj zespół NCNI. Łączymy medycynę, inżynierię i psychologię, by wspierać Twój mózg. Sprawdź naszą misję.">
+    <meta property="og:image" content="https://ncni.pl/logo.png"> <!-- Warto podmienić na dedykowaną grafikę 1200x630px -->
+
     <link rel="icon" href="logo.png" type="image/png">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -22,7 +39,16 @@
       "@context": "https://schema.org",
       "@type": "MedicalOrganization",
       "name": "NCNI - Naukowe Centrum Neuroinnowacji",
+      "url": "https://ncni.pl",
+      "logo": "https://ncni.pl/logo.png",
       "foundingDate": "2020", 
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "ul. Stefana Żeromskiego 60/5a",
+        "addressLocality": "Wrocław",
+        "postalCode": "50-312",
+        "addressCountry": "PL"
+      },
       "description": "Centrum łączące psychologię, inżynierię biomedyczną i nowoczesne technologie w terapii zaburzeń neurorozwojowych.",
       "employee": [
         { "@type": "Person", "name": "dr hab. inż. Sebastian Kraszewski" },
@@ -34,12 +60,12 @@
     <style>
         /* CORE STYLES (Spójne z bazą) */
         :root {
-            --bg-body: #F8FAFC;        
+            --bg-body: #F8FAFC;         
             --bg-surface: rgba(255, 255, 255, 0.85);
-            --primary: #0F766E;        
+            --primary: #0F766E;         
             --primary-dark: #0D5E57;
             --primary-light: #CCFBF1;
-            --accent: #6366F1;        
+            --accent: #6366F1;         
             --accent-glow: rgba(99, 102, 241, 0.3);
             --text-main: #1E293B;
             --text-muted: #64748B;
@@ -57,7 +83,7 @@
             color: var(--text-main);
             line-height: 1.7;
             overflow-x: hidden;
-            cursor: auto; /* Standardowy kursor */
+            cursor: auto; 
         }
 
         /* Background */
@@ -71,6 +97,10 @@
         .brand-bar { display: flex; justify-content: center; align-items: center; width: 100%; position: relative; }
         .logo { display: flex; align-items: center; gap: 14px; font-weight: 700; font-size: 1.6rem; color: var(--text-main); text-decoration: none; cursor: pointer; letter-spacing: -0.02em; }
         .logo img { height: 50px; width: auto; border-radius: 8px; }
+        
+        /* Obsługa zmiany nazwy Desktop/Mobile */
+        .brand-name-mobile { display: none; }
+        .brand-name-desktop { display: inline; }
 
         /* Nav Links */
         .nav-links { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; align-items: center; }
@@ -82,25 +112,86 @@
         .nav-cta { background: var(--primary); color: white !important; box-shadow: 0 4px 12px rgba(15, 118, 110, 0.25); margin-left: 8px; }
         .nav-cta:hover { background: var(--primary-dark); transform: translateY(-1px); }
 
-        /* Mobile */
-        .mobile-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; position: absolute; right: 0; top: 50%; transform: translateY(-50%); }
-        .mobile-toggle span { display: block; width: 24px; height: 2px; background: var(--text-main); margin: 5px 0; transition: 0.3s; }
+        /* Mobile Toggle Defaults */
+        .mobile-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
+        
+        /* Mobile Menu Container */
         .mobile-menu { position: fixed; top: 80px; left: 0; width: 100%; background: white; padding: 24px; border-bottom: 1px solid var(--border); transform: translateY(-150%); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); z-index: 999; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
         .mobile-menu.active { transform: translateY(0); }
         .mobile-link { display: block; padding: 14px 0; font-size: 1.1rem; font-weight: 500; color: var(--text-main); text-decoration: none; border-bottom: 1px solid var(--bg-body); }
 
+        /* --- MOBILE STYLES UPDATED --- */
         @media (max-width: 900px) {
-            .nav-wrapper { flex-direction: row; height: 60px; justify-content: center; padding: 0; }
-            .brand-bar { justify-content: flex-start; width: auto; }
+            .nav-wrapper { 
+                flex-direction: row; 
+                height: 60px; 
+                justify-content: space-between; /* Rozsuwa logo i burgera */
+                padding: 0 20px; /* Marginesy boczne */
+            }
+            
+            .brand-bar { 
+                justify-content: space-between; /* Rozsuwa logo i burgera wewnątrz paska */
+                width: 100%; 
+            }
+            
             .nav-links, .header-contact { display: none; }
-            .mobile-toggle { display: block; }
-            .logo { font-size: 1.1rem; }
-            .logo img { height: 36px; }
+            
+            /* Zmiana nazwy na mobilną */
+            .brand-name-desktop { display: none; }
+            .brand-name-mobile { 
+                display: inline; 
+                font-weight: 800; 
+                color: var(--primary);
+                letter-spacing: 0.02em;
+            }
+
+            .logo { font-size: 1.3rem; }
+            .logo img { height: 40px; }
+
+            /* Lepszy Burger Menu */
+            .mobile-toggle { 
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-end;
+                width: 44px;
+                height: 44px;
+                padding: 8px;
+                background: rgba(255,255,255,0.8);
+                border: 1px solid var(--border);
+                border-radius: 12px;
+                position: relative; /* Reset position absolute */
+                right: auto;
+                top: auto;
+                transform: none;
+            }
+            
+            .mobile-toggle span { 
+                display: block; 
+                width: 24px; 
+                height: 3px; /* Grubsza linia */
+                background: var(--primary); /* Kolor primary */
+                margin: 2.5px 0; 
+                transition: 0.3s; 
+                border-radius: 2px;
+            }
+            
+            /* Dłuższa środkowa linia dla stylu */
+            .mobile-toggle span:nth-child(2) { width: 18px; }
         }
 
         /* --- Page Specific --- */
         .hero-mini { padding: 80px 0 60px; text-align: center; }
-        .hero-mini h1 { font-size: 3rem; margin-bottom: 24px; background: linear-gradient(135deg, var(--text-main), var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        
+        /* SEO poprawka: H1 responsive size */
+        .hero-mini h1 { 
+            font-size: 3rem; 
+            margin-bottom: 24px; 
+            background: linear-gradient(135deg, var(--text-main), var(--primary)); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+            line-height: 1.2;
+        }
         .hero-mini p { font-size: 1.2rem; color: var(--text-muted); max-width: 700px; margin: 0 auto; }
 
         /* Story Section */
@@ -173,9 +264,11 @@
     <header class="glass">
         <div class="container nav-wrapper">
             <div class="brand-bar">
-                <a href="index.html" class="logo cursor-trigger">
-                    <img src="logo.png" alt="NCNI">
-                    <span>Naukowe Centrum Neuroinnowacji</span>
+                <a href="index.html" class="logo cursor-trigger" aria-label="Strona Główna NCNI">
+                    <img src="logo.png" alt="NCNI Logo">
+                    <!-- Zmiana nazwy dla Mobile/Desktop -->
+                    <span class="brand-name-desktop">Naukowe Centrum Neuroinnowacji</span>
+                    <span class="brand-name-mobile">NCNI WROCŁAW</span>
                 </a>
                 <button class="mobile-toggle cursor-trigger" aria-label="Menu">
                     <span></span><span></span><span></span>
@@ -209,7 +302,8 @@
     <section class="hero-mini">
         <div class="container">
             <span style="background: var(--primary-light); color: var(--primary); padding: 6px 12px; border-radius: 99px; font-size: 0.9rem; font-weight: 600;">Poznaj Nas</span>
-            <h1>Ludzie, Nauka, Empatia.</h1>
+            <!-- SEO FIX: Dodano nazwę firmy i miasto do H1 -->
+            <h1>NCNI Wrocław – Ludzie, Nauka, Empatia.</h1>
             <p>
                 Wierzymy, że skuteczne leczenie zaczyna się od zrozumienia. Jesteśmy interdyscyplinarnym zespołem, który łączy medycynę, inżynierię i psychologię, by wspierać Twój mózg.
             </p>
@@ -251,7 +345,8 @@
         <div class="team-grid">
             <a href="kraszewski.html" class="team-card glass cursor-trigger">
                 <div class="team-img-wrapper">
-                    <img src="sk.jpg" alt="Sebastian Kraszewski" class="team-img" onerror="this.src='https://ui-avatars.com/api/?name=Sebastian+Kraszewski&background=6366F1&color=fff&size=400'">
+                    <!-- SEO Fix: loading="lazy" -->
+                    <img src="sk.jpg" alt="Sebastian Kraszewski NCNI" class="team-img" loading="lazy" onerror="this.src='https://ui-avatars.com/api/?name=Sebastian+Kraszewski&background=6366F1&color=fff&size=400'">
                 </div>
                 <div class="team-info">
                     <span class="team-role">Dyrektor Naukowy</span>
@@ -262,7 +357,7 @@
 
             <a href="psycholog.html" class="team-card glass cursor-trigger">
                 <div class="team-img-wrapper">
-                    <img src="psycholog.jpg" alt="Psycholog NCNI" class="team-img" onerror="this.src='https://ui-avatars.com/api/?name=Psycholog&background=0F766E&color=fff&size=400'">
+                    <img src="psycholog.jpg" alt="Psycholog NCNI Wrocław" class="team-img" loading="lazy" onerror="this.src='https://ui-avatars.com/api/?name=Psycholog&background=0F766E&color=fff&size=400'">
                 </div>
                 <div class="team-info">
                     <span class="team-role">Psychologia Kliniczna</span>
@@ -273,7 +368,7 @@
 
             <a href="dietetyk.html" class="team-card glass cursor-trigger">
                 <div class="team-img-wrapper">
-                    <img src="dietetyk.jpg" alt="Dietetyk NCNI" class="team-img" onerror="this.src='https://ui-avatars.com/api/?name=Dietetyk+Kliniczny&background=10B981&color=fff&size=400'">
+                    <img src="dietetyk.jpg" alt="Dietetyk Kliniczny NCNI" class="team-img" loading="lazy" onerror="this.src='https://ui-avatars.com/api/?name=Dietetyk+Kliniczny&background=10B981&color=fff&size=400'">
                 </div>
                 <div class="team-info">
                     <span class="team-role" style="color: #10B981;">Psychodietetyka</span>
@@ -284,7 +379,7 @@
 
             <a href="fizjoterapia.html" class="team-card glass cursor-trigger">
                 <div class="team-img-wrapper">
-                    <img src="fizjoterapeuta.jpg" alt="Fizjoterapeuta NCNI" class="team-img" onerror="this.src='https://ui-avatars.com/api/?name=Fizjo+NCNI&background=F59E0B&color=fff&size=400'">
+                    <img src="fizjoterapeuta.jpg" alt="Fizjoterapeuta Somatyczny NCNI" class="team-img" loading="lazy" onerror="this.src='https://ui-avatars.com/api/?name=Fizjo+NCNI&background=F59E0B&color=fff&size=400'">
                 </div>
                 <div class="team-info">
                     <span class="team-role" style="color: #F59E0B;">Fizjoterapia Somatyczna</span>
@@ -295,7 +390,7 @@
 
             <a href="kiszlo.html" class="team-card glass cursor-trigger">
                 <div class="team-img-wrapper">
-                    <img src="kk.jpg" alt="Karol Kiszło" class="team-img" onerror="this.src='https://ui-avatars.com/api/?name=Karol+Kiszlo&background=0F766E&color=fff&size=400'">
+                    <img src="kk.jpg" alt="Karol Kiszło NeuroPerformance" class="team-img" loading="lazy" onerror="this.src='https://ui-avatars.com/api/?name=Karol+Kiszlo&background=0F766E&color=fff&size=400'">
                 </div>
                 <div class="team-info">
                     <span class="team-role">Współzałożyciel • Executive Director • Head of NeuroPerformance</span>
@@ -306,7 +401,7 @@
 
             <a href="szablon-profil.html" class="team-card glass cursor-trigger">
                 <div class="team-img-wrapper">
-                    <img src="https://ui-avatars.com/api/?name=Do%C5%82%C4%85cz+do+nas&background=CBD5E1&color=fff&size=400" alt="Placeholder" class="team-img">
+                    <img src="https://ui-avatars.com/api/?name=Do%C5%82%C4%85cz+do+nas&background=CBD5E1&color=fff&size=400" alt="Rekrutacja NCNI" class="team-img" loading="lazy">
                 </div>
                 <div class="team-info">
                     <span class="team-role" style="color: var(--text-muted);">Rekrutacja / Współpraca</span>
@@ -330,8 +425,8 @@
         <div class="container">
             <div class="footer-grid">
                 <div>
-                    <a href="#" class="logo cursor-trigger" style="margin-bottom: 20px; display: inline-block;">
-                        <img src="logo.png" alt="NCNI">
+                    <a href="#" class="logo cursor-trigger" style="margin-bottom: 20px; display: inline-block;" aria-label="NCNI Footer Logo">
+                        <img src="logo.png" alt="NCNI Logo">
                         NCNI
                     </a>
                     <p style="color: var(--text-muted); font-size: 0.95rem;">
@@ -354,9 +449,9 @@
                     </div>
                     
                     <div style="margin-top: 24px; display: flex; gap: 16px; align-items: center;">
-                        <a href="https://youtube.com/@neuroinnowacje" target="_blank" class="cursor-trigger" style="color: var(--text-muted); text-decoration: none; font-weight: 600;">YouTube</a>
+                        <a href="https://youtube.com/@neuroinnowacje" target="_blank" rel="noopener noreferrer" class="cursor-trigger" style="color: var(--text-muted); text-decoration: none; font-weight: 600;">YouTube</a>
                         <span style="color: var(--border);">|</span>
-                        <a href="https://x.com/neuroinnowacje" target="_blank" class="cursor-trigger" style="color: var(--text-muted); text-decoration: none; font-weight: 600;">X (Twitter)</a>
+                        <a href="https://x.com/neuroinnowacje" target="_blank" rel="noopener noreferrer" class="cursor-trigger" style="color: var(--text-muted); text-decoration: none; font-weight: 600;">X (Twitter)</a>
                     </div>
                 </div>
                 <div>
@@ -422,8 +517,6 @@
             });
         }
         document.addEventListener("DOMContentLoaded", initParticles);
-
-        /* USUNIĘTO KOD JS ODPOWIEDZIALNY ZA KURSOR (addEventListener 'mousemove') */
 
         const triggers = document.querySelectorAll('.cursor-trigger, a, button, .content-block, .profile-img-container');
         triggers.forEach(trigger => {
