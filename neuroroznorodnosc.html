@@ -55,8 +55,17 @@
         /* Header */
         header { position: sticky; top: 0; z-index: 1000; transition: var(--trans-default); border-bottom: 1px solid rgba(226, 232, 240, 0.6); padding: 12px 0; }
         .nav-wrapper { display: flex; flex-direction: column; align-items: center; gap: 16px; }
-        .brand-bar { display: flex; justify-content: center; align-items: center; width: 100%; position: relative; }
-        .logo { display: flex; align-items: center; gap: 14px; font-weight: 700; font-size: 1.6rem; color: var(--text-main); text-decoration: none; cursor: pointer; letter-spacing: -0.02em; }
+        
+        /* Brand Bar - kontener logo i hamburgera */
+        .brand-bar { 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            width: 100%; 
+            position: relative; 
+        }
+
+        .logo { display: flex; align-items: center; gap: 14px; font-weight: 700; font-size: 1.6rem; color: var(--text-main); text-decoration: none; cursor: pointer; letter-spacing: -0.02em; z-index: 1001; }
         .logo img { height: 50px; width: auto; border-radius: 8px; }
 
         /* Responsive Text Classes */
@@ -69,18 +78,42 @@
         .nav-cta { background: var(--primary); color: white !important; box-shadow: 0 4px 12px rgba(15, 118, 110, 0.25); margin-left: 8px; }
         .nav-cta:hover { background: var(--primary-dark); transform: translateY(-1px); }
 
-        /* Mobile */
-        .mobile-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; position: absolute; right: 0; top: 50%; transform: translateY(-50%); }
+        /* Mobile Toggle Styling */
+        .mobile-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; z-index: 1002; }
         .mobile-toggle span { display: block; width: 24px; height: 2px; background: var(--text-main); margin: 5px 0; transition: 0.3s; }
-        .mobile-menu { position: fixed; top: 80px; left: 0; width: 100%; background: white; padding: 24px; border-bottom: 1px solid var(--border); transform: translateY(-150%); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); z-index: 999; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        
+        /* Mobile Menu Container */
+        .mobile-menu { position: fixed; top: 0; left: 0; width: 100%; height: auto; background: white; padding: 80px 24px 24px; border-bottom: 1px solid var(--border); transform: translateY(-150%); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); z-index: 999; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
         .mobile-menu.active { transform: translateY(0); }
         .mobile-link { display: block; padding: 14px 0; font-size: 1.1rem; font-weight: 500; color: var(--text-main); text-decoration: none; border-bottom: 1px solid var(--bg-body); }
 
+        /* --- RESPONSIVE FIXES (Poprawki Mobilne) --- */
         @media (max-width: 900px) {
-            .nav-wrapper { flex-direction: row; height: 60px; justify-content: center; padding: 0; }
-            .brand-bar { justify-content: flex-start; width: auto; }
+            header { padding: 8px 0; }
+            
+            .nav-wrapper { 
+                flex-direction: row; /* Wiersz, nie kolumna */
+                height: 60px; 
+                justify-content: center; 
+                padding: 0;
+            }
+
+            /* Kluczowa zmiana dla Brand Bar na mobilkach */
+            .brand-bar { 
+                justify-content: space-between; /* Logo lewo, Hamburger prawo */
+                width: 100%; /* Pełna szerokość */
+                padding-right: 0; /* Reset paddingu */
+            }
+
             .nav-links { display: none; }
-            .mobile-toggle { display: block; }
+            
+            .mobile-toggle { 
+                display: block; 
+                position: static; /* Usuwamy absolute! */
+                transform: none;
+                margin-left: auto; /* Dopychanie do prawej */
+            }
+
             .logo { font-size: 1.1rem; }
             .logo img { height: 36px; }
             
@@ -94,8 +127,16 @@
         .hero-mini h1 { font-size: 3rem; margin-bottom: 24px; background: linear-gradient(135deg, var(--text-main), var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .hero-mini p { font-size: 1.2rem; color: var(--text-muted); max-width: 700px; margin: 0 auto; }
 
+        @media (max-width: 600px) {
+            .hero-mini { padding: 40px 0 40px; }
+            .hero-mini h1 { font-size: 2rem; line-height: 1.2; } /* Mniejszy nagłówek na tel */
+            .hero-mini p { font-size: 1rem; }
+        }
+
         /* Grid Cards */
-        .grid-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; margin-bottom: 80px; }
+        /* Zmieniono minmax z 320px na 280px dla lepszego rwd na małych ekranach */
+        .grid-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-bottom: 80px; }
+        
         .topic-card {
             border-radius: 24px; padding: 32px; background: white;
             border: 1px solid var(--border); transition: all 0.3s ease;
@@ -126,16 +167,19 @@
 
     <header class="glass">
         <div class="container nav-wrapper">
+            <!-- Brand Bar zawiera teraz i logo i przycisk w jednej linii flexa -->
             <div class="brand-bar">
                 <a href="index.html" class="logo">
                     <img src="logo.png" alt="NCNI">
                     <span class="desktop-text">Naukowe Centrum Neuroinnowacji</span>
                     <span class="mobile-text">NCNI</span>
                 </a>
+                
                 <button class="mobile-toggle" aria-label="Menu">
                     <span></span><span></span><span></span>
                 </button>
             </div>
+            
             <nav class="nav-links">
                 <a href="o-nas.html" class="nav-item">O nas</a>
                 <a href="neuroroznorodnosc.html" class="nav-item active">Neuroróżnorodność</a>
