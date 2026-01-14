@@ -5,15 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- SEO & Meta Tags -->
-    <title>Strefa Partnera: Nauka, Biznes i VR NeuroBus | NCNI Wrocław</title>
-    <meta name="description" content="NCNI Strefa Partnera - Strategiczna współpraca dla szpitali (VR Medical Suite), nauki (Granty B+R) i biznesu. Wynajmij NCNI VR NeuroBus - nasze mobilne laboratorium terapeutyczne na eventy i interwencje.">
-    <meta name="keywords" content="NCNI, NCNI VR NeuroBus, mobilne laboratorium VR, kamper terapeutyczny, badania kliniczne VR, corporate wellness Wrocław, wdrożenia VR w szpitalach, biofeedback B2B, granty medyczne, neurotechnologia">
+    <title>Strefa Partnera: NCNI CYRCLE VR LOUNGE & NeuroBus | NCNI Wrocław</title>
+    <meta name="description" content="NCNI Strefa Partnera - Strategiczna współpraca dla szpitali, nauki i biznesu. Poznaj NCNI CYRCLE VR LOUNGE - innowacyjne stanowisko terapeutyczne VR. Wynajmij NCNI VR NeuroBus.">
+    <meta name="keywords" content="NCNI, NCNI CYRCLE VR LOUNGE, NCNI CIRCLE App, NCNI VR NeuroBus, mobilne laboratorium VR, kamper terapeutyczny, badania kliniczne VR, corporate wellness Wrocław, wdrożenia VR w szpitalach, biofeedback B2B, granty medyczne">
     <meta name="author" content="Naukowe Centrum Neuroinnowacji">
     <meta name="robots" content="index, follow">
 
     <!-- Open Graph / Social Media (Facebook, LinkedIn) -->
-    <meta property="og:title" content="NCNI Partnerstwo | NeuroBus i Technologie Medyczne">
-    <meta property="og:description" content="Odkryj modele współpracy: Wdrożenia szpitalne, Granty B+R oraz nasz hit - NCNI VR NeuroBus (mobilne laboratorium terapeutyczne).">
+    <meta property="og:title" content="NCNI Partnerstwo | NCNI CYRCLE VR LOUNGE i NeuroBus">
+    <meta property="og:description" content="Odkryj modele współpracy: Wdrożenia NCNI CYRCLE VR LOUNGE, Granty B+R, Software NCNI CIRCLE App oraz nasz hit - NCNI VR NeuroBus.">
     <meta property="og:image" content="https://ncni.pl/bus.jpg">
     <meta property="og:url" content="https://ncni.pl/partnerstwo">
     <meta property="og:type" content="website">
@@ -43,7 +43,7 @@
         "areaServed": "PL",
         "availableLanguage": "Polish"
       },
-      "knowsAbout": ["VR Therapy", "Biofeedback", "Neuroscience", "Mobile Medical Unit"],
+      "knowsAbout": ["NCNI CYRCLE VR LOUNGE", "VR Therapy", "Biofeedback", "Neuroscience", "Mobile Medical Unit", "NCNI CIRCLE App"],
       "makesOffer": {
         "@type": "Offer",
         "name": "Wynajem NCNI VR NeuroBus",
@@ -189,23 +189,197 @@
         }
         .back-link:hover { color: var(--primary); border-color: var(--primary); transform: translateX(-3px); }
 
-        /* Models Grid */
-        .method-section { padding: 40px 0; }
-        .method-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 40px; }
-        .method-item {
-            background: white; padding: 28px; border-radius: 24px; border: 1px solid var(--border);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.02); transition: var(--trans-default);
-            display: flex; flex-direction: column; position: relative; overflow: hidden;
-        }
-        .method-item:hover { transform: translateY(-5px); border-color: var(--primary); box-shadow: 0 20px 40px rgba(15, 118, 110, 0.1); }
-        .method-icon { font-size: 2rem; margin-bottom: 20px; color: var(--primary); background: var(--primary-light); width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; border-radius: 14px; }
-        .method-item h4 { color: var(--primary); margin-bottom: 8px; font-size: 1.3rem; }
-        .role-tag { display: inline-block; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; margin-bottom: 16px; color: var(--accent); background: rgba(99, 102, 241, 0.08); padding: 4px 8px; border-radius: 6px; align-self: flex-start; }
-        .feature-list { list-style: none; border-top: 1px solid var(--border); padding-top: 16px; margin-top: auto; }
-        .feature-list li { display: flex; gap: 10px; margin-bottom: 10px; font-size: 0.85rem; color: var(--text-main); align-items: flex-start; }
-        .feature-list li i { color: #10B981; margin-top: 3px; shrink: 0; }
 
-        /* Infrastructure */
+        /* --- INNOVATION CARD STYLES (UNIVERSAL) --- */
+        
+        .innovation-card {
+            background: linear-gradient(145deg, #1E293B, #0F172A);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 20px 50px -10px rgba(15, 118, 110, 0.1);
+            display: grid;
+            grid-template-columns: 1fr;
+            width: 100%;
+            margin: 30px 0;
+            transition: var(--trans-default);
+        }
+
+        @media (min-width: 900px) { 
+            .innovation-card { grid-template-columns: 1.3fr 0.7fr; } 
+        }
+
+        .innovation-content { 
+            padding: 40px; 
+            position: relative; 
+            z-index: 2; 
+        }
+
+        .innovation-visual { 
+            position: relative; 
+            min-height: 300px; 
+            background-size: cover;
+            background-position: center;
+        }
+        
+        /* Gradient Overlay for Visuals */
+        .innovation-visual::after {
+            content: ''; 
+            position: absolute; top:0; left:0; width:100%; height:100%;
+            /* Gradient adapts in sub-classes */
+            background: linear-gradient(to right, #1E293B, transparent); 
+        }
+
+        @media (max-width: 899px) { 
+            .innovation-visual::after { background: linear-gradient(to top, #1E293B, transparent); } 
+            .innovation-visual { min-height: 200px; }
+        }
+
+        /* Base Typography */
+        .inn-badge {
+            padding: 6px 14px;
+            border-radius: 99px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-bottom: 20px;
+            border: 1px solid transparent;
+        }
+
+        .inn-title {
+            font-family: 'Lexend', sans-serif;
+            font-size: 2rem;
+            color: white;
+            margin-bottom: 15px;
+            line-height: 1.1;
+        }
+
+        .inn-app-name {
+            font-family: 'Lexend', sans-serif;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+
+        .inn-list {
+            list-style: none;
+            padding: 0;
+            margin: 24px 0;
+            display: grid;
+            gap: 12px;
+        }
+
+        .inn-list li {
+            color: #E2E8F0;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            line-height: 1.5;
+        }
+        
+        .inn-footer {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.85rem;
+            color: #94A3B8;
+            line-height: 1.6;
+        }
+
+        /* --- CARD VARIANTS --- */
+
+        /* 1. Hospital Card (Turquoise) */
+        .innovation-card.hospital-card {
+            background: linear-gradient(145deg, #0f2e2b, #041f1c);
+            border-color: #115e59;
+            box-shadow: 0 20px 50px -10px rgba(15, 118, 110, 0.2);
+        }
+        .hospital-card .inn-badge { background: rgba(20, 184, 166, 0.15); color: #2DD4BF; border-color: #14B8A6; }
+        .hospital-card .inn-app-name { color: #2DD4BF; }
+        .hospital-card .inn-list li strong { color: #5EEAD4; }
+        .hospital-card .inn-icon { color: #2DD4BF; }
+        .hospital-card .innovation-visual {
+            background-image: url('https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80'); /* Hospital/Medical image */
+        }
+        .hospital-card .innovation-visual::after { background: linear-gradient(to right, #0f2e2b, transparent); }
+        @media (max-width: 899px) { .hospital-card .innovation-visual::after { background: linear-gradient(to top, #0f2e2b, transparent); } }
+
+
+        /* 2. Science Card (Indigo/Blue) */
+        .innovation-card.science-card {
+            background: linear-gradient(145deg, #1e1b4b, #0f172a);
+            border-color: #4338ca;
+            box-shadow: 0 20px 50px -10px rgba(99, 102, 241, 0.2);
+        }
+        .science-card .inn-badge { background: rgba(99, 102, 241, 0.15); color: #818CF8; border-color: #6366F1; }
+        .science-card .inn-app-name { color: #818CF8; }
+        .science-card .inn-list li strong { color: #A5B4FC; }
+        .science-card .inn-icon { color: #818CF8; }
+        .science-card .innovation-visual {
+            background-image: url('https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80'); /* Science/Lab image */
+        }
+        .science-card .innovation-visual::after { background: linear-gradient(to right, #1e1b4b, transparent); }
+        @media (max-width: 899px) { .science-card .innovation-visual::after { background: linear-gradient(to top, #1e1b4b, transparent); } }
+
+
+        /* 3. Business Card (Teal/Green) */
+        .innovation-card.business-card {
+            background: linear-gradient(145deg, #064e3b, #022c22);
+            border-color: #059669;
+            box-shadow: 0 20px 50px -10px rgba(16, 185, 129, 0.2);
+        }
+        .business-card .inn-badge { background: rgba(16, 185, 129, 0.15); color: #34D399; border-color: #10B981; }
+        .business-card .inn-app-name { color: #34D399; }
+        .business-card .inn-list li strong { color: #6EE7B7; }
+        .business-card .inn-icon { color: #34D399; }
+        .business-card .innovation-visual {
+            /* Changed to blonde business woman standing near whiteboard/conference room */
+            background-image: url('https://images.unsplash.com/photo-1544531586-fde5298cdd40?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80'); 
+        }
+        .business-card .innovation-visual::after { background: linear-gradient(to right, #064e3b, transparent); }
+        @media (max-width: 899px) { .business-card .innovation-visual::after { background: linear-gradient(to top, #064e3b, transparent); } }
+
+
+        /* 4. Office/Cabinets Card (Amber) */
+        .innovation-card.office-card {
+            background: linear-gradient(145deg, #451a03, #2a0f02); /* Dark Amber/Brown */
+            border-color: #d97706;
+            box-shadow: 0 20px 50px -10px rgba(245, 158, 11, 0.2);
+        }
+        .office-card .inn-badge { background: rgba(245, 158, 11, 0.15); color: #FBBF24; border-color: #F59E0B; }
+        .office-card .inn-app-name { color: #FBBF24; }
+        .office-card .inn-list li strong { color: #FCD34D; }
+        .office-card .inn-icon { color: #FBBF24; }
+        .office-card .innovation-visual {
+            background-image: url('https://images.unsplash.com/photo-1606166187734-a443710a7b44?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80'); /* Therapy/Consultation image */
+        }
+        .office-card .innovation-visual::after { background: linear-gradient(to right, #451a03, transparent); }
+        @media (max-width: 899px) { .office-card .innovation-visual::after { background: linear-gradient(to top, #451a03, transparent); } }
+
+
+        /* 5. Custom Dev Card (Violet/Indigo) - Keeping existing class naming logic */
+        .innovation-card.b2b-card {
+            background: linear-gradient(145deg, #1E293B, #262c3a);
+            border-color: #7C3AED;
+        }
+        .b2b-card .inn-badge { background: rgba(124, 58, 237, 0.2); color: #A78BFA; border-color: #6366F1; }
+        .b2b-card .inn-app-name { color: #818CF8; }
+        .b2b-card .inn-list li strong { color: #A5B4FC; }
+        .b2b-card .inn-icon { color: #818CF8; }
+        .b2b-card .innovation-visual {
+            /* Using the placeholder for image upload */
+            background-image: url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80');
+        }
+        .b2b-card .innovation-visual::after { background: linear-gradient(to right, #1E293B, transparent); }
+        @media (max-width: 899px) { .b2b-card .innovation-visual::after { background: linear-gradient(to top, #1E293B, transparent); } }
+
+
+        /* Infrastructure (Moved Up Styles) */
         .vr-dark-section { background: #0F172A; color: white; padding: 60px 0; border-radius: 32px; margin: 40px 0; position: relative; overflow: hidden; }
         .vr-dark-content { position: relative; z-index: 2; max-width: 1000px; margin: 0 auto; padding: 0 20px; }
         .infra-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-top: 40px; }
@@ -216,20 +390,19 @@
 
         /* Bus Section */
         .bus-section {
-            background: #111827; border-radius: 32px; margin: 60px 0; position: relative; overflow: hidden;
-            border: 2px solid #F59E0B; box-shadow: 0 20px 50px rgba(245, 158, 11, 0.15);
+            background: #111827; 
+            border-radius: 32px; margin: 30px 0; position: relative; overflow: hidden;
+            border: 2px solid #F59E0B; 
+            box-shadow: 0 20px 50px rgba(245, 158, 11, 0.15);
         }
         .bus-content { padding: 40px; display: flex; align-items: center; justify-content: space-between; gap: 40px; flex-wrap: wrap; }
         @media(min-width: 768px) { .bus-content { padding: 60px; } }
+        
         .bus-badge { background: #F59E0B; color: #000; font-weight: 800; padding: 6px 16px; border-radius: 99px; font-size: 0.8rem; text-transform: uppercase; display: inline-block; margin-bottom: 15px; }
         .bus-title { font-size: 2rem; color: white; margin-bottom: 15px; line-height: 1.1; }
-        /* POPRAWKA KOLORÓW DLA NEUROBUSA */
         .bus-desc { color: #F8FAFC; font-size: 1rem; margin-bottom: 20px; max-width: 500px; }
-        
-        /* Nadpisanie kolorów listy w sekcji Busa */
-        .bus-section .feature-list { border-top-color: rgba(255,255,255,0.1); }
-        .bus-section .feature-list li { color: #F1F5F9; } /* Jasny kolor tekstu na ciemnym tle */
-
+        .bus-section .feature-list { border-top-color: rgba(255,255,255,0.1); border: none; padding: 0; margin-bottom: 20px; }
+        .bus-section .feature-list li { color: #F1F5F9; display: flex; gap: 10px; font-size: 0.85rem; }
         .bus-icon-large { width: 100px; height: 100px; border-radius: 50%; border: 2px dashed #F59E0B; flex-shrink: 0; overflow: hidden; background: #fff; margin: 0 auto; }
         .bus-icon-large img { width: 100%; height: 100%; object-fit: cover; }
 
@@ -288,9 +461,9 @@
         <a href="#" class="mobile-link" style="color: var(--primary);">Dla Partnerów</a>
     </div>
 
+    <!-- HERO -->
     <section class="hero-mini">
         <div class="container">
-            <!-- Back to Technologies Button -->
             <a href="technologie.html" class="back-link cursor-trigger">
                 <i data-lucide="arrow-left" width="16"></i> Wróć do Technologii
             </a>
@@ -313,71 +486,7 @@
         </div>
     </section>
 
-    <!-- Models Section -->
-    <section class="container method-section" id="modele">
-        <div style="text-align: center; margin-bottom: 20px;">
-            <h2 style="font-size: 2rem; color: var(--text-main);">Modele Współpracy</h2>
-            <p style="color: var(--text-muted); max-width: 700px; margin: 10px auto;">
-                Kompleksowe ekosystemy technologiczne i merytoryczne dopasowane do Twojej organizacji.
-            </p>
-        </div>
-        
-        <div class="method-grid">
-            <!-- Szpitale -->
-            <div class="method-item cursor-trigger">
-                <div class="method-icon"><i data-lucide="hospital"></i></div>
-                <h4>NCNI VR Medical Suite</h4>
-                <span class="role-tag">Szpitale i Kliniki</span>
-                <p>Kompletny ekosystem terapeutyczny: Fotel Zero Gravity + Gogle VR + Autorski Software. Tworzymy dedykowane środowiska (np. Geriatria, PTSD).</p>
-                <ul class="feature-list">
-                    <li><i data-lucide="check-circle" width="16"></i> Pełne wdrożenie Hardware/Software</li>
-                    <li><i data-lucide="check-circle" width="16"></i> Procedury medyczne SOP</li>
-                    <li><i data-lucide="check-circle" width="16"></i> Szkolenie personelu</li>
-                </ul>
-            </div>
-
-            <!-- Nauka -->
-            <div class="method-item cursor-trigger" style="border-color: var(--accent);">
-                <div class="method-icon" style="background: #EEF2FF; color: var(--accent);"><i data-lucide="flask-conical"></i></div>
-                <h4 style="color: var(--accent);">Akademia i Nauka</h4>
-                <span class="role-tag" style="color: var(--text-muted); background: #F1F5F9;">Transfer Wiedzy</span>
-                <p>Uczymy, jak badać neuroplastyczność. Przekazujemy metodologię (Know-How) i tworzymy konsorcja do grantów NCBiR/Horyzont Europa.</p>
-                <ul class="feature-list">
-                    <li><i data-lucide="check-circle" width="16"></i> Standardyzacja badań VR</li>
-                    <li><i data-lucide="check-circle" width="16"></i> Superwizja naukowa</li>
-                    <li><i data-lucide="check-circle" width="16"></i> Partnerstwo technologiczne</li>
-                </ul>
-            </div>
-
-            <!-- Biznes -->
-            <div class="method-item cursor-trigger">
-                <div class="method-icon" style="background: #F0FDFA; color: #0D9488;"><i data-lucide="briefcase"></i></div>
-                <h4 style="color: #0D9488;">Biznes & HR</h4>
-                <span class="role-tag" style="color: #0D9488; background: #F0FDFA;">Corporate Neuro-Wellness</span>
-                <p>Mierzalna prewencja wypalenia zawodowego. Terapie stresu oparte na danych biologicznych (Biofeedback), a nie tylko ankietach.</p>
-                <ul class="feature-list">
-                    <li><i data-lucide="check-circle" width="16"></i> Terapie dla Managerów (C-Level)</li>
-                    <li><i data-lucide="check-circle" width="16"></i> Warsztaty regulacji stresu</li>
-                    <li><i data-lucide="check-circle" width="16"></i> Pakiety regeneracyjne</li>
-                </ul>
-            </div>
-
-             <!-- Gabinety -->
-             <div class="method-item cursor-trigger" style="border-color: #F59E0B;">
-                <div class="method-icon" style="background: #FEF3C7; color: #D97706;"><i data-lucide="brain-circuit"></i></div>
-                <h4 style="color: #D97706;">Gabinety</h4>
-                <span class="role-tag" style="color: #D97706; background: #FEF3C7;">Psychologia / Psychiatria</span>
-                <p>Wprowadź nowoczesną diagnostykę i terapię do swojego gabinetu. Rozwiązania "Compact" idealne do mniejszych praktyk.</p>
-                <ul class="feature-list">
-                    <li><i data-lucide="check-circle" width="16"></i> Wsparcie diagnostyczne (MOXO/DIVA)</li>
-                    <li><i data-lucide="check-circle" width="16"></i> Terapia fobii VR (VRET)</li>
-                    <li><i data-lucide="check-circle" width="16"></i> Zestawy Biofeedback Start</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- Infrastructure -->
+    <!-- MOVED UP: Infrastructure -->
     <section class="container">
         <div class="vr-dark-section cursor-trigger">
             <div class="vr-dark-content">
@@ -388,8 +497,9 @@
 
                 <div class="infra-grid">
                     <div class="infra-item">
-                        <h4><i data-lucide="glasses" width="20"></i> VR & Immersja</h4>
-                        <p>Stanowiska Zero-Gravity zintegrowane z VR (Meta/HTC).</p>
+                        <!-- UPDATED TITLE -->
+                        <h4><i data-lucide="armchair" width="20"></i> NCNI CYRCLE VR LOUNGE</h4>
+                        <p>Nasza innowacyjna strefa: Fotel Zero-Gravity, VR i Biofeedback w jednym ekosystemie.</p>
                     </div>
                     <div class="infra-item">
                         <h4><i data-lucide="cpu" width="20"></i> Biofeedback</h4>
@@ -408,22 +518,153 @@
         </div>
     </section>
 
-    <!-- NEUROBUS SECTION -->
-    <section class="container">
+    <!-- TRANSFORMED CARDS SECTION -->
+    <section class="container" id="modele-wspolpracy">
+        <div style="text-align: center; margin-bottom: 20px; margin-top: 60px;">
+            <h2 style="font-size: 2rem; color: var(--text-main);">Modele Współpracy</h2>
+            <p style="color: var(--text-muted); max-width: 700px; margin: 10px auto;">
+                Kompleksowe ekosystemy technologiczne i merytoryczne dopasowane do Twojej organizacji.
+            </p>
+        </div>
+
+        <!-- 1. HOSPITAL CARD -->
+        <div class="innovation-card hospital-card cursor-trigger">
+            <div class="innovation-content">
+                <span class="inn-badge">Szpitale i Kliniki</span>
+                <h3 class="inn-title">
+                    <span class="inn-app-name">NCNI VR Medical Suite</span>
+                    Wdrożenia Szpitalne
+                </h3>
+                <p style="color: #CCFBF1; margin-bottom: 20px; font-weight: 500;">
+                    Kompletny ekosystem terapeutyczny oparty na <strong>NCNI CYRCLE VR LOUNGE</strong>. 
+                    Tworzymy dedykowane, certyfikowane środowiska pod konkretne oddziały (np. Geriatria, Psychiatria, PTSD).
+                </p>
+                <ul class="inn-list">
+                    <li><div class="inn-icon"><i data-lucide="check-circle" width="18"></i></div> <strong>Hardware & Software:</strong> Pełne wdrożenie NCNI CYRCLE VR LOUNGE.</li>
+                    <li><div class="inn-icon"><i data-lucide="check-circle" width="18"></i></div> <strong>Procedury:</strong> Medyczne standardy SOP.</li>
+                    <li><div class="inn-icon"><i data-lucide="check-circle" width="18"></i></div> <strong>Personel:</strong> Certyfikowane szkolenia obsługi.</li>
+                </ul>
+                <!-- ADDED INTEGRATION NOTE -->
+                <p class="inn-footer" style="color: #99F6E4;">
+                    Możliwość pełnej integracji, zakupu oraz szkolenia z systemu NCNI CYRCLE VR LOUNGE.
+                </p>
+            </div>
+            <div class="innovation-visual"></div>
+        </div>
+
+        <!-- 2. SCIENCE CARD -->
+        <div class="innovation-card science-card cursor-trigger">
+            <div class="innovation-content">
+                <span class="inn-badge">Transfer Wiedzy</span>
+                <h3 class="inn-title">
+                    <span class="inn-app-name">Akademia i Nauka</span>
+                    Granty i Badania B+R
+                </h3>
+                <p style="color: #E0E7FF; margin-bottom: 20px; font-weight: 500;">
+                    Wspieramy uczelnie i instytuty w badaniu neuroplastyczności. 
+                    Przekazujemy metodologię, udostępniamy stanowiska <strong>NCNI CYRCLE VR LOUNGE</strong> i tworzymy konsorcja do grantów.
+                </p>
+                <ul class="inn-list">
+                    <li><div class="inn-icon"><i data-lucide="flask-conical" width="18"></i></div> <strong>Standardy:</strong> Metodologia badań w VR.</li>
+                    <li><div class="inn-icon"><i data-lucide="flask-conical" width="18"></i></div> <strong>Superwizja:</strong> Nadzór naukowy nad projektami.</li>
+                    <li><div class="inn-icon"><i data-lucide="flask-conical" width="18"></i></div> <strong>Technologia:</strong> Dostęp do NCNI CYRCLE VR LOUNGE.</li>
+                </ul>
+                <!-- ADDED INTEGRATION NOTE -->
+                <p class="inn-footer" style="color: #A5B4FC;">
+                    Możliwość zakupu stanowisk NCNI CYRCLE VR LOUNGE do celów badawczych i szkoleniowych.
+                </p>
+            </div>
+            <div class="innovation-visual"></div>
+        </div>
+
+        <!-- 3. BUSINESS CARD -->
+        <div class="innovation-card business-card cursor-trigger">
+            <div class="innovation-content">
+                <span class="inn-badge">Corporate Neuro-Wellness</span>
+                <h3 class="inn-title">
+                    <span class="inn-app-name">Biznes & HR</span>
+                    Prewencja Wypalenia
+                </h3>
+                <p style="color: #D1FAE5; margin-bottom: 20px; font-weight: 500;">
+                    Odchodzimy od ankiet na rzecz twardych danych biologicznych. 
+                    Oferujemy terapie stresu w strefie <strong>NCNI CYRCLE VR LOUNGE</strong>, mierzalną regenerację i prewencję wypalenia.
+                </p>
+                <ul class="inn-list">
+                    <li><div class="inn-icon"><i data-lucide="briefcase" width="18"></i></div> <strong>C-Level:</strong> Dedykowane sesje na fotelach Zero-G.</li>
+                    <li><div class="inn-icon"><i data-lucide="briefcase" width="18"></i></div> <strong>Mobilność:</strong> Możliwe sesje w NCNI VR NeuroBus.</li>
+                    <li><div class="inn-icon"><i data-lucide="briefcase" width="18"></i></div> <strong>Regeneracja:</strong> Pakiety sesji w biurze.</li>
+                </ul>
+                <!-- ADDED INTEGRATION NOTE -->
+                <p class="inn-footer" style="color: #6EE7B7;">
+                    Możliwość zakupu i instalacji strefy NCNI CYRCLE VR LOUNGE w Twoim biurze wraz ze szkoleniem.
+                </p>
+            </div>
+            <div class="innovation-visual"></div>
+        </div>
+
+        <!-- 4. CABINETS CARD -->
+        <div class="innovation-card office-card cursor-trigger">
+            <div class="innovation-content">
+                <span class="inn-badge">Psychologia / Psychiatria</span>
+                <h3 class="inn-title">
+                    <span class="inn-app-name">Gabinety Partnerskie</span>
+                    Strefa NCNI Compact
+                </h3>
+                <p style="color: #FEF3C7; margin-bottom: 20px; font-weight: 500;">
+                    Wprowadź nowoczesną diagnostykę i terapię do swojego prywatnego gabinetu dzięki rozwiązaniu <strong>NCNI CYRCLE VR LOUNGE Compact</strong>.
+                </p>
+                <ul class="inn-list">
+                    <li><div class="inn-icon"><i data-lucide="brain-circuit" width="18"></i></div> <strong>Diagnostyka:</strong> Testy MOXO i DIVA.</li>
+                    <li><div class="inn-icon"><i data-lucide="brain-circuit" width="18"></i></div> <strong>Terapia:</strong> Leczenie fobii (VRET).</li>
+                    <li><div class="inn-icon"><i data-lucide="brain-circuit" width="18"></i></div> <strong>Sprzęt:</strong> Wdrożenie NCNI CYRCLE VR LOUNGE.</li>
+                </ul>
+                <!-- ADDED INTEGRATION NOTE -->
+                <p class="inn-footer" style="color: #FCD34D;">
+                    Pełne szkolenie i możliwość leasingu/zakupu NCNI CYRCLE VR LOUNGE Compact.
+                </p>
+            </div>
+            <div class="innovation-visual"></div>
+        </div>
+
+        <!-- 5. CUSTOM DEV (Updated App Name) -->
+        <div class="innovation-card b2b-card cursor-trigger">
+            <div class="innovation-content">
+                <span class="inn-badge">Dla Biznesu & Klinik</span>
+                <h3 class="inn-title">
+                    <span class="inn-app-name">Dedykowane Aplikacje VR</span>
+                    Software Medyczny na Zamówienie
+                </h3>
+                <p style="color: #CBD5E1; margin-bottom: 20px; font-weight: 500;">
+                    Jako ośrodek R&D, projektujemy od podstaw dedykowane scenariusze terapeutyczne i aplikację <strong>NCNI CIRCLE App</strong>, ściśle dopasowaną do specyfiki klinicznej Twojej placówki.
+                </p>
+                <ul class="inn-list">
+                    <li><div class="inn-icon"><i data-lucide="check-circle" width="18"></i></div> <strong>Placówki medyczne:</strong> Unikalne protokoły w NCNI CIRCLE App.</li>
+                    <li><div class="inn-icon"><i data-lucide="check-circle" width="18"></i></div> <strong>Integracja:</strong> Łączność z NCNI CYRCLE VR LOUNGE.</li>
+                    <li><div class="inn-icon"><i data-lucide="check-circle" width="18"></i></div> <strong>Marka:</strong> Custom Development pod własnym brandem.</li>
+                </ul>
+                <p class="inn-footer" style="color: #A5B4FC;">
+                    <a href="mailto:kontakt@ncni.pl" style="color: inherit; text-decoration: underline;">Napisz do nas</a>, jeśli chcesz stworzyć własną wersję NCNI CIRCLE App.
+                </p>
+            </div>
+            <div class="innovation-visual">
+                <!-- Placeholder for custom software image if you have one -->
+            </div>
+        </div>
+
+        <!-- 6. NEUROBUS (Existing) -->
         <div class="bus-section cursor-trigger">
             <div class="bus-content">
                 <div style="flex: 1;">
                     <span class="bus-badge">Mobilne Laboratorium Terapeutyczne</span>
                     <h2 class="bus-title">NCNI VR NeuroBus 🚐</h2>
                     <p class="bus-desc">
-                        Klinika na kołach. Nasz kamper dociera tam, gdzie potrzebna jest pomoc. 
-                        Idealny na <strong>eventy firmowe (Dni Zdrowia), festiwale</strong> oraz interwencje w terenie.
+                        Nasza "Klinika na Kołach" niweluje bariery. Dowozimy nowoczesną terapię VR bezpośrednio do osób, które z przyczyn zdrowotnych lub logistycznych nie mogą dotrzeć do stacjonarnych gabinetów.
+                        To także doskonała atrakcja na <strong>pikniki prozdrowotne</strong> i dni profilaktyki – edukujemy i wspieramy zdrowie psychiczne w terenie.
                     </p>
-                    <!-- Zaktualizowany styl listy w CSS .bus-section .feature-list li -->
-                    <ul class="feature-list" style="border: none; padding: 0; margin-bottom: 20px;">
-                        <li><i data-lucide="check" style="color: #F59E0B;"></i> <strong>Eventy:</strong> Mobilna strefa relaksu VR.</li>
-                        <li><i data-lucide="check" style="color: #F59E0B;"></i> <strong>Off-Grid:</strong> Niezależne zasilanie i sprzęt na pokładzie.</li>
-                        <li><i data-lucide="check" style="color: #F59E0B;"></i> <strong>Teren:</strong> Dojazd do szkół i szpitali polowych.</li>
+                    <ul class="feature-list">
+                        <li><i data-lucide="check" style="color: #F59E0B;"></i> <strong>Dostępność:</strong> Terapia dla osób wykluczonych komunikacyjnie i seniorów.</li>
+                        <li><i data-lucide="check" style="color: #F59E0B;"></i> <strong>Pikniki Zdrowia:</strong> Mobilna strefa edukacji i relaksu na Twoim wydarzeniu.</li>
+                        <li><i data-lucide="check" style="color: #F59E0B;"></i> <strong>Wsparcie Terenowe:</strong> Dojazd do DPS-ów, szkół i mniejszych gmin.</li>
                     </ul>
                     <a href="mailto:kontakt@ncni.pl" class="btn-primary" style="background: #F59E0B; color: black; width: auto; display: inline-block;">Zamów NeuroBusa</a>
                 </div>
@@ -478,7 +719,7 @@
         function initParticles(){const container=document.getElementById('bg-canvas');if(!container)return;const scene=new THREE.Scene();scene.fog=new THREE.FogExp2(0xF8FAFC,0.002);const camera=new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,1000);camera.position.z=10;const renderer=new THREE.WebGLRenderer({alpha:true,antialias:true});renderer.setSize(window.innerWidth,window.innerHeight);renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));container.appendChild(renderer.domElement);const geometry=new THREE.BufferGeometry();const count=200;const positions=new Float32Array(count*3);const colors=new Float32Array(count*3);for(let i=0;i<count*3;i+=3){positions[i]=(Math.random()-0.5)*25;positions[i+1]=(Math.random()-0.5)*25;positions[i+2]=(Math.random()-0.5)*25;const mix=Math.random();if(mix>0.5){colors[i]=0.06;colors[i+1]=0.46;colors[i+2]=0.43;}else{colors[i]=0.39;colors[i+1]=0.4;colors[i+2]=0.94;}}geometry.setAttribute('position',new THREE.BufferAttribute(positions,3));geometry.setAttribute('color',new THREE.BufferAttribute(colors,3));const material=new THREE.PointsMaterial({size:0.1,vertexColors:true,transparent:true,opacity:0.4});const particles=new THREE.Points(geometry,material);scene.add(particles);let mouseX=0,mouseY=0,targetX=0,targetY=0;const windowHalfX=window.innerWidth/window.innerHeight;const windowHalfY=window.innerHeight/2;document.addEventListener('mousemove',(e)=>{mouseX=(e.clientX-windowHalfX);mouseY=(e.clientY-windowHalfY);});const clock=new THREE.Clock();function animate(){const time=clock.getElapsedTime();targetX=mouseX*0.0001;targetY=mouseY*0.0001;particles.rotation.y+=0.01*(targetX-particles.rotation.y);particles.rotation.x+=0.01*(targetY-particles.rotation.x);particles.rotation.z+=0.0005;const scale=1+Math.sin(time*0.5)*0.02;particles.scale.set(scale,scale,scale);renderer.render(scene,camera);requestAnimationFrame(animate);}animate();window.addEventListener('resize',()=>{camera.aspect=window.innerWidth/window.innerHeight;camera.updateProjectionMatrix();renderer.setSize(window.innerWidth,window.innerHeight);});}document.addEventListener("DOMContentLoaded",initParticles);
         
         // Custom Cursor
-        const cursorDot=document.querySelector('.cursor-dot');const cursorOutline=document.querySelector('.cursor-outline');window.addEventListener('mousemove',(e)=>{const posX=e.clientX;const posY=e.clientY;cursorDot.style.left=`${posX}px`;cursorDot.style.top=`${posY}px`;cursorOutline.animate({left:`${posX}px`,top:`${posY}px`},{duration:500,fill:"forwards"});});const triggers=document.querySelectorAll('.cursor-trigger, a, button, .vr-dark-section, .bus-section, .method-item');triggers.forEach(trigger=>{trigger.addEventListener('mouseenter',()=>{document.body.classList.add('hovering');});trigger.addEventListener('mouseleave',()=>{document.body.classList.remove('hovering');});});
+        const cursorDot=document.querySelector('.cursor-dot');const cursorOutline=document.querySelector('.cursor-outline');window.addEventListener('mousemove',(e)=>{const posX=e.clientX;const posY=e.clientY;cursorDot.style.left=`${posX}px`;cursorDot.style.top=`${posY}px`;cursorOutline.animate({left:`${posX}px`,top:`${posY}px`},{duration:500,fill:"forwards"});});const triggers=document.querySelectorAll('.cursor-trigger, a, button, .vr-dark-section, .bus-section, .method-item, .innovation-card');triggers.forEach(trigger=>{trigger.addEventListener('mouseenter',()=>{document.body.classList.add('hovering');});trigger.addEventListener('mouseleave',()=>{document.body.classList.remove('hovering');});});
         
         // Mobile Menu
         const toggle=document.querySelector('.mobile-toggle');const menu=document.querySelector('.mobile-menu');if(toggle&&menu){toggle.addEventListener('click',()=>{menu.classList.toggle('active');});}
