@@ -2,29 +2,22 @@
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
+    <!-- Google Analytics 4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-56VR40VHHV"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'G-56VR40VHHV');
     </script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Psychologia i Psychotraumatologia | NCNI Wrocław</title>
     <meta name="description" content="Klinika VR-IT w NCNI Wrocław. Leczenie traumy, PTSD, OCD i lęku z wykorzystaniem technologii immersyjnych. Terapia poznawczo-behawioralna i DBT.">
     <meta name="keywords" content="Psychoterapia traumy Wrocław, PTSD, OCD leczenie, Terapia VR, Biofeedback, DBT Wrocław, Fobie, Lęk społeczny, Psychotraumatolog">
     <link rel="icon" href="logo.png" type="image/png">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-     <!-- Google Analytics 4 -->
-     <script async src="https://www.googletagmanager.com/gtag/js?id=G-56VR40VHHV"></script>
-     <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-56VR40VHHV');
-          </script>
 
     <!-- Schema.org for Medical Services -->
     <script type="application/ld+json">
@@ -44,14 +37,14 @@
     </script>
 
     <style>
-        /* CORE STYLES (Identyczne jak w bazie) */
+        /* CORE STYLES */
         :root {
-            --bg-body: #F8FAFC;       
-            --bg-surface: rgba(255, 255, 255, 0.85);
-            --primary: #0F766E;       
+            --bg-body: #F8FAFC;        
+            --bg-surface: rgba(255, 255, 255, 0.9);
+            --primary: #0F766E;        
             --primary-dark: #0D5E57;
             --primary-light: #CCFBF1;
-            --accent: #6366F1;        
+            --accent: #6366F1;          
             --accent-glow: rgba(99, 102, 241, 0.3);
             --text-main: #1E293B;
             --text-muted: #64748B;
@@ -60,8 +53,8 @@
             --trans-default: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        html { scroll-behavior: smooth; font-size: 16px; }
+        * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+        html { scroll-behavior: smooth; font-size: 16px; overflow-x: hidden; }
 
         body {
             font-family: 'Inter', sans-serif;
@@ -69,11 +62,17 @@
             color: var(--text-main);
             line-height: 1.6;
             overflow-x: hidden;
+            width: 100%;
         }
 
-        /* Cursor Logic */
-        @media (min-width: 901px) { body, a, button { cursor: none !important; } }
-        @media (max-width: 900px) { .cursor-dot, .cursor-outline { display: none !important; } body { cursor: auto; } }
+        /* Cursor Logic - Disable on Touch Devices */
+        @media (min-width: 901px) { 
+            body, a, button { cursor: none !important; } 
+        }
+        @media (max-width: 900px) { 
+            .cursor-dot, .cursor-outline { display: none !important; } 
+            body { cursor: auto; } 
+        }
 
         h1, h2, h3, h4 { font-family: 'Lexend', sans-serif; }
 
@@ -84,65 +83,91 @@
 
         /* Background */
         #bg-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; z-index: -1; opacity: 0.6; pointer-events: none; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-        .glass { background: var(--bg-surface); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.6); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03); }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; width: 100%; }
+        .glass { background: var(--bg-surface); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.6); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03); }
 
-        /* Header (Clean Version) */
+        /* Header */
         header { position: sticky; top: 0; z-index: 1000; transition: var(--trans-default); border-bottom: 1px solid rgba(226, 232, 240, 0.6); padding: 12px 0; }
         .nav-wrapper { display: flex; flex-direction: column; align-items: center; gap: 16px; }
         .brand-bar { display: flex; justify-content: center; align-items: center; width: 100%; position: relative; }
-        .logo { display: flex; align-items: center; gap: 14px; font-weight: 700; font-size: 1.6rem; color: var(--text-main); text-decoration: none; cursor: pointer; letter-spacing: -0.02em; }
-        .logo img { height: 50px; width: auto; border-radius: 8px; }
+        .logo { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 1.6rem; color: var(--text-main); text-decoration: none; cursor: pointer; letter-spacing: -0.02em; max-width: 80%; }
+        .logo img { height: 40px; width: auto; border-radius: 8px; }
+        .logo span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
-        .nav-links { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
-        .nav-item { padding: 8px 18px; border-radius: 99px; font-size: 0.95rem; font-weight: 500; color: var(--text-muted); text-decoration: none; transition: var(--trans-default); cursor: pointer; }
+        .nav-links { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+        .nav-item { padding: 8px 16px; border-radius: 99px; font-size: 0.95rem; font-weight: 500; color: var(--text-muted); text-decoration: none; transition: var(--trans-default); cursor: pointer; white-space: nowrap; }
         .nav-item:hover, .nav-item.active { color: var(--primary); background: var(--primary-light); }
-        .nav-cta { background: var(--primary); color: white !important; box-shadow: 0 4px 12px rgba(15, 118, 110, 0.25); margin-left: 8px; }
+        .nav-cta { background: var(--primary); color: white !important; box-shadow: 0 4px 12px rgba(15, 118, 110, 0.25); }
         .nav-cta:hover { background: var(--primary-dark); transform: translateY(-1px); }
 
-        /* Mobile */
-        .mobile-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; position: absolute; right: 0; top: 50%; transform: translateY(-50%); }
+        /* Mobile Menu */
+        .mobile-toggle { display: none; background: none; border: none; cursor: pointer; padding: 10px; position: absolute; right: 0; top: 50%; transform: translateY(-50%); z-index: 1001; }
         .mobile-toggle span { display: block; width: 24px; height: 2px; background: var(--text-main); margin: 5px 0; transition: 0.3s; }
-        .mobile-menu { position: fixed; top: 80px; left: 0; width: 100%; background: white; padding: 24px; border-bottom: 1px solid var(--border); transform: translateY(-150%); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); z-index: 999; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .mobile-menu { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: white; padding: 80px 24px 24px; transform: translateY(-150%); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); z-index: 999; display: flex; flex-direction: column; gap: 16px; overflow-y: auto; }
         .mobile-menu.active { transform: translateY(0); }
-        .mobile-link { display: block; padding: 14px 0; font-size: 1.1rem; font-weight: 500; color: var(--text-main); text-decoration: none; border-bottom: 1px solid var(--bg-body); }
+        .mobile-link { display: block; padding: 12px 0; font-size: 1.2rem; font-weight: 500; color: var(--text-main); text-decoration: none; border-bottom: 1px solid var(--bg-body); }
 
+        /* Mobile Breakpoint Fixes */
         @media (max-width: 900px) {
-            .nav-wrapper { flex-direction: row; height: 60px; justify-content: space-between; padding: 0; }
-            .brand-bar { justify-content: flex-start; width: auto; }
+            .nav-wrapper { flex-direction: row; height: 60px; justify-content: space-between; padding: 0 20px; }
+            .brand-bar { justify-content: flex-start; width: auto; flex: 1; }
             .nav-links { display: none; }
             .mobile-toggle { display: block; }
-            .logo { font-size: 1.1rem; }
-            .logo img { height: 36px; }
+            .logo { font-size: 1rem; gap: 8px; }
+            .logo img { height: 32px; }
+            .logo span { font-size: 0.95rem; }
+            .container { padding: 0 20px; }
         }
 
         /* --- Page Specific --- */
-        .hero-mini { padding: 80px 0 60px; text-align: center; }
-        .hero-mini h1 { font-size: 3rem; margin-bottom: 24px; background: linear-gradient(135deg, var(--text-main), var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero-mini { padding: 60px 0 40px; text-align: center; }
+        .hero-mini h1 { font-size: 3rem; margin-bottom: 24px; background: linear-gradient(135deg, var(--text-main), var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1.2; }
         .hero-mini p { font-size: 1.2rem; color: var(--text-muted); max-width: 700px; margin: 0 auto; }
 
-        /* VR INFO BOX (Green) - Klinika VR-IT */
+        @media (max-width: 600px) {
+            .hero-mini { padding: 40px 0 30px; }
+            .hero-mini h1 { font-size: 2rem; }
+            .hero-mini p { font-size: 1rem; }
+        }
+
+        /* VR INFO BOX (Green) */
         .vr-info-box {
-            background: #F0FDF4; /* Zielone tło */
-            border-left: 4px solid #10B981; /* Zielony pasek */
+            background: #F0FDF4; 
+            border-left: 4px solid #10B981; 
             padding: 32px;
             border-radius: 12px;
-            margin: 0 auto 60px auto; /* Margin bottom dla odstępu od reszty */
+            margin: 0 auto 60px auto; 
             max-width: 900px;
             box-shadow: 0 4px 12px rgba(16, 185, 129, 0.1);
         }
+        @media (max-width: 600px) {
+            .vr-info-box { padding: 20px; margin-bottom: 40px; }
+            .vr-info-box h3 { font-size: 1.2rem; }
+        }
         .vr-info-box h3 { color: #065F46; font-size: 1.4rem; margin-bottom: 16px; }
         .vr-info-box p { color: #374151; font-size: 1rem; margin-bottom: 16px; line-height: 1.7; }
-        .vr-info-box a { color: #059669; font-weight: 600; text-decoration: none; }
+        .vr-info-box a { color: #059669; font-weight: 600; text-decoration: none; word-wrap: break-word; }
         .vr-info-box a:hover { text-decoration: underline; }
 
         /* Scoped Lists & Accordions */
         .scope-section { padding: 40px 0; }
-        .list-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 32px; }
+        /* FIXED GRID FOR MOBILE */
+        .list-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 32px; 
+        }
+        @media (max-width: 480px) {
+            .list-grid { grid-template-columns: 1fr; gap: 24px; }
+        }
         
         .list-card {
             background: white; border: 1px solid var(--border); border-radius: 16px; padding: 32px;
             transition: var(--trans-default);
+            height: 100%;
+        }
+        @media (max-width: 600px) {
+            .list-card { padding: 24px; }
         }
         .list-card:hover { border-color: var(--primary); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.03); }
         
@@ -154,6 +179,7 @@
         /* Accordion for Details */
         .method-section { padding: 40px 0; }
         .section-title { font-size: 2rem; margin-bottom: 40px; text-align: center; }
+        @media (max-width: 600px) { .section-title { font-size: 1.6rem; margin-bottom: 30px; } }
         
         details {
             margin-bottom: 12px; border: 1px solid var(--border); border-radius: 12px;
@@ -179,16 +205,21 @@
             background: #0F172A; color: white; padding: 60px; border-radius: 32px; margin: 60px 0;
             position: relative; overflow: hidden;
         }
-        .trauma-section:hover { box-shadow: 0 0 40px rgba(15, 118, 110, 0.15); }
+        @media (max-width: 768px) {
+            .trauma-section { padding: 30px 24px; margin: 40px 0; border-radius: 24px; }
+            .trauma-section h2 { font-size: 1.8rem !important; }
+            .trauma-deco { display: none; } /* Hide deco on mobile to prevent overflow */
+        }
+
         .trauma-content { position: relative; z-index: 2; max-width: 700px; }
-        .trauma-section h2 { font-size: 2.5rem; margin-bottom: 20px; }
+        .trauma-section h2 { font-size: 2.5rem; margin-bottom: 20px; line-height: 1.2; }
         .trauma-section h2 span { color: #2DD4BF; }
         .trauma-section p { font-size: 1.1rem; color: #CBD5E1; margin-bottom: 30px; }
         .trauma-list { list-style: none; margin-bottom: 40px; padding: 0; }
         .trauma-list li { margin-bottom: 12px; display: flex; align-items: center; gap: 10px; font-size: 1.05rem; }
-        .trauma-list li::before { content: "✓"; color: #4ADE80; font-weight: bold; }
+        .trauma-list li::before { content: "✓"; color: #4ADE80; font-weight: bold; flex-shrink: 0; }
         
-        .btn-light { background: white; color: #0F172A; padding: 12px 24px; border-radius: 99px; text-decoration: none; font-weight: 700; transition: 0.3s; display: inline-block; }
+        .btn-light { background: white; color: #0F172A; padding: 12px 24px; border-radius: 99px; text-decoration: none; font-weight: 700; transition: 0.3s; display: inline-block; text-align: center; }
         .btn-light:hover { background: #E2E8F0; transform: translateY(-2px); }
 
         /* Decorative Elements in Trauma Section */
@@ -200,6 +231,46 @@
         /* Footer */
         footer { background: white; border-top: 1px solid var(--border); padding: 60px 0 20px; margin-top: 40px; }
         .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
+        
+        /* ANIA WIDGET STYLES */
+        .ania-container { position: fixed; bottom: 24px; right: 24px; z-index: 2000; display: flex; flex-direction: column; align-items: flex-end; font-family: 'Inter', sans-serif; }
+        @media (max-width: 480px) {
+            .ania-container { bottom: 16px; right: 16px; }
+        }
+
+        .ania-avatar { width: 65px; height: 65px; border-radius: 50%; border: 3px solid white; box-shadow: 0 4px 20px rgba(15, 118, 110, 0.3); cursor: pointer; position: relative; transition: transform 0.3s; background: #fff; overflow: hidden; }
+        .ania-avatar:hover { transform: scale(1.1); }
+        .ania-avatar img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+        .status-dot { width: 14px; height: 14px; background: #10B981; border: 2px solid white; border-radius: 50%; position: absolute; bottom: 4px; right: 4px; animation: pulse-dot 2s infinite; }
+        .status-dot-small { width: 10px; height: 10px; background: #10B981; border: 1.5px solid white; border-radius: 50%; position: absolute; bottom: 0; right: 0; }
+        @keyframes pulse-dot { 0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); } 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); } }
+        
+        .ania-bubble { background: white; padding: 12px 16px; border-radius: 12px 12px 0 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin-bottom: 12px; font-size: 0.9rem; color: var(--text-main); font-weight: 500; max-width: 260px; position: relative; opacity: 0; transform: translateY(10px); transition: all 0.4s ease; pointer-events: none; }
+        .ania-bubble.visible { opacity: 1; transform: translateY(0); pointer-events: all; }
+        .ania-close-bubble { position: absolute; top: -8px; right: -8px; background: #eee; width: 20px; height: 20px; border-radius: 50%; font-size: 12px; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #666; }
+        
+        .ania-chat-window { position: absolute; bottom: 80px; right: 0; width: 360px; height: 500px; background: white; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.15); display: flex; flex-direction: column; overflow: hidden; opacity: 0; transform: translateY(20px) scale(0.95); pointer-events: none; transition: all 0.3s; border: 1px solid var(--border); }
+        .ania-chat-window.active { opacity: 1; transform: translateY(0) scale(1); pointer-events: all; }
+        
+        /* Mobile Chat Window Fix */
+        @media (max-width: 480px) { 
+            .ania-chat-window { 
+                width: calc(100vw - 32px); 
+                right: -8px; 
+                height: 60vh; 
+                bottom: 80px;
+            } 
+        }
+
+        .ania-header { background: #F8FAFC; padding: 16px; border-bottom: 1px solid #E2E8F0; display: flex; justify-content: space-between; align-items: center; }
+        .ania-messages { flex: 1; padding: 16px; overflow-y: auto; background: #fff; display: flex; flex-direction: column; gap: 12px; }
+        .msg { padding: 10px 14px; border-radius: 12px; font-size: 0.9rem; line-height: 1.5; max-width: 85%; animation: popIn 0.3s ease; }
+        .msg.bot { background: #F1F5F9; color: var(--text-main); border-bottom-left-radius: 2px; align-self: flex-start; }
+        .msg.user { background: var(--primary); color: white; border-bottom-right-radius: 2px; align-self: flex-end; }
+        .ania-options-area { padding: 12px; background: #F8FAFC; border-top: 1px solid #E2E8F0; display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; }
+        .chat-btn { background: white; border: 1px solid var(--primary); color: var(--primary); padding: 8px 14px; border-radius: 99px; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: 0.2s; }
+        .chat-btn:hover { background: var(--primary); color: white; }
+        @keyframes popIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body>
@@ -213,12 +284,15 @@
             <div class="brand-bar">
                 <a href="index.html" class="logo cursor-trigger">
                     <img src="logo.png" alt="NCNI">
-                    <span>Naukowe Centrum Neuroinnowacji</span>
+                    <span>NCNI Wrocław</span>
                 </a>
-                <button class="mobile-toggle cursor-trigger" aria-label="Menu">
-                    <span></span><span></span><span></span>
-                </button>
             </div>
+            
+            <!-- Mobile Toggle -->
+            <button class="mobile-toggle cursor-trigger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+
             <nav class="nav-links">
                 <a href="o-nas.html" class="nav-item cursor-trigger">O nas</a>
                 <a href="neuroroznorodnosc.html" class="nav-item cursor-trigger">Neuroróżnorodność</a>
@@ -231,6 +305,10 @@
     </header>
 
     <div class="mobile-menu">
+        <!-- Close button inside menu for better UX -->
+        <div style="text-align: right; margin-bottom: 20px;">
+            <button style="background: none; border: none; font-size: 2rem; color: var(--text-muted);" onclick="document.querySelector('.mobile-menu').classList.remove('active')">✕</button>
+        </div>
         <a href="o-nas.html" class="mobile-link">O nas</a>
         <a href="neuroroznorodnosc.html" class="mobile-link">Neuroróżnorodność</a>
         <a href="psychologia.html" class="mobile-link">Psychologia</a>
@@ -241,7 +319,7 @@
 
     <section class="hero-mini">
         <div class="container">
-            <span style="background: var(--primary-light); color: var(--primary); padding: 6px 12px; border-radius: 99px; font-size: 0.9rem; font-weight: 600;">Wsparcie Kliniczne</span>
+            <span style="background: var(--primary-light); color: var(--primary); padding: 6px 12px; border-radius: 99px; font-size: 0.85rem; font-weight: 600; display: inline-block; margin-bottom: 16px;">Wsparcie Kliniczne</span>
             <h1>Psychologia i Psychotraumatologia</h1>
             <p>
                 Łączymy klasyczną psychoterapię z neurotechnologią. Skupiamy się na mierzalnej redukcji stresu, leczeniu traumy i przywracaniu równowagi emocjonalnej w bezpiecznym środowisku.
@@ -249,15 +327,15 @@
         </div>
     </section>
 
-    <!-- VR INFO BOX (Green) - Tłumaczenie i Wdrożenie -->
-    <section class="container" style="margin-top: 60px;">
+    <!-- VR INFO BOX (Green) -->
+    <section class="container" style="margin-top: 20px;">
         <div class="vr-info-box cursor-trigger">
             <h3>Technologie Wirtualnej Rzeczywistości (VR) w Terapii</h3>
             <p>
-                Rzeczywistość wirtualna i technologie immersyjne mogą usprawnić leczenie i trening umiejętności w terapii wielu chorób psychiatrycznych. Rzeczywistość rozszerzona (XR) może poprawić techniki kształtowania zachowań i komfort podczas nauki nowych i skutecznych strategii łagodzenia objawów.
+                Rzeczywistość wirtualna i technologie immersyjne mogą usprawnić leczenie i trening umiejętności w terapii wielu chorób psychiatrycznych.
             </p>
             <p>
-                Klinika Wirtualnej Rzeczywistości i Technologii Immersyjnych (VR-IT) w NCNI łączy psychoterapie oparte na dowodach, badania kliniczne i technologie medyczne w leczeniu różnych schorzeń psychiatrycznych. Wykorzystuje najnowsze urządzenia ubieralne i sprawdzone metody, łącząc rzeczywistość wirtualną i rozszerzoną z terapią poznawczo-behawioralną oraz treningami uważności (mindfulness), co pozwala klinicystom na wygodniejsze dostosowanie leczenia dla każdego pacjenta.
+                Klinika Wirtualnej Rzeczywistości i Technologii Immersyjnych (VR-IT) w NCNI łączy psychoterapie oparte na dowodach, badania kliniczne i technologie medyczne w leczeniu różnych schorzeń psychiatrycznych. 
             </p>
             <a href="technologie.html">Dowiedz się więcej o dostępie do opieki ></a>
         </div>
@@ -269,7 +347,7 @@
             
             <!-- Conditions Treated -->
             <div class="list-card cursor-trigger">
-                <h3>Leczone Schorzenia (Conditions Treated)</h3>
+                <h3>Leczone Schorzenia</h3>
                 <ul class="custom-list">
                     <li>Fobie proste (Simple Phobias)</li>
                     <li>Zaburzenia obsesyjno-kompulsyjne (OCD)</li>
@@ -278,10 +356,10 @@
                     <li>Uzależnienia (Addiction)</li>
                     <li>Psychozy (Psychosis)</li>
                     <li>Lęk społeczny (Social Anxiety)</li>
-                    <li>Zespół lęku napadowego (Panic Disorder)</li>
+                    <li>Zespół lęku napadowego</li>
                     <li>Zespół lęku uogólnionego (GAD)</li>
-                    <li>Zaburzenia pod postacią somatyczną</li>
-                    <li>Zaburzenia odżywiania (Eating Disorders)</li>
+                    <li>Zaburzenia somatyczne</li>
+                    <li>Zaburzenia odżywiania</li>
                 </ul>
             </div>
 
@@ -291,13 +369,13 @@
                 <ul class="custom-list">
                     <li>Ocena i konsultacja pacjenta</li>
                     <li>Desensytyzacja (Odczulanie)</li>
-                    <li>Terapia Ekspozycyjna (Exposure Therapy)</li>
-                    <li>Psychoterapia skoncentrowana na traumie</li>
-                    <li>Trening umiejętności społecznych, interpersonalnych i komunikacyjnych</li>
-                    <li>Trening odwracania nawyków (Habit Reversal)</li>
-                    <li>Psychoterapie oparte na dowodach dostarczane z technologią VR i AR</li>
-                    <li>Trening umiejętności oparty na uważności (Mindfulness)</li>
-                    <li>Trening umiejętności DBT (Terapia Dialektyczno-Behawioralna)</li>
+                    <li>Terapia Ekspozycyjna (VR)</li>
+                    <li>Psychoterapia traumy</li>
+                    <li>Trening umiejętności społecznych</li>
+                    <li>Trening odwracania nawyków</li>
+                    <li>Terapie oparte na dowodach z VR</li>
+                    <li>Trening uważności (Mindfulness)</li>
+                    <li>Trening umiejętności DBT</li>
                 </ul>
             </div>
 
@@ -311,15 +389,15 @@
             <div class="trauma-content">
                 <h2>Specjalizacja: <span>Psychotraumatologia</span></h2>
                 <p>
-                    Praca z traumą wymaga precyzji i bezpieczeństwa. Nasze podejście integruje diagnostykę psychometryczną z interwencjami neurofizjologicznymi, które pomagają "domknąć" reakcję stresową w ciele.
+                    Praca z traumą wymaga precyzji i bezpieczeństwa. Nasze podejście integruje diagnostykę psychometryczną z interwencjami neurofizjologicznymi.
                 </p>
                 <ul class="trauma-list">
-                    <li>Bezpieczne przetwarzanie doświadczeń traumatycznych</li>
-                    <li>Stabilizacja układu nerwowego (Nerw błędny)</li>
-                    <li>Redukcja objawów psychosomatycznych i flashbacków</li>
+                    <li>Bezpieczne przetwarzanie doświadczeń</li>
+                    <li>Stabilizacja układu nerwowego</li>
+                    <li>Redukcja objawów psychosomatycznych</li>
                     <li>Praca z ciałem, oddechem i uziemieniem</li>
                 </ul>
-                <a href="index.html#rezerwacja" class="btn-light cursor-trigger">Umów konsultację specjalistyczną</a>
+                <a href="index.html#rezerwacja" class="btn-light cursor-trigger">Umów konsultację</a>
             </div>
         </div>
     </section>
@@ -352,7 +430,7 @@
 
         </div>
         <div style="text-align: center; margin-top: 20px;">
-            <button class="btn-light cursor-trigger" style="background: transparent; border: 1px solid var(--border); color: var(--text-muted); font-weight: normal; font-size: 0.9rem;" onclick="this.parentElement.style.display='none';">Pokaż mniej ▲</button>
+            <button class="btn-light cursor-trigger" style="background: transparent; border: 1px solid var(--border); color: var(--text-muted); font-weight: normal; font-size: 0.9rem;" onclick="this.parentElement.style.display='none';">Ukryj ▲</button>
         </div>
     </section>
 
@@ -392,8 +470,12 @@
 
     <!-- Scripts -->
     <script>
-        // --- THREE.JS BACKGROUND ---
+        // --- THREE.JS BACKGROUND (Optimized for Mobile) ---
         function initParticles() {
+            // Check if user prefers reduced motion or is on low-power mode
+            const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+            if (mediaQuery.matches) return;
+
             const container = document.getElementById('bg-canvas');
             if (!container) return;
 
@@ -403,13 +485,15 @@
             const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
             camera.position.z = 10;
 
-            const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+            const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: window.devicePixelRatio < 2 });
             renderer.setSize(window.innerWidth, window.innerHeight);
             renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
             container.appendChild(renderer.domElement);
 
             const geometry = new THREE.BufferGeometry();
-            const count = 200; 
+            // Reduce particle count on mobile for performance
+            const isMobile = window.innerWidth < 768;
+            const count = isMobile ? 80 : 200; 
             const positions = new Float32Array(count * 3);
             const colors = new Float32Array(count * 3);
 
@@ -434,10 +518,12 @@
             const windowHalfX = window.innerWidth / 2;
             const windowHalfY = window.innerHeight / 2;
 
-            document.addEventListener('mousemove', (event) => {
-                mouseX = (event.clientX - windowHalfX);
-                mouseY = (event.clientY - windowHalfY);
-            });
+            if (!isMobile) {
+                document.addEventListener('mousemove', (event) => {
+                    mouseX = (event.clientX - windowHalfX);
+                    mouseY = (event.clientY - windowHalfY);
+                });
+            }
 
             const clock = new THREE.Clock();
 
@@ -467,17 +553,21 @@
 
         const cursorDot = document.querySelector('.cursor-dot');
         const cursorOutline = document.querySelector('.cursor-outline');
-        window.addEventListener('mousemove', (e) => {
-            const posX = e.clientX; const posY = e.clientY;
-            cursorDot.style.left = `${posX}px`; cursorDot.style.top = `${posY}px`;
-            cursorOutline.animate({ left: `${posX}px`, top: `${posY}px` }, { duration: 500, fill: "forwards" });
-        });
+        
+        // Only activate cursor logic on non-touch devices
+        if (window.matchMedia("(pointer: fine)").matches) {
+            window.addEventListener('mousemove', (e) => {
+                const posX = e.clientX; const posY = e.clientY;
+                cursorDot.style.left = `${posX}px`; cursorDot.style.top = `${posY}px`;
+                cursorOutline.animate({ left: `${posX}px`, top: `${posY}px` }, { duration: 500, fill: "forwards" });
+            });
 
-        const triggers = document.querySelectorAll('.cursor-trigger, a, button, .method-card, .trauma-section, .list-card, .vr-info-box');
-        triggers.forEach(trigger => {
-            trigger.addEventListener('mouseenter', () => { document.body.classList.add('hovering'); });
-            trigger.addEventListener('mouseleave', () => { document.body.classList.remove('hovering'); });
-        });
+            const triggers = document.querySelectorAll('.cursor-trigger, a, button, .method-card, .trauma-section, .list-card, .vr-info-box');
+            triggers.forEach(trigger => {
+                trigger.addEventListener('mouseenter', () => { document.body.classList.add('hovering'); });
+                trigger.addEventListener('mouseleave', () => { document.body.classList.remove('hovering'); });
+            });
+        }
 
         // Mobile Menu
         const toggle = document.querySelector('.mobile-toggle');
@@ -494,7 +584,7 @@
     <div id="ania-widget" class="ania-container">
         
         <div class="ania-bubble" id="ania-greeting">
-            Dzień dobry! ☀️ Jestem Wirtualną Asystentką NCNI. Kliknij we mnie, a odpowiem na Twoje pytania.
+            Dzień dobry! ☀️ Jestem Asystentką NCNI. Kliknij we mnie, a pomogę.
             <span class="ania-close-bubble" onclick="closeGreeting(event)">✕</span>
         </div>
 
@@ -522,31 +612,6 @@
             <div class="status-dot"></div>
         </div>
     </div>
-
-    <style>
-        .ania-container { position: fixed; bottom: 24px; right: 24px; z-index: 2000; display: flex; flex-direction: column; align-items: flex-end; font-family: 'Inter', sans-serif; }
-        .ania-avatar { width: 65px; height: 65px; border-radius: 50%; border: 3px solid white; box-shadow: 0 4px 20px rgba(15, 118, 110, 0.3); cursor: pointer; position: relative; transition: transform 0.3s; background: #fff; overflow: hidden; }
-        .ania-avatar:hover { transform: scale(1.1); }
-        .ania-avatar img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
-        .status-dot { width: 14px; height: 14px; background: #10B981; border: 2px solid white; border-radius: 50%; position: absolute; bottom: 4px; right: 4px; animation: pulse-dot 2s infinite; }
-        .status-dot-small { width: 10px; height: 10px; background: #10B981; border: 1.5px solid white; border-radius: 50%; position: absolute; bottom: 0; right: 0; }
-        @keyframes pulse-dot { 0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); } 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); } }
-        .ania-bubble { background: white; padding: 12px 16px; border-radius: 12px 12px 0 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin-bottom: 12px; font-size: 0.9rem; color: var(--text-main); font-weight: 500; max-width: 260px; position: relative; opacity: 0; transform: translateY(10px); transition: all 0.4s ease; pointer-events: none; }
-        .ania-bubble.visible { opacity: 1; transform: translateY(0); pointer-events: all; }
-        .ania-close-bubble { position: absolute; top: -8px; right: -8px; background: #eee; width: 20px; height: 20px; border-radius: 50%; font-size: 12px; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #666; }
-        .ania-chat-window { position: absolute; bottom: 80px; right: 0; width: 360px; height: 500px; background: white; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.15); display: flex; flex-direction: column; overflow: hidden; opacity: 0; transform: translateY(20px) scale(0.95); pointer-events: none; transition: all 0.3s; border: 1px solid var(--border); }
-        .ania-chat-window.active { opacity: 1; transform: translateY(0) scale(1); pointer-events: all; }
-        .ania-header { background: #F8FAFC; padding: 16px; border-bottom: 1px solid #E2E8F0; display: flex; justify-content: space-between; align-items: center; }
-        .ania-messages { flex: 1; padding: 16px; overflow-y: auto; background: #fff; display: flex; flex-direction: column; gap: 12px; }
-        .msg { padding: 10px 14px; border-radius: 12px; font-size: 0.9rem; line-height: 1.5; max-width: 85%; animation: popIn 0.3s ease; }
-        .msg.bot { background: #F1F5F9; color: var(--text-main); border-bottom-left-radius: 2px; align-self: flex-start; }
-        .msg.user { background: var(--primary); color: white; border-bottom-right-radius: 2px; align-self: flex-end; }
-        .ania-options-area { padding: 12px; background: #F8FAFC; border-top: 1px solid #E2E8F0; display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; }
-        .chat-btn { background: white; border: 1px solid var(--primary); color: var(--primary); padding: 8px 14px; border-radius: 99px; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: 0.2s; }
-        .chat-btn:hover { background: var(--primary); color: white; }
-        @keyframes popIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
-        @media (max-width: 480px) { .ania-chat-window { width: 300px; right: -10px; height: 450px; } }
-    </style>
 
     <script>
         const chatKnowledge = {
