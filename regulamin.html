@@ -3,107 +3,576 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Regulamin i RODO - NCNI</title>
+    <title>Regulamin i RODO - Naukowe Centrum Neuroinnowacji</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
-        body { font-family: 'Inter', sans-serif; }
-        .legal-text p, .legal-text li { margin-bottom: 1rem; text-align: justify; }
-        .legal-text h2 { margin-top: 2rem; margin-bottom: 1rem; font-weight: 700; color: #1e40af; border-bottom: 2px solid #e5e7eb; padding-bottom: 0.5rem; }
-        .legal-text h3 { margin-top: 1.5rem; margin-bottom: 0.75rem; font-weight: 600; color: #1f2937; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F8FAFC;
+            color: #1E293B;
+            line-height: 1.6;
+        }
+        h1, h2, h3, h4 {
+            font-family: 'Lexend', sans-serif;
+        }
+        .legal-content p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+        .legal-content ul {
+            list-style-type: disc;
+            padding-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .legal-content li {
+            margin-bottom: 0.25rem;
+        }
+        .legal-section-title {
+            color: #0F766E;
+            font-weight: 700;
+            font-size: 1.25rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #E2E8F0;
+        }
+        .legal-subsection-title {
+            font-weight: 600;
+            color: #334155;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        .contact-box {
+            background: #F1F5F9;
+            border-left: 4px solid #0F766E;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border-radius: 0 0.5rem 0.5rem 0;
+        }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800">
-
-    <div class="max-w-4xl mx-auto my-12 bg-white p-8 md:p-16 shadow-xl rounded-xl">
+<body>
+    <div class="max-w-4xl mx-auto my-10 bg-white p-6 md:p-12 shadow-lg rounded-2xl">
+        
+        <!-- Przycisk powrotu -->
         <div class="mb-8 no-print">
-            <a href="index.html" class="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-                </svg>
+            <a href="index.html" class="inline-flex items-center text-teal-700 hover:text-teal-900 font-medium transition-colors">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
                 Powrót do strony głównej
             </a>
         </div>
 
-        <header class="text-center mb-12 border-b-4 border-blue-600 pb-8">
-            <h1 class="text-3xl md:text-4xl font-extrabold uppercase tracking-tight text-slate-900 mb-4">Regulamin Świadczenia Usług</h1>
-            <p class="text-xl font-semibold text-blue-700">Naukowe Centrum Neuroinnowacji</p>
-            <p class="text-slate-600">ul. Stefana Żeromskiego 60/5a, 50-312 Wrocław</p>
-            <p class="text-slate-600">tel. 600 608 333 | kontakt@ncni.pl | www.ncni.pl</p>
-        </header>
+        <div class="text-center mb-10">
+            <h1 class="text-3xl md:text-4xl font-bold text-slate-800 mb-4">REGULAMIN ŚWIADCZENIA USŁUG</h1>
+            <p class="text-slate-500 text-lg">Naukowe Centrum Neuroinnowacji</p>
+        </div>
 
-        <article class="legal-text leading-relaxed">
-            <h2>§ 1. POSTANOWIENIA OGÓLNE</h2>
-            <h3>1.1. Informacje o placówce</h3>
-            <p>Niniejszy Regulamin określa zasady świadczenia usług neuroterapeutycznych przez: <strong>Naukowe Centrum Neuroinnowacji (dalej: NCNI)</strong></p>
-            <ul class="list-none pl-4 space-y-1">
-                <li><strong>Siedziba:</strong> ul. Stefana Żeromskiego 60/5a, 50-312 Wrocław</li>
-                <li><strong>Telefon:</strong> 600 608 333</li>
-                <li><strong>E-mail:</strong> kontakt@ncni.pl</li>
-                <li><strong>Strona internetowa:</strong> www.ncni.pl</li>
-            </ul>
+        <div class="contact-box">
+            <p class="mb-1"><strong>Naukowe Centrum Neuroinnowacji</strong></p>
+            <p class="mb-1">ul. Stefana Żeromskiego 60/5a, 50-312 Wrocław</p>
+            <p class="mb-1">tel. 600 608 333 | kontakt@ncni.pl | www.ncni.pl</p>
+        </div>
+
+        <div class="legal-content">
+            
+            <h2 class="legal-section-title">§ 1. POSTANOWIENIA OGÓLNE</h2>
+            
+            <h3 class="legal-subsection-title">1.1. Informacje o placówce</h3>
+            <p>Niniejszy Regulamin określa zasady świadczenia usług neuroterapeutycznych przez:<br>
+            <strong>Naukowe Centrum Neuroinnowacji (dalej: NCNI)</strong><br>
+            Siedziba: ul. Stefana Żeromskiego 60/5a, 50-312 Wrocław<br>
+            Telefon: 600 608 333<br>
+            E-mail: kontakt@ncni.pl<br>
+            Strona internetowa: www.ncni.pl</p>
             <p>NCNI jest interdyscyplinarnym centrum badawczo-rozwojowym specjalizującym się w neurotechnologiach, rzeczywistości wirtualnej (VR), sztucznej inteligencji (AI), biofeedbacku, neuromodulacji i wsparciu neuroróżnorodności.</p>
 
-            <h3>1.2. Zakres usług</h3>
-            <p>NCNI oferuje następujące usługi: Biofeedback (HRV, EMG, GSR, oddechowy), Neurofeedback (EEG biofeedback, trening fal mózgowych), Neuromodulacja (tDCS, tACS), Terapia w rzeczywistości wirtualnej (VR), Diagnostyka neurofizjologiczna (EEG, QEEG), Trening poznawczy i regulacja emocjonalna, Konsultacje neuropsychologiczne, Terapie ADHD, ASD, wysokiej wrażliwości (WWO), Terapie stresu, traumy PTSD, dysleksji i dysfunkcji motorycznych oraz inne niewymienione usługi.</p>
+            <h3 class="legal-subsection-title">1.2. Zakres usług</h3>
+            <p>NCNI oferuje następujące usługi:</p>
+            <ul>
+                <li>Biofeedback (HRV, EMG, GSR, oddechowy)</li>
+                <li>Neurofeedback (EEG biofeedback, trening fal mózgowych)</li>
+                <li>Neuromodulacja (tDCS, tACS)</li>
+                <li>Terapia w rzeczywistości wirtualnej (VR)</li>
+                <li>Diagnostyka neurofizjologiczna (EEG, QEEG)</li>
+                <li>Trening poznawczy i regulacja emocjonalna</li>
+                <li>Konsultacje neuropsychologiczne</li>
+                <li>Terapie ADHD, ASD, wysokiej wrażliwości (WWO)</li>
+                <li>Terapie stresu, traumy PTSD, dysleksji i dysfunkcji motorycznych</li>
+                <li>Oraz inne niewymienione usługi</li>
+            </ul>
 
-            <h3>1.3. Kwalifikacje i kompetencje</h3>
-            <p>Usługi w NCNI świadczone są przez certyfikowanych terapeutów biofeedback i neurofeedback, specjalistów z licencjami PTNK oraz wykwalifikowanych psychologów i neurologów.</p>
+            <h3 class="legal-subsection-title">1.3. Kwalifikacje i kompetencje</h3>
+            <p>Usługi w NCNI świadczone są przez:</p>
+            <ul>
+                <li>Certyfikowanych terapeutów biofeedback i neurofeedback</li>
+                <li>Specjalistów posiadających licencje Polskiego Towarzystwa Neurofeedbacku i Neuromodulacji (PTNK)</li>
+                <li>Psychologów, neurologów, fizjoterapeutów z odpowiednimi uprawnieniami</li>
+                <li>Personel z udokumentowanym doświadczeniem w neurotechnologiach i metodach terapeutycznych</li>
+            </ul>
 
-            <h3>1.4. Charakter świadczonych usług</h3>
-            <p>Usługi NCNI mają charakter wspomagający i terapeutyczny, ale nie zastępują leczenia medycznego prowadzonego przez lekarza specjalistę.</p>
+            <h3 class="legal-subsection-title">1.4. Charakter świadczonych usług</h3>
+            <p>Usługi NCNI mają charakter wspomagający i terapeutyczny, ale nie zastępują leczenia medycznego prowadzonego przez lekarza specjalistę. W przypadku poważnych zaburzeń zdrowia psychicznego lub neurologicznych zalecamy równoległą konsultację z lekarzem psychiatrą lub neurologiem.</p>
 
-            <h2>§ 2. WARUNKI ŚWIADCZENIA USŁUG</h2>
-            <p>2.1. Sesja biofeedback/neurofeedback: 60 minut. Konsultacja wstępna: 90 minut. Sesja VR: 45-60 minut. Diagnostyka EEG/QEEG: 60-90 minut.</p>
-            <p>2.2. Liczba sesji ustalana jest indywidualnie. Typowe programy: Podstawowy (10-20), Intensywny (20-40), Premium (40-60).</p>
-            <p>2.3. Przed rozpoczęciem terapii wymagane jest wypełnienie wywiadu, podpisanie zgody RODO oraz akceptacja Regulaminu.</p>
-            <p>2.4. Przeciwwskazania obejmują m.in. padaczkę (wymagana zgoda neurologa), ciążę (przy tDCS), implanty medyczne oraz świeże urazy głowy.</p>
+            <h2 class="legal-section-title">§ 2. WARUNKI ŚWIADCZENIA USŁUG</h2>
+            
+            <h3 class="legal-subsection-title">2.1. Czas trwania sesji</h3>
+            <ul>
+                <li>Sesja biofeedback/neurofeedback: 60 minut (w tym przygotowanie, trening, omówienie)</li>
+                <li>Konsultacja wstępna: 90 minut (wywiad, diagnostyka, plan terapii)</li>
+                <li>Sesja VR: 45-60 minut (w zależności od protokołu)</li>
+                <li>Diagnostyka EEG/QEEG: 60-90 minut</li>
+            </ul>
 
-            <h2>§ 3. ZASADY REZERWACJI I ODWOŁYWANIA WIZYT</h2>
-            <p>3.3. Odwołanie wizyty mniej niż 24 godziny przed terminem – opłata 50% wartości sesji. Niestawienie się bez uprzedzenia – opłata 100% wartości sesji.</p>
-            <p>3.4. Spóźnienie powyżej 15 minut uprawnia terapeutę do odwołania sesji z zachowaniem opłaty.</p>
+            <h3 class="legal-subsection-title">2.2. Liczba sesji</h3>
+            <p>Liczba sesji ustalana jest indywidualnie w zależności od:</p>
+            <ul>
+                <li>Problemu zgłaszanego przez pacjenta</li>
+                <li>Wyników diagnostyki wstępnej</li>
+                <li>Tempa postępów terapeutycznych</li>
+            </ul>
+            <p><strong>Typowe programy terapeutyczne:</strong></p>
+            <ul>
+                <li>Program podstawowy: 10-20 sesji</li>
+                <li>Program intensywny: 20-40 sesji</li>
+                <li>Program premium: 40-60 sesji + diagnostyka kontrolna</li>
+            </ul>
 
-            <h2>§ 4. CENNIK I PŁATNOŚCI</h2>
-            <p>Aktualny cennik dostępny na www.ncni.pl/cennik. Akceptujemy gotówkę, przelewy, karty oraz BLIK. Faktury VAT wystawiane są na życzenie pacjenta (zgodnie z KSeF).</p>
+            <h3 class="legal-subsection-title">2.3. Wymagania wstępne</h3>
+            <p>Przed rozpoczęciem terapii pacjent zobowiązany jest do:</p>
+            <ul>
+                <li>Wypełnienia wywiadu kwalifikacyjnego (ankieta biofeedback premium)</li>
+                <li>Przedstawienia zaświadczenia lekarskiego o braku przeciwwskazań do terapii biofeedback/neurofeedback (w przypadku schorzeń neurologicznych, kardiologicznych, padaczki)</li>
+                <li>Podpisania zgody RODO na przetwarzanie danych osobowych i danych o zdrowiu</li>
+                <li>Zapoznania się z niniejszym Regulaminem i akceptacji jego treści</li>
+            </ul>
 
-            <h2>§ 5. PRAWA I OBOWIĄZKI PACJENTA</h2>
-            <p>Pacjent ma prawo do informacji, poufności, wglądu w dokumentację i poszanowania godności. Obowiązkiem jest punktualność i informowanie o stanie zdrowia.</p>
+            <h3 class="legal-subsection-title">2.4. Przeciwwskazania do terapii</h3>
+            <p>Terapia biofeedback/neurofeedback może być przeciwwskazana lub wymaga konsultacji lekarskiej w przypadku:</p>
+            <ul>
+                <li>Padaczki lub napadów drgawkowych (wymagana zgoda neurologa)</li>
+                <li>Ciąży (szczególnie w przypadku neuromodulacji tDCS/tACS)</li>
+                <li>Implantów medycznych (rozrusznik serca, stymulator mózgu, implant ślimakowy)</li>
+                <li>Świeżego urazu głowy lub udaru mózgu (ostatnie 6 miesięcy)</li>
+                <li>Aktywnej psychozy lub ciężkich zaburzeń psychicznych bez nadzoru psychiatrycznego</li>
+                <li>Stanów pod wpływem alkoholu lub środków psychoaktywnych</li>
+            </ul>
 
-            <div class="bg-red-50 p-6 rounded-lg border-l-4 border-red-500 my-8">
-                <h2 class="text-red-700 !mt-0">§ 6. ZAKAZ UTRWALANIA OBRAZU I DŹWIĘKU</h2>
-                <p>Na terenie NCNI obowiązuje całkowity zakaz rejestracji obrazu i dźwięku bez pisemnej zgody Prezesa Zarządu. Naruszenie zakazu skutkuje <strong>karą umowną w wysokości 10 000 zł</strong> za każde naruszenie.</p>
-            </div>
+            <h2 class="legal-section-title">§ 3. ZASADY REZERWACJI I ODWOŁYWANIA WIZYT</h2>
+            
+            <h3 class="legal-subsection-title">3.1. Rezerwacja wizyt</h3>
+            <p>Wizyty można rezerwować:</p>
+            <ul>
+                <li>Telefonicznie: 600 608 333 (pn-pt, 9:00-18:00)</li>
+                <li>E-mailowo: kontakt@ncni.pl</li>
+                <li>Poprzez formularz online na stronie: www.ncni.pl</li>
+                <li>Osobiście w siedzibie NCNI</li>
+            </ul>
 
-            <h2>§ 7. PRAWA AUTORSKIE</h2>
-            <p>Wszystkie treści NCNI są chronione prawem autorskim. Wykorzystanie ich w celach dowodowych bez licencji wiąże się z opłatą ryczałtową <strong>5 000 zł</strong> za każdy element.</p>
+            <h3 class="legal-subsection-title">3.2. Potwierdzenie wizyty</h3>
+            <p>NCNI potwierdza umówioną wizytę poprzez:</p>
+            <ul>
+                <li>SMS lub e-mail z potwierdzeniem daty i godziny</li>
+                <li>Przypomnienie SMS na 24 godziny przed wizytą (opcjonalnie)</li>
+            </ul>
 
-            <h2>§ 8. PRZESŁANKI ODMOWY LUB PRZERWANIA TERAPII</h2>
-            <p>NCNI może odmówić usług w przypadku agresji, bycia pod wpływem używek lub naruszenia zasad § 6 i § 7.</p>
+            <h3 class="legal-subsection-title">3.3. Odwoływanie wizyt</h3>
+            <ul>
+                <li>Odwołanie wizyty co najmniej 24 godziny przed terminem – brak opłaty</li>
+                <li>Odwołanie wizyty mniej niż 24 godziny przed terminem – opłata w wysokości 50% wartości sesji</li>
+                <li>Niestawienie się na wizytę bez uprzedzenia – opłata w wysokości 100% wartości sesji</li>
+            </ul>
+            <p><em>Wyjątki:</em> W przypadku nagłej choroby potwierdzonej zwolnieniem lekarskim lub losowego zdarzenia (wypadek, hospitalizacja), opłata może zostać anulowana po przedstawieniu odpowiedniej dokumentacji.</p>
 
-            <h2>§ 9. ODPOWIEDZIALNOŚĆ I OCHRONA DANYCH</h2>
-            <p>NCNI zapewnia poufność danych zgodnie z RODO i świadczy usługi z najwyższą starannością.</p>
+            <h3 class="legal-subsection-title">3.4. Spóźnienia</h3>
+            <ul>
+                <li>Spóźnienie do 10 minut – sesja realizowana w skróconym czasie</li>
+                <li>Spóźnienie powyżej 15 minut – terapeuta zastrzega sobie prawo do odwołania sesji (opłata jak za niestawiennictwo)</li>
+            </ul>
+            <p>NCNI dokłada wszelkich starań, aby pacjent został przyjęty o ustalonej godzinie. W przypadku opóźnienia ze strony terapeuty, pacjent zostanie poinformowany i otrzyma przeprosiny oraz propozycję alternatywnego terminu.</p>
 
-            <h2>§ 10. REKLAMACJE I ROZSTRZYGANIE SPORÓW</h2>
-            <p>Reklamacje rozpatrywane są w terminie 14 dni roboczych. Spory rozstrzyga sąd właściwy dla siedziby NCNI we Wrocławiu.</p>
+            <h2 class="legal-section-title">§ 4. CENNIK I PŁATNOŚCI</h2>
+            
+            <h3 class="legal-subsection-title">4.1. Cennik usług</h3>
+            <p>Aktualny cennik dostępny jest:</p>
+            <ul>
+                <li>Na stronie internetowej: www.ncni.pl/cennik</li>
+                <li>W siedzibie NCNI (wywieszony w poczekalni)</li>
+                <li>Dostępny na żądanie telefonicznie lub e-mailowo</li>
+            </ul>
+            <p><strong>Orientacyjne ceny (2026):</strong></p>
+            <ul>
+                <li>Konsultacja wstępna + diagnostyka: 300-400 zł</li>
+                <li>Sesja biofeedback/neurofeedback (60 min): 200-300 zł</li>
+                <li>Sesja VR (60 min): 250-350 zł</li>
+                <li>Diagnostyka QEEG: 500-700 zł</li>
+                <li>Pakiet 10 sesji: rabat 10%</li>
+                <li>Pakiet 20 sesji: rabat 15%</li>
+            </ul>
+            <p>Ceny mogą ulegać zmianie – obowiązuje cennik aktualny w dniu rezerwacji wizyty.</p>
 
-            <h2>§ 12. POSTANOWIENIA KOŃCOWE</h2>
-            <p>Niniejszy Regulamin wchodzi w życie z dniem <strong>1 stycznia 2026 roku</strong> i obowiązuje do odwołania.</p>
+            <h3 class="legal-subsection-title">4.2. Formy płatności</h3>
+            <p>NCNI akceptuje następujące formy płatności:</p>
+            <ul>
+                <li>Gotówka (w siedzibie NCNI)</li>
+                <li>Przelew bankowy (dane do przelewu wysyłane e-mailem)</li>
+                <li>Płatność kartą (terminal w siedzibie)</li>
+                <li>BLIK</li>
+                <li>Płatność online (link do płatności)</li>
+            </ul>
 
-            <div class="mt-16 pt-12 border-t-2 border-slate-200 bg-slate-50 p-8 rounded-b-xl">
-                <h2 class="!mt-0 uppercase">Zgoda RODO / Obowiązek Informacyjny</h2>
-                <p><strong>Administrator:</strong> Naukowe Centrum Neuroinnowacji, ul. Stefana Żeromskiego 60/5a, Wrocław. Kontakt: kontakt@ncni.pl.</p>
-                <p><strong>Cele:</strong> Realizacja usług neuroterapeutycznych, prowadzenie dokumentacji medycznej (przez 20 lat) oraz obsługa płatności.</p>
-                <p><strong>Prawa:</strong> Masz prawo do dostępu do danych, sprostowania, ograniczenia oraz skargi do PUODO. Podanie danych jest dobrowolne, ale niezbędne do realizacji usług.</p>
+            <h3 class="legal-subsection-title">4.3. Faktury VAT</h3>
+            <ul>
+                <li>Faktury VAT wystawiane są na życzenie pacjenta</li>
+                <li>Dane do faktury należy podać przed dokonaniem płatności</li>
+                <li>Faktury elektroniczne wysyłane są na adres e-mail podany przez pacjenta</li>
+                <li>NCNI stosuje się do wymogów KSeF (Krajowy System e-Faktur)</li>
+            </ul>
+
+            <h3 class="legal-subsection-title">4.4. Polityka zwrotów</h3>
+            <ul>
+                <li>Płatności za pakiety sesji nie podlegają zwrotowi po rozpoczęciu terapii</li>
+                <li>W przypadku rezygnacji z terapii przed jej rozpoczęciem – zwrot 100% wpłaconej kwoty</li>
+                <li>W przypadku rezygnacji z terapii po rozpoczęciu – rozliczenie proporcjonalne za zrealizowane sesje według cennika podstawowego (bez rabatu pakietowego)</li>
+            </ul>
+
+            <h2 class="legal-section-title">§ 5. PRAWA I OBOWIĄZKI PACJENTA</h2>
+            
+            <h3 class="legal-subsection-title">5.1. Prawa pacjenta</h3>
+            <p>Pacjent ma prawo do:</p>
+            <ul>
+                <li>Pełnej informacji o stanie zdrowia, celach, metodach i przebiegu terapii</li>
+                <li>Zachowania poufności i ochrony danych osobowych (zgodnie z RODO)</li>
+                <li>Wglądu do własnej dokumentacji medycznej</li>
+                <li>Wyrażenia zgody lub odmowy na proponowane metody terapii</li>
+                <li>Odstąpienia od terapii w dowolnym momencie (z zastrzeżeniem rozliczeń finansowych)</li>
+                <li>Żądania konsultacji z innym specjalistą</li>
+                <li>Wniesienia reklamacji dotyczącej świadczonych usług</li>
+                <li>Poszanowania intymności i godności osobistej</li>
+            </ul>
+
+            <h3 class="legal-subsection-title">5.2. Obowiązki pacjenta</h3>
+            <p>Pacjent zobowiązuje się do:</p>
+            <ul>
+                <li>Punktualnego stawiania się na umówione wizyty</li>
+                <li>Informowania terapeuty o wszelkich zmianach w stanie zdrowia, przyjmowanych lekach lub innych terapiach równoległych</li>
+                <li>Przestrzegania zaleceń terapeuty (np. ćwiczenia domowe, regularne sesje)</li>
+                <li>Powstrzymania się od spożywania alkoholu, narkotyków i nadmiernej ilości kofeiny przed sesją</li>
+                <li>Informowania o ciąży (w przypadku kobiet)</li>
+                <li>Wnoszenia opłat za świadczone usługi zgodnie z cennikiem</li>
+                <li>Szanowania personelu i innych pacjentów NCNI</li>
+                <li>Powiadamiania o rezygnacji z terapii z odpowiednim wyprzedzeniem</li>
+            </ul>
+
+            <h2 class="legal-section-title">§ 6. ZAKAZ UTRWALANIA OBRAZU I DŹWIĘKU NA TERENIE NCNI</h2>
+            
+            <h3 class="legal-subsection-title">6.1. Zakres zakazu</h3>
+            <ol class="list-decimal pl-6 mb-4">
+                <li class="mb-2">Na terenie NCNI obowiązuje całkowity zakaz rejestracji obrazu i dźwięku (w tym nagrywania, fotografowania, filmowania, wykonywania zrzutów ekranu z urządzeń terapeutycznych, skanowania dokumentacji) przez pacjentów oraz osoby im towarzyszące, bez uprzedniej, wyraźnej, pisemnej zgody Prezesa Zarządu NCNI.</li>
+                <li class="mb-2">Zakaz, o którym mowa w ust. 1, obejmuje w szczególności gabinety terapeutyczne, poczekalnię, recepcję, pomieszczenia socjalne oraz wszelkie inne pomieszczenia i obszary wchodzące w skład siedziby NCNI przy ul. Stefana Żeromskiego 60/5a we Wrocławiu, z wyłączeniem sytuacji wymaganych bezwzględnie obowiązującym prawem (np. nakaz sądowy, protokół z kontroli organów państwowych).</li>
+                <li class="mb-2">Zakaz dotyczy w szczególności:
+                    <ul class="list-disc mt-2">
+                        <li>Urządzeń fotograficznych i rejestrujących obraz (aparaty, telefony komórkowe, kamery, tablety)</li>
+                        <li>Urządzeń rejestrujących dźwięk (dyktafony, smartfony, smartwatche)</li>
+                        <li>Wykonywania zrzutów ekranu z komputerów, urządzeń diagnostycznych lub terapeutycznych NCNI</li>
+                        <li>Kopiowania, fotografowania lub skanowania dokumentacji medycznej, formularzy, regulaminów i innych dokumentów NCNI</li>
+                        <li>Transmisji na żywo (streaming, wideokonferencje) z terenu NCNI</li>
+                    </ul>
+                </li>
+            </ol>
+
+            <h3 class="legal-subsection-title">6.2. Uzasadnienie zakazu</h3>
+            <p>Zakaz wprowadzony został w celu:</p>
+            <ul>
+                <li>Ochrony miru domowego i prywatności NCNI</li>
+                <li>Ochrony danych osobowych i wrażliwych danych zdrowotnych innych pacjentów</li>
+                <li>Ochrony tajemnicy przedsiębiorstwa i know-how NCNI (w tym autorskich metod terapeutycznych, konfiguracji urządzeń, protokołów diagnostycznych)</li>
+                <li>Zapewnienia bezpieczeństwa i poufności procesu terapeutycznego</li>
+                <li>Ochrony wizerunku personelu i pacjentów NCNI</li>
+                <li>Zapobiegania prowokacjom procesowym oraz nadużyciom dowodowym</li>
+            </ul>
+
+            <h3 class="legal-subsection-title">6.3. Konsekwencje naruszenia zakazu</h3>
+            <ol class="list-decimal pl-6 mb-4">
+                <li class="mb-2">Naruszenie zakazu, o którym mowa w § 6.1, stanowi ciężkie naruszenie niniejszego Regulaminu oraz naruszenie miru domowego NCNI i uprawnia NCNI do:
+                    <ul class="list-disc mt-2">
+                        <li>Natychmiastowego zakończenia wizyty i wyprowadzenia osoby naruszającej zakaz z terenu NCNI</li>
+                        <li>Odmowy dalszego świadczenia usług na rzecz pacjenta</li>
+                        <li>Żądania usunięcia nielegalnie utrwalonych materiałów oraz zobowiązania do ich nieudostępniania osobom trzecim</li>
+                        <li>Podjęcia kroków prawnych, w tym zawiadomienia organów ścigania o popełnieniu przestępstwa (art. 267 KK – naruszenie miru domowego, art. 226 KK – naruszenie tajemnicy)</li>
+                        <li>Dochodzenia roszczeń odszkodowawczych na zasadach ogólnych, w szczególności z tytułu naruszenia dóbr osobistych (art. 23-24 KC), prawa do wizerunku (art. 81 ustawy o prawie autorskim) oraz naruszenia tajemnicy przedsiębiorstwa</li>
+                    </ul>
+                </li>
+                <li class="mb-2">W przypadku naruszenia zakazu, o którym mowa w § 6.1, Pacjent (lub osoba mu towarzysząca, za którą Pacjent odpowiada solidarnie jak za własne działania) zobowiązuje się do zapłaty na rzecz NCNI kary umownej w wysokości <strong>10 000 zł (dziesięć tysięcy złotych)</strong> za każde pojedyncze naruszenie (każde nagranie, zdjęcie, screenshot, transmisję), niezależnie od innych przysługujących NCNI roszczeń na podstawie przepisów prawa (art. 483-484 KC).</li>
+                <li class="mb-2">Zapłata kary umownej nie wyłącza prawa NCNI do dochodzenia odszkodowania przewyższającego wysokość zastrzeżonej kary umownej.</li>
+                <li class="mb-2">Materiały uzyskane z naruszeniem zakazu określonego w § 6.1 nie mogą być wykorzystywane jako dowody w jakichkolwiek postępowaniach sądowych, administracyjnych ani innych postępowaniach urzędowych. NCNI zastrzega sobie prawo do kwestionowania dopuszczalności takich dowodów oraz żądania ich pominięcia przez sąd lub organ.</li>
+            </ol>
+
+            <h3 class="legal-subsection-title">6.4. Obowiązek informacyjny</h3>
+            <ol class="list-decimal pl-6 mb-4">
+                <li class="mb-2">NCNI informuje pacjentów o zakazie, o którym mowa w § 6.1, poprzez:
+                    <ul class="list-disc mt-2">
+                        <li>Zapisy niniejszego Regulaminu</li>
+                        <li>Informacje umieszczone w widocznych miejscach na terenie NCNI (recepcja, poczekalnia, gabinety)</li>
+                        <li>Ustne poinformowanie przez personel recepcyjny lub terapeutyczny przy pierwszej wizycie</li>
+                    </ul>
+                </li>
+                <li class="mb-2">Pacjent potwierdza zapoznanie się z zakazem poprzez podpisanie niniejszego Regulaminu oraz Oświadczenia Pacjenta.</li>
+            </ol>
+
+            <h2 class="legal-section-title">§ 7. PRAWA AUTORSKIE I KORZYSTANIE Z TREŚCI NCNI</h2>
+            
+            <h3 class="legal-subsection-title">7.1. Ochrona praw autorskich</h3>
+            <ol class="list-decimal pl-6 mb-4">
+                <li class="mb-2">Wszystkie treści tworzone, publikowane i udostępniane przez NCNI, w szczególności:
+                    <ul class="list-disc mt-2">
+                        <li>Opisy usług, programów terapeutycznych, metodologii</li>
+                        <li>Cenniki i oferty handlowe</li>
+                        <li>Materiały edukacyjne, instrukcje, poradniki</li>
+                        <li>Grafiki, logotypy, znaki towarowe, identyfikacja wizualna</li>
+                        <li>Fotografie, ilustracje, nagrania audio-wideo</li>
+                        <li>Układ i wybór treści na stronie internetowej www.ncni.pl oraz w materiałach drukowanych</li>
+                        <li>Dokumentacja medyczna, formularze, ankiety, kwestionariusze</li>
+                        <li>Autorskie protokoły terapeutyczne i diagnostyczne</li>
+                    </ul>
+                    stanowią utwory w rozumieniu ustawy z dnia 4 lutego 1994 r. o prawie autorskim i prawach pokrewnych (Dz.U. 2022 poz. 2509 z późn. zm.) i podlegają ochronie prawnej.
+                </li>
+                <li class="mb-2">Prawa autorskie do wszystkich treści, o których mowa w ust. 1, przysługują wyłącznie NCNI oraz osobom współpracującym z NCNI na podstawie odrębnych umów (autorzy, terapeuci, konsultanci naukowi).</li>
+                <li class="mb-2">Pacjent ani osoby trzecie nie nabywają jakichkolwiek praw autorskich, licencji ani praw pokrewnych do treści, o których mowa w ust. 1, poza zakresem wynikającym z dozwolonego użytku osobistego przewidzianego w art. 23 ustawy o prawie autorskim i prawach pokrewnych.</li>
+            </ol>
+
+            <h3 class="legal-subsection-title">7.2. Zakres dozwolonego korzystania</h3>
+            <ol class="list-decimal pl-6 mb-4">
+                <li class="mb-2">Korzystanie z treści NCNI jest dopuszczalne wyłącznie w celu:
+                    <ul class="list-disc mt-2">
+                        <li>Zapoznania się z ofertą i charakterem usług NCNI</li>
+                        <li>Przygotowania do terapii, diagnozy lub konsultacji</li>
+                        <li>Realizacji procesu terapeutycznego (w przypadku aktualnych pacjentów)</li>
+                    </ul>
+                    przez aktualnych lub potencjalnych pacjentów NCNI, w ramach ich osobistego, niekomercyjnego użytku.
+                </li>
+                <li class="mb-2">Każde inne wykorzystanie treści NCNI wykraczające poza zakres określony w ust. 1 wymaga uprzedniej, wyraźnej, pisemnej zgody NCNI w formie umowy licencyjnej.</li>
+            </ol>
+
+            <h3 class="legal-subsection-title">7.3. Zakaz nieautoryzowanego wykorzystania treści</h3>
+            <p>Zabronione jest w szczególności:</p>
+            <ol class="list-decimal pl-6 mb-4">
+                <li class="mb-2">Kopiowanie, utrwalanie, powielanie, reprodukowanie, rozpowszechnianie, publikowanie, udostępnianie osobom trzecim, przesyłanie, przekazywanie w jakiejkolwiek formie (w tym drogą elektroniczną) jakichkolwiek treści NCNI, w tym w szczególności:
+                    <ul class="list-disc mt-2">
+                        <li>Wykonywanie zrzutów ekranu (screenshots) strony www.ncni.pl lub jej fragmentów</li>
+                        <li>Fotografowanie wydrukowanych materiałów NCNI (cenników, ulotek, regulaminów)</li>
+                        <li>Kopiowanie treści e-maili, SMS-ów, wiadomości otrzymanych od NCNI</li>
+                        <li>Skanowanie lub fotografowanie dokumentacji medycznej, formularzy, ankiet</li>
+                        <li>Nagrywanie rozmów z terapeutami lub personelem NCNI</li>
+                    </ul>
+                    bez uprzedniej, wyraźnej, pisemnej zgody Prezesa Zarządu NCNI.
+                </li>
+                <li class="mb-2">Wykorzystywanie treści NCNI w charakterze dowodowym w postępowaniach sądowych, administracyjnych, egzekucyjnych, karnych lub innych postępowaniach urzędowych, bez uprzedniego uzyskania od NCNI pisemnej licencji na taki sposób korzystania.</li>
+                <li class="mb-2">Używanie treści w sposób mogący naruszać dobre imę, renomę, wizerunek lub uzasadnione interesy majątkowe NCNI.</li>
+                <li class="mb-2">Używanie treści w celu porównawczym, konkurencyjnym, analitycznym lub w jakikolwiek inny sposób służący interesom osób trzecich (w tym podmiotów konkurencyjnych, kancelarii prawnych, organów administracji).</li>
+                <li class="mb-2">Modyfikowanie, przerabianie, tłumaczenie, dekompilowanie lub tworzenie utworów zależnych na podstawie treści NCNI.</li>
+            </ol>
+
+            <h3 class="legal-subsection-title">7.4. Odpłatna licencja na wykorzystanie dowodowe</h3>
+            <ol class="list-decimal pl-6 mb-4">
+                <li class="mb-2">Skorzystanie z treści NCNI (w tym cennika, opisów usług, materiałów edukacyjnych, zrzutów ekranu serwisu www.ncni.pl, wydruków, kopii e-maili, wyciągów z korespondencji) w celach innych niż dozwolone w § 7.2, w szczególności w celach dowodowych w jakimkolwiek postępowaniu, jest równoznaczne z zawarciem z NCNI przez osobę wykorzystującą treści (lub podmiot, na którego rzecz działa) niewyłącznej, odpłatnej umowy licencyjnej na podstawie art. 41 ust. 2 ustawy o prawie autorskim i prawach pokrewnych.</li>
+                <li class="mb-2">Z tytułu zawarcia licencji, o której mowa w ust. 1, użytkownik (osoba fizyczna, prawna lub jednostka organizacyjna nieposiadająca osobowości prawnej) zobowiązuje się do zapłaty na rzecz NCNI ryczałtowego wynagrodzenia licencyjnego w wysokości <strong>5 000 zł (pięć tysięcy złotych)</strong> za każdy pojedynczy utwór (element treści) wykorzystany w sposób wykraczający poza dozwolony użytek osobisty, w szczególności:
+                    <ul class="list-disc mt-2">
+                        <li>Za każdy screenshot lub zrzut ekranu przedstawiony jako dowód</li>
+                        <li>Za każdą kopię e-maila lub korespondencji dołączoną do akt sprawy</li>
+                        <li>Za każdy wydruk cennika, regulaminu lub innego dokumentu NCNI wykorzystany dowodowo</li>
+                        <li>Za każde powołanie się na treści NCNI w pismach procesowych, wnioskach, pozwach, odwołaniach</li>
+                    </ul>
+                    chyba że strony postanowią inaczej w odrębnej umowie pisemnej pod rygorem nieważności.
+                </li>
+                <li class="mb-2">Wynagrodzenie licencyjne, o którym mowa w ust. 2, jest wymagalne z chwilą wykorzystania utworu (przedstawienia dowodu, złożenia pisma, powołania się na treść) i płatne w terminie 7 dni od daty wystawienia przez NCNI wezwania do zapłaty.</li>
+                <li class="mb-2">W przypadku zwłoki w zapłacie wynagrodzenia licencyjnego, NCNI jest uprawnione do naliczenia odsetek ustawowych za opóźnienie w transakcjach handlowych.</li>
+            </ol>
+
+            <h3 class="legal-subsection-title">7.5. Konsekwencje naruszenia praw autorskich</h3>
+            <ol class="list-decimal pl-6 mb-4">
+                <li class="mb-2">W przypadku wykorzystania treści NCNI z naruszeniem § 7.3 lub § 7.4, NCNI jest uprawnione do:
+                    <ul class="list-disc mt-2">
+                        <li>Wystawienia wezwania do zapłaty wynagrodzenia licencyjnego, o którym mowa w § 7.4 ust. 2</li>
+                        <li>Żądania natychmiastowego zaprzestania naruszania praw autorskich</li>
+                        <li>Żądania usunięcia skutków naruszenia (w tym wycofania dowodów z postępowania, usunięcia publikacji, sprostowania informacji)</li>
+                        <li>Dochodzenia roszczeń wynikających z ustawy o prawie autorskim i prawach pokrewnych, w tym:
+                            <ul class="list-[circle] pl-6 mt-1 text-sm">
+                                <li>Zaniechania naruszeń (art. 79 ust. 1 pkt 1)</li>
+                                <li>Usunięcia skutków naruszenia (art. 79 ust. 1 pkt 2)</li>
+                                <li>Naprawienia wyrządzonej szkody (art. 79 ust. 1 pkt 3 lit. a)</li>
+                                <li>Wydania uzyskanych korzyści (art. 79 ust. 1 pkt 3 lit. b)</li>
+                                <li>Zapłaty sumy pieniężnej w wysokości odpowiadającej dwukrotności, a w przypadku naruszenia dokonanego umyślnie – trzykrotności stosownego wynagrodzenia, które w chwili jego dochodzenia byłoby należne tytułem udzielenia przez uprawnionego zgody na korzystanie z utworu (art. 79 ust. 1 pkt 3 lit. c)</li>
+                            </ul>
+                        </li>
+                        <li>Dochodzenia roszczeń z tytułu naruszenia dóbr osobistych (art. 23-24 KC)</li>
+                        <li>Zgłoszenia naruszenia do organów ścigania (art. 115-117 ustawy o prawie autorskim i prawach pokrewnych – odpowiedzialność karna)</li>
+                    </ul>
+                </li>
+                <li class="mb-2">NCNI zastrzega sobie prawo do skierowania sprawy do sądu cywilnego, a w przypadku naruszenia o charakterze umyślnym – również do złożenia zawiadomienia o podejrzeniu popełnienia przestępstwa.</li>
+            </ol>
+
+            <h3 class="legal-subsection-title">7.6. Wyjątki od zakazu – zgoda pisemna</h3>
+            <ol class="list-decimal pl-6 mb-4">
+                <li class="mb-2">Wykorzystanie treści NCNI w sposób wykraczający poza zakres § 7.2 jest możliwe wyłącznie po uzyskaniu uprzedniej, wyraźnej, pisemnej zgody Prezesa Zarządu NCNI w formie umowy licencyjnej określającej:
+                    <ul class="list-disc mt-2">
+                        <li>Zakres udzielonej licencji (jakie treści, w jakim celu, w jakim zakresie)</li>
+                        <li>Czas trwania licencji</li>
+                        <li>Wysokość wynagrodzenia licencyjnego (lub jego brak w przypadku zgody nieodpłatnej)</li>
+                        <li>Ewentualne ograniczenia i warunki korzystania</li>
+                    </ul>
+                </li>
+                <li class="mb-2">Brak zgody pisemnej lub wykorzystanie treści z przekroczeniem zakresu udzielonej zgody jest równoznaczne z naruszeniem praw autorskich NCNI i skutkuje konsekwencjami określonymi w § 7.5.</li>
+            </ol>
+
+            <h2 class="legal-section-title">§ 8. PRZESŁANKI ODMOWY LUB PRZERWANIA TERAPII</h2>
+            <p>NCNI zastrzega sobie prawo do odmowy świadczenia usług lub przerwania terapii w następujących przypadkach:</p>
+            <ol class="list-decimal pl-6 mb-4">
+                <li>Pacjent stawi się na wizytę pod wpływem alkoholu, narkotyków lub innych substancji psychoaktywnych</li>
+                <li>Pacjent wykazuje agresję słowną lub fizyczną wobec terapeuty, personelu lub innych pacjentów</li>
+                <li>Pacjent nie przestrzega zaleceń terapeuty lub wielokrotnie nie stawia się na umówione wizyty bez usprawiedliwienia</li>
+                <li>Brak motywacji lub współpracy ze strony pacjenta uniemożliwia skuteczną terapię</li>
+                <li>Ujawnione zostały przeciwwskazania medyczne do kontynuacji terapii (np. nowo zdiagnozowana padaczka)</li>
+                <li>Pacjent nie wywiązuje się z zobowiązań finansowych (zaległe płatności)</li>
+                <li>Terapeuta oceni, że pacjent wymaga innej formy pomocy (np. pilna interwencja psychiatryczna, hospitalizacja)</li>
+                <li>Pacjent naruszył zakaz, o którym mowa w § 6 (zakaz nagrywania) lub § 7 (prawa autorskie)</li>
+                <li>Pacjent dopuścił się innych poważnych naruszeń niniejszego Regulaminu</li>
+            </ol>
+            <p>W przypadku przerwania terapii z winy pacjenta, NCNI nie zwraca wpłaconych środków za niewykorzystane sesje.</p>
+
+            <h2 class="legal-section-title">§ 9. ODPOWIEDZIALNOŚĆ I OCHRONA DANYCH</h2>
+            
+            <h3 class="legal-subsection-title">9.1. Odpowiedzialność NCNI</h3>
+            <ol class="list-decimal pl-6 mb-4">
+                <li>NCNI zobowiązuje się do świadczenia usług z najwyższą starannością, zgodnie z aktualnymi standardami wiedzy i praktyki w zakresie neuroterapii</li>
+                <li>NCNI zapewnia poufność i ochronę danych osobowych pacjentów zgodnie z RODO</li>
+                <li>NCNI ponosi odpowiedzialność za działania swoich pracowników i współpracowników w zakresie świadczonych usług</li>
+                <li>NCNI nie ponosi odpowiedzialności za skutki nieprzestrzegania przez pacjenta zaleceń terapeutycznych</li>
+            </ol>
+
+            <h3 class="legal-subsection-title">9.2. Ochrona danych osobowych (RODO)</h3>
+            <ol class="list-decimal pl-6 mb-4">
+                <li>Dane osobowe pacjentów przetwarzane są zgodnie z obowiązymi przepisami o ochronie danych osobowych (Rozporządzenie Parlamentu Europejskiego i Rady (UE) 2016/679 z dnia 27 kwietnia 2016 r. – RODO)</li>
+                <li>Szczegółowe informacje dotyczące przetwarzania danych zawarte są w dokumencie „Zgoda na przetwarzanie danych osobowych – Obowiązek informacyjny RODO"</li>
+                <li>Dane medyczne przechowywane są przez 20 lat zgodnie z ustawą o prawach pacjenta</li>
+                <li>Dostęp do danych mają wyłącznie upoważnieni pracownicy NCNI</li>
+                <li>Administrator danych osobowych: Naukowe Centrum Neuroinnowacji, ul. Stefana Żeromskiego 60/5a, 50-312 Wrocław, kontakt@ncni.pl</li>
+            </ol>
+
+            <h3 class="legal-subsection-title">9.3. Ubezpieczenie OC</h3>
+            <p>NCNI posiada aktualne ubezpieczenie od odpowiedzialności cywilnej (OC) w zakresie świadczonych usług medycznych i terapeutycznych.</p>
+
+            <h2 class="legal-section-title">§ 10. REKLAMACJE I ROZSTRZYGANIE SPORÓW</h2>
+            
+            <h3 class="legal-subsection-title">10.1. Składanie reklamacji</h3>
+            <p>Pacjent ma prawo złożyć reklamację dotyczącą jakości świadczonych usług:</p>
+            <ul>
+                <li>Osobiście w siedzibie NCNI</li>
+                <li>Pisemnie na adres: ul. Stefana Żeromskiego 60/5a, 50-312 Wrocław</li>
+                <li>E-mailowo na adres: kontakt@ncni.pl</li>
+            </ul>
+
+            <h3 class="legal-subsection-title">10.2. Rozpatrywanie reklamacji</h3>
+            <ol class="list-decimal pl-6 mb-4">
+                <li>Reklamacje rozpatrywane są w terminie do 14 dni roboczych od daty otrzymania</li>
+                <li>Odpowiedź na reklamację wysyłana jest na adres e-mail lub pocztowy wskazany przez pacjenta</li>
+                <li>W przypadku uzasadnionej reklamacji NCNI podejmie działania naprawcze (np. sesja korekcyjna, zwrot kosztów, rabat na kolejne sesje)</li>
+            </ol>
+
+            <h3 class="legal-subsection-title">10.3. Rozstrzyganie sporów</h3>
+            <ol class="list-decimal pl-6 mb-4">
+                <li>W przypadku sporu strony dążą do polubownego rozwiązania.</li>
+                <li>Jeśli polubowne rozwiązanie nie będzie możliwe, spór zostanie rozstrzygnięty przez sąd właściwy miejscowo dla siedziby NCNI (Sąd Rejonowy lub Okręgowy dla Wrocławia).</li>
+                <li>W przypadku sporów dotyczących naruszenia praw autorskich (§ 7) lub naruszenia zakazu rejestracji (§ 6), NCNI zastrzega sobie prawo dochodzenia roszczeń na drodze sądowej przed sądem właściwym dla siedziby NCNI, niezależnie od miejsca zamieszkania pozwanego.</li>
+            </ol>
+
+            <h2 class="legal-section-title">§ 11. POWIĄZANIE Z REGULAMINEM SERWISU INTERNETOWEGO</h2>
+            <h3 class="legal-subsection-title">11.1. Regulamin serwisu www.ncni.pl</h3>
+            <ol class="list-decimal pl-6 mb-4">
+                <li>Zasady korzystania z serwisu internetowego www.ncni.pl, w tym szczegółowe zasady korzystania z treści, cenników, materiałów edukacyjnych oraz formularzy online, określa odrębny Regulamin serwisu internetowego NCNI.</li>
+                <li>W zakresie, w jakim Pacjent korzysta z serwisu www.ncni.pl w związku ze świadczeniem usług NCNI (np. rezerwacja wizyt, przeglądanie cennika, pobranie materiałów), postanowienia Regulaminu serwisu internetowego stosuje się odpowiednio i uzupełniająco do niniejszego Regulaminu.</li>
+                <li>Regulamin serwisu internetowego dostępny jest na stronie: www.ncni.pl/regulamin-serwisu</li>
+                <li>W przypadku rozbieżności pomiędzy postanowieniami niniejszego Regulaminu a Regulaminem serwisu internetowego, pierwszeństwo mają postanowienia niniejszego Regulaminu w zakresie świadczenia usług terapeutycznych, natomiast w zakresie korzystania z treści online – postanowienia Regulaminu serwisu internetowego.</li>
+            </ol>
+
+            <h2 class="legal-section-title">§ 12. POSTANOWIENIA KOŃCOWE</h2>
+            
+            <h3 class="legal-subsection-title">12.1. Akceptacja Regulaminu</h3>
+            <ol class="list-decimal pl-6 mb-4">
+                <li>Skorzystanie z usług NCNI jest równoznaczne z akceptacją niniejszego Regulaminu.</li>
+                <li>Pacjent potwierdza zapoznanie się z Regulaminem poprzez złożenie podpisu na dokumencie Oświadczenia Pacjenta przy pierwszej wizycie.</li>
+                <li>Brak akceptacji Regulaminu uniemożliwia świadczenie usług przez NCNI.</li>
+            </ol>
+
+            <h3 class="legal-subsection-title">12.2. Zmiany w Regulaminie</h3>
+            <ol class="list-decimal pl-6 mb-4">
+                <li>NCNI zastrzega sobie prawo do wprowadzania zmian w Regulaminie z ważnych przyczyn (zmiana przepisów prawa, zmiana zakresu usług, zmiana organizacji pracy, aktualizacja cennika).</li>
+                <li>O zmianach pacjenci zostaną poinformowani poprzez:
+                    <ul class="list-disc mt-2">
+                        <li>Publikację na stronie internetowej www.ncni.pl/regulamin</li>
+                        <li>Informację e-mailową (jeśli pacjent wyraził zgodę na kontakt)</li>
+                        <li>Wywieszenie informacji w siedzibie NCNI (poczekalnia, recepcja)</li>
+                    </ul>
+                </li>
+                <li>Zmiany wchodzą w życie po upływie 14 dni od daty publikacji.</li>
+                <li>Pacjenci będący w trakcie terapii są związani Regulaminem obowiązującym w momencie rozpoczęcia terapii, chyba że wyrażą zgodę na nową wersję lub zmiana jest korzystna dla pacjenta albo wynika z bezwzględnie obowiązujących przepisów prawa.</li>
+            </ol>
+
+            <h3 class="legal-subsection-title">12.3. Dostępność Regulaminu</h3>
+            <p>Regulamin dostępny jest:</p>
+            <ul>
+                <li>Na stronie internetowej: www.ncni.pl/regulamin</li>
+                <li>W siedzibie NCNI (wywieszony w poczekalni)</li>
+                <li>Na żądanie w wersji drukowanej lub elektronicznej (PDF) – dostępny u personelu recepcyjnego lub na adres e-mail kontakt@ncni.pl</li>
+            </ul>
+
+            <h3 class="legal-subsection-title">12.4. Obowiązywanie</h3>
+            <p>Niniejszy Regulamin wchodzi w życie z dniem <strong>11 marca 2026 roku</strong> i obowiązuje do odwołania.</p>
+
+            <h3 class="legal-subsection-title">12.5. Podstawa prawna</h3>
+            <p>Regulamin opracowany zgodnie z:</p>
+            <ul>
+                <li>Ustawą z dnia 6 listopada 2008 r. o prawach pacjenta i Rzeczniku Praw Pacjenta (Dz.U. 2020 poz. 849 z późn. zm.)</li>
+                <li>Ustawą z dnia 15 kwietnia 2011 r. o działalności leczniczej (Dz.U. 2021 poz. 711 z późn. zm.)</li>
+                <li>Rozporządzeniem Parlamentu Europejskiego i Rady (UE) 2016/679 z dnia 27 kwietnia 2016 r. w sprawie ochrony danych osobowych (RODO)</li>
+                <li>Ustawą z dnia 4 lutego 1994 r. o prawie autorskim i prawach pokrewnych (Dz.U. 2022 poz. 2509 z późn. zm.)</li>
+                <li>Ustawą z dnia 23 kwietnia 1964 r. – Kodeks cywilny (Dz.U. 2022 poz. 1360 z późn. zm.)</li>
+            </ul>
+
+        </div>
+
+        <!-- SPECJALNA SEKCJA RODO -->
+        <div class="mt-16 p-8 bg-slate-50 border border-slate-200 rounded-xl">
+            <h2 class="text-2xl font-bold text-slate-800 mb-6 flex items-center">
+                <svg class="w-6 h-6 mr-3 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                KLAUZULA INFORMACYJNA RODO
+            </h2>
+            <div class="text-sm text-slate-600 space-y-4 text-justify">
+                <p>Zgodnie z art. 13 ust. 1 i 2 Rozporządzenia Parlamentu Europejskiego i Rady (UE) 2016/679 z dnia 27 kwietnia 2016 r. w sprawie ochrony osób fizycznych w związku z przetwarzaniem danych osobowych i w sprawie swobodnego przepływu takich danych oraz uchylenia dyrektywy 95/46/WE (ogólne rozporządzenie o ochronie danych - dalej "RODO"), informujemy, że:</p>
                 
-                <p class="mt-8 font-bold italic text-center text-slate-500 text-sm">
-                    Ostatnia aktualizacja: 1 stycznia 2026 r.
-                </p>
+                <ol class="list-decimal pl-5 space-y-2">
+                    <li><strong>Administrator Danych:</strong> Administratorem Twoich danych osobowych jest Naukowe Centrum Neuroinnowacji (NCNI) z siedzibą we Wrocławiu (50-312), przy ul. Stefana Żeromskiego 60/5a.</li>
+                    <li><strong>Kontakt:</strong> Z Administratorem można kontaktować się pisemnie na podany wyżej adres siedziby, mailowo pod adresem: <strong>kontakt@ncni.pl</strong> lub telefonicznie: <strong>600 608 333</strong>.</li>
+                    <li><strong>Cele i podstawy przetwarzania:</strong> 
+                        <ul class="list-disc pl-5 mt-1">
+                            <li>Świadczenie usług z zakresu opieki zdrowotnej, profilaktyki, diagnozy medycznej i terapii, w tym prowadzenie dokumentacji (podstawa prawna: art. 9 ust. 2 lit. h RODO w zw. z przepisami prawa krajowego, m.in. ustawą o prawach pacjenta);</li>
+                            <li>Realizacja umowy o świadczenie usług terapeutycznych (podstawa prawna: art. 6 ust. 1 lit. b RODO);</li>
+                            <li>Wypełnienie obowiązków prawnych, w tym księgowych i podatkowych (podstawa prawna: art. 6 ust. 1 lit. c RODO);</li>
+                            <li>Ewentualne dochodzenie roszczeń lub obrona przed roszczeniami (podstawa prawna: art. 6 ust. 1 lit. f RODO).</li>
+                        </ul>
+                    </li>
+                    <li><strong>Odbiorcy danych:</strong> Twoje dane mogą być udostępniane podmiotom wspierającym NCNI w prowadzeniu działalności (np. podmioty świadczące usługi księgowe, IT, prawnicze), wyłącznie na podstawie stosownych umów powierzenia przetwarzania danych.</li>
+                    <li><strong>Okres przechowywania:</strong> Dane osobowe zawarte w dokumentacji medycznej i terapeutycznej będą przechowywane przez okres <strong>20 lat</strong>, licząc od końca roku kalendarzowego, w którym dokonano ostatniego wpisu (zgodnie z art. 29 ust. 1 Ustawy z dnia 6 listopada 2008 r. o prawach pacjenta i Rzeczniku Praw Pacjenta). Dane przetwarzane w celach księgowych przechowywane są przez okres 5 lat.</li>
+                    <li><strong>Prawa osoby, której dane dotyczą:</strong> Przysługuje Ci prawo do żądania od Administratora dostępu do danych osobowych, ich sprostowania, usunięcia lub ograniczenia przetwarzania, prawo do wniesienia sprzeciwu wobec przetwarzania, a także prawo do przenoszenia danych – w granicach uregulowanych przepisami RODO i prawa krajowego (z uwzględnieniem ograniczeń wynikających z przepisów o dokumentacji medycznej).</li>
+                    <li><strong>Skarga do organu nadzorczego:</strong> Masz prawo wniesienia skargi do Prezesa Urzędu Ochrony Danych Osobowych (PUODO, ul. Stawki 2, 00-193 Warszawa), gdy uznasz, że przetwarzanie Twoich danych narusza przepisy RODO.</li>
+                    <li><strong>Informacja o wymogu podania danych:</strong> Podanie danych osobowych (w tym danych o stanie zdrowia) jest dobrowolne, jednakże jest warunkiem koniecznym do zawarcia umowy i świadczenia usług przez NCNI. Konsekwencją niepodania danych będzie odmowa świadczenia usług terapeutycznych.</li>
+                </ol>
             </div>
-        </article>
-    </div>
+        </div>
 
-    <footer class="text-center py-12 text-slate-400 text-sm">
-        <p>&copy; 2026 Naukowe Centrum Neuroinnowacji.</p>
-    </footer>
+    </div>
 </body>
 </html>
