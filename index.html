@@ -475,7 +475,6 @@
 
     <!-- PARTNERSHIP BANNER (New) -->
     <section class="container" style="margin-top: 40px; margin-bottom: 20px;">
-        <!-- FIX: Updated href link to ncni_partnerstwo.html -->
         <a href="ncni_partnerstwo.html" class="partnership-banner cursor-trigger">
             <div class="partnership-content">
                 <span class="partnership-tag">Strefa B2B</span>
@@ -779,9 +778,18 @@
                     </ul>
                 </div>
             </div>
-            <div style="border-top: 1px solid var(--border); padding-top: 24px; margin-top: 40px; text-align: center; color: var(--text-muted); font-size: 0.85rem;">
-                &copy; 2025 Naukowe Centrum Neuroinnowacji | Designed and built by NCNI.agency Karol Kiszło
+
+            <!-- POPRAWIONA SEKCJA PRAW AUTORSKICH I LINKU -->
+            <div style="border-top: 1px solid var(--border); padding-top: 24px; margin-top: 40px; text-align: center; color: var(--text-muted); font-size: 0.85rem; position: relative; z-index: 10;">
+                <p>&copy; 2026 Naukowe Centrum Neuroinnowacji | Designed and built by <span style="font-weight: 600;"> Kiszlo.Studio  Karol Kiszło© </span></p>
+                
+                <div style="margin-top: 16px;">
+                    <a href="regulamin.html" class="cursor-trigger" style="color: var(--text-muted); text-decoration: none; display: inline-block; text-transform: uppercase; font-weight: 600; letter-spacing: 0.05em; padding: 8px 16px; border: 1px solid var(--border); border-radius: 8px; background: white; transition: all 0.3s;" onmouseover="this.style.borderColor='var(--primary)'; this.style.color='var(--primary)';" onmouseout="this.style.borderColor='var(--border)'; this.style.color='var(--text-muted)';">
+                        Regulamin i RODO
+                    </a>
+                </div>
             </div>
+
         </div>
     </footer>
 
@@ -816,32 +824,6 @@
             <div class="status-dot"></div>
         </div>
     </div>
-
-    <style>
-        .ania-container { position: fixed; bottom: 24px; right: 24px; z-index: 2000; display: flex; flex-direction: column; align-items: flex-end; font-family: 'Inter', sans-serif; }
-        .ania-avatar { width: 65px; height: 65px; border-radius: 50%; border: 3px solid white; box-shadow: 0 4px 20px rgba(15, 118, 110, 0.3); cursor: pointer; position: relative; transition: transform 0.3s; background: #fff; overflow: hidden; }
-        .ania-avatar:hover { transform: scale(1.1); }
-        .ania-avatar img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
-        
-        .status-dot { width: 14px; height: 14px; background: #10B981; border: 2px solid white; border-radius: 50%; position: absolute; bottom: 4px; right: 4px; animation: pulse-dot 2s infinite; }
-        .status-dot-small { width: 10px; height: 10px; background: #10B981; border: 1.5px solid white; border-radius: 50%; position: absolute; bottom: 0; right: 0; }
-        @keyframes pulse-dot { 0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); } 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); } }
-        .ania-bubble { background: white; padding: 12px 16px; border-radius: 12px 12px 0 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin-bottom: 12px; font-size: 0.9rem; color: var(--text-main); font-weight: 500; max-width: 260px; position: relative; opacity: 0; transform: translateY(10px); transition: all 0.4s ease; pointer-events: none; }
-        .ania-bubble.visible { opacity: 1; transform: translateY(0); pointer-events: all; }
-        .ania-close-bubble { position: absolute; top: -8px; right: -8px; background: #eee; width: 20px; height: 20px; border-radius: 50%; font-size: 12px; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #666; }
-        .ania-chat-window { position: absolute; bottom: 80px; right: 0; width: 360px; height: 500px; background: white; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.15); display: flex; flex-direction: column; overflow: hidden; opacity: 0; transform: translateY(20px) scale(0.95); pointer-events: none; transition: all 0.3s; border: 1px solid var(--border); }
-        .ania-chat-window.active { opacity: 1; transform: translateY(0) scale(1); pointer-events: all; }
-        .ania-header { background: #F8FAFC; padding: 16px; border-bottom: 1px solid #E2E8F0; display: flex; justify-content: space-between; align-items: center; }
-        .ania-messages { flex: 1; padding: 16px; overflow-y: auto; background: #fff; display: flex; flex-direction: column; gap: 12px; }
-        .msg { padding: 10px 14px; border-radius: 12px; font-size: 0.9rem; line-height: 1.5; max-width: 85%; animation: popIn 0.3s ease; }
-        .msg.bot { background: #F1F5F9; color: var(--text-main); border-bottom-left-radius: 2px; align-self: flex-start; }
-        .msg.user { background: var(--primary); color: white; border-bottom-right-radius: 2px; align-self: flex-end; }
-        .ania-options-area { padding: 12px; background: #F8FAFC; border-top: 1px solid #E2E8F0; display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; }
-        .chat-btn { background: white; border: 1px solid var(--primary); color: var(--primary); padding: 8px 14px; border-radius: 99px; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: 0.2s; }
-        .chat-btn:hover { background: var(--primary); color: white; }
-        @keyframes popIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
-        @media (max-width: 480px) { .ania-chat-window { width: 300px; right: -10px; height: 450px; } }
-    </style>
 
     <script>
         const chatKnowledge = {
