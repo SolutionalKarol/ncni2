@@ -21,6 +21,10 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://ncni.pl/psycholog.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://ncni.pl/technologie.html</loc>
     <priority>0.7</priority>
   </url>
@@ -34,10 +38,14 @@
   </url>
   <url>
     <loc>https://ncni.pl/kraszewski.html</loc>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ncni.pl/metoda-kraszewskiego.html</loc>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://ncni.pl/kiszlo.html</loc>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
 </urlset>
