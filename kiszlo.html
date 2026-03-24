@@ -11,7 +11,7 @@
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     
-    <title>Karol Kiszło | Prezes i Założyciel | NCNI Wrocław</title>
+    <title>Karol Kiszło | Prezes i współzałożyciel | NCNI Wrocław</title>
     <meta name="description" content="Karol Kiszło - Inicjator NCNI. Ekspert i wizjoner budujący innowacyjny most między światem zaawansowanej nauki a biznesem i nowoczesnym marketingiem medycznym.">
     <link rel="canonical" href="https://ncni.pl/kiszlo.html">
     <link rel="icon" href="logo.png" type="image/png">
@@ -52,10 +52,210 @@
         .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
         .glass { background: var(--bg-surface); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.6); box-shadow: 0 4px 20px rgba(0,0,0,0.03); }
 
-        /* --- HEADER (Responsywny z o-nas.html) --- */
+        /* --- HEADER (Responsywny) --- */
         header { position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid var(--border); padding: 12px 0; background: rgba(255,255,255,0.95); transition: var(--trans-default); }
         .nav-wrapper { display: flex; flex-direction: column; align-items: center; gap: 16px; }
         .brand-bar { display: flex; justify-content: center; align-items: center; width: 100%; position: relative; }
         
         .logo { display: flex; align-items: center; gap: 12px; font-weight: 700; color: var(--text-main); text-decoration: none; cursor: pointer; letter-spacing: -0.01em; }
-        .logo img { height: 44px; width: auto; border-radius
+        .logo img { height: 44px; width: auto; border-radius: 8px; flex-shrink: 0; }
+        .brand-name { font-size: 1.25rem; line-height: 1.15; text-transform: uppercase; text-align: left; display: block; }
+        
+        .nav-link-back { text-decoration: none; color: var(--primary); font-weight: 600; font-size: 0.95rem; display: flex; align-items: center; gap: 8px; position: absolute; left: 0; top: 50%; transform: translateY(-50%); }
+
+        .nav-links { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; align-items: center; }
+        .nav-item { padding: 8px 16px; border-radius: 99px; font-size: 0.95rem; font-weight: 500; color: var(--text-muted); text-decoration: none; transition: var(--trans-default); cursor: pointer; white-space: nowrap; }
+        .nav-item:hover, .nav-item.active { color: var(--primary); background: var(--primary-light); }
+        .nav-cta { background: var(--primary); color: white !important; box-shadow: 0 4px 12px rgba(15, 118, 110, 0.25); margin-left: 8px; }
+        .nav-cta:hover { background: var(--primary-dark); transform: translateY(-1px); }
+
+        .mobile-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; position: absolute; right: 0; top: 50%; transform: translateY(-50%); }
+        .mobile-toggle span { display: block; width: 24px; height: 2px; background: var(--text-main); margin: 5px 0; transition: 0.3s; }
+        .mobile-menu { position: fixed; top: 80px; left: 0; width: 100%; background: white; padding: 24px; border-bottom: 1px solid var(--border); transform: translateY(-150%); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); z-index: 999; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .mobile-menu.active { transform: translateY(0); }
+        .mobile-link { display: block; padding: 14px 0; font-size: 1.1rem; font-weight: 500; color: var(--text-main); text-decoration: none; border-bottom: 1px solid var(--bg-body); }
+
+        @media (max-width: 900px) {
+            header { padding: 12px 0; }
+            .nav-wrapper { flex-direction: row; height: auto; min-height: 50px; justify-content: center; padding: 0; }
+            .brand-bar { width: 100%; justify-content: space-between; padding: 0 16px; box-sizing: border-box; } 
+            .nav-links, .nav-link-back { display: none; } 
+            .mobile-toggle { display: block; position: static; transform: none; margin-left: 10px; }
+            .logo { max-width: calc(100% - 50px); gap: 10px; }
+            .logo img { height: 38px; }
+            .brand-name { font-size: clamp(0.7rem, 4.2vw, 1.05rem); line-height: 1.1; }
+        }
+
+        /* --- PROFIL --- */
+        .profile-header { display: grid; grid-template-columns: 350px 1fr; gap: 60px; margin-top: 80px; margin-bottom: 60px; align-items: start; }
+        
+        .profile-img-container { position: relative; border-radius: 24px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        .profile-img { width: 100%; height: auto; display: block; filter: grayscale(100%); transition: filter 0.6s ease, transform 0.6s ease; }
+        .profile-img-container:hover .profile-img { filter: grayscale(0%); transform: scale(1.03); }
+
+        .role-badge { display: inline-block; background: #EEF2FF; color: #4F46E5; padding: 8px 16px; border-radius: 99px; font-size: 0.9rem; font-weight: 700; margin-bottom: 20px; letter-spacing: 0.05em; text-transform: uppercase; }
+
+        .profile-name { font-size: clamp(2.2rem, 5vw, 3rem); line-height: 1.1; margin-bottom: 16px; color: var(--text-main); font-family: 'Lexend', sans-serif; }
+        .profile-titles { font-size: 1.2rem; color: var(--primary); font-weight: 500; margin-bottom: 24px; display: block; }
+        
+        .bio-text { font-size: 1.05rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 32px; text-align: justify; }
+
+        .tags-container { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 40px; }
+        .tag { background: white; border: 1px solid var(--border); padding: 8px 16px; border-radius: 8px; font-size: 0.9rem; font-weight: 500; color: var(--text-main); display: flex; align-items: center; gap: 8px; }
+        .tag span { color: var(--primary); }
+
+        .content-block { background: white; padding: 40px; border-radius: 24px; border: 1px solid var(--border); margin-bottom: 32px; transition: var(--trans-default); }
+        .content-block:hover { border-color: var(--primary-light); box-shadow: 0 10px 30px rgba(0,0,0,0.02); }
+        .content-block h2 { font-size: 1.8rem; margin-bottom: 24px; color: var(--text-main); border-bottom: 2px solid var(--bg-body); padding-bottom: 12px; display: inline-block; font-family: 'Lexend', sans-serif; }
+        
+        .services-list { display: grid; grid-template-columns: 1fr; gap: 16px; padding: 0; list-style: none; }
+        @media (min-width: 768px) { .services-list { grid-template-columns: 1fr 1fr; } }
+        .services-list li { margin-bottom: 8px; display: flex; align-items: flex-start; gap: 12px; color: var(--text-muted); font-size: 1.05rem; line-height: 1.4; }
+        .services-list li::before { content: "•"; color: var(--accent); font-weight: bold; font-size: 1.5rem; line-height: 1; }
+
+        @media (max-width: 900px) {
+            .profile-header { grid-template-columns: 1fr; gap: 32px; text-align: center; }
+            .profile-img-container { max-width: 400px; margin: 0 auto; }
+            .tags-container { justify-content: center; }
+            .bio-text { text-align: left; }
+        }
+
+        /* --- FOOTER --- */
+        footer { background: white; border-top: 1px solid var(--border); padding: 60px 0 20px; margin-top: 80px; text-align: left; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
+    </style>
+</head>
+<body>
+
+    <div id="bg-canvas"></div>
+
+    <header class="glass">
+        <div class="container nav-wrapper">
+            <div class="brand-bar">
+                <a href="o-nas.html" class="nav-link-back">← Zespół</a>
+                <a href="index.html" class="logo">
+                    <img src="logo.png" alt="NCNI">
+                    <span class="brand-name">Naukowe Centrum<br>Neuroinnowacji</span>
+                </a>
+                <button class="mobile-toggle" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+            
+            <nav class="nav-links">
+                <a href="o-nas.html" class="nav-item active">O nas</a>
+                <a href="neuroroznorodnosc.html" class="nav-item">Neuroróżnorodność</a>
+                <a href="psychologia.html" class="nav-item">Psychologia</a>
+                <a href="technologie.html" class="nav-item">Technologie</a>
+                <a href="oferta.html" class="nav-item">Oferta</a>
+                <a href="index.html#rezerwacja" class="nav-item nav-cta">Umów wizytę</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="mobile-menu">
+        <a href="o-nas.html" class="mobile-link">← Wróć do Zespołu</a>
+        <a href="index.html" class="mobile-link">Strona Główna</a>
+        <a href="neuroroznorodnosc.html" class="mobile-link">Neuroróżnorodność</a>
+        <a href="psychologia.html" class="mobile-link">Psychologia</a>
+        <a href="tel:+48600608333" class="mobile-link" style="color: var(--primary);">📞 Zadzwoń: 600 608 333</a>
+    </div>
+
+    <main class="container">
+        <article class="profile-header">
+            <div class="profile-img-container">
+                <img src="kk.jpg" alt="Karol Kiszło" class="profile-img" onerror="this.src='https://ui-avatars.com/api/?name=Karol+Kiszlo&background=0F766E&color=fff&size=400'">
+            </div>
+            
+            <div>
+                <span class="role-badge">Zarząd / Strategia</span>
+                <h1 class="profile-name">Karol Kiszło</h1>
+                <span class="profile-titles">Prezes | Inicjator NCNI | Wizjoner i Strateg</span>
+                
+                <div class="bio-text">
+                    <p>
+                        Inicjator i współzałożyciel Naukowego Centrum Neuroinnowacji. Przedsiębiorca i wizjoner, który z sukcesem buduje innowacyjny pomost między zaawansowanym, hermetycznym światem nauki a realiami współczesnego biznesu i marketingu.
+                    </p>
+                    <p style="margin-top: 16px;">
+                        Sam nie będąc naukowcem, doskonale rozumie, jak przekuć skomplikowaną wiedzę akademicką i inżynieryjną w praktyczne, przystępne rozwiązania. Jego główną misją jest uczenie świata medycyny i nauki skutecznej komercjalizacji oraz komunikacji, tak aby przełomowe badania (m.in. w obszarze VR czy neuromodulacji) mogły ujrzeć światło dzienne i realnie poprawiać jakość życia ludzi.
+                    </p>
+                    <p style="margin-top: 16px;">
+                        Odpowiada za strategię, zarządzanie oraz nowatorski marketing NCNI. To dzięki jego nieszablonowemu podejściu do innowacji i zdolności "łączenia kropek", wiedza wybitnych ekspertów, naukowców i psychologów została zintegrowana w jeden, skutecznie funkcjonujący ekosystem medyczno-technologiczny. Współpracuje bezpośrednio ze środowiskiem B2B, wdrażając rozwiązania z zakresu optymalizacji efektywności i higieny umysłu.
+                    </p>
+                </div>
+
+                <div class="tags-container">
+                    <span class="tag"><span>💼</span> Strategia Biznesowa</span>
+                    <span class="tag"><span>🚀</span> Innowacje B+R</span>
+                    <span class="tag"><span>📈</span> Marketing Medyczny</span>
+                    <span class="tag"><span>🤝</span> Transfer Technologii</span>
+                </div>
+            </div>
+        </article>
+
+        <div class="content-block" style="border-left: 4px solid var(--accent);">
+            <h2 style="color: var(--accent);">Obszary działań i kompetencje</h2>
+            <ul class="services-list">
+                <li>Zarządzanie wizją i strategicznym rozwojem Naukowego Centrum Neuroinnowacji</li>
+                <li>Budowanie sprawnego pomostu komunikacyjnego między środowiskiem akademickim a sektorem biznesowym</li>
+                <li>Marketing medyczny i skuteczna komunikacja skomplikowanych procesów naukowych do szerszego odbiorcy</li>
+                <li>Komercjalizacja i wdrażanie nowoczesnych technologii (VR, Biofeedback) do powszechnego i rynkowego użytku</li>
+                <li>Łączenie interdyscyplinarnych zespołów (naukowców, inżynierów, terapeutów) w jeden spójny organizm</li>
+                <li>Nawiązywanie strategicznych partnerstw B2B i inicjowanie innowacyjnych projektów badawczo-rozwojowych</li>
+            </ul>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <a href="index.html" class="logo" style="margin-bottom: 20px; display: inline-block; text-decoration: none; color: var(--text-main); font-weight: 700; font-size: 1.4rem;">
+                        <img src="logo.png" alt="NCNI" style="height: 40px; vertical-align: middle; margin-right: 10px;">
+                        NCNI
+                    </a>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">
+                        Naukowe Centrum Neuroinnowacji.<br>
+                        Twój partner w zdrowiu psychicznym.
+                    </p>
+                </div>
+                <div>
+                    <h4 style="margin-bottom: 16px;">Kontakt Główny</h4>
+                    <p style="color: var(--text-muted); margin-bottom: 8px;">ul. Stefana Żeromskiego 60/5a</p>
+                    <p style="color: var(--text-muted); margin-bottom: 8px;">50-312 Wrocław</p>
+                    <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 16px;">
+                        <a href="mailto:kontakt@ncni.pl" style="color: var(--text-main); font-weight: 600; text-decoration: none;">✉️ kontakt@ncni.pl</a>
+                        <a href="tel:+48600608333" style="color: var(--primary); font-weight: 600; text-decoration: none; font-size: 1.1rem;">📞 600 608 333</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 style="margin-bottom: 16px;">Mapa Strony</h4>
+                    <ul style="color: var(--text-muted); font-size: 0.95rem; list-style: none; padding: 0;">
+                        <li style="margin-bottom: 8px;"><a href="adhd.html" style="text-decoration: none; color: inherit;">ADHD</a></li>
+                        <li style="margin-bottom: 8px;"><a href="asd.html" style="text-decoration: none; color: inherit;">Autyzm</a></li>
+                        <li style="margin-bottom: 8px;"><a href="psychologia.html" style="text-decoration: none; color: inherit;">Psychologia</a></li>
+                        <li style="margin-bottom: 8px;"><a href="technologie.html" style="text-decoration: none; color: inherit;">VR Lab</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div style="border-top: 1px solid var(--border); padding-top: 24px; margin-top: 40px; text-align: center; color: var(--text-muted); font-size: 0.85rem;">
+                <p>&copy; 2026 Naukowe Centrum Neuroinnowacji | Designed and built by <span style="font-weight: 600;"> Kiszlo.Studio Karol Kiszło&copy; </span></p>
+                <div style="margin-top: 16px;">
+                    <a href="regulamin.html" style="color: var(--text-muted); text-decoration: none; display: inline-block; text-transform: uppercase; font-weight: 600; letter-spacing: 0.05em; padding: 8px 16px; border: 1px solid var(--border); border-radius: 8px; background: white; transition: all 0.3s;">
+                        Regulamin i RODO
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WPIĘCIE CHATBOTA ANI Z ZEWN. PLIKU -->
+    <script src="ania-bot.js" defer></script>
+
+    <script>
+        function initParticles(){const container=document.getElementById('bg-canvas');if(!container)return;const scene=new THREE.Scene();scene.fog=new THREE.FogExp2(0xF8FAFC,0.002);const camera=new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,1000);camera.position.z=10;const renderer=new THREE.WebGLRenderer({alpha:true,antialias:true});renderer.setSize(window.innerWidth,window.innerHeight);renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));container.appendChild(renderer.domElement);const geometry=new THREE.BufferGeometry();const count=200;const positions=new Float32Array(count*3);const colors=new Float32Array(count*3);for(let i=0;i<count*3;i+=3){positions[i]=(Math.random()-0.5)*25;positions[i+1]=(Math.random()-0.5)*25;positions[i+2]=(Math.random()-0.5)*25;const mix=Math.random();if(mix>0.5){colors[i]=0.06;colors[i+1]=0.46;colors[i+2]=0.43;}else{colors[i]=0.39;colors[i+1]=0.4;colors[i+2]=0.94;}}geometry.setAttribute('position',new THREE.BufferAttribute(positions,3));geometry.setAttribute('color',new THREE.BufferAttribute(colors,3));const material=new THREE.PointsMaterial({size:0.1,vertexColors:true,transparent:true,opacity:0.4});const particles=new THREE.Points(geometry,material);scene.add(particles);let mouseX=0,mouseY=0,targetX=0,targetY=0;const windowHalfX=window.innerWidth/2;const windowHalfY=window.innerHeight/2;document.addEventListener('mousemove',(e)=>{mouseX=(e.clientX-windowHalfX);mouseY=(e.clientY-windowHalfY);});const clock=new THREE.Clock();function animate(){const time=clock.getElapsedTime();targetX=mouseX*0.0001;targetY=mouseY*0.0001;particles.rotation.y+=0.01*(targetX-particles.rotation.y);particles.rotation.x+=0.01*(targetY-particles.rotation.x);particles.rotation.z+=0.0005;const scale=1+Math.sin(time*0.5)*0.02;particles.scale.set(scale,scale,scale);renderer.render(scene,camera);requestAnimationFrame(animate);}animate();window.addEventListener('resize',()=>{camera.aspect=window.innerWidth/window.innerHeight;camera.updateProjectionMatrix();renderer.setSize(window.innerWidth,window.innerHeight);});}document.addEventListener("DOMContentLoaded",initParticles);
+        
+        const toggle = document.querySelector('.mobile-toggle'); const menu = document.querySelector('.mobile-menu'); if (toggle && menu) { toggle.addEventListener('click', () => { menu.classList.toggle('active'); }); menu.querySelectorAll('a').forEach(link => { link.addEventListener('click', () => menu.classList.remove('active')); }); }
+    </script>
+</body>
+</html>
