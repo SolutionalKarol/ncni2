@@ -153,14 +153,19 @@
         }
 
         .logo {
-            display: flex; align-items: center; gap: 10px;
-            font-weight: 700; font-size: 1.4rem; color: var(--text-main);
-            text-decoration: none; cursor: pointer; letter-spacing: -0.02em;
+            display: flex; align-items: center; gap: 12px;
+            font-weight: 700; color: var(--text-main);
+            text-decoration: none; cursor: pointer; letter-spacing: -0.01em;
         }
-        .logo img { height: 40px; width: auto; border-radius: 8px; }
+        .logo img { height: 44px; width: auto; border-radius: 8px; flex-shrink: 0; }
 
-        /* Text switcher classes */
-        .mobile-text { display: none; }
+        .brand-name {
+            font-size: 1.25rem;
+            line-height: 1.15;
+            text-transform: uppercase;
+            text-align: left;
+            display: block;
+        }
 
         /* Navigation Links (Desktop) */
         .nav-links { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
@@ -183,23 +188,39 @@
         .mobile-link { display: block; padding: 14px 0; font-size: 1.1rem; font-weight: 500; color: var(--text-main); text-decoration: none; border-bottom: 1px solid var(--bg-body); }
 
         @media (max-width: 900px) {
-            header { padding: 10px 0; }
-            .nav-wrapper { flex-direction: row; height: 50px; justify-content: center; padding: 0; }
+            header { padding: 12px 0; }
+            .nav-wrapper { flex-direction: row; height: auto; min-height: 50px; justify-content: center; padding: 0; }
             
-            /* ZMIANA: Szerokość 100% aby hamburger był przy krawędzi */
-            .brand-bar { width: 100%; } 
+            /* ZMIANA: Flexbox pilnuje, by logo było po lewej, a menu po prawej */
+            .brand-bar { 
+                width: 100%; 
+                justify-content: space-between; 
+                padding: 0 16px; 
+                box-sizing: border-box;
+            } 
             
             .nav-links { display: none; } 
             
-            /* Pokaż hamburgera na mobile */
-            .mobile-toggle { display: block; }
+            /* ZMIANA: Usunięcie absolute i transformacji zapobiega nachodzeniu na tekst */
+            .mobile-toggle { 
+                display: block; 
+                position: static; 
+                transform: none; 
+                margin-left: 10px;
+            }
             
-            .logo { font-size: 1.3rem; }
-            .logo img { height: 32px; }
+            /* ZMIANA: Zabezpieczenie maksymalnej szerokości logo na małych ekranach */
+            .logo { 
+                max-width: calc(100% - 50px); 
+                gap: 10px;
+            }
+            .logo img { height: 38px; }
             
-            /* ZMIANA: Skrócona nazwa na mobile */
-            .desktop-text { display: none; }
-            .mobile-text { display: inline; }
+            /* ZMIANA: Idealne skalowanie tekstu dzięki funkcji clamp */
+            .brand-name { 
+                font-size: clamp(0.7rem, 4.2vw, 1.05rem); 
+                line-height: 1.1;
+            }
         }
 
         /* --- HERO --- */
@@ -401,8 +422,7 @@
             <div class="brand-bar">
                 <a href="#" class="logo cursor-trigger">
                     <img src="logo.png" alt="NCNI">
-                    <span class="desktop-text">Naukowe Centrum Neuroinnowacji</span>
-                    <span class="mobile-text">NCNI</span>
+                    <span class="brand-name">Naukowe Centrum<br>Neuroinnowacji</span>
                 </a>
                 
                 <button class="mobile-toggle cursor-trigger" aria-label="Menu">
@@ -615,6 +635,7 @@
             </div>
 
             <div class="team-grid">
+                <!-- 1. Sebastian Kraszewski -->
                 <a href="kraszewski.html" class="team-card glass cursor-trigger">
                     <div class="team-img-wrapper">
                         <img src="sk.jpg" alt="Sebastian Kraszewski" class="team-img" onerror="this.src='https://ui-avatars.com/api/?name=Sebastian+Kraszewski&background=6366F1&color=fff&size=400'">
@@ -625,7 +646,20 @@
                         <p style="font-size: 0.9rem; color: var(--text-muted);">Zobacz profil →</p>
                     </div>
                 </a>
+
+                <!-- 2. Magdalena Dzialuk -->
+                <a href="psycholog.html" class="team-card glass cursor-trigger">
+                    <div class="team-img-wrapper">
+                        <img src="magdalena-dzialuk.jpg" alt="Magdalena Dzialuk - Psycholog NCNI" class="team-img" onerror="this.src='https://ui-avatars.com/api/?name=Magdalena+Dzialuk&background=0F766E&color=fff&size=400'">
+                    </div>
+                    <div class="team-info">
+                        <span class="team-role">Psycholog / Psychoterapeuta CBT</span>
+                        <h3>Magdalena Dzialuk</h3>
+                        <p style="font-size: 0.9rem; color: var(--text-muted);">Zobacz profil →</p>
+                    </div>
+                </a>
                 
+                <!-- 3. Karol Kiszło -->
                 <a href="kiszlo.html" class="team-card glass cursor-trigger">
                     <div class="team-img-wrapper">
                         <img src="kk.jpg" alt="Karol Kiszło" class="team-img" onerror="this.src='https://ui-avatars.com/api/?name=Karol+Kiszlo&background=0F766E&color=fff&size=400'">
@@ -637,28 +671,7 @@
                     </div>
                 </a>
 
-                <a href="psycholog.html" class="team-card glass cursor-trigger">
-                    <div class="team-img-wrapper">
-                        <img src="psycholog.jpg" alt="Psycholog NCNI" class="team-img" onerror="this.src='https://ui-avatars.com/api/?name=Psycholog&background=0F766E&color=fff&size=400'">
-                    </div>
-                    <div class="team-info">
-                        <span class="team-role">Psychologia Kliniczna</span>
-                        <h3>Zespół Psychologów</h3>
-                        <p style="font-size: 0.9rem; color: var(--text-muted);">Zobacz specjalizacje →</p>
-                    </div>
-                </a>
-
-                <a href="dietetyk.html" class="team-card glass cursor-trigger">
-                    <div class="team-img-wrapper">
-                        <img src="dietetyk.jpg" alt="Dietetyk NCNI" class="team-img" style="object-position: top;">
-                    </div>
-                    <div class="team-info">
-                        <span class="team-role">Psychodietetyka</span>
-                        <h3>Dietetyk Kliniczny</h3>
-                        <p style="font-size: 0.9rem; color: var(--text-muted);">Zobacz ofertę →</p>
-                    </div>
-                </a>
-                
+                <!-- 4. Fizjoterapeuta -->
                 <a href="fizjoterapia.html" class="team-card glass cursor-trigger">
                     <div class="team-img-wrapper">
                         <img src="fizjoterapeuta.jpg" alt="Fizjoterapeuta NCNI" class="team-img" style="object-position: top;">
@@ -670,16 +683,10 @@
                     </div>
                 </a>
 
-                <a href="szablon-profil.html" class="team-card glass cursor-trigger">
-                    <div class="team-img-wrapper" style="background: white; display: flex; align-items: center; justify-content: center;">
-                        <img src="logo.png" alt="Dołącz do nas" class="team-img" style="width: 60%; height: auto; object-fit: contain; filter: none;">
-                    </div>
-                    <div class="team-info">
-                        <span class="team-role" style="color: var(--text-muted);">Rekrutacja</span>
-                        <h3>Twój Specjalista</h3>
-                        <p style="font-size: 0.9rem; color: var(--text-muted);">Miejsce na nowego eksperta.</p>
-                    </div>
-                </a>
+                <!-- Dietetyk i Rekrutacja tymczasowo wyłączone 
+                <a href="dietetyk.html" class="team-card glass cursor-trigger">...</a>
+                <a href="szablon-profil.html" class="team-card glass cursor-trigger">...</a>
+                -->
             </div>
         </div>
     </section>
