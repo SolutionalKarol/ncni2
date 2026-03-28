@@ -78,12 +78,6 @@
             overflow-x: hidden;
         }
 
-        @media (min-width: 901px) { body, a, button { cursor: none !important; } }
-        @media (max-width: 900px) { .cursor-dot, .cursor-outline { display: none !important; } body { cursor: auto; } }
-        .cursor-dot { width: 8px; height: 8px; background: var(--primary); position: fixed; border-radius: 50%; z-index: 9999; pointer-events: none; }
-        .cursor-outline { width: 40px; height: 40px; border: 1px solid rgba(15,118,110,0.5); position: fixed; border-radius: 50%; z-index: 9998; pointer-events: none; transition: width 0.2s, height 0.2s; }
-        body.hovering .cursor-outline { width: 70px; height: 70px; background: rgba(15,118,110,0.05); border-width: 2px; }
-
         #bg-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; z-index: -1; opacity: 0.6; pointer-events: none; }
         .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
         .glass { background: var(--bg-surface); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.6); box-shadow: 0 4px 20px rgba(0,0,0,0.03); }
@@ -211,33 +205,31 @@
 <body>
 
     <div id="bg-canvas"></div>
-    <div class="cursor-dot"></div>
-    <div class="cursor-outline"></div>
 
     <header class="glass">
         <div class="container nav-wrapper">
             <div class="brand-bar">
-                <a href="o-nas.html" class="nav-link-back cursor-trigger">← Zespół</a>
-                <a href="index.html" class="logo cursor-trigger">
+                <a href="o-nas.html" class="nav-link-back">← Zespół</a>
+                <a href="index.html" class="logo">
                     <img src="logo.png" alt="NCNI">
                     <span>Naukowe Centrum Neuroinnowacji</span>
                 </a>
-                <button class="mobile-toggle cursor-trigger" aria-label="Menu">
+                <button class="mobile-toggle" aria-label="Menu">
                     <span></span><span></span><span></span>
                 </button>
             </div>
             
             <nav class="nav-links">
                 <div class="header-contact">
-                    <a href="tel:+48600608333" class="cursor-trigger">📞 600 608 333</a>
-                    <a href="mailto:kontakt@ncni.pl" class="cursor-trigger">✉️ kontakt@ncni.pl</a>
+                    <a href="tel:+48600608333">📞 600 608 333</a>
+                    <a href="mailto:kontakt@ncni.pl">✉️ kontakt@ncni.pl</a>
                 </div>
-                <a href="o-nas.html" class="nav-item cursor-trigger active">O nas</a>
-                <a href="neuroroznorodnosc.html" class="nav-item cursor-trigger">Neuroróżnorodność</a>
-                <a href="psychologia.html" class="nav-item cursor-trigger">Psychologia</a>
-                <a href="technologie.html" class="nav-item cursor-trigger">Technologie</a>
-                <a href="oferta.html" class="nav-item cursor-trigger">Oferta</a>
-                <a href="index.html#rezerwacja" class="nav-item nav-cta cursor-trigger">Umów wizytę</a>
+                <a href="o-nas.html" class="nav-item active">O nas</a>
+                <a href="neuroroznorodnosc.html" class="nav-item">Neuroróżnorodność</a>
+                <a href="psychologia.html" class="nav-item">Psychologia</a>
+                <a href="technologie.html" class="nav-item">Technologie</a>
+                <a href="oferta.html" class="nav-item">Oferta</a>
+                <a href="index.html#rezerwacja" class="nav-item nav-cta">Umów wizytę</a>
             </nav>
         </div>
     </header>
@@ -251,7 +243,7 @@
 
     <div class="container">
         <div class="profile-header">
-            <div class="profile-img-container cursor-trigger">
+            <div class="profile-img-container">
                 <img src="magdalena-dzialuk.jpg" alt="Magdalena Dzialuk - Psycholog NCNI" class="profile-img" onerror="this.src='https://ui-avatars.com/api/?name=Magdalena+Dzialuk&background=0F766E&color=fff&size=400'">
             </div>
             
@@ -283,11 +275,11 @@
                     <span class="tag"><span>❤️‍🩹</span> Leczenie Traumy</span>
                 </div>
 
-                <a href="index.html#rezerwacja" class="nav-cta cursor-trigger" style="display: inline-block; padding: 12px 32px; text-decoration: none; border-radius: 99px; font-weight: 700; color: white; background: var(--primary);">Umów wizytę</a>
+                <a href="index.html#rezerwacja" class="nav-cta" style="display: inline-block; padding: 12px 32px; text-decoration: none; border-radius: 99px; font-weight: 700; color: white; background: var(--primary);">Umów wizytę</a>
             </div>
         </div>
 
-        <div class="content-block cursor-trigger">
+        <div class="content-block">
             <h2>Psychoterapia i Wsparcie</h2>
             <ul class="services-list">
                 <li>Psychoterapia poznawczo-behawioralna osób dorosłych (CBT)</li>
@@ -301,7 +293,7 @@
             </ul>
         </div>
 
-        <div class="content-block cursor-trigger" style="border-left: 4px solid var(--accent);">
+        <div class="content-block" style="border-left: 4px solid var(--accent);">
             <h2 style="color: var(--accent);">Diagnostyka i Neuropsychologia</h2>
             <ul class="services-list">
                 <li>Diagnostyka psychologiczna i kliniczna (ICD-10)</li>
@@ -317,7 +309,7 @@
         <div class="container">
             <div class="footer-grid">
                 <div>
-                    <a href="#" class="logo cursor-trigger" style="margin-bottom: 20px; display: inline-block;">
+                    <a href="#" class="logo" style="margin-bottom: 20px; display: inline-block;">
                         <img src="logo.png" alt="NCNI">
                         NCNI
                     </a>
@@ -331,30 +323,30 @@
                     <p style="color: var(--text-muted); margin-bottom: 8px;">ul. Stefana Żeromskiego 60/5a</p>
                     <p style="color: var(--text-muted); margin-bottom: 8px;">50-312 Wrocław</p>
                     <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 16px;">
-                        <a href="mailto:kontakt@ncni.pl" class="cursor-trigger" style="color: var(--text-main); font-weight: 600; text-decoration: none;">✉️ kontakt@ncni.pl</a>
-                        <a href="tel:+48600608333" class="cursor-trigger" style="color: var(--primary); font-weight: 600; text-decoration: none; font-size: 1.1rem;">📞 600 608 333</a>
+                        <a href="mailto:kontakt@ncni.pl" style="color: var(--text-main); font-weight: 600; text-decoration: none;">✉️ kontakt@ncni.pl</a>
+                        <a href="tel:+48600608333" style="color: var(--primary); font-weight: 600; text-decoration: none; font-size: 1.1rem;">📞 600 608 333</a>
                     </div>
                 </div>
                 <div>
                     <h4 style="margin-bottom: 16px;">Mapa Strony</h4>
                     <ul style="color: var(--text-muted); font-size: 0.95rem; list-style: none; padding: 0;">
-                        <li style="margin-bottom: 8px;"><a href="adhd.html" class="cursor-trigger">ADHD</a></li>
-                        <li style="margin-bottom: 8px;"><a href="asd.html" class="cursor-trigger">Autyzm</a></li>
-                        <li style="margin-bottom: 8px;"><a href="psychologia.html" class="cursor-trigger">Psychologia</a></li>
-                        <li style="margin-bottom: 8px;"><a href="technologie.html" class="cursor-trigger">VR Lab</a></li>
+                        <li style="margin-bottom: 8px;"><a href="adhd.html">ADHD</a></li>
+                        <li style="margin-bottom: 8px;"><a href="asd.html">Autyzm</a></li>
+                        <li style="margin-bottom: 8px;"><a href="psychologia.html">Psychologia</a></li>
+                        <li style="margin-bottom: 8px;"><a href="technologie.html">VR Lab</a></li>
                     </ul>
                 </div>
             </div>
             <div style="border-top: 1px solid var(--border); padding-top: 24px; margin-top: 40px; text-align: center; color: var(--text-muted); font-size: 0.85rem;">
                 &copy; 2026 Naukowe Centrum Neuroinnowacji | Designed and built by Kiszlo.Studio Karol Kiszło&copy;<br>
-                <a href="https://solutionalkarol.github.io/ncni2/regulamin.html" class="cursor-trigger" style="color: var(--text-muted); text-decoration: underline; transition: 0.3s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text-muted)'">Regulamin i RODO</a>
+                <a href="https://solutionalkarol.github.io/ncni2/regulamin.html" style="color: var(--text-muted); text-decoration: underline; transition: 0.3s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text-muted)'">Regulamin i RODO</a>
             </div>
         </div>
     </footer>
 
     <script>
         function initParticles(){const container=document.getElementById('bg-canvas');if(!container)return;const scene=new THREE.Scene();scene.fog=new THREE.FogExp2(0xF8FAFC,0.002);const camera=new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,1000);camera.position.z=10;const renderer=new THREE.WebGLRenderer({alpha:true,antialias:true});renderer.setSize(window.innerWidth,window.innerHeight);renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));container.appendChild(renderer.domElement);const geometry=new THREE.BufferGeometry();const count=200;const positions=new Float32Array(count*3);const colors=new Float32Array(count*3);for(let i=0;i<count*3;i+=3){positions[i]=(Math.random()-0.5)*25;positions[i+1]=(Math.random()-0.5)*25;positions[i+2]=(Math.random()-0.5)*25;const mix=Math.random();if(mix>0.5){colors[i]=0.06;colors[i+1]=0.46;colors[i+2]=0.43;}else{colors[i]=0.39;colors[i+1]=0.4;colors[i+2]=0.94;}}geometry.setAttribute('position',new THREE.BufferAttribute(positions,3));geometry.setAttribute('color',new THREE.BufferAttribute(colors,3));const material=new THREE.PointsMaterial({size:0.1,vertexColors:true,transparent:true,opacity:0.4});const particles=new THREE.Points(geometry,material);scene.add(particles);let mouseX=0,mouseY=0,targetX=0,targetY=0;const windowHalfX=window.innerWidth/2;const windowHalfY=window.innerHeight/2;document.addEventListener('mousemove',(e)=>{mouseX=(e.clientX-windowHalfX);mouseY=(e.clientY-windowHalfY);});const clock=new THREE.Clock();function animate(){const time=clock.getElapsedTime();targetX=mouseX*0.0001;targetY=mouseY*0.0001;particles.rotation.y+=0.01*(targetX-particles.rotation.y);particles.rotation.x+=0.01*(targetY-particles.rotation.x);particles.rotation.z+=0.0005;const scale=1+Math.sin(time*0.5)*0.02;particles.scale.set(scale,scale,scale);renderer.render(scene,camera);requestAnimationFrame(animate);}animate();window.addEventListener('resize',()=>{camera.aspect=window.innerWidth/window.innerHeight;camera.updateProjectionMatrix();renderer.setSize(window.innerWidth,window.innerHeight);});}document.addEventListener("DOMContentLoaded",initParticles);
-        const cursorDot=document.querySelector('.cursor-dot');const cursorOutline=document.querySelector('.cursor-outline');window.addEventListener('mousemove',(e)=>{const posX=e.clientX;const posY=e.clientY;cursorDot.style.left=`${posX}px`;cursorDot.style.top=`${posY}px`;cursorOutline.animate({left:`${posX}px`,top:`${posY}px`},{duration:500,fill:"forwards"});});const triggers=document.querySelectorAll('.cursor-trigger, a, button, .content-block, .profile-img-container, .gallery-item');triggers.forEach(trigger=>{trigger.addEventListener('mouseenter',()=>{document.body.classList.add('hovering');});trigger.addEventListener('mouseleave',()=>{document.body.classList.remove('hovering');});});
+        
         const toggle = document.querySelector('.mobile-toggle'); const menu = document.querySelector('.mobile-menu'); if (toggle && menu) { toggle.addEventListener('click', () => { menu.classList.toggle('active'); }); menu.querySelectorAll('a').forEach(link => { link.addEventListener('click', () => menu.classList.remove('active')); }); }
     </script>
 </body>
