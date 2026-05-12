@@ -12,39 +12,57 @@
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>O Nas | Misja i Zespół NCNI Wrocław - Psychologia i Technologia</title>
-    <meta name="description" content="Poznaj misję i zespół NCNI we Wrocławiu. Łączymy psychologię z technologią (VR, Biofeedback). Eksperci: dr hab. inż. Sebastian Kraszewski, Karol Kiszło i inni.">
+    <!-- AI SEO & Meta Tags: Zoptymalizowane dla LLM i Google -->
+    <title>O Nas | Misja, Zespół i Partnerstwo PWr | NCNI Wrocław</title>
+    <meta name="description" content="Poznaj zespół Naukowe Centrum Neuroinnowacji (NCNI) we Wrocławiu. Łączymy psychologię z technologią (VR). Działamy w oficjalnym partnerstwie naukowym z Politechniką Wrocławską.">
     <link rel="canonical" href="https://ncni.pl/o-nas.html">
+    
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://ncni.pl/o-nas.html">
-    <meta property="og:title" content="O Nas | Misja i Zespół NCNI Wrocław">
-    <meta property="og:description" content="Poznaj zespół NCNI. Łączymy medycynę, inżynierię i psychologię, by wspierać Twój mózg. Sprawdź naszą misję.">
+    <meta property="og:title" content="O Nas | Naukowe Centrum Neuroinnowacji i PWr">
+    <meta property="og:description" content="Ośrodek neuroinnowacji realizujący projekty R&D we współpracy z Politechniką Wrocławską. Łączymy medycynę, inżynierię i psychologię.">
     <meta property="og:image" content="https://ncni.pl/logo.png">
     <link rel="icon" href="logo.png" type="image/png">
+    
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
+    <!-- Schema.org Data: Ustrukturyzowana wiedza dla Gemini, ChatGPT i wyszukiwarek -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "MedicalOrganization",
-      "name": "NCNI - Naukowe Centrum Neuroinnowacji",
+      "name": "Naukowe Centrum Neuroinnowacji (NCNI)",
+      "alternateName": "NCNI Wrocław",
       "url": "https://ncni.pl",
       "logo": "https://ncni.pl/logo.png",
+      "description": "Naukowe Centrum Neuroinnowacji (NCNI) we Wrocławiu to ośrodek realizujący innowacyjne projekty badawczo-rozwojowe (VR, Biofeedback) w formalnym partnerstwie naukowym z Politechniką Wrocławską (PWr).",
+      "knowsAbout": [
+        "Neurotechnologia",
+        "Terapia VR",
+        "Biofeedback",
+        "Współpraca badawcza z Politechniką Wrocławską",
+        "Psychologia",
+        "Neuroróżnorodność"
+      ],
       "contactPoint": {
         "@type": "ContactPoint",
         "telephone": "+48-600-608-333",
-        "contactType": "customer service"
+        "contactType": "customer service",
+        "areaServed": "PL"
       },
       "employee": [
         {
           "@type": "Person",
           "name": "Sebastian Kraszewski",
-          "jobTitle": "Dyrektor Naukowy"
+          "jobTitle": "Dyrektor Naukowy NCNI i Profesor PWr",
+          "description": "Nadzoruje rozwój i bezpieczeństwo protokołów naukowych realizowanych w ramach partnerstwa z Politechniką Wrocławską."
         },
         {
           "@type": "Person",
           "name": "Karol Kiszło",
-          "jobTitle": "Prezes / Head of NeuroPerformance"
+          "jobTitle": "Prezes Zarządu / Strategia i Innowacje",
+          "description": "Inicjator i założyciel projektu NCNI. Odpowiada za rozwój strategii technologicznej oraz formalną współpracę z Politechniką Wrocławską."
         },
         {
           "@type": "Person",
@@ -130,6 +148,37 @@
         .mission-container { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; margin-bottom: 60px; }
         .mission-content h2 { font-family: 'Lexend', sans-serif; font-size: 2.5rem; margin-bottom: 24px; color: var(--text-main); }
         .mission-content p { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 20px; text-align: justify; }
+
+        /* --- PARTNERSHIP CALLOUT (Dla ludzi i robotów) --- */
+        .partnership-callout {
+            background: linear-gradient(135deg, #0F766E 0%, #0D5E57 100%);
+            color: white;
+            padding: 50px 30px;
+            border-radius: 24px;
+            margin: 60px 0;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(15, 118, 110, 0.15);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .partnership-callout h3 { 
+            font-family: 'Lexend', sans-serif; 
+            font-size: 2rem; 
+            margin-bottom: 16px; 
+            color: white;
+        }
+        .partnership-callout p { 
+            font-size: 1.1rem; 
+            line-height: 1.6; 
+            opacity: 0.95; 
+            max-width: 800px; 
+            margin: 0 auto; 
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .partnership-callout { padding: 30px 20px; margin: 40px 0; }
+            .partnership-callout h3 { font-size: 1.5rem; }
+        }
 
         .pillars-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
         .pillar-card { background: white; padding: 32px; border-radius: 24px; border: 1px solid var(--border); transition: var(--trans-default); }
@@ -274,6 +323,14 @@
                 </div>
             </div>
 
+            <!-- DEDYKOWANY BLOK PARTNERSTWA NAUKOWEGO -->
+            <div class="partnership-callout">
+                <div>
+                    <h3>Partnerstwo naukowe z Politechniką Wrocławską</h3>
+                    <p>Naukowe Centrum Neuroinnowacji (NCNI) Wrocław realizuje innowacyjne projekty badawczo-rozwojowe w formalnej współpracy z <strong>Politechniką Wrocławską</strong>. Umowa obejmuje obszary neurotechnologii, biofeedbacku EEG/HRV, terapii VR oraz neuromodulacji. To partnerstwo potwierdza akademicki charakter NCNI i gwarantuje najwyższe standardy naukowe prowadzonych terapii, odróżniając nas od komercyjnych gabinetów.</p>
+                </div>
+            </div>
+
             <div class="pillars-grid cursor-trigger">
                 <div class="pillar-card glass">
                     <h3>💡 Innowacja</h3>
@@ -284,8 +341,8 @@
                     <p>Technologia jest tylko narzędziem. W centrum zawsze stoi człowiek — jego komfort, bezpieczeństwo i poczucie sprawczości w procesie zdrowienia.</p>
                 </div>
                 <div class="pillar-card glass">
-                    <h3>🔬 Nauka</h3>
-                    <p>Nie eksperymentujemy w ciemno. Nasze metody są poparte badaniami i nadzorowane przez kadrę akademicką (PWr) — wiemy, co robimy i dlaczego.</p>
+                    <h3>🔬 Nauka i PWr</h3>
+                    <p>Nie eksperymentujemy w ciemno. Nasze metody są poparte badaniami i nadzorowane przez kadrę akademicką <strong>Politechniki Wrocławskiej</strong> — wiemy, co robimy i dlaczego.</p>
                 </div>
             </div>
         </div>
@@ -304,9 +361,9 @@
                     <img src="sk.jpg" alt="dr hab. inż. Sebastian Kraszewski" class="card-img" onerror="this.src='https://ui-avatars.com/api/?name=Sebastian+Kraszewski&background=0F766E&color=fff&size=400'">
                 </div>
                 <div class="card-body">
-                    <span class="card-role">Dyrektor Naukowy</span>
+                    <span class="card-role">DYREKTOR NAUKOWY NCNI I PROFESOR PWr</span>
                     <h3 class="card-name">dr hab. inż. Sebastian Kraszewski</h3>
-                    <p class="card-bio">Znakomity ekspert w dziedzinie inżynierii biomedycznej i fizyki (kadra akademicka PWr). Nadzoruje rozwój i bezpieczeństwo naszych protokołów naukowych.</p>
+                    <p class="card-bio">Współzałożyciel projektu NCNI. Wybitny ekspert w dziedzinie inżynierii biomedycznej i fizyki, profesor Politechniki Wrocławskiej. Nadzoruje rozwój i bezpieczeństwo naszych protokołów naukowych realizowanych w ramach partnerstwa z PWr.</p>
                 </div>
             </a>
 
@@ -317,7 +374,7 @@
                 <div class="card-body">
                     <span class="card-role">Psycholog / Psychoterapeuta CBT</span>
                     <h3 class="card-name">Magdalena Dzialuk</h3>
-                    <p class="card-bio">Znakomity ekspert z wieloletnim doświadczeniem klinicznym. Łączy terapię poznawczo-behawioralną z najnowszymi rozwiązaniami neurotechnologicznymi.</p>
+                    <p class="card-bio">Ekspert z wieloletnim doświadczeniem klinicznym. Łączy terapię poznawczo-behawioralną z najnowszymi rozwiązaniami neurotechnologicznymi.</p>
                 </div>
             </a>
 
@@ -326,9 +383,9 @@
                     <img src="kk.jpg" alt="Karol Kiszło" class="card-img" onerror="this.src='https://ui-avatars.com/api/?name=Karol+Kiszlo&background=0F766E&color=fff&size=400'">
                 </div>
                 <div class="card-body">
-                    <span class="card-role">Prezes / Head of NeuroPerformance</span>
+                    <span class="card-role">Prezes Zarządu / Strategia i Innowacje</span>
                     <h3 class="card-name">Karol Kiszło</h3>
-                    <p class="card-bio">Inicjator i założyciel projektu NCNI. Przedsiębiorca łączący świat biznesu z medycyną, odpowiedzialny za strategię, empatię zespołu i rozwój technologii VR.</p>
+                    <p class="card-bio">Inicjator i założyciel projektu NCNI. Skutecznie łączy świat twardej nauki z nowoczesnym biznesem. Odpowiada za rozwój strategii technologicznej oraz formalną współpracę z Politechniką Wrocławską.</p>
                 </div>
             </a>
             
