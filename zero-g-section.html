@@ -1,0 +1,356 @@
+<!-- 
+  NCNI ZERO G CIRCLE — GOTOWE BLOKI HTML
+  1. Blok do wklejenia w index.html (po sekcji .vr-tech-section)
+  2. Nowa karta w zakładce Technologie (index.html)
+  3. Pełna sekcja do technologie.html
+
+  OBRAZ: vr-system.jpg (już w repo)
+-->
+
+<!-- ==========================================
+  BLOK 1: HERO BANNER na index.html
+  Wklej po sekcji: <section class="vr-tech-section">
+=========================================== -->
+<section class="container" style="margin: 60px auto;">
+  <div style="
+    background: linear-gradient(135deg, #0F172A 0%, #0D3B38 100%);
+    border-radius: 28px;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border: 1px solid rgba(103,232,249,0.15);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+  ">
+    <!-- LEWA: tekst -->
+    <div style="padding: 60px 48px; display: flex; flex-direction: column; justify-content: center;">
+      <span style="
+        display: inline-block;
+        background: rgba(103,232,249,0.1);
+        border: 1px solid rgba(103,232,249,0.3);
+        color: #67E8F9;
+        padding: 6px 14px;
+        border-radius: 99px;
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        margin-bottom: 24px;
+        width: fit-content;
+      ">System NCNI Circle</span>
+
+      <h2 style="
+        font-family: 'Lexend', sans-serif;
+        font-size: clamp(1.8rem, 3vw, 2.6rem);
+        color: white;
+        line-height: 1.15;
+        margin-bottom: 20px;
+        letter-spacing: -0.02em;
+      ">Zero Gravity.<br>Twój mózg.<br>Jedna pętla.</h2>
+
+      <p style="color: #94A3B8; font-size: 1rem; line-height: 1.7; margin-bottom: 32px; max-width: 420px;">
+        System NCNI Circle łączy fotel Zero Gravity, gogle VR i pomiar HRV w czasie rzeczywistym. 
+        Każdy parametr Twojego układu nerwowego wraca do systemu jako sygnał — i system odpowiada.
+        Automatycznie. Precyzyjnie. W zamkniętej pętli.
+      </p>
+
+      <!-- Cechy pętli -->
+      <div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 36px;">
+        <div style="display: flex; align-items: center; gap: 12px; color: #CBD5E1; font-size: 0.95rem;">
+          <span style="width: 32px; height: 32px; background: rgba(103,232,249,0.1); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">🪑</span>
+          Fotel Zero Gravity — odciążenie kręgosłupa, aktywacja parasympatycznego UN
+        </div>
+        <div style="display: flex; align-items: center; gap: 12px; color: #CBD5E1; font-size: 0.95rem;">
+          <span style="width: 32px; height: 32px; background: rgba(103,232,249,0.1); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">🥽</span>
+          Gogle VR + NCNI Circle App — środowisko immersyjne dobierane dynamicznie
+        </div>
+        <div style="display: flex; align-items: center; gap: 12px; color: #CBD5E1; font-size: 0.95rem;">
+          <span style="width: 32px; height: 32px; background: rgba(103,232,249,0.1); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">💓</span>
+          HRV w czasie rzeczywistym — biofeedback sterujący całą sesją
+        </div>
+        <div style="display: flex; align-items: center; gap: 12px; color: #CBD5E1; font-size: 0.95rem;">
+          <span style="width: 32px; height: 32px; background: rgba(103,232,249,0.1); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">🔁</span>
+          Zamknięta pętla Circle — muzyka, masaż, VR i biofeedback w jednym ekosystemie
+        </div>
+      </div>
+
+      <div style="display: flex; gap: 14px; flex-wrap: wrap;">
+        <a href="technologie.html#zero-g" class="btn btn-primary" style="background: #67E8F9; color: #0F172A; font-family: 'Lexend', sans-serif; font-weight: 700;">
+          Dowiedz się więcej
+        </a>
+        <a href="#rezerwacja" class="btn" style="border: 1px solid rgba(255,255,255,0.2); color: white; font-family: 'Lexend', sans-serif;">
+          Rezerwuj sesję
+        </a>
+      </div>
+    </div>
+
+    <!-- PRAWA: zdjęcie -->
+    <div style="position: relative; min-height: 480px; overflow: hidden;">
+      <img 
+        src="vr-system.jpg" 
+        alt="System NCNI Zero Gravity Circle — fotel, gogle VR, fale mózgowe" 
+        style="
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center;
+          display: block;
+        "
+      >
+      <!-- Nakładka z gradientem po lewej stronie obrazka -->
+      <div style="
+        position: absolute;
+        top: 0; left: 0;
+        width: 80px; height: 100%;
+        background: linear-gradient(to right, #0F172A, transparent);
+      "></div>
+    </div>
+  </div>
+
+  <!-- Responsive: na mobile kolumny w 1 -->
+  <style>
+    @media (max-width: 768px) {
+      .zero-g-grid { grid-template-columns: 1fr !important; }
+      .zero-g-img { min-height: 260px !important; }
+    }
+  </style>
+</section>
+
+
+<!-- ==========================================
+  BLOK 2: KARTA do zakładki "Technologie" na index.html
+  Wklej wewnątrz <div id="technologie" class="tab-content">
+  po istniejących kartach
+=========================================== -->
+<a href="technologie.html#zero-g" class="feature-card glass cursor-trigger" style="background: linear-gradient(145deg, #0F172A, #0D3B38); color: white; border: 2px solid rgba(103,232,249,0.2);">
+  <div class="card-icon" style="background: rgba(103,232,249,0.1);">🔁</div>
+  <h3 style="color: white;">System Zero G Circle</h3>
+  <p style="color: #94A3B8;">Zamknięta pętla: fotel Zero Gravity + VR + HRV. System reaguje na Twój układ nerwowy w czasie rzeczywistym.</p>
+  <span class="read-more" style="color: #67E8F9;">Poznaj system →</span>
+</a>
+
+
+<!-- ==========================================
+  BLOK 3: PEŁNA SEKCJA do technologie.html
+  Wklej jako pierwszą dużą sekcję po headerze / hero strony technologie
+=========================================== -->
+<section id="zero-g" style="padding: 80px 0;">
+  <div class="container">
+
+    <!-- Nagłówek sekcji -->
+    <div style="text-align: center; max-width: 760px; margin: 0 auto 60px;">
+      <span style="
+        color: #0F766E;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        font-size: 0.85rem;
+        display: block;
+        margin-bottom: 12px;
+      ">Autorski System NCNI</span>
+      <h2 style="font-family: 'Lexend', sans-serif; font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 20px; letter-spacing: -0.02em;">
+        Zero G Circle
+      </h2>
+      <p style="color: #64748B; font-size: 1.1rem; line-height: 1.7;">
+        Pierwszy w Polsce system adaptacyjnej neuroregulacji łączący fotel Zero Gravity, 
+        immersję VR, pomiar HRV i biofeedback w jeden, zamknięty obieg terapeutyczny.
+      </p>
+    </div>
+
+    <!-- Zdjęcie + opis obok -->
+    <div style="
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+      margin-bottom: 80px;
+    ">
+      <!-- Zdjęcie -->
+      <div style="border-radius: 24px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.12);">
+        <img 
+          src="vr-system.jpg" 
+          alt="System NCNI Zero G Circle — fotel masażowy Zero Gravity z goglami VR i wizualizacją fal mózgowych Alpha, Beta, Theta"
+          style="width: 100%; height: auto; display: block;"
+        >
+      </div>
+
+      <!-- Opis -->
+      <div>
+        <h3 style="font-family: 'Lexend', sans-serif; font-size: 1.5rem; margin-bottom: 16px;">Na czym polega pętla Circle?</h3>
+        <p style="color: #64748B; line-height: 1.75; margin-bottom: 24px;">
+          Pacjent siada na fotelu Zero Gravity — pozycji fizjologicznej, w której kręgosłup jest 
+          całkowicie odciążony, a układ nerwowy naturalnie przełącza się w tryb parasympatyczny. 
+          W tym stanie zakłada gogle VR z aplikacją NCNI Circle.
+        </p>
+        <p style="color: #64748B; line-height: 1.75; margin-bottom: 24px;">
+          Jednocześnie mierzone jest HRV — zmienność rytmu serca — jeden z najbardziej czułych 
+          biomarkerów stanu autonomicznego układu nerwowego. Każda zmiana w HRV natychmiast trafia 
+          do systemu jako sygnał: czy pacjent się wycisza, pogłębia relaksację, czy wymaga korekty.
+        </p>
+        <p style="color: #64748B; line-height: 1.75;">
+          System odpowiada automatycznie: zmienia intensywność masażu, dobiera środowisko immersyjne 
+          VR, reguluje głośność i typ muzyki oraz natężenie biofeedbacku — zawsze w kierunku 
+          optymalnego stanu dla konkretnego pacjenta, w tej konkretnej chwili.
+        </p>
+      </div>
+    </div>
+
+    <!-- Schemat pętli Circle -->
+    <div style="
+      background: #0F172A;
+      border-radius: 28px;
+      padding: 60px 48px;
+      text-align: center;
+      margin-bottom: 60px;
+      border: 1px solid rgba(103,232,249,0.15);
+    ">
+      <h3 style="font-family: 'Lexend', sans-serif; font-size: 1.6rem; color: white; margin-bottom: 12px;">Jak działa pętla?</h3>
+      <p style="color: #94A3B8; margin-bottom: 48px; max-width: 600px; margin-left: auto; margin-right: auto;">
+        Każdy element systemu czyta dane z poprzedniego — i reaguje. W czasie rzeczywistym.
+      </p>
+
+      <!-- Węzły pętli -->
+      <div style="
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        flex-wrap: wrap;
+        max-width: 900px;
+        margin: 0 auto;
+      ">
+        <!-- Node 1 -->
+        <div style="text-align: center; flex: 1; min-width: 140px;">
+          <div style="
+            width: 72px; height: 72px;
+            background: rgba(103,232,249,0.1);
+            border: 2px solid rgba(103,232,249,0.4);
+            border-radius: 20px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 12px;
+          ">🪑</div>
+          <div style="color: white; font-weight: 600; font-family: 'Lexend', sans-serif; font-size: 0.95rem;">Fotel Zero G</div>
+          <div style="color: #64748B; font-size: 0.8rem; margin-top: 4px;">Odciążenie ciała</div>
+        </div>
+
+        <!-- Strzałka -->
+        <div style="color: #67E8F9; font-size: 1.5rem; flex-shrink: 0;">→</div>
+
+        <!-- Node 2 -->
+        <div style="text-align: center; flex: 1; min-width: 140px;">
+          <div style="
+            width: 72px; height: 72px;
+            background: rgba(99,102,241,0.15);
+            border: 2px solid rgba(99,102,241,0.4);
+            border-radius: 20px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 12px;
+          ">💓</div>
+          <div style="color: white; font-weight: 600; font-family: 'Lexend', sans-serif; font-size: 0.95rem;">Pomiar HRV</div>
+          <div style="color: #64748B; font-size: 0.8rem; margin-top: 4px;">Stan UN w czasie real</div>
+        </div>
+
+        <!-- Strzałka -->
+        <div style="color: #67E8F9; font-size: 1.5rem; flex-shrink: 0;">→</div>
+
+        <!-- Node 3 -->
+        <div style="text-align: center; flex: 1; min-width: 140px;">
+          <div style="
+            width: 72px; height: 72px;
+            background: rgba(16,185,129,0.12);
+            border: 2px solid rgba(16,185,129,0.4);
+            border-radius: 20px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 12px;
+          ">🔁</div>
+          <div style="color: white; font-weight: 600; font-family: 'Lexend', sans-serif; font-size: 0.95rem;">System Circle</div>
+          <div style="color: #64748B; font-size: 0.8rem; margin-top: 4px;">Analiza + decyzja</div>
+        </div>
+
+        <!-- Strzałka -->
+        <div style="color: #67E8F9; font-size: 1.5rem; flex-shrink: 0;">→</div>
+
+        <!-- Node 4 -->
+        <div style="text-align: center; flex: 1; min-width: 140px;">
+          <div style="
+            width: 72px; height: 72px;
+            background: rgba(244,114,182,0.12);
+            border: 2px solid rgba(244,114,182,0.4);
+            border-radius: 20px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 12px;
+          ">🥽</div>
+          <div style="color: white; font-weight: 600; font-family: 'Lexend', sans-serif; font-size: 0.95rem;">VR + Muzyka</div>
+          <div style="color: #64748B; font-size: 0.8rem; margin-top: 4px;">Środowisko dostosowane</div>
+        </div>
+
+        <!-- Strzałka powrót -->
+        <div style="color: #67E8F9; font-size: 1.5rem; flex-shrink: 0;">→</div>
+
+        <!-- Node 5 -->
+        <div style="text-align: center; flex: 1; min-width: 140px;">
+          <div style="
+            width: 72px; height: 72px;
+            background: rgba(251,191,36,0.1);
+            border: 2px solid rgba(251,191,36,0.4);
+            border-radius: 20px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 12px;
+          ">🧠</div>
+          <div style="color: white; font-weight: 600; font-family: 'Lexend', sans-serif; font-size: 0.95rem;">Regulacja UN</div>
+          <div style="color: #64748B; font-size: 0.8rem; margin-top: 4px;">Pogłębiona relaksacja</div>
+        </div>
+      </div>
+
+      <p style="color: #475569; margin-top: 36px; font-size: 0.9rem;">
+        Każda zmiana stanu pacjenta trafia z powrotem do systemu → pętla zamknięta, adaptacja ciągła.
+      </p>
+    </div>
+
+    <!-- 2 karty: automatyczny vs manualny -->
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 60px;">
+      <div class="glass" style="border-radius: 20px; padding: 36px; border: 1px solid #E2E8F0;">
+        <div style="font-size: 2.5rem; margin-bottom: 16px;">🤖</div>
+        <h4 style="font-family: 'Lexend', sans-serif; font-size: 1.2rem; margin-bottom: 12px;">Tryb automatyczny</h4>
+        <p style="color: #64748B; line-height: 1.7; font-size: 0.95rem;">
+          System Circle samodzielnie odczytuje parametry HRV i dostosowuje każdy element sesji — 
+          intensywność masażu, środowisko VR, głośność muzyki i poziom biofeedbacku — 
+          bez ingerencji człowieka.
+        </p>
+      </div>
+      <div class="glass" style="border-radius: 20px; padding: 36px; border: 1px solid #E2E8F0;">
+        <div style="font-size: 2.5rem; margin-bottom: 16px;">👩‍⚕️</div>
+        <h4 style="font-family: 'Lexend', sans-serif; font-size: 1.2rem; margin-bottom: 12px;">Nadzór kliniczny</h4>
+        <p style="color: #64748B; line-height: 1.7; font-size: 0.95rem;">
+          Wykwalifikowany psycholog lub specjalista NCNI może w każdej chwili manualnie 
+          zmodyfikować parametry sesji. Technologia wspiera klinicystę — nie go zastępuje.
+        </p>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div style="text-align: center;">
+      <h3 style="font-family: 'Lexend', sans-serif; font-size: 1.5rem; margin-bottom: 12px;">Chcesz doświadczyć Zero G Circle?</h3>
+      <p style="color: #64748B; margin-bottom: 28px;">Umów pierwszą sesję demonstracyjną w centrum NCNI we Wrocławiu.</p>
+      <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+        <a href="tel:+48600608333" class="btn btn-primary">📞 Zadzwoń: 600 608 333</a>
+        <a href="mailto:kontakt@ncni.pl" class="btn btn-outline">✉️ kontakt@ncni.pl</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- RESPONSIVE -->
+<style>
+  @media (max-width: 768px) {
+    #zero-g .zg-twocol { grid-template-columns: 1fr !important; }
+    #zero-g .zg-nodes { flex-direction: column !important; }
+    #zero-g .zg-cards { grid-template-columns: 1fr !important; }
+  }
+</style>
