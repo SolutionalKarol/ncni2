@@ -194,7 +194,6 @@
             header { padding: 12px 0; }
             .nav-wrapper { flex-direction: row; height: auto; min-height: 50px; justify-content: center; padding: 0; }
             
-            /* ZMIANA: Flexbox pilnuje, by logo było po lewej, a menu po prawej */
             .brand-bar { 
                 width: 100%; 
                 justify-content: space-between; 
@@ -204,7 +203,6 @@
             
             .nav-links { display: none; } 
             
-            /* ZMIANA: Usunięcie absolute i transformacji zapobiega nachodzeniu na tekst */
             .mobile-toggle { 
                 display: block; 
                 position: static; 
@@ -212,14 +210,12 @@
                 margin-left: 10px;
             }
             
-            /* ZMIANA: Zabezpieczenie maksymalnej szerokości logo na małych ekranach */
             .logo { 
                 max-width: calc(100% - 50px); 
                 gap: 10px;
             }
             .logo img { height: 38px; }
             
-            /* ZMIANA: Idealne skalowanie tekstu dzięki funkcji clamp */
             .brand-name { 
                 font-size: clamp(0.7rem, 4.2vw, 1.05rem); 
                 line-height: 1.1;
@@ -229,7 +225,7 @@
         /* --- HERO --- */
         .hero { padding: 80px 0 60px; text-align: center; }
         h1 {
-            font-size: clamp(2rem, 6vw, 3.5rem); /* Responsive font size */
+            font-size: clamp(2rem, 6vw, 3.5rem); 
             margin-bottom: 24px;
             background: linear-gradient(135deg, var(--text-main) 0%, var(--primary) 100%);
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
@@ -238,7 +234,6 @@
             font-size: clamp(1rem, 4vw, 1.25rem);
             color: var(--text-muted); max-width: 700px; margin: 0 auto 32px;
         }
-        /* Flex buttons wrap on mobile */
         .hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
         .btn {
             display: inline-flex; align-items: center; justify-content: center;
@@ -247,7 +242,7 @@
             width: auto;
             text-decoration: none;
         }
-        @media (max-width: 480px) { .btn { width: 100%; } } /* Full width buttons on small screens */
+        @media (max-width: 480px) { .btn { width: 100%; } }
 
         .btn-primary { background-color: var(--primary); color: white; }
         .btn-outline { background: white; border: 1px solid var(--border); color: var(--text-main); }
@@ -258,11 +253,11 @@
             position: relative; font-family: 'Lexend', sans-serif; font-size: 0.85rem;
             letter-spacing: 0.05em; text-transform: uppercase; white-space: nowrap;
         }
-        .marquee-content { display: inline-block; animation: scroll 40s linear infinite; } /* Slower scroll */
+        .marquee-content { display: inline-block; animation: scroll 40s linear infinite; }
         .marquee-item { margin: 0 16px; display: inline-flex; align-items: center; gap: 6px; }
         @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-        /* --- PARTNERSHIP BANNER (NEW) --- */
+        /* --- PARTNERSHIP BANNER --- */
         .partnership-banner {
             display: flex; align-items: center; justify-content: space-between;
             background: linear-gradient(to right, #1E293B, #0F172A);
@@ -288,6 +283,53 @@
             .partnership-arrow { margin-left: 0; width: 100%; text-align: center; }
         }
 
+        /* --- CIRCLE VR SECTION (NEW) --- */
+        .circle-vr-section {
+            background: linear-gradient(135deg, #ffffff 0%, var(--bg-body) 100%);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            padding: 80px 0;
+        }
+        .circle-vr-img-wrapper img {
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+        .circle-vr-img-wrapper img:hover {
+            transform: translateY(-5px);
+        }
+        .feature-list-vr {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 30px 0;
+        }
+        .feature-list-vr li {
+            position: relative;
+            padding-left: 35px;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            color: var(--text-main);
+            line-height: 1.5;
+        }
+        .feature-list-vr li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: #fff;
+            background-color: var(--primary);
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
         /* --- TABS --- */
         .tabs-container { margin-top: 40px; }
         .tabs-nav {
@@ -298,7 +340,7 @@
             border-radius: 99px; font-weight: 600; color: var(--text-muted); cursor: pointer;
             font-family: 'Lexend', sans-serif; flex-grow: 1; text-align: center;
         }
-        @media (min-width: 600px) { .tab-btn { flex-grow: 0; } } /* Normal size on desktop */
+        @media (min-width: 600px) { .tab-btn { flex-grow: 0; } }
 
         .tab-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
         .tab-content { display: none; animation: fadeIn 0.5s ease; }
@@ -308,7 +350,7 @@
         /* --- CARDS (GRID) --- */
         .grid-cards {
             display: grid;
-            grid-template-columns: 1fr; /* Single column mobile */
+            grid-template-columns: 1fr;
             gap: 20px;
         }
         @media (min-width: 640px) { .grid-cards { grid-template-columns: repeat(2, 1fr); } }
@@ -336,20 +378,7 @@
             display: flex; flex-direction: column; align-items: center; justify-content: center;
             text-decoration: none;
         }
-        @media (min-width: 768px) { .oval-card { grid-column: span 1; } } /* Adjust span if needed */
-
-        /* --- VR SECTION --- */
-        .vr-tech-section {
-            background: #0F172A; color: white; padding: 60px 24px; border-radius: 24px;
-            margin: 40px 0; text-align: center;
-        }
-        .vr-tag {
-            display: inline-block; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px);
-            padding: 6px 14px; border-radius: 99px; font-size: 0.85rem; color: #67E8F9;
-            border: 1px solid rgba(103, 232, 249, 0.3); margin-bottom: 20px;
-        }
-        .vr-tech-section h2 { font-size: clamp(2rem, 5vw, 2.5rem); margin-bottom: 20px; color: white; }
-        .vr-tech-section p { font-size: 1.1rem; color: #CBD5E1; margin-bottom: 30px; }
+        @media (min-width: 768px) { .oval-card { grid-column: span 1; } }
 
         /* --- TEAM GRID --- */
         .team-grid {
@@ -371,17 +400,7 @@
             background: white; border: 1px solid var(--border); border-radius: 20px;
             padding: 32px 20px; margin: 50px auto; max-width: 600px;
         }
-        .form-group { margin-bottom: 16px; text-align: left; }
-        .form-group label { display: block; margin-bottom: 6px; font-weight: 600; font-size: 0.9rem; }
-        .form-group input, .form-group select, .form-group textarea {
-            width: 100%; padding: 12px; border-radius: 10px; border: 1px solid var(--border);
-            background: #FAFAFA; font-size: 1rem;
-        }
-        .form-btn {
-            width: 100%; padding: 14px; background: var(--primary); color: white;
-            border: none; border-radius: 10px; font-weight: 700; font-size: 1rem; cursor: pointer;
-        }
-
+        
         /* --- SOCIAL ICONS --- */
         .social-icon {
             color: var(--text-muted);
@@ -507,7 +526,7 @@
         </div>
     </div>
 
-    <!-- PARTNERSHIP BANNER (New) -->
+    <!-- PARTNERSHIP BANNER -->
     <section class="container" style="margin-top: 40px; margin-bottom: 20px;">
         <a href="ncni_partnerstwo.html" class="partnership-banner cursor-trigger">
             <div class="partnership-content">
@@ -521,6 +540,50 @@
         </a>
     </section>
 
+    <!-- NCNI CIRCLE VR SECTION (GŁÓWNY PLAN) -->
+    <section class="circle-vr-section" id="technologia-circle">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 60px;">
+                <span style="color: var(--primary); font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; font-size: 0.9rem; display: block; margin-bottom: 10px;">Rewolucja w Neuroterapii</span>
+                <h2 style="font-size: clamp(2rem, 5vw, 2.8rem); color: var(--text-main); margin: 0 0 20px 0; line-height: 1.2;">NCNI Circle VR</h2>
+                <p style="font-size: 1.15rem; color: var(--text-muted); max-width: 700px; margin: 0 auto; line-height: 1.6;">
+                    Pierwszy system, który słucha Twojego ciała. Głęboki relaks w zamkniętej pętli biofeedbacku, dopasowujący się do Ciebie w czasie rzeczywistym.
+                </p>
+            </div>
+
+            <div style="display: flex; flex-wrap: wrap; gap: 50px; align-items: center;">
+                <div class="circle-vr-img-wrapper" style="flex: 1; min-width: 300px; position: relative;">
+                    <img src="vr-system.png" alt="Fotel Zero Gravity i Gogle VR System NCNI" onerror="this.src='https://placehold.co/800x600/e9ecef/495057?text=Zdjęcie+Systemu+VR+NCNI'">
+                </div>
+                
+                <div style="flex: 1; min-width: 300px;">
+                    <h3 style="font-size: 1.8rem; margin-top: 0; margin-bottom: 20px; color: var(--text-main);">Autorska pętla relaksacji</h3>
+                    <p style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 25px; line-height: 1.6;">
+                        Połączyliśmy <strong>fotel Zero Gravity</strong>, <strong>gogle VR</strong> oraz <strong>ciągły pomiar HRV</strong> (zmienności rytmu zatokowego) i fal mózgowych. Stworzyliśmy obwód zamknięty, który automatycznie reaguje na Twoje emocje.
+                    </p>
+                    
+                    <ul class="feature-list-vr">
+                        <li>
+                            <strong>Reaktywne środowisko:</strong> Gdy wchodzisz w stan głębokiego relaksu, system VR wycisza się, a muzyka zwalnia.
+                        </li>
+                        <li>
+                            <strong>Inteligentny fotel:</strong> Masaż dostosowuje swoje natężenie do bieżących parametrów stresu.
+                        </li>
+                        <li>
+                            <strong>Nadzór eksperta:</strong> Pełna automatyzacja z możliwością manualnej modyfikacji przez psychologa.
+                        </li>
+                        <li>
+                            <strong>Brak szablonów (100% personalizacji):</strong> Każdy układ nerwowy jest inny, dlatego odrzucamy uniwersalne schematy. Twój protokół terapeutyczny jest zawsze szyty na miarę i rygorystycznie dostosowywany do Twoich indywidualnych potrzeb oraz wrażliwości.
+                        </li>
+                    </ul>
+
+                    <a href="technologie.html" class="btn btn-primary cursor-trigger" style="box-shadow: 0 4px 15px rgba(15, 118, 110, 0.2);">Poznaj szczegóły technologii</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- OFERTA (ZAKŁADKI) -->
     <section class="section" id="oferta">
         <div class="container">
             <div class="tabs-nav">
@@ -637,6 +700,7 @@
         </div>
     </section>
 
+    <!-- ZESPÓŁ -->
     <section id="o-nas" class="section">
         <div class="container">
             <div style="text-align: center; max-width: 800px; margin: 0 auto 60px;">
@@ -696,31 +760,11 @@
                         <p style="font-size: 0.9rem; color: var(--text-muted);">Zobacz ofertę →</p>
                     </div>
                 </a>
-
-                <!-- Dietetyk i Rekrutacja tymczasowo wyłączone 
-                <a href="dietetyk.html" class="team-card glass cursor-trigger">...</a>
-                <a href="szablon-profil.html" class="team-card glass cursor-trigger">...</a>
-                -->
             </div>
         </div>
     </section>
 
-    <div class="container">
-        <section class="vr-tech-section cursor-trigger">
-            <div class="vr-tech-content">
-                <span class="vr-tag">INNOWACJA NCNI</span>
-                <h2>Neuro-Immersja:<br>VR + Zero Gravity</h2>
-                <p>
-                    Połączenie całkowitego odciążenia ciała (Zero-G) z cyfrową stymulacją mózgu (VR). 
-                    To najgłębsza forma regeneracji układu nerwowego dostępna we Wrocławiu.
-                </p>
-                <div style="display: flex; gap: 16px; justify-content: center;">
-                    <a href="#rezerwacja" class="btn btn-primary cursor-trigger" style="background: #67E8F9; color: #0F172A; box-shadow: 0 0 20px rgba(103, 232, 249, 0.4);">Rezerwuj Sesję</a>
-                </div>
-            </div>
-        </section>
-    </div>
-
+    <!-- FAQ -->
     <section id="faq" class="section">
         <div class="container" style="max-width: 800px;">
             <h2 style="margin-bottom: 40px; text-align: center;">Pytania i Odpowiedzi</h2>
@@ -739,6 +783,7 @@
         </div>
     </section>
 
+    <!-- REZERWACJA -->
     <section id="rezerwacja" class="reservation-section" style="text-align: center;">
         <h2 style="margin-bottom: 24px; color: var(--primary-dark);">Umów Wizytę</h2>
         <p style="color: var(--text-muted); margin-bottom: 40px; font-size: 1.1rem;">
@@ -824,12 +869,10 @@
                 </div>
             </div>
 
-            <!-- POPRAWIONA SEKCJA PRAW AUTORSKICH I LINKU -->
             <div style="border-top: 1px solid var(--border); padding-top: 24px; margin-top: 40px; text-align: center; color: var(--text-muted); font-size: 0.85rem; position: relative; z-index: 10;">
                 <p>&copy; 2026 Naukowe Centrum Neuroinnowacji | Designed and built by <span style="font-weight: 600;"> Kiszlo.Studio  Karol Kiszło&copy; </span></p>
                 
                 <div style="margin-top: 16px;">
-                    <!-- LINK DO REGULAMINU -->
                     <a href="regulamin.html" class="cursor-trigger" style="color: var(--text-muted); text-decoration: none; display: inline-block; text-transform: uppercase; font-weight: 600; letter-spacing: 0.05em; padding: 8px 16px; border: 1px solid var(--border); border-radius: 8px; background: white; transition: all 0.3s;" onmouseover="this.style.borderColor='var(--primary)'; this.style.color='var(--primary)';" onmouseout="this.style.borderColor='var(--border)'; this.style.color='var(--text-muted)';">
                         Regulamin i RODO
                     </a>
@@ -946,7 +989,7 @@
             });
         }
 
-        // --- OBSŁUGA MENU MOBILNEGO (NOWE) ---
+        // --- OBSŁUGA MENU MOBILNEGO ---
         const toggle = document.querySelector('.mobile-toggle');
         const menu = document.querySelector('.mobile-menu');
         if(toggle && menu) {
