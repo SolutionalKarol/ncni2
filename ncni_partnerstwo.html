@@ -3,7 +3,10 @@
 <head>
     <script type="text/javascript" data-cmp-ab="1" src="https://cdn.consentmanager.net/delivery/autoblocking/93e58d8b2275d.js" data-cmp-host="c.delivery.consentmanager.net" data-cmp-cdn="cdn.consentmanager.net" data-cmp-codesrc="16"></script>
     
-<!-- Google tag (gtag.js) --> <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18029740902"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'AW-18029740902'); </script>
+    <!-- Google tag (gtag.js) --> 
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18029740902"></script> 
+    <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'AW-18029740902'); </script>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
@@ -92,16 +95,7 @@
             overflow-x: hidden;
         }
 
-        /* Cursor Logic */
-        @media (min-width: 901px) { body, a, button, input, select, textarea { cursor: none !important; } }
-        @media (max-width: 900px) { .cursor-dot, .cursor-outline { display: none !important; } body { cursor: auto; } }
-
         h1, h2, h3, h4, h5 { font-family: 'Lexend', sans-serif; }
-
-        /* Custom Cursor */
-        .cursor-dot { width: 8px; height: 8px; background-color: var(--primary); position: fixed; pointer-events: none; z-index: 9999; border-radius: 50%; transform: translate(-50%, -50%); }
-        .cursor-outline { width: 40px; height: 40px; border: 1px solid rgba(15, 118, 110, 0.5); position: fixed; pointer-events: none; z-index: 9998; border-radius: 50%; transform: translate(-50%, -50%); transition: width 0.2s, height 0.2s, background-color 0.2s; }
-        body.hovering .cursor-outline { width: 70px; height: 70px; background: rgba(15, 118, 110, 0.05); border-color: var(--primary); border-width: 2px; }
 
         /* Background */
         #bg-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; z-index: -1; opacity: 0.6; pointer-events: none; }
@@ -381,7 +375,6 @@
         .b2b-card .innovation-visual::after { background: linear-gradient(to right, #1E293B, transparent); }
         @media (max-width: 899px) { .b2b-card .innovation-visual::after { background: linear-gradient(to top, #1E293B, transparent); } }
 
-
         /* Infrastructure (Moved Up Styles) */
         .vr-dark-section { background: #0F172A; color: white; padding: 60px 0; border-radius: 32px; margin: 40px 0; position: relative; overflow: hidden; }
         .vr-dark-content { position: relative; z-index: 2; max-width: 1000px; margin: 0 auto; padding: 0 20px; }
@@ -428,12 +421,10 @@
 <body>
 
     <div id="bg-canvas"></div>
-    <div class="cursor-dot"></div>
-    <div class="cursor-outline"></div>
 
     <header>
         <div class="container nav-wrapper">
-            <a href="index.html" class="brand-bar cursor-trigger">
+            <a href="index.html" class="brand-bar">
                 <div class="logo" style="display: flex; align-items: center; gap: 10px;">
                     <img src="logo.png" alt="NCNI Logo">
                     <span>NCNI Partnerstwo</span>
@@ -442,16 +433,16 @@
             
             <nav class="nav-links">
                 <div class="header-contact">
-                    <a href="tel:+48600608333" class="cursor-trigger"><i data-lucide="phone" width="16"></i> 600 608 333</a>
-                    <a href="mailto:kontakt@ncni.pl" class="cursor-trigger"><i data-lucide="mail" width="16"></i> kontakt@ncni.pl</a>
+                    <a href="tel:+48600608333"><i data-lucide="phone" width="16"></i> 600 608 333</a>
+                    <a href="mailto:kontakt@ncni.pl"><i data-lucide="mail" width="16"></i> kontakt@ncni.pl</a>
                 </div>
-                <a href="o-nas.html" class="nav-item cursor-trigger">O nas</a>
-                <a href="technologie.html" class="nav-item cursor-trigger">Technologie</a>
-                <a href="oferta.html" class="nav-item cursor-trigger">Oferta</a>
-                <a href="#" class="nav-item cursor-trigger active">Dla Partnerów</a>
+                <a href="o-nas.html" class="nav-item">O nas</a>
+                <a href="technologie.html" class="nav-item">Technologie</a>
+                <a href="oferta.html" class="nav-item">Oferta</a>
+                <a href="#" class="nav-item active">Dla Partnerów</a>
             </nav>
 
-            <button class="mobile-toggle cursor-trigger" aria-label="Menu">
+            <button class="mobile-toggle" aria-label="Menu">
                 <span></span><span></span><span></span>
             </button>
         </div>
@@ -467,7 +458,7 @@
     <!-- HERO -->
     <section class="hero-mini">
         <div class="container">
-            <a href="technologie.html" class="back-link cursor-trigger">
+            <a href="technologie.html" class="back-link">
                 <i data-lucide="arrow-left" width="16"></i> Wróć do Technologii
             </a>
 
@@ -491,7 +482,7 @@
 
     <!-- MOVED UP: Infrastructure -->
     <section class="container">
-        <div class="vr-dark-section cursor-trigger">
+        <div class="vr-dark-section">
             <div class="vr-dark-content">
                 <h2>Infrastruktura Badawcza</h2>
                 <p>
@@ -531,7 +522,7 @@
         </div>
 
         <!-- 1. HOSPITAL CARD -->
-        <div class="innovation-card hospital-card cursor-trigger">
+        <div class="innovation-card hospital-card">
             <div class="innovation-content">
                 <span class="inn-badge">Szpitale i Kliniki</span>
                 <h3 class="inn-title">
@@ -556,7 +547,7 @@
         </div>
 
         <!-- 2. SCIENCE CARD -->
-        <div class="innovation-card science-card cursor-trigger">
+        <div class="innovation-card science-card">
             <div class="innovation-content">
                 <span class="inn-badge">Transfer Wiedzy</span>
                 <h3 class="inn-title">
@@ -581,7 +572,7 @@
         </div>
 
         <!-- 3. BUSINESS CARD -->
-        <div class="innovation-card business-card cursor-trigger">
+        <div class="innovation-card business-card">
             <div class="innovation-content">
                 <span class="inn-badge">Corporate Neuro-Wellness</span>
                 <h3 class="inn-title">
@@ -606,7 +597,7 @@
         </div>
 
         <!-- 4. CABINETS CARD -->
-        <div class="innovation-card office-card cursor-trigger">
+        <div class="innovation-card office-card">
             <div class="innovation-content">
                 <span class="inn-badge">Psychologia / Psychiatria</span>
                 <h3 class="inn-title">
@@ -630,7 +621,7 @@
         </div>
 
         <!-- 5. CUSTOM DEV (Updated App Name) -->
-        <div class="innovation-card b2b-card cursor-trigger">
+        <div class="innovation-card b2b-card">
             <div class="innovation-content">
                 <span class="inn-badge">Dla Biznesu & Klinik</span>
                 <h3 class="inn-title">
@@ -655,7 +646,7 @@
         </div>
 
         <!-- 6. NEUROBUS (Existing) -->
-        <div class="bus-section cursor-trigger">
+        <div class="bus-section">
             <div class="bus-content">
                 <div style="flex: 1;">
                     <span class="bus-badge">Mobilne Laboratorium Terapeutyczne</span>
@@ -701,10 +692,10 @@
                 <div>
                     <h4 style="margin-bottom: 16px;">Mapa Strony</h4>
                     <ul style="color: var(--text-muted); font-size: 0.9rem; list-style: none;">
-                        <li><a href="adhd.html" class="cursor-trigger" style="text-decoration: none; color: inherit;">ADHD</a></li>
-                        <li><a href="asd.html" class="cursor-trigger" style="text-decoration: none; color: inherit;">Autyzm</a></li>
-                        <li><a href="psychologia.html" class="cursor-trigger" style="text-decoration: none; color: inherit;">Psychologia</a></li>
-                        <li><a href="technologie.html" class="cursor-trigger" style="text-decoration: none; color: inherit;">VR Lab</a></li>
+                        <li><a href="adhd.html" style="text-decoration: none; color: inherit;">ADHD</a></li>
+                        <li><a href="asd.html" style="text-decoration: none; color: inherit;">Autyzm</a></li>
+                        <li><a href="psychologia.html" style="text-decoration: none; color: inherit;">Psychologia</a></li>
+                        <li><a href="technologie.html" style="text-decoration: none; color: inherit;">VR Lab</a></li>
                     </ul>
                 </div>
             </div>
@@ -720,9 +711,6 @@
 
         // Background Particles
         function initParticles(){const container=document.getElementById('bg-canvas');if(!container)return;const scene=new THREE.Scene();scene.fog=new THREE.FogExp2(0xF8FAFC,0.002);const camera=new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,1000);camera.position.z=10;const renderer=new THREE.WebGLRenderer({alpha:true,antialias:true});renderer.setSize(window.innerWidth,window.innerHeight);renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));container.appendChild(renderer.domElement);const geometry=new THREE.BufferGeometry();const count=200;const positions=new Float32Array(count*3);const colors=new Float32Array(count*3);for(let i=0;i<count*3;i+=3){positions[i]=(Math.random()-0.5)*25;positions[i+1]=(Math.random()-0.5)*25;positions[i+2]=(Math.random()-0.5)*25;const mix=Math.random();if(mix>0.5){colors[i]=0.06;colors[i+1]=0.46;colors[i+2]=0.43;}else{colors[i]=0.39;colors[i+1]=0.4;colors[i+2]=0.94;}}geometry.setAttribute('position',new THREE.BufferAttribute(positions,3));geometry.setAttribute('color',new THREE.BufferAttribute(colors,3));const material=new THREE.PointsMaterial({size:0.1,vertexColors:true,transparent:true,opacity:0.4});const particles=new THREE.Points(geometry,material);scene.add(particles);let mouseX=0,mouseY=0,targetX=0,targetY=0;const windowHalfX=window.innerWidth/window.innerHeight;const windowHalfY=window.innerHeight/2;document.addEventListener('mousemove',(e)=>{mouseX=(e.clientX-windowHalfX);mouseY=(e.clientY-windowHalfY);});const clock=new THREE.Clock();function animate(){const time=clock.getElapsedTime();targetX=mouseX*0.0001;targetY=mouseY*0.0001;particles.rotation.y+=0.01*(targetX-particles.rotation.y);particles.rotation.x+=0.01*(targetY-particles.rotation.x);particles.rotation.z+=0.0005;const scale=1+Math.sin(time*0.5)*0.02;particles.scale.set(scale,scale,scale);renderer.render(scene,camera);requestAnimationFrame(animate);}animate();window.addEventListener('resize',()=>{camera.aspect=window.innerWidth/window.innerHeight;camera.updateProjectionMatrix();renderer.setSize(window.innerWidth,window.innerHeight);});}document.addEventListener("DOMContentLoaded",initParticles);
-        
-        // Custom Cursor
-        const cursorDot=document.querySelector('.cursor-dot');const cursorOutline=document.querySelector('.cursor-outline');window.addEventListener('mousemove',(e)=>{const posX=e.clientX;const posY=e.clientY;cursorDot.style.left=`${posX}px`;cursorDot.style.top=`${posY}px`;cursorOutline.animate({left:`${posX}px`,top:`${posY}px`},{duration:500,fill:"forwards"});});const triggers=document.querySelectorAll('.cursor-trigger, a, button, .vr-dark-section, .bus-section, .method-item, .innovation-card');triggers.forEach(trigger=>{trigger.addEventListener('mouseenter',()=>{document.body.classList.add('hovering');});trigger.addEventListener('mouseleave',()=>{document.body.classList.remove('hovering');});});
         
         // Mobile Menu
         const toggle=document.querySelector('.mobile-toggle');const menu=document.querySelector('.mobile-menu');if(toggle&&menu){toggle.addEventListener('click',()=>{menu.classList.toggle('active');});}
