@@ -68,21 +68,7 @@
             width: 100%;
         }
 
-        /* Cursor Logic - Disable on Touch Devices */
-        @media (min-width: 901px) { 
-            body, a, button { cursor: none !important; } 
-        }
-        @media (max-width: 900px) { 
-            .cursor-dot, .cursor-outline { display: none !important; } 
-            body { cursor: auto; } 
-        }
-
         h1, h2, h3, h4 { font-family: 'Lexend', sans-serif; }
-
-        /* Custom Cursor */
-        .cursor-dot { width: 8px; height: 8px; background-color: var(--primary); position: fixed; top: 0; left: 0; transform: translate(-50%, -50%); border-radius: 50%; z-index: 9999; pointer-events: none; }
-        .cursor-outline { width: 40px; height: 40px; border: 1px solid rgba(15, 118, 110, 0.5); position: fixed; top: 0; left: 0; transform: translate(-50%, -50%); border-radius: 50%; z-index: 9998; pointer-events: none; transition: width 0.2s, height 0.2s, background-color 0.2s, border-color 0.2s; }
-        body.hovering .cursor-outline { width: 70px; height: 70px; background-color: rgba(15, 118, 110, 0.05); border-color: var(--primary); border-width: 2px; }
 
         /* Background */
         #bg-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; z-index: -1; opacity: 0.6; pointer-events: none; }
@@ -279,30 +265,28 @@
 <body>
 
     <div id="bg-canvas"></div>
-    <div class="cursor-dot"></div>
-    <div class="cursor-outline"></div>
 
     <header class="glass">
         <div class="container nav-wrapper">
             <div class="brand-bar">
-                <a href="index.html" class="logo cursor-trigger">
+                <a href="index.html" class="logo">
                     <img src="logo.png" alt="NCNI">
                     <span>NCNI Wrocław</span>
                 </a>
             </div>
             
             <!-- Mobile Toggle -->
-            <button class="mobile-toggle cursor-trigger" aria-label="Menu">
+            <button class="mobile-toggle" aria-label="Menu">
                 <span></span><span></span><span></span>
             </button>
 
             <nav class="nav-links">
-                <a href="o-nas.html" class="nav-item cursor-trigger">O nas</a>
-                <a href="neuroroznorodnosc.html" class="nav-item cursor-trigger">Neuroróżnorodność</a>
-                <a href="psychologia.html" class="nav-item cursor-trigger active">Psychologia</a>
-                <a href="technologie.html" class="nav-item cursor-trigger">Technologie</a>
-                <a href="oferta.html" class="nav-item cursor-trigger">Oferta</a>
-                <a href="index.html#rezerwacja" class="nav-item nav-cta cursor-trigger">Umów wizytę</a>
+                <a href="o-nas.html" class="nav-item">O nas</a>
+                <a href="neuroroznorodnosc.html" class="nav-item">Neuroróżnorodność</a>
+                <a href="psychologia.html" class="nav-item active">Psychologia</a>
+                <a href="technologie.html" class="nav-item">Technologie</a>
+                <a href="oferta.html" class="nav-item">Oferta</a>
+                <a href="index.html#rezerwacja" class="nav-item nav-cta">Umów wizytę</a>
             </nav>
         </div>
     </header>
@@ -332,7 +316,7 @@
 
     <!-- VR INFO BOX (Green) -->
     <section class="container" style="margin-top: 20px;">
-        <div class="vr-info-box cursor-trigger">
+        <div class="vr-info-box">
             <h3>Technologie Wirtualnej Rzeczywistości (VR) w Terapii</h3>
             <p>
                 Rzeczywistość wirtualna i technologie immersyjne mogą usprawnić leczenie i trening umiejętności w terapii wielu chorób psychiatrycznych.
@@ -349,7 +333,7 @@
         <div class="list-grid">
             
             <!-- Conditions Treated -->
-            <div class="list-card cursor-trigger">
+            <div class="list-card">
                 <h3>Leczone Schorzenia</h3>
                 <ul class="custom-list">
                     <li>Fobie proste (Simple Phobias)</li>
@@ -367,7 +351,7 @@
             </div>
 
             <!-- This Program Provides -->
-            <div class="list-card cursor-trigger" style="border-left: 4px solid var(--accent);">
+            <div class="list-card" style="border-left: 4px solid var(--accent);">
                 <h3>Nasz Program Zapewnia</h3>
                 <ul class="custom-list">
                     <li>Ocena i konsultacja pacjenta</li>
@@ -387,7 +371,7 @@
 
     <!-- HIGHLIGHT: PSYCHOTRAUMATOLOGIA -->
     <section class="container">
-        <div class="trauma-section cursor-trigger">
+        <div class="trauma-section">
             <div class="trauma-deco"></div>
             <div class="trauma-content">
                 <h2>Specjalizacja: <span>Psychotraumatologia</span></h2>
@@ -400,7 +384,7 @@
                     <li>Redukcja objawów psychosomatycznych</li>
                     <li>Praca z ciałem, oddechem i uziemieniem</li>
                 </ul>
-                <a href="index.html#rezerwacja" class="btn-light cursor-trigger">Umów konsultację</a>
+                <a href="index.html#rezerwacja" class="btn-light">Umów konsultację</a>
             </div>
         </div>
     </section>
@@ -410,21 +394,21 @@
         <h2 class="section-title">Dodatkowe Informacje</h2>
         <div style="max-width: 800px; margin: 0 auto;">
             
-            <details class="cursor-trigger">
+            <details>
                 <summary>Podejście Terapeutyczne</summary>
                 <div class="details-content">
                     Oferujemy psychoterapię indywidualną, terapię par, psychoterapię traumy oraz uzależnień. Pracujemy w nurtach opartych na dowodach naukowych.
                 </div>
             </details>
 
-            <details class="cursor-trigger">
+            <details>
                 <summary>Zakres Porad</summary>
                 <div class="details-content">
                     Psychologia kliniczna, psychologia dzieci i młodzieży, poradnictwo psychologiczne, interwencja kryzysowa oraz konsultacje online.
                 </div>
             </details>
 
-            <details class="cursor-trigger">
+            <details>
                 <summary>Zaburzenia Nastroju i Depresja</summary>
                 <div class="details-content">
                     Kompleksowe leczenie depresji, choroby afektywnej dwubiegunowej (ChAD) oraz dystymii przy wsparciu technologicznym.
@@ -433,7 +417,7 @@
 
         </div>
         <div style="text-align: center; margin-top: 20px;">
-            <button class="btn-light cursor-trigger" style="background: transparent; border: 1px solid var(--border); color: var(--text-muted); font-weight: normal; font-size: 0.9rem;" onclick="this.parentElement.style.display='none';">Ukryj ▲</button>
+            <button class="btn-light" style="background: transparent; border: 1px solid var(--border); color: var(--text-muted); font-weight: normal; font-size: 0.9rem;" onclick="this.parentElement.style.display='none';">Ukryj ▲</button>
         </div>
     </section>
 
@@ -442,7 +426,7 @@
         <div class="container">
             <div class="footer-grid">
                 <div>
-                    <a href="#" class="logo cursor-trigger" style="margin-bottom: 20px; display: inline-block;">
+                    <a href="#" class="logo" style="margin-bottom: 20px; display: inline-block;">
                         <img src="logo.png" alt="NCNI">
                         NCNI
                     </a>
@@ -455,13 +439,13 @@
                     <h4 style="margin-bottom: 16px;">Kontakt</h4>
                     <p style="color: var(--text-muted); margin-bottom: 8px;">ul. Stefana Żeromskiego 60/5a</p>
                     <p style="color: var(--text-muted); margin-bottom: 8px;">50-312 Wrocław</p>
-                    <a href="mailto:kontakt@ncni.pl" class="cursor-trigger" style="color: var(--text-main);">kontakt@ncni.pl</a>
+                    <a href="mailto:kontakt@ncni.pl" style="color: var(--text-main);">kontakt@ncni.pl</a>
                 </div>
                 <div>
                     <h4 style="margin-bottom: 16px;">Social Media</h4>
                     <ul style="color: var(--text-muted); font-size: 0.95rem; list-style: none;">
-                        <li style="margin-bottom: 8px;"><a href="https://youtube.com/@neuroinnowacje" target="_blank" class="cursor-trigger">YouTube</a></li>
-                        <li style="margin-bottom: 8px;"><a href="https://x.com/neuroinnowacje" target="_blank" class="cursor-trigger">X (Twitter)</a></li>
+                        <li style="margin-bottom: 8px;"><a href="https://youtube.com/@neuroinnowacje" target="_blank">YouTube</a></li>
+                        <li style="margin-bottom: 8px;"><a href="https://x.com/neuroinnowacje" target="_blank">X (Twitter)</a></li>
                     </ul>
                 </div>
             </div>
@@ -554,24 +538,6 @@
         }
         document.addEventListener("DOMContentLoaded", initParticles);
 
-        const cursorDot = document.querySelector('.cursor-dot');
-        const cursorOutline = document.querySelector('.cursor-outline');
-        
-        // Only activate cursor logic on non-touch devices
-        if (window.matchMedia("(pointer: fine)").matches) {
-            window.addEventListener('mousemove', (e) => {
-                const posX = e.clientX; const posY = e.clientY;
-                cursorDot.style.left = `${posX}px`; cursorDot.style.top = `${posY}px`;
-                cursorOutline.animate({ left: `${posX}px`, top: `${posY}px` }, { duration: 500, fill: "forwards" });
-            });
-
-            const triggers = document.querySelectorAll('.cursor-trigger, a, button, .method-card, .trauma-section, .list-card, .vr-info-box');
-            triggers.forEach(trigger => {
-                trigger.addEventListener('mouseenter', () => { document.body.classList.add('hovering'); });
-                trigger.addEventListener('mouseleave', () => { document.body.classList.remove('hovering'); });
-            });
-        }
-
         // Mobile Menu
         const toggle = document.querySelector('.mobile-toggle');
         const menu = document.querySelector('.mobile-menu');
@@ -610,7 +576,7 @@
             <div class="ania-options-area" id="ania-options-area"></div>
         </div>
 
-        <div class="ania-avatar cursor-trigger" onclick="toggleAnia()">
+        <div class="ania-avatar" onclick="toggleAnia()">
             <img src="ania.jpg" alt="Ania Chat">
             <div class="status-dot"></div>
         </div>
