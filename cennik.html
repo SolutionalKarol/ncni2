@@ -122,6 +122,7 @@
         .pr-service { flex: 1; padding-right: 20px; }
         .pr-name { font-weight: 600; font-size: 1.05rem; color: var(--text-main); }
         .pr-desc { font-size: 0.9rem; color: var(--text-muted); margin-top: 4px; display: block; }
+        .pr-meta { font-size: 0.85rem; color: var(--text-muted); margin-top: 3px; display: block; font-style: italic; }
         .pr-amount { font-weight: 700; color: var(--text-main); font-family: 'Lexend', sans-serif; font-size: 1.1rem; white-space: nowrap; }
         
         .new-badge { display: inline-block; background: var(--accent); color: white; font-size: 0.7rem; padding: 2px 6px; border-radius: 4px; vertical-align: middle; margin-left: 8px; font-weight: 600; }
@@ -238,7 +239,7 @@
                     <p style="opacity: 0.95; margin-top: 8px; font-size: 1.05rem;">
                         <strong>Konsultacja ekspercka.</strong> Pełna integracja: EEG + biosygnały + VR + dźwięk + stymulacja haptyczna.
                     </p>
-                    <p style="opacity: 0.8; font-size: 0.9rem; margin-top: 5px;">Czas trwania:do 90 min</p>
+                    <p style="opacity: 0.8; font-size: 0.9rem; margin-top: 5px;">Czas trwania: do 90 min</p>
                 </div>
                 <div class="fc-price">
                     <span class="amount">530 zł</span>
@@ -260,81 +261,82 @@
         </div>
 
         <!-- ========================================== -->
-        <!-- SEKCJA 2: TYLKO TECHNOLOGIA -->
+        <!-- SEKCJA 2: TECHNOLOGIA VR / EEG / HRV      -->
         <!-- ========================================== -->
         <div class="pricing-section tech">
             <h2 class="section-title">NCNI Neuro-Tech & VR</h2>
             
+            <!-- BANER NIEBIESKI -->
             <div class="vr-banner" style="gap: 25px; flex-wrap: wrap;">
-                
                 <div style="flex-shrink: 0; width: 140px; height: 140px; border-radius: 16px; overflow: hidden; box-shadow: 0 8px 25px rgba(0,0,0,0.2); border: 2px solid rgba(255,255,255,0.3); background: rgba(0,0,0,0.1); position: relative; display: flex; align-items: center; justify-content: center; margin: 0 auto;">
                     <img src="vr-system.png" alt="Terapia VR NCNI.System" style="width: 100%; height: 100%; object-fit: cover; position: relative; z-index: 2;">
                     <span style="position: absolute; color: white; font-size: 0.75rem; text-align: center; padding: 10px; z-index: 1; font-weight: 500;">Zdjęcie<br>NCNI.System</span>
                 </div>
-
                 <div class="fc-content" style="flex: 1; min-width: 250px;">
                     <h3 style="flex-direction: row; flex-wrap: wrap; align-items: center; gap: 10px;">
-                        <span class="vr-badge">TECHNOLOGIA</span> 
+                        <span class="vr-badge">TECHNOLOGIA</span>
                         Terapia VR - NCNI.System
                     </h3>
                     <p style="opacity: 0.95; margin-top: 8px; font-size: 1.05rem;">
                         Autorski, zintegrowany system terapeutyczny. Łączy immersję w <strong>Wirtualnej Rzeczywistości (VR)</strong>, precyzyjny monitoring pracy mózgu <strong>(Biofeedback EEG)</strong> oraz głęboką regenerację układu nerwowego w <strong>fotelu z masażem Zero Gravity</strong>.
                     </p>
                 </div>
-                
                 <div class="fc-price" style="min-width: 130px; text-align: right;">
                     <span class="amount">340 zł</span>
-                    <span class="unit">Sesja terapeutyczna (do 50 min)</span>
+                    <span class="unit">Sesja (do 50 min)</span>
                 </div>
             </div>
 
+            <!-- 1. Metoda Kraszewskiego — NCNI.Circle -->
             <div class="price-row">
                 <div class="pr-service">
-                    <div class="pr-name">Biofeedback HRV — Trening</div>
-                    <span class="pr-desc">Trening zmienności rytmu serca. Regulacja ANS, redukcja stresu i lęku.</span>
+                    <div class="pr-name">Metoda Kraszewskiego — NCNI.Circle</div>
+                    <span class="pr-desc">Wirtualna rzeczywistość VR + Biofeedback EEG + fotel Zero Gravity</span>
+                    <span class="pr-meta">do 50 min</span>
                 </div>
-                <div class="pr-amount">280 zł</div>
+                <div class="pr-amount">340 zł</div>
             </div>
 
+            <!-- 2. Metoda Kraszewskiego — NCNI.Circle (rozszerzona) -->
             <div class="price-row">
                 <div class="pr-service">
-                    <div class="pr-name">Biofeedback VR </div>
-                    <span class="pr-desc">	VR + Biofeedback EEG z ekranem (bez fotela Zero Gravity)</span>
+                    <div class="pr-name">Metoda Kraszewskiego — NCNI.Circle (rozszerzona)</div>
+                    <span class="pr-desc">Pełna diagnostyka + VR + EEG + fotel Zero Gravity + konsultacja ekspercka</span>
+                    <span class="pr-meta">90 min</span>
+                </div>
+                <div class="pr-amount">530 zł</div>
+            </div>
+
+            <!-- 3. Biofeedback VR -->
+            <div class="price-row">
+                <div class="pr-service">
+                    <div class="pr-name">Biofeedback VR</div>
+                    <span class="pr-desc">VR + Biofeedback EEG z ekranem (bez fotela Zero Gravity)</span>
+                    <span class="pr-meta">do 50 min</span>
                 </div>
                 <div class="pr-amount">250 zł</div>
             </div>
 
+            <!-- 4. Deep Focus -->
             <div class="price-row">
                 <div class="pr-service">
-                    <div class="pr-name">Biofeedback EMG</div>
-                    <span class="pr-desc">Trening relaksacji mięśniowej (redukcja napięć psychosomatycznych).</span>
+                    <div class="pr-name">Deep Focus</div>
+                    <span class="pr-desc">VR trening koncentracji + fotel Zero Gravity</span>
+                    <span class="pr-meta">do 50 min</span>
                 </div>
-                <div class="pr-amount">170 zł</div>
+                <div class="pr-amount">280 zł</div>
             </div>
 
+            <!-- 5. Deep Relaxation -->
             <div class="price-row">
                 <div class="pr-service">
-                    <div class="pr-name">Trening Uważności z Muse 2 <span class="new-badge">HIT</span></div>
-                    <span class="pr-desc">Medytacja technologiczna. Urządzenie przetwarza Twoje fale mózgowe na dźwięki natury (np. wiatr, deszcz).</span>
+                    <div class="pr-name">Deep Relaxation</div>
+                    <span class="pr-desc">VR relaksacyjny + fotel Zero Gravity</span>
+                    <span class="pr-meta">do 50 min</span>
                 </div>
-                <div class="pr-amount">160 zł</div>
+                <div class="pr-amount">280 zł</div>
             </div>
 
-            <div class="price-row">
-                <div class="pr-service">
-                    <div class="pr-name">PAKIET: Biofeedback (10 sesji)</div>
-                    <span class="pr-desc">Pełny cykl treningowy (HRV / EEG / EMG / Muse do wyboru).</span>
-                </div>
-                <div class="pr-amount">1700 zł</div>
-            </div>
-
-            <div class="price-row">
-                <div class="pr-service">
-                    <div class="pr-name">Pakiet VR (5 sesji)</div>
-                    <span class="pr-desc">Cykl 5 spotkań terapeutycznych w wirtualnej rzeczywistości.</span>
-                </div>
-                <div class="pr-amount">1550 zł</div>
-            </div>
         </div>
 
         <!-- ========================================== -->
