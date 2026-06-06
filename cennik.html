@@ -265,13 +265,10 @@
         <div class="pricing-section tech">
             <h2 class="section-title">NCNI Neuro-Tech & VR</h2>
             
-            <!-- ZMODYFIKOWANY BANNER: NCNI.System -->
             <div class="vr-banner" style="gap: 25px; flex-wrap: wrap;">
                 
-                <!-- Miejsce na zdjęcie -->
                 <div style="flex-shrink: 0; width: 140px; height: 140px; border-radius: 16px; overflow: hidden; box-shadow: 0 8px 25px rgba(0,0,0,0.2); border: 2px solid rgba(255,255,255,0.3); background: rgba(0,0,0,0.1); position: relative; display: flex; align-items: center; justify-content: center; margin: 0 auto;">
                     <img src="vr-system.png" alt="Terapia VR NCNI.System" style="width: 100%; height: 100%; object-fit: cover; position: relative; z-index: 2;">
-                    <!-- Tekst zastępczy -->
                     <span style="position: absolute; color: white; font-size: 0.75rem; text-align: center; padding: 10px; z-index: 1; font-weight: 500;">Zdjęcie<br>NCNI.System</span>
                 </div>
 
@@ -501,11 +498,11 @@
         <div class="pricing-section psych">
             <h2 class="section-title">Opieka Psychologiczna i Psychoterapia</h2>
             
-            <!-- WPIS: MGR MAGDALENA DZIALUK -->
+            <!-- WPIS: PSYCHOLOG -->
             <div style="display: flex; flex-wrap: wrap; gap: 20px; background: white; padding: 25px; border-radius: 12px; border: 1px solid var(--border); border-left: 4px solid var(--primary); margin: 15px 0; box-shadow: 0 4px 15px rgba(0,0,0,0.02);">
                 <div style="flex-shrink: 0; text-align: center; width: 120px; position: relative; z-index: 10;">
                     <a href="psycholog.html" style="display: inline-block; transition: 0.3s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                        <img src="magdalena-dzialuk.jpg" alt="mgr Magdalena Dzialuk" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; object-position: top; border: 3px solid var(--primary-light); box-shadow: 0 4px 10px rgba(15, 118, 110, 0.1);">
+                        <img src="psycholog-ncni.jpg" alt="Psycholog NCNI Wrocław" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; object-position: top; border: 3px solid var(--primary-light); box-shadow: 0 4px 10px rgba(15, 118, 110, 0.1);" onerror="this.src='https://ui-avatars.com/api/?name=Psycholog+NCNI&background=0F766E&color=fff&size=200'">
                     </a>
                     <a href="psycholog.html" style="display: inline-block; margin-top: 8px; font-size: 0.85rem; color: var(--primary); text-decoration: none; font-weight: 600; padding: 4px 8px; border-radius: 4px; transition: 0.2s;" onmouseover="this.style.backgroundColor='var(--primary-light)'" onmouseout="this.style.backgroundColor='transparent'">Zobacz profil</a>
                 </div>
@@ -513,7 +510,7 @@
                     <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 10px; margin-bottom: 15px; border-bottom: 1px dashed var(--border); padding-bottom: 15px;">
                         <div style="position: relative; z-index: 10;">
                             <h3 style="margin-bottom: 4px;">
-                                <a href="psycholog.html" style="color: var(--primary); font-size: 1.3rem; text-decoration: none; transition: 0.2s;" onmouseover="this.style.color='var(--primary-dark)'" onmouseout="this.style.color='var(--primary)'">mgr Magdalena Dzialuk</a>
+                                <a href="psycholog.html" style="color: var(--primary); font-size: 1.3rem; text-decoration: none; transition: 0.2s;" onmouseover="this.style.color='var(--primary-dark)'" onmouseout="this.style.color='var(--primary)'">Psycholog</a>
                             </h3>
                             <p style="font-weight: 600; color: var(--accent); font-size: 0.95rem; margin-bottom: 4px;">Psycholog, Psychoterapeuta</p>
                             <p style="color: var(--text-main); font-weight: 500; font-size: 0.9rem; margin-bottom: 0;">Pierwsza wizyta diagnostyczno-konsultacyjna</p>
@@ -645,7 +642,7 @@
         <details>
             <summary>Czy pierwsza wizyta kosztuje tyle samo?</summary>
             <div class="details-content">
-                <p>Zazwyczaj pierwsza wizyta (konsultacyjna/diagnostyczna) różni się ceną od kolejnych sesji. Np. u mgr Magdaleny Działuk konsultacja wstępna (kwalifikująca) to 250 zł. Standardowe wizyty terapeutyczne (kolejne) wynoszą średnio 220 zł.</p>
+                <p>Zazwyczaj pierwsza wizyta (konsultacyjna/diagnostyczna) różni się ceną od kolejnych sesji. Konsultacja wstępna (kwalifikująca) u naszego Psychologa to 250 zł. Standardowe wizyty terapeutyczne (kolejne) wynoszą średnio 220 zł.</p>
             </div>
         </details>
 
@@ -691,16 +688,13 @@
     </div>
 
     <script>
-        // Pokazywanie dymku "Ani"
         function toggleAnia() {
             const bubble = document.getElementById('ania-message');
             bubble.classList.toggle('active');
         }
 
-        // TŁO - THREE.JS
         function initParticles(){const container=document.getElementById('bg-canvas');if(!container)return;const scene=new THREE.Scene();scene.fog=new THREE.FogExp2(0xF8FAFC,0.002);const camera=new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,1000);camera.position.z=10;const renderer=new THREE.WebGLRenderer({alpha:true,antialias:true});renderer.setSize(window.innerWidth,window.innerHeight);renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));container.appendChild(renderer.domElement);const geometry=new THREE.BufferGeometry();const count=200;const positions=new Float32Array(count*3);const colors=new Float32Array(count*3);for(let i=0;i<count*3;i+=3){positions[i]=(Math.random()-0.5)*25;positions[i+1]=(Math.random()-0.5)*25;positions[i+2]=(Math.random()-0.5)*25;const mix=Math.random();if(mix>0.5){colors[i]=0.06;colors[i+1]=0.46;colors[i+2]=0.43;}else{colors[i]=0.39;colors[i+1]=0.4;colors[i+2]=0.94;}}geometry.setAttribute('position',new THREE.BufferAttribute(positions,3));geometry.setAttribute('color',new THREE.BufferAttribute(colors,3));const material=new THREE.PointsMaterial({size:0.1,vertexColors:true,transparent:true,opacity:0.4});const particles=new THREE.Points(geometry,material);scene.add(particles);let mouseX=0,mouseY=0,targetX=0,targetY=0;const windowHalfX=window.innerWidth/window.innerHeight;const windowHalfY=window.innerHeight/2;document.addEventListener('mousemove',(e)=>{mouseX=(e.clientX-windowHalfX);mouseY=(e.clientY-windowHalfY);});const clock=new THREE.Clock();function animate(){const time=clock.getElapsedTime();targetX=mouseX*0.0001;targetY=mouseY*0.0001;particles.rotation.y+=0.01*(targetX-particles.rotation.y);particles.rotation.x+=0.01*(targetY-particles.rotation.x);particles.rotation.z+=0.0005;const scale=1+Math.sin(time*0.5)*0.02;particles.scale.set(scale,scale,scale);renderer.render(scene,camera);requestAnimationFrame(animate);}animate();window.addEventListener('resize',()=>{camera.aspect=window.innerWidth/window.innerHeight;camera.updateProjectionMatrix();renderer.setSize(window.innerWidth,window.innerHeight);});}document.addEventListener("DOMContentLoaded",initParticles);
 
-        // Obsługa mobilnego menu
         const toggle = document.querySelector('.mobile-toggle');
         const menu = document.querySelector('.mobile-menu');
         if (toggle && menu) {
@@ -708,26 +702,18 @@
             menu.querySelectorAll('a').forEach(link => { link.addEventListener('click', () => menu.classList.remove('active')); });
         }
 
-        // --- OBSŁUGA FILTRÓW (ZAKŁADEK) ---
         const filterBtns = document.querySelectorAll('.filter-btn');
         const sections = document.querySelectorAll('.pricing-section');
 
         function initFilters() {
             filterBtns.forEach(btn => {
                 btn.addEventListener('click', () => {
-                    
-                    // 1. Zmiana wyglądu przycisku
                     filterBtns.forEach(b => b.classList.remove('active'));
                     btn.classList.add('active');
-
                     const filter = btn.getAttribute('data-filter');
-
-                    // 2. Filtrowanie bloków
                     sections.forEach(sec => {
                         if (filter === 'all' || sec.classList.contains(filter)) {
                             sec.style.display = 'block';
-                            
-                            // Wymuszenie restartu animacji, żeby przejście było płynne
                             sec.style.animation = 'none';
                             void sec.offsetWidth; 
                             sec.style.animation = 'fadeIn 0.5s ease forwards';
@@ -737,16 +723,10 @@
                     });
                 });
             });
-
-            // INICJALIZACJA STARTOWA: Wymuś kliknięcie przycisku "Wszystko", 
-            // aby przeglądarka od razu wyświetliła poprawne sekcje i odpaliła animację.
             const allBtn = document.querySelector('.filter-btn[data-filter="all"]');
-            if (allBtn) {
-                allBtn.click();
-            }
+            if (allBtn) { allBtn.click(); }
         }
 
-        // Uruchomienie filtrów od razu po wczytaniu DOM
         document.addEventListener("DOMContentLoaded", initFilters);
 
     </script>
