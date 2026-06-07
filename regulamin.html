@@ -56,6 +56,33 @@
             margin-bottom: 2rem;
             border-radius: 0 0.5rem 0.5rem 0;
         }
+        .intro-box {
+            background: linear-gradient(135deg, #f0fdfa 0%, #e6fffa 100%);
+            border-left: 4px solid #0F766E;
+            border-radius: 0 0.75rem 0.75rem 0;
+            padding: 1.75rem 2rem;
+            margin-bottom: 2.5rem;
+        }
+        .intro-box p {
+            margin-bottom: 0.75rem;
+            text-align: justify;
+        }
+        .intro-box p:last-child {
+            margin-bottom: 0;
+        }
+        .category-box {
+            background: #F8FAFC;
+            border: 1px solid #E2E8F0;
+            border-radius: 0.75rem;
+            padding: 1.25rem 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .category-box-title {
+            font-weight: 700;
+            color: #0F766E;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
     </style>
 </head>
 <body>
@@ -80,12 +107,20 @@
             <p class="mb-1">tel. 600 608 333 | kontakt@ncni.pl | www.ncni.pl</p>
         </div>
 
+        <!-- BLOK WSTĘPNY -->
+        <div class="intro-box">
+            <p class="text-lg font-semibold text-teal-800 mb-3">Odczarowujemy technologię w medycynie.</p>
+            <p>VR, Biofeedback i Neuromodulacja to nie gadżety — to precyzyjne narzędzia, które w rękach doświadczonych specjalistów wspierają regulację układu nerwowego, koncentrację, sen i jakość życia.</p>
+            <p>Sesje z wykorzystaniem technologii (VR, biofeedback, neurofeedback, neuromodulacja) mają charakter <strong>wspierający</strong> — nie stanowią leczenia w rozumieniu przepisów o działalności leczniczej i nie zastępują diagnozy ani terapii prowadzonej przez uprawnionego specjalistę medycznego.</p>
+            <p>Usługi świadczone przez psychologów, psychoterapeutów, fizjoterapeutów i dietetyków współpracujących z NCNI stanowią odrębną kategorię usług terapeutycznych i leczniczych, realizowanych przez osoby posiadające odpowiednie uprawnienia zawodowe.</p>
+        </div>
+
         <div class="legal-content">
             
             <h2 class="legal-section-title">§ 1. POSTANOWIENIA OGÓLNE</h2>
             
             <h3 class="legal-subsection-title">1.1. Informacje o placówce</h3>
-            <p>Niniejszy Regulamin określa zasady świadczenia usług neuroterapeutycznych przez:<br>
+            <p>Niniejszy Regulamin określa zasady świadczenia usług przez:<br>
             <strong>Naukowe Centrum Neuroinnowacji (dalej: NCNI)</strong><br>
             Siedziba: ul. Stefana Żeromskiego 60/5a, 50-312 Wrocław<br>
             Telefon: 600 608 333<br>
@@ -103,9 +138,10 @@
                 <li>Diagnostyka neurofizjologiczna (EEG, QEEG)</li>
                 <li>Trening poznawczy i regulacja emocjonalna</li>
                 <li>Konsultacje neuropsychologiczne</li>
-                <li>Terapie ADHD, ASD, wysokiej wrażliwości (WWO)</li>
-                <li>Terapie stresu, traumy PTSD, dysleksji i dysfunkcji motorycznych</li>
-                <li>Oraz inne niewymienione usługi</li>
+                <li>Wsparcie w obszarach ADHD, ASD, wysokiej wrażliwości (WWO)</li>
+                <li>Wsparcie w obszarach stresu, traumy PTSD, dysleksji i dysfunkcji motorycznych</li>
+                <li>Konsultacje psychologiczne, psychoterapia CBT, fizjoterapia, konsultacje dietetyczne</li>
+                <li>Oraz inne usługi zgodne z profilem działalności NCNI</li>
             </ul>
 
             <h3 class="legal-subsection-title">1.3. Kwalifikacje i kompetencje</h3>
@@ -113,39 +149,51 @@
             <ul>
                 <li>Certyfikowanych terapeutów biofeedback i neurofeedback</li>
                 <li>Specjalistów posiadających licencje Polskiego Towarzystwa Neurofeedbacku i Neuromodulacji (PTNK)</li>
-                <li>Psychologów, neurologów, fizjoterapeutów z odpowiednimi uprawnieniami</li>
-                <li>Personel z udokumentowanym doświadczeniem w neurotechnologiach i metodach terapeutycznych</li>
+                <li>Psychologów, psychoterapeutów CBT, fizjoterapeutów, dietetyków z odpowiednimi uprawnieniami zawodowymi</li>
+                <li>Personel z udokumentowanym doświadczeniem w neurotechnologiach i metodach wspierających</li>
             </ul>
 
             <h3 class="legal-subsection-title">1.4. Charakter świadczonych usług</h3>
-            <p>Usługi NCNI mają charakter wspomagający i terapeutyczny, ale nie zastępują leczenia medycznego prowadzonego przez lekarza specjalistę. W przypadku poważnych zaburzeń zdrowia psychicznego lub neurologicznych zalecamy równoległą konsultację z lekarzem psychiatrą lub neurologiem.</p>
+            <p>Usługi NCNI podzielone są na dwie kategorie:</p>
+
+            <div class="category-box">
+                <p class="category-box-title">A) Sesje technologiczne (VR, biofeedback, neurofeedback, neuromodulacja, diagnostyka EEG/QEEG, trening poznawczy)</p>
+                <p>Mają charakter <strong>wspierający i wspomagający</strong>. Prowadzone są jako precyzyjne narzędzia regulacji układu nerwowego, wsparcia koncentracji, snu i jakości życia. <strong>Sesje te nie stanowią leczenia</strong> w rozumieniu ustawy o działalności leczniczej i nie zastępują porady lekarskiej ani terapii medycznej. Specjaliści NCNI prowadzący sesje technologiczne pełnią rolę ekspertów i operatorów urządzeń — ich rekomendacje mają charakter <strong>ekspercki i informacyjny</strong>, nie diagnostyczno-leczniczy.</p>
+            </div>
+
+            <div class="category-box">
+                <p class="category-box-title">B) Usługi specjalistyczne (konsultacje psychologiczne, psychoterapia CBT, fizjoterapia, konsultacje dietetyczne, neuropsychologia)</p>
+                <p>Świadczone są przez uprawnionych specjalistów i mogą mieć charakter terapeutyczny i leczniczy zgodnie z ich uprawnieniami zawodowymi. To specjaliści — a nie sam sprzęt technologiczny — prowadzą pracę terapeutyczną z pacjentem i ponoszą za nią odpowiedzialność zawodową.</p>
+            </div>
+
+            <p>W przypadku poważnych zaburzeń zdrowia psychicznego lub neurologicznych zalecamy równoległą konsultację z lekarzem psychiatrą lub neurologiem.</p>
 
             <h2 class="legal-section-title">§ 2. WARUNKI ŚWIADCZENIA USŁUG</h2>
             
             <h3 class="legal-subsection-title">2.1. Czas trwania sesji</h3>
             <ul>
                 <li>Sesja biofeedback/neurofeedback: 60 minut (w tym przygotowanie, trening, omówienie)</li>
-                <li>Konsultacja wstępna: 90 minut (wywiad, diagnostyka, plan terapii)</li>
-                <li>Sesja VR: 45-60 minut (w zależności od protokołu)</li>
-                <li>Diagnostyka EEG/QEEG: 60-90 minut</li>
+                <li>Konsultacja wstępna: 90 minut (wywiad, diagnostyka, plan wsparcia)</li>
+                <li>Sesja VR: 45–60 minut (w zależności od protokołu)</li>
+                <li>Diagnostyka EEG/QEEG: 60–90 minut</li>
             </ul>
 
             <h3 class="legal-subsection-title">2.2. Liczba sesji</h3>
             <p>Liczba sesji ustalana jest indywidualnie w zależności od:</p>
             <ul>
-                <li>Problemu zgłaszanego przez pacjenta</li>
+                <li>Problemu lub celu zgłaszanego przez klienta/pacjenta</li>
                 <li>Wyników diagnostyki wstępnej</li>
-                <li>Tempa postępów terapeutycznych</li>
+                <li>Tempa postępów i indywidualnej odpowiedzi na trening</li>
             </ul>
-            <p><strong>Typowe programy terapeutyczne:</strong></p>
+            <p><strong>Typowe programy:</strong></p>
             <ul>
-                <li>Program podstawowy: 10-20 sesji</li>
-                <li>Program intensywny: 20-40 sesji</li>
-                <li>Program premium: 40-60 sesji + diagnostyka kontrolna</li>
+                <li>Program podstawowy: 10–20 sesji</li>
+                <li>Program intensywny: 20–40 sesji</li>
+                <li>Program premium: 40–60 sesji + diagnostyka kontrolna</li>
             </ul>
 
             <h3 class="legal-subsection-title">2.3. Wymagania wstępne</h3>
-            <p>Przed rozpoczęciem terapii pacjent zobowiązany jest do:</p>
+            <p>Przed rozpoczęciem sesji klient/pacjent zobowiązany jest do:</p>
             <ul>
                 <li>Wypełnienia wywiadu kwalifikacyjnego (ankieta biofeedback premium)</li>
                 <li>Przedstawienia zaświadczenia lekarskiego o braku przeciwwskazań do terapii biofeedback/neurofeedback (w przypadku schorzeń neurologicznych, kardiologicznych, padaczki)</li>
@@ -153,8 +201,8 @@
                 <li>Zapoznania się z niniejszym Regulaminem i akceptacji jego treści</li>
             </ul>
 
-            <h3 class="legal-subsection-title">2.4. Przeciwwskazania do terapii</h3>
-            <p>Terapia biofeedback/neurofeedback może być przeciwwskazana lub wymaga konsultacji lekarskiej w przypadku:</p>
+            <h3 class="legal-subsection-title">2.4. Przeciwwskazania do sesji technologicznych</h3>
+            <p>Sesje biofeedback/neurofeedback oraz VR mogą być przeciwwskazane lub wymagają konsultacji lekarskiej w przypadku:</p>
             <ul>
                 <li>Padaczki lub napadów drgawkowych (wymagana zgoda neurologa)</li>
                 <li>Ciąży (szczególnie w przypadku neuromodulacji tDCS/tACS)</li>
@@ -169,7 +217,7 @@
             <h3 class="legal-subsection-title">3.1. Rezerwacja wizyt</h3>
             <p>Wizyty można rezerwować:</p>
             <ul>
-                <li>Telefonicznie: 600 608 333 (pn-pt, 9:00-18:00)</li>
+                <li>Telefonicznie: 600 608 333 (pn–pt, 9:00–18:00)</li>
                 <li>E-mailowo: kontakt@ncni.pl</li>
                 <li>Poprzez formularz online na stronie: www.ncni.pl</li>
                 <li>Osobiście w siedzibie NCNI</li>
@@ -195,7 +243,7 @@
                 <li>Spóźnienie do 10 minut – sesja realizowana w skróconym czasie</li>
                 <li>Spóźnienie powyżej 15 minut – terapeuta zastrzega sobie prawo do odwołania sesji (opłata jak za niestawiennictwo)</li>
             </ul>
-            <p>NCNI dokłada wszelkich starań, aby pacjent został przyjęty o ustalonej godzinie. W przypadku opóźnienia ze strony terapeuty, pacjent zostanie poinformowany i otrzyma przeprosiny oraz propozycję alternatywnego terminu.</p>
+            <p>NCNI dokłada wszelkich starań, aby klient/pacjent został przyjęty o ustalonej godzinie. W przypadku opóźnienia ze strony specjalisty, klient zostanie poinformowany i otrzyma przeprosiny oraz propozycję alternatywnego terminu.</p>
 
             <h2 class="legal-section-title">§ 4. CENNIK I PŁATNOŚCI</h2>
             
@@ -208,10 +256,10 @@
             </ul>
             <p><strong>Orientacyjne ceny (2026):</strong></p>
             <ul>
-                <li>Konsultacja wstępna + diagnostyka: 300-400 zł</li>
-                <li>Sesja biofeedback/neurofeedback (60 min): 200-300 zł</li>
-                <li>Sesja VR (60 min): 250-350 zł</li>
-                <li>Diagnostyka QEEG: 500-700 zł</li>
+                <li>Konsultacja wstępna + diagnostyka: 300–400 zł</li>
+                <li>Sesja biofeedback/neurofeedback (60 min): 200–300 zł</li>
+                <li>Sesja VR (60 min): 250–350 zł</li>
+                <li>Diagnostyka QEEG: 500–700 zł</li>
                 <li>Pakiet 10 sesji: rabat 10%</li>
                 <li>Pakiet 20 sesji: rabat 15%</li>
             </ul>
@@ -229,27 +277,60 @@
 
             <h3 class="legal-subsection-title">4.3. Faktury VAT</h3>
             <ul>
-                <li>Faktury VAT wystawiane są na życzenie pacjenta</li>
+                <li>Faktury VAT wystawiane są na życzenie klienta/pacjenta</li>
                 <li>Dane do faktury należy podać przed dokonaniem płatności</li>
-                <li>Faktury elektroniczne wysyłane są na adres e-mail podany przez pacjenta</li>
+                <li>Faktury elektroniczne wysyłane są na adres e-mail podany przez klienta</li>
                 <li>NCNI stosuje się do wymogów KSeF (Krajowy System e-Faktur)</li>
             </ul>
 
             <h3 class="legal-subsection-title">4.4. Polityka zwrotów</h3>
             <ul>
                 <li>Płatności za pakiety sesji nie podlegają zwrotowi po rozpoczęciu terapii</li>
-                <li>W przypadku rezygnacji z terapii przed jej rozpoczęciem – zwrot 100% wpłaconej kwoty</li>
-                <li>W przypadku rezygnacji z terapii po rozpoczęciu – rozliczenie proporcjonalne za zrealizowane sesje według cennika podstawowego (bez rabatu pakietowego)</li>
+                <li>W przypadku rezygnacji przed rozpoczęciem – zwrot 100% wpłaconej kwoty</li>
+                <li>W przypadku rezygnacji po rozpoczęciu – rozliczenie proporcjonalne za zrealizowane sesje według cennika podstawowego (bez rabatu pakietowego)</li>
             </ul>
 
-            <h2 class="legal-section-title">§ 5. PRAWA I OBOWIĄZKI PACJENTA</h2>
-            
-            <h3 class="legal-subsection-title">5.1. Prawa pacjenta</h3>
+            <!-- § 5A – SESJE TECHNOLOGICZNE -->
+            <h2 class="legal-section-title">§ 5. PRAWA I OBOWIĄZKI KLIENTÓW I PACJENTÓW</h2>
+
+            <h3 class="legal-subsection-title">5A. Klienci sesji technologicznych (VR, biofeedback, neurofeedback, neuromodulacja, EEG/QEEG)</h3>
+            <p>Niniejszy punkt dotyczy osób korzystających z sesji technologicznych, które mają charakter wspierający i nie stanowią leczenia.</p>
+
+            <h3 class="legal-subsection-title">5A.1. Prawa Klienta sesji technologicznych</h3>
+            <p>Klient ma prawo do:</p>
+            <ul>
+                <li>Pełnej informacji o celu, przebiegu i metodologii sesji technologicznej</li>
+                <li>Informacji o wspierającym (nie leczniczym) charakterze sesji</li>
+                <li>Zachowania poufności i ochrony danych osobowych (zgodnie z RODO)</li>
+                <li>Wglądu do własnej dokumentacji z sesji</li>
+                <li>Wyrażenia zgody lub odmowy na proponowaną sesję lub protokół</li>
+                <li>Odstąpienia od sesji w dowolnym momencie (z zastrzeżeniem rozliczeń finansowych)</li>
+                <li>Wniesienia reklamacji dotyczącej świadczonych usług</li>
+                <li>Poszanowania intymności i godności osobistej</li>
+            </ul>
+
+            <h3 class="legal-subsection-title">5A.2. Obowiązki Klienta sesji technologicznych</h3>
+            <p>Klient zobowiązuje się do:</p>
+            <ul>
+                <li>Punktualnego stawiania się na umówione sesje</li>
+                <li>Informowania operatora/specjalisty o stanie zdrowia, przyjmowanych lekach i ewentualnych przeciwwskazaniach przed sesją</li>
+                <li>Powstrzymania się od spożywania alkoholu, narkotyków i nadmiernej ilości kofeiny przed sesją</li>
+                <li>Informowania o ciąży (w przypadku kobiet)</li>
+                <li>Wnoszenia opłat za świadczone usługi zgodnie z cennikiem</li>
+                <li>Szanowania personelu, sprzętu i innych klientów NCNI</li>
+                <li>Powiadamiania o rezygnacji z sesji z odpowiednim wyprzedzeniem</li>
+            </ul>
+
+            <!-- § 5B – USŁUGI SPECJALISTYCZNE -->
+            <h3 class="legal-subsection-title">5B. Pacjenci usług specjalistycznych (psycholog, psychoterapeuta, fizjoterapeuta, dietetyk, neuropsycholog)</h3>
+            <p>Niniejszy punkt dotyczy osób korzystających z usług prowadzonych przez uprawnionych specjalistów, które mogą mieć charakter terapeutyczny i leczniczy.</p>
+
+            <h3 class="legal-subsection-title">5B.1. Prawa Pacjenta usług specjalistycznych</h3>
             <p>Pacjent ma prawo do:</p>
             <ul>
-                <li>Pełnej informacji o stanie zdrowia, celach, metodach i przebiegu terapii</li>
-                <li>Zachowania poufności i ochrony danych osobowych (zgodnie z RODO)</li>
-                <li>Wglądu do własnej dokumentacji medycznej</li>
+                <li>Pełnej informacji o stanie zdrowia, celach, metodach i przebiegu terapii prowadzonej przez specjalistę</li>
+                <li>Zachowania tajemnicy zawodowej i ochrony danych osobowych (zgodnie z RODO)</li>
+                <li>Wglądu do własnej dokumentacji medycznej/terapeutycznej</li>
                 <li>Wyrażenia zgody lub odmowy na proponowane metody terapii</li>
                 <li>Odstąpienia od terapii w dowolnym momencie (z zastrzeżeniem rozliczeń finansowych)</li>
                 <li>Żądania konsultacji z innym specjalistą</li>
@@ -257,13 +338,13 @@
                 <li>Poszanowania intymności i godności osobistej</li>
             </ul>
 
-            <h3 class="legal-subsection-title">5.2. Obowiązki pacjenta</h3>
+            <h3 class="legal-subsection-title">5B.2. Obowiązki Pacjenta usług specjalistycznych</h3>
             <p>Pacjent zobowiązuje się do:</p>
             <ul>
                 <li>Punktualnego stawiania się na umówione wizyty</li>
-                <li>Informowania terapeuty o wszelkich zmianach w stanie zdrowia, przyjmowanych lekach lub innych terapiach równoległych</li>
-                <li>Przestrzegania zaleceń terapeuty (np. ćwiczenia domowe, regularne sesje)</li>
-                <li>Powstrzymania się od spożywania alkoholu, narkotyków i nadmiernej ilości kofeiny przed sesją</li>
+                <li>Informowania specjalisty o wszelkich zmianach w stanie zdrowia, przyjmowanych lekach lub innych terapiach równoległych</li>
+                <li>Przestrzegania zaleceń specjalisty (np. ćwiczenia domowe, regularność wizyt)</li>
+                <li>Powstrzymania się od spożywania alkoholu, narkotyków i nadmiernej ilości kofeiny przed wizytą</li>
                 <li>Informowania o ciąży (w przypadku kobiet)</li>
                 <li>Wnoszenia opłat za świadczone usługi zgodnie z cennikiem</li>
                 <li>Szanowania personelu i innych pacjentów NCNI</li>
@@ -306,10 +387,10 @@
                         <li>Odmowy dalszego świadczenia usług na rzecz pacjenta</li>
                         <li>Żądania usunięcia nielegalnie utrwalonych materiałów oraz zobowiązania do ich nieudostępniania osobom trzecim</li>
                         <li>Podjęcia kroków prawnych, w tym zawiadomienia organów ścigania o popełnieniu przestępstwa (art. 267 KK – naruszenie miru domowego, art. 226 KK – naruszenie tajemnicy)</li>
-                        <li>Dochodzenia roszczeń odszkodowawczych na zasadach ogólnych, w szczególności z tytułu naruszenia dóbr osobistych (art. 23-24 KC), prawa do wizerunku (art. 81 ustawy o prawie autorskim) oraz naruszenia tajemnicy przedsiębiorstwa</li>
+                        <li>Dochodzenia roszczeń odszkodowawczych na zasadach ogólnych, w szczególności z tytułu naruszenia dóbr osobistych (art. 23–24 KC), prawa do wizerunku (art. 81 ustawy o prawie autorskim) oraz naruszenia tajemnicy przedsiębiorstwa</li>
                     </ul>
                 </li>
-                <li class="mb-2">W przypadku naruszenia zakazu, o którym mowa w § 6.1, Pacjent (lub osoba mu towarzysząca, za którą Pacjent odpowiada solidarnie jak za własne działania) zobowiązuje się do zapłaty na rzecz NCNI kary umownej w wysokości <strong>10 000 zł (dziesięć tysięcy złotych)</strong> za każde pojedyncze naruszenie (każde nagranie, zdjęcie, screenshot, transmisję), niezależnie od innych przysługujących NCNI roszczeń na podstawie przepisów prawa (art. 483-484 KC).</li>
+                <li class="mb-2">W przypadku naruszenia zakazu, o którym mowa w § 6.1, Pacjent (lub osoba mu towarzysząca, za którą Pacjent odpowiada solidarnie jak za własne działania) zobowiązuje się do zapłaty na rzecz NCNI kary umownej w wysokości <strong>10 000 zł (dziesięć tysięcy złotych)</strong> za każde pojedyncze naruszenie (każde nagranie, zdjęcie, screenshot, transmisję), niezależnie od innych przysługujących NCNI roszczeń na podstawie przepisów prawa (art. 483–484 KC).</li>
                 <li class="mb-2">Zapłata kary umownej nie wyłącza prawa NCNI do dochodzenia odszkodowania przewyższającego wysokość zastrzeżonej kary umownej.</li>
                 <li class="mb-2">Materiały uzyskane z naruszeniem zakazu określonego w § 6.1 nie mogą być wykorzystywane jako dowody w jakichkolwiek postępowaniach sądowych, administracyjnych ani innych postępowaniach urzędowych. NCNI zastrzega sobie prawo do kwestionowania dopuszczalności takich dowodów oraz żądania ich pominięcia przez sąd lub organ.</li>
             </ol>
@@ -374,7 +455,7 @@
                     bez uprzedniej, wyraźnej, pisemnej zgody Prezesa Zarządu NCNI.
                 </li>
                 <li class="mb-2">Wykorzystywanie treści NCNI w charakterze dowodowym w postępowaniach sądowych, administracyjnych, egzekucyjnych, karnych lub innych postępowaniach urzędowych, bez uprzedniego uzyskania od NCNI pisemnej licencji na taki sposób korzystania.</li>
-                <li class="mb-2">Używanie treści w sposób mogący naruszać dobre imę, renomę, wizerunek lub uzasadnione interesy majątkowe NCNI.</li>
+                <li class="mb-2">Używanie treści w sposób mogący naruszać dobre imię, renomę, wizerunek lub uzasadnione interesy majątkowe NCNI.</li>
                 <li class="mb-2">Używanie treści w celu porównawczym, konkurencyjnym, analitycznym lub w jakikolwiek inny sposób służący interesom osób trzecich (w tym podmiotów konkurencyjnych, kancelarii prawnych, organów administracji).</li>
                 <li class="mb-2">Modyfikowanie, przerabianie, tłumaczenie, dekompilowanie lub tworzenie utworów zależnych na podstawie treści NCNI.</li>
             </ol>
@@ -411,8 +492,8 @@
                                 <li>Zapłaty sumy pieniężnej w wysokości odpowiadającej dwukrotności, a w przypadku naruszenia dokonanego umyślnie – trzykrotności stosownego wynagrodzenia, które w chwili jego dochodzenia byłoby należne tytułem udzielenia przez uprawnionego zgody na korzystanie z utworu (art. 79 ust. 1 pkt 3 lit. c)</li>
                             </ul>
                         </li>
-                        <li>Dochodzenia roszczeń z tytułu naruszenia dóbr osobistych (art. 23-24 KC)</li>
-                        <li>Zgłoszenia naruszenia do organów ścigania (art. 115-117 ustawy o prawie autorskim i prawach pokrewnych – odpowiedzialność karna)</li>
+                        <li>Dochodzenia roszczeń z tytułu naruszenia dóbr osobistych (art. 23–24 KC)</li>
+                        <li>Zgłoszenia naruszenia do organów ścigania (art. 115–117 ustawy o prawie autorskim i prawach pokrewnych – odpowiedzialność karna)</li>
                     </ul>
                 </li>
                 <li class="mb-2">NCNI zastrzega sobie prawo do skierowania sprawy do sądu cywilnego, a w przypadku naruszenia o charakterze umyślnym – również do złożenia zawiadomienia o podejrzeniu popełnienia przestępstwa.</li>
@@ -431,34 +512,34 @@
                 <li class="mb-2">Brak zgody pisemnej lub wykorzystanie treści z przekroczeniem zakresu udzielonej zgody jest równoznaczne z naruszeniem praw autorskich NCNI i skutkuje konsekwencjami określonymi w § 7.5.</li>
             </ol>
 
-            <h2 class="legal-section-title">§ 8. PRZESŁANKI ODMOWY LUB PRZERWANIA TERAPII</h2>
-            <p>NCNI zastrzega sobie prawo do odmowy świadczenia usług lub przerwania terapii w następujących przypadkach:</p>
+            <h2 class="legal-section-title">§ 8. PRZESŁANKI ODMOWY LUB PRZERWANIA USŁUG</h2>
+            <p>NCNI zastrzega sobie prawo do odmowy świadczenia usług lub przerwania sesji/terapii w następujących przypadkach:</p>
             <ol class="list-decimal pl-6 mb-4">
-                <li>Pacjent stawi się na wizytę pod wpływem alkoholu, narkotyków lub innych substancji psychoaktywnych</li>
-                <li>Pacjent wykazuje agresję słowną lub fizyczną wobec terapeuty, personelu lub innych pacjentów</li>
-                <li>Pacjent nie przestrzega zaleceń terapeuty lub wielokrotnie nie stawia się na umówione wizyty bez usprawiedliwienia</li>
-                <li>Brak motywacji lub współpracy ze strony pacjenta uniemożliwia skuteczną terapię</li>
-                <li>Ujawnione zostały przeciwwskazania medyczne do kontynuacji terapii (np. nowo zdiagnozowana padaczka)</li>
-                <li>Pacjent nie wywiązuje się z zobowiązań finansowych (zaległe płatności)</li>
-                <li>Terapeuta oceni, że pacjent wymaga innej formy pomocy (np. pilna interwencja psychiatryczna, hospitalizacja)</li>
-                <li>Pacjent naruszył zakaz, o którym mowa w § 6 (zakaz nagrywania) lub § 7 (prawa autorskie)</li>
-                <li>Pacjent dopuścił się innych poważnych naruszeń niniejszego Regulaminu</li>
+                <li>Klient/pacjent stawi się pod wpływem alkoholu, narkotyków lub innych substancji psychoaktywnych</li>
+                <li>Klient/pacjent wykazuje agresję słowną lub fizyczną wobec specjalisty, personelu lub innych osób</li>
+                <li>Klient/pacjent nie przestrzega zaleceń specjalisty lub wielokrotnie nie stawia się na umówione sesje bez usprawiedliwienia</li>
+                <li>Brak motywacji lub współpracy uniemożliwia realizację programu</li>
+                <li>Ujawnione zostały przeciwwskazania medyczne do kontynuacji (np. nowo zdiagnozowana padaczka)</li>
+                <li>Klient/pacjent nie wywiązuje się z zobowiązań finansowych (zaległe płatności)</li>
+                <li>Specjalista oceni, że osoba wymaga innej formy pomocy (np. pilna interwencja psychiatryczna, hospitalizacja)</li>
+                <li>Naruszenie zakazu, o którym mowa w § 6 (zakaz nagrywania) lub § 7 (prawa autorskie)</li>
+                <li>Inne poważne naruszenia niniejszego Regulaminu</li>
             </ol>
-            <p>W przypadku przerwania terapii z winy pacjenta, NCNI nie zwraca wpłaconych środków za niewykorzystane sesje.</p>
+            <p>W przypadku przerwania usług z winy klienta/pacjenta, NCNI nie zwraca wpłaconych środków za niewykorzystane sesje.</p>
 
             <h2 class="legal-section-title">§ 9. ODPOWIEDZIALNOŚĆ I OCHRONA DANYCH</h2>
             
             <h3 class="legal-subsection-title">9.1. Odpowiedzialność NCNI</h3>
             <ol class="list-decimal pl-6 mb-4">
-                <li>NCNI zobowiązuje się do świadczenia usług z najwyższą starannością, zgodnie z aktualnymi standardami wiedzy i praktyki w zakresie neuroterapii</li>
+                <li>NCNI zobowiązuje się do świadczenia usług z najwyższą starannością, zgodnie z aktualnymi standardami wiedzy i praktyki w zakresie neurotechnologii i wsparcia</li>
                 <li>NCNI zapewnia poufność i ochronę danych osobowych pacjentów zgodnie z RODO</li>
                 <li>NCNI ponosi odpowiedzialność za działania swoich pracowników i współpracowników w zakresie świadczonych usług</li>
-                <li>NCNI nie ponosi odpowiedzialności za skutki nieprzestrzegania przez pacjenta zaleceń terapeutycznych</li>
+                <li>NCNI nie ponosi odpowiedzialności za skutki nieprzestrzegania przez klienta/pacjenta zaleceń specjalisty</li>
             </ol>
 
             <h3 class="legal-subsection-title">9.2. Ochrona danych osobowych (RODO)</h3>
             <ol class="list-decimal pl-6 mb-4">
-                <li>Dane osobowe pacjentów przetwarzane są zgodnie z obowiązymi przepisami o ochronie danych osobowych (Rozporządzenie Parlamentu Europejskiego i Rady (UE) 2016/679 z dnia 27 kwietnia 2016 r. – RODO)</li>
+                <li>Dane osobowe pacjentów przetwarzane są zgodnie z obowiązującymi przepisami o ochronie danych osobowych (Rozporządzenie Parlamentu Europejskiego i Rady (UE) 2016/679 z dnia 27 kwietnia 2016 r. – RODO)</li>
                 <li>Szczegółowe informacje dotyczące przetwarzania danych zawarte są w dokumencie „Zgoda na przetwarzanie danych osobowych – Obowiązek informacyjny RODO"</li>
                 <li>Dane medyczne przechowywane są przez 20 lat zgodnie z ustawą o prawach pacjenta</li>
                 <li>Dostęp do danych mają wyłącznie upoważnieni pracownicy NCNI</li>
@@ -466,12 +547,12 @@
             </ol>
 
             <h3 class="legal-subsection-title">9.3. Ubezpieczenie OC</h3>
-            <p>NCNI posiada aktualne ubezpieczenie od odpowiedzialności cywilnej (OC) w zakresie świadczonych usług medycznych i terapeutycznych.</p>
+            <p>NCNI posiada aktualne ubezpieczenie od odpowiedzialności cywilnej (OC) w zakresie świadczonych usług.</p>
 
             <h2 class="legal-section-title">§ 10. REKLAMACJE I ROZSTRZYGANIE SPORÓW</h2>
             
             <h3 class="legal-subsection-title">10.1. Składanie reklamacji</h3>
-            <p>Pacjent ma prawo złożyć reklamację dotyczącą jakości świadczonych usług:</p>
+            <p>Klient/pacjent ma prawo złożyć reklamację dotyczącą jakości świadczonych usług:</p>
             <ul>
                 <li>Osobiście w siedzibie NCNI</li>
                 <li>Pisemnie na adres: ul. Stefana Żeromskiego 60/5a, 50-312 Wrocław</li>
@@ -481,7 +562,7 @@
             <h3 class="legal-subsection-title">10.2. Rozpatrywanie reklamacji</h3>
             <ol class="list-decimal pl-6 mb-4">
                 <li>Reklamacje rozpatrywane są w terminie do 14 dni roboczych od daty otrzymania</li>
-                <li>Odpowiedź na reklamację wysyłana jest na adres e-mail lub pocztowy wskazany przez pacjenta</li>
+                <li>Odpowiedź na reklamację wysyłana jest na adres e-mail lub pocztowy wskazany przez klienta/pacjenta</li>
                 <li>W przypadku uzasadnionej reklamacji NCNI podejmie działania naprawcze (np. sesja korekcyjna, zwrot kosztów, rabat na kolejne sesje)</li>
             </ol>
 
@@ -498,7 +579,7 @@
                 <li>Zasady korzystania z serwisu internetowego www.ncni.pl, w tym szczegółowe zasady korzystania z treści, cenników, materiałów edukacyjnych oraz formularzy online, określa odrębny Regulamin serwisu internetowego NCNI.</li>
                 <li>W zakresie, w jakim Pacjent korzysta z serwisu www.ncni.pl w związku ze świadczeniem usług NCNI (np. rezerwacja wizyt, przeglądanie cennika, pobranie materiałów), postanowienia Regulaminu serwisu internetowego stosuje się odpowiednio i uzupełniająco do niniejszego Regulaminu.</li>
                 <li>Regulamin serwisu internetowego dostępny jest na stronie: www.ncni.pl/regulamin-serwisu</li>
-                <li>W przypadku rozbieżności pomiędzy postanowieniami niniejszego Regulaminu a Regulaminem serwisu internetowego, pierwszeństwo mają postanowienia niniejszego Regulaminu w zakresie świadczenia usług terapeutycznych, natomiast w zakresie korzystania z treści online – postanowienia Regulaminu serwisu internetowego.</li>
+                <li>W przypadku rozbieżności pomiędzy postanowieniami niniejszego Regulaminu a Regulaminem serwisu internetowego, pierwszeństwo mają postanowienia niniejszego Regulaminu w zakresie świadczenia usług, natomiast w zakresie korzystania z treści online – postanowienia Regulaminu serwisu internetowego.</li>
             </ol>
 
             <h2 class="legal-section-title">§ 12. POSTANOWIENIA KOŃCOWE</h2>
@@ -506,7 +587,7 @@
             <h3 class="legal-subsection-title">12.1. Akceptacja Regulaminu</h3>
             <ol class="list-decimal pl-6 mb-4">
                 <li>Skorzystanie z usług NCNI jest równoznaczne z akceptacją niniejszego Regulaminu.</li>
-                <li>Pacjent potwierdza zapoznanie się z Regulaminem poprzez złożenie podpisu na dokumencie Oświadczenia Pacjenta przy pierwszej wizycie.</li>
+                <li>Klient/pacjent potwierdza zapoznanie się z Regulaminem poprzez złożenie podpisu na dokumencie Oświadczenia przy pierwszej wizycie.</li>
                 <li>Brak akceptacji Regulaminu uniemożliwia świadczenie usług przez NCNI.</li>
             </ol>
 
@@ -521,7 +602,7 @@
                     </ul>
                 </li>
                 <li>Zmiany wchodzą w życie po upływie 14 dni od daty publikacji.</li>
-                <li>Pacjenci będący w trakcie terapii są związani Regulaminem obowiązującym w momencie rozpoczęcia terapii, chyba że wyrażą zgodę na nową wersję lub zmiana jest korzystna dla pacjenta albo wynika z bezwzględnie obowiązujących przepisów prawa.</li>
+                <li>Klienci/pacjenci będący w trakcie programu są związani Regulaminem obowiązującym w momencie jego rozpoczęcia, chyba że wyrażą zgodę na nową wersję lub zmiana jest korzystna dla klienta albo wynika z bezwzględnie obowiązujących przepisów prawa.</li>
             </ol>
 
             <h3 class="legal-subsection-title">12.3. Dostępność Regulaminu</h3>
@@ -562,7 +643,7 @@
                     <li><strong>Cele i podstawy przetwarzania:</strong> 
                         <ul class="list-disc pl-5 mt-1">
                             <li>Świadczenie usług z zakresu opieki zdrowotnej, profilaktyki, diagnozy medycznej i terapii, w tym prowadzenie dokumentacji (podstawa prawna: art. 9 ust. 2 lit. h RODO w zw. z przepisami prawa krajowego, m.in. ustawą o prawach pacjenta);</li>
-                            <li>Realizacja umowy o świadczenie usług terapeutycznych (podstawa prawna: art. 6 ust. 1 lit. b RODO);</li>
+                            <li>Realizacja umowy o świadczenie usług (podstawa prawna: art. 6 ust. 1 lit. b RODO);</li>
                             <li>Wypełnienie obowiązków prawnych, w tym księgowych i podatkowych (podstawa prawna: art. 6 ust. 1 lit. c RODO);</li>
                             <li>Ewentualne dochodzenie roszczeń lub obrona przed roszczeniami (podstawa prawna: art. 6 ust. 1 lit. f RODO).</li>
                         </ul>
@@ -571,7 +652,7 @@
                     <li><strong>Okres przechowywania:</strong> Dane osobowe zawarte w dokumentacji medycznej i terapeutycznej będą przechowywane przez okres <strong>20 lat</strong>, licząc od końca roku kalendarzowego, w którym dokonano ostatniego wpisu (zgodnie z art. 29 ust. 1 Ustawy z dnia 6 listopada 2008 r. o prawach pacjenta i Rzeczniku Praw Pacjenta). Dane przetwarzane w celach księgowych przechowywane są przez okres 5 lat.</li>
                     <li><strong>Prawa osoby, której dane dotyczą:</strong> Przysługuje Ci prawo do żądania od Administratora dostępu do danych osobowych, ich sprostowania, usunięcia lub ograniczenia przetwarzania, prawo do wniesienia sprzeciwu wobec przetwarzania, a także prawo do przenoszenia danych – w granicach uregulowanych przepisami RODO i prawa krajowego (z uwzględnieniem ograniczeń wynikających z przepisów o dokumentacji medycznej).</li>
                     <li><strong>Skarga do organu nadzorczego:</strong> Masz prawo wniesienia skargi do Prezesa Urzędu Ochrony Danych Osobowych (PUODO, ul. Stawki 2, 00-193 Warszawa), gdy uznasz, że przetwarzanie Twoich danych narusza przepisy RODO.</li>
-                    <li><strong>Informacja o wymogu podania danych:</strong> Podanie danych osobowych (w tym danych o stanie zdrowia) jest dobrowolne, jednakże jest warunkiem koniecznym do zawarcia umowy i świadczenia usług przez NCNI. Konsekwencją niepodania danych będzie odmowa świadczenia usług terapeutycznych.</li>
+                    <li><strong>Informacja o wymogu podania danych:</strong> Podanie danych osobowych (w tym danych o stanie zdrowia) jest dobrowolne, jednakże jest warunkiem koniecznym do zawarcia umowy i świadczenia usług przez NCNI. Konsekwencją niepodania danych będzie odmowa świadczenia usług.</li>
                 </ol>
             </div>
         </div>
