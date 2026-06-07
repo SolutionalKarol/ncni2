@@ -2,166 +2,144 @@
 <html lang="pl">
 <head>
     <script type="text/javascript" data-cmp-ab="1" src="https://cdn.consentmanager.net/delivery/autoblocking/93e58d8b2275d.js" data-cmp-host="c.delivery.consentmanager.net" data-cmp-cdn="cdn.consentmanager.net" data-cmp-codesrc="16"></script>
-    
-<!-- Google tag (gtag.js) --> <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18029740902"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'AW-18029740902'); </script>
+<!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=AW-18029740902"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','AW-18029740902');</script>
     <meta charset="UTF-8">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-56VR40VHHV"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-56VR40VHHV');
-    </script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-56VR40VHHV');</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Neuroróżnorodność | NCNI Wrocław</title>
-    <meta name="description" content="Kompleksowe wsparcie dla neuroróżnorodności: ADHD, Autyzm, Dysleksja, WWO. Nowoczesna diagnostyka i terapie.">
+    <meta name="description" content="Kompleksowe wsparcie dla neuroróżnorodności: ADHD, Autyzm, Dysleksja, WWO. Nowoczesna diagnostyka i terapie oparte na EBM.">
     <link rel="icon" href="logo.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
     <style>
-        /* --- CORE STYLES (Baza) --- */
         :root {
-            --bg-body: #F8FAFC;        
-            --bg-surface: rgba(255, 255, 255, 0.85);
-            --primary: #0F766E;        
+            --bg-body: #F8FAFC;
+            --bg-surface: rgba(255,255,255,0.85);
+            --primary: #0F766E;
             --primary-dark: #0D5E57;
             --primary-light: #CCFBF1;
-            --accent: #6366F1;        
-            --accent-glow: rgba(99, 102, 241, 0.3);
+            --accent: #6366F1;
             --text-main: #1E293B;
             --text-muted: #64748B;
             --border: #E2E8F0;
-            --radius: 16px;
-            --trans-default: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --trans-default: all 0.3s cubic-bezier(0.25,0.8,0.25,1);
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        html { scroll-behavior: smooth; font-size: 16px; }
+        *{box-sizing:border-box;margin:0;padding:0;}
+        html{scroll-behavior:smooth;font-size:16px;}
+        body{font-family:'Inter',sans-serif;background-color:var(--bg-body);color:var(--text-main);line-height:1.6;overflow-x:hidden;cursor:auto;}
+        h1,h2,h3,h4{font-family:'Lexend',sans-serif;}
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-body);
-            color: var(--text-main);
-            line-height: 1.6;
-            overflow-x: hidden;
+        #bg-canvas{position:fixed;top:0;left:0;width:100%;height:100vh;z-index:-1;opacity:0.6;pointer-events:none;}
+        .container{max-width:1200px;margin:0 auto;padding:0 24px;}
+        .glass{background:var(--bg-surface);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.6);box-shadow:0 4px 20px rgba(0,0,0,0.03);}
+
+        /* ── Header ── */
+        header{position:sticky;top:0;z-index:1000;border-bottom:1px solid rgba(226,232,240,0.6);padding:12px 0;}
+        .nav-wrapper{display:flex;flex-direction:column;align-items:center;gap:16px;}
+        .brand-bar{display:flex;justify-content:center;align-items:center;width:100%;position:relative;}
+        .logo{display:flex;align-items:center;gap:14px;font-weight:700;font-size:1.6rem;color:var(--text-main);text-decoration:none;letter-spacing:-0.02em;}
+        .logo img{height:50px;width:auto;border-radius:8px;}
+        .mobile-text{display:none;}
+        .nav-links{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;}
+        .nav-item{padding:8px 18px;border-radius:99px;font-size:0.95rem;font-weight:500;color:var(--text-muted);text-decoration:none;transition:var(--trans-default);}
+        .nav-item:hover,.nav-item.active{color:var(--primary);background:var(--primary-light);}
+        .nav-cta{background:var(--primary);color:white!important;box-shadow:0 4px 12px rgba(15,118,110,0.25);margin-left:8px;}
+        .nav-cta:hover{background:var(--primary-dark);transform:translateY(-1px);}
+        .mobile-toggle{display:none;background:none;border:none;cursor:pointer;padding:8px;}
+        .mobile-toggle span{display:block;width:24px;height:2px;background:var(--text-main);margin:5px 0;transition:0.3s;}
+        .mobile-menu{position:fixed;top:0;left:0;width:100%;background:white;padding:80px 24px 24px;border-bottom:1px solid var(--border);transform:translateY(-150%);transition:transform 0.4s cubic-bezier(0.16,1,0.3,1);z-index:999;box-shadow:0 10px 30px rgba(0,0,0,0.05);}
+        .mobile-menu.active{transform:translateY(0);}
+        .mobile-link{display:block;padding:14px 0;font-size:1.1rem;font-weight:500;color:var(--text-main);text-decoration:none;border-bottom:1px solid var(--bg-body);}
+
+        @media(max-width:900px){
+            header{padding:8px 0;}
+            .nav-wrapper{flex-direction:row;height:60px;justify-content:center;padding:0;}
+            .brand-bar{justify-content:space-between;}
+            .nav-links{display:none;}
+            .mobile-toggle{display:block;margin-left:auto;}
+            .logo{font-size:1.1rem;}
+            .logo img{height:36px;}
+            .desktop-text{display:none;}
+            .mobile-text{display:inline;}
         }
 
-        h1, h2, h3, h4 { font-family: 'Lexend', sans-serif; }
+        /* ── Hero ── */
+        .hero-mini{padding:80px 0 60px;text-align:center;}
+        .hero-mini h1{font-size:3rem;margin-bottom:24px;background:linear-gradient(135deg,var(--text-main),var(--primary));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+        .hero-mini p{font-size:1.15rem;color:var(--text-muted);max-width:720px;margin:0 auto;line-height:1.75;}
 
-        /* Background */
-        #bg-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; z-index: -1; opacity: 0.6; pointer-events: none; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-        .glass { background: var(--bg-surface); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.6); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03); }
-
-        /* Header */
-        header { position: sticky; top: 0; z-index: 1000; transition: var(--trans-default); border-bottom: 1px solid rgba(226, 232, 240, 0.6); padding: 12px 0; }
-        .nav-wrapper { display: flex; flex-direction: column; align-items: center; gap: 16px; }
-        
-        /* Brand Bar - kontener logo i hamburgera */
-        .brand-bar { 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            width: 100%; 
-            position: relative; 
+        @media(max-width:600px){
+            .hero-mini{padding:48px 0 36px;}
+            .hero-mini h1{font-size:2rem;line-height:1.2;}
+            .hero-mini p{font-size:0.97rem;}
         }
 
-        .logo { display: flex; align-items: center; gap: 14px; font-weight: 700; font-size: 1.6rem; color: var(--text-main); text-decoration: none; cursor: pointer; letter-spacing: -0.02em; z-index: 1001; }
-        .logo img { height: 50px; width: auto; border-radius: 8px; }
-
-        /* Responsive Text Classes */
-        .mobile-text { display: none; } /* Domyślnie ukryte */
-        .desktop-text { display: inline; } /* Domyślnie widoczne */
-
-        .nav-links { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
-        .nav-item { padding: 8px 18px; border-radius: 99px; font-size: 0.95rem; font-weight: 500; color: var(--text-muted); text-decoration: none; transition: var(--trans-default); cursor: pointer; }
-        .nav-item:hover, .nav-item.active { color: var(--primary); background: var(--primary-light); }
-        .nav-cta { background: var(--primary); color: white !important; box-shadow: 0 4px 12px rgba(15, 118, 110, 0.25); margin-left: 8px; }
-        .nav-cta:hover { background: var(--primary-dark); transform: translateY(-1px); }
-
-        /* Mobile Toggle Styling */
-        .mobile-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; z-index: 1002; }
-        .mobile-toggle span { display: block; width: 24px; height: 2px; background: var(--text-main); margin: 5px 0; transition: 0.3s; }
-        
-        /* Mobile Menu Container */
-        .mobile-menu { position: fixed; top: 0; left: 0; width: 100%; height: auto; background: white; padding: 80px 24px 24px; border-bottom: 1px solid var(--border); transform: translateY(-150%); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); z-index: 999; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-        .mobile-menu.active { transform: translateY(0); }
-        .mobile-link { display: block; padding: 14px 0; font-size: 1.1rem; font-weight: 500; color: var(--text-main); text-decoration: none; border-bottom: 1px solid var(--bg-body); }
-
-        /* --- RESPONSIVE FIXES (Poprawki Mobilne) --- */
-        @media (max-width: 900px) {
-            header { padding: 8px 0; }
-            
-            .nav-wrapper { 
-                flex-direction: row; /* Wiersz, nie kolumna */
-                height: 60px; 
-                justify-content: center; 
-                padding: 0;
-            }
-
-            /* Kluczowa zmiana dla Brand Bar na mobilkach */
-            .brand-bar { 
-                justify-content: space-between; /* Logo lewo, Hamburger prawo */
-                width: 100%; /* Pełna szerokość */
-                padding-right: 0; /* Reset paddingu */
-            }
-
-            .nav-links { display: none; }
-            
-            .mobile-toggle { 
-                display: block; 
-                position: static; /* Usuwamy absolute! */
-                transform: none;
-                margin-left: auto; /* Dopychanie do prawej */
-            }
-
-            .logo { font-size: 1.1rem; }
-            .logo img { height: 36px; }
-            
-            /* Logo Text Logic for Mobile */
-            .desktop-text { display: none; }
-            .mobile-text { display: inline; }
+        /* ── Grid ── */
+        .grid-cards{
+            display:grid;
+            grid-template-columns:repeat(3,1fr);
+            gap:24px;
+            margin-bottom:80px;
         }
 
-        /* --- Page Specific --- */
-        .hero-mini { padding: 80px 0 60px; text-align: center; }
-        .hero-mini h1 { font-size: 3rem; margin-bottom: 24px; background: linear-gradient(135deg, var(--text-main), var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .hero-mini p { font-size: 1.2rem; color: var(--text-muted); max-width: 700px; margin: 0 auto; }
-
-        @media (max-width: 600px) {
-            .hero-mini { padding: 40px 0 40px; }
-            .hero-mini h1 { font-size: 2rem; line-height: 1.2; } /* Mniejszy nagłówek na tel */
-            .hero-mini p { font-size: 1rem; }
+        @media(max-width:900px){
+            .grid-cards{grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:48px;}
+        }
+        @media(max-width:520px){
+            .grid-cards{grid-template-columns:1fr;gap:14px;margin-bottom:40px;}
         }
 
-        /* Grid Cards */
-        /* Zmieniono minmax z 320px na 280px dla lepszego rwd na małych ekranach */
-        .grid-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-bottom: 80px; }
-        
-        .topic-card {
-            border-radius: 24px; padding: 32px; background: white;
-            border: 1px solid var(--border); transition: all 0.3s ease;
-            text-decoration: none; display: flex; flex-direction: column; height: 100%;
+        /* ── Cards ── */
+        .topic-card{
+            border-radius:20px;padding:28px 24px;background:white;
+            border:1px solid var(--border);transition:transform 0.3s ease,box-shadow 0.3s ease,border-color 0.3s ease;
+            text-decoration:none;display:flex;flex-direction:column;height:100%;
+            /* scroll-reveal start state */
+            opacity:0;transform:translateY(28px);
         }
-        .topic-card:hover { transform: translateY(-5px); border-color: var(--primary); box-shadow: 0 10px 40px rgba(15, 118, 110, 0.1); }
-        
-        .card-icon { 
-            width: 64px; height: 64px; border-radius: 16px; background: #EEF2FF; color: var(--primary);
-            display: flex; align-items: center; justify-content: center; font-size: 32px; margin-bottom: 24px;
-        }
-        .topic-card h3 { color: var(--text-main); font-size: 1.5rem; margin-bottom: 12px; }
-        .topic-card p { color: var(--text-muted); flex-grow: 1; }
-        .btn-link { color: var(--primary); font-weight: 600; margin-top: 24px; display: inline-flex; align-items: center; gap: 8px; }
+        .topic-card.visible{opacity:1;transform:translateY(0);transition:opacity 0.5s ease,transform 0.5s ease,box-shadow 0.3s ease,border-color 0.3s ease;}
+        .topic-card:hover{transform:translateY(-6px)!important;border-color:var(--primary);box-shadow:0 12px 40px rgba(15,118,110,0.12);}
 
-        /* Special Cards */
-        .card-accent { border-left: 4px solid var(--accent); }
-        .card-accent .card-icon { color: var(--accent); background: #EEF2FF; }
-        
-        /* Footer */
-        footer { background: white; border-top: 1px solid var(--border); padding: 60px 0 20px; margin-top: 40px; }
-        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
+        .card-icon{
+            width:56px;height:56px;border-radius:14px;
+            display:flex;align-items:center;justify-content:center;
+            margin-bottom:20px;flex-shrink:0;
+        }
+        .card-icon svg{width:28px;height:28px;}
+
+        /* Per-card icon colours */
+        .icon-teal   {background:#ECFDF5;} .icon-teal   svg{color:#0F766E;stroke:#0F766E;}
+        .icon-purple {background:#EEF2FF;} .icon-purple svg{color:#6366F1;stroke:#6366F1;}
+        .icon-rose   {background:#FFF1F2;} .icon-rose   svg{color:#E11D48;stroke:#E11D48;}
+        .icon-amber  {background:#FFFBEB;} .icon-amber  svg{color:#D97706;stroke:#D97706;}
+        .icon-blue   {background:#EFF6FF;} .icon-blue   svg{color:#2563EB;stroke:#2563EB;}
+        .icon-green  {background:#F0FDF4;} .icon-green  svg{color:#16A34A;stroke:#16A34A;}
+        .icon-orange {background:#FFF7ED;} .icon-orange svg{color:#EA580C;stroke:#EA580C;}
+        .icon-indigo {background:#EEF2FF;} .icon-indigo svg{color:#4F46E5;stroke:#4F46E5;}
+        .icon-red    {background:#FEF2F2;} .icon-red    svg{color:#DC2626;stroke:#DC2626;}
+
+        .topic-card h3{color:var(--text-main);font-size:1.15rem;margin-bottom:10px;line-height:1.35;}
+        .topic-card p{color:var(--text-muted);font-size:0.92rem;flex-grow:1;line-height:1.65;}
+        .btn-link{color:var(--primary);font-weight:600;font-size:0.9rem;margin-top:20px;display:inline-flex;align-items:center;gap:6px;transition:gap 0.2s;}
+        .topic-card:hover .btn-link{gap:10px;}
+
+        .card-accent{border-left:4px solid var(--accent);}
+
+        @media(max-width:520px){
+            .topic-card{padding:22px 18px;border-radius:16px;}
+            .card-icon{width:48px;height:48px;border-radius:12px;margin-bottom:14px;}
+            .card-icon svg{width:24px;height:24px;}
+            .topic-card h3{font-size:1.05rem;}
+        }
+
+        /* ── Footer ── */
+        footer{background:white;border-top:1px solid var(--border);padding:60px 0 20px;margin-top:40px;}
+        .footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:40px;}
     </style>
 </head>
 <body>
@@ -170,19 +148,16 @@
 
     <header class="glass">
         <div class="container nav-wrapper">
-            <!-- Brand Bar zawiera teraz i logo i przycisk w jednej linii flexa -->
             <div class="brand-bar">
                 <a href="index.html" class="logo">
                     <img src="logo.png" alt="NCNI">
                     <span class="desktop-text">Naukowe Centrum Neuroinnowacji</span>
                     <span class="mobile-text">NCNI</span>
                 </a>
-                
                 <button class="mobile-toggle" aria-label="Menu">
                     <span></span><span></span><span></span>
                 </button>
             </div>
-            
             <nav class="nav-links">
                 <a href="o-nas.html" class="nav-item">O nas</a>
                 <a href="neuroroznorodnosc.html" class="nav-item active">Neuroróżnorodność</a>
@@ -200,332 +175,294 @@
         <a href="psychologia.html" class="mobile-link">Psychologia</a>
         <a href="technologie.html" class="mobile-link">Technologie</a>
         <a href="oferta.html" class="mobile-link">Oferta</a>
-        <a href="index.html#rezerwacja" class="mobile-link" style="color: var(--primary); font-weight: 700;">Umów wizytę</a>
+        <a href="index.html#rezerwacja" class="mobile-link" style="color:var(--primary);font-weight:700;">Umów wizytę</a>
     </div>
 
     <section class="hero-mini">
         <div class="container">
-            <span style="background: var(--primary-light); color: var(--primary); padding: 6px 12px; border-radius: 99px; font-size: 0.9rem; font-weight: 600;">Obszar Wsparcia</span>
+            <span style="background:var(--primary-light);color:var(--primary);padding:6px 14px;border-radius:99px;font-size:0.88rem;font-weight:600;display:inline-block;margin-bottom:20px;">Obszar Wsparcia</span>
             <h1>Neuroróżnorodność</h1>
             <p>
-                Nie leczymy "inności" – uczymy, jak z nią żyć, wykorzystywać jej potencjał i radzić sobie z wyzwaniami. Podejście oparte na dowodach (EBM) i nowoczesnej technologii.
+                Wspieramy osoby o różnych profilach funkcjonowania w lepszym rozumieniu siebie, rozwijaniu mocnych stron i radzeniu sobie z codziennymi wyzwaniami. Przy doborze metod uwzględniamy zasady Evidence-Based Medicine, aktualną literaturę naukową oraz indywidualną tolerancję i potrzeby uczestnika.
             </p>
         </div>
     </section>
 
     <section class="container">
         <div class="grid-cards">
+
             <!-- ADHD -->
             <a href="adhd.html" class="topic-card">
-                <div class="card-icon">🧠</div>
-                <h3>ADHD / ADD</h3>
-                <p>Treningi funkcji wykonawczych dla dzieci i dorosłych. Zarządzanie uwagą, impulsywnością i "chaosem" w głowie przy użyciu VR i Biofeedbacku.</p>
+                <div class="card-icon icon-teal">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-5 0V4.5A2.5 2.5 0 0 1 9.5 2z"/>
+                        <path d="M14.5 8A2.5 2.5 0 0 1 17 10.5v9a2.5 2.5 0 0 1-5 0v-9A2.5 2.5 0 0 1 14.5 8z"/>
+                        <path d="M4.5 13A2.5 2.5 0 0 1 7 15.5v4a2.5 2.5 0 0 1-5 0v-4A2.5 2.5 0 0 1 4.5 13z"/>
+                        <path d="M19.5 5A2.5 2.5 0 0 1 22 7.5v12a2.5 2.5 0 0 1-5 0v-12A2.5 2.5 0 0 1 19.5 5z"/>
+                    </svg>
+                </div>
+                <h3>ADHD i trudności uwagi</h3>
+                <p>Ćwiczenia wspierające funkcje wykonawcze u dzieci i dorosłych: uwaga, planowanie, hamowanie reakcji i samoregulacja. Wykorzystujemy narzędzia VR i biofeedback jako wsparcie pracy nad koncentracją i pobudzeniem.</p>
                 <span class="btn-link">Poznaj program →</span>
             </a>
 
             <!-- ASD -->
             <a href="asd.html" class="topic-card">
-                <div class="card-icon">🧩</div>
-                <h3>Spektrum Autyzmu (ASD)</h3>
-                <p>Treningi kompetencji społecznych w bezpiecznym, wirtualnym środowisku. Praca nad odczytywaniem emocji i regulacją napięcia.</p>
+                <div class="card-icon icon-purple">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+                        <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+                        <line x1="9" y1="9" x2="9.01" y2="9"/>
+                        <line x1="15" y1="9" x2="15.01" y2="9"/>
+                        <path d="M12 2v2M12 20v2M2 12h2M20 12h2" stroke-opacity="0.4"/>
+                    </svg>
+                </div>
+                <h3>Zaburzenie ze Spektrum Autyzmu (ASD)</h3>
+                <p>Trening kompetencji społecznych i komunikacyjnych w bezpiecznym, przewidywalnym środowisku VR. Praca nad rozpoznawaniem emocji, tolerancją bodźców i regulacją napięcia.</p>
                 <span class="btn-link">Więcej informacji →</span>
             </a>
 
             <!-- WWO -->
             <a href="wysoka-wrazliwosc.html" class="topic-card">
-                <div class="card-icon">🦋</div>
-                <h3>Wysoka Wrażliwość (WWO)</h3>
-                <p>Jak nie ulegać przestymulowaniu? Nauka higieny układu nerwowego i zarządzania energią w intensywnym świecie.</p>
+                <div class="card-icon icon-rose">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                    </svg>
+                </div>
+                <h3>Wysoka wrażliwość (WWO)</h3>
+                <p>Wsparcie osób łatwo ulegających przeciążeniu bodźcami. Praca nad zarządzaniem energią, odpoczynkiem, granicami i codziennymi strategiami regulacji.</p>
                 <span class="btn-link">Sprawdź ofertę →</span>
             </a>
 
             <!-- Dysleksja -->
             <a href="dysleksja.html" class="topic-card">
-                <div class="card-icon">📖</div>
+                <div class="card-icon icon-amber">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+                        <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+                    </svg>
+                </div>
                 <h3>Dysleksja</h3>
-                <p>Nowoczesne treningi czytania i przetwarzania wzrokowego. Przekraczamy bariery edukacyjne za pomocą technologii VR.</p>
+                <p>Wsparcie czytania, rozumienia tekstu i strategii uczenia się. Korzystamy z ćwiczeń językowych, uwagowych i technologii wspierających pracę edukacyjną.</p>
                 <span class="btn-link">Zobacz metody →</span>
             </a>
 
             <!-- Dyskalkulia -->
             <a href="dyskalkulia.html" class="topic-card">
-                <div class="card-icon">🔢</div>
+                <div class="card-icon icon-blue">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="4" y="2" width="16" height="20" rx="2"/>
+                        <line x1="8" y1="7" x2="16" y2="7"/>
+                        <line x1="8" y1="12" x2="16" y2="12"/>
+                        <line x1="8" y1="17" x2="12" y2="17"/>
+                    </svg>
+                </div>
                 <h3>Dyskalkulia</h3>
-                <p>Wsparcie w rozumieniu liczb i pojęć matematycznych. Treningi poznawcze aktywujące konkretne obszary mózgu.</p>
+                <p>Wsparcie w rozumieniu liczb, operacji i pojęć matematycznych. Ćwiczenia poznawcze pomagające rozwijać strategie pracy z matematyką.</p>
                 <span class="btn-link">Zobacz metody →</span>
             </a>
 
             <!-- DCD -->
             <a href="dcd.html" class="topic-card">
-                <div class="card-icon">🤸</div>
-                <h3>Dyspraksja (DCD)</h3>
-                <p>Wsparcie koordynacji ruchowej i planowania motorycznego. Integracja ciała i umysłu w ruchu.</p>
+                <div class="card-icon icon-green">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="5" r="2"/>
+                        <path d="M12 7v5l-3 3"/>
+                        <path d="M12 12l3 3"/>
+                        <path d="M9 10l-4 2"/>
+                        <path d="M15 10l4 2"/>
+                        <path d="M9 17l-1 4"/>
+                        <path d="M15 17l1 4"/>
+                    </svg>
+                </div>
+                <h3>Dyspraksja / DCD</h3>
+                <p>Wsparcie koordynacji, planowania ruchu i codziennych umiejętności motorycznych. Praca oparta na ćwiczeniu konkretnych, praktycznych aktywności.</p>
                 <span class="btn-link">Więcej informacji →</span>
             </a>
 
             <!-- Tourette -->
             <a href="tourette.html" class="topic-card">
-                <div class="card-icon">⚡</div>
-                <h3>Zespół Tourette'a / Tiki</h3>
-                <p>Terapie behawioralne (CBIT) i relaksacyjne wspomagające kontrolę tików i redukcję napięcia w ciele.</p>
+                <div class="card-icon icon-orange">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
+                        <path d="M12 8v4l3 3"/>
+                        <path d="M8.5 8.5l1.5 1.5"/>
+                        <path d="M15.5 8.5l-1.5 1.5"/>
+                    </svg>
+                </div>
+                <h3>Zespół Tourette’a / tiki</h3>
+                <p>Wsparcie behawioralne i relaksacyjne w pracy z tikami, napięciem i samoregulacją. W programie mogą być wykorzystywane elementy podejścia CBIT.</p>
                 <span class="btn-link">Poznaj program →</span>
             </a>
 
             <!-- Metoda Kraszewskiego -->
             <a href="metoda-kraszewskiego.html" class="topic-card card-accent">
-                <div class="card-icon">🎓</div>
+                <div class="card-icon icon-indigo">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                    </svg>
+                </div>
                 <h3>Metoda Kraszewskiego</h3>
-                <p>Autorska metoda integracji sensoryczno-poznawczej opracowana w NCNI. Unikalne podejście do rozwoju mózgu.</p>
-                <span class="btn-link">Odkryj innowację →</span>
+                <p>Autorska metoda NCNI łącząca pracę z regulacją psychofizjologiczną, uwagą, bodźcami sensorycznymi i środowiskami VR.</p>
+                <span class="btn-link">Poznaj metodę →</span>
             </a>
 
             <!-- Migrena -->
             <a href="migrena.html" class="topic-card">
-                <div class="card-icon">🤕</div>
-                <h3>Migrena i Bóle Głowy</h3>
-                <p>Niefarmakologiczne wsparcie w leczeniu bólu. Biofeedback termiczny i treningi relaksacji naczyń krwionośnych.</p>
-                <span class="btn-link">Uwolnij się od bólu →</span>
+                <div class="card-icon icon-red">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
+                        <path d="M9 9h.01"/>
+                        <path d="M15 9h.01"/>
+                        <path d="M8 13h8"/>
+                        <path d="M12 3v1M12 20v1M3 12h1M20 12h1" stroke-opacity="0.35"/>
+                    </svg>
+                </div>
+                <h3>Migrena i bóle głowy</h3>
+                <p>Niefarmakologiczne wsparcie w pracy z napięciem, stresem i tolerancją bodźców. Możliwe elementy programu to biofeedback, relaksacja i trening samoregulacji.</p>
+                <span class="btn-link">Dowiedz się więcej →</span>
             </a>
+
         </div>
     </section>
 
-    <!-- Footer -->
     <footer id="kontakt">
         <div class="container">
             <div class="footer-grid">
                 <div>
-                    <a href="#" class="logo" style="margin-bottom: 20px; display: inline-block;">
+                    <a href="#" class="logo" style="margin-bottom:20px;display:inline-block;">
                         <img src="logo.png" alt="NCNI">
                         NCNI
                     </a>
-                    <p style="color: var(--text-muted); font-size: 0.95rem;">
-                        Naukowe Centrum Neuroinnowacji.<br>
-                        Twój partner w zdrowiu psychicznym.
-                    </p>
+                    <p style="color:var(--text-muted);font-size:0.95rem;">Naukowe Centrum Neuroinnowacji.<br>Twój partner w zdrowiu psychicznym.</p>
                 </div>
                 <div>
-                    <h4 style="margin-bottom: 16px;">Kontakt</h4>
-                    <p style="color: var(--text-muted); margin-bottom: 8px;">ul. Stefana Żeromskiego 60/5a</p>
-                    <p style="color: var(--text-muted); margin-bottom: 8px;">50-312 Wrocław</p>
-                    <a href="mailto:kontakt@ncni.pl" style="color: var(--text-main);">kontakt@ncni.pl</a>
+                    <h4 style="margin-bottom:16px;">Kontakt</h4>
+                    <p style="color:var(--text-muted);margin-bottom:8px;">ul. Stefana Żeromskiego 60/5a</p>
+                    <p style="color:var(--text-muted);margin-bottom:8px;">50-312 Wrocław</p>
+                    <div style="display:flex;flex-direction:column;gap:10px;margin-top:16px;">
+                        <a href="mailto:kontakt@ncni.pl" style="color:var(--text-main);font-weight:600;text-decoration:none;">✉️ kontakt@ncni.pl</a>
+                        <a href="tel:+48600608333" style="color:var(--primary);font-weight:600;text-decoration:none;font-size:1.05rem;">📞 600 608 333</a>
+                    </div>
+                    <div style="margin-top:24px;display:flex;gap:16px;">
+                        <a href="https://youtube.com/@neuroinnowacje" target="_blank" style="color:var(--text-muted);text-decoration:none;font-weight:600;">YouTube</a>
+                        <span style="color:var(--border);">|</span>
+                        <a href="https://x.com/neuroinnowacje" target="_blank" style="color:var(--text-muted);text-decoration:none;font-weight:600;">X (Twitter)</a>
+                    </div>
                 </div>
                 <div>
-                    <h4 style="margin-bottom: 16px;">Social Media</h4>
-                    <ul style="color: var(--text-muted); font-size: 0.95rem; list-style: none;">
-                        <li style="margin-bottom: 8px;"><a href="https://youtube.com/@neuroinnowacje" target="_blank">YouTube</a></li>
-                        <li style="margin-bottom: 8px;"><a href="https://x.com/neuroinnowacje" target="_blank">X (Twitter)</a></li>
+                    <h4 style="margin-bottom:16px;">Mapa Strony</h4>
+                    <ul style="color:var(--text-muted);font-size:0.95rem;list-style:none;">
+                        <li style="margin-bottom:8px;"><a href="adhd.html">ADHD</a></li>
+                        <li style="margin-bottom:8px;"><a href="asd.html">Autyzm</a></li>
+                        <li style="margin-bottom:8px;"><a href="psychologia.html">Psychologia</a></li>
+                        <li style="margin-bottom:8px;"><a href="technologie.html">VR Lab</a></li>
                     </ul>
                 </div>
             </div>
-            <div style="border-top: 1px solid var(--border); padding-top: 24px; margin-top: 40px; text-align: center; color: var(--text-muted); font-size: 0.85rem;">
-                &copy; 2025 Naukowe Centrum Neuroinnowacji sp. z o.o. | Design: Neuro Harmony System.
+            <div style="border-top:1px solid var(--border);padding-top:24px;margin-top:40px;text-align:center;color:var(--text-muted);font-size:0.85rem;">
+                &copy; 2025 Naukowe Centrum Neuroinnowacji | Designed and built by NCNI.agency Karol Kiszło
             </div>
         </div>
     </footer>
 
     <!-- Scripts -->
     <script>
-        // --- THREE.JS BACKGROUND ---
-        function initParticles() {
-            const container = document.getElementById('bg-canvas');
-            if (!container) return;
+        function initParticles(){const c=document.getElementById('bg-canvas');if(!c)return;const scene=new THREE.Scene();scene.fog=new THREE.FogExp2(0xF8FAFC,0.002);const camera=new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,1000);camera.position.z=10;const renderer=new THREE.WebGLRenderer({alpha:true,antialias:true});renderer.setSize(window.innerWidth,window.innerHeight);renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));c.appendChild(renderer.domElement);const geo=new THREE.BufferGeometry();const n=200;const pos=new Float32Array(n*3);const col=new Float32Array(n*3);for(let i=0;i<n*3;i+=3){pos[i]=(Math.random()-.5)*25;pos[i+1]=(Math.random()-.5)*25;pos[i+2]=(Math.random()-.5)*25;const m=Math.random();if(m>.5){col[i]=.06;col[i+1]=.46;col[i+2]=.43;}else{col[i]=.39;col[i+1]=.4;col[i+2]=.94;}}geo.setAttribute('position',new THREE.BufferAttribute(pos,3));geo.setAttribute('color',new THREE.BufferAttribute(col,3));const mat=new THREE.PointsMaterial({size:.1,vertexColors:true,transparent:true,opacity:.4});const pts=new THREE.Points(geo,mat);scene.add(pts);let mx=0,my=0,tx=0,ty=0;document.addEventListener('mousemove',e=>{mx=e.clientX-window.innerWidth/2;my=e.clientY-window.innerHeight/2;});const clk=new THREE.Clock();function animate(){const t=clk.getElapsedTime();tx=mx*.0001;ty=my*.0001;pts.rotation.y+=.01*(tx-pts.rotation.y);pts.rotation.x+=.01*(ty-pts.rotation.x);pts.rotation.z+=.0005;const s=1+Math.sin(t*.5)*.02;pts.scale.set(s,s,s);renderer.render(scene,camera);requestAnimationFrame(animate);}animate();window.addEventListener('resize',()=>{camera.aspect=window.innerWidth/window.innerHeight;camera.updateProjectionMatrix();renderer.setSize(window.innerWidth,window.innerHeight);});}
+        document.addEventListener('DOMContentLoaded',initParticles);
 
-            const scene = new THREE.Scene();
-            scene.fog = new THREE.FogExp2(0xF8FAFC, 0.002);
+        // Mobile menu
+        const toggle=document.querySelector('.mobile-toggle');const menu=document.querySelector('.mobile-menu');
+        if(toggle&&menu){toggle.addEventListener('click',()=>menu.classList.toggle('active'));menu.querySelectorAll('a').forEach(l=>l.addEventListener('click',()=>menu.classList.remove('active')));}
 
-            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-            camera.position.z = 10;
-
-            const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-            container.appendChild(renderer.domElement);
-
-            const geometry = new THREE.BufferGeometry();
-            const count = 200; 
-            const positions = new Float32Array(count * 3);
-            const colors = new Float32Array(count * 3);
-
-            for(let i = 0; i < count * 3; i+=3) {
-                positions[i] = (Math.random() - 0.5) * 25;
-                positions[i+1] = (Math.random() - 0.5) * 25;
-                positions[i+2] = (Math.random() - 0.5) * 25;
-
-                const mix = Math.random();
-                if(mix > 0.5) { colors[i] = 0.06; colors[i+1] = 0.46; colors[i+2] = 0.43; } 
-                else { colors[i] = 0.39; colors[i+1] = 0.4; colors[i+2] = 0.94; }
-            }
-
-            geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-            geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
-
-            const material = new THREE.PointsMaterial({ size: 0.1, vertexColors: true, transparent: true, opacity: 0.4 });
-            const particles = new THREE.Points(geometry, material);
-            scene.add(particles);
-
-            let mouseX = 0, mouseY = 0, targetX = 0, targetY = 0;
-            const windowHalfX = window.innerWidth / 2;
-            const windowHalfY = window.innerHeight / 2;
-
-            document.addEventListener('mousemove', (event) => {
-                mouseX = (event.clientX - windowHalfX);
-                mouseY = (event.clientY - windowHalfY);
+        // Scroll-reveal cards
+        const cards=document.querySelectorAll('.topic-card');
+        const observer=new IntersectionObserver((entries)=>{
+            entries.forEach((entry,i)=>{
+                if(entry.isIntersecting){
+                    setTimeout(()=>entry.target.classList.add('visible'),i*70);
+                    observer.unobserve(entry.target);
+                }
             });
-
-            const clock = new THREE.Clock();
-
-            function animate() {
-                const time = clock.getElapsedTime();
-                targetX = mouseX * 0.0001; 
-                targetY = mouseY * 0.0001;
-
-                particles.rotation.y += 0.01 * (targetX - particles.rotation.y);
-                particles.rotation.x += 0.01 * (targetY - particles.rotation.x);
-                particles.rotation.z += 0.0005; 
-                const scale = 1 + Math.sin(time * 0.5) * 0.02; 
-                particles.scale.set(scale, scale, scale);
-
-                renderer.render(scene, camera);
-                requestAnimationFrame(animate);
-            }
-            animate();
-
-            window.addEventListener('resize', () => {
-                camera.aspect = window.innerWidth / window.innerHeight;
-                camera.updateProjectionMatrix();
-                renderer.setSize(window.innerWidth, window.innerHeight);
-            });
-        }
-        document.addEventListener("DOMContentLoaded", initParticles);
-
-        // Mobile Menu
-        const toggle = document.querySelector('.mobile-toggle');
-        const menu = document.querySelector('.mobile-menu');
-        if (toggle && menu) {
-            toggle.addEventListener('click', () => {
-                menu.classList.toggle('active');
-            });
-            menu.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', () => menu.classList.remove('active'));
-            });
-        }
+        },{threshold:0.12});
+        cards.forEach(card=>observer.observe(card));
     </script>
+
+    <!-- Ania Widget -->
     <div id="ania-widget" class="ania-container">
-        
         <div class="ania-bubble" id="ania-greeting">
             Dzień dobry! ☀️ Jestem Wirtualną Asystentką NCNI. Kliknij we mnie, a odpowiem na Twoje pytania.
             <span class="ania-close-bubble" onclick="closeGreeting(event)">✕</span>
         </div>
-
         <div class="ania-chat-window glass" id="ania-window">
             <div class="ania-header">
-                <div style="display:flex; align-items:center; gap:10px;">
+                <div style="display:flex;align-items:center;gap:10px;">
                     <div style="position:relative;">
-                        <img src="ania.jpg" alt="Ania" style="width:35px; height:35px; border-radius:50%; object-fit:cover; object-position: top;">
+                        <img src="ania.jpg" alt="Ania" style="width:35px;height:35px;border-radius:50%;object-fit:cover;object-position:top;">
                         <div class="status-dot-small"></div>
                     </div>
                     <div>
-                        <strong style="display:block; line-height:1.1;">Ania NCNI</strong>
-                        <span style="font-size: 0.75rem; color: var(--primary);">Wirtualny Asystent</span>
+                        <strong style="display:block;line-height:1.1;">Ania NCNI</strong>
+                        <span style="font-size:0.75rem;color:var(--primary);">Wirtualny Asystent</span>
                     </div>
                 </div>
-                <button onclick="toggleAnia()" style="background:none; border:none; cursor:pointer; font-size:1.2rem; color: var(--text-muted);">✕</button>
+                <button onclick="toggleAnia()" style="background:none;border:none;cursor:pointer;font-size:1.2rem;color:var(--text-muted);">✕</button>
             </div>
-
             <div class="ania-messages" id="ania-messages-area"></div>
             <div class="ania-options-area" id="ania-options-area"></div>
         </div>
-
-        <div class="ania-avatar" onclick="toggleAnia()">
+        <div class="ania-avatar" onclick="toggleAnia()" style="cursor:pointer;">
             <img src="ania.jpg" alt="Ania Chat">
             <div class="status-dot"></div>
         </div>
     </div>
 
     <style>
-        .ania-container { position: fixed; bottom: 24px; right: 24px; z-index: 2000; display: flex; flex-direction: column; align-items: flex-end; font-family: 'Inter', sans-serif; }
-        .ania-avatar { width: 65px; height: 65px; border-radius: 50%; border: 3px solid white; box-shadow: 0 4px 20px rgba(15, 118, 110, 0.3); cursor: pointer; position: relative; transition: transform 0.3s; background: #fff; overflow: hidden; }
-        .ania-avatar:hover { transform: scale(1.1); }
-        .ania-avatar img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
-        .status-dot { width: 14px; height: 14px; background: #10B981; border: 2px solid white; border-radius: 50%; position: absolute; bottom: 4px; right: 4px; animation: pulse-dot 2s infinite; }
-        .status-dot-small { width: 10px; height: 10px; background: #10B981; border: 1.5px solid white; border-radius: 50%; position: absolute; bottom: 0; right: 0; }
-        @keyframes pulse-dot { 0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); } 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); } }
-        .ania-bubble { background: white; padding: 12px 16px; border-radius: 12px 12px 0 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin-bottom: 12px; font-size: 0.9rem; color: var(--text-main); font-weight: 500; max-width: 260px; position: relative; opacity: 0; transform: translateY(10px); transition: all 0.4s ease; pointer-events: none; }
-        .ania-bubble.visible { opacity: 1; transform: translateY(0); pointer-events: all; }
-        .ania-close-bubble { position: absolute; top: -8px; right: -8px; background: #eee; width: 20px; height: 20px; border-radius: 50%; font-size: 12px; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #666; }
-        .ania-chat-window { position: absolute; bottom: 80px; right: 0; width: 360px; height: 500px; background: white; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.15); display: flex; flex-direction: column; overflow: hidden; opacity: 0; transform: translateY(20px) scale(0.95); pointer-events: none; transition: all 0.3s; border: 1px solid var(--border); }
-        .ania-chat-window.active { opacity: 1; transform: translateY(0) scale(1); pointer-events: all; }
-        .ania-header { background: #F8FAFC; padding: 16px; border-bottom: 1px solid #E2E8F0; display: flex; justify-content: space-between; align-items: center; }
-        .ania-messages { flex: 1; padding: 16px; overflow-y: auto; background: #fff; display: flex; flex-direction: column; gap: 12px; }
-        .msg { padding: 10px 14px; border-radius: 12px; font-size: 0.9rem; line-height: 1.5; max-width: 85%; animation: popIn 0.3s ease; }
-        .msg.bot { background: #F1F5F9; color: var(--text-main); border-bottom-left-radius: 2px; align-self: flex-start; }
-        .msg.user { background: var(--primary); color: white; border-bottom-right-radius: 2px; align-self: flex-end; }
-        .ania-options-area { padding: 12px; background: #F8FAFC; border-top: 1px solid #E2E8F0; display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; }
-        .chat-btn { background: white; border: 1px solid var(--primary); color: var(--primary); padding: 8px 14px; border-radius: 99px; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: 0.2s; }
-        .chat-btn:hover { background: var(--primary); color: white; }
-        @keyframes popIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
-        @media (max-width: 480px) { .ania-chat-window { width: 300px; right: -10px; height: 450px; } }
+        .ania-container{position:fixed;bottom:24px;right:24px;z-index:2000;display:flex;flex-direction:column;align-items:flex-end;font-family:'Inter',sans-serif;}
+        .ania-avatar{width:65px;height:65px;border-radius:50%;border:3px solid white;box-shadow:0 4px 20px rgba(15,118,110,0.3);cursor:pointer;position:relative;transition:transform 0.3s;background:#fff;overflow:hidden;}
+        .ania-avatar:hover{transform:scale(1.1);}
+        .ania-avatar img{width:100%;height:100%;object-fit:cover;object-position:top;}
+        .status-dot{width:14px;height:14px;background:#10B981;border:2px solid white;border-radius:50%;position:absolute;bottom:4px;right:4px;animation:pulse-dot 2s infinite;}
+        .status-dot-small{width:10px;height:10px;background:#10B981;border:1.5px solid white;border-radius:50%;position:absolute;bottom:0;right:0;}
+        @keyframes pulse-dot{0%{box-shadow:0 0 0 0 rgba(16,185,129,0.7);}100%{box-shadow:0 0 0 0 rgba(16,185,129,0);}}
+        .ania-bubble{background:white;padding:12px 16px;border-radius:12px 12px 0 12px;box-shadow:0 4px 15px rgba(0,0,0,0.1);margin-bottom:12px;font-size:0.9rem;color:var(--text-main);font-weight:500;max-width:260px;position:relative;opacity:0;transform:translateY(10px);transition:all 0.4s ease;pointer-events:none;}
+        .ania-bubble.visible{opacity:1;transform:translateY(0);pointer-events:all;}
+        .ania-close-bubble{position:absolute;top:-8px;right:-8px;background:#eee;width:20px;height:20px;border-radius:50%;font-size:12px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:#666;}
+        .ania-chat-window{position:absolute;bottom:80px;right:0;width:360px;height:500px;background:white;border-radius:20px;box-shadow:0 10px 40px rgba(0,0,0,0.15);display:flex;flex-direction:column;overflow:hidden;opacity:0;transform:translateY(20px) scale(0.95);pointer-events:none;transition:all 0.3s;border:1px solid var(--border);}
+        .ania-chat-window.active{opacity:1;transform:translateY(0) scale(1);pointer-events:all;}
+        .ania-header{background:#F8FAFC;padding:16px;border-bottom:1px solid #E2E8F0;display:flex;justify-content:space-between;align-items:center;}
+        .ania-messages{flex:1;padding:16px;overflow-y:auto;background:#fff;display:flex;flex-direction:column;gap:12px;}
+        .msg{padding:10px 14px;border-radius:12px;font-size:0.9rem;line-height:1.5;max-width:85%;animation:popIn 0.3s ease;}
+        .msg.bot{background:#F1F5F9;color:var(--text-main);border-bottom-left-radius:2px;align-self:flex-start;}
+        .msg.user{background:var(--primary);color:white;border-bottom-right-radius:2px;align-self:flex-end;}
+        .ania-options-area{padding:12px;background:#F8FAFC;border-top:1px solid #E2E8F0;display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end;}
+        .chat-btn{background:white;border:1px solid var(--primary);color:var(--primary);padding:8px 14px;border-radius:99px;font-size:0.85rem;font-weight:600;cursor:pointer;transition:0.2s;}
+        .chat-btn:hover{background:var(--primary);color:white;}
+        @keyframes popIn{from{opacity:0;transform:translateY(5px);}to{opacity:1;transform:translateY(0);}}
+        @media(max-width:480px){.ania-chat-window{width:300px;right:-10px;height:450px;}}
     </style>
 
     <script>
-        const chatKnowledge = {
-            'start': { text: "Cześć! 👋 W czym mogę Ci pomóc?", options: [{ label: "🧠 ADHD / ADD", next: 'adhd_info' }, { label: "🧩 Autyzm (ASD)", next: 'asd_info' }, { label: "💰 Cennik / Oferta", next: 'oferta' }, { label: "📅 Umów wizytę", action: 'booking' }] },
-            'adhd_info': { text: "Oferujemy pełną diagnozę (DIVA-5, MOXO) oraz treningi VR i Biofeedback.", options: [{ label: "Jak wygląda diagnoza?", next: 'adhd_diagnoza' }, { label: "Na czym polega terapia?", next: 'adhd_terapia' }, { label: "Wróć", next: 'start' }] },
-            'adhd_diagnoza': { text: "1. Wywiad kliniczny (DIVA-5).\n2. Test MOXO.\n3. Raport końcowy.", options: [{ label: "Chcę się zapisać", action: 'booking' }, { label: "Co to jest MOXO?", next: 'moxo' }] },
-            'moxo': { text: "MOXO to komputerowy test badający uwagę, czas reakcji i impulsywność.", options: [{ label: "Rozumiem", next: 'start' }, { label: "Umów badanie", action: 'booking' }] },
-            'adhd_terapia': { text: "Wykorzystujemy VR (Wirtualną Rzeczywistość) i Biofeedback HRV do treningu skupienia.", options: [{ label: "Zapisz mnie", action: 'booking' }, { label: "Wróć", next: 'start' }] },
-            'asd_info': { text: "Jesteśmy miejscem przyjaznym osobom w spektrum (Neurodiversity Affirming).", options: [{ label: "Umów konsultację", action: 'booking' }, { label: "Wróć", next: 'start' }] },
-            'oferta': { text: "Oferujemy diagnozę, psychoterapię, VR, Biofeedback i dietetykę.", options: [{ label: "Adres?", next: 'adres' }, { label: "Umów wizytę", action: 'booking' }] },
-            'adres': { text: "Wrocław, ul. Stefana Żeromskiego 60/5a.", options: [{ label: "Dzięki!", next: 'start' }] }
+        const chatKnowledge={
+            'start':{text:"Cześć! 👋 W czym mogę Ci pomóc?",options:[{label:"🧠 ADHD / ADD",next:'adhd_info'},{label:"🧩 Autyzm (ASD)",next:'asd_info'},{label:"💰 Cennik / Oferta",next:'oferta'},{label:"📅 Umów wizytę",action:'booking'}]},
+            'adhd_info':{text:"Oferujemy pełną diagnozę (DIVA-5, MOXO) oraz treningi VR i Biofeedback.",options:[{label:"Jak wygląda diagnoza?",next:'adhd_diagnoza'},{label:"Na czym polega terapia?",next:'adhd_terapia'},{label:"Wróć",next:'start'}]},
+            'adhd_diagnoza':{text:"1. Wywiad kliniczny (DIVA-5).\n2. Test MOXO.\n3. Raport końcowy.",options:[{label:"Chcę się zapisać",action:'booking'},{label:"Co to jest MOXO?",next:'moxo'}]},
+            'moxo':{text:"MOXO to komputerowy test badający uwagę, czas reakcji i impulsywność.",options:[{label:"Rozumiem",next:'start'},{label:"Umów badanie",action:'booking'}]},
+            'adhd_terapia':{text:"Wykorzystujemy VR (Wirtualną Rzeczywistość) i Biofeedback HRV do treningu skupienia.",options:[{label:"Zapisz mnie",action:'booking'},{label:"Wróć",next:'start'}]},
+            'asd_info':{text:"Jesteśmy miejscem przyjaznym osobom w spektrum (Neurodiversity Affirming).",options:[{label:"Umów konsultację",action:'booking'},{label:"Wróć",next:'start'}]},
+            'oferta':{text:"Oferujemy diagnozę, psychoterapię, VR, Biofeedback i dietetykę.",options:[{label:"Adres?",next:'adres'},{label:"Umów wizytę",action:'booking'}]},
+            'adres':{text:"Wrocław, ul. Stefana Żeromskiego 60/5a.",options:[{label:"Dzięki!",next:'start'}]}
         };
-
-        const chatWindow = document.getElementById('ania-window');
-        const messagesArea = document.getElementById('ania-messages-area');
-        const optionsArea = document.getElementById('ania-options-area');
-        const bubble = document.getElementById('ania-greeting');
-        let isChatOpen = false;
-
-        function toggleAnia() {
-            isChatOpen = !isChatOpen;
-            chatWindow.classList.toggle('active', isChatOpen);
-            bubble.classList.remove('visible');
-            if(isChatOpen && messagesArea.children.length === 0) loadScenario('start');
-        }
-        function closeGreeting(e) { e.stopPropagation(); bubble.classList.remove('visible'); }
-        setTimeout(() => { if(!isChatOpen) bubble.classList.add('visible'); }, 3000);
-
-        function addMessage(text, sender) {
-            const div = document.createElement('div'); div.classList.add('msg', sender);
-            div.innerHTML = text.replace(/\n/g, '<br>');
-            messagesArea.appendChild(div); messagesArea.scrollTop = messagesArea.scrollHeight;
-        }
-        function loadScenario(key) {
-            const data = chatKnowledge[key]; if(!data) return;
-            showTypingIndicator();
-            setTimeout(() => { removeTypingIndicator(); addMessage(data.text, 'bot'); renderOptions(data.options); }, 600);
-        }
-        function renderOptions(options) {
-            optionsArea.innerHTML = '';
-            if(!options) return;
-            options.forEach(opt => {
-                const btn = document.createElement('button'); btn.classList.add('chat-btn'); btn.innerText = opt.label;
-                btn.onclick = () => handleUserChoice(opt); optionsArea.appendChild(btn);
-            });
-        }
-        function handleUserChoice(opt) {
-            addMessage(opt.label, 'user'); optionsArea.innerHTML = '';
-            if (opt.action === 'booking') {
-                window.location.href = 'index.html#rezerwacja';
-                if(window.innerWidth < 480) toggleAnia();
-                setTimeout(() => { addMessage("Przeniosłam Cię do formularza. Powodzenia! 😊", 'bot'); }, 500);
-            } else if (opt.next) { loadScenario(opt.next); }
-        }
-        function showTypingIndicator() {
-            const loader = document.createElement('div'); loader.id = 'typing-loader'; loader.className = 'msg bot';
-            loader.style.color = '#aaa'; loader.innerText = '...';
-            messagesArea.appendChild(loader); messagesArea.scrollTop = messagesArea.scrollHeight;
-        }
-        function removeTypingIndicator() { const loader = document.getElementById('typing-loader'); if(loader) loader.remove(); }
+        const chatWindow=document.getElementById('ania-window');const messagesArea=document.getElementById('ania-messages-area');const optionsArea=document.getElementById('ania-options-area');const bubble=document.getElementById('ania-greeting');let isChatOpen=false;
+        function toggleAnia(){isChatOpen=!isChatOpen;chatWindow.classList.toggle('active',isChatOpen);bubble.classList.remove('visible');if(isChatOpen&&messagesArea.children.length===0)loadScenario('start');}
+        function closeGreeting(e){e.stopPropagation();bubble.classList.remove('visible');}
+        setTimeout(()=>{if(!isChatOpen)bubble.classList.add('visible');},3000);
+        function addMessage(text,sender){const d=document.createElement('div');d.classList.add('msg',sender);d.innerHTML=text.replace(/\n/g,'<br>');messagesArea.appendChild(d);messagesArea.scrollTop=messagesArea.scrollHeight;}
+        function loadScenario(key){const data=chatKnowledge[key];if(!data)return;showTypingIndicator();setTimeout(()=>{removeTypingIndicator();addMessage(data.text,'bot');renderOptions(data.options);},600);}
+        function renderOptions(options){optionsArea.innerHTML='';if(!options)return;options.forEach(opt=>{const btn=document.createElement('button');btn.classList.add('chat-btn');btn.innerText=opt.label;btn.onclick=()=>handleUserChoice(opt);optionsArea.appendChild(btn);});}
+        function handleUserChoice(opt){addMessage(opt.label,'user');optionsArea.innerHTML='';if(opt.action==='booking'){window.location.href='index.html#rezerwacja';if(window.innerWidth<480)toggleAnia();setTimeout(()=>{addMessage("Przeniosłam Cię do formularza. Powodzenia! 😊",'bot');},500);}else if(opt.next){loadScenario(opt.next);}}
+        function showTypingIndicator(){const l=document.createElement('div');l.id='typing-loader';l.className='msg bot';l.style.color='#aaa';l.innerText='...';messagesArea.appendChild(l);messagesArea.scrollTop=messagesArea.scrollHeight;}
+        function removeTypingIndicator(){const l=document.getElementById('typing-loader');if(l)l.remove();}
     </script>
 </body>
 </html>
