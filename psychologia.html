@@ -188,6 +188,9 @@
         details[open] summary { background: #F8FAFC; border-bottom: 1px solid var(--border); }
         
         .details-content { padding: 20px; color: var(--text-muted); background: white; font-size: 0.95rem; }
+        .details-content ul { list-style: none; padding: 0; margin-top: 10px; }
+        .details-content ul li { margin-bottom: 8px; padding-left: 18px; position: relative; }
+        .details-content ul li::before { content: "•"; color: var(--accent); font-weight: bold; position: absolute; left: 0; }
 
         /* Trauma Highlight */
         .trauma-section {
@@ -294,7 +297,7 @@
     <div class="mobile-menu">
         <!-- Close button inside menu for better UX -->
         <div style="text-align: right; margin-bottom: 20px;">
-            <button style="background: none; border: none; font-size: 2rem; color: var(--text-muted);" onclick="document.querySelector('.mobile-menu').classList.remove('active')">✕</button>
+            <button style="background: none; border: none; font-size: 2rem; color: var(--text-muted);" onclick="document.querySelector('.mobile-menu').classList.remove('active')">&#x2715;</button>
         </div>
         <a href="o-nas.html" class="mobile-link">O nas</a>
         <a href="neuroroznorodnosc.html" class="mobile-link">Neuroróżnorodność</a>
@@ -306,10 +309,10 @@
 
     <section class="hero-mini">
         <div class="container">
-            <span style="background: var(--primary-light); color: var(--primary); padding: 6px 12px; border-radius: 99px; font-size: 0.85rem; font-weight: 600; display: inline-block; margin-bottom: 16px;">Wsparcie Kliniczne</span>
-            <h1>Psychologia i Psychotraumatologia</h1>
+            <span style="background: var(--primary-light); color: var(--primary); padding: 6px 12px; border-radius: 99px; font-size: 0.85rem; font-weight: 600; display: inline-block; margin-bottom: 16px;">Wsparcie psychologiczne</span>
+            <h1>Psychologia i psychotraumatologia</h1>
             <p>
-                Łączymy klasyczną psychoterapię z neurotechnologią. Skupiamy się na mierzalnej redukcji stresu, leczeniu traumy i przywracaniu równowagi emocjonalnej w bezpiecznym środowisku.
+                Łączymy pracę psychologiczną z narzędziami wspierającymi samoregulację, takimi jak biofeedback i środowiska VR. W bezpiecznych warunkach pracujemy ze stresem, napięciem, trudnymi doświadczeniami oraz strategiami regulacji emocji.
             </p>
         </div>
     </section>
@@ -317,14 +320,14 @@
     <!-- VR INFO BOX (Green) -->
     <section class="container" style="margin-top: 20px;">
         <div class="vr-info-box">
-            <h3>Technologie Wirtualnej Rzeczywistości (VR) w Terapii</h3>
+            <h3>Pracownia VR i technologii immersyjnych</h3>
             <p>
-                Rzeczywistość wirtualna i technologie immersyjne mogą usprawnić leczenie i trening umiejętności w terapii wielu chorób psychiatrycznych.
+                W NCNI wykorzystujemy VR do tworzenia kontrolowanych, przewidywalnych środowisk wspierających relaksację, trening uwagi, ekspozycję na wybrane sytuacje oraz pracę z tolerancją bodźców.
             </p>
             <p>
-                Klinika Wirtualnej Rzeczywistości i Technologii Immersyjnych (VR-IT) w NCNI łączy psychoterapie oparte na dowodach, badania kliniczne i technologie medyczne w leczeniu różnych schorzeń psychiatrycznych. 
+                Nie zastępujemy leczenia psychiatrycznego ani psychoterapii klinicznej. Technologie immersyjne traktujemy jako narzędzie wspierające samoregulację, psychoedukację i rozwój codziennych strategii funkcjonowania.
             </p>
-            <a href="technologie.html">Dowiedz się więcej o dostępie do opieki ></a>
+            <a href="technologie.html">Dowiedz się więcej &gt;</a>
         </div>
     </section>
 
@@ -334,35 +337,33 @@
             
             <!-- Conditions Treated -->
             <div class="list-card">
-                <h3>Leczone Schorzenia</h3>
+                <h3>Obszary wsparcia</h3>
+                <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 16px;">NCNI nie zastępuje leczenia psychiatrycznego, psychoterapii ani opieki medycznej. Oferujemy wsparcie uzupełniające w pracy z napięciem, stresem, unikaniem, przeciążeniem bodźcami i samoregulacją.</p>
                 <ul class="custom-list">
-                    <li>Fobie proste (Simple Phobias)</li>
-                    <li>Zaburzenia obsesyjno-kompulsyjne (OCD)</li>
-                    <li>Zespół stresu pourazowego (PTSD)</li>
-                    <li>Trauma złożona (Complex Trauma)</li>
-                    <li>Uzależnienia (Addiction)</li>
-                    <li>Psychozy (Psychosis)</li>
-                    <li>Lęk społeczny (Social Anxiety)</li>
-                    <li>Zespół lęku napadowego</li>
-                    <li>Zespół lęku uogólnionego (GAD)</li>
-                    <li>Zaburzenia somatyczne</li>
-                    <li>Zaburzenia odżywiania</li>
+                    <li>Fobie i unikanie wybranych sytuacji</li>
+                    <li>Lęk społeczny i trudności w sytuacjach interpersonalnych</li>
+                    <li>Napady lęku, stres i napięcie</li>
+                    <li>Trudne doświadczenia i przeciążenie emocjonalne</li>
+                    <li>Natrętne myśli i zachowania — przy współpracy ze specjalistą prowadzącym</li>
+                    <li>Trudności związane z jedzeniem i obrazem ciała — wyłącznie jako wsparcie uzupełniające</li>
+                    <li>Objawy psychosomatyczne i napięcie w ciele</li>
+                    <li>Wsparcie regulacji i dobrostanu u osób pozostających pod opieką specjalistyczną</li>
                 </ul>
             </div>
 
             <!-- This Program Provides -->
             <div class="list-card" style="border-left: 4px solid var(--accent);">
-                <h3>Nasz Program Zapewnia</h3>
+                <h3>Nasz program obejmuje</h3>
                 <ul class="custom-list">
-                    <li>Ocena i konsultacja pacjenta</li>
-                    <li>Desensytyzacja (Odczulanie)</li>
-                    <li>Terapia Ekspozycyjna (VR)</li>
-                    <li>Psychoterapia traumy</li>
+                    <li>Konsultację wstępną i omówienie potrzeb uczestnika</li>
+                    <li>Stopniowe oswajanie wybranych bodźców lub sytuacji</li>
+                    <li>Ekspozycję VR jako narzędzie wspierające pracę z unikaniem i napięciem</li>
+                    <li>Wsparcie psychologiczne w pracy ze stresem i trudnymi doświadczeniami</li>
                     <li>Trening umiejętności społecznych</li>
-                    <li>Trening odwracania nawyków</li>
-                    <li>Terapie oparte na dowodach z VR</li>
-                    <li>Trening uważności (Mindfulness)</li>
-                    <li>Trening umiejętności DBT</li>
+                    <li>Elementy treningu odwracania nawyków</li>
+                    <li>Metody inspirowane podejściami opisywanymi w literaturze naukowej</li>
+                    <li>Trening uważności i pracy z oddechem</li>
+                    <li>Elementy umiejętności DBT, np. regulacja emocji, tolerancja dyskomfortu i uważność</li>
                 </ul>
             </div>
 
@@ -374,15 +375,16 @@
         <div class="trauma-section">
             <div class="trauma-deco"></div>
             <div class="trauma-content">
-                <h2>Specjalizacja: <span>Psychotraumatologia</span></h2>
+                <h2>Specjalizacja: <span>psychotraumatologia</span></h2>
                 <p>
-                    Praca z traumą wymaga precyzji i bezpieczeństwa. Nasze podejście integruje diagnostykę psychometryczną z interwencjami neurofizjologicznymi.
+                    Praca po doświadczeniach traumatycznych wymaga bezpieczeństwa, uważności i odpowiedniego tempa. W NCNI konsultacja psychotraumatologiczna może obejmować ocenę potrzeb, psychoedukację oraz dobór metod wspierających stabilizację i samoregulację.
                 </p>
                 <ul class="trauma-list">
-                    <li>Bezpieczne przetwarzanie doświadczeń</li>
-                    <li>Stabilizacja układu nerwowego</li>
-                    <li>Redukcja objawów psychosomatycznych</li>
-                    <li>Praca z ciałem, oddechem i uziemieniem</li>
+                    <li>Omówienie reakcji na stres i trudne doświadczenia</li>
+                    <li>Praca ze stabilizacją, oddechem i uziemieniem</li>
+                    <li>Wsparcie w rozpoznawaniu napięcia i reakcji ciała</li>
+                    <li>Dobór strategii regulacji emocji i codziennego funkcjonowania</li>
+                    <li>Rekomendacja dalszej psychoterapii lub konsultacji psychiatrycznej, jeśli jest potrzebna</li>
                 </ul>
                 <a href="index.html#rezerwacja" class="btn-light">Umów konsultację</a>
             </div>
@@ -395,29 +397,29 @@
         <div style="max-width: 800px; margin: 0 auto;">
             
             <details>
-                <summary>Podejście Terapeutyczne</summary>
+                <summary>Podejście terapeutyczne</summary>
                 <div class="details-content">
-                    Oferujemy psychoterapię indywidualną, terapię par, psychoterapię traumy oraz uzależnień. Pracujemy w nurtach opartych na dowodach naukowych.
+                    Oferujemy konsultacje psychologiczne, wsparcie indywidualne, pracę z parami, konsultacje psychotraumatologiczne oraz wsparcie w obszarze trudności związanych z nawykami i uzależnieniami. Pracujemy z wykorzystaniem podejść opisywanych w literaturze naukowej i dobieranych do potrzeb uczestnika.
                 </div>
             </details>
 
             <details>
-                <summary>Zakres Porad</summary>
+                <summary>Zakres wsparcia</summary>
                 <div class="details-content">
-                    Psychologia kliniczna, psychologia dzieci i młodzieży, poradnictwo psychologiczne, interwencja kryzysowa oraz konsultacje online.
+                    Psychologia, wsparcie dzieci i młodzieży, poradnictwo psychologiczne, interwencja kryzysowa, konsultacje online oraz praca z regulacją stresu, napięcia i emocji.
                 </div>
             </details>
 
             <details>
-                <summary>Zaburzenia Nastroju i Depresja</summary>
+                <summary>Zaburzenia nastroju i depresja</summary>
                 <div class="details-content">
-                    Kompleksowe leczenie depresji, choroby afektywnej dwubiegunowej (ChAD) oraz dystymii przy wsparciu technologicznym.
+                    Wspieramy osoby doświadczające obniżonego nastroju, napięcia, przeciążenia i trudności w codziennym funkcjonowaniu. Nie zastępujemy leczenia psychiatrycznego ani psychoterapii klinicznej; w razie potrzeby rekomendujemy konsultację z lekarzem psychiatrą lub psychoterapeutą prowadzącym.
                 </div>
             </details>
 
         </div>
         <div style="text-align: center; margin-top: 20px;">
-            <button class="btn-light" style="background: transparent; border: 1px solid var(--border); color: var(--text-muted); font-weight: normal; font-size: 0.9rem;" onclick="this.parentElement.style.display='none';">Ukryj ▲</button>
+            <button class="btn-light" style="background: transparent; border: 1px solid var(--border); color: var(--text-muted); font-weight: normal; font-size: 0.9rem;" onclick="this.parentElement.style.display='none';">Ukryj &#9650;</button>
         </div>
     </section>
 
@@ -450,7 +452,7 @@
                 </div>
             </div>
             <div style="border-top: 1px solid var(--border); padding-top: 24px; margin-top: 40px; text-align: center; color: var(--text-muted); font-size: 0.85rem;">
-                &copy; 2025 Naukowe Centrum Neuroinnowacji sp. z o.o. | Design: Neuro Harmony System.
+                &copy; 2026 Naukowe Centrum Neuroinnowacji | Designed and built by Kiszlo.Studio Karol Kiszło
             </div>
         </div>
     </footer>
@@ -553,7 +555,7 @@
     <div id="ania-widget" class="ania-container">
         
         <div class="ania-bubble" id="ania-greeting">
-            Dzień dobry! ☀️ Jestem Asystentką NCNI. Kliknij we mnie, a pomogę.
+            Dzień dobry! ☀️ Jestem Asystentką NCNI. Kliknij we mnie, a pomóżę.
             <span class="ania-close-bubble" onclick="closeGreeting(event)">✕</span>
         </div>
 
