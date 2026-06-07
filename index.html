@@ -65,7 +65,6 @@
     <meta name="citation_author" content="Karol Kiszło">
     <meta name="citation_publication_date" content="2024">
     <meta name="citation_language" content="pl">
-    <!-- llms.txt discovery -->
     <link rel="alternate" type="text/plain" title="LLMs.txt" href="https://ncni.pl/llms.txt">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -199,49 +198,15 @@
             padding: 12px 0;
             background: rgba(255,255,255,0.95);
         }
-        
-        .nav-wrapper {
-            display: flex;
-            flex-direction: column; 
-            align-items: center;
-            gap: 16px;
-        }
-        
-        .brand-bar {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            position: relative; 
-        }
-
-        .logo {
-            display: flex; align-items: center; gap: 12px;
-            font-weight: 700; color: var(--text-main);
-            text-decoration: none; cursor: pointer; letter-spacing: -0.01em;
-        }
+        .nav-wrapper { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+        .brand-bar { display: flex; justify-content: center; align-items: center; width: 100%; position: relative; }
+        .logo { display: flex; align-items: center; gap: 12px; font-weight: 700; color: var(--text-main); text-decoration: none; cursor: pointer; letter-spacing: -0.01em; }
         .logo img { height: 44px; width: auto; border-radius: 8px; flex-shrink: 0; }
-
-        .brand-name {
-            font-size: 1.25rem;
-            line-height: 1.15;
-            text-transform: uppercase;
-            text-align: left;
-            display: block;
-        }
-
+        .brand-name { font-size: 1.25rem; line-height: 1.15; text-transform: uppercase; text-align: left; display: block; }
         .nav-links { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
-        .nav-item {
-            padding: 8px 16px; border-radius: 99px; font-size: 0.9rem; font-weight: 500;
-            color: var(--text-muted); text-decoration: none; transition: var(--trans-default); cursor: pointer;
-            white-space: nowrap;
-        }
+        .nav-item { padding: 8px 16px; border-radius: 99px; font-size: 0.9rem; font-weight: 500; color: var(--text-muted); text-decoration: none; transition: var(--trans-default); cursor: pointer; white-space: nowrap; }
         .nav-item:hover { color: var(--primary); background: var(--primary-light); }
-        .nav-cta {
-            background: var(--primary); color: white !important;
-            box-shadow: 0 4px 12px rgba(15, 118, 110, 0.25); margin-left: 8px;
-        }
-        
+        .nav-cta { background: var(--primary); color: white !important; box-shadow: 0 4px 12px rgba(15, 118, 110, 0.25); margin-left: 8px; }
         .mobile-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; position: absolute; right: 0; top: 50%; transform: translateY(-50%); }
         .mobile-toggle span { display: block; width: 24px; height: 2px; background: var(--text-main); margin: 5px 0; transition: 0.3s; }
         .mobile-menu { position: fixed; top: 80px; left: 0; width: 100%; background: white; padding: 24px; border-bottom: 1px solid var(--border); transform: translateY(-150%); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); z-index: 999; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
@@ -251,8 +216,8 @@
         @media (max-width: 900px) {
             header { padding: 12px 0; }
             .nav-wrapper { flex-direction: row; height: auto; min-height: 50px; justify-content: center; padding: 0; }
-            .brand-bar { width: 100%; justify-content: space-between; padding: 0 16px; box-sizing: border-box; } 
-            .nav-links { display: none; } 
+            .brand-bar { width: 100%; justify-content: space-between; padding: 0 16px; box-sizing: border-box; }
+            .nav-links { display: none; }
             .mobile-toggle { display: block; position: static; transform: none; margin-left: 10px; }
             .logo { max-width: calc(100% - 50px); gap: 10px; }
             .logo img { height: 38px; }
@@ -261,165 +226,89 @@
 
         /* --- HERO --- */
         .hero { padding: 80px 0 60px; text-align: center; }
-        h1 {
-            font-size: clamp(2rem, 6vw, 3.5rem); 
-            margin-bottom: 24px;
-            background: linear-gradient(135deg, var(--text-main) 0%, var(--primary) 100%);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-        }
-        .hero-lead {
-            font-size: clamp(1rem, 4vw, 1.25rem);
-            color: var(--text-muted); max-width: 700px; margin: 0 auto 32px;
-        }
+        h1 { font-size: clamp(2rem, 6vw, 3.5rem); margin-bottom: 24px; background: linear-gradient(135deg, var(--text-main) 0%, var(--primary) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero-lead { font-size: clamp(1rem, 4vw, 1.25rem); color: var(--text-muted); max-width: 700px; margin: 0 auto 32px; }
         .hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-        .btn {
-            display: inline-flex; align-items: center; justify-content: center;
-            padding: 12px 24px; border-radius: 99px; font-weight: 600; cursor: pointer;
-            border: none; font-family: 'Lexend', sans-serif; transition: 0.2s;
-            width: auto; text-decoration: none;
-        }
+        .btn { display: inline-flex; align-items: center; justify-content: center; padding: 12px 24px; border-radius: 99px; font-weight: 600; cursor: pointer; border: none; font-family: 'Lexend', sans-serif; transition: 0.2s; width: auto; text-decoration: none; }
         @media (max-width: 480px) { .btn { width: 100%; } }
-
         .btn-primary { background-color: var(--primary); color: white; }
         .btn-outline { background: white; border: 1px solid var(--border); color: var(--text-main); }
 
         /* --- MARQUEE --- */
-        .marquee-wrapper {
-            background: var(--primary); color: white; padding: 10px 0; overflow: hidden;
-            position: relative; font-family: 'Lexend', sans-serif; font-size: 0.85rem;
-            letter-spacing: 0.05em; text-transform: uppercase; white-space: nowrap;
-        }
+        .marquee-wrapper { background: var(--primary); color: white; padding: 10px 0; overflow: hidden; position: relative; font-family: 'Lexend', sans-serif; font-size: 0.85rem; letter-spacing: 0.05em; text-transform: uppercase; white-space: nowrap; }
         .marquee-content { display: inline-block; animation: scroll 40s linear infinite; }
         .marquee-item { margin: 0 16px; display: inline-flex; align-items: center; gap: 6px; }
         @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
         /* --- PARTNERSHIP BANNER --- */
-        .partnership-banner {
-            display: flex; align-items: center; justify-content: space-between;
-            background: linear-gradient(to right, #1E293B, #0F172A);
-            border-radius: 20px; padding: 24px 32px;
-            color: white; text-decoration: none;
-            transition: var(--trans-default);
-            border: 1px solid rgba(255,255,255,0.1);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-        }
+        .partnership-banner { display: flex; align-items: center; justify-content: space-between; background: linear-gradient(to right, #1E293B, #0F172A); border-radius: 20px; padding: 24px 32px; color: white; text-decoration: none; transition: var(--trans-default); border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
         .partnership-banner:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(15, 23, 42, 0.15); border-color: var(--primary); }
         .partnership-content h2 { font-size: 1.4rem; margin: 8px 0 4px; color: white; }
         .partnership-content p { color: #94A3B8; margin: 0; font-size: 0.95rem; }
-        .partnership-tag {
-            background: rgba(16, 185, 129, 0.15); color: #34D399;
-            padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;
-        }
-        .partnership-arrow {
-            background: rgba(255,255,255,0.1); padding: 10px 20px; border-radius: 99px;
-            font-weight: 600; font-size: 0.9rem; white-space: nowrap; margin-left: 20px;
-        }
-        @media (max-width: 600px) {
-            .partnership-banner { flex-direction: column; text-align: center; gap: 16px; padding: 24px; }
-            .partnership-arrow { margin-left: 0; width: 100%; text-align: center; }
-        }
+        .partnership-tag { background: rgba(16, 185, 129, 0.15); color: #34D399; padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
+        .partnership-arrow { background: rgba(255,255,255,0.1); padding: 10px 20px; border-radius: 99px; font-weight: 600; font-size: 0.9rem; white-space: nowrap; margin-left: 20px; }
+        @media (max-width: 600px) { .partnership-banner { flex-direction: column; text-align: center; gap: 16px; padding: 24px; } .partnership-arrow { margin-left: 0; width: 100%; text-align: center; } }
+
+        /* --- CIRCLE VR SECTION --- */
+        .circle-vr-section { background: linear-gradient(135deg, #ffffff 0%, var(--bg-body) 100%); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 80px 0; }
+        @media (max-width: 768px) { .circle-vr-section { padding: 50px 0; } }
+        .circle-vr-img-wrapper img { width: 100%; height: auto; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.08); transition: transform 0.3s ease; }
+        .circle-vr-img-wrapper img:hover { transform: translateY(-5px); }
+        .feature-list-vr { list-style: none; padding: 0; margin: 0 0 30px 0; }
+        .feature-list-vr li { position: relative; padding-left: 35px; margin-bottom: 20px; font-size: 1.05rem; color: var(--text-main); line-height: 1.5; }
+        @media (max-width: 480px) { .feature-list-vr li { font-size: 0.95rem; padding-left: 30px; margin-bottom: 16px; } }
+        .feature-list-vr li::before { content: '\2713'; position: absolute; left: 0; top: 0; color: #fff; background-color: var(--primary); width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: bold; }
+        .circle-vr-layout { display: flex; flex-wrap: wrap; gap: 50px; align-items: center; }
+        .circle-vr-layout > div:first-child { flex: 1; min-width: 280px; }
+        .circle-vr-layout > div:last-child { flex: 1; min-width: 280px; }
+        @media (max-width: 768px) { .circle-vr-layout { gap: 30px; } .circle-vr-layout > div { min-width: 100% !important; } }
 
         /* --- TABS --- */
-        .tabs-container { margin-top: 40px; }
-        .tabs-nav {
-            display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; margin-bottom: 30px;
-            padding: 0 8px;
-        }
-        .tab-btn {
-            background: white; border: 1px solid var(--border); padding: 10px 18px;
-            border-radius: 99px; font-weight: 600; color: var(--text-muted); cursor: pointer;
-            font-family: 'Lexend', sans-serif; font-size: 0.9rem;
-            flex: 1 1 auto; text-align: center; min-width: 0;
-        }
+        .tabs-nav { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; margin-bottom: 30px; padding: 0 8px; }
+        .tab-btn { background: white; border: 1px solid var(--border); padding: 10px 18px; border-radius: 99px; font-weight: 600; color: var(--text-muted); cursor: pointer; font-family: 'Lexend', sans-serif; font-size: 0.9rem; flex: 1 1 auto; text-align: center; min-width: 0; }
         @media (min-width: 600px) { .tab-btn { flex: 0 0 auto; } }
-        @media (max-width: 480px) {
-            .tabs-nav { gap: 6px; }
-            .tab-btn { padding: 9px 12px; font-size: 0.82rem; }
-        }
+        @media (max-width: 480px) { .tabs-nav { gap: 6px; } .tab-btn { padding: 9px 12px; font-size: 0.82rem; } }
         .tab-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
         .tab-content { display: none; animation: fadeIn 0.5s ease; }
         .tab-content.active { display: block; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
         /* --- CARDS (GRID) --- */
-        .grid-cards {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 16px;
-        }
+        .grid-cards { display: grid; grid-template-columns: 1fr; gap: 16px; }
         @media (min-width: 560px) { .grid-cards { grid-template-columns: repeat(2, 1fr); gap: 20px; } }
         @media (min-width: 1024px) { .grid-cards { grid-template-columns: repeat(3, 1fr); } }
-
-        .feature-card {
-            border-radius: 20px; padding: 20px; position: relative; overflow: hidden;
-            transition: var(--trans-default); border: 2px solid transparent; background: white;
-            text-decoration: none; display: block;
-        }
+        .feature-card { border-radius: 20px; padding: 20px; position: relative; overflow: hidden; transition: var(--trans-default); border: 2px solid transparent; background: white; text-decoration: none; display: block; }
         @media (max-width: 480px) { .feature-card { padding: 16px; border-radius: 16px; } }
         .feature-card:hover { transform: translateY(-3px); border-color: var(--primary); }
-        .card-icon {
-            width: 44px; height: 44px; background: linear-gradient(135deg, #EEF2FF, #E0F2FE);
-            border-radius: 12px; display: flex; align-items: center; justify-content: center;
-            margin-bottom: 12px; font-size: 22px;
-        }
+        .card-icon { width: 44px; height: 44px; background: linear-gradient(135deg, #EEF2FF, #E0F2FE); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 12px; font-size: 22px; }
         .feature-card h3 { font-size: 1.1rem; margin-bottom: 8px; color: var(--text-main); }
         @media (max-width: 480px) { .feature-card h3 { font-size: 1rem; } }
         .feature-card p { color: var(--text-muted); margin-bottom: 16px; font-size: 0.9rem; }
         .read-more { font-weight: 600; color: var(--primary); font-size: 0.9rem; }
-
-        /* Oval Cards */
-        .oval-card {
-            border-radius: 32px; padding: 24px 20px; background: linear-gradient(145deg, #FFFFFF, #F0F9FF);
-            border: 2px solid var(--primary-light); text-align: center;
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            text-decoration: none;
-        }
+        .oval-card { border-radius: 32px; padding: 24px 20px; background: linear-gradient(145deg, #FFFFFF, #F0F9FF); border: 2px solid var(--primary-light); text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; text-decoration: none; }
         @media (max-width: 480px) { .oval-card { border-radius: 20px; padding: 20px 16px; } }
 
         /* --- TEAM GRID --- */
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 24px;
-        }
-        @media (max-width: 560px) {
-            .team-grid { grid-template-columns: 1fr; gap: 16px; }
-        }
-        .team-card {
-            border-radius: 20px; overflow: hidden; background: white; text-decoration: none;
-            display: flex; flex-direction: column;
-        }
+        .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
+        @media (max-width: 560px) { .team-grid { grid-template-columns: 1fr; gap: 16px; } }
+        .team-card { border-radius: 20px; overflow: hidden; background: white; text-decoration: none; display: flex; flex-direction: column; }
         .team-img-wrapper { height: 260px; overflow: hidden; background: #E2E8F0; }
         @media (max-width: 480px) { .team-img-wrapper { height: 220px; } }
         .team-img { width: 100%; height: 100%; object-fit: cover; object-position: top center; filter: grayscale(100%); transition: 0.5s; }
         .team-card:hover .team-img { filter: grayscale(0%); transform: scale(1.05); }
         .team-info { padding: 18px; }
 
-        /* --- RESERVATION FORM --- */
-        .reservation-section {
-            background: white; border: 1px solid var(--border); border-radius: 20px;
-            padding: 32px 20px; margin: 50px auto; max-width: 600px;
-        }
-        
+        /* --- RESERVATION --- */
+        .reservation-section { background: white; border: 1px solid var(--border); border-radius: 20px; padding: 32px 20px; margin: 50px auto; max-width: 600px; }
+
         /* --- SOCIAL ICONS --- */
-        .social-icon {
-            color: var(--text-muted);
-            transition: transform 0.3s ease, color 0.3s ease;
-            display: inline-flex;
-        }
-        .social-icon:hover {
-            color: var(--primary);
-            transform: translateY(-3px);
-        }
+        .social-icon { color: var(--text-muted); transition: transform 0.3s ease, color 0.3s ease; display: inline-flex; }
+        .social-icon:hover { color: var(--primary); transform: translateY(-3px); }
 
         /* --- FOOTER --- */
         footer { background: white; border-top: 1px solid var(--border); padding: 50px 0 20px; margin-top: 60px; }
-        .footer-grid {
-            display: grid; grid-template-columns: 1fr; gap: 30px; text-align: center;
-        }
-        @media (min-width: 768px) {
-            .footer-grid { grid-template-columns: repeat(3, 1fr); text-align: left; }
-        }
+        .footer-grid { display: grid; grid-template-columns: 1fr; gap: 30px; text-align: center; }
+        @media (min-width: 768px) { .footer-grid { grid-template-columns: repeat(3, 1fr); text-align: left; } }
 
         /* --- ANIA CSS --- */
         .ania-container { position: fixed; bottom: 24px; right: 24px; z-index: 2000; display: flex; flex-direction: column; align-items: flex-end; font-family: 'Inter', sans-serif; }
@@ -461,7 +350,6 @@
                     <span></span><span></span><span></span>
                 </button>
             </div>
-
             <nav class="nav-links">
                 <div style="margin-right: 20px; font-size: 0.9rem; font-weight: 600;">
                     <a href="tel:+48600608333" style="margin-right: 15px; color: var(--text-main);">&#128222; 600 608 333</a>
@@ -535,11 +423,44 @@
         </a>
     </section>
 
+    <!-- CIRCLE VR / TRIANGLE SECTION -->
+    <section class="circle-vr-section" id="technologia-circle">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 60px;">
+                <span style="color: var(--primary); font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; font-size: 0.9rem; display: block; margin-bottom: 10px;">Rewolucja w Neuroterapii</span>
+                <h2 style="font-size: clamp(1.8rem, 5vw, 2.8rem); color: var(--text-main); margin: 0 0 20px 0; line-height: 1.2;">Neuro-Immersja Kliniczna - Triangle</h2>
+                <p style="font-size: 1.1rem; color: var(--text-muted); max-width: 700px; margin: 0 auto; line-height: 1.6;">
+                    Pierwszy system, który słucha Twojego ciała. Głęboki relaks w zamkniętej pętli biofeedbacku, dopasowujący się do Ciebie w czasie rzeczywistym.
+                </p>
+            </div>
+
+            <div class="circle-vr-layout">
+                <div class="circle-vr-img-wrapper">
+                    <img src="vr-system.png" alt="Fotel Zero Gravity i Gogle VR System NCNI" onerror="this.src='https://placehold.co/800x600/e9ecef/495057?text=System+VR+NCNI'">
+                </div>
+                <div>
+                    <h3 style="font-size: clamp(1.4rem, 4vw, 1.8rem); margin-top: 0; margin-bottom: 20px; color: var(--text-main);">Autorska pętla relaksacji</h3>
+                    <p style="font-size: 1.05rem; color: var(--text-muted); margin-bottom: 25px; line-height: 1.6;">
+                        Połączyliśmy <strong>fotel Zero Gravity</strong>, <strong>gogle VR</strong> oraz <strong>ciągły pomiar HRV</strong> (zmienności rytmu zatokowego). Stworzyłyśmy protokół, który automatycznie reaguje na Twoje emocje i wspomaga aktywację układu przywspółczulnego odpowiedzialnego za relaksację.
+                    </p>
+                    <ul class="feature-list-vr">
+                        <li><strong>Reaktywne środowisko:</strong> Gdy wchodzisz w stan głębokiego relaksu, system VR i muzyka podtrzymują synchronizację układu przywspółczulnego.</li>
+                        <li><strong>Inteligentny fotel:</strong> Masaż dostosowuje swoje natężenie do bieżących parametrów stresu.</li>
+                        <li><strong>Nadzór eksperta:</strong> Pełna automatyzacja z możliwością manualnej modyfikacji przez prowadzącego sesję.</li>
+                        <li><strong>Brak szablonów (100% personalizacji):</strong> Każdy układ nerwowy jest inny, dlatego odrzucamy uniwersalne schematy. Twój protokół terapeutyczny jest zawsze szyty na miarę.</li>
+                    </ul>
+                    <a href="technologie.html" class="btn btn-primary" style="box-shadow: 0 4px 15px rgba(15, 118, 110, 0.2);">Poznaj szczegóły technologii</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="section" id="oferta">
         <div class="container">
             <div class="tabs-nav">
                 <button class="tab-btn active" onclick="openTab('neuroroznorodnosc')">Neuroróżnorodność</button>
                 <button class="tab-btn" onclick="openTab('psychologia')">Psychologia</button>
+                <button class="tab-btn" onclick="openTab('technologie')">Technologie (VR/AI)</button>
             </div>
 
             <div id="neuroroznorodnosc" class="tab-content active">
@@ -629,6 +550,23 @@
                     </a>
                 </div>
             </div>
+
+            <div id="technologie" class="tab-content">
+                <div class="grid-cards">
+                    <a href="technologie.html" class="feature-card glass">
+                        <div class="card-icon">&#129405;</div>
+                        <h3>Terapia VR</h3>
+                        <p>Immersyjne środowiska terapeutyczne. Leczenie fobii.</p>
+                        <span class="read-more">Sprawdź sprzęt &#8594;</span>
+                    </a>
+                    <a href="technologie.html" class="feature-card glass">
+                        <div class="card-icon">&#128202;</div>
+                        <h3>Biofeedback HRV</h3>
+                        <p>Trenuj swoje serce i mózg. Obserwuj wpływ oddechu na stres.</p>
+                        <span class="read-more">Sprawdź sprzęt &#8594;</span>
+                    </a>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -637,9 +575,7 @@
             <div style="text-align: center; max-width: 800px; margin: 0 auto 60px;">
                 <span style="color: var(--primary); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; font-size: 0.9rem;">Eksperci NCNI</span>
                 <h2 style="font-size: 2.5rem; margin-top: 10px;">Ludzie i Nauka</h2>
-                <p style="color: var(--text-muted); font-size: 1.1rem; margin-bottom: 24px;">
-                    Poznaj zespół łączący medycynę, inżynierię i psychologię. 
-                </p>
+                <p style="color: var(--text-muted); font-size: 1.1rem; margin-bottom: 24px;">Poznaj zespół łączący medycynę, inżynierię i psychologię.</p>
                 <a href="o-nas.html" class="btn btn-outline" style="border-color: var(--primary); color: var(--primary);">Poznaj pełną historię i misję &#8594;</a>
             </div>
 
@@ -654,7 +590,6 @@
                         <p style="font-size: 0.9rem; color: var(--text-muted);">Zobacz profil &#8594;</p>
                     </div>
                 </a>
-
                 <a href="kiszlo.html" class="team-card glass">
                     <div class="team-img-wrapper">
                         <img src="kk.jpg" alt="Karol Kiszło" class="team-img" onerror="this.src='https://ui-avatars.com/api/?name=Karol+Kiszlo&background=0F766E&color=fff&size=400'">
@@ -665,7 +600,6 @@
                         <p style="font-size: 0.9rem; color: var(--text-muted);">Zobacz profil &#8594;</p>
                     </div>
                 </a>
-
                 <a href="fizjoterapia.html" class="team-card glass">
                     <div class="team-img-wrapper">
                         <img src="fizjoterapeuta.jpg" alt="Fizjoterapeuta NCNI" class="team-img" style="object-position: top;">
@@ -676,7 +610,6 @@
                         <p style="font-size: 0.9rem; color: var(--text-muted);">Zobacz ofertę &#8594;</p>
                     </div>
                 </a>
-
                 <a href="dietetyk.html" class="team-card glass">
                     <div class="team-img-wrapper">
                         <img src="dietetyk.jpg" alt="Dietetyk NCNI Wrocław" class="team-img" style="object-position: top;" onerror="this.src='https://ui-avatars.com/api/?name=Dietetyk+NCNI&background=0F766E&color=fff&size=400'">
@@ -697,32 +630,21 @@
             <h2 style="margin-bottom: 40px; text-align: center;">Pytania i Odpowiedzi</h2>
             <details>
                 <summary>Jak wygląda pierwsza wizyta?</summary>
-                <div class="details-content">
-                    Pierwsza wizyta to konsultacja diagnostyczna (60 min). Omawiamy Twoje potrzeby, historię medyczną i dobieramy odpowiednią ścieżkę.
-                </div>
+                <div class="details-content">Pierwsza wizyta to konsultacja diagnostyczna (60 min). Omawiamy Twoje potrzeby, historię medyczną i dobieramy odpowiednią ścieżkę.</div>
             </details>
             <details>
                 <summary>Czy terapie VR są bezpieczne?</summary>
-                <div class="details-content">
-                    Tak. Przed sesją VR przeprowadzamy wywiad kwalifikacyjny. Dla osób z epilepsją światłoczułą mamy alternatywne metody (Biofeedback bez VR).
-                </div>
+                <div class="details-content">Tak. Przed sesją VR przeprowadzamy wywiad kwalifikacyjny. Dla osób z epilepsją światłoczułą mamy alternatywne metody (Biofeedback bez VR).</div>
             </details>
         </div>
     </section>
 
     <section id="rezerwacja" class="reservation-section" style="text-align: center;">
         <h2 style="margin-bottom: 24px; color: var(--primary-dark);">Umów Wizytę</h2>
-        <p style="color: var(--text-muted); margin-bottom: 40px; font-size: 1.1rem;">
-            Rejestracja telefoniczna i mailowa.<br>
-            Wybierz preferowaną formę kontaktu poniżej.
-        </p>
+        <p style="color: var(--text-muted); margin-bottom: 40px; font-size: 1.1rem;">Rejestracja telefoniczna i mailowa.<br>Wybierz preferowaną formę kontaktu poniżej.</p>
         <div style="display: flex; flex-direction: column; gap: 20px; max-width: 400px; margin: 0 auto;">
-            <a href="tel:+48600608333" class="btn btn-primary" style="font-size: 1.2rem; padding: 16px 32px; display: flex; align-items: center; justify-content: center; gap: 12px;">
-                <span>&#128222;</span> Zadzwoń: 600 608 333
-            </a>
-            <a href="mailto:kontakt@ncni.pl" class="btn btn-outline" style="font-size: 1.2rem; padding: 16px 32px; display: flex; align-items: center; justify-content: center; gap: 12px; border: 2px solid var(--border);">
-                <span>&#9993;&#65039;</span> Napisz: kontakt@ncni.pl
-            </a>
+            <a href="tel:+48600608333" class="btn btn-primary" style="font-size: 1.2rem; padding: 16px 32px;"><span>&#128222;</span> Zadzwoń: 600 608 333</a>
+            <a href="mailto:kontakt@ncni.pl" class="btn btn-outline" style="font-size: 1.2rem; padding: 16px 32px; border: 2px solid var(--border);"><span>&#9993;&#65039;</span> Napisz: kontakt@ncni.pl</a>
         </div>
     </section>
 
@@ -731,13 +653,9 @@
             <div class="footer-grid">
                 <div>
                     <a href="#" class="logo" style="margin-bottom: 20px; display: inline-block;">
-                        <img src="logo.png" alt="NCNI">
-                        NCNI
+                        <img src="logo.png" alt="NCNI"> NCNI
                     </a>
-                    <p style="color: var(--text-muted); font-size: 0.95rem;">
-                        Naukowe Centrum Neuroinnowacji.<br>
-                        Twój partner w zdrowiu psychicznym.
-                    </p>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">Naukowe Centrum Neuroinnowacji.<br>Twój partner w zdrowiu psychicznym.</p>
                 </div>
                 <div>
                     <h4 style="margin-bottom: 16px;">Kontakt</h4>
@@ -747,22 +665,11 @@
                         <a href="mailto:kontakt@ncni.pl" style="color: var(--text-main); font-weight: 600; text-decoration: none;">&#9993;&#65039; kontakt@ncni.pl</a>
                         <a href="tel:+48600608333" style="color: var(--primary); font-weight: 600; text-decoration: none; font-size: 1.1rem;">&#128222; 600 608 333</a>
                     </div>
-                    <div style="margin-top: 24px; display: inline-flex; gap: 10px; align-items: center; white-space: nowrap;">
-                        <a href="https://www.facebook.com/profile.php?id=61579420537737" target="_blank" class="social-icon" aria-label="Facebook">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="#1877F2"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg>
-                        </a>
-                        <a href="https://www.instagram.com/ncni_pl/" target="_blank" class="social-icon" aria-label="Instagram">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="url(#ig-grad)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <defs><linearGradient id="ig-grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#f09433" /><stop offset="25%" stop-color="#e6683c" /><stop offset="50%" stop-color="#dc2743" /><stop offset="75%" stop-color="#cc2366" /><stop offset="100%" stop-color="#bc1888" /></linearGradient></defs>
-                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                            </svg>
-                        </a>
-                        <a href="https://youtube.com/@neuroinnowacje" target="_blank" class="social-icon" aria-label="YouTube">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="#FF0000"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-                        </a>
-                        <a href="https://x.com/neuroinnowacje" target="_blank" class="social-icon" aria-label="X (Twitter)">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="#000000"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg>
-                        </a>
+                    <div style="margin-top: 24px; display: inline-flex; gap: 10px; align-items: center;">
+                        <a href="https://www.facebook.com/profile.php?id=61579420537737" target="_blank" class="social-icon" aria-label="Facebook"><svg width="24" height="24" viewBox="0 0 24 24" fill="#1877F2"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg></a>
+                        <a href="https://www.instagram.com/ncni_pl/" target="_blank" class="social-icon" aria-label="Instagram"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="url(#ig-grad)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><defs><linearGradient id="ig-grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#f09433" /><stop offset="25%" stop-color="#e6683c" /><stop offset="50%" stop-color="#dc2743" /><stop offset="75%" stop-color="#cc2366" /><stop offset="100%" stop-color="#bc1888" /></linearGradient></defs><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+                        <a href="https://youtube.com/@neuroinnowacje" target="_blank" class="social-icon" aria-label="YouTube"><svg width="24" height="24" viewBox="0 0 24 24" fill="#FF0000"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+                        <a href="https://x.com/neuroinnowacje" target="_blank" class="social-icon" aria-label="X"><svg width="24" height="24" viewBox="0 0 24 24" fill="#000000"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg></a>
                     </div>
                 </div>
                 <div>
@@ -778,9 +685,8 @@
                     </ul>
                 </div>
             </div>
-
-            <div style="border-top: 1px solid var(--border); padding-top: 24px; margin-top: 40px; text-align: center; color: var(--text-muted); font-size: 0.85rem; position: relative; z-index: 10;">
-                <p>&copy; 2026 Naukowe Centrum Neuroinnowacji | Designed and built by <span style="font-weight: 600;"> Kiszło.Studio  Karol Kiszło&copy; </span></p>
+            <div style="border-top: 1px solid var(--border); padding-top: 24px; margin-top: 40px; text-align: center; color: var(--text-muted); font-size: 0.85rem;">
+                <p>&copy; 2026 Naukowe Centrum Neuroinnowacji | Designed and built by <span style="font-weight: 600;"> Kiszło.Studio Karol Kiszło&copy;</span></p>
                 <div style="margin-top: 16px;">
                     <a href="regulamin.html" style="color: var(--text-muted); text-decoration: none; display: inline-block; text-transform: uppercase; font-weight: 600; letter-spacing: 0.05em; padding: 8px 16px; border: 1px solid var(--border); border-radius: 8px; background: white; transition: all 0.3s;" onmouseover="this.style.borderColor='var(--primary)'; this.style.color='var(--primary)';" onmouseout="this.style.borderColor='var(--border)'; this.style.color='var(--text-muted)';">
                         Regulamin i RODO
@@ -878,33 +784,27 @@
         }
         function removeTypingIndicator() { const loader = document.getElementById('typing-loader'); if(loader) loader.remove(); }
 
-        // --- PARTICLES ---
         function initParticles(){const container=document.getElementById('bg-canvas');if(!container)return;const scene=new THREE.Scene();scene.fog=new THREE.FogExp2(0xF8FAFC,0.002);const camera=new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,1000);camera.position.z=10;const renderer=new THREE.WebGLRenderer({alpha:true,antialias:true});renderer.setSize(window.innerWidth,window.innerHeight);renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));container.appendChild(renderer.domElement);const geometry=new THREE.BufferGeometry();const count=200;const positions=new Float32Array(count*3);const colors=new Float32Array(count*3);for(let i=0;i<count*3;i+=3){positions[i]=(Math.random()-0.5)*25;positions[i+1]=(Math.random()-0.5)*25;positions[i+2]=(Math.random()-0.5)*25;const mix=Math.random();if(mix>0.5){colors[i]=0.06;colors[i+1]=0.46;colors[i+2]=0.43;}else{colors[i]=0.39;colors[i+1]=0.4;colors[i+2]=0.94;}}geometry.setAttribute('position',new THREE.BufferAttribute(positions,3));geometry.setAttribute('color',new THREE.BufferAttribute(colors,3));const material=new THREE.PointsMaterial({size:0.1,vertexColors:true,transparent:true,opacity:0.4});const particles=new THREE.Points(geometry,material);scene.add(particles);let mouseX=0,mouseY=0,targetX=0,targetY=0;document.addEventListener('mousemove',(e)=>{mouseX=(e.clientX-window.innerWidth/2);mouseY=(e.clientY-window.innerHeight/2);});const clock=new THREE.Clock();function animate(){const time=clock.getElapsedTime();targetX=mouseX*0.0001;targetY=mouseY*0.0001;particles.rotation.y+=0.01*(targetX-particles.rotation.y);particles.rotation.x+=0.01*(targetY-particles.rotation.x);particles.rotation.z+=0.0005;const scale=1+Math.sin(time*0.5)*0.02;particles.scale.set(scale,scale,scale);renderer.render(scene,camera);requestAnimationFrame(animate);}animate();window.addEventListener('resize',()=>{camera.aspect=window.innerWidth/window.innerHeight;camera.updateProjectionMatrix();renderer.setSize(window.innerWidth,window.innerHeight);});}document.addEventListener("DOMContentLoaded",initParticles);
-        
-        // --- TABS ---
+
         function openTab(tabId) {
             document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
             const target = document.getElementById(tabId);
             if(target) target.classList.add('active');
             document.querySelectorAll('.tab-btn').forEach(btn => {
-                if(btn.getAttribute('onclick') && btn.getAttribute('onclick').includes(tabId)) { btn.classList.add('active'); }
+                if(btn.getAttribute('onclick') && btn.getAttribute('onclick').includes(tabId)) btn.classList.add('active');
             });
-            // Scroll to section on mobile
             if(window.innerWidth < 768) {
                 const section = document.getElementById('oferta');
                 if(section) section.scrollIntoView({behavior: 'smooth', block: 'start'});
             }
         }
 
-        // --- MOBILE MENU ---
         const toggle = document.querySelector('.mobile-toggle');
         const menu = document.querySelector('.mobile-menu');
         if(toggle && menu) {
-            toggle.addEventListener('click', () => { menu.classList.toggle('active'); });
-            menu.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', () => { menu.classList.remove('active'); });
-            });
+            toggle.addEventListener('click', () => menu.classList.toggle('active'));
+            menu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => menu.classList.remove('active')));
         }
     </script>
 </body>
