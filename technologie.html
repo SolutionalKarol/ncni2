@@ -2,26 +2,20 @@
 <html lang="pl">
 <head>
     <script type="text/javascript" data-cmp-ab="1" src="https://cdn.consentmanager.net/delivery/autoblocking/93e58d8b2275d.js" data-cmp-host="c.delivery.consentmanager.net" data-cmp-cdn="cdn.consentmanager.net" data-cmp-codesrc="16"></script>
-    <!-- Google tag (gtag.js) --> <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18029740902"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'AW-18029740902'); </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18029740902"></script>
+    <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'AW-18029740902'); </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Technologie Medyczne: VR, Zero Gravity i Biofeedback | NCNI Wrocław</title>
-    <meta name="description" content="Laboratorium NCNI: Terapia VR, Zero Gravity Recovery Lounge, Biofeedback EEG/HRV. Nowoczesne technologie w służbie zdrowia psychicznego.">
-    <meta name="keywords" content="Terapia VR Wrocław, VRET, Biofeedback HRV, Zero Gravity, Neurofeedback, Leczenie fobii VR, NCNI Technologie, Software Medyczny, NCNI CIRCLE VR">
+    <meta name="description" content="Laboratorium NCNI: Terapia VR, Zero Gravity Recovery, Biofeedback HRV. System Triangle — Neuro-Immersja Kliniczna. Nowoczesne technologie w służbie zdrowia psychicznego.">
+    <meta name="keywords" content="Terapia VR Wrocław, VRET, Biofeedback HRV, Zero Gravity, Neurofeedback, Leczenie fobii VR, NCNI Technologie, Software Medyczny, Triangle Neuro-Immersja">
     <meta name="author" content="Naukowe Centrum Neuroinnowacji">
     
     <link rel="icon" href="logo.png" type="image/png">
-    
-    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Three.js for Background -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    
-    <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
-    <!-- Schema.org -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -39,8 +33,8 @@
         },
         { 
             "@type": "MedicalTherapy", 
-            "name": "NCNI CIRCLE VR",
-            "description": "Autorski system immersyjny integrujący terapię ekspozycyjną z biofeedbackiem."
+            "name": "Triangle — Neuro-Immersja Kliniczna",
+            "description": "Autorski system immersyjny integrujący terapię ekspozycyjną z biofeedbackiem HRV i fotelem Zero Gravity."
         },
         {
             "@type": "ProfessionalService",
@@ -52,7 +46,6 @@
     </script>
 
     <style>
-        /* --- CORE STYLES (Shared) --- */
         :root {
             --bg-body: #F8FAFC;         
             --bg-surface: rgba(255, 255, 255, 0.95);
@@ -83,7 +76,6 @@
         #bg-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; z-index: -1; opacity: 0.6; pointer-events: none; }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
-        /* --- HEADER --- */
         header {
             position: sticky; top: 0; z-index: 1000;
             background: var(--bg-surface);
@@ -101,6 +93,7 @@
         .header-contact a:hover { color: var(--primary); }
         .nav-item { padding: 8px 16px; border-radius: 99px; font-size: 0.9rem; font-weight: 500; color: var(--text-muted); text-decoration: none; transition: var(--trans-default); }
         .nav-item:hover, .nav-item.active { color: var(--primary); background: var(--primary-light); }
+        .nav-cta { background: var(--primary); color: white !important; box-shadow: 0 4px 12px rgba(15,118,110,0.25); }
         
         .mobile-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; z-index: 1002; }
         .mobile-toggle span { display: block; width: 24px; height: 2px; background: var(--text-main); margin: 5px 0; transition: 0.3s; }
@@ -115,7 +108,6 @@
             .logo img { height: 36px; }
         }
 
-        /* --- CONTENT STYLES --- */
         .hero-mini { padding: 60px 0 40px; text-align: center; }
         .hero-mini h1 { font-size: 2.5rem; margin-bottom: 20px; background: linear-gradient(135deg, var(--text-main), var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         @media(min-width: 768px) { .hero-mini h1 { font-size: 3.5rem; } }
@@ -126,7 +118,6 @@
         .vr-dark-section h2 { font-size: 2.5rem; margin-bottom: 24px; color: #F1F5F9; }
         .vr-dark-section p { font-size: 1.1rem; color: #CBD5E1; margin-bottom: 24px; line-height: 1.8; }
 
-        /* --- INNOVATION / PROPRIETARY APP SECTION (NEW) --- */
         .innovation-card {
             background: linear-gradient(145deg, #1E293B, #0F172A);
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -151,19 +142,12 @@
             background: linear-gradient(to right, #0F172A, transparent);
         }
         
-        /* Specific Style for B2B Card */
         .innovation-card.b2b-card {
             background: linear-gradient(145deg, #1E293B, #262c3a);
             margin-top: 30px;
         }
-        .innovation-card.b2b-card .inn-badge {
-            background: rgba(99, 102, 241, 0.15);
-            color: #818CF8;
-            border-color: #6366F1;
-        }
-        .innovation-card.b2b-card .innovation-visual {
-            background-image: url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80');
-        }
+        .innovation-card.b2b-card .inn-badge { background: rgba(99, 102, 241, 0.15); color: #818CF8; border-color: #6366F1; }
+        .innovation-card.b2b-card .innovation-visual { background-image: url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80'); }
         .innovation-card.b2b-card .inn-app-name { color: #818CF8; }
         .innovation-card.b2b-card .inn-list li strong { color: #A5B4FC; }
         .innovation-card.b2b-card .inn-icon { color: #6366F1; }
@@ -174,106 +158,44 @@
         }
 
         .inn-badge {
-            background: rgba(45, 212, 191, 0.15);
-            color: #2DD4BF;
-            border: 1px solid #2DD4BF;
-            padding: 6px 14px;
-            border-radius: 99px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            display: inline-block;
-            margin-bottom: 20px;
+            background: rgba(45, 212, 191, 0.15); color: #2DD4BF; border: 1px solid #2DD4BF;
+            padding: 6px 14px; border-radius: 99px; font-size: 0.8rem; font-weight: 700;
+            letter-spacing: 0.05em; text-transform: uppercase; display: inline-block; margin-bottom: 20px;
         }
-        
         .inn-title {
-            font-size: 2rem;
-            background: linear-gradient(to right, #fff, #CBD5E1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 15px;
-            line-height: 1.1;
+            font-size: 2rem; background: linear-gradient(to right, #fff, #CBD5E1);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            margin-bottom: 15px; line-height: 1.1;
         }
-
-        .inn-app-name {
-            font-family: 'Lexend', sans-serif;
-            color: #2DD4BF;
-            font-weight: 700;
-            display: block;
-            margin-bottom: 8px;
-        }
-
-        .inn-list {
-            list-style: none;
-            padding: 0;
-            margin: 24px 0;
-            display: grid;
-            gap: 12px;
-        }
-        .inn-list li {
-            color: #E2E8F0;
-            font-size: 0.95rem;
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            line-height: 1.5;
-        }
+        .inn-app-name { font-family: 'Lexend', sans-serif; color: #2DD4BF; font-weight: 700; display: block; margin-bottom: 8px; }
+        .inn-list { list-style: none; padding: 0; margin: 24px 0; display: grid; gap: 12px; }
+        .inn-list li { color: #E2E8F0; font-size: 0.95rem; display: flex; align-items: flex-start; gap: 10px; line-height: 1.5; }
         .inn-list li strong { color: #5EEAD4; font-weight: 600; }
         .inn-icon { color: #2DD4BF; margin-top: 3px; flex-shrink: 0; }
+        .inn-footer { margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.85rem; color: #94A3B8; line-height: 1.6; }
 
-        .inn-footer {
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            font-size: 0.85rem;
-            color: #94A3B8;
-            line-height: 1.6;
-        }
-
-        /* PARTNER BANNER */
         .partner-banner {
-            background: rgba(245, 158, 11, 0.15);
-            border: 1px solid #F59E0B;
-            border-radius: 12px;
-            padding: 16px 20px;
-            margin: 30px 0 40px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 20px;
-            text-decoration: none;
-            transition: var(--trans-default);
-            position: relative;
-            overflow: hidden;
+            background: rgba(245, 158, 11, 0.15); border: 1px solid #F59E0B; border-radius: 12px;
+            padding: 16px 20px; margin: 30px 0 40px; display: flex; align-items: center;
+            justify-content: space-between; gap: 20px; text-decoration: none; transition: var(--trans-default);
+            position: relative; overflow: hidden;
         }
-        .partner-banner:hover {
-            background: rgba(245, 158, 11, 0.25);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(245, 158, 11, 0.15);
-        }
+        .partner-banner:hover { background: rgba(245, 158, 11, 0.25); transform: translateY(-2px); box-shadow: 0 10px 30px rgba(245, 158, 11, 0.15); }
         .partner-banner-content { display: flex; align-items: center; gap: 12px; }
-        .partner-icon {
-            background: #F59E0B; color: #000; width: 40px; height: 40px; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0;
-        }
+        .partner-icon { background: #F59E0B; color: #000; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; }
         .partner-text { color: #FEF3C7; font-size: 0.95rem; line-height: 1.4; }
         .partner-text strong { color: #F59E0B; display: block; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.05em; margin-bottom: 2px; }
         .partner-arrow { color: #F59E0B; transition: transform 0.3s; }
         .partner-banner:hover .partner-arrow { transform: translateX(5px); }
-        @media (max-width: 600px) {
-            .partner-banner { flex-direction: column; text-align: center; }
-            .partner-banner-content { flex-direction: column; }
-            .partner-arrow { display: none; }
-        }
+        @media (max-width: 600px) { .partner-banner { flex-direction: column; text-align: center; } .partner-banner-content { flex-direction: column; } .partner-arrow { display: none; } }
 
         .sim-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px; margin-top: 40px; }
         .sim-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 32px; backdrop-filter: blur(10px); transition: var(--trans-default); }
         .sim-card:hover { background: rgba(255,255,255,0.1); border-color: var(--accent); transform: translateY(-5px); }
         .sim-card h4 { font-size: 1.3rem; margin-bottom: 12px; color: #38BDF8; }
         .sim-card p { font-size: 0.95rem; color: #94A3B8; margin: 0; }
-        .sim-card.circle-card { border-color: #10B981; background: rgba(16, 185, 129, 0.05); }
-        .sim-card.circle-card h4 { color: #34D399; }
+        .sim-card.triangle-card { border-color: #10B981; background: rgba(16, 185, 129, 0.05); }
+        .sim-card.triangle-card h4 { color: #34D399; }
 
         .method-section { padding: 40px 0; }
         .method-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px; margin-top: 40px; }
@@ -298,7 +220,6 @@
         .stack-badge { background: white; border: 1px solid var(--border); padding: 8px 16px; border-radius: 8px; color: var(--text-muted); font-weight: 600; font-size: 0.95rem; }
         .stack-badge.highlight { border-color: var(--accent); color: var(--accent); background: #EEF2FF; }
 
-        /* Ania Widget Styles */
         .ania-container { position: fixed; bottom: 24px; right: 24px; z-index: 2000; display: flex; flex-direction: column; align-items: flex-end; font-family: 'Inter', sans-serif; }
         .ania-avatar { width: 65px; height: 65px; border-radius: 50%; border: 3px solid white; box-shadow: 0 4px 20px rgba(15, 118, 110, 0.3); cursor: pointer; position: relative; transition: transform 0.3s; background: #fff; overflow: hidden; }
         .ania-avatar:hover { transform: scale(1.1); }
@@ -322,7 +243,6 @@
         @keyframes popIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
         @media (max-width: 480px) { .ania-chat-window { width: 300px; right: -10px; height: 450px; } }
 
-        /* Footer */
         footer { background: white; border-top: 1px solid var(--border); padding: 60px 0 20px; margin-top: 40px; text-align: center; }
         .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; text-align: left; }
     </style>
@@ -375,22 +295,20 @@
         </div>
     </section>
 
-    <!-- VR SECTION (DARK TECH) -->
     <section class="container">
         <div class="vr-dark-section">
             <div class="vr-dark-content">
                 <h2>Czym jest Terapia VR?</h2>
                 <p>
-                    VR, czyli "Rzeczywistość Wirtualna", to generowane komputerowo, trójwymiarowe środowisko umożliwiające immersyjne, wielozmysłowe doświadczenia. Wykorzystanie VR w terapii pozwala pacjentowi poczuć się tak, jakby naprawdę znajdował się w danej sytuacji, jednocześnie dając lekarzowi pełną kontrolę nad przebiegiem sesji.
+                    VR, czyli „Rzeczywistość Wirtualna”, to generowane komputerowo, trójwymiarowe środowisko umożliwiające immersyjne, wielozmysłowe doświadczenia. Wykorzystanie VR w terapii pozwala pacjentowi poczuć się tak, jakby naprawdę znajdował się w danej sytuacji, jednocześnie dając terapeucie pełną kontrolę nad przebiegiem sesji.
                 </p>
                 
-                <!-- NEW PARTNER BANNER -->
                 <a href="ncni_partnerstwo.html" class="partner-banner">
                     <div class="partner-banner-content">
                         <div class="partner-icon">🤝</div>
                         <div class="partner-text">
                             <strong>Dla Właścicieli Klinik & Gabinetów</strong>
-                            Prowadzisz placówkę medyczną? Odmień swój biznes. Wdróż VR u siebie i zwiększ prestiż kliniki.
+                            Prowadzisz placówkę medyczną? OdmŁ swój biznes. Wdróż VR u siebie i zwiększ prestiż kliniki.
                         </div>
                     </div>
                     <div class="partner-arrow"><i data-lucide="arrow-right"></i></div>
@@ -398,19 +316,19 @@
 
                 <h3>O Terapii Ekspozycyjnej VR (VRET)</h3>
                 <p>
-                    Terapia Ekspozycyjna w Wirtualnej Rzeczywistości (VRET) to nowoczesna forma terapii poznawczo-behawioralnej (CBT). Jest to "złoty standard" w leczeniu zaburzeń lękowych (fobii, lęku społecznego, agorafobii, PTSD).
+                    Terapia Ekspozycyjna w Wirtualnej Rzeczywistości (VRET) to nowoczesna forma terapii poznawczo-behawioralnej (CBT). Jest to „złoty standard” w leczeniu zaburzeń lękowych (fobii, lęku społecznego, agorafobii, PTSD).
                 </p>
 
-                <!-- PROPRIETARY APP SECTION (PRODUCT) -->
+                <!-- TRIANGLE - NEURO-IMMERSJA KLINICZNA -->
                 <div class="innovation-card">
                     <div class="innovation-content">
                         <span class="inn-badge">NCNI Development Lab</span>
                         <h3 class="inn-title">
-                            <span class="inn-app-name">NCNI CIRCLE VR</span>
+                            <span class="inn-app-name">Triangle — Neuro-Immersja Kliniczna</span>
                             Zintegrowany System Neuroterapeutyczny
                         </h3>
                         <p style="color: #CBD5E1; margin-bottom: 20px; font-weight: 500;">
-                            Platforma immersyjna integrująca terapię ekspozycyjną (VRET) z biofeedbackiem fizjologicznym w czasie rzeczywistym, dedykowana wsparciu procesów neuroregulacji.
+                            Autorski system immersyjny łączący terapię ekspozycyjną (VRET) z ciągłym biofeedbackiem HRV i fotelem Zero Gravity w zamkniętej pętli — dedykowany wsparciu układu przywspółczulnego i głębokiej neuroregulacji.
                         </p>
                         
                         <ul class="inn-list">
@@ -428,22 +346,25 @@
                             </li>
                             <li>
                                 <div class="inn-icon"><i data-lucide="bar-chart-2" width="18"></i></div>
-                                <span><strong>Integracja Biofeedback (HRV/EEG):</strong> Obiektywizacja postępów terapii poprzez monitoring parametrów biologicznych.</span>
+                                <span><strong>Reaktywna pętla biofeedbacku (HRV):</strong> System automatycznie reaguje na stan układu nerwowego pacjenta — gdy wchodzi w głęboki relaks, środowisko VR i fotel podtrzymują synchronizację układu przywspółczulnego.</span>
                             </li>
                             <li>
                                 <div class="inn-icon"><i data-lucide="fingerprint" width="18"></i></div>
                                 <span><strong>Brak Szablonów (100% Personalizacji):</strong> Każdy układ nerwowy jest inny. Odrzucamy uniwersalne schematy – parametry immersji, fotela i biofeedbacku są zawsze rygorystycznie szyte na miarę i adaptowane do unikalnych potrzeb pacjenta.</span>
                             </li>
+                            <li>
+                                <div class="inn-icon"><i data-lucide="shield" width="18"></i></div>
+                                <span><strong>Nadzór prowadzącego sesję:</strong> Pełna automatyzacja z możliwością manualnej modyfikacji parametrów przez terapeutę w trakcie trwania sesji.</span>
+                            </li>
                         </ul>
 
                         <p class="inn-footer">
-                            System jest autorskim rozwiązaniem rozwijanym w ramach NCNI Development Lab w oparciu o aktualne badania kliniczne nad neuroplastycznością. Oferujemy możliwość wdrożenia ekosystemu NCNI CIRCLE VR w zewnętrznych placówkach medycznych (model B2B).
+                            System jest autorskim rozwiązaniem rozwijanym w ramach NCNI Development Lab w oparciu o aktualne badania kliniczne nad neuroplastycznością. Oferujemy możliwość wdrożenia systemu Triangle w zewnętrznych placówkach medycznych (model B2B).
                         </p>
                     </div>
                     <div class="innovation-visual"></div>
                 </div>
 
-                <!-- NEW B2B CUSTOM DEV SECTION -->
                 <div class="innovation-card b2b-card">
                     <div class="innovation-content">
                         <span class="inn-badge">Dla Biznesu & Klinik</span>
@@ -452,7 +373,7 @@
                             Software Medyczny na Zamówienie
                         </h3>
                         <p style="color: #CBD5E1; margin-bottom: 20px; font-weight: 500;">
-                            Jako ośrodek R&D, projektujemy od podstaw dedykowane scenariusze terapeutyczne i aplikacje VR, ściśle dopasowane do specyfiki klinicznej Twojej placówki. Oferujemy pełną personalizację środowiska – od poziomu stymulacji sensorycznej po integrację z zaawansowanymi systemami biofeedbacku i EEG.
+                            Jako ośrodek R&D, projektujemy od podstaw dedykowane scenariusze terapeutyczne i aplikacje VR, ściśle dopasowane do specyfiki klinicznej Twojej placówki.
                         </p>
                         
                         <ul class="inn-list">
@@ -478,10 +399,10 @@
                 </div>
 
                 <div class="sim-grid">
-                    <div class="sim-card circle-card">
-                        <div style="font-size: 2rem; margin-bottom: 12px;">🧬</div>
-                        <h4>CIRCLE Method</h4>
-                        <p>Autorska metoda NCNI. Regulacja stanów poznawczych poprzez pętlę biofeedback w VR.</p>
+                    <div class="sim-card triangle-card">
+                        <div style="font-size: 2rem; margin-bottom: 12px;">🫂</div>
+                        <h4>Triangle — Neuro-Immersja</h4>
+                        <p>Autorska pętla relaksacji: biofeedback HRV + VR + Zero Gravity w zamkniętym cyklu regulacji układu przywspółczulnego.</p>
                     </div>
                     <div class="sim-card">
                         <div style="font-size: 2rem; margin-bottom: 12px;">🏔️</div>
@@ -503,7 +424,6 @@
         </div>
     </section>
 
-    <!-- METODOLOGIA -->
     <section class="container method-section">
         <div style="text-align: center; margin-bottom: 40px;">
             <h2 style="font-size: 2rem; color: var(--text-main);">Metodologia Integracyjna</h2>
@@ -511,7 +431,6 @@
                 NCNI stosuje holistyczne podejście, łącząc psychologię z technologią.
             </p>
         </div>
-        
         <div class="method-grid">
             <div class="method-item">
                 <span style="font-size: 2rem; margin-bottom: 10px; display: block;">🧠</span>
@@ -519,9 +438,9 @@
                 <p>Zmiana wzorów myślenia i praca z emocjami.</p>
             </div>
             <div class="method-item">
-                <span style="font-size: 2rem; margin-bottom: 10px; display: block;">🫀</span>
-                <h4>Biofeedback</h4>
-                <p>Regulacja systemu nerwowego w czasie rzeczywistym.</p>
+                <span style="font-size: 2rem; margin-bottom: 10px; display: block;">�afe</span>
+                <h4>Biofeedback HRV</h4>
+                <p>Regulacja układu przywspółczulnego poprzez pomiar zmienności rytmu serca w czasie rzeczywistym.</p>
             </div>
             <div class="method-item">
                 <span style="font-size: 2rem; margin-bottom: 10px; display: block;">🥽</span>
@@ -531,27 +450,26 @@
             <div class="method-item">
                 <span style="font-size: 2rem; margin-bottom: 10px; display: block;">🌑</span>
                 <h4>Zero Gravity</h4>
-                <p>Regeneracja w pozycji neutralnej.</p>
+                <p>Regeneracja w pozycji neutralnej — odciążenie kręgosłupa i serca.</p>
             </div>
         </div>
     </section>
 
-    <!-- BIOFEEDBACK -->
     <section class="container">
         <div class="bio-section">
-            <h2>Biofeedback HRV & EEG</h2>
+            <h2>Biofeedback HRV</h2>
             <p>
-                Metoda, która pozwala Ci "zobaczyć" swój stres na ekranie monitora. Trenuj koherencję serca i fale mózgowe dla lepszej koncentracji i spokoju.
+                Metoda, która pozwala Ci „zobaczyć” swój stres na ekranie monitora. Trenuj koherencję serca poprzez pomiar zmienności rytmu zatokowego (HRV) — dla głębszego spokoju i lepszej regulacji emocji.
             </p>
             
             <div class="bio-types-grid">
                 <div class="bio-type">
                     <h5>❤️ Biofeedback HRV</h5>
-                    <p>Trening zmienności rytmu serca na stres i lęk.</p>
+                    <p>Trening zmienności rytmu serca na stres i lęk. Aktywacja układu przywspółczulnego.</p>
                 </div>
                 <div class="bio-type">
                     <h5>🧠 Neurofeedback (EEG)</h5>
-                    <p>Trening koncentracji dla ADHD i "flow state".</p>
+                    <p>Trening koncentracji dla ADHD i stanu skupienia („flow state”).</p>
                 </div>
                 <div class="bio-type">
                     <h5>💪 Biofeedback EMG</h5>
@@ -561,30 +479,29 @@
         </div>
     </section>
 
-    <!-- ZERO GRAVITY -->
     <section class="container">
         <div class="zg-section">
             <div style="position: relative; z-index: 1;">
                 <h2 style="color: var(--primary-dark); font-size: 2.2rem; margin-bottom: 15px;">Zero Gravity Recovery</h2>
                 <p style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 30px; max-width: 800px;">
-                    Pozycja neutralna (NASA), w której serce odpoczywa, a kręgosłup jest odciążony. Idealna do głębokiej regeneracji układu nerwowego po terapii.
+                    Pozycja neutralna (NASA), w której serce odpoczywa, a kręgosłup jest odciążony. Idealna do głębokiej regeneracji układu nerwowego — stosowana jako element systemu Triangle lub jako samodzielna sesja relaksacyjna.
                 </p>
                 <ul class="zg-list">
                     <li><span>✓</span> Redukcja kortyzolu</li>
                     <li><span>✓</span> Odciążenie kręgosłupa</li>
                     <li><span>✓</span> Regeneracja po stresie</li>
+                    <li><span>✓</span> Wsparcie układu przywspółczulnego</li>
                 </ul>
             </div>
         </div>
     </section>
 
-    <!-- TECH STACK -->
     <section class="container tech-stack-section">
         <h3 style="font-size: 1.8rem; color: var(--text-main); margin-bottom: 20px;">Pełny Tech Stack NCNI</h3>
         <div class="stack-badges">
             <span class="stack-badge highlight">Psychologia Kliniczna</span>
-            <span class="stack-badge highlight">Biofeedback HRV/EEG</span>
-            <span class="stack-badge highlight">NCNI CIRCLE VR (R&D)</span>
+            <span class="stack-badge highlight">Biofeedback HRV</span>
+            <span class="stack-badge highlight">Triangle — Neuro-Immersja Kliniczna</span>
             <span class="stack-badge">Terapia VR (VRET)</span>
             <span class="stack-badge">Zero Gravity</span>
             <span class="stack-badge">Metoda Kraszewskiego</span>
@@ -622,18 +539,17 @@
                 </div>
             </div>
             <div style="border-top: 1px solid var(--border); padding-top: 20px; margin-top: 40px; text-align: center; color: var(--text-muted); font-size: 0.8rem;">
-                &copy; 2025 Naukowe Centrum Neuroinnowacji | Designed and built by NCNI.agency Karol Kiszło
+                &copy; 2026 Naukowe Centrum Neuroinnowacji | Designed and built by Kiszło.Studio Karol Kiszło
             </div>
         </div>
     </footer>
 
-    <!-- Ania Widget -->
     <div id="ania-widget" class="ania-container">
         <div class="ania-bubble" id="ania-greeting">
             Dzień dobry! ☀️ Jestem Wirtualną Asystentką NCNI. Kliknij we mnie, a odpowiem na Twoje pytania.
             <span class="ania-close-bubble" onclick="closeGreeting(event)">✕</span>
         </div>
-        <div class="ania-chat-window glass" id="ania-window">
+        <div class="ania-chat-window" id="ania-window">
             <div class="ania-header">
                 <div style="display:flex; align-items:center; gap:10px;">
                     <div style="position:relative;">
@@ -656,25 +572,21 @@
         </div>
     </div>
 
-    <!-- Scripts -->
     <script>
         lucide.createIcons();
 
-        // Particles
-        function initParticles(){const container=document.getElementById('bg-canvas');if(!container)return;const scene=new THREE.Scene();scene.fog=new THREE.FogExp2(0xF8FAFC,0.002);const camera=new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,1000);camera.position.z=10;const renderer=new THREE.WebGLRenderer({alpha:true,antialias:true});renderer.setSize(window.innerWidth,window.innerHeight);renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));container.appendChild(renderer.domElement);const geometry=new THREE.BufferGeometry();const count=200;const positions=new Float32Array(count*3);const colors=new Float32Array(count*3);for(let i=0;i<count*3;i+=3){positions[i]=(Math.random()-0.5)*25;positions[i+1]=(Math.random()-0.5)*25;positions[i+2]=(Math.random()-0.5)*25;const mix=Math.random();if(mix>0.5){colors[i]=0.06;colors[i+1]=0.46;colors[i+2]=0.43;}else{colors[i]=0.39;colors[i+1]=0.4;colors[i+2]=0.94;}}geometry.setAttribute('position',new THREE.BufferAttribute(positions,3));geometry.setAttribute('color',new THREE.BufferAttribute(colors,3));const material=new THREE.PointsMaterial({size:0.1,vertexColors:true,transparent:true,opacity:0.4});const particles=new THREE.Points(geometry,material);scene.add(particles);let mouseX=0,mouseY=0,targetX=0,targetY=0;const windowHalfX=window.innerWidth/2;const windowHalfY=window.innerHeight/2;document.addEventListener('mousemove',(e)=>{mouseX=(e.clientX-windowHalfX);mouseY=(e.clientY-windowHalfY);});const clock=new THREE.Clock();function animate(){const time=clock.getElapsedTime();targetX=mouseX*0.0001;targetY=mouseY*0.0001;particles.rotation.y+=0.01*(targetX-particles.rotation.y);particles.rotation.x+=0.01*(targetY-particles.rotation.x);particles.rotation.z+=0.0005;const scale=1+Math.sin(time*0.5)*0.02;particles.scale.set(scale,scale,scale);renderer.render(scene,camera);requestAnimationFrame(animate);}animate();window.addEventListener('resize',()=>{camera.aspect=window.innerWidth/window.innerHeight;camera.updateProjectionMatrix();renderer.setSize(window.innerWidth,window.innerHeight);});}document.addEventListener("DOMContentLoaded",initParticles);
+        function initParticles(){const container=document.getElementById('bg-canvas');if(!container)return;const scene=new THREE.Scene();scene.fog=new THREE.FogExp2(0xF8FAFC,0.002);const camera=new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,1000);camera.position.z=10;const renderer=new THREE.WebGLRenderer({alpha:true,antialias:true});renderer.setSize(window.innerWidth,window.innerHeight);renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));container.appendChild(renderer.domElement);const geometry=new THREE.BufferGeometry();const count=200;const positions=new Float32Array(count*3);const colors=new Float32Array(count*3);for(let i=0;i<count*3;i+=3){positions[i]=(Math.random()-0.5)*25;positions[i+1]=(Math.random()-0.5)*25;positions[i+2]=(Math.random()-0.5)*25;const mix=Math.random();if(mix>0.5){colors[i]=0.06;colors[i+1]=0.46;colors[i+2]=0.43;}else{colors[i]=0.39;colors[i+1]=0.4;colors[i+2]=0.94;}}geometry.setAttribute('position',new THREE.BufferAttribute(positions,3));geometry.setAttribute('color',new THREE.BufferAttribute(colors,3));const material=new THREE.PointsMaterial({size:0.1,vertexColors:true,transparent:true,opacity:0.4});const particles=new THREE.Points(geometry,material);scene.add(particles);let mouseX=0,mouseY=0;const windowHalfX=window.innerWidth/2;const windowHalfY=window.innerHeight/2;document.addEventListener('mousemove',(e)=>{mouseX=(e.clientX-windowHalfX);mouseY=(e.clientY-windowHalfY);});const clock=new THREE.Clock();function animate(){const time=clock.getElapsedTime();const tX=mouseX*0.0001;const tY=mouseY*0.0001;particles.rotation.y+=0.01*(tX-particles.rotation.y);particles.rotation.x+=0.01*(tY-particles.rotation.x);particles.rotation.z+=0.0005;const scale=1+Math.sin(time*0.5)*0.02;particles.scale.set(scale,scale,scale);renderer.render(scene,camera);requestAnimationFrame(animate);}animate();window.addEventListener('resize',()=>{camera.aspect=window.innerWidth/window.innerHeight;camera.updateProjectionMatrix();renderer.setSize(window.innerWidth,window.innerHeight);});}document.addEventListener("DOMContentLoaded",initParticles);
         
-        // Mobile Menu
         const toggle=document.querySelector('.mobile-toggle');const menu=document.querySelector('.mobile-menu');if(toggle&&menu){toggle.addEventListener('click',()=>{menu.classList.toggle('active');});}
     </script>
 
     <script>
-        // Chatbot Logic
         const chatKnowledge = {
             'start': { text: "Cześć! 👋 W czym mogę Ci pomóc?", options: [{ label: "🧠 ADHD / ADD", next: 'adhd_info' }, { label: "🧩 Autyzm (ASD)", next: 'asd_info' }, { label: "💰 Cennik / Oferta", next: 'oferta' }, { label: "📅 Umów wizytę", action: 'booking' }] },
             'adhd_info': { text: "Oferujemy pełną diagnozę (DIVA-5, MOXO) oraz treningi VR i Biofeedback.", options: [{ label: "Jak wygląda diagnoza?", next: 'adhd_diagnoza' }, { label: "Na czym polega terapia?", next: 'adhd_terapia' }, { label: "Wróć", next: 'start' }] },
             'adhd_diagnoza': { text: "1. Wywiad kliniczny (DIVA-5).\n2. Test MOXO.\n3. Raport końcowy.", options: [{ label: "Chcę się zapisać", action: 'booking' }, { label: "Co to jest MOXO?", next: 'moxo' }] },
             'moxo': { text: "MOXO to komputerowy test badający uwagę, czas reakcji i impulsywność.", options: [{ label: "Rozumiem", next: 'start' }, { label: "Umów badanie", action: 'booking' }] },
-            'adhd_terapia': { text: "Wykorzystujemy VR (Wirtualną Rzeczywistość) i Biofeedback HRV do treningu skupienia.", options: [{ label: "Zapisz mnie", action: 'booking' }, { label: "Wróć", next: 'start' }] },
+            'adhd_terapia': { text: "Wykorzystujemy VR i Biofeedback HRV do treningu skupienia i samoregulacji.", options: [{ label: "Zapisz mnie", action: 'booking' }, { label: "Wróć", next: 'start' }] },
             'asd_info': { text: "Jesteśmy miejscem przyjaznym osobom w spektrum (Neurodiversity Affirming).", options: [{ label: "Umów konsultację", action: 'booking' }, { label: "Wróć", next: 'start' }] },
             'oferta': { text: "Oferujemy diagnozę, psychoterapię, VR, Biofeedback i dietetykę.", options: [{ label: "Adres?", next: 'adres' }, { label: "Umów wizytę", action: 'booking' }] },
             'adres': { text: "Wrocław, ul. Stefana Żeromskiego 60/5a.", options: [{ label: "Dzięki!", next: 'start' }] }
