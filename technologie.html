@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-    <script type="text/javascript" data-cmp-ab="1" src="https://cdn.consentmanager.net/delivery/autoblocking/93e58d8b2275d.js" data-cmp-host="c.delivery.consentmanager.net" data-cmp-cdn="cdn.consentmanager.net" data-cmp-codesrc="16"></script>
+    <!-- Lois: Wykomentowałam to na razie. Ten autoblocker Consent Managera potrafi zablokować całą stronę. 
+         Odkomentuj jak będziesz wrzucał na produkcję i upewnisz się, że panel CM jest dobrze skonfigurowany pod domenę. -->
+    <!-- <script type="text/javascript" data-cmp-ab="1" src="https://cdn.consentmanager.net/delivery/autoblocking/93e58d8b2275d.js" data-cmp-host="c.delivery.consentmanager.net" data-cmp-cdn="cdn.consentmanager.net" data-cmp-codesrc="16"></script> -->
+    
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18029740902"></script>
     <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'AW-18029740902'); </script>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Technologie Medyczne: VR, Zero Gravity i Biofeedback | NCNI Wrocław</title>
@@ -90,7 +94,7 @@
     }
     </script>
 
-    <!-- Schema: FAQ — paliwo dla Google AI Overview, ChatGPT, Perplexity -->
+    <!-- Schema: FAQ -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -704,23 +708,125 @@
     </div>
 
     <script>
-        lucide.createIcons();
-
-        function initParticles(){const container=document.getElementById('bg-canvas');if(!container)return;const scene=new THREE.Scene();scene.fog=new THREE.FogExp2(0xF8FAFC,0.002);const camera=new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,1000);camera.position.z=10;const renderer=new THREE.WebGLRenderer({alpha:true,antialias:true});renderer.setSize(window.innerWidth,window.innerHeight);renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));container.appendChild(renderer.domElement);const geometry=new THREE.BufferGeometry();const count=200;const positions=new Float32Array(count*3);const colors=new Float32Array(count*3);for(let i=0;i<count*3;i+=3){positions[i]=(Math.random()-0.5)*25;positions[i+1]=(Math.random()-0.5)*25;positions[i+2]=(Math.random()-0.5)*25;const mix=Math.random();if(mix>0.5){colors[i]=0.06;colors[i+1]=0.46;colors[i+2]=0.43;}else{colors[i]=0.39;colors[i+1]=0.4;colors[i+2]=0.94;}}geometry.setAttribute('position',new THREE.BufferAttribute(positions,3));geometry.setAttribute('color',new THREE.BufferAttribute(colors,3));const material=new THREE.PointsMaterial({size:0.1,vertexColors:true,transparent:true,opacity:0.4});const particles=new THREE.Points(geometry,material);scene.add(particles);let mouseX=0,mouseY=0;const windowHalfX=window.innerWidth/2;const windowHalfY=window.innerHeight/2;document.addEventListener('mousemove',(e)=>{mouseX=(e.clientX-windowHalfX);mouseY=(e.clientY-windowHalfY);});const clock=new THREE.Clock();function animate(){const time=clock.getElapsedTime();const tX=mouseX*0.0001;const tY=mouseY*0.0001;particles.rotation.y+=0.01*(tX-particles.rotation.y);particles.rotation.x+=0.01*(tY-particles.rotation.x);particles.rotation.z+=0.0005;const scale=1+Math.sin(time*0.5)*0.02;particles.scale.set(scale,scale,scale);renderer.render(scene,camera);requestAnimationFrame(animate);}animate();window.addEventListener('resize',()=>{camera.aspect=window.innerWidth/window.innerHeight;camera.updateProjectionMatrix();renderer.setSize(window.innerWidth,window.innerHeight);});}document.addEventListener("DOMContentLoaded",initParticles);
-        
-        const toggle=document.querySelector('.mobile-toggle');const menu=document.querySelector('.mobile-menu');if(toggle&&menu){toggle.addEventListener('click',()=>{menu.classList.toggle('active');});}
-
-        // Scroll Reveal
-        const revealObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
+        // Lois: Zawijam cały skrypt inicjujący w jedno bezpieczne zdarzenie DOMContentLoaded. 
+        // Zapobiegnie to wywalaniu się strony w połowie ładowania.
+        document.addEventListener("DOMContentLoaded", () => {
+            
+            // 1. Bezpieczne ładowanie ikon Lucide (jeśli coś je zablokuje, nie wywali nam to Scroll Reveala)
+            try {
+                if (typeof lucide !== 'undefined') {
+                    lucide.createIcons();
+                } else {
+                    console.warn("Lois ostrzega: Ikony Lucide się nie załadowały (być może zablokowane przez Adblocka).");
                 }
-            });
-        }, { threshold: 0.12 });
-        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+            } catch (error) {
+                console.error("Błąd ikon:", error);
+            }
+
+            // 2. Tło (Particles)
+            function initParticles(){
+                const container=document.getElementById('bg-canvas');
+                if(!container)return;
+                
+                const scene=new THREE.Scene();
+                scene.fog=new THREE.FogExp2(0xF8FAFC,0.002);
+                const camera=new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,1000);
+                camera.position.z=10;
+                
+                const renderer=new THREE.WebGLRenderer({alpha:true,antialias:true});
+                renderer.setSize(window.innerWidth,window.innerHeight);
+                renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
+                container.appendChild(renderer.domElement);
+                
+                const geometry=new THREE.BufferGeometry();
+                const count=200;
+                const positions=new Float32Array(count*3);
+                const colors=new Float32Array(count*3);
+                
+                for(let i=0;i<count*3;i+=3){
+                    positions[i]=(Math.random()-0.5)*25;
+                    positions[i+1]=(Math.random()-0.5)*25;
+                    positions[i+2]=(Math.random()-0.5)*25;
+                    const mix=Math.random();
+                    if(mix>0.5){colors[i]=0.06;colors[i+1]=0.46;colors[i+2]=0.43;}
+                    else{colors[i]=0.39;colors[i+1]=0.4;colors[i+2]=0.94;}
+                }
+                
+                geometry.setAttribute('position',new THREE.BufferAttribute(positions,3));
+                geometry.setAttribute('color',new THREE.BufferAttribute(colors,3));
+                
+                const material=new THREE.PointsMaterial({size:0.1,vertexColors:true,transparent:true,opacity:0.4});
+                const particles=new THREE.Points(geometry,material);
+                scene.add(particles);
+                
+                let mouseX=0,mouseY=0;
+                const windowHalfX=window.innerWidth/2;
+                const windowHalfY=window.innerHeight/2;
+                
+                document.addEventListener('mousemove',(e)=>{
+                    mouseX=(e.clientX-windowHalfX);
+                    mouseY=(e.clientY-windowHalfY);
+                });
+                
+                const clock=new THREE.Clock();
+                function animate(){
+                    const time=clock.getElapsedTime();
+                    const tX=mouseX*0.0001;
+                    const tY=mouseY*0.0001;
+                    particles.rotation.y+=0.01*(tX-particles.rotation.y);
+                    particles.rotation.x+=0.01*(tY-particles.rotation.x);
+                    particles.rotation.z+=0.0005;
+                    const scale=1+Math.sin(time*0.5)*0.02;
+                    particles.scale.set(scale,scale,scale);
+                    renderer.render(scene,camera);
+                    requestAnimationFrame(animate);
+                }
+                animate();
+                
+                window.addEventListener('resize',()=>{
+                    camera.aspect=window.innerWidth/window.innerHeight;
+                    camera.updateProjectionMatrix();
+                    renderer.setSize(window.innerWidth,window.innerHeight);
+                });
+            }
+            
+            // Inicjalizacja tła z łapaniem błędów (na wszelki wypadek)
+            try {
+                if (typeof THREE !== 'undefined') {
+                    initParticles();
+                }
+            } catch(e) {
+                console.error("Three.js nie odpalił", e);
+            }
+
+            // 3. Mobile Menu
+            const toggle = document.querySelector('.mobile-toggle');
+            const menu = document.querySelector('.mobile-menu');
+            if(toggle && menu){
+                toggle.addEventListener('click', () => {
+                    menu.classList.toggle('active');
+                });
+            }
+
+            // 4. Scroll Reveal (to było przyczyną Twojej ukrytej treści)
+            try {
+                const revealObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                        }
+                    });
+                }, { threshold: 0.12 });
+                
+                document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+            } catch(e) {
+                // Gdyby przeglądarka nie wspierała IntersectionObservera, zdejmujemy ukrycie awaryjnie
+                document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+            }
+        });
     </script>
 
+    <!-- Bot Ania -->
     <script>
         const chatKnowledge = {
             'start': { text: "Cześć! 👋 W czym mogę Ci pomóc?", options: [{ label: "🧠 ADHD / ADD", next: 'adhd_info' }, { label: "🧩 Autyzm (ASD)", next: 'asd_info' }, { label: "💰 Cennik / Oferta", next: 'oferta' }, { label: "📅 Umów wizytę", action: 'booking' }] },
