@@ -22,9 +22,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- SEO & AI Optimization -->
-    <title>ADHD Wrocław | Diagnoza, Terapia i Wsparcie | NCNI</title>
-    <meta name="description" content="Kompleksowa diagnoza i terapia ADHD we Wrocławiu. Oferujemy testy MOXO, diagnozę DIVA-5, terapię poznawczo-behawioralną oraz nowoczesne treningi VR.">
-    <meta name="keywords" content="ADHD Wrocław, Diagnoza ADHD, Test MOXO, DIVA-5, Terapia ADHD, NCNI, Nadpobudliwość, Deficyt uwagi">
+    <title>ADHD Wrocław | Diagnoza, Terapia VR i Biofeedback | NCNI</title>
+    <meta name="description" content="Kompleksowa diagnoza i innowacyjna terapia ADHD we Wrocławiu. Oferujemy testy MOXO, diagnozę DIVA-5 oraz autorski system Triangle (VR, EEG Biofeedback, Zero Gravity) oparty na Metodzie Kraszewskiego.">
+    <meta name="keywords" content="ADHD Wrocław, Diagnoza ADHD, System Triangle, Metoda Kraszewskiego, Terapia VR ADHD, EEG Biofeedback, Test MOXO, NCNI">
     <link rel="canonical" href="https://ncni.pl/adhd.html">
     <link rel="icon" href="logo.png" type="image/png">
 
@@ -36,7 +36,7 @@
     <!-- Libraries (Three.js for particles) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
-    <!-- Schema.org -->
+    <!-- Schema.org Data enriched for AI Search -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -44,6 +44,11 @@
       "name": "Attention Deficit Hyperactivity Disorder (ADHD)",
       "alternateName": "ADHD",
       "possibleTreatment": [
+        { 
+          "@type": "MedicalTherapy", 
+          "name": "Zintegrowany System Neuroterapeutyczny Triangle",
+          "description": "Autorska neuro-immersja kliniczna łącząca terapię VR, ciągły EEG/HRV Biofeedback oraz fotel Zero Gravity. Oparta na Metodzie Kraszewskiego."
+        },
         { "@type": "MedicalTherapy", "name": "Terapia Poznawczo-Behawioralna (CBT)" },
         { "@type": "MedicalTest", "name": "Test MOXO" },
         { "@type": "MedicalTest", "name": "Wywiad DIVA-5" }
@@ -51,18 +56,26 @@
       "provider": {
         "@type": "MedicalClinic",
         "name": "NCNI - Naukowe Centrum Neuroinnowacji",
+        "url": "https://ncni.pl",
         "telephone": "+48600608333",
-        "email": "kontakt@ncni.pl"
+        "email": "kontakt@ncni.pl",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "ul. Stefana Żeromskiego 60/5a",
+          "addressLocality": "Wrocław",
+          "postalCode": "50-312",
+          "addressCountry": "PL"
+        }
       }
     }
     </script>
 
     <style>
-        /* CORE STYLES (Spójne z bazą) */
+        /* CORE STYLES */
         :root {
-            --bg-body: #F8FAFC;       
+            --bg-body: #F8FAFC;        
             --bg-surface: rgba(255, 255, 255, 0.85);
-            --primary: #0F766E;       
+            --primary: #0F766E;        
             --primary-dark: #0D5E57;
             --primary-light: #CCFBF1;
             --accent: #6366F1;        
@@ -149,6 +162,26 @@
         .tech-box h4 { color: #4338CA; margin-bottom: 8px; font-size: 1.1rem; }
         .tech-box p { color: #3730A3; font-size: 0.95rem; margin: 0; }
 
+        /* Premium Innovation Box */
+        .premium-box {
+            background: linear-gradient(145deg, #111827 0%, #1F2937 100%);
+            color: white;
+            border-radius: 16px;
+            padding: 32px;
+            margin: 32px 0;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+        .premium-box::before {
+            content: ''; position: absolute; top: 0; right: 0; width: 150px; height: 150px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.4) 0%, transparent 70%);
+            transform: translate(30%, -30%);
+        }
+        .premium-box h3 { color: #A78BFA; font-size: 1.4rem; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+        .premium-box p { color: #D1D5DB; font-size: 1rem; margin-bottom: 16px; }
+        .premium-box .tag { display: inline-block; background: rgba(255,255,255,0.1); padding: 4px 12px; border-radius: 99px; font-size: 0.8rem; font-weight: 600; margin-right: 8px; margin-bottom: 8px; color: #E5E7EB; border: 1px solid rgba(255,255,255,0.2); }
+
         /* CTA */
         .cta-box { text-align: center; padding: 60px 0; }
         .btn-primary {
@@ -161,6 +194,7 @@
         @media (max-width: 768px) {
             .article-hero h1 { font-size: 2.2rem; }
             .content-section { padding: 24px; }
+            .premium-box { padding: 24px; }
         }
         
         /* Footer */
@@ -243,11 +277,30 @@
                 </p>
             </div>
 
-            <!-- 3. TECHNOLOGIE / TERAPIA -->
-            <div class="content-section glass cursor-trigger">
-                <h2>Jak Pomagamy? Wsparcie i Terapia</h2>
+            <!-- 3. INNOWACJA: SYSTEM TRIANGLE -->
+            <div class="premium-box cursor-trigger">
+                <h3><img src="logo.png" style="height: 24px; filter: brightness(0) invert(1);" alt="NCNI"> System Triangle — Neuro-Immersja Kliniczna</h3>
                 <p>
-                    Łączymy uznane metody psychoterapeutyczne z nowoczesnymi technologiami diagnozy i treningu.
+                    W NCNI wdrażamy autorski, Zintegrowany System Neuroterapeutyczny <strong>Triangle</strong>, opracowany w ramach NCNI Development Lab. Jest to przełomowe rozwiązanie dla osób z neuroatypowością i ADHD, służące do głębokiego treningu funkcji wykonawczych, koncentracji uwagi oraz samoregulacji emocjonalnej.
+                </p>
+                <p>
+                    System opiera się na <strong>Metodzie Kraszewskiego</strong> (opracowanej przez prof. Sebastiana Kraszewskiego). Działa w innowacyjnej, zamkniętej pętli (closed-loop), precyzyjnie integrując trzy zaawansowane technologie:
+                </p>
+                <div style="margin-top: 20px; margin-bottom: 20px;">
+                    <span class="tag">Wirtualna Rzeczywistość </span>
+                    <span class="tag">Ciągły EEG/HRV Biofeedback</span>
+                    <span class="tag">Fotel Zero Gravity </span>
+                </div>
+                <p style="font-size: 0.95rem; color: #9CA3AF; margin-bottom: 0;">
+                    <strong>Jak to działa?</strong> System automatycznie reaguje na fizjologiczny stan Twojego układu nerwowego. Gdy za pomocą treningu Biofeedback wchodzisz w stan pożądanego skupienia lub głębokiego relaksu, interaktywne środowisko VR oraz mechanika fotela aktywnie podtrzymują ten stan, wspierając neuroplastyczność i synchronizację układu przywspółczulnego. Odrzucamy uniwersalne schematy – parametry immersji są zawsze w 100% personalizowane i nadzorowane przez terapeutę w czasie rzeczywistym.
+                </p>
+            </div>
+
+            <!-- 4. TECHNOLOGIE / TERAPIA (Standard) -->
+            <div class="content-section glass cursor-trigger">
+                <h2>Pozostałe metody wsparcia i diagnozy</h2>
+                <p>
+                    Oprócz systemów immersyjnych, łączymy uznane metody psychoterapeutyczne z komputerową diagnostyką.
                 </p>
                 
                 <div class="grid-features">
@@ -268,7 +321,7 @@
                     <div class="tech-box cursor-trigger" style="border-left-color: #10B981; background: #ECFDF5;">
                         <h4 style="color: #059669;">💻 Ocena funkcjonowania uwagi (MOXO)</h4>
                         <p>
-                            Wykorzystujemy komputerowe testy, takie jak MOXO, jako narzędzie wspierające ocenę uwagi, czasu reakcji, impulsywności i nadaktywności. Wyniki mogą uzupełniać wywiad kliniczny, np. DIVA-5, ale nie zastępują całościowej diagnozy prowadzonej przez uprawnionego specjalistę.
+                            Wykorzystujemy testy komputerowe MOXO do obiektywnej oceny uwagi, czasu reakcji i impulsywności. Wyniki uzupełniają wywiad kliniczny (DIVA-5) prowadzony przez uprawnionego specjalistę.
                         </p>
                     </div>
                 </div>
@@ -276,7 +329,7 @@
 
             <div class="cta-box">
                 <h2 style="margin-bottom: 16px;">Zacznij od konsultacji diagnostycznej</h2>
-                <p style="color: var(--text-muted); margin-bottom: 32px;">Umów się na wizytę i sprawdź, jakie formy wsparcia mogą pomóc w lepszym rozumieniu ADHD, samoregulacji i codziennym funkcjonowaniu.</p>
+                <p style="color: var(--text-muted); margin-bottom: 32px;">Umów się na wizytę i sprawdź, jak innowacyjne formy wsparcia — od CBT po neuro-immersję w Systemie Triangle — mogą pomóc w lepszym funkcjonowaniu.</p>
                 <a href="index.html#rezerwacja" class="btn-primary cursor-trigger">Umów wizytę</a>
             </div>
         </div>
@@ -300,7 +353,6 @@
                     <p style="color: var(--text-muted); margin-bottom: 8px;">ul. Stefana Żeromskiego 60/5a</p>
                     <p style="color: var(--text-muted); margin-bottom: 8px;">50-312 Wrocław</p>
                     
-                    <!-- ULEPSZONA SEKCJA KONTAKTU W STOPCE -->
                     <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 16px;">
                         <a href="mailto:kontakt@ncni.pl" class="cursor-trigger" style="color: var(--text-main); font-weight: 600; text-decoration: none;">
                             ✉️ kontakt@ncni.pl
@@ -322,7 +374,7 @@
                         <li style="margin-bottom: 8px;"><a href="adhd.html" class="cursor-trigger">ADHD</a></li>
                         <li style="margin-bottom: 8px;"><a href="asd.html" class="cursor-trigger">Autyzm</a></li>
                         <li style="margin-bottom: 8px;"><a href="psychologia.html" class="cursor-trigger">Psychologia</a></li>
-                        <li style="margin-bottom: 8px;"><a href="technologie.html" class="cursor-trigger">VR Lab</a></li>
+                        <li style="margin-bottom: 8px;"><a href="technologie.html" class="cursor-trigger">VR Lab & Biofeedback</a></li>
                     </ul>
                 </div>
             </div>
@@ -398,12 +450,12 @@
     <script>
         const chatKnowledge = {
             'start': { text: "Cześć! 👋 W czym mogę Ci pomóc?", options: [{ label: "🧠 ADHD / ADD", next: 'adhd_info' }, { label: "🧩 Autyzm (ASD)", next: 'asd_info' }, { label: "💰 Cennik / Oferta", next: 'oferta' }, { label: "📅 Umów wizytę", action: 'booking' }] },
-            'adhd_info': { text: "Oferujemy pełną diagnozę (DIVA-5, MOXO) oraz treningi VR i Biofeedback.", options: [{ label: "Jak wygląda diagnoza?", next: 'adhd_diagnoza' }, { label: "Na czym polega terapia?", next: 'adhd_terapia' }, { label: "Wróć", next: 'start' }] },
+            'adhd_info': { text: "Dla ADHD oferujemy pełną diagnozę (DIVA-5, MOXO) oraz innowacyjny System Triangle (VR + Biofeedback + Zero Gravity).", options: [{ label: "Co to jest System Triangle?", next: 'triangle' }, { label: "Jak wygląda diagnoza?", next: 'adhd_diagnoza' }, { label: "Wróć", next: 'start' }] },
+            'triangle': { text: "To nasza autorska neuro-immersja. Wykorzystujemy VR i fotel Zero Gravity zintegrowane z ciągłym pomiarem biofeedback. System sam reaguje na Twój stan, pomagając wyćwiczyć głębokie skupienie i samoregulację.", options: [{ label: "Chcę spróbować", action: 'booking' }, { label: "Wróć do ADHD", next: 'adhd_info' }] },
             'adhd_diagnoza': { text: "1. Wywiad kliniczny (DIVA-5).\n2. Test MOXO.\n3. Raport końcowy.", options: [{ label: "Chcę się zapisać", action: 'booking' }, { label: "Co to jest MOXO?", next: 'moxo' }] },
             'moxo': { text: "MOXO to komputerowy test badający uwagę, czas reakcji i impulsywność.", options: [{ label: "Rozumiem", next: 'start' }, { label: "Umów badanie", action: 'booking' }] },
-            'adhd_terapia': { text: "Wykorzystujemy VR (Wirtualną Rzeczywistość) i Biofeedback HRV do treningu skupienia.", options: [{ label: "Zapisz mnie", action: 'booking' }, { label: "Wróć", next: 'start' }] },
             'asd_info': { text: "Jesteśmy miejscem przyjaznym osobom w spektrum (Neurodiversity Affirming).", options: [{ label: "Umów konsultację", action: 'booking' }, { label: "Wróć", next: 'start' }] },
-            'oferta': { text: "Oferujemy diagnozę, psychoterapię, VR, Biofeedback i dietetykę.", options: [{ label: "Adres?", next: 'adres' }, { label: "Umów wizytę", action: 'booking' }] },
+            'oferta': { text: "Oferujemy diagnozę, psychoterapię, System Triangle (VR + Biofeedback) i dietetykę.", options: [{ label: "Adres?", next: 'adres' }, { label: "Umów wizytę", action: 'booking' }] },
             'adres': { text: "Wrocław, ul. Stefana Żeromskiego 60/5a.", options: [{ label: "Dzięki!", next: 'start' }] }
         };
 
