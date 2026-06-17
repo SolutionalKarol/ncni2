@@ -96,13 +96,6 @@
             overflow-x: hidden;
         }
 
-        /* Cursor */
-        @media (min-width: 901px) { body, a, button { cursor: none !important; } }
-        @media (max-width: 900px) { .cursor-dot, .cursor-outline { display: none !important; } body { cursor: auto; } }
-        .cursor-dot { width: 8px; height: 8px; background: var(--primary); position: fixed; border-radius: 50%; z-index: 9999; pointer-events: none; }
-        .cursor-outline { width: 40px; height: 40px; border: 1px solid rgba(15,118,110,0.5); position: fixed; border-radius: 50%; z-index: 9998; pointer-events: none; transition: width 0.2s, height 0.2s; }
-        body.hovering .cursor-outline { width: 70px; height: 70px; background: rgba(15,118,110,0.05); border-width: 2px; }
-
         /* Background */
         #bg-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; z-index: -1; opacity: 0.6; pointer-events: none; }
         .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
@@ -204,32 +197,30 @@
 <body>
 
     <div id="bg-canvas"></div>
-    <div class="cursor-dot"></div>
-    <div class="cursor-outline"></div>
 
     <header class="glass">
         <div class="container nav-wrapper">
             <div class="brand-bar">
-                <a href="index.html" class="logo cursor-trigger">
+                <a href="index.html" class="logo">
                     <img src="logo.png" alt="NCNI" onerror="this.src='https://placehold.co/100x100/0F766E/ffffff?text=NCNI'">
                     <span>Naukowe Centrum Neuroinnowacji</span>
                 </a>
-                <button class="mobile-toggle cursor-trigger" aria-label="Menu">
+                <button class="mobile-toggle" aria-label="Menu">
                     <span></span><span></span><span></span>
                 </button>
             </div>
             
             <nav class="nav-links">
                 <div class="header-contact">
-                    <a href="tel:+48600608333" class="cursor-trigger">📞 600 608 333</a>
-                    <a href="mailto:kontakt@ncni.pl" class="cursor-trigger">✉️ kontakt@ncni.pl</a>
+                    <a href="tel:+48600608333">📞 600 608 333</a>
+                    <a href="mailto:kontakt@ncni.pl">✉️ kontakt@ncni.pl</a>
                 </div>
-                <a href="o-nas.html" class="nav-item cursor-trigger">O nas</a>
-                <a href="neuroroznorodnosc.html" class="nav-item cursor-trigger active">Neuroróżnorodność</a>
-                <a href="psychologia.html" class="nav-item cursor-trigger">Psychologia</a>
-                <a href="technologie.html" class="nav-item cursor-trigger">Technologie</a>
-                <a href="oferta.html" class="nav-item cursor-trigger">Oferta</a>
-                <a href="index.html#rezerwacja" class="nav-item nav-cta cursor-trigger">Umów wizytę</a>
+                <a href="o-nas.html" class="nav-item">O nas</a>
+                <a href="neuroroznorodnosc.html" class="nav-item active">Neuroróżnorodność</a>
+                <a href="psychologia.html" class="nav-item">Psychologia</a>
+                <a href="technologie.html" class="nav-item">Technologie</a>
+                <a href="oferta.html" class="nav-item">Oferta</a>
+                <a href="index.html#rezerwacja" class="nav-item nav-cta">Umów wizytę</a>
             </nav>
         </div>
     </header>
@@ -255,7 +246,7 @@
 
         <div class="container">
             <!-- 1. PROBLEM & PODEJŚCIE -->
-            <div class="content-section glass cursor-trigger">
+            <div class="content-section glass">
                 <h2>Czym jest Dyskalkulia?</h2>
                 <p>
                     Dyskalkulia rozwojowa to zaburzenie zdolności matematycznych, które ma podłoże genetyczne i neurobiologiczne. Osoby z dyskalkulią mają trudności z rozumieniem pojęcia liczby, szacowaniem ilości, wykonywaniem prostych działań w pamięci oraz rozumieniem relacji przestrzennych.
@@ -265,14 +256,15 @@
                 </p>
             </div>
 
-            <!-- 2. MATERIAŁY AUTORSKIE - NOWA SEKCJA (ZREDAGOWANA Z ZAŁĄCZNIKA) -->
-            <div class="content-section glass cursor-trigger">
-                <h2>Matematyka napisana językiem konkretnego ucznia</h2>
+            <!-- 2. MATERIAŁY AUTORSKIE - DOKŁADNA TREŚĆ MERYTORYCZNA -->
+            <div class="content-section glass">
+                <h2>Autorskie materiały edukacyjne dopasowane do profilu neuropoznawczego</h2>
+                <h3 class="text-xl font-semibold text-teal-700 mt-2 mb-4">Matematyka napisana językiem konkretnego ucznia</h3>
                 <p>
                     Każdy mózg uczy się inaczej. U osób z dyskalkulią, ADHD, zaburzeniami lękowymi czy innymi profilami neuroróżnorodności standardowe podręczniki i korepetycje często nie przynoszą efektu. Nie dlatego, że brakuje zdolności, ale dlatego, że forma przekazu nie jest dopasowana do tego, jak u danej osoby pracuje uwaga, pamięć robocza i regulacja emocji.
                 </p>
                 <p>
-                    W NCNI projektujemy <strong>autorskie materiały do nauki matematyki od podstaw, pod konkretną osobę</strong>. Punktem wyjścia nie jest gotowy zestaw ćwiczeń, lecz dogłębne zrozumienie, jak uczy się dany uczeń, gdzie się gubi i co go blokuje.
+                    W NCNI projektujemy materiały do nauki matematyki od podstaw, pod konkretną osobę. Punktem wyjścia nie jest gotowy zestaw ćwiczeń, lecz zrozumienie, jak uczy się dany uczeń, gdzie się gubi i co go blokuje.
                 </p>
 
                 <h3 class="text-xl font-semibold text-teal-700 mt-8 mb-4">Na czym polega nasze podejście:</h3>
@@ -281,32 +273,32 @@
                     <div class="material-card">
                         <div class="material-icon">🔍</div>
                         <h4>Rozpoznanie profilu</h4>
-                        <p>Zaczynamy od identyfikacji mocnych stron i konkretnych trudności ucznia, a nie od suchego materiału do przerobienia.</p>
+                        <p>Zaczynamy od mocnych stron i konkretnych trudności ucznia, a nie od materiału do przerobienia.</p>
                     </div>
                     <div class="material-card">
                         <div class="material-icon">👣</div>
                         <h4>Praca małym krokiem</h4>
-                        <p>Cały materiał rozbity jest na bardzo krótkie, zamknięte fragmenty, które można opanować bez przebodźcowania.</p>
+                        <p>Materiał rozbity jest na krótkie, zamknięte fragmenty, możliwe do opanowania bez przeciążenia.</p>
                     </div>
                     <div class="material-card">
                         <div class="material-icon">🧠</div>
-                        <h4>Mnemotechniki celowane</h4>
-                        <p>Tworzymy skróty pamięciowe dedykowane w miejsca, w których dany uczeń się najczęściej myli (np. błędy ze znakami).</p>
+                        <h4>Mnemotechniki szyte na miarę</h4>
+                        <p>Tworzymy skróty pamięciowe celowane w te miejsca, w których dany uczeń się myli (na przykład powtarzające się błędy ze znakami czy nawiasami).</p>
                     </div>
                     <div class="material-card">
                         <div class="material-icon">📖</div>
-                        <h4>Oddzielenie rozumienia</h4>
-                        <p>Osobno trenujemy uważne czytanie poleceń. Wiele błędów bierze się nie z braku wiedzy, lecz z przeoczenia celu zadania.</p>
+                        <h4>Oddzielenie rozumienia od liczenia</h4>
+                        <p>Osobno trenujemy uważne czytanie poleceń, bo wiele błędów bierze się nie z braku wiedzy, lecz z przeoczenia tego, o co naprawdę pyta zadanie.</p>
                     </div>
                     <div class="material-card">
                         <div class="material-icon">⏱️</div>
-                        <h4>Naturalny rytm pracy</h4>
-                        <p>Struktura zajęć i materiałów uwzględnia naturalne wahania uwagi oraz normalizuje krótkie przerwy regeneracyjne.</p>
+                        <h4>Wbudowany rytm pracy</h4>
+                        <p>Struktura uwzględnia naturalne wahania uwagi i normalizuje przerwy, zamiast wymuszać nieprzerwany wysiłek.</p>
                     </div>
                     <div class="material-card">
                         <div class="material-icon">😌</div>
-                        <h4>Język bez napięcia</h4>
-                        <p>Zdejmujemy lęk i wstyd. Normalizujemy popełnianie błędów i w pełni eliminujemy presję oceny blokującą ucznia.</p>
+                        <h4>Język obniżający napięcie</h4>
+                        <p>Materiały pisane są w sposób, który zdejmuje lęk i wstyd, normalizuje błędy i nie buduje presji oceny.</p>
                     </div>
                 </div>
 
@@ -316,15 +308,19 @@
                         <div>
                             <h4 class="font-bold text-teal-800 mb-2">Praca na realnym materiale</h4>
                             <p class="text-teal-900 m-0 text-sm md:text-base">
-                                Pracujemy nie na abstrakcyjnych przykładach, ale bazujemy na aktualnym programie nauczania, sprawdzianach i zadaniach, z którymi uczeń musi się naprawdę mierzyć w szkole. Efektem jest materiał, z którego uczeń faktycznie chce korzystać.
+                                Korzystamy z programu, sprawdzianów i zadań, z którymi uczeń mierzy się naprawdę, a nie z abstrakcyjnych przykładów.
                             </p>
                         </div>
                     </div>
                 </div>
+
+                <p class="mt-8 font-medium text-teal-800">
+                    Efektem jest materiał, z którego uczeń faktycznie chce korzystać, bo jest napisany jego językiem i prowadzi go w jego tempie. Takie podejście wspiera uczniów z dyskalkulią, ADHD, zaburzeniami lękowymi oraz współwystępującymi trudnościami w uczeniu się matematyki.
+                </p>
             </div>
 
             <!-- 3. OBJAWY -->
-            <div class="content-section glass cursor-trigger">
+            <div class="content-section glass">
                 <h2>Typowe objawy</h2>
                 <ul>
                     <li>Trudności z odczytywaniem godziny na zegarku analogowym.</li>
@@ -336,21 +332,21 @@
             </div>
 
             <!-- 4. TECHNOLOGIE -->
-            <div class="content-section glass cursor-trigger">
+            <div class="content-section glass">
                 <h2>Dodatkowe Technologie Wspierające</h2>
                 <p>
                     Poza opracowaniem materiałów, stosujemy nowoczesne metody neurodydaktyczne, które angażują mózg w nowy sposób.
                 </p>
                 
                 <div class="grid-features">
-                    <div class="tech-box cursor-trigger">
+                    <div class="tech-box">
                         <h4>🔢 Trening Poznawczy</h4>
                         <p>
                             Specjalistyczne gry i ćwiczenia komputerowe rozwijające "zmysł liczby" i pamięć roboczą niezbędną do liczenia w pamięci.
                         </p>
                     </div>
 
-                    <div class="tech-box cursor-trigger" style="border-left-color: var(--primary); background: #F0FDF4;">
+                    <div class="tech-box" style="border-left-color: var(--primary); background: #F0FDF4;">
                         <h4>🎧 Metoda Warnkego</h4>
                         <p>
                             Usprawnianie przetwarzania słuchowego i wzrokowego oraz koordynacji półkul mózgowych, co wspiera automatyzację procesów liczenia.
@@ -362,7 +358,7 @@
             <div class="cta-box">
                 <h2 style="margin-bottom: 16px;">Odkryj potencjał matematyczny</h2>
                 <p style="color: var(--text-muted); margin-bottom: 32px;">Umów się na diagnozę i sprawdź, jak możemy pomóc Tobie lub Twojemu dziecku uczyć się bez lęku.</p>
-                <a href="index.html#rezerwacja" class="btn-primary cursor-trigger">Zarezerwuj Wizytę</a>
+                <a href="index.html#rezerwacja" class="btn-primary">Zarezerwuj Wizytę</a>
             </div>
         </div>
     </article>
@@ -371,7 +367,7 @@
         <div class="container">
             <div class="footer-grid">
                 <div>
-                    <a href="#" class="logo cursor-trigger" style="margin-bottom: 20px; display: inline-block;">
+                    <a href="#" class="logo" style="margin-bottom: 20px; display: inline-block;">
                         <img src="logo.png" alt="NCNI" onerror="this.src='https://placehold.co/100x100/0F766E/ffffff?text=NCNI'">
                         NCNI
                     </a>
@@ -386,27 +382,27 @@
                     <p style="color: var(--text-muted); margin-bottom: 8px;">50-312 Wrocław</p>
                     
                     <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 16px;">
-                        <a href="mailto:kontakt@ncni.pl" class="cursor-trigger" style="color: var(--text-main); font-weight: 600; text-decoration: none;">
+                        <a href="mailto:kontakt@ncni.pl" style="color: var(--text-main); font-weight: 600; text-decoration: none;">
                             ✉️ kontakt@ncni.pl
                         </a>
-                        <a href="tel:+48600608333" class="cursor-trigger" style="color: var(--primary); font-weight: 600; text-decoration: none; font-size: 1.1rem;">
+                        <a href="tel:+48600608333" style="color: var(--primary); font-weight: 600; text-decoration: none; font-size: 1.1rem;">
                             📞 600 608 333
                         </a>
                     </div>
                     
                     <div style="margin-top: 24px; display: flex; gap: 16px; align-items: center;">
-                        <a href="https://youtube.com/@neuroinnowacje" target="_blank" class="cursor-trigger" style="color: var(--text-muted); text-decoration: none; font-weight: 600;">YouTube</a>
+                        <a href="https://youtube.com/@neuroinnowacje" target="_blank" style="color: var(--text-muted); text-decoration: none; font-weight: 600;">YouTube</a>
                         <span style="color: var(--border);">|</span>
-                        <a href="https://x.com/neuroinnowacje" target="_blank" class="cursor-trigger" style="color: var(--text-muted); text-decoration: none; font-weight: 600;">X (Twitter)</a>
+                        <a href="https://x.com/neuroinnowacje" target="_blank" style="color: var(--text-muted); text-decoration: none; font-weight: 600;">X (Twitter)</a>
                     </div>
                 </div>
                 <div>
                     <h4 style="margin-bottom: 16px;">Mapa Strony</h4>
                     <ul style="color: var(--text-muted); font-size: 0.95rem; list-style: none; padding: 0;">
-                        <li style="margin-bottom: 8px;"><a href="adhd.html" class="cursor-trigger">ADHD</a></li>
-                        <li style="margin-bottom: 8px;"><a href="asd.html" class="cursor-trigger">Autyzm</a></li>
-                        <li style="margin-bottom: 8px;"><a href="psychologia.html" class="cursor-trigger">Psychologia</a></li>
-                        <li style="margin-bottom: 8px;"><a href="technologie.html" class="cursor-trigger">VR Lab</a></li>
+                        <li style="margin-bottom: 8px;"><a href="adhd.html">ADHD</a></li>
+                        <li style="margin-bottom: 8px;"><a href="asd.html">Autyzm</a></li>
+                        <li style="margin-bottom: 8px;"><a href="psychologia.html">Psychologia</a></li>
+                        <li style="margin-bottom: 8px;"><a href="technologie.html">VR Lab</a></li>
                     </ul>
                 </div>
             </div>
@@ -481,28 +477,6 @@
         }
         document.addEventListener("DOMContentLoaded",initParticles);
         
-        const cursorDot=document.querySelector('.cursor-dot');
-        const cursorOutline=document.querySelector('.cursor-outline');
-        window.addEventListener('mousemove',(e)=>{
-            const posX=e.clientX;
-            const posY=e.clientY;
-            if(cursorDot && cursorOutline) {
-                cursorDot.style.left=`${posX}px`;
-                cursorDot.style.top=`${posY}px`;
-                cursorOutline.animate({left:`${posX}px`,top:`${posY}px`},{duration:500,fill:"forwards"});
-            }
-        });
-        
-        // Funkcja dodająca klasy hover dla niestandardowego kursora
-        function bindCursorTriggers() {
-            const triggers=document.querySelectorAll('.cursor-trigger, a, button, .content-section, .tech-box, .material-card');
-            triggers.forEach(trigger=>{
-                trigger.addEventListener('mouseenter',()=>{document.body.classList.add('hovering');});
-                trigger.addEventListener('mouseleave',()=>{document.body.classList.remove('hovering');});
-            });
-        }
-        bindCursorTriggers();
-        
         const toggle=document.querySelector('.mobile-toggle');
         const menu=document.querySelector('.mobile-menu');
         if(toggle&&menu){
@@ -537,7 +511,7 @@
             <div class="ania-options-area" id="ania-options-area"></div>
         </div>
 
-        <div class="ania-avatar cursor-trigger" onclick="toggleAnia()">
+        <div class="ania-avatar" onclick="toggleAnia()">
             <img src="ania.jpg" alt="Ania Chat" onerror="this.src='https://placehold.co/100x100/0F766E/ffffff?text=A'">
             <div class="status-dot"></div>
         </div>
