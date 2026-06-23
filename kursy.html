@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>Kursy i Szkolenia NCNI | Naukowe Centrum Neuroinnowacji</title>
+  <meta name="description" content="Certyfikowane kursy NCNI z zakresu neuroróżnorodności – dla specjalistów, rodziców i dzieci. Program pod nadzorem dr hab. inż. Sebastiana Kraszewskiego, prof. PWr." />
+  
+  <!-- Tagi Open Graph dla Facebooka/LinkedIna -->
+  <meta property="og:title" content="Certyfikowane Kursy NCNI | Zostań Trenerem Neuroróżnorodności" />
+  <meta property="og:description" content="Edukacja oparta na nauce. Autorskie programy pod nadzorem dr hab. inż. S. Kraszewskiego, prof. PWr. Zdobądź wiedzę, która zmienia perspektywę." />
+  <meta property="og:image" content="https://ncni.pl/og-image-kursy.jpg" />
+  <meta property="og:url" content="https://ncni.pl/kursy.html" />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#01696f" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "itemListElement": [
+      {
+        "@type": "Course",
+        "position": 1,
+        "name": "Certyfikowany Trener Neuroróżnorodności NCNI",
+        "description": "Zdobądź prestiżowy tytuł Trenera Neuroróżnorodności. 12 modułów, wykłady, testy i imienny certyfikat.",
+        "provider": {
+          "@type": "Organization",
+          "name": "Naukowe Centrum Neuroinnowacji (NCNI)",
+          "sameAs": "https://ncni.pl"
+        }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --teal: #01696f;
+      --teal-dark: #015055;
+      --teal-light: #e6f4f4;
+      --teal-mid: #b3dada;
+      --purple: #6b46c1; /* Nowy kolor dla premium */
+      --purple-dark: #2b1055;
+      --gold: #f0c27b;
+      --text-primary: #1a1a1a;
+      --text-secondary: #4a4a4a;
+      --text-muted: #767676;
+      --border: #e0e0e0;
+      --bg: #ffffff;
+      --bg-soft: #f8fafa;
+      --bg-dark: #0f2f31;
+      --radius: 12px;
+      --radius-sm: 8px;
+      --shadow: 0 2px 16px rgba(1,105,111,0.08);
+      --shadow-hover: 0 8px 32px rgba(1,105,111,0.16);
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.7; color: var(--text-primary); background: var(--bg); }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+    }
+    .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 68px; }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-logo img { height: 36px; }
+    .nav-logo span { font-size: 14px; font-weight: 600; color: var(--text-primary); }
+    .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+    
+    /* Poprawione kolory menu */
+    .nav-links a { font-size: 15px; font-weight: 500; color: var(--text-primary); text-decoration: none; transition: color .2s, transform .2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--purple); font-weight: 600; }
+    
+    .nav-cta { background: var(--teal); color: #fff !important; padding: 8px 18px; border-radius: 6px; font-size: 14px; font-weight: 500; transition: background .2s !important; }
+    .nav-cta:hover { background: var(--teal-dark) !important; }
+
+    .hero {
+      background: linear-gradient(135deg, var(--bg-dark) 0%, #01454a 50%, var(--purple-dark) 100%);
+      color: #fff;
+      padding: 96px 2rem 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+      background: radial-gradient(circle, rgba(107,70,193,0.15) 0%, rgba(0,0,0,0) 70%);
+      animation: rotate 20s linear infinite;
+    }
+    @keyframes rotate { 100% { transform: rotate(360deg); } }
+    
+    .hero-content { position: relative; z-index: 2; }
+    .hero-eyebrow {
+      display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--gold); border: 1px solid rgba(240,194,123,0.4); padding: 5px 16px; border-radius: 20px; margin-bottom: 1.5rem;
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 300; line-height: 1.2; max-width: 800px; margin: 0 auto 1rem; letter-spacing: -0.02em;
+      text-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+    .hero h1 strong { font-weight: 700; color: #fff; background: linear-gradient(90deg, #7ecfc2, #f0c27b); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero-sub { font-size: 17px; color: rgba(255,255,255,0.85); max-width: 600px; margin: 0 auto 2.5rem; font-weight: 400; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
+    .hero-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    
+    .btn-primary { background: var(--teal); color: #fff; padding: 12px 28px; border-radius: var(--radius-sm); font-size: 15px; font-weight: 600; text-decoration: none; border: none; cursor: pointer; transition: background .2s, transform .15s; }
+    .btn-primary:hover { background: var(--teal-dark); transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+    .btn-ghost { background: transparent; color: #fff; padding: 12px 28px; border-radius: var(--radius-sm); font-size: 15px; font-weight: 500; text-decoration: none; border: 2px solid rgba(255,255,255,0.3); cursor: pointer; transition: border-color .2s, background .2s; }
+    .btn-ghost:hover { border-color: #fff; background: rgba(255,255,255,0.1); }
+
+    .professor-strip { background: var(--bg-soft); border-bottom: 1px solid var(--border); padding: 40px 2rem; }
+    .professor-inner { max-width: 1000px; margin: 0 auto; display: flex; align-items: center; gap: 2.5rem; }
+    .professor-avatar { width: 96px; height: 96px; border-radius: 50%; background: var(--teal-light); border: 3px solid var(--teal); overflow: hidden; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+    .professor-avatar img { width: 100%; height: 100%; object-fit: cover; }
+    .professor-avatar-placeholder { font-size: 36px; color: var(--teal); }
+    .professor-text { flex: 1; }
+    .professor-text h3 { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--purple); margin-bottom: 4px; }
+    .professor-text h2 { font-size: 20px; font-weight: 600; color: var(--text-primary); margin-bottom: 6px; }
+    .professor-text p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+    .professor-badges { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+    .badge { font-size: 11px; padding: 4px 12px; border-radius: 20px; background: #f3f0ff; color: var(--purple); font-weight: 600; border: 1px solid #e9d8fd; }
+    .professor-link { flex-shrink: 0; }
+    .btn-outline { border: 2px solid var(--purple); color: var(--purple); padding: 10px 22px; border-radius: var(--radius-sm); font-size: 14px; font-weight: 600; text-decoration: none; transition: background .2s, color .2s; display: inline-block; white-space: nowrap; }
+    .btn-outline:hover { background: var(--purple); color: #fff; }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+    section { padding: 80px 2rem; }
+    section:nth-child(even) { background: var(--bg-soft); }
+    .section-header { margin-bottom: 3rem; }
+    .section-eyebrow { font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--purple); margin-bottom: 8px; display: block; }
+    .section-title { font-size: clamp(1.8rem, 3.5vw, 2.4rem); font-weight: 300; letter-spacing: -0.02em; color: var(--text-primary); margin-bottom: 12px; line-height: 1.2; }
+    .section-title strong { font-weight: 700; }
+    .section-sub { font-size: 16px; color: var(--text-secondary); max-width: 650px; font-weight: 400; }
+    
+    .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 24px; }
+    
+    .course-card { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 0; display: flex; flex-direction: column; transition: box-shadow .25s, transform .2s; overflow: hidden; }
+    .course-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-4px); }
+    .card-top { padding: 28px 28px 0; flex: 1; }
+    .card-icon { width: 48px; height: 48px; background: var(--teal-light); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 16px; }
+    .card-label { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal); margin-bottom: 8px; }
+    .card-title { font-size: 18px; font-weight: 600; color: var(--text-primary); margin-bottom: 10px; line-height: 1.4; }
+    .card-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 16px; }
+    .card-meta { font-size: 13px; color: var(--text-muted); display: flex; flex-direction: column; gap: 6px; padding-bottom: 20px; }
+    .card-meta span { display: flex; align-items: flex-start; gap: 8px; }
+    .meta-icon { flex-shrink: 0; margin-top: 1px; }
+    .card-pricing-note { font-size: 12px; color: var(--teal); font-weight: 500; font-style: italic; padding: 10px 28px; background: var(--teal-light); border-top: 1px solid var(--teal-mid); border-bottom: 1px solid var(--teal-mid); }
+    .card-bottom { padding: 24px 28px; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+    .card-price { font-size: 24px; font-weight: 700; color: var(--text-primary); line-height: 1.1; }
+    .card-price span { font-size: 13px; font-weight: 500; color: var(--text-muted); display: block; margin-top: 4px; }
+    .btn-card { background: var(--teal); color: #fff; padding: 12px 24px; border-radius: var(--radius-sm); font-size: 14px; font-weight: 600; text-decoration: none; border: none; cursor: pointer; transition: background .2s, transform .2s; white-space: nowrap; text-align: center; }
+    .btn-card:hover { background: var(--teal-dark); transform: scale(1.02); }
+
+    /* Rozwiązanie problemu braku widoczności */
+    .premium-card {
+      background: linear-gradient(145deg, var(--purple-dark), #0f2f31);
+      border: 2px solid var(--purple);
+      transform: scale(1.02);
+      box-shadow: 0 10px 30px rgba(107,70,193,0.2);
+    }
+    /* Wszystkie teksty wewnątrz premium muszą być jasne */
+    .premium-card .card-top, .premium-card .card-bottom { position: relative; z-index: 2; }
+    .premium-card .card-icon { background: rgba(255,255,255,0.1); color: #fff; }
+    .premium-card .card-label { color: var(--gold); }
+    .premium-card .card-title { color: #fff; font-size: 20px; }
+    .premium-card .card-desc { color: rgba(255,255,255,0.85); }
+    .premium-card .card-meta { color: rgba(255,255,255,0.7); }
+    .premium-card .card-pricing-note { background: rgba(107,70,193,0.4); color: #e9d8fd; border-color: rgba(107,70,193,0.6); }
+    .premium-card .card-price { color: #fff; }
+    .premium-card .card-price span { color: rgba(255,255,255,0.5); }
+    .premium-card .btn-card { background: var(--gold); color: #1a1a1a; }
+    .premium-card .btn-card:hover { background: #fff; }
+    .premium-card:hover { transform: scale(1.04) translateY(-5px); box-shadow: 0 15px 40px rgba(107,70,193,0.4); }
+    
+    .product-card { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; display: flex; flex-direction: column; gap: 12px; transition: box-shadow .25s, transform .2s; }
+    .product-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-3px); }
+    .product-top { display: flex; align-items: flex-start; gap: 14px; }
+    .product-icon { width: 44px; height: 44px; background: var(--teal-light); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+    .product-title { font-size: 15px; font-weight: 600; color: var(--text-primary); line-height: 1.4; }
+    .product-age { font-size: 11px; color: var(--teal); font-weight: 500; margin-top: 2px; }
+    .product-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
+    .product-bottom { display: flex; align-items: center; justify-content: space-between; margin-top: auto; padding-top: 12px; border-top: 1px solid var(--border); }
+    .product-price { font-size: 20px; font-weight: 600; color: var(--text-primary); }
+    .btn-card-ghost { border: 2px solid var(--teal); color: var(--teal); padding: 10px 20px; border-radius: var(--radius-sm); font-size: 14px; font-weight: 600; text-decoration: none; cursor: pointer; transition: background .2s, color .2s; display: inline-block; white-space: nowrap; }
+    .btn-card-ghost:hover { background: var(--teal); color: #fff; }
+
+    .webinar-card { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; display: flex; flex-direction: column; gap: 14px; transition: box-shadow .25s, transform .2s; }
+    .webinar-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-3px); }
+    .webinar-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+    .webinar-status { font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 20px; flex-shrink: 0; }
+    .webinar-status.soon { background: #fff3cd; color: #856404; border: 1px solid #ffc107; }
+    .webinar-status.demand { background: var(--teal-light); color: var(--teal-dark); border: 1px solid var(--teal-mid); }
+    .webinar-status.b2b { background: #e8eaf6; color: #3949ab; border: 1px solid #9fa8da; }
+    .webinar-title { font-size: 16px; font-weight: 600; color: var(--text-primary); line-height: 1.4; flex: 1; }
+    .webinar-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+    .webinar-footer { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .webinar-price { font-size: 18px; font-weight: 600; color: var(--text-primary); }
+    .webinar-audience { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+
+    .consult-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 24px; }
+    .consult-card { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 32px; display: flex; flex-direction: column; gap: 16px; transition: box-shadow .25s, transform .2s; }
+    .consult-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-3px); }
+    .consult-card.featured { border-color: var(--teal); background: #f9fdfd; }
+    .consult-icon { font-size: 32px; }
+    .consult-title { font-size: 18px; font-weight: 600; color: var(--text-primary); line-height: 1.4; }
+    .consult-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; flex: 1; }
+    .consult-footer { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; padding-top: 16px; border-top: 1px solid var(--border); }
+    .consult-price { font-size: 24px; font-weight: 700; color: var(--text-primary); }
+    .consult-duration { font-size: 13px; color: var(--text-muted); font-weight: 500; }
+
+    .cert-section { background: var(--bg-dark); color: #fff; padding: 100px 2rem; position: relative; overflow: hidden; }
+    .cert-inner { max-width: 800px; margin: 0 auto; text-align: center; position: relative; z-index: 2; }
+    .cert-icon-big { font-size: 64px; margin-bottom: 1.5rem; text-shadow: 0 0 20px rgba(126,207,194,0.4); }
+    .cert-eyebrow { font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; display: block; }
+    .cert-section h2 { font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 300; letter-spacing: -0.02em; margin-bottom: 1.5rem; line-height: 1.3; }
+    .cert-section h2 strong { font-weight: 700; color: #7ecfc2; }
+    .cert-section p { font-size: 16px; color: rgba(255,255,255,0.75); line-height: 1.8; margin-bottom: 1.5rem; font-weight: 300; }
+    .cert-highlights { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; margin: 3rem 0; }
+    .cert-hl { text-align: center; }
+    .cert-hl-num { font-size: 32px; font-weight: 700; color: #7ecfc2; }
+    .cert-hl-label { font-size: 13px; color: rgba(255,255,255,0.6); margin-top: 4px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; }
+    .cert-divider { width: 1px; height: 60px; background: rgba(255,255,255,0.15); align-self: center; }
+
+    .contact-strip { background: var(--bg-soft); border-top: 1px solid var(--border); padding: 60px 2rem; text-align: center; }
+    .contact-strip h3 { font-size: 24px; font-weight: 600; color: var(--text-primary); margin-bottom: 12px; }
+    .contact-strip p { font-size: 16px; color: var(--text-secondary); margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+    .contact-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .contact-link { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; border-radius: var(--radius-sm); font-size: 15px; font-weight: 600; text-decoration: none; transition: background .2s, transform .2s; }
+    .contact-link.primary { background: var(--teal); color: #fff; }
+    .contact-link.primary:hover { background: var(--teal-dark); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+    .contact-link.secondary { border: 2px solid var(--teal); color: var(--teal); }
+    .contact-link.secondary:hover { background: var(--teal); color: #fff; }
+
+    @media (max-width: 768px) {
+      section { padding: 60px 1.25rem; }
+      .hero { padding: 80px 1.25rem 60px; }
+      .professor-inner { flex-direction: column; text-align: center; }
+      .professor-badges { justify-content: center; }
+      .professor-link, .professor-link .btn-outline { width: 100%; text-align: center; }
+      .nav-links { display: none; }
+      .cards-grid { grid-template-columns: 1fr; }
+      .cert-highlights { gap: 20px; flex-direction: column; }
+      .cert-divider { display: none; }
+      .hero-actions .btn-primary, .hero-actions .btn-ghost { width: 100%; text-align: center; }
+      .premium-card { transform: scale(1); }
+      .premium-card:hover { transform: translateY(-3px); }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="https://ncni.pl/" class="nav-logo">
+      <img src="https://ncni.pl/logo.png" alt="NCNI" onerror="this.style.display='none'" />
+      <span>Naukowe Centrum Neuroinnowacji</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="https://ncni.pl/o-nas.html">O nas</a></li>
+      <li><a href="https://ncni.pl/oferta.html">Oferta</a></li>
+      <li><a href="https://ncni.pl/neuroroznorodnosc.html">Neuroróżnorodność</a></li>
+      <li><a href="kursy.html" class="active">Kursy</a></li>
+      <li><a href="https://ncni.pl/technologie.html">Technologie</a></li>
+      <li><a href="https://ncni.pl/#rezerwacja" class="nav-cta">Umów wizytę</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-content">
+    <span class="hero-eyebrow">Edukacja oparta na nauce — NCNI</span>
+    <h1>Kursy i szkolenia<br><strong>Neuroróżnorodności</strong></h1>
+    <p class="hero-sub">Autorskie programy naukowo-praktyczne pod nadzorem merytorycznym dr hab. inż. Sebastiana Kraszewskiego, prof. PWr. Certyfikat NCNI — wiedza zamiast pieczątki.</p>
+    <div class="hero-actions">
+      <a href="#specjalisci" class="btn-primary">Dla specjalistów</a>
+      <a href="#rodzice" class="btn-ghost">Dla rodziców</a>
+    </div>
+  </div>
+</section>
+
+<div class="professor-strip">
+  <div class="professor-inner">
+    <div class="professor-avatar">
+      <img src="https://ncni.pl/sk.jpg" alt="dr hab. inż. Sebastian Kraszewski, prof. PWr" onerror="this.style.display='none';this.parentNode.innerHTML='<span class=professor-avatar-placeholder>🔬</span>';" />
+    </div>
+    <div class="professor-text">
+      <h3>Nadzór merytoryczny kursów</h3>
+      <h2>dr hab. inż. Sebastian Kraszewski, prof. PWr</h2>
+      <p>Dyrektor Naukowy NCNI. Twórca Metody Kraszewskiego — zintegrowanego protokołu łączącego VR, Biofeedback HRV i neuromodulację. Profesor Politechniki Wrocławskiej z dorobkiem w biofizyce, inżynierii biomedycznej i zastosowaniach AI w medycynie. Laureat tytułu <em>Naukowiec Przyszłości 2023</em>. Jego badania tworzą naukowy fundament programów NCNI.</p>
+      <div class="professor-badges">
+        <span class="badge">🔬 Biofizyka</span>
+        <span class="badge">🥽 VR Therapy</span>
+        <span class="badge">🧠 ADHD / ASD</span>
+        <span class="badge">📈 Trener Neuroróżnorodności</span>
+      </div>
+    </div>
+    <div class="professor-link">
+      <a href="https://ncni.pl/kraszewski.html" class="btn-outline">Pełny profil →</a>
+    </div>
+  </div>
+</div>
+
+<section id="specjalisci">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">Ścieżka I — Profesjonaliści</span>
+      <h2 class="section-title"><strong>Certyfikowane kursy NCNI</strong><br>dla profesjonalistów</h2>
+      <p class="section-sub">Praktyczna wiedza z zakresu neuroróżnorodności, poparta nauką. Zdobądź certyfikat otwierający nowe możliwości zawodowe.</p>
+    </div>
+
+    <div class="cards-grid">
+
+      <!-- KURS FLAGOWY: TRENER (Klasa Premium rozwiązuje problem tła i tekstu) -->
+      <div class="course-card premium-card">
+        <div class="card-top">
+          <div class="card-icon">👑</div>
+          <div class="card-label">Flagowy Program NCNI</div>
+          <h3 class="card-title">Certyfikowany Trener Neuroróżnorodności (Poziom I)</h3>
+          <p class="card-desc">Elitarny kurs dający pełne uprawnienia NCNI. Zdobądź kompleksową wiedzę od ekspertów, zdaj egzamin i otrzymaj prestiżowy certyfikat z podpisem prof. Kraszewskiego.</p>
+          <div class="card-meta">
+            <span><span class="meta-icon">📚</span> 12 rozbudowanych modułów</span>
+            <span><span class="meta-icon">🎥</span> Eksperckie wykłady video</span>
+            <span><span class="meta-icon">📝</span> Testy kompetencyjne</span>
+            <span><span class="meta-icon">🎓</span> Imienny Certyfikat Trenera NCNI</span>
+          </div>
+        </div>
+        <div class="card-pricing-note">🌟 Dołącz do wąskiego grona certyfikowanych specjalistów</div>
+        <div class="card-bottom">
+          <div class="card-price">599 zł<span>brutto, jednorazowo</span></div>
+          <a href="mailto:kontakt@ncni.pl?subject=Kurs%3A%20Trener%20Neuroróżnorodności" class="btn-card">Zapisz się</a>
+        </div>
+      </div>
+
+      <!-- Kurs 2 -->
+      <div class="course-card">
+        <div class="card-top">
+          <div class="card-icon">🏫</div>
+          <div class="card-label">Certyfikowany kurs NCNI · Nauczyciele</div>
+          <h3 class="card-title">Neuroróżnorodność w Klasie — dla Nauczycieli</h3>
+          <p class="card-desc">Rozpoznawanie ADHD, dysleksji, dyskalkulii i ASD w środowisku szkolnym. Adaptacje dydaktyczne, budowanie środowiska inkluzywnego.</p>
+          <div class="card-meta">
+            <span><span class="meta-icon">🎥</span> Film online + materiały PDF</span>
+            <span><span class="meta-icon">📚</span> 6 modułów</span>
+            <span><span class="meta-icon">🎓</span> Certyfikat NCNI</span>
+          </div>
+        </div>
+        <div class="card-pricing-note">📋 Możliwa wycena dla szkół</div>
+        <div class="card-bottom">
+          <div class="card-price">1 490 zł<span>brutto, jednorazowo</span></div>
+          <a href="mailto:kontakt@ncni.pl?subject=Kurs%3A%20Neuroróżnorodność%20w%20Klasie" class="btn-card">Zapisz się</a>
+        </div>
+      </div>
+
+      <!-- Kurs 3 -->
+      <div class="course-card">
+        <div class="card-top">
+          <div class="card-icon">📖</div>
+          <div class="card-label">Certyfikowany kurs NCNI · Tutorzy</div>
+          <h3 class="card-title">Praca z Uczniem z Dysleksją</h3>
+          <p class="card-desc">Specyfika pracy 1:1 z uczniem neuroatypowym. Techniki wielozmysłowe, fonologika, mapy myśli, narzędzia cyfrowe.</p>
+          <div class="card-meta">
+            <span><span class="meta-icon">🎥</span> Film online</span>
+            <span><span class="meta-icon">📚</span> 5 modułów</span>
+            <span><span class="meta-icon">🗓️</span> Konsultacja indywidualna 30 min</span>
+          </div>
+        </div>
+        <div class="card-bottom">
+          <div class="card-price">1 290 zł<span>brutto, jednorazowo</span></div>
+          <a href="mailto:kontakt@ncni.pl?subject=Kurs%3A%20Dysleksja" class="btn-card">Zapisz się</a>
+        </div>
+      </div>
+
+      <!-- Kurs 4 -->
+      <div class="course-card">
+        <div class="card-top">
+          <div class="card-icon">🔢</div>
+          <div class="card-label">Certyfikowany kurs NCNI · Matematycy</div>
+          <h3 class="card-title">Matematyka bez Barier — Dyskalkulia</h3>
+          <p class="card-desc">Diagnoza funkcjonalna, ćwiczenia przestrzenne, gamifikacja matematyki, dostosowania egzaminacyjne.</p>
+          <div class="card-meta">
+            <span><span class="meta-icon">🎥</span> Wideo + PDF</span>
+            <span><span class="meta-icon">📚</span> 6 modułów</span>
+            <span><span class="meta-icon">🎓</span> Certyfikat NCNI</span>
+          </div>
+        </div>
+        <div class="card-pricing-note">📋 Możliwa wycena dla szkół</div>
+        <div class="card-bottom">
+          <div class="card-price">1 390 zł<span>brutto, jednorazowo</span></div>
+          <a href="mailto:kontakt@ncni.pl?subject=Kurs%3A%20Matematyka" class="btn-card">Zapisz się</a>
+        </div>
+      </div>
+
+      <!-- Kurs 5 -->
+      <div class="course-card">
+        <div class="card-top">
+          <div class="card-icon">💼</div>
+          <div class="card-label">Certyfikowany kurs NCNI · HR</div>
+          <h3 class="card-title">Neuroróżnorodność w HR i Zarządzaniu</h3>
+          <p class="card-desc">Jak budować środowisko pracy wspierające ADHD, ASD, dysleksję. Rekrutacja inkluzywna, komunikacja, adaptacje.</p>
+          <div class="card-meta">
+            <span><span class="meta-icon">🎥</span> Film online</span>
+            <span><span class="meta-icon">📚</span> 4 moduły</span>
+            <span><span class="meta-icon">📡</span> Warsztat live (webinar)</span>
+          </div>
+        </div>
+        <div class="card-pricing-note">📋 Dostępne pakiety dla firm</div>
+        <div class="card-bottom">
+          <div class="card-price">1 890 zł<span>brutto, jednorazowo</span></div>
+          <a href="mailto:kontakt@ncni.pl?subject=Kurs%3A%20HR" class="btn-card">Zapisz się</a>
+        </div>
+      </div>
+
+      <!-- Kurs 6 -->
+      <div class="course-card">
+        <div class="card-top">
+          <div class="card-icon">🧩</div>
+          <div class="card-label">Kurs NCNI · Psycholodzy</div>
+          <h3 class="card-title">Wsparcie Ucznia Neuroatypowego</h3>
+          <p class="card-desc">Diagnoza funkcjonalna, protokoły CBT, ścieżki wsparcia, prawa ucznia, współpraca z rodziną.</p>
+          <div class="card-meta">
+            <span><span class="meta-icon">🎥</span> Film online + PDF</span>
+            <span><span class="meta-icon">👨‍🔬</span> Opcja konsultacji z profesorem</span>
+          </div>
+        </div>
+        <div class="card-bottom">
+          <div class="card-price">1 690 zł<span>brutto, jednorazowo</span></div>
+          <a href="mailto:kontakt@ncni.pl?subject=Kurs%3A%20Wsparcie" class="btn-card">Zapisz się</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="rodzice">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">Ścieżka II — Rodzice</span>
+      <h2 class="section-title"><strong>Kursy dla Rodziców</strong><br>Zrozum i wspieraj swoje dziecko</h2>
+      <p class="section-sub">Wiedza, która naprawdę zmienia codzienne życie. Bez diagnozy medycznej — za to z rzetelną praktyką.</p>
+    </div>
+
+    <div class="cards-grid">
+      <div class="course-card">
+        <div class="card-top">
+          <div class="card-icon">🌱</div>
+          <div class="card-label">Kurs startowy · Rodzice</div>
+          <h3 class="card-title">Moje Neuroatypowe Dziecko — Kurs Startowy</h3>
+          <p class="card-desc">Zrozumienie diagnozy, współpraca ze szkołą, prawa ucznia, emocje rodzica. Jak rozmawiać ze specjalistami.</p>
+          <div class="card-meta">
+            <span><span class="meta-icon">🎥</span> Wideo + PDF</span>
+            <span><span class="meta-icon">📚</span> 4 moduły</span>
+          </div>
+        </div>
+        <div class="card-bottom">
+          <div class="card-price">397 zł<span>brutto</span></div>
+          <a href="mailto:kontakt@ncni.pl" class="btn-card">Zapisz się</a>
+        </div>
+      </div>
+
+      <div class="course-card">
+        <div class="card-top">
+          <div class="card-icon">🧮</div>
+          <div class="card-label">Kurs praktyczny · Rodzice</div>
+          <h3 class="card-title">Dziecko z Dyskalkulią w Domu</h3>
+          <p class="card-desc">Codzienne ćwiczenia z matematyki bez łez. Zakupy, gotowanie, gry jako narzędzia nauki.</p>
+          <div class="card-meta">
+            <span><span class="meta-icon">🎥</span> Wideo + PDF</span>
+            <span><span class="meta-icon">📚</span> 3 moduły</span>
+          </div>
+        </div>
+        <div class="card-bottom">
+          <div class="card-price">297 zł<span>brutto</span></div>
+          <a href="mailto:kontakt@ncni.pl" class="btn-card">Zapisz się</a>
+        </div>
+      </div>
+
+      <div class="course-card">
+        <div class="card-top">
+          <div class="card-icon">📗</div>
+          <div class="card-label">Kurs praktyczny · Rodzice</div>
+          <h3 class="card-title">Dysleksja — Czytanie z Dzieckiem</h3>
+          <p class="card-desc">Techniki czytania, fonologika, budowanie pewności siebie u dziecka z dysleksją.</p>
+          <div class="card-meta">
+            <span><span class="meta-icon">🎥</span> Film online</span>
+            <span><span class="meta-icon">📚</span> 3 moduły</span>
+          </div>
+        </div>
+        <div class="card-bottom">
+          <div class="card-price">297 zł<span>brutto</span></div>
+          <a href="mailto:kontakt@ncni.pl" class="btn-card">Zapisz się</a>
+        </div>
+      </div>
+
+      <div class="course-card">
+        <div class="card-top">
+          <div class="card-icon">🌿</div>
+          <div class="card-label">Webinar · Rodzice</div>
+          <h3 class="card-title">Stres Szkolny i Regulacja Emocjonalna</h3>
+          <p class="card-desc">Rozpoznanie przeciążenia u dziecka neuroatypowego. Strategie deeskalacji, biofeedback w domu.</p>
+          <div class="card-meta">
+            <span><span class="meta-icon">📡</span> Webinar + nagranie</span>
+            <span><span class="meta-icon">⏱️</span> 90 minut</span>
+          </div>
+        </div>
+        <div class="card-bottom">
+          <div class="card-price">149 zł<span>brutto</span></div>
+          <a href="mailto:kontakt@ncni.pl" class="btn-card">Zapisz się</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="materialy">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">Ścieżka III — Materiały edukacyjne</span>
+      <h2 class="section-title"><strong>Materiały NCNI</strong><br>dla dzieci i opiekunów</h2>
+      <p class="section-sub">Gotowe do użycia narzędzia wspierające uczenie się. Drukuj, ćwicz, działaj.</p>
+    </div>
+
+    <div class="cards-grid">
+      <div class="product-card">
+        <div class="product-top">
+          <div class="product-icon">📓</div>
+          <div><div class="product-title">PDF: Matematyka Inaczej</div><div class="product-age">Wiek 6–10 lat</div></div>
+        </div>
+        <p class="product-desc">Ćwiczenia wzrokowo-przestrzenne, oś liczbowa, liczenie z obrazkami.</p>
+        <div class="product-bottom">
+          <div class="product-price">59 zł</div>
+          <a href="mailto:kontakt@ncni.pl" class="btn-card-ghost">Zamów PDF</a>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-top">
+          <div class="product-icon">📒</div>
+          <div><div class="product-title">PDF: Matematyka Inaczej</div><div class="product-age">Wiek 10–14 lat</div></div>
+        </div>
+        <p class="product-desc">Zaawansowane ćwiczenia z ułamków, geometrii i logiki.</p>
+        <div class="product-bottom">
+          <div class="product-price">69 zł</div>
+          <a href="mailto:kontakt@ncni.pl" class="btn-card-ghost">Zamów PDF</a>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-top">
+          <div class="product-icon">✏️</div>
+          <div><div class="product-title">Karty Pracy: Pisanie bez Strachu</div><div class="product-age">Dysleksja, dysgrafia</div></div>
+        </div>
+        <p class="product-desc">Wzorce liter, ćwiczenia fonologiczne, grafomotoryka dla opornych.</p>
+        <div class="product-bottom">
+          <div class="product-price">49 zł</div>
+          <a href="mailto:kontakt@ncni.pl" class="btn-card-ghost">Zamów PDF</a>
+        </div>
+      </div>
+
+      <div class="product-card" style="border-color: var(--teal);">
+        <div class="product-top">
+          <div class="product-icon">⚡</div>
+          <div><div class="product-title">Pakiet Startowy dla Ucznia z ADHD</div><div class="product-age">Zestaw PDF</div></div>
+        </div>
+        <p class="product-desc">Planer wizualny, timer, listy kroków, karty rutyn porannych.</p>
+        <div class="product-bottom">
+          <div class="product-price">79 zł</div>
+          <a href="mailto:kontakt@ncni.pl" class="btn-card">Zamów pakiet</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="webinary">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">Wykłady i webinary</span>
+      <h2 class="section-title"><strong>Wykłady Online NCNI</strong></h2>
+      <p class="section-sub">Cykl autorskich wykładów prowadzonych przez ekspertów NCNI. Edycje otwarte i zamknięte.</p>
+    </div>
+
+    <div class="cards-grid">
+      <div class="webinar-card">
+        <div class="webinar-header"><h3 class="webinar-title">Neuroróżnorodność — co naprawdę wiemy?</h3><span class="webinar-status demand">Na żądanie</span></div>
+        <p class="webinar-desc">Wykład wprowadzający. Nauka kontra mity — stan wiedzy o ADHD, ASD i dysleksji.</p>
+        <div class="webinar-footer">
+          <div><div class="webinar-price">149 zł</div><div class="webinar-audience">Ogólnodostępny</div></div>
+          <a href="mailto:kontakt@ncni.pl" class="btn-card">Zapisz się</a>
+        </div>
+      </div>
+
+      <div class="webinar-card">
+        <div class="webinar-header"><h3 class="webinar-title">ADHD u dorosłych — technologie wsparcia</h3><span class="webinar-status soon">Wkrótce</span></div>
+        <p class="webinar-desc">Diagnoza różnicowa, interwencje oparte na dowodach, narzędzia cyfrowe i VR.</p>
+        <div class="webinar-footer">
+          <div><div class="webinar-price">490 zł</div><div class="webinar-audience">Specjaliści</div></div>
+          <a href="mailto:kontakt@ncni.pl" class="btn-card">Zapisz się</a>
+        </div>
+      </div>
+
+      <div class="webinar-card">
+        <div class="webinar-header"><h3 class="webinar-title">Dyskalkulia — mity i interwencja</h3><span class="webinar-status soon">Wkrótce</span></div>
+        <p class="webinar-desc">Skąd bierze się trudność z matematyką i jak skutecznie wspierać dziecko.</p>
+        <div class="webinar-footer">
+          <div><div class="webinar-price">490 zł</div><div class="webinar-audience">Nauczyciele/Rodzice</div></div>
+          <a href="mailto:kontakt@ncni.pl" class="btn-card">Zapisz się</a>
+        </div>
+      </div>
+
+      <div class="webinar-card" style="border-color: var(--teal);">
+        <div class="webinar-header"><h3 class="webinar-title">Neuroróżnorodność w miejscu pracy</h3><span class="webinar-status b2b">B2B</span></div>
+        <p class="webinar-desc">Warsztaty dla liderów i HR — jak tworzyć środowisko przyjazne pracownikom neuroatypowym.</p>
+        <div class="webinar-footer">
+          <div><div class="webinar-price">od 2 500 zł</div><div class="webinar-audience">Organizacje</div></div>
+          <a href="mailto:kontakt@ncni.pl" class="btn-card">Zapytaj</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="konsultacje">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">Sesje indywidualne 1:1</span>
+      <h2 class="section-title"><strong>Konsultacje online</strong> z ekspertami NCNI</h2>
+    </div>
+    <div class="consult-grid">
+      <div class="consult-card">
+        <div class="consult-icon">🗨️</div>
+        <h3 class="consult-title">Konsultacja z Ekspertem NCNI</h3>
+        <p class="consult-desc">Dla rodziców i nauczycieli. Omówimy sytuację i dobierzemy narzędzia wsparcia.</p>
+        <div class="consult-footer">
+          <div><div class="consult-price">350 zł</div><div class="consult-duration">50 minut</div></div>
+          <a href="mailto:kontakt@ncni.pl" class="btn-outline">Umów</a>
+        </div>
+      </div>
+      <div class="consult-card featured">
+        <div class="consult-icon">🔬</div>
+        <h3 class="consult-title">Konsultacja z prof. Kraszewskim</h3>
+        <p class="consult-desc">Dla specjalistów i badaczy. Protokoły diagnostyczne, B+R, zastosowanie VR i AI.</p>
+        <div class="consult-footer">
+          <div><div class="consult-price">650 zł</div><div class="consult-duration">50 minut</div></div>
+          <a href="mailto:kontakt@ncni.pl" class="btn-primary">Umów</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cert-section" id="certyfikat">
+  <div class="cert-inner">
+    <div class="cert-icon-big">🎓</div>
+    <span class="cert-eyebrow">Certyfikat NCNI</span>
+    <h2>Co oznacza <strong>Certyfikat NCNI</strong>?</h2>
+    <p>Tworzymy kursy według standardów <em>evidence-based neuroscience</em>, a nie biurokratycznych schematów. Każdy certyfikat sygnowany jest przez NCNI sp. z o.o. i potwierdzony autorytetem naukowym dyrektora NCNI, profesora Politechniki Wrocławskiej.</p>
+    <p>To dokument, za którym stoi rzetelna wiedza — nie tylko pieczątka.</p>
+    
+    <div class="cert-highlights">
+      <div class="cert-hl"><div class="cert-hl-num">Nauka</div><div class="cert-hl-label">podstawa EB</div></div>
+      <div class="cert-divider"></div>
+      <div class="cert-hl"><div class="cert-hl-num">PWr</div><div class="cert-hl-label">nadzór prof.</div></div>
+      <div class="cert-divider"></div>
+      <div class="cert-hl"><div class="cert-hl-num">NCNI</div><div class="cert-hl-label">wystawca</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="contact-strip">
+  <h3>Masz pytanie o kurs?</h3>
+  <p>Skontaktuj się z nami — dobierzemy odpowiednią ścieżkę edukacyjną.</p>
+  <div class="contact-actions">
+    <a href="tel:+48600608333" class="contact-link primary">📞 600 608 333</a>
+    <a href="mailto:kontakt@ncni.pl" class="contact-link secondary">✉️ kontakt@ncni.pl</a>
+  </div>
+</div>
+
+</body>
+</html>
