@@ -74,26 +74,26 @@
             background: rgba(255,255,255,0.96); backdrop-filter: blur(8px);
             border-top: 1px solid var(--border);
             z-index: 1000; 
-            /* Uwzględniamy pasek systemowy iPhone'ów */
-            height: calc(60px + env(safe-area-inset-bottom));
+            /* Uwzględniamy pasek systemowy iPhone'ów bez sztywnej wysokości */
             padding-bottom: env(safe-area-inset-bottom);
         }
         .mobile-bottom-nav-inner {
             display: flex; justify-content: space-around; align-items: center;
-            height: 60px; max-width: 600px; margin: 0 auto;
+            padding: 12px 0; /* Elastyczna przestrzeń zamiast sztywnego height */
+            max-width: 600px; margin: 0 auto;
         }
         .mobile-bottom-nav-inner a {
             color: var(--text-muted); text-decoration: none;
             display: flex; flex-direction: column; align-items: center;
             font-size: 10px; font-weight: 500; gap: 4px;
         }
-        .mobile-bottom-nav-inner a i { font-size: 20px; }
+        .mobile-bottom-nav-inner a i { font-size: 20px; margin-bottom: 2px; }
         .mobile-bottom-nav-inner a.active { color: var(--primary); font-weight: 700; }
 
         @media (max-width: 900px) {
             body { 
-                /* Robimy miejsce na bottom nav */
-                padding-bottom: calc(60px + env(safe-area-inset-bottom)); 
+                /* Zwiększony margines na dole, żeby menu nie zasłaniało stopki */
+                padding-bottom: calc(75px + env(safe-area-inset-bottom)); 
             }
             .nav-wrapper { flex-direction: row; height: 60px; justify-content: center; padding: 0; }
             .brand-bar { justify-content: center; width: auto; }
@@ -105,8 +105,8 @@
             .mobile-bottom-nav { display: block; }
             
             /* Przesuń widget Ani, żeby nie zachodził na menu */
-            .ania-container { bottom: calc(75px + env(safe-area-inset-bottom)) !important; }
-            .ania-chat-window { bottom: calc(140px + env(safe-area-inset-bottom)) !important; }
+            .ania-container { bottom: calc(85px + env(safe-area-inset-bottom)) !important; }
+            .ania-chat-window { bottom: calc(150px + env(safe-area-inset-bottom)) !important; }
         }
 
         .page-header {
