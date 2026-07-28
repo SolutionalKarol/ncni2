@@ -67,33 +67,31 @@
         .nav-cta { background: var(--primary); color: white !important; box-shadow: 0 4px 12px rgba(15, 118, 110, 0.25); margin-left: 8px; }
         .nav-cta:hover { background: var(--primary-dark); transform: translateY(-1px); }
 
-        /* ── MOBILE BOTTOM NAV BAR ── */
+        /* ── MOBILE NAV BAR (LOIS EDITION) ── */
         .mobile-bottom-nav {
-            display: none; /* Ukryte na desktopie */
+            display: none;
             position: fixed; bottom: 0; left: 0; right: 0;
             background: rgba(255,255,255,0.96); backdrop-filter: blur(8px);
             border-top: 1px solid var(--border);
-            z-index: 1000; 
-            /* Uwzględniamy pasek systemowy iPhone'ów bez sztywnej wysokości */
+            z-index: 1000;
+            height: calc(60px + env(safe-area-inset-bottom));
             padding-bottom: env(safe-area-inset-bottom);
         }
         .mobile-bottom-nav-inner {
             display: flex; justify-content: space-around; align-items: center;
-            padding: 12px 0; /* Elastyczna przestrzeń zamiast sztywnego height */
-            max-width: 600px; margin: 0 auto;
+            height: 60px; max-width: 600px; margin: 0 auto;
         }
         .mobile-bottom-nav-inner a {
             color: var(--text-muted); text-decoration: none;
             display: flex; flex-direction: column; align-items: center;
-            font-size: 10px; font-weight: 500; gap: 4px;
+            font-size: 10px; font-weight: 500; transition: color 0.3s;
         }
-        .mobile-bottom-nav-inner a i { font-size: 20px; margin-bottom: 2px; }
-        .mobile-bottom-nav-inner a.active { color: var(--primary); font-weight: 700; }
+        .mobile-bottom-nav-inner a i { font-size: 18px; margin-bottom: 4px; }
+        .mobile-bottom-nav-inner a.active, .mobile-bottom-nav-inner a:hover { color: var(--primary); font-weight: 600; }
 
         @media (max-width: 900px) {
             body { 
-                /* Zwiększony margines na dole, żeby menu nie zasłaniało stopki */
-                padding-bottom: calc(75px + env(safe-area-inset-bottom)); 
+                padding-bottom: calc(60px + env(safe-area-inset-bottom)); 
             }
             .nav-wrapper { flex-direction: row; height: 60px; justify-content: center; padding: 0; }
             .brand-bar { justify-content: center; width: auto; }
@@ -101,12 +99,9 @@
             .logo { font-size: 1.1rem; gap: 10px; }
             .logo img { height: 36px; }
             
-            /* Pokaż dolne menu */
             .mobile-bottom-nav { display: block; }
             
-            /* Przesuń widget Ani, żeby nie zachodził na menu */
-            .ania-container { bottom: calc(85px + env(safe-area-inset-bottom)) !important; }
-            .ania-chat-window { bottom: calc(150px + env(safe-area-inset-bottom)) !important; }
+            .ania-container { bottom: calc(80px + env(safe-area-inset-bottom)) !important; right: 16px; }
         }
 
         .page-header {
@@ -612,30 +607,30 @@
         </div>
     </footer>
 
-    <!-- MOBILE BOTTOM NAV BAR (Widoczne tylko na ekranach <= 900px) -->
+    <!-- MOBILE BOTTOM NAV BAR (LOIS EDITION) -->
     <div class="mobile-bottom-nav">
-        <div class="mobile-bottom-nav-inner">
-            <a href="https://ncni.pl/">
-                <i class="fa-solid fa-house"></i>
-                <span>Home</span>
-            </a>
-            <a href="psychologia.html">
-                <i class="fa-solid fa-brain"></i>
-                <span>Psychologia</span>
-            </a>
-            <a href="oferta.html" class="active">
-                <i class="fa-solid fa-list-ul"></i>
-                <span>Oferta</span>
-            </a>
-            <a href="technologie.html">
-                <i class="fa-solid fa-vr-cardboard"></i>
-                <span>Technologie</span>
-            </a>
-            <a href="index.html#rezerwacja">
-                <i class="fa-solid fa-calendar-check"></i>
-                <span>Wizyta</span>
-            </a>
-        </div>
+      <div class="mobile-bottom-nav-inner">
+        <a href="index.html">
+          <i class="fa-solid fa-home"></i>
+          <span>Home</span>
+        </a>
+        <a href="oferta.html" class="active">
+          <i class="fa-solid fa-brain"></i>
+          <span>Oferta</span>
+        </a>
+        <a href="technologie.html">
+          <i class="fa-solid fa-vr-cardboard"></i>
+          <span>Technologia</span>
+        </a>
+        <a href="kursy.html">
+          <i class="fa-solid fa-graduation-cap"></i>
+          <span>Kursy</span>
+        </a>
+        <a href="index.html#rezerwacja">
+          <i class="fa-solid fa-calendar-check"></i>
+          <span>Wizyta</span>
+        </a>
+      </div>
     </div>
 
     <div id="ania-widget" class="ania-container">
