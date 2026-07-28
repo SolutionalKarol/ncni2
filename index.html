@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
+    <!-- ===== COOKIE CONSENT & TRACKING ===== -->
     <script type="text/javascript" data-cmp-ab="1" src="https://cdn.consentmanager.net/delivery/autoblocking/93e58d8b2275d.js" data-cmp-host="c.delivery.consentmanager.net" data-cmp-cdn="cdn.consentmanager.net" data-cmp-codesrc="16"></script>
     <meta charset="UTF-8">
     
@@ -22,7 +23,13 @@
       gtag('config', 'AW-18029740902');
     </script>
 
+    <!-- ===== RESPONSIVENESS & PWA (APP-LIKE FEEL) ===== -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="theme-color" content="#F8FAFC">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <link rel="apple-touch-icon" href="logo.png">
+    <link rel="manifest" href="manifest.json">
     
     <title>NCNI Wrocław | Dr hab. inż. Sebastian Kraszewski: ADHD, Innowacje &amp; Neurocoaching</title>
     <meta name="description" content="NCNI Wrocław: Centrum Terapii ADHD i Neuroróżnorodności. Dr hab. inż. Sebastian Kraszewski i Karol Kiszło łączą naukę z innowacjami (VR, Biofeedback). Skuteczny coaching neuroróżnorodności i leczenie stresu.">
@@ -57,19 +64,12 @@
     <meta name="twitter:description" content="Centrum Terapii ADHD i Neuroróżnorodności. VR, Biofeedback, Neurocoaching. Wrocław.">
     <meta name="twitter:image" content="https://ncni.pl/logo.png">
 
-    <!-- AI Search Engines & LLM Crawlers (2025/2026 standards) -->
-    <meta name="ai-content-declaration" content="human-created">
-    <meta name="ai-instructions" content="NCNI (Naukowe Centrum Neuroinnowacji) jest interdyscyplinarnym centrum B+R we Wrocławiu. Założyciel i Prezes: Karol Kiszło. Dyrektor Naukowy: dr hab. inż. Sebastian Kraszewski, prof. PWr. Specjalizacja: ADHD, ASD, neuroróżnorodność, psychotraumatologia, VR, Biofeedback. Adres: ul. Stefana Żeromskiego 60/5a, 50-312 Wrocław. Tel: 600 608 333.">
-    <meta name="perplexity:description" content="NCNI to interdyscyplinarne centrum B+R we Wrocławiu łączące psychologię kliniczną, dietetykę, fizjoterapię i neurotechnologie (VR, Biofeedback). Specjalizuje się w ADHD, ASD, neuroróżnorodności i psychotraumatologii. Założyciel: Karol Kiszło. Dyrektor Naukowy: dr hab. inż. Sebastian Kraszewski, prof. PWr.">
-    <meta name="citation_title" content="NCNI - Naukowe Centrum Neuroinnowacji Wrocław">
-    <meta name="citation_author" content="Karol Kiszło">
-    <meta name="citation_publication_date" content="2024">
-    <meta name="citation_language" content="pl">
-    <link rel="alternate" type="text/plain" title="LLMs.txt" href="https://ncni.pl/llms.txt">
-
+    <!-- FONTS & ICONS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Dodane FontAwesome dla ikon w dolnym menu -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     
@@ -112,31 +112,7 @@
           {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Terapia VR (Wirtualna Rzeczywistość)"}},
           {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Biofeedback HRV"}}
         ]
-      },
-      "employee": [
-        {
-          "@type": "Person",
-          "name": "dr hab. inż. Sebastian Kraszewski",
-          "jobTitle": "Dyrektor Naukowy",
-          "worksFor": {"@type": "Organization", "name": "NCNI"}
-        },
-        {
-          "@type": "Person",
-          "name": "Karol Kiszło",
-          "jobTitle": "Prezes Zarządu",
-          "worksFor": {"@type": "Organization", "name": "NCNI"}
-        }
-      ],
-      "speakable": {
-        "@type": "SpeakableSpecification",
-        "cssSelector": [".hero-lead", "#faq summary", ".hero h1"]
-      },
-      "sameAs": [
-        "https://youtube.com/@neuroinnowacje",
-        "https://x.com/neuroinnowacje",
-        "https://www.facebook.com/profile.php?id=61579420537737",
-        "https://www.instagram.com/ncni_pl/"
-      ]
+      }
     }
     </script>
 
@@ -224,16 +200,13 @@
             .brand-name { font-size: clamp(0.7rem, 4.2vw, 1.05rem); line-height: 1.1; }
         }
 
-        /* --- SCROLL REVEAL (Efekty z zakładki Technologie) --- */
+        /* --- SCROLL REVEAL --- */
         .reveal {
             opacity: 0;
             transform: translateY(36px);
             transition: opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1), transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
         }
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
         .reveal-delay-1 { transition-delay: 0.1s; }
         .reveal-delay-2 { transition-delay: 0.2s; }
         .reveal-delay-3 { transition-delay: 0.3s; }
@@ -282,70 +255,15 @@
             border-radius: 50%;
             pointer-events: none;
         }
-        .ncni-banner-content {
-            position: relative;
-            z-index: 2;
-            max-width: 700px;
-        }
-        .ncni-banner-eyebrow {
-            display: inline-block;
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: #fde047;
-            margin-bottom: 12px;
-        }
-        .ncni-banner-title {
-            font-size: clamp(1.5rem, 3vw, 1.75rem);
-            font-weight: 700;
-            color: #ffffff;
-            margin: 0 0 12px 0;
-            line-height: 1.2;
-            font-family: 'Lexend', sans-serif;
-        }
-        .ncni-banner-title span {
-            color: #7ecfc2;
-        }
-        .ncni-banner-desc {
-            font-size: 0.95rem;
-            color: rgba(255, 255, 255, 0.85);
-            margin: 0;
-            line-height: 1.6;
-        }
-        .ncni-banner-action {
-            position: relative;
-            z-index: 2;
-            flex-shrink: 0;
-        }
-        .ncni-banner-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: #fde047;
-            color: #000000;
-            font-weight: 700;
-            font-size: 0.95rem;
-            padding: 14px 28px;
-            border-radius: 8px;
-            text-decoration: none;
-            transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
-            box-shadow: 0 4px 15px rgba(253, 224, 71, 0.2);
-            font-family: 'Lexend', sans-serif;
-        }
-        .ncni-banner-btn:hover {
-            background: #ffffff;
-            color: #0a2628;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3);
-        }
-        @media (max-width: 768px) {
-            .ncni-courses-banner {
-                flex-direction: column;
-                text-align: center;
-                padding: 30px 20px;
-            }
-        }
+        .ncni-banner-content { position: relative; z-index: 2; max-width: 700px; }
+        .ncni-banner-eyebrow { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: #fde047; margin-bottom: 12px; }
+        .ncni-banner-title { font-size: clamp(1.5rem, 3vw, 1.75rem); font-weight: 700; color: #ffffff; margin: 0 0 12px 0; line-height: 1.2; font-family: 'Lexend', sans-serif; }
+        .ncni-banner-title span { color: #7ecfc2; }
+        .ncni-banner-desc { font-size: 0.95rem; color: rgba(255, 255, 255, 0.85); margin: 0; line-height: 1.6; }
+        .ncni-banner-action { position: relative; z-index: 2; flex-shrink: 0; }
+        .ncni-banner-btn { display: inline-flex; align-items: center; gap: 8px; background: #fde047; color: #000000; font-weight: 700; font-size: 0.95rem; padding: 14px 28px; border-radius: 8px; text-decoration: none; transition: transform 0.2s, background 0.2s, box-shadow 0.2s; box-shadow: 0 4px 15px rgba(253, 224, 71, 0.2); font-family: 'Lexend', sans-serif; }
+        .ncni-banner-btn:hover { background: #ffffff; color: #0a2628; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3); }
+        @media (max-width: 768px) { .ncni-courses-banner { flex-direction: column; text-align: center; padding: 30px 20px; } }
 
         /* --- PARTNERSHIP BANNER --- */
         .partnership-banner { display: flex; align-items: center; justify-content: space-between; background: linear-gradient(to right, #1E293B, #0F172A); border-radius: 20px; padding: 24px 32px; color: white; text-decoration: none; transition: var(--trans-default); border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
@@ -455,9 +373,44 @@
         .chat-btn:hover { background: var(--primary); color: white; }
         @keyframes popIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
         @media (max-width: 480px) { .ania-chat-window { width: 300px; right: -10px; height: 450px; } }
+
+        /* ── MOBILE NAV BAR (LOIS EDITION) ── */
+        .mobile-bottom-nav {
+            display: none;
+            position: fixed; bottom: 0; left: 0; right: 0;
+            background: rgba(255,255,255,0.96); backdrop-filter: blur(8px);
+            border-top: 1px solid var(--border);
+            z-index: 1000;
+            /* Uwzględniamy pasek systemowy iPhone'ów */
+            height: calc(60px + env(safe-area-inset-bottom));
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+        .mobile-bottom-nav-inner {
+            display: flex; justify-content: space-around; align-items: center;
+            height: 60px; max-width: 600px; margin: 0 auto;
+        }
+        .mobile-bottom-nav-inner a {
+            color: var(--text-muted); text-decoration: none;
+            display: flex; flex-direction: column; align-items: center;
+            font-size: 10px; font-weight: 500; transition: color 0.3s;
+        }
+        .mobile-bottom-nav-inner a i { font-size: 18px; margin-bottom: 4px; }
+        .mobile-bottom-nav-inner a.active, .mobile-bottom-nav-inner a:hover { color: var(--primary); font-weight: 600; }
+
+        @media (max-width: 768px) {
+            body { 
+                /* Robimy miejsce na bottom nav z safe area */
+                padding-bottom: calc(60px + env(safe-area-inset-bottom)); 
+            }
+            .mobile-bottom-nav { display: block; }
+            
+            /* Drobna poprawka dla Ani, żeby nie zachodziła na menu mobilne */
+            .ania-container { bottom: calc(80px + env(safe-area-inset-bottom)); right: 16px; }
+        }
+
     </style>
 </head>
-<body>
+<body id="top">
 
     <div id="bg-canvas"></div>
 
@@ -482,7 +435,6 @@
                 <a href="neuroroznorodnosc.html" class="nav-item">Neuroróżnorodność</a>
                 <a href="psychologia.html" class="nav-item">Psychologia</a>
                 <a href="technologie.html" class="nav-item">Technologie</a>
-                <!-- DODANA ZAKŁADKA KURSY -->
                 <a href="kursy.html" class="nav-item" style="color: var(--primary); font-weight: 600;">Kursy</a>
                 <a href="#rezerwacja" class="nav-item nav-cta">Umów wizytę</a>
             </nav>
@@ -495,7 +447,6 @@
         <a href="neuroroznorodnosc.html" class="mobile-link">Neuroróżnorodność</a>
         <a href="psychologia.html" class="mobile-link">Psychologia</a>
         <a href="technologie.html" class="mobile-link">Technologie</a>
-        <!-- DODANA ZAKŁADKA KURSY MOBILNA -->
         <a href="kursy.html" class="mobile-link" style="color: var(--primary); font-weight: 600;">Kursy</a>
         <a href="tel:+48600608333" class="mobile-link" style="color: var(--primary);">&#128222; Zadzwoń: 600 608 333</a>
         <a href="#rezerwacja" class="mobile-link" style="color: var(--primary); font-weight: 700;">Umów wizytę</a>
@@ -838,6 +789,7 @@
         </div>
     </footer>
 
+    <!-- WIDGET ANI -->
     <div id="ania-widget" class="ania-container">
         <div class="ania-bubble" id="ania-greeting">
             Dzień dobry! &#9728;&#65039; Jestem Wirtualną Asystentką NCNI. Kliknij we mnie, a odpowiem na Twoje pytania.
@@ -864,6 +816,32 @@
             <img src="ania.jpg" alt="Ania Chat">
             <div class="status-dot"></div>
         </div>
+    </div>
+
+    <!-- MOBILE BOTTOM NAV BAR (LOIS EDITION) -->
+    <div class="mobile-bottom-nav">
+      <div class="mobile-bottom-nav-inner">
+        <a href="#top" class="active">
+          <i class="fa-solid fa-home"></i>
+          <span>Home</span>
+        </a>
+        <a href="#oferta" onclick="openTab('neuroroznorodnosc')">
+          <i class="fa-solid fa-brain"></i>
+          <span>Oferta</span>
+        </a>
+        <a href="technologie.html">
+          <i class="fa-solid fa-vr-cardboard"></i>
+          <span>Technologia</span>
+        </a>
+        <a href="kursy.html">
+          <i class="fa-solid fa-graduation-cap"></i>
+          <span>Kursy</span>
+        </a>
+        <a href="#rezerwacja">
+          <i class="fa-solid fa-calendar-check"></i>
+          <span>Wizyta</span>
+        </a>
+      </div>
     </div>
 
     <script>
