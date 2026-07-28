@@ -22,10 +22,11 @@
     <link rel="canonical" href="https://ncni.pl/dyskalkulia.html">
     <link rel="icon" href="logo.png" type="image/png">
 
-    <!-- Fonts -->
+    <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
     <!-- Libraries -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -106,14 +107,37 @@
         .nav-wrapper { display: flex; flex-direction: column; align-items: center; gap: 16px; }
         .brand-bar { display: flex; justify-content: center; align-items: center; width: 100%; position: relative; }
         .logo { display: flex; align-items: center; gap: 14px; font-weight: 700; font-size: 1.6rem; color: var(--text-main); text-decoration: none; cursor: pointer; letter-spacing: -0.02em; }
-        .logo img { height: 50px; width: auto; border-radius: 8px; }
+        .logo img { height: 50px; width: auto; border-radius: 8px; flex-shrink: 0; }
+        .logo span { transition: font-size 0.3s; }
 
         /* Mobile */
-        .mobile-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; position: absolute; right: 0; top: 50%; transform: translateY(-50%); }
+        .mobile-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; position: absolute; right: 0; top: 50%; transform: translateY(-50%); z-index: 1001; }
         .mobile-toggle span { display: block; width: 24px; height: 2px; background: var(--text-main); margin: 5px 0; transition: 0.3s; }
-        .mobile-menu { position: fixed; top: 72px; left: 0; width: 100%; background: white; padding: 24px; border-bottom: 1px solid var(--border); transform: translateY(-150%); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); z-index: 999; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .mobile-menu { position: fixed; top: 80px; left: 0; width: 100%; background: white; padding: 24px; border-bottom: 1px solid var(--border); transform: translateY(-150%); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); z-index: 999; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
         .mobile-menu.active { transform: translateY(0); }
         .mobile-link { display: block; padding: 14px 0; font-size: 1.1rem; font-weight: 500; color: var(--text-main); text-decoration: none; border-bottom: 1px solid var(--bg-body); }
+
+        /* --- MOBILE BOTTOM NAV BAR --- */
+        .mobile-bottom-nav {
+            display: none;
+            position: fixed; bottom: 0; left: 0; right: 0;
+            background: rgba(255,255,255,0.96); backdrop-filter: blur(8px);
+            border-top: 1px solid var(--border);
+            z-index: 1000;
+            height: calc(60px + env(safe-area-inset-bottom));
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+        .mobile-bottom-nav-inner {
+            display: flex; justify-content: space-around; align-items: center;
+            height: 60px; max-width: 600px; margin: 0 auto;
+        }
+        .mobile-bottom-nav-inner a {
+            color: var(--text-muted); text-decoration: none;
+            display: flex; flex-direction: column; align-items: center;
+            font-size: 10px; font-weight: 500; transition: color 0.3s;
+        }
+        .mobile-bottom-nav-inner a i { font-size: 18px; margin-bottom: 4px; }
+        .mobile-bottom-nav-inner a.active, .mobile-bottom-nav-inner a:hover { color: var(--primary); font-weight: 600; }
 
         /* Nav Links with Contact */
         .nav-links { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; align-items: center; }
@@ -127,12 +151,26 @@
 
         /* Poprawki Responsywności - Header & Layout */
         @media (max-width: 900px) {
-            .nav-wrapper { flex-direction: row; height: 50px; justify-content: space-between; padding: 0 20px; width: 100%; gap: 0;}
-            .brand-bar { justify-content: flex-start; width: auto; position: static; }
-            .mobile-toggle { display: block; position: relative; right: 0; transform: none; top: auto; }
-            .logo { font-size: 1.2rem; gap: 10px; }
-            .logo img { height: 36px; }
-            .nav-links { display: none !important; } /* Ukrywamy całkowicie na małych ekranach na rzecz hamburgera */
+            .nav-wrapper { flex-direction: row; height: 60px; justify-content: flex-start; padding: 0 16px; position: relative; }
+            .brand-bar { justify-content: flex-start; width: calc(100% - 40px); }
+            .nav-links, .header-contact { display: none !important; }
+            .mobile-toggle { display: block; right: 16px; }
+            
+            .logo { font-size: 1.1rem; gap: 8px; overflow: hidden; align-items: center; }
+            .logo img { height: 36px; flex-shrink: 0; }
+            .logo span { 
+                font-size: 0.95rem; 
+                line-height: 1.1; 
+                white-space: normal; 
+                display: -webkit-box; 
+                -webkit-line-clamp: 2; 
+                -webkit-box-orient: vertical; 
+                overflow: hidden; 
+            }
+            
+            body { padding-bottom: calc(60px + env(safe-area-inset-bottom)); }
+            .mobile-bottom-nav { display: block; }
+            .ania-container { bottom: calc(80px + env(safe-area-inset-bottom)) !important; right: 16px !important; }
         }
 
         /* --- Article Layout --- */
@@ -407,10 +445,36 @@
                 </div>
             </div>
             <div style="border-top: 1px solid var(--border); padding-top: 24px; margin-top: 40px; text-align: center; color: var(--text-muted); font-size: 0.85rem;">
-                &copy; 2025 Naukowe Centrum Neuroinnowacji | Designed and built by NCNI.agency Karol Kiszło
+                &copy; 2026 Naukowe Centrum Neuroinnowacji | Designed and built by Kiszlo.Studio Karol Kiszło
             </div>
         </div>
     </footer>
+
+    <!-- MOBILE BOTTOM NAV BAR -->
+    <div class="mobile-bottom-nav">
+      <div class="mobile-bottom-nav-inner">
+        <a href="index.html">
+          <i class="fa-solid fa-home"></i>
+          <span>Home</span>
+        </a>
+        <a href="oferta.html">
+          <i class="fa-solid fa-brain"></i>
+          <span>Oferta</span>
+        </a>
+        <a href="technologie.html">
+          <i class="fa-solid fa-vr-cardboard"></i>
+          <span>Technologia</span>
+        </a>
+        <a href="kursy.html">
+          <i class="fa-solid fa-graduation-cap"></i>
+          <span>Kursy</span>
+        </a>
+        <a href="index.html#rezerwacja">
+          <i class="fa-solid fa-calendar-check"></i>
+          <span>Wizyta</span>
+        </a>
+      </div>
+    </div>
 
     <script>
         function initParticles(){
@@ -541,7 +605,7 @@
         @keyframes popIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
         
         @media (max-width: 480px) { 
-            .ania-container { bottom: 16px; right: 16px; }
+            .ania-container { bottom: calc(80px + env(safe-area-inset-bottom)); right: 16px; }
             .ania-chat-window { width: 320px; right: 0; height: 450px; } 
         }
     </style>
