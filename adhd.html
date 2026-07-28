@@ -32,6 +32,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
     <!-- Libraries (Three.js for particles) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -126,6 +127,28 @@
         .mobile-menu.active { transform: translateY(0); }
         .mobile-link { display: block; padding: 14px 0; font-size: 1.1rem; font-weight: 500; color: var(--text-main); text-decoration: none; border-bottom: 1px solid var(--bg-body); }
 
+        /* --- MOBILE BOTTOM NAV BAR --- */
+        .mobile-bottom-nav {
+            display: none;
+            position: fixed; bottom: 0; left: 0; right: 0;
+            background: rgba(255,255,255,0.96); backdrop-filter: blur(8px);
+            border-top: 1px solid var(--border);
+            z-index: 1000;
+            height: calc(60px + env(safe-area-inset-bottom));
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+        .mobile-bottom-nav-inner {
+            display: flex; justify-content: space-around; align-items: center;
+            height: 60px; max-width: 600px; margin: 0 auto;
+        }
+        .mobile-bottom-nav-inner a {
+            color: var(--text-muted); text-decoration: none;
+            display: flex; flex-direction: column; align-items: center;
+            font-size: 10px; font-weight: 500; transition: color 0.3s;
+        }
+        .mobile-bottom-nav-inner a i { font-size: 18px; margin-bottom: 4px; }
+        .mobile-bottom-nav-inner a.active, .mobile-bottom-nav-inner a:hover { color: var(--primary); font-weight: 600; }
+
         @media (max-width: 900px) {
             header { padding: 12px 0; }
             .nav-wrapper { flex-direction: row; height: auto; min-height: 50px; justify-content: center; padding: 0; }
@@ -135,6 +158,12 @@
             .logo { max-width: calc(100% - 50px); gap: 10px; }
             .logo img { height: 38px; }
             .brand-name { font-size: clamp(0.7rem, 4.2vw, 1.05rem); line-height: 1.1; }
+            
+            body { 
+                padding-bottom: calc(60px + env(safe-area-inset-bottom)); 
+            }
+            .mobile-bottom-nav { display: block; }
+            .ania-container { bottom: calc(80px + env(safe-area-inset-bottom)) !important; right: 16px; }
         }
 
         /* --- Article Layout --- */
@@ -383,6 +412,32 @@
             </div>
         </div>
     </footer>
+
+    <!-- MOBILE BOTTOM NAV BAR -->
+    <div class="mobile-bottom-nav">
+      <div class="mobile-bottom-nav-inner">
+        <a href="index.html">
+          <i class="fa-solid fa-home"></i>
+          <span>Home</span>
+        </a>
+        <a href="oferta.html">
+          <i class="fa-solid fa-brain"></i>
+          <span>Oferta</span>
+        </a>
+        <a href="technologie.html">
+          <i class="fa-solid fa-vr-cardboard"></i>
+          <span>Technologia</span>
+        </a>
+        <a href="kursy.html">
+          <i class="fa-solid fa-graduation-cap"></i>
+          <span>Kursy</span>
+        </a>
+        <a href="index.html#rezerwacja">
+          <i class="fa-solid fa-calendar-check"></i>
+          <span>Wizyta</span>
+        </a>
+      </div>
+    </div>
 
     <!-- Scripts -->
     <script>
