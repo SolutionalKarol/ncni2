@@ -22,6 +22,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
@@ -72,11 +73,33 @@
         .nav-cta { background: var(--primary); color: white !important; box-shadow: 0 4px 12px rgba(15, 118, 110, 0.25); margin-left: 8px; }
         .nav-cta:hover { background: var(--primary-dark); transform: translateY(-1px); }
 
-        .mobile-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; position: absolute; right: 0; top: 50%; transform: translateY(-50%); }
+        .mobile-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; position: absolute; right: 0; top: 50%; transform: translateY(-50%); z-index: 1001; }
         .mobile-toggle span { display: block; width: 24px; height: 2px; background: var(--text-main); margin: 5px 0; transition: 0.3s; }
         .mobile-menu { position: fixed; top: 80px; left: 0; width: 100%; background: white; padding: 24px; border-bottom: 1px solid var(--border); transform: translateY(-150%); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); z-index: 999; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
         .mobile-menu.active { transform: translateY(0); }
         .mobile-link { display: block; padding: 14px 0; font-size: 1.1rem; font-weight: 500; color: var(--text-main); text-decoration: none; border-bottom: 1px solid var(--bg-body); }
+
+        /* --- MOBILE BOTTOM NAV BAR --- */
+        .mobile-bottom-nav {
+            display: none;
+            position: fixed; bottom: 0; left: 0; right: 0;
+            background: rgba(255,255,255,0.96); backdrop-filter: blur(8px);
+            border-top: 1px solid var(--border);
+            z-index: 1000;
+            height: calc(60px + env(safe-area-inset-bottom));
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+        .mobile-bottom-nav-inner {
+            display: flex; justify-content: space-around; align-items: center;
+            height: 60px; max-width: 600px; margin: 0 auto;
+        }
+        .mobile-bottom-nav-inner a {
+            color: var(--text-muted); text-decoration: none;
+            display: flex; flex-direction: column; align-items: center;
+            font-size: 10px; font-weight: 500; transition: color 0.3s;
+        }
+        .mobile-bottom-nav-inner a i { font-size: 18px; margin-bottom: 4px; }
+        .mobile-bottom-nav-inner a.active, .mobile-bottom-nav-inner a:hover { color: var(--primary); font-weight: 600; }
 
         @media (max-width: 900px) {
             header { padding: 12px 0; }
@@ -84,9 +107,17 @@
             .brand-bar { width: 100%; justify-content: space-between; padding: 0 16px; box-sizing: border-box; } 
             .nav-links, .nav-link-back { display: none; } 
             .mobile-toggle { display: block; position: static; transform: none; margin-left: 10px; }
-            .logo { max-width: calc(100% - 50px); gap: 10px; }
-            .logo img { height: 38px; }
-            .brand-name { font-size: clamp(0.7rem, 4.2vw, 1.05rem); line-height: 1.1; }
+            
+            .logo { font-size: 1.1rem; gap: 8px; overflow: hidden; align-items: center; }
+            .logo img { height: 38px; flex-shrink: 0; }
+            .brand-name { 
+                font-size: 0.95rem; line-height: 1.1; white-space: normal; 
+                display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; 
+            }
+            
+            body { padding-bottom: calc(60px + env(safe-area-inset-bottom)); }
+            .mobile-bottom-nav { display: block; }
+            .ania-container { bottom: calc(80px + env(safe-area-inset-bottom)) !important; right: 16px !important; }
         }
 
         /* --- PROFIL --- */
@@ -151,6 +182,8 @@
                 <a href="psychologia.html" class="nav-item">Psychologia</a>
                 <a href="technologie.html" class="nav-item">Technologie</a>
                 <a href="oferta.html" class="nav-item">Oferta</a>
+                <a href="kursy.html" class="nav-item">Kursy</a>
+                <a href="cennik.html" class="nav-item">Cennik</a>
                 <a href="index.html#rezerwacja" class="nav-item nav-cta">Umów wizytę</a>
             </nav>
         </div>
@@ -161,7 +194,12 @@
         <a href="index.html" class="mobile-link">Strona Główna</a>
         <a href="neuroroznorodnosc.html" class="mobile-link">Neuroróżnorodność</a>
         <a href="psychologia.html" class="mobile-link">Psychologia</a>
+        <a href="technologie.html" class="mobile-link">Technologie</a>
+        <a href="oferta.html" class="mobile-link">Oferta</a>
+        <a href="kursy.html" class="mobile-link">Kursy</a>
+        <a href="cennik.html" class="mobile-link">Cennik</a>
         <a href="tel:+48600608333" class="mobile-link" style="color: var(--primary);">📞 Zadzwoń: 600 608 333</a>
+        <a href="index.html#rezerwacja" class="mobile-link" style="color: var(--primary); font-weight: 700;">Umów wizytę</a>
     </div>
 
     <main class="container">
@@ -251,6 +289,32 @@
             </div>
         </div>
     </footer>
+
+    <!-- MOBILE BOTTOM NAV BAR -->
+    <div class="mobile-bottom-nav">
+      <div class="mobile-bottom-nav-inner">
+        <a href="index.html">
+          <i class="fa-solid fa-home"></i>
+          <span>Home</span>
+        </a>
+        <a href="oferta.html">
+          <i class="fa-solid fa-brain"></i>
+          <span>Oferta</span>
+        </a>
+        <a href="technologie.html">
+          <i class="fa-solid fa-vr-cardboard"></i>
+          <span>Technologia</span>
+        </a>
+        <a href="kursy.html">
+          <i class="fa-solid fa-graduation-cap"></i>
+          <span>Kursy</span>
+        </a>
+        <a href="index.html#rezerwacja">
+          <i class="fa-solid fa-calendar-check"></i>
+          <span>Wizyta</span>
+        </a>
+      </div>
+    </div>
 
     <!-- WPIĘCIE CHATBOTA ANI Z ZEWN. PLIKU -->
     <script src="ania-bot.js" defer></script>
