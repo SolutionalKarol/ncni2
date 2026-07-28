@@ -23,13 +23,32 @@
     <link rel="canonical" href="https://ncni.pl/metoda-kraszewskiego.html">
     <link rel="icon" href="logo.png" type="image/png">
 
-    <!-- Fonts -->
+    <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
     <!-- Libraries (Three.js for particles) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        corePlugins: { preflight: false },
+        theme: {
+          extend: {
+            colors: {
+              primary: '#0F766E',
+              'primary-dark': '#0D5E57',
+              'primary-light': '#CCFBF1',
+              accent: '#6366F1'
+            }
+          }
+        }
+      }
+    </script>
 
     <!-- Schema.org -->
     <script type="application/ld+json">
@@ -87,11 +106,12 @@
         .glass { background: var(--bg-surface); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.6); box-shadow: 0 4px 20px rgba(0,0,0,0.03); }
 
         /* Header */
-        header { position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid var(--border); padding: 12px 0; }
+        header { position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid var(--border); padding: 12px 0; transition: var(--trans-default); }
         .nav-wrapper { display: flex; flex-direction: column; align-items: center; gap: 16px; }
         .brand-bar { display: flex; justify-content: center; align-items: center; width: 100%; position: relative; }
         .logo { display: flex; align-items: center; gap: 14px; font-weight: 700; font-size: 1.6rem; color: var(--text-main); text-decoration: none; letter-spacing: -0.02em; }
-        .logo img { height: 50px; width: auto; border-radius: 8px; }
+        .logo img { height: 50px; width: auto; border-radius: 8px; flex-shrink: 0; }
+        .logo span { transition: font-size 0.3s; }
         
         /* Nav Links */
         .nav-links { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; align-items: center; transition: var(--trans-default); }
@@ -104,20 +124,57 @@
         .nav-cta:hover { background: var(--primary-dark); transform: translateY(-1px); }
 
         /* Mobile Menu Setup */
-        .mobile-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; position: absolute; right: 0; top: 50%; transform: translateY(-50%); }
+        .mobile-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; position: absolute; right: 0; top: 50%; transform: translateY(-50%); z-index: 1001; }
         .mobile-toggle span { display: block; width: 24px; height: 2px; background: var(--text-main); margin: 5px 0; transition: 0.3s; }
-        .mobile-menu { position: fixed; top: 72px; left: 0; width: 100%; background: white; padding: 24px; border-bottom: 1px solid var(--border); transform: translateY(-150%); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); z-index: 999; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .mobile-menu { position: fixed; top: 80px; left: 0; width: 100%; background: white; padding: 24px; border-bottom: 1px solid var(--border); transform: translateY(-150%); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); z-index: 999; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
         .mobile-menu.active { transform: translateY(0); }
         .mobile-link { display: block; padding: 14px 0; font-size: 1.1rem; font-weight: 500; color: var(--text-main); text-decoration: none; border-bottom: 1px solid var(--bg-body); }
         .mobile-link:last-child { border-bottom: none; }
 
+        /* --- MOBILE BOTTOM NAV BAR --- */
+        .mobile-bottom-nav {
+            display: none;
+            position: fixed; bottom: 0; left: 0; right: 0;
+            background: rgba(255,255,255,0.96); backdrop-filter: blur(8px);
+            border-top: 1px solid var(--border);
+            z-index: 1000;
+            height: calc(60px + env(safe-area-inset-bottom));
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+        .mobile-bottom-nav-inner {
+            display: flex; justify-content: space-around; align-items: center;
+            height: 60px; max-width: 600px; margin: 0 auto;
+        }
+        .mobile-bottom-nav-inner a {
+            color: var(--text-muted); text-decoration: none;
+            display: flex; flex-direction: column; align-items: center;
+            font-size: 10px; font-weight: 500; transition: color 0.3s;
+        }
+        .mobile-bottom-nav-inner a i { font-size: 18px; margin-bottom: 4px; }
+        .mobile-bottom-nav-inner a.active, .mobile-bottom-nav-inner a:hover { color: var(--primary); font-weight: 600; }
+
         @media (max-width: 900px) {
-            .nav-wrapper { flex-direction: row; height: 60px; justify-content: space-between; padding: 0 16px; }
-            .brand-bar { justify-content: flex-start; width: auto; }
-            .mobile-toggle { display: block; position: static; transform: none; }
-            .nav-links { display: none; } /* WAŻNE: Ukrywa desktopowe menu na mobile */
-            .logo { font-size: 1.2rem; gap: 10px; }
-            .logo img { height: 40px; }
+            header { padding: 12px 0; }
+            .nav-wrapper { flex-direction: row; height: 60px; justify-content: flex-start; padding: 0 16px; position: relative; }
+            .brand-bar { justify-content: flex-start; width: calc(100% - 40px); }
+            .mobile-toggle { display: block; right: 16px; }
+            .nav-links, .header-contact { display: none !important; }
+            
+            .logo { font-size: 1.1rem; gap: 8px; overflow: hidden; align-items: center; }
+            .logo img { height: 36px; flex-shrink: 0; }
+            .logo span {
+                font-size: 0.95rem;
+                line-height: 1.1;
+                white-space: normal;
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+            }
+            
+            body { padding-bottom: calc(60px + env(safe-area-inset-bottom)); }
+            .mobile-bottom-nav { display: block; }
+            .ania-container { bottom: calc(80px + env(safe-area-inset-bottom)) !important; right: 16px !important; }
         }
 
         /* Article Layout */
@@ -133,7 +190,7 @@
         }
         .content-section:hover { border-color: var(--accent-glow); box-shadow: 0 10px 40px rgba(99, 102, 241, 0.1); }
         
-        .content-section h2 { color: var(--text-main); margin-bottom: 24px; font-size: 1.8rem; border-bottom: 1px solid var(--bg-body); padding-bottom: 12px; }
+        .content-section h2 { color: var(--text-main); margin-bottom: 24px; font-size: 1.8rem; border-bottom: 2px solid var(--bg-body); padding-bottom: 12px; }
         .content-section p { margin-bottom: 16px; }
         .content-section ul { padding-left: 20px; color: var(--text-muted); margin-bottom: 24px; list-style: none; }
         .content-section li { margin-bottom: 10px; position: relative; padding-left: 24px; }
@@ -206,7 +263,6 @@
     <header class="glass">
         <div class="container nav-wrapper">
             <div class="brand-bar">
-                <!-- Zaktualizowane: Usunięto przycisk powrotu -->
                 <a href="index.html" class="logo">
                     <img src="logo.png" alt="NCNI">
                     <span>Naukowe Centrum Neuroinnowacji</span>
@@ -222,10 +278,12 @@
                     <a href="mailto:kontakt@ncni.pl">✉️ kontakt@ncni.pl</a>
                 </div>
                 <a href="o-nas.html" class="nav-item">O nas</a>
-                <a href="neuroroznorodnosc.html" class="nav-item active">Neuroróżnorodność</a>
+                <a href="neuroroznorodnosc.html" class="nav-item">Neuroróżnorodność</a>
                 <a href="psychologia.html" class="nav-item">Psychologia</a>
                 <a href="technologie.html" class="nav-item">Technologie</a>
                 <a href="oferta.html" class="nav-item">Oferta</a>
+                <a href="kursy.html" class="nav-item">Kursy</a>
+                <a href="cennik.html" class="nav-item">Cennik</a>
                 <a href="index.html#rezerwacja" class="nav-item nav-cta">Umów wizytę</a>
             </nav>
         </div>
@@ -237,6 +295,8 @@
         <a href="psychologia.html" class="mobile-link">Psychologia</a>
         <a href="technologie.html" class="mobile-link">Technologie</a>
         <a href="oferta.html" class="mobile-link">Oferta</a>
+        <a href="kursy.html" class="mobile-link">Kursy</a>
+        <a href="cennik.html" class="mobile-link">Cennik</a>
         <a href="tel:+48600608333" class="mobile-link" style="color: var(--primary);">📞 Zadzwoń: 600 608 333</a>
         <a href="index.html#rezerwacja" class="mobile-link" style="color: var(--primary); font-weight: 700;">Umów wizytę</a>
     </div>
@@ -367,10 +427,36 @@
                 </div>
             </div>
             <div style="border-top: 1px solid var(--border); padding-top: 24px; margin-top: 40px; text-align: center; color: var(--text-muted); font-size: 0.85rem;">
-                &copy; 2025 Naukowe Centrum Neuroinnowacji | Designed and built by NCNI.agency Karol Kiszło
+                &copy; 2026 Naukowe Centrum Neuroinnowacji | Designed and built by NCNI.agency Karol Kiszło
             </div>
         </div>
     </footer>
+
+    <!-- MOBILE BOTTOM NAV BAR -->
+    <div class="mobile-bottom-nav">
+      <div class="mobile-bottom-nav-inner">
+        <a href="index.html">
+          <i class="fa-solid fa-home"></i>
+          <span>Home</span>
+        </a>
+        <a href="oferta.html">
+          <i class="fa-solid fa-brain"></i>
+          <span>Oferta</span>
+        </a>
+        <a href="technologie.html">
+          <i class="fa-solid fa-vr-cardboard"></i>
+          <span>Technologia</span>
+        </a>
+        <a href="kursy.html">
+          <i class="fa-solid fa-graduation-cap"></i>
+          <span>Kursy</span>
+        </a>
+        <a href="index.html#rezerwacja">
+          <i class="fa-solid fa-calendar-check"></i>
+          <span>Wizyta</span>
+        </a>
+      </div>
+    </div>
 
     <!-- Scripts -->
     <script>
