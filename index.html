@@ -33,7 +33,7 @@
     
     <title>NCNI Wrocław | Dr hab. inż. Sebastian Kraszewski: ADHD, Innowacje &amp; Neurocoaching</title>
     <meta name="description" content="NCNI Wrocław: Centrum Terapii ADHD i Neuroróżnorodności. Dr hab. inż. Sebastian Kraszewski i Karol Kiszło łączą naukę z innowacjami (VR, Biofeedback). Skuteczny coaching neuroróżnorodności i leczenie stresu.">
-    <meta name="keywords" content="Sebastian Kraszewski ADHD, Karol Kiszło, Neurocoaching Wrocław, Terapia ADHD dorośli, Innowacje w terapii, Biofeedback VR, Neuroróżnorodność, Psychotraumatologia, Dietetyk Wrocław, Fizjoterapia Wrocław">
+    <meta name="keywords" content="Sebastian Kraszewski ADHD, Karol Kiszło, Neurocoaching Wrocław, Terapia ADHD dorośli, Innowacje w terapii, Biofeedback VR, Neuroróżnorodność, Psychotraumatologia, Dietetyk Wrocław, Fizjoterapia Wrocław, PWr, Merito">
     <meta name="author" content="NCNI - Naukowe Centrum Neuroinnowacji, Karol Kiszło">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <meta name="revisit-after" content="7 days">
@@ -265,15 +265,8 @@
         .ncni-banner-btn:hover { background: #ffffff; color: #0a2628; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3); }
         @media (max-width: 768px) { .ncni-courses-banner { flex-direction: column; text-align: center; padding: 30px 20px; } }
 
-        /* --- PARTNERSHIP BANNER --- */
-        .partnership-banner { display: flex; align-items: center; justify-content: space-between; background: linear-gradient(to right, #1E293B, #0F172A); border-radius: 20px; padding: 24px 32px; color: white; text-decoration: none; transition: var(--trans-default); border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
-        .partnership-banner:hover { transform: translateY(-4px); box-shadow: 0 15px 35px rgba(15, 23, 42, 0.2); border-color: rgba(45, 212, 191, 0.3); }
-        .partnership-content h2 { font-size: 1.4rem; margin: 8px 0 4px; color: white; }
-        .partnership-content p { color: #94A3B8; margin: 0; font-size: 0.95rem; }
-        .partnership-tag { background: rgba(16, 185, 129, 0.15); color: #34D399; padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; border: 1px solid #34D399; }
-        .partnership-arrow { background: rgba(255,255,255,0.1); padding: 10px 20px; border-radius: 99px; font-weight: 600; font-size: 0.9rem; white-space: nowrap; margin-left: 20px; transition: var(--trans-default); }
-        .partnership-banner:hover .partnership-arrow { background: var(--primary); color: white; transform: translateX(5px); }
-        @media (max-width: 600px) { .partnership-banner { flex-direction: column; text-align: center; gap: 16px; padding: 24px; } .partnership-arrow { margin-left: 0; width: 100%; text-align: center; } }
+        /* --- PARTNERSHIP BANNER (To zniknie, bo zastępujemy to ładną sekcją na dole) --- */
+        /* Możesz usunąć stary partnership-banner z kodu, podmieniłam to nową sekcją pod zespołem */
 
         /* --- CIRCLE VR SECTION --- */
         .circle-vr-section { background: linear-gradient(135deg, #ffffff 0%, var(--bg-body) 100%); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 80px 0; }
@@ -336,6 +329,71 @@
         .team-card:hover .team-img { filter: grayscale(0%); transform: scale(1.05); }
         .team-info { padding: 18px; }
         .team-role { font-size: 0.8rem; font-weight: 700; color: var(--primary); text-transform: uppercase; letter-spacing: 0.05em; display: block; margin-bottom: 5px; }
+
+        /* --- PARTNERS MAIN SECTION (NEW) --- */
+        .partners-main-section { 
+            padding: 70px 0; 
+            margin-top: 40px;
+            background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.7), transparent); 
+            text-align: center; 
+        }
+        .partners-grid-main { 
+            display: flex; 
+            flex-wrap: wrap; 
+            justify-content: center; 
+            gap: 30px; 
+            margin-top: 40px; 
+        }
+        .partner-card-main { 
+            background: white; 
+            border: 1px solid var(--border); 
+            border-radius: 24px; 
+            padding: 35px 25px; 
+            max-width: 420px; 
+            width: 100%; 
+            transition: var(--trans-default); 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02); 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            text-decoration: none; 
+        }
+        .partner-card-main:hover { 
+            transform: translateY(-8px); 
+            border-color: var(--primary); 
+            box-shadow: 0 15px 35px rgba(15, 118, 110, 0.1); 
+        }
+        .partner-logo-box { 
+            width: 130px; 
+            height: 130px; 
+            background: white; 
+            border-radius: 50%; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            margin-bottom: 25px; 
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08); 
+            padding: 20px; 
+            overflow: hidden;
+        }
+        .partner-logo-box img { 
+            max-width: 100%; 
+            max-height: 100%; 
+            object-fit: contain; 
+        }
+        .partner-card-main h3 { 
+            font-size: 1.3rem; 
+            color: var(--text-main); 
+            margin-bottom: 12px; 
+            text-align: center;
+        }
+        .partner-card-main p { 
+            font-size: 0.95rem; 
+            color: var(--text-muted); 
+            line-height: 1.6; 
+            text-align: center;
+            margin-bottom: 0;
+        }
 
         /* --- RESERVATION --- */
         .reservation-section { background: white; border: 1px solid var(--border); border-radius: 20px; padding: 32px 20px; margin: 50px auto; max-width: 600px; box-shadow: 0 10px 30px rgba(0,0,0,0.03); transition: var(--trans-default); }
@@ -505,19 +563,8 @@
         </div>
     </section>
 
-    <section class="container reveal" style="margin-top: 20px; margin-bottom: 20px;">
-        <a href="ncni_partnerstwo.html" class="partnership-banner">
-            <div class="partnership-content">
-                <span class="partnership-tag">Strefa B2B</span>
-                <h2>Partnerstwo Strategiczne: Nauka &amp; Biznes</h2>
-                <p>Granty B+R, Wdrożenia Szpitalne i VR NeuroBus dla firm.</p>
-            </div>
-            <div class="partnership-arrow">Sprawdź &#8594;</div>
-        </a>
-    </section>
-
     <!-- CIRCLE VR / TRIANGLE SECTION -->
-    <section class="circle-vr-section" id="technologia-circle">
+    <section class="circle-vr-section" id="technologia-circle" style="margin-top: 40px;">
         <div class="container">
             <div class="reveal" style="text-align: center; margin-bottom: 60px;">
                 <span style="color: var(--primary); font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; font-size: 0.9rem; display: block; margin-bottom: 10px;">Rewolucja w Neuroterapii</span>
@@ -713,6 +760,35 @@
                         <span style="display: block; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 8px;">Dieta w neuroróżnorodności</span>
                         <p style="font-size: 0.9rem; color: var(--text-muted);">Zobacz ofertę &#8594;</p>
                     </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- NOWA SEKCJA: NASI PARTNERZY STRATEGICZNI -->
+    <section class="partners-main-section reveal">
+        <div class="container">
+            <span style="color: var(--primary); font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; font-size: 0.9rem; display: block; margin-bottom: 10px;">Potwierdzone Partnerstwa</span>
+            <h2 style="font-size: clamp(1.8rem, 5vw, 2.5rem); color: var(--text-main); margin: 0 0 15px 0;">Nasi Partnerzy Strategiczni</h2>
+            <p style="font-size: 1.1rem; color: var(--text-muted); max-width: 650px; margin: 0 auto;">Budujemy innowacje opierając się na badaniach naukowych, korzystając z wiedzy i infrastruktury wiodących uczelni w Polsce.</p>
+            
+            <div class="partners-grid-main">
+                <a href="ncni_partnerstwo.html" class="partner-card-main">
+                    <div class="partner-logo-box">
+                        <img src="pwr.png" alt="Politechnika Wrocławska" onerror="this.src='https://via.placeholder.com/130x130/ffffff/666666?text=PWr'">
+                    </div>
+                    <h3>Politechnika Wrocławska</h3>
+                    <p>Strategiczne partnerstwo naukowo-badawcze (EBM) obejmujące inżynierię biomedyczną, neurotechnologie oraz weryfikację skuteczności terapii VR i Biofeedbacku.</p>
+                    <span class="read-more" style="margin-top:15px;">Poznaj szczegóły &#8594;</span>
+                </a>
+                
+                <a href="ncni_partnerstwo.html" class="partner-card-main">
+                    <div class="partner-logo-box">
+                        <img src="web.png" alt="Uniwersytet WSB Merito" onerror="this.src='https://via.placeholder.com/130x130/ffffff/666666?text=WSB'">
+                    </div>
+                    <h3>Uniwersytet WSB Merito</h3>
+                    <p>Partnerstwo edukacyjne ukierunkowane na wspólny rozwój kierunków <strong>Psychologia i Informatyka</strong> oraz integrację najnowszych terapii cyfrowych w proces dydaktyczny.</p>
+                    <span class="read-more" style="margin-top:15px;">Poznaj szczegóły &#8594;</span>
                 </a>
             </div>
         </div>
