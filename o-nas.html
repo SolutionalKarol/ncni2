@@ -54,12 +54,12 @@
         .hero-section h1{font-family:'Lexend',sans-serif;font-size:clamp(2rem,5vw,3.5rem);font-weight:700;margin-bottom:24px;letter-spacing:-0.03em;color:var(--text-main);line-height:1.1;}
         .hero-section p{font-size:clamp(1.05rem,3vw,1.25rem);color:var(--text-muted);max-width:850px;margin:0 auto;line-height:1.6;}
         .mission-section{padding:20px 0 60px;}
-        .mission-container{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-bottom:60px;}
+        .mission-container{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
         .mission-content h2{font-family:'Lexend',sans-serif;font-size:2.5rem;margin-bottom:24px;color:var(--text-main);}
         .mission-content p{font-size:1.1rem;color:var(--text-muted);margin-bottom:20px;text-align:justify;}
-        
+
         /* New Partnerships Grid styles */
-        .partnerships-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 60px 0; }
+        .partnerships-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 30px 0; }
         .partnership-box { color: white; padding: 40px 30px; border-radius: 24px; text-align: left; box-shadow: 0 20px 40px rgba(0,0,0,0.1); border: 1px solid rgba(255,255,255,0.1); display: flex; flex-direction: column; justify-content: flex-start; position: relative; overflow: hidden; transition: var(--trans-default); }
         .partnership-box:hover { transform: translateY(-5px); }
         
@@ -74,10 +74,23 @@
         .partner-logo-mini { width: 60px; height: 60px; background: white; border-radius: 50%; padding: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
         .partner-logo-mini img { max-width: 100%; max-height: 100%; object-fit: contain; }
 
+        /* B2B Banner Styles */
+        .b2b-banner { display: flex; align-items: center; justify-content: space-between; background: linear-gradient(145deg, #1E293B, #0F172A); border: 1px solid rgba(124, 58, 237, 0.3); border-radius: 24px; padding: 40px; margin-bottom: 40px; text-decoration: none; color: white; transition: var(--trans-default); box-shadow: 0 20px 50px -10px rgba(124, 58, 237, 0.15); position: relative; overflow: hidden; }
+        .b2b-banner:hover { transform: translateY(-5px); border-color: #818CF8; box-shadow: 0 20px 40px rgba(124, 58, 237, 0.25); background: linear-gradient(145deg, #1E293B, #162032); }
+        .b2b-banner::before { content: ''; position: absolute; top: -50px; right: -50px; width: 200px; height: 200px; background: radial-gradient(circle, rgba(124, 58, 237, 0.15) 0%, transparent 70%); border-radius: 50%; }
+        .b2b-content { position: relative; z-index: 1; max-width: 700px; }
+        .b2b-content h3 { font-family: 'Lexend', sans-serif; font-size: 1.8rem; margin-bottom: 12px; color: white; }
+        .b2b-badge { background: rgba(124, 58, 237, 0.2); color: #A78BFA; border: 1px solid #6366F1; padding: 6px 14px; border-radius: 99px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; margin-bottom: 15px; display: inline-block; letter-spacing: 0.05em; }
+        .b2b-content p { font-size: 1.05rem; color: #94A3B8; margin-bottom: 0; line-height: 1.6; }
+        .b2b-action { position: relative; z-index: 1; background: var(--primary); color: white; padding: 14px 28px; border-radius: 99px; font-weight: 600; font-size: 0.95rem; display: flex; align-items: center; gap: 10px; flex-shrink: 0; transition: 0.3s; border: none; }
+        .b2b-banner:hover .b2b-action { background: var(--primary-dark); transform: translateX(5px); }
+
         @media(max-width:900px){
-            .partnerships-wrapper { grid-template-columns: 1fr; gap: 20px; margin: 40px 0; }
+            .partnerships-wrapper { grid-template-columns: 1fr; gap: 20px; margin: 30px 0; }
             .partnership-box { padding: 30px 24px; }
             .partnership-box h3 { font-size: 1.3rem; }
+            .b2b-banner { flex-direction: column; text-align: left; align-items: flex-start; gap: 24px; padding: 30px 24px; margin-bottom: 30px; }
+            .b2b-content h3 { font-size: 1.4rem; }
         }
 
         .pillars-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;}
@@ -147,13 +160,13 @@
     </section>
     <div class="mission-section">
         <div class="container">
-            <div class="mission-container">
+            <div class="mission-container" style="margin-bottom: 30px;">
                 <div class="mission-content">
                     <h2>Nasza Misja</h2>
                     <p>Naukowe Centrum Neuroinnowacji stworzyło miejsce, w którym pacjent nie jest tylko „zbiorem objawów" — jest człowiekiem z unikatową historią, wrażliwością i potencjałem. Naszą misją jest holistyczne podejście do zdrowia psychicznego i neurofunkcjonowania, oparte na twardych dowodach naukowych (EBM) i realizowane z głęboką empatią.</p>
                     <p>Odczarowujemy technologię w medycynie. VR, Biofeedback i Neuromodulacja to nie gadżety — to precyzyjne narzędzia, które w rękach doświadczonych specjalistów wspierają regulację układu nerwowego, koncentrację, sen i jakość życia.</p>
                 </div>
-                <div style="border-radius:32px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.1);height:100%;">
+                <div style="border-radius:32px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.1);height:100%;background:#E2E8F0;">
                     <img src="gabinet.jpg" alt="Wnętrze gabinetu NCNI we Wrocławiu" style="width:100%;height:100%;object-fit:cover;display:block;min-height:350px;">
                 </div>
             </div>
@@ -162,33 +175,42 @@
             <div class="partnerships-wrapper">
                 
                 <!-- Politechnika Wrocławska -->
-                <div class="partnership-box pwr">
+                <a href="ncni_partnerstwo.html" class="partnership-box pwr cursor-trigger" style="text-decoration:none;">
                     <h3>
                         <div class="partner-logo-mini">
                             <img src="pwr.png" alt="PWr" onerror="this.src='https://via.placeholder.com/60x60/ffffff/a6192e?text=PWr'">
                         </div>
                         Politechnika Wrocławska
                     </h3>
-                    <p>Naukowe Centrum Neuroinnowacji realizuje innowacyjne projekty badawczo-rozwojowe w formalnej współpracy naukowej z PWr. Umowa obejmuje obszary neurotechnologii, biofeedbacku EEG/HRV, terapii VR oraz neuromodulacji.</p>
-                    <p>To partnerstwo potwierdza akademicki charakter NCNI i gwarantuje najwyższe standardy naukowe (EBM) prowadzonych terapii, zdecydowanie odróżniając nas od typowych, komercyjnych gabinetów.</p>
-                </div>
+                    <p style="color:white;">Naukowe Centrum Neuroinnowacji realizuje innowacyjne projekty badawczo-rozwojowe w formalnej współpracy z PWr. Umowa obejmuje obszary neurotechnologii, biofeedbacku EEG/HRV, terapii VR oraz neuromodulacji.</p>
+                    <p style="color:white; margin-bottom: 0;">To partnerstwo potwierdza akademicki charakter NCNI i gwarantuje najwyższe standardy naukowe (EBM) prowadzonych terapii, zdecydowanie odróżniając nas od komercyjnych gabinetów.</p>
+                </a>
 
                 <!-- WSB Merito -->
-                <div class="partnership-box merito">
+                <a href="ncni_partnerstwo.html" class="partnership-box merito cursor-trigger" style="text-decoration:none;">
                     <h3>
                         <div class="partner-logo-mini">
-                            <a href="https://www.merito.pl/wroclaw/" target="_blank">
-                                <img src="web.png" alt="WSB Merito" onerror="this.src='https://via.placeholder.com/60x60/ffffff/0047ba?text=WSB'">
-                            </a>
+                            <img src="web.png" alt="WSB Merito" onerror="this.src='https://via.placeholder.com/60x60/ffffff/0047ba?text=WSB'">
                         </div>
-                        <a href="https://www.merito.pl/wroclaw/" target="_blank" style="color: white; text-decoration: none; transition: 0.2s;" onmouseover="this.style.color='#00D2FF'" onmouseout="this.style.color='white'">Uniwersytet WSB Merito</a>
+                        Uniwersytet WSB Merito
                     </h3>
-                    <p>Na mocy oficjalnego porozumienia o współpracy, Naukowe Centrum Neuroinnowacji zawarło strategiczne partnerstwo z Uniwersytetem WSB Merito. Wspólnie napędzamy <strong>rozwój nowoczesnych kierunków studiów: Informatyki i Psychologii</strong>.</p>
-                    <p>Nasze partnerstwo edukacyjne ma na celu wzbogacenie nauczania o innowacyjne terapie cyfrowe. Wprowadzamy do świata akademickiego zagadnienia związane z wykorzystaniem technologii VR w psychologii i psychoterapii, zaawansowane pomiary EEG i HRV, a także technologię foteli Zero-G. Wszystko to połączone w spójny, nowoczesny system wsparcia pacjenta.</p>
-                    <p>Dzięki warsztatom, stażom dla studentów i zgłębianiu wiedzy pod przewodnictwem prof. Kraszewskiego, dajemy wyjątkową, niespotykaną w żadnym innym ośrodku w Polsce możliwość eksplorowania tego, co cyfrowy świat medycyny ma dziś najlepszego do zaoferowania.</p>
-                </div>
+                    <p style="color:white;">Wspólnie z Uniwersytetem WSB Merito napędzamy <strong>rozwój nowoczesnych kierunków studiów: Informatyki i Psychologii</strong>. Wprowadzamy do świata akademickiego zagadnienia terapii VR i zaawansowanych pomiarów psychofizjologicznych.</p>
+                    <p style="color:white; margin-bottom: 0;">Dzięki warsztatom, stażom dla studentów i mentoringowi pod przewodnictwem prof. Kraszewskiego, dajemy wyjątkową możliwość eksplorowania tego, co cyfrowy świat medycyny ma dziś najlepszego do zaoferowania.</p>
+                </a>
 
             </div>
+
+            <!-- Nowy podłużny baner B2B -->
+            <a href="ncni_partnerstwo.html" class="b2b-banner cursor-trigger">
+                <div class="b2b-content">
+                    <span class="b2b-badge">Strefa B2B & Medycyna</span>
+                    <h3>Neuro-Immersja w Twojej placówce</h3>
+                    <p>Wdrożenia systemu Triangle w gabinetach i szpitalach, uczestnictwo w grantach badawczych, oferta Corporate Neuro-Wellness dla firm oraz wynajem mobilnej jednostki NCNI VR NeuroBus na eventy.</p>
+                </div>
+                <div class="b2b-action">
+                    Sprawdź modele współpracy <span>&rarr;</span>
+                </div>
+            </a>
 
             <div class="pillars-grid cursor-trigger">
                 <div class="pillar-card glass"><h3>💡 Innowacja</h3><p>Wdrażamy sprawdzone metody (VR, Neuromodulacja, Biofeedback), by oferować terapie i protokoły na światowym poziomie — stale rozwijane w oparciu o najnowsze badania.</p></div>
