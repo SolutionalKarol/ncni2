@@ -4,7 +4,6 @@
     <script type="text/javascript" data-cmp-ab="1" src="https://cdn.consentmanager.net/delivery/autoblocking/93e58d8b2275d.js" data-cmp-host="c.delivery.consentmanager.net" data-cmp-cdn="cdn.consentmanager.net" data-cmp-codesrc="16"></script>
     <meta charset="UTF-8">
     
-    <!-- Google Analytics (KRYTYCZNE) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-56VR40VHHV"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -13,7 +12,6 @@
       gtag('config', 'G-56VR40VHHV');
     </script>
     
-    <!-- Google tag (gtag.js) - Ads -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18029740902"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -64,7 +62,6 @@
         .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
         .glass { background: var(--bg-surface); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.6); box-shadow: 0 4px 20px rgba(0,0,0,0.03); }
         
-        /* Header */
         header { position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid var(--border); padding: 12px 0; }
         .nav-wrapper { display: flex; flex-direction: column; align-items: center; gap: 16px; }
         .brand-bar { display: flex; justify-content: center; align-items: center; width: 100%; position: relative; }
@@ -85,7 +82,6 @@
         .mobile-menu.active { transform: translateY(0); }
         .mobile-link { display: block; padding: 14px 0; font-size: 1.1rem; font-weight: 500; color: var(--text-main); text-decoration: none; border-bottom: 1px solid var(--bg-body); }
         
-        /* --- MOBILE BOTTOM NAV BAR --- */
         .mobile-bottom-nav {
             display: none;
             position: fixed; bottom: 0; left: 0; right: 0;
@@ -130,7 +126,6 @@
             .ania-container { bottom: calc(80px + env(safe-area-inset-bottom)) !important; right: 16px !important; }
         }
 
-        /* --- PRICE LIST STYLES --- */
         .featured-card { background: linear-gradient(135deg, #111827 0%, #1F2937 100%); color: white; border-radius: 20px; padding: 35px; margin: 30px 0; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); position: relative; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); }
         .featured-card::before { content: ''; position: absolute; top: -50px; right: -50px; width: 200px; height: 200px; background: radial-gradient(circle, rgba(147, 197, 253, 0.15) 0%, transparent 70%); border-radius: 50%; }
 
@@ -156,12 +151,10 @@
         .pr-meta { font-size: 0.85rem; color: var(--text-muted); margin-top: 3px; display: block; font-style: italic; }
         .pr-amount { font-weight: 700; color: var(--text-main); font-family: 'Lexend', sans-serif; font-size: 1.1rem; white-space: nowrap; }
 
-        /* NeuroMigra */
         .neuromigra-banner { background: linear-gradient(135deg, #7C3AED 0%, #5B21B6 100%); color: white; border-radius: 20px; padding: 30px 35px; margin: 30px 0; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 12px 35px rgba(124, 58, 237, 0.3); position: relative; overflow: hidden; border: 1px solid rgba(255,255,255,0.2); }
         .neuromigra-banner::before { content: ''; position: absolute; top: -40px; right: -30px; width: 160px; height: 160px; background: rgba(255,255,255,0.1); border-radius: 50%; filter: blur(40px); }
         .neuromigra-badge { background: #FFFFFF; color: #5B21B6; font-size: 0.75rem; padding: 3px 10px; border-radius: 99px; text-transform: uppercase; font-weight: 800; letter-spacing: 0.05em; align-self: flex-start; }
 
-        /* Edu Banner */
         .edu-banner { background: linear-gradient(135deg, #01696f 0%, #01383c 100%); color: white; border-radius: 20px; padding: 30px 35px; margin: 30px 0; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 12px 35px rgba(1, 105, 111, 0.3); position: relative; overflow: hidden; border: 1px solid rgba(255,255,255,0.2); }
         .edu-banner::before { content: ''; position: absolute; top: -40px; right: -30px; width: 160px; height: 160px; background: rgba(255,255,255,0.1); border-radius: 50%; filter: blur(40px); }
         .edu-badge { background: #fde047; color: #000; font-size: 0.75rem; padding: 3px 10px; border-radius: 99px; text-transform: uppercase; font-weight: 800; letter-spacing: 0.05em; align-self: flex-start; }
@@ -246,12 +239,13 @@
         <div style="text-align: center; margin-top: 60px; margin-bottom: 20px;">
             <h1 style="font-size: 3rem; margin-bottom: 10px;">Cennik Usług</h1>
             <p style="background: #EEF2FF; color: var(--accent); display: inline-block; padding: 6px 16px; border-radius: 99px; font-weight: 600; font-size: 0.9rem; margin-bottom: 12px;">
-                Cennik obowiązuje od 28.07.2026
+                Cennik obowiązuje od 28.07.2026 r.
             </p>
 
             <div class="filter-tabs">
                 <button class="filter-btn active" data-filter="all">Wszystko</button>
                 <button class="filter-btn" data-filter="diag">Diagnoza</button>
+                <button class="filter-btn" data-filter="neuro">Neuroróżnorodność</button>
                 <button class="filter-btn" data-filter="psych">Psycholog</button>
                 <button class="filter-btn" data-filter="diet">Dietetyk</button>
                 <button class="filter-btn" data-filter="fizjo">Fizjoterapia</button>
@@ -260,18 +254,14 @@
             </div>
         </div>
 
-        <!-- ========================================== -->
-        <!-- PREMIUM KONSULTACJA Z PROFESOREM           -->
-        <!-- Wyświetlana w Diagnozie, Tech, Edu, Diet, Fizjo -->
-        <!-- ========================================== -->
-        <div class="pricing-section diag tech edu diet fizjo">
+        <div class="pricing-section diag tech edu diet fizjo neuro">
             <div class="featured-card">
                 <div class="fc-content">
-                    <h3><span class="fc-badge">EKSPERT NCNI</span> Konsultacja Wstępna z prof. Kraszewskim</h3>
+                    <h3><span class="fc-badge">DYREKTOR NAUKOWY</span> Konsultacja wstępna z prof. Kraszewskim</h3>
                     <p style="opacity: 0.95; margin-top: 8px; font-size: 1.05rem;">
-                        Konsultacja ekspercka, podczas której szczegółowo omówimy Twoje trudności i opracujemy spersonalizowany plan działania krok po kroku. W ramach wizyty otrzymujesz od nas indywidualny, pisemny raport ekspercki oraz precyzyjne zalecenia i pokierowanie do odpowiednich specjalistów (np. psychiatry, fizjoterapeuty). Dostajesz jasną mapę drogową na swoją dalszą ścieżkę.
+                        Autorska konsultacja, podczas której szczegółowo omówimy Twoje trudności i opracujemy spersonalizowany plan działania krok po kroku. W ramach wizyty otrzymujesz indywidualny, pisemny raport oraz precyzyjne zalecenia i pokierowanie do odpowiednich specjalistów (np. psychiatry, fizjoterapeuty). Dostajesz jasną mapę drogową na swoją dalszą ścieżkę.
                     </p>
-                    <p style="opacity: 0.8; font-size: 0.9rem; margin-top: 5px;">Konsultacja ekspercka (do 60 min)</p>
+                    <p style="opacity: 0.8; font-size: 0.9rem; margin-top: 5px;">Konsultacja profesorska (do 60 min)</p>
                 </div>
                 <div class="fc-price">
                     <span class="amount" style="color: #FDE047;">450 zł</span>
@@ -280,9 +270,6 @@
             </div>
         </div>
 
-        <!-- ========================================== -->
-        <!-- SEKCJA: OPIEKA PSYCHOLOGICZNA              -->
-        <!-- ========================================== -->
         <div class="pricing-section psych terapia">
             <h2 class="section-title" id="psychologia">Opieka Psychologiczna i Psychoterapia</h2>
             
@@ -347,9 +334,6 @@
             </div>
         </div>
 
-        <!-- ========================================== -->
-        <!-- SEKCJA: DIETETYKA                          -->
-        <!-- ========================================== -->
         <div class="pricing-section diet terapia">
             <h2 class="section-title" id="dietetyka">Dietetyka Kliniczna i Psychodietetyka</h2>
             
@@ -398,9 +382,6 @@
             </div>
         </div>
 
-        <!-- ========================================== -->
-        <!-- SEKCJA: FIZJOTERAPIA                       -->
-        <!-- ========================================== -->
         <div class="pricing-section fizjo terapia">
             <h2 class="section-title" id="fizjoterapia">Fizjoterapia Neuro i Praca z Ciałem</h2>
             
@@ -449,9 +430,6 @@
             </div>
         </div>
 
-        <!-- ========================================== -->
-        <!-- SEKCJA: DIAGNOSTYKA                        -->
-        <!-- ========================================== -->
         <div class="pricing-section diag">
             <h2 class="section-title" id="diagnoza">Diagnostyka Specjalistyczna</h2>
 
@@ -498,13 +476,49 @@
             </div>
         </div>
 
-        <!-- ========================================== -->
-        <!-- SEKCJA: TECHNOLOGIA VR / EEG / HRV         -->
-        <!-- ========================================== -->
-        <div class="pricing-section tech">
-            <h2 class="section-title" id="technologia">NCNI Neuro-Tech &amp; VR</h2>
+        <div class="pricing-section neuro">
+            <h2 class="section-title" id="neuroroznorodnosc-cennik">Neuroróżnorodność – Konsultacje Eksperckie</h2>
+            
+            <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 20px;">
+                Celowane spotkania z naszymi ekspertami mające na celu identyfikację Twoich kluczowych wyzwań, psychoedukację oraz opracowanie indywidualnej strategii działania (tzw. mapy drogowej). Konsultacje te pomagają w przygotowaniu się do ewentualnej wizyty u specjalisty medycznego.
+            </p>
 
-            <!-- NCNI.System — FLAGSHIP -->
+            <div class="price-row">
+                <div class="pr-service">
+                    <div class="pr-name">Konsultacja ekspercka: Dyskalkulia i Dysleksja</div>
+                    <span class="pr-desc">Rozpoznanie specyficznych trudności, ocena preferowanego stylu uczenia się i dobór narzędzi wsparcia edukacyjnego.</span>
+                </div>
+                <div class="pr-amount">350 zł</div>
+            </div>
+
+            <div class="price-row">
+                <div class="pr-service">
+                    <div class="pr-name">Konsultacja ekspercka: Wysoka Wrażliwość (WWO) i Migrena</div>
+                    <span class="pr-desc">Analiza profilu sensorycznego, nauka zarządzania własną energią oraz techniki zapobiegania przebodźcowaniu.</span>
+                </div>
+                <div class="pr-amount">350 zł</div>
+            </div>
+
+            <div class="price-row">
+                <div class="pr-service">
+                    <div class="pr-name">Konsultacja ekspercka: Tiki, Tourette i Dyspraksja (DCD)</div>
+                    <span class="pr-desc">Wstępny wywiad celowany, psychoedukacja w zakresie regulacji napięcia oraz rekomendacje dalszej ścieżki wsparcia.</span>
+                </div>
+                <div class="pr-amount">350 zł</div>
+            </div>
+            
+            <div class="price-row">
+                <div class="pr-service">
+                    <div class="pr-name">Konsultacja uzupełniająca (Neuroróżnorodność)</div>
+                    <span class="pr-desc">Omówienie postępów wdrożonych strategii edukacyjnych i narzędziowych z ekspertem prowadzącym.</span>
+                </div>
+                <div class="pr-amount">300 zł</div>
+            </div>
+        </div>
+
+        <div class="pricing-section tech">
+            <h2 class="section-title" id="technologia">NCNI Neurotechnologie i VR</h2>
+
             <div class="system-banner" style="gap: 25px; flex-wrap: wrap;">
                 <div class="fc-content" style="flex: 1; min-width: 250px;">
                     <h3 style="flex-direction: row; flex-wrap: wrap; align-items: center; gap: 10px;">
@@ -512,7 +526,7 @@
                         NCNI.System
                     </h3>
                     <p style="opacity: 0.95; margin-top: 8px; font-size: 1.05rem;">
-                        Zintegrowany system łączący <strong>VR</strong>, <strong>Biofeedback EEG</strong>, <strong>HRV</strong> oraz <strong>fotel Zero Gravity</strong>. Cel: regulacja układu nerwowego, koncentracja i głęboki wellbeing.
+                        Zintegrowany system łączący <strong>VR</strong>, <strong>Biofeedback EEG</strong>, <strong>HRV</strong> oraz <strong>fotel Zero Gravity</strong>. Cel: regulacja układu nerwowego, koncentracja i głęboki dobrostan.
                     </p>
                     <p style="opacity: 0.8; font-size: 0.9rem; margin-top: 8px;">do 60 min</p>
                 </div>
@@ -524,10 +538,9 @@
 
             <h3 style="font-size: 1.15rem; color: var(--text-main); margin: 35px 0 16px; font-family: 'Lexend', sans-serif;">Sesje Indywidualne i VR</h3>
 
-            <!-- Wszystkie VR wyrównane na 280 zł -->
             <div class="price-row">
                 <div class="pr-service">
-                    <div class="pr-name">Sesja VR — Deep Focus</div>
+                    <div class="pr-name">Sesja VR — Głębokie Skupienie</div>
                     <span class="pr-desc">Koncentracja i stabilizacja uwagi, z fotelem Zero Gravity.</span>
                     <span class="pr-meta">do 50 min</span>
                 </div>
@@ -536,7 +549,7 @@
 
             <div class="price-row">
                 <div class="pr-service">
-                    <div class="pr-name">Sesja VR — Deep Relaxation</div>
+                    <div class="pr-name">Sesja VR — Głęboki Relaks</div>
                     <span class="pr-desc">Wyciszenie i głęboka regeneracja (VR + Zero Gravity).</span>
                     <span class="pr-meta">do 50 min</span>
                 </div>
@@ -554,14 +567,13 @@
 
             <div class="price-row">
                 <div class="pr-service">
-                    <div class="pr-name">Sesja VR — VR Training dla ADHD</div>
+                    <div class="pr-name">Sesja VR — Trening VR dla ADHD</div>
                     <span class="pr-desc">Trening funkcji wykonawczych.</span>
                     <span class="pr-meta">do 50 min</span>
                 </div>
                 <div class="pr-amount">280 zł</div>
             </div>
 
-            <!-- NeuroMigra -->
             <div class="neuromigra-banner">
                 <div class="fc-content" style="flex: 1; min-width: 250px;">
                     <h3 style="flex-direction: row; flex-wrap: wrap; align-items: center; gap: 10px;">
@@ -571,18 +583,15 @@
                     <p style="opacity: 0.95; margin-top: 8px; font-size: 1.05rem;">
                         Autorski program dla osób z migreną. Dobór VR i biofeedbacku, techniki neuroregeneracji i monitoring HRV.
                     </p>
-                    <p style="opacity: 0.8; font-size: 0.9rem; margin-top: 8px;">Program ustalany indywidualnie</p>
+                    <p style="opacity: 0.8; font-size: 0.9rem; margin-top: 8px;">Długość programu ustalana indywidualnie. Podana cena dotyczy pierwszej oraz każdej kolejnej wizyty w programie.</p>
                 </div>
                 <div class="fc-price" style="min-width: 130px; text-align: right;">
                     <span class="amount">280 zł</span>
-                    <span class="unit">Konsultacja NeuroMigra</span>
+                    <span class="unit">Za każdą wizytę</span>
                 </div>
             </div>
         </div>
 
-        <!-- ========================================== -->
-        <!-- SEKCJA: EDUKACJA I KURSY                   -->
-        <!-- ========================================== -->
         <div class="pricing-section edu">
             <h2 class="section-title" id="edukacja">Kursy i Szkolenia NCNI</h2>
 
@@ -608,7 +617,7 @@
             <div class="price-row">
                 <div class="pr-service">
                     <div class="pr-name">Neuroróżnorodność w HR i Zarządzaniu</div>
-                    <span class="pr-desc">Adaptacje, rekrutacja i komunikacja w neuroatypowych zespołach. Webinar live + materiały.</span>
+                    <span class="pr-desc">Adaptacje, rekrutacja i komunikacja w neuroatypowych zespołach. Webinar na żywo + materiały.</span>
                 </div>
                 <div class="pr-amount">1 890 zł</div>
             </div>
@@ -716,9 +725,6 @@
 
         </div>
 
-        <!-- ========================================== -->
-        <!-- PŁATNOŚCI I FAQ                            -->
-        <!-- ========================================== -->
         <div class="payment-methods">
             <h3>Metody Płatności</h3>
             <ul class="payment-list">
@@ -735,7 +741,7 @@
         <h2 class="section-title" style="margin-top: 60px;">Informacje Praktyczne (FAQ)</h2>
 
         <details>
-            <summary>Ile trwa wizyta i sesja VR? (Time = Money)</summary>
+            <summary>Ile trwa wizyta i sesja VR? (Czas ma znaczenie)</summary>
             <div class="details-content">
                 <p>Standardowa konsultacja psychologiczna trwa 50 minut. Sesje technologiczne (VR, Biofeedback) trwają od 50 do 60 minut, w tym czas na podłączenie aparatury i aktywny trening.</p>
             </div>
@@ -778,12 +784,11 @@
         </div>
     </footer>
 
-    <!-- MOBILE BOTTOM NAV BAR -->
     <div class="mobile-bottom-nav">
       <div class="mobile-bottom-nav-inner">
         <a href="index.html">
           <i class="fa-solid fa-home"></i>
-          <span>Home</span>
+          <span>Start</span>
         </a>
         <a href="#" class="nav-anchor-link" data-tab="diag">
           <i class="fa-solid fa-stethoscope"></i>
@@ -857,20 +862,16 @@
 
         document.addEventListener("DOMContentLoaded", initFilters);
 
-        // Skrypt integrujący dolne menu
         document.querySelectorAll('.nav-anchor-link').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 
-                // Zresetuj filtry do "Wszystko", żeby sekcja na pewno była na ekranie
                 const allFilterBtn = document.querySelector('.filter-btn[data-filter="all"]');
                 if(allFilterBtn) allFilterBtn.click();
                 
-                // Podświetl aktywną ikonkę na dolnym pasku
                 document.querySelectorAll('.mobile-bottom-nav-inner a').forEach(a => a.classList.remove('active'));
                 this.classList.add('active');
                 
-                // Przewiń do elementu
                 const targetId = this.getAttribute('data-tab') === 'terapia' ? 'psychologia' : this.getAttribute('data-tab');
                 const targetElement = document.getElementById(targetId);
                 
@@ -883,10 +884,7 @@
                 }
             });
         });
-
     </script>
 </body>
 </html>
-
-
 
