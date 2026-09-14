@@ -68,7 +68,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Dodane FontAwesome dla ikon w dolnym menu -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -265,9 +264,6 @@
         .ncni-banner-btn:hover { background: #ffffff; color: #0a2628; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3); }
         @media (max-width: 768px) { .ncni-courses-banner { flex-direction: column; text-align: center; padding: 30px 20px; } }
 
-        /* --- PARTNERSHIP BANNER (To zniknie, bo zastępujemy to ładną sekcją na dole) --- */
-        /* Możesz usunąć stary partnership-banner z kodu, podmieniłam to nową sekcją pod zespołem */
-
         /* --- CIRCLE VR SECTION --- */
         .circle-vr-section { background: linear-gradient(135deg, #ffffff 0%, var(--bg-body) 100%); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 80px 0; }
         @media (max-width: 768px) { .circle-vr-section { padding: 50px 0; } }
@@ -319,7 +315,7 @@
         @media (max-width: 480px) { .oval-card { border-radius: 20px; padding: 20px 16px; } }
 
         /* --- TEAM GRID --- */
-        .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
+        .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; }
         @media (max-width: 560px) { .team-grid { grid-template-columns: 1fr; gap: 16px; } }
         .team-card { border-radius: 20px; overflow: hidden; background: white; text-decoration: none; display: flex; flex-direction: column; box-shadow: 0 4px 15px rgba(0,0,0,0.03); border: 1px solid var(--border); transition: var(--trans-default); }
         .team-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(15, 118, 110, 0.12); border-color: var(--primary-light); }
@@ -606,61 +602,61 @@
             <div id="neuroroznorodnosc" class="tab-content active reveal">
                 <div class="grid-cards">
                     <a href="psychologia.html" class="oval-card">
-                        <div class="card-icon" style="color: var(--accent);">&#129306;</div>
+                        <div class="card-icon" style="color: var(--accent);">🤝</div>
                         <h3>Wsparcie Psychologiczne</h3>
                         <p style="color: var(--text-muted);">Dedykowana pomoc dla osób neuroatypowych. Zrozumienie, akceptacja i narzędzia.</p>
                         <span class="read-more" style="margin-top:10px; display:inline-block;">Sprawdź ofertę &#8594;</span>
                     </a>
                     <a href="technologie.html" class="oval-card">
-                        <div class="card-icon" style="color: var(--primary);">&#129405;</div>
+                        <div class="card-icon" style="color: var(--primary);">🥽</div>
                         <h3>Technologia VR</h3>
                         <p style="color: var(--text-muted);">Treningi kompetencji w VR. Nauka przez doświadczanie bez stresu.</p>
                         <span class="read-more" style="margin-top:10px; display:inline-block;">Poznaj VR &#8594;</span>
                     </a>
                     <a href="adhd.html" class="feature-card glass">
-                        <div class="card-icon">&#129504;</div>
+                        <div class="card-icon">🧠</div>
                         <h3>ADHD / ADD</h3>
                         <p>Treningi funkcji wykonawczych i zarządzania uwagą (VR + Biofeedback).</p>
                         <span class="read-more">Zobacz program &#8594;</span>
                     </a>
                     <a href="asd.html" class="feature-card glass">
-                        <div class="card-icon">&#129518;</div>
+                        <div class="card-icon">🧩</div>
                         <h3>Spektrum Autyzmu (ASD)</h3>
                         <p>Przestrzeń ND-affirming. Treningi kompetencji i regulacja napięcia.</p>
                         <span class="read-more">Zobacz program &#8594;</span>
                     </a>
                     <a href="wysoka-wrazliwosc.html" class="feature-card glass">
-                        <div class="card-icon">&#129419;</div>
+                        <div class="card-icon">🦋</div>
                         <h3>Wysoka Wrażliwość</h3>
                         <p>Nauka higieny układu nerwowego i zarządzania energią.</p>
                         <span class="read-more">Zobacz program &#8594;</span>
                     </a>
                     <a href="dysleksja.html" class="feature-card glass">
-                        <div class="card-icon">&#128214;</div>
+                        <div class="card-icon">📖</div>
                         <h3>Dysleksja</h3>
                         <p>Wsparcie w trudnościach z czytaniem. Nowoczesne metody treningowe.</p>
                         <span class="read-more">Zobacz program &#8594;</span>
                     </a>
                     <a href="dyskalkulia.html" class="feature-card glass">
-                        <div class="card-icon">&#128290;</div>
+                        <div class="card-icon">🧮</div>
                         <h3>Dyskalkulia</h3>
                         <p>Pomoc w trudnościach z matematyką. Treningi poznawcze.</p>
                         <span class="read-more">Zobacz program &#8594;</span>
                     </a>
                     <a href="dcd.html" class="feature-card glass">
-                        <div class="card-icon">&#129335;</div>
+                        <div class="card-icon">🤷</div>
                         <h3>Dyspraksja (DCD)</h3>
                         <p>Wsparcie w koordynacji ruchowej i planowaniu motorycznym.</p>
                         <span class="read-more">Zobacz program &#8594;</span>
                     </a>
                     <a href="tourette.html" class="feature-card glass">
-                        <div class="card-icon">&#9889;</div>
+                        <div class="card-icon">⚡</div>
                         <h3>Tiki / Tourette</h3>
                         <p>Terapie behawioralne i relaksacyjne dla redukcji napięcia.</p>
                         <span class="read-more">Zobacz program &#8594;</span>
                     </a>
                     <a href="metoda-kraszewskiego.html" class="feature-card glass">
-                        <div class="card-icon">&#127892;</div>
+                        <div class="card-icon">🎓</div>
                         <h3>Metoda Kraszewskiego</h3>
                         <p>Autorska metoda integracji sensorycznej i poznawczej.</p>
                         <span class="read-more">Czytaj więcej &#8594;</span>
@@ -682,11 +678,12 @@
                         <p>Mierzalna redukcja kortyzolu. Treningi oddechowe i Zero-Gravity.</p>
                         <span class="read-more">Więcej informacji &#8594;</span>
                     </a>
-                    <a href="psychologia.html" class="feature-card glass">
+                    <!-- Zaktualizowany kafelek prowadzący do Darii -->
+                    <a href="psycholog.html" class="feature-card glass" style="border: 1px solid var(--primary-light);">
                         <div class="card-icon">&#128172;</div>
-                        <h3>Konsultacje</h3>
-                        <p>Indywidualne wsparcie w kryzysie, lęku i depresji.</p>
-                        <span class="read-more">Więcej informacji &#8594;</span>
+                        <h3>Psychoterapia (PL / EN)</h3>
+                        <p>Terapia indywidualna i par w nurcie psychodynamicznym i integratywnym.</p>
+                        <span class="read-more">Poznaj specjalistę &#8594;</span>
                     </a>
                 </div>
             </div>
@@ -694,13 +691,13 @@
             <div id="technologie" class="tab-content reveal">
                 <div class="grid-cards">
                     <a href="technologie.html" class="feature-card glass">
-                        <div class="card-icon">&#129405;</div>
+                        <div class="card-icon">🥽</div>
                         <h3>Terapia VR</h3>
                         <p>Immersyjne środowiska terapeutyczne. Leczenie fobii.</p>
                         <span class="read-more">Sprawdź sprzęt &#8594;</span>
                     </a>
                     <a href="technologie.html" class="feature-card glass">
-                        <div class="card-icon">&#128202;</div>
+                        <div class="card-icon">📊</div>
                         <h3>Biofeedback HRV</h3>
                         <p>Trenuj swoje serce i mózg. Obserwuj wpływ oddechu na stres.</p>
                         <span class="read-more">Sprawdź sprzęt &#8594;</span>
@@ -730,16 +727,32 @@
                         <p style="font-size: 0.9rem; color: var(--text-muted);">Zobacz profil &#8594;</p>
                     </div>
                 </a>
-                <a href="kiszlo.html" class="team-card">
+                
+                <!-- NOWY KAFELEK DLA DARII CERAZY (Na pozycji nr 2) -->
+                <a href="psycholog.html" class="team-card">
                     <div class="team-img-wrapper">
-                        <img src="kk.jpg" alt="Karol Kiszło" class="team-img" onerror="this.src='https://ui-avatars.com/api/?name=Karol+Kiszlo&background=0F766E&color=fff&size=400'">
+                        <img src="daria.jpg" alt="Daria Cerazy Psycholog NCNI" class="team-img" style="object-position: top;" onerror="this.src='https://ui-avatars.com/api/?name=Daria+Cerazy&background=0F766E&color=fff&size=400'">
                     </div>
                     <div class="team-info">
-                        <span class="team-role">Prezes Zarządu</span>
-                        <h3 style="margin-bottom: 8px;">Karol Kiszło</h3>
+                        <span class="team-role">Psycholog / Psychoterapeuta</span>
+                        <h3 style="margin-bottom: 4px;">Daria Cerazy</h3>
+                        <span style="display: block; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 8px;">Wykładowca WSB Merito</span>
                         <p style="font-size: 0.9rem; color: var(--text-muted);">Zobacz profil &#8594;</p>
                     </div>
                 </a>
+
+                <a href="dietetyk.html" class="team-card">
+                    <div class="team-img-wrapper">
+                        <img src="dietetyk.jpg" alt="Dietetyk NCNI Wrocław" class="team-img" style="object-position: top;" onerror="this.src='https://ui-avatars.com/api/?name=Dietetyk+NCNI&background=0F766E&color=fff&size=400'">
+                    </div>
+                    <div class="team-info">
+                        <span class="team-role">Dietetyka Kliniczna</span>
+                        <h3 style="margin-bottom: 4px;">Dietetyk</h3>
+                        <span style="display: block; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 8px;">Dieta w neuroróżnorodności</span>
+                        <p style="font-size: 0.9rem; color: var(--text-muted);">Zobacz ofertę &#8594;</p>
+                    </div>
+                </a>
+
                 <a href="fizjoterapia.html" class="team-card">
                     <div class="team-img-wrapper">
                         <img src="fizjoterapeuta.jpg" alt="Fizjoterapeuta NCNI" class="team-img" style="object-position: top;">
@@ -750,15 +763,16 @@
                         <p style="font-size: 0.9rem; color: var(--text-muted);">Zobacz ofertę &#8594;</p>
                     </div>
                 </a>
-                <a href="dietetyk.html" class="team-card">
+
+                <!-- KAFELEK KAROLA (Przeniesiony na koniec) -->
+                <a href="kiszlo.html" class="team-card">
                     <div class="team-img-wrapper">
-                        <img src="dietetyk.jpg" alt="Dietetyk NCNI Wrocław" class="team-img" style="object-position: top;" onerror="this.src='https://ui-avatars.com/api/?name=Dietetyk+NCNI&background=0F766E&color=fff&size=400'">
+                        <img src="kk.jpg" alt="Karol Kiszło" class="team-img" onerror="this.src='https://ui-avatars.com/api/?name=Karol+Kiszlo&background=0F766E&color=fff&size=400'">
                     </div>
                     <div class="team-info">
-                        <span class="team-role">Dietetyka Kliniczna</span>
-                        <h3 style="margin-bottom: 4px;">Dietetyk</h3>
-                        <span style="display: block; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 8px;">Dieta w neuroróżnorodności</span>
-                        <p style="font-size: 0.9rem; color: var(--text-muted);">Zobacz ofertę &#8594;</p>
+                        <span class="team-role">Prezes Zarządu</span>
+                        <h3 style="margin-bottom: 8px;">Karol Kiszło</h3>
+                        <p style="font-size: 0.9rem; color: var(--text-muted);">Zobacz profil &#8594;</p>
                     </div>
                 </a>
             </div>
@@ -812,8 +826,8 @@
         <h2 style="margin-bottom: 24px; color: var(--primary-dark);">Umów Wizytę</h2>
         <p style="color: var(--text-muted); margin-bottom: 40px; font-size: 1.1rem;">Rejestracja telefoniczna i mailowa.<br>Wybierz preferowaną formę kontaktu poniżej.</p>
         <div style="display: flex; flex-direction: column; gap: 20px; max-width: 400px; margin: 0 auto;">
-            <a href="tel:+48600608333" class="btn btn-primary" style="font-size: 1.2rem; padding: 16px 32px;"><span>&#128222;</span> Zadzwoń: 600 608 333</a>
-            <a href="mailto:kontakt@ncni.pl" class="btn btn-outline" style="font-size: 1.2rem; padding: 16px 32px; border: 2px solid var(--border);"><span>&#9993;&#65039;</span> Napisz: kontakt@ncni.pl</a>
+            <a href="tel:+48600608333" class="btn btn-primary" style="font-size: 1.2rem; padding: 16px 32px;"><span>📞</span> Zadzwoń: 600 608 333</a>
+            <a href="mailto:kontakt@ncni.pl" class="btn btn-outline" style="font-size: 1.2rem; padding: 16px 32px; border: 2px solid var(--border);"><span>✉️</span> Napisz: kontakt@ncni.pl</a>
         </div>
     </section>
 
@@ -831,8 +845,8 @@
                     <p style="color: var(--text-muted); margin-bottom: 8px;">ul. Stefana Żeromskiego 60/5a</p>
                     <p style="color: var(--text-muted); margin-bottom: 8px;">50-312 Wrocław</p>
                     <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 16px;">
-                        <a href="mailto:kontakt@ncni.pl" style="color: var(--text-main); font-weight: 600; text-decoration: none;">&#9993;&#65039; kontakt@ncni.pl</a>
-                        <a href="tel:+48600608333" style="color: var(--primary); font-weight: 600; text-decoration: none; font-size: 1.1rem;">&#128222; 600 608 333</a>
+                        <a href="mailto:kontakt@ncni.pl" style="color: var(--text-main); font-weight: 600; text-decoration: none;">✉️ kontakt@ncni.pl</a>
+                        <a href="tel:+48600608333" style="color: var(--primary); font-weight: 600; text-decoration: none; font-size: 1.1rem;">📞 600 608 333</a>
                     </div>
                     <div style="margin-top: 24px; display: inline-flex; gap: 10px; align-items: center;">
                         <a href="https://www.facebook.com/profile.php?id=61579420537737" target="_blank" class="social-icon" aria-label="Facebook"><svg width="24" height="24" viewBox="0 0 24 24" fill="#1877F2"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg></a>
@@ -868,8 +882,8 @@
     <!-- WIDGET ANI -->
     <div id="ania-widget" class="ania-container">
         <div class="ania-bubble" id="ania-greeting">
-            Dzień dobry! &#9728;&#65039; Jestem Wirtualną Asystentką NCNI. Kliknij we mnie, a odpowiem na Twoje pytania.
-            <span class="ania-close-bubble" onclick="closeGreeting(event)">&#10005;</span>
+            Dzień dobry! ☀️ Jestem Wirtualną Asystentką NCNI. Kliknij we mnie, a odpowiem na Twoje pytania.
+            <span class="ania-close-bubble" onclick="closeGreeting(event)">✕</span>
         </div>
         <div class="ania-chat-window glass" id="ania-window">
             <div class="ania-header">
@@ -883,7 +897,7 @@
                         <span style="font-size: 0.75rem; color: var(--primary);">Wirtualny Asystent</span>
                     </div>
                 </div>
-                <button onclick="toggleAnia()" style="background:none; border:none; cursor:pointer; font-size:1.2rem; color: var(--text-muted);">&#10005;</button>
+                <button onclick="toggleAnia()" style="background:none; border:none; cursor:pointer; font-size:1.2rem; color: var(--text-muted);">✕</button>
             </div>
             <div class="ania-messages" id="ania-messages-area"></div>
             <div class="ania-options-area" id="ania-options-area"></div>
