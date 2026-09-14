@@ -14,10 +14,10 @@
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>Pełna Oferta i Usługi | NCNI Wrocław</title>
-    <meta name="description" content="Kompleksowy katalog usług NCNI: Metoda Kraszewskiego, Diagnoza ADHD/ASD, Terapia VR, Biofeedback, Psychoterapia i Dietetyka. Sprawdź szczegóły.">
+    <meta name="description" content="Kompleksowy katalog usług NCNI: Metoda Kraszewskiego, Terapia VR, Biofeedback, Diagnoza ADHD/ASD, Psychoterapia i Dietetyka. Sprawdź szczegóły.">
     <link rel="icon" href="logo.png" type="image/png">
     
-    <!-- Fonty i Ikony (dodane FontAwesome dla dolnego menu) -->
+    <!-- Fonty i Ikony -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -90,165 +90,41 @@
         .mobile-bottom-nav-inner a.active, .mobile-bottom-nav-inner a:hover { color: var(--primary); font-weight: 600; }
 
         @media (max-width: 900px) {
-            body { 
-                padding-bottom: calc(60px + env(safe-area-inset-bottom)); 
-            }
+            body { padding-bottom: calc(60px + env(safe-area-inset-bottom)); }
             .nav-wrapper { flex-direction: row; height: 60px; justify-content: center; padding: 0; }
             .brand-bar { justify-content: center; width: auto; }
             .nav-links { display: none; }
             .logo { font-size: 1.1rem; gap: 10px; }
             .logo img { height: 36px; }
-            
             .mobile-bottom-nav { display: block; }
-            
             .ania-container { bottom: calc(80px + env(safe-area-inset-bottom)) !important; right: 16px; }
         }
 
-        .page-header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-        .header-badge {
-            background: var(--primary-light); 
-            color: var(--primary); 
-            padding: 6px 12px; 
-            border-radius: 99px; 
-            font-size: 0.9rem; 
-            font-weight: 600;
-            display: inline-block;
-            margin-bottom: 16px;
-        }
-        .page-header h1 {
-            font-size: 3rem;
-            margin-bottom: 16px;
-            color: var(--text-main);
-            letter-spacing: -0.03em;
-            line-height: 1.2;
-        }
-        .page-header p {
-            color: var(--text-muted);
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
+        /* ── Oferta Styles ── */
+        .page-header { text-align: center; margin-bottom: 40px; }
+        .header-badge { background: var(--primary-light); color: var(--primary); padding: 6px 12px; border-radius: 99px; font-size: 0.9rem; font-weight: 600; display: inline-block; margin-bottom: 16px; }
+        .page-header h1 { font-size: 3rem; margin-bottom: 16px; color: var(--text-main); letter-spacing: -0.03em; line-height: 1.2; }
+        .page-header p { color: var(--text-muted); font-size: 1.15rem; max-width: 750px; margin: 0 auto; line-height: 1.6; }
         .offer-list { margin-top: 40px; }
         
-        .category-header {
-            font-size: 1.8rem;
-            color: var(--text-main);
-            margin: 60px 0 24px;
-            padding-bottom: 12px;
-            border-bottom: 2px solid var(--border);
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            line-height: 1.3;
-        }
+        .category-header { font-size: 1.8rem; color: var(--text-main); margin: 60px 0 24px; padding-bottom: 12px; border-bottom: 2px solid var(--border); display: flex; align-items: center; gap: 12px; line-height: 1.3; }
         .category-header span { color: var(--primary); font-family: 'Lexend', sans-serif; font-weight: 300; }
 
-        .cennik-circle-wrapper {
-            display: flex;
-            justify-content: center;
-            margin: 30px 0 50px;
-        }
-        .cennik-circle {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            width: 110px;
-            height: 110px;
-            border-radius: 50%;
-            background: var(--accent);
-            color: white;
-            text-decoration: none;
-            font-weight: 700;
-            font-family: 'Lexend', sans-serif;
-            font-size: 1rem;
-            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
-            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-            position: relative;
-            z-index: 10;
-            border: 4px solid rgba(255,255,255,0.2);
-        }
-        .cennik-circle:hover {
-            transform: scale(1.15) rotate(5deg);
-            background: #4F46E5;
-            box-shadow: 0 15px 40px rgba(99, 102, 241, 0.6);
-        }
-        .cennik-circle small {
-            font-weight: 300;
-            font-size: 0.7rem;
-            opacity: 0.9;
-        }
+        .cennik-circle-wrapper { display: flex; justify-content: center; margin: 30px 0 50px; }
+        .cennik-circle { display: flex; flex-direction: column; justify-content: center; align-items: center; width: 110px; height: 110px; border-radius: 50%; background: var(--accent); color: white; text-decoration: none; font-weight: 700; font-family: 'Lexend', sans-serif; font-size: 1rem; box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4); transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); position: relative; z-index: 10; border: 4px solid rgba(255,255,255,0.2); }
+        .cennik-circle:hover { transform: scale(1.15) rotate(5deg); background: #4F46E5; box-shadow: 0 15px 40px rgba(99, 102, 241, 0.6); }
+        .cennik-circle small { font-weight: 300; font-size: 0.7rem; opacity: 0.9; }
 
-        .featured-card {
-            background: linear-gradient(135deg, #0F766E 0%, #115E59 100%);
-            color: white;
-            border-radius: 24px;
-            padding: 40px;
-            margin-bottom: 40px;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(15, 118, 110, 0.25);
-            border: 1px solid rgba(255,255,255,0.1);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 32px;
-        }
-        .featured-card::before {
-            content: ''; position: absolute; top: -50px; left: -50px;
-            width: 250px; height: 250px; background: rgba(255,255,255,0.07);
-            border-radius: 50%; filter: blur(60px); pointer-events: none;
-        }
+        .featured-card { background: linear-gradient(135deg, #0F766E 0%, #115E59 100%); color: white; border-radius: 24px; padding: 40px; margin-bottom: 40px; position: relative; overflow: hidden; box-shadow: 0 20px 40px rgba(15, 118, 110, 0.25); border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: space-between; gap: 32px; }
+        .featured-card::before { content: ''; position: absolute; top: -50px; left: -50px; width: 250px; height: 250px; background: rgba(255,255,255,0.07); border-radius: 50%; filter: blur(60px); pointer-events: none; }
         .featured-content { flex: 1; z-index: 1; }
-        .featured-content h3 { 
-            font-size: 2rem; 
-            margin-bottom: 16px; 
-            display: flex; 
-            flex-direction: column; 
-            align-items: flex-start; 
-            gap: 10px; 
-            line-height: 1.2;
-        }
-        .featured-badge { 
-            background: #F59E0B; 
-            color: #fff; 
-            font-size: 0.75rem; 
-            padding: 4px 10px; 
-            border-radius: 99px; 
-            text-transform: uppercase; 
-            font-weight: 700; 
-            letter-spacing: 0.05em; 
-        }
-        .featured-content p { 
-            opacity: 0.95; 
-            margin-bottom: 24px; 
-            font-size: 1.05rem; 
-            line-height: 1.7; 
-        }
-        .featured-image-container {
-            flex: 0 0 260px;
-            position: relative;
-            z-index: 1;
-        }
-        .featured-image-container img {
-            width: 100%;
-            height: auto;
-            border-radius: 20px;
-            border: 4px solid rgba(255, 255, 255, 0.15);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            transform: rotate(2deg);
-            transition: transform 0.4s ease;
-        }
+        .featured-content h3 { font-size: 2rem; margin-bottom: 16px; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; line-height: 1.2; }
+        .featured-badge { background: #F59E0B; color: #fff; font-size: 0.75rem; padding: 4px 10px; border-radius: 99px; text-transform: uppercase; font-weight: 700; letter-spacing: 0.05em; }
+        .featured-content p { opacity: 0.95; margin-bottom: 24px; font-size: 1.05rem; line-height: 1.7; }
+        .featured-image-container { flex: 0 0 260px; position: relative; z-index: 1; }
+        .featured-image-container img { width: 100%; height: auto; border-radius: 20px; border: 4px solid rgba(255, 255, 255, 0.15); box-shadow: 0 10px 30px rgba(0,0,0,0.3); transform: rotate(2deg); transition: transform 0.4s ease; }
         .featured-card:hover .featured-image-container img { transform: rotate(0deg) scale(1.02); }
-        .btn-featured {
-            display: inline-block; padding: 12px 28px; background: white; color: var(--primary-dark);
-            border-radius: 99px; text-decoration: none; font-weight: 600; box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            transition: 0.3s;
-        }
+        .btn-featured { display: inline-block; padding: 12px 28px; background: white; color: var(--primary-dark); border-radius: 99px; text-decoration: none; font-weight: 600; box-shadow: 0 4px 12px rgba(0,0,0,0.1); transition: 0.3s; }
         .btn-featured:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.2); }
 
         @media (max-width: 768px) {
@@ -258,39 +134,26 @@
             .featured-image-container img { transform: rotate(0); }
         }
 
-        details {
-            margin-bottom: 16px; border: 1px solid var(--border); border-radius: 16px;
-            background: white; overflow: hidden; transition: all 0.3s ease;
-        }
+        /* ── Details (Akordeony) ── */
+        details { margin-bottom: 16px; border: 1px solid var(--border); border-radius: 16px; background: white; overflow: hidden; transition: all 0.3s ease; }
         details:hover { border-color: var(--primary-light); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
         details[open] { border-color: var(--primary); box-shadow: 0 4px 12px rgba(15, 118, 110, 0.1); }
-        
-        summary {
-            padding: 24px; cursor: pointer; font-weight: 600; font-size: 1.1rem;
-            display: flex; justify-content: space-between; align-items: center; list-style: none;
-            color: var(--text-main); background: white; line-height: 1.4;
-        }
+        summary { padding: 24px; cursor: pointer; font-weight: 600; font-size: 1.1rem; display: flex; justify-content: space-between; align-items: center; list-style: none; color: var(--text-main); background: white; line-height: 1.4; }
         summary::-webkit-details-marker { display: none; }
         summary::after { content: '+'; font-size: 1.5rem; color: var(--primary); transition: transform 0.2s; font-weight: 300; }
         details[open] summary::after { transform: rotate(45deg); }
         details[open] summary { border-bottom: 1px solid var(--bg-body); background: #F0FDF4; }
-        
         .details-content { padding: 32px; color: var(--text-muted); background: white; }
         .details-content p { margin-bottom: 16px; }
         .details-content ul { padding-left: 20px; margin-bottom: 20px; }
         .details-content li { margin-bottom: 8px; }
 
-        .btn-small {
-            display: inline-block; padding: 10px 20px; background: var(--primary); color: white;
-            border-radius: 99px; text-decoration: none; font-size: 0.9rem; font-weight: 600;
-            margin-top: 8px; transition: 0.2s; box-shadow: 0 4px 6px rgba(15, 118, 110, 0.2);
-            cursor: pointer;
-        }
+        .btn-small { display: inline-block; padding: 10px 20px; background: var(--primary); color: white; border-radius: 99px; text-decoration: none; font-size: 0.9rem; font-weight: 600; margin-top: 8px; transition: 0.2s; box-shadow: 0 4px 6px rgba(15, 118, 110, 0.2); cursor: pointer; }
         .btn-small:hover { background: #0D9488; transform: translateY(-2px); }
 
         footer { background: white; border-top: 1px solid var(--border); padding: 60px 0 20px; margin-top: 80px; text-align: center; }
 
-        /* --- ANIA CSS --- */
+        /* ── Ania CSS ── */
         .ania-container { position: fixed; bottom: 24px; right: 24px; z-index: 2000; display: flex; flex-direction: column; align-items: flex-end; font-family: 'Inter', sans-serif; }
         .ania-avatar { width: 65px; height: 65px; border-radius: 50%; border: 3px solid white; box-shadow: 0 4px 20px rgba(15, 118, 110, 0.3); cursor: pointer; position: relative; transition: transform 0.3s; background: #fff; overflow: hidden; }
         .ania-avatar:hover { transform: scale(1.1); }
@@ -316,7 +179,6 @@
     </style>
 </head>
 <body>
-
     <div id="bg-canvas"></div>
 
     <header class="glass">
@@ -342,9 +204,9 @@
         
         <div class="page-header">
             <span class="header-badge">Katalog Usług NCNI</span>
-            <h1> Oferta</h1>
+            <h1>Oferta</h1>
             <p>
-               Scentralizowany katalog usług wspierających dobrostan, regenerację i regulację psychofizjologiczną. Od konsultacji wstępnej, przez pracę z napięciem i stresem, aż po Neuro-Imersję Premium.
+               Katalog usług wspierających dobrostan, regenerację i równowagę psychofizyczną, od pierwszej konsultacji, przez pracę z napięciem i stresem, po biofeedback EEG, trening HRV oraz sesje łączące psychologię z nowoczesną technologią, w tym rzeczywistość wirtualną (VR).
             </p>
         </div>
 
@@ -357,7 +219,6 @@
 
         <div class="offer-list">
             
-            <!-- METODA KRASZEWSKIEGO - FEATURED -->
             <div class="featured-card cursor-trigger">
                 <div class="featured-content">
                     <h3>
@@ -368,17 +229,69 @@
                     <a href="metoda-kraszewskiego.html" class="btn-featured">Poznaj Metodę</a>
                 </div>
                 <div class="featured-image-container">
-                    <img src="sk.jpg" alt="Dr. Kraszewski - Metoda Autorska" onerror="this.src='https://placehold.co/260x260/0F766E/ffffff?text=Dr+Kraszewski'">
+                    <img src="sk.jpg" alt="Prof. Kraszewski - Metoda Autorska" onerror="this.src='https://placehold.co/260x260/0F766E/ffffff?text=Prof+Kraszewski'">
                 </div>
             </div>
 
-            <h2 class="category-header"><span>01.</span> Psychologia & Psychotraumatologia</h2>
+            <!-- ZMIANA KOLEJNOŚCI - TECHNOLOGIA NA GÓRZE -->
+            <h2 class="category-header"><span>01.</span> Neuro-Technologie & VR</h2>
 
             <details class="cursor-trigger">
-                <summary>Psychoterapia Indywidualna (CBT)</summary>
+                <summary>Neuro-Immersja Kliniczna — Triangle (VR + Zero-G + Biofeedback)</summary>
                 <div class="details-content">
-                    <p>Indywidualne sesje terapeutyczne dla osób dorosłych zmagających się z kryzysem, depresją, lękiem lub trudnościami życiowymi. Sesje prowadzi <strong>Magdalena Dzialuk</strong> — psycholog, psychoterapeuta CBT.</p>
-                    <a href="psychologia.html" class="btn-small">Więcej o psychoterapii</a>
+                    <p><strong>Hiper-Premium:</strong> Zaawansowana procedura regulacji układu nerwowego. Łączy całkowite odciążenie kręgosłupa (Zero-G), terapię wirtualną i ciągły monitoring pracy serca (HRV). System Triangle automatycznie reaguje na stan Twojego ciała w czasie rzeczywistym i wspomaga aktywację układu przywspółczulnego. Najgłębszy reset dostępny we Wrocławiu.</p>
+                    <a href="index.html#rezerwacja" class="btn-small">Umów Neuro-Imersję</a>
+                </div>
+            </details>
+
+            <details class="cursor-trigger">
+                <summary>Terapia VR (Fobie, Lęki, OCD)</summary>
+                <div class="details-content">
+                    <p>Terapia ekspozycyjna w wirtualnym środowisku. Bezpieczne i kontrolowane warunki leczenia:</p>
+                    <ul>
+                        <li>Fobii specyficznych (samoloty, pająki, wysokość)</li>
+                        <li>Lęku społecznego i przed wystąpieniami publicznymi</li>
+                        <li>Zaburzeń Obsesyjno-Kompulsywnych (OCD)</li>
+                        <li>Zaburzeń Odżywiania (praca z obrazem ciała w VR)</li>
+                    </ul>
+                    <a href="technologie.html" class="btn-small">Zobacz laboratorium VR</a>
+                </div>
+            </details>
+            
+            <details class="cursor-trigger">
+                <summary>Terapia VR dla Spektrum Autyzmu</summary>
+                <div class="details-content">
+                    <p>Innowacyjny trening kompetencji społecznych w wirtualnej rzeczywistości. Nauka rozpoznawania emocji, reagowania w sklepie, szkole czy pracy w bezpiecznym symulatorze.</p>
+                </div>
+            </details>
+
+            <details class="cursor-trigger">
+                <summary>Biofeedback (HRV, EEG) i neuromodulacja</summary>
+                <div class="details-content">
+                    <ul>
+                        <li><strong>Biofeedback HRV:</strong> Trening oddechowy wspierający regulację rytmu serca i wyciszenie układu autonomicznego.</li>
+                        <li><strong>Biofeedback EEG (Neurofeedback):</strong> Trening fal mózgowych dla poprawy koncentracji (m m.in w ADHD) i redukcji stresu.</li>
+                        <li><strong>Biofeedback Termiczny:</strong> Trening kontroli temperatury obwodowej, stosowany jako metoda wspierająca pracę z napięciem i reakcją bólową.</li>
+                    </ul>
+                </div>
+            </details>
+
+            <details class="cursor-trigger">
+                <summary>Neuro-Immersja i Biofeedback w bólach migrenowych</summary>
+                <div class="details-content">
+                    <p>Specjalistyczne sesje łączące wirtualną rzeczywistość, biofeedback (HRV/EEG) oraz głęboką relaksację (Zero-Gravity). Stanowią mierzalne, skuteczne narzędzie wspomagające w niefarmakologicznym łagodzeniu napięciowych bólów głowy i profilaktyce migren.</p>
+                    <a href="technologie.html" class="btn-small">Poznaj nasze technologie</a>
+                </div>
+            </details>
+
+            <!-- KATEGORIA 02 - PSYCHOLOGIA -->
+            <h2 class="category-header" style="border-bottom-color: var(--accent);"><span>02.</span> Psychologia & Psychotraumatologia</h2>
+
+            <details class="cursor-trigger">
+                <summary>Psychoterapia Indywidualna (PL / EN)</summary>
+                <div class="details-content">
+                    <p>Indywidualne sesje terapeutyczne dla osób dorosłych zmagających się z kryzysem, depresją, lękiem lub trudnościami życiowymi. Prowadzone w nurcie psychodynamicznym i integratywnym przez <strong>mgr Darię Cerazy</strong>.</p>
+                    <a href="psycholog.html" class="btn-small">Poznaj specjalistę</a>
                 </div>
             </details>
 
@@ -391,24 +304,29 @@
             </details>
 
             <details class="cursor-trigger">
-                <summary>Psychoterapia Par</summary>
+                <summary>Psychoterapia Par (PL / EN)</summary>
                 <div class="details-content">
-                    <p>Wsparcie dla związków w kryzysie. Praca nad komunikacją, bliskością i rozwiązywaniem konfliktów.</p>
+                    <p>Wsparcie dla związków w kryzysie. Praca nad komunikacją, bliskością i rozwiązywaniem konfliktów. Terapię dla par (także w języku angielskim - Couples therapy in English) prowadzi <strong>mgr Daria Cerazy</strong>.</p>
+                    <a href="psycholog.html" class="btn-small">Poznaj specjalistę</a>
                 </div>
             </details>
 
-            <h2 class="category-header" style="border-bottom-color: var(--accent);"><span>02.</span> Diagnostyka Kliniczna</h2>
+            <!-- KATEGORIA 03 - DIAGNOSTYKA -->
+            <h2 class="category-header" style="border-bottom-color: #10B981;"><span>03.</span> Diagnostyka Kliniczna</h2>
             
             <details class="cursor-trigger">
                 <summary>Diagnoza ADHD (Dorośli i Dzieci)</summary>
                 <div class="details-content">
-                    <p>Kompleksowy proces diagnostyczny (3–4 spotkania). Obejmuje testy przesiewowe, wywiad kliniczny (DIVA-5) i obserwację.</p>
+                    <p>Kompleksowy proces diagnostyczny (3–4 spotkania). Obejmuje testy przesiewowe, wywiad kliniczny (DIVA-5) i obserwację. Wywiad diagnostyczny z osobami dorosłymi przeprowadza m.in. <strong>mgr Daria Cerazy</strong>.</p>
                     <ul>
-                        <li>Wywiad rozwojowy</li>
+                        <li>Wywiad rozwojowy (DIVA-5)</li>
                         <li>Testy neuropsychologiczne</li>
                         <li>Pełny raport z zaleceniami</li>
                     </ul>
-                    <a href="adhd.html" class="btn-small">Więcej o diagnozie ADHD</a>
+                    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                        <a href="adhd.html" class="btn-small">Więcej o diagnozie ADHD</a>
+                        <a href="psycholog.html" class="btn-small" style="background: white; color: var(--primary); border: 1px solid var(--primary);">Profil diagnosty (Dorośli)</a>
+                    </div>
                 </div>
             </details>
 
@@ -436,12 +354,13 @@
             <details class="cursor-trigger">
                 <summary>Diagnostyka Zaburzeń (Lękowe, Nastroju, Osobowości)</summary>
                 <div class="details-content">
-                    <p>Profesjonalna ocena kliniczna w kierunku:</p>
+                    <p>Profesjonalna ocena kliniczna prowadzona m.in. przez psychoterapeutkę <strong>mgr Darię Cerazy</strong> w kierunku:</p>
                     <ul>
                         <li>Zaburzeń osobowości (np. borderline, narcystyczna)</li>
                         <li>Zaburzeń nastroju (depresja, CHAD)</li>
                         <li>Zaburzeń lękowych (uogólnione, napadowe)</li>
                     </ul>
+                    <a href="psycholog.html" class="btn-small">Umów konsultację u psychologa</a>
                 </div>
             </details>
 
@@ -469,59 +388,7 @@
                 </div>
             </details>
 
-            <h2 class="category-header" style="border-bottom-color: #10B981;"><span>03.</span> Neuro-Technologie & VR</h2>
-
-            <details class="cursor-trigger">
-                <summary>Neuro-Immersja Kliniczna — Triangle (VR + Zero-G + Biofeedback)</summary>
-                <div class="details-content">
-                    <p><strong>Hiper-Premium:</strong> Zaawansowana procedura regulacji układu nerwowego. Łączy całkowite odciążenie kręgosłupa (Zero-G), terapię wirtualną i ciągły monitoring pracy serca (HRV). System Triangle automatycznie reaguje na stan Twojego ciała w czasie rzeczywistym i wspomaga aktywację układu przywspółczulnego. Najgłębszy reset dostępny we Wrocławiu.</p>
-                    <a href="index.html#rezerwacja" class="btn-small">Umów Neuro-Imersjskę</a>
-                </div>
-            </details>
-
-            <details class="cursor-trigger">
-                <summary>Terapia VR (Fobie, Lęki, OCD)</summary>
-                <div class="details-content">
-                    <p>Terapia ekspozycyjna w wirtualnym środowisku. Bezpieczne i kontrolowane warunki leczenia:</p>
-                    <ul>
-                        <li>Fobii specyficznych (samoloty, pająki, wysokość)</li>
-                        <li>Lęku społecznego i przed wystąpieniami publicznymi</li>
-                        <li>Zaburzeń Obsesyjno-Kompulsywnych (OCD)</li>
-                        <li>Zaburzeń Odżywiania (praca z obrazem ciała w VR)</li>
-                    </ul>
-                    <a href="technologie.html" class="btn-small">Zobacz laboratorium VR</a>
-                </div>
-            </details>
-            
-            <details class="cursor-trigger">
-                <summary>Terapia VR dla Spektrum Autyzmu</summary>
-                <div class="details-content">
-                    <p>Innowacyjny trening kompetencji społecznych w wirtualnej rzeczywistości. Nauka rozpoznawania emocji, reagowania w sklepie, szkole czy pracy w bezpiecznym symulatorze.</p>
-                </div>
-            </details>
-
-            <details class="cursor-trigger">
-                <summary>Biofeedback i neuromodulacja</summary>
-                <div class="details-content">
-                    <ul>
-                        <li><strong>Biofeedback HRV:</strong> Trening oddechowy wspierający regulację rytmu serca i wyciszenie układu autonomicznego.</li>
-                        <li><strong>Biofeedback Termiczny:</strong> Trening kontroli temperatury obwodowej, stosowany jako metoda wspierająca pracę z napięciem i reakcją bólową.</li>
-                        <li><strong>Neurostymulacja:</strong> Opcjonalne wsparcie regulacji pobudzenia i koncentracji, dobierane po konsultacji kwalifikacyjnej.</li>
-                    </ul>
-                </div>
-            </details>
-            
-            <details class="cursor-trigger">
-                <summary>Pakiety Technologiczne</summary>
-                <div class="details-content">
-                    <p>Cykle terapeutyczne w niższej cenie:</p>
-                    <ul>
-                        <li>Pakiet „Wolność od Lęku” (5 sesji VR)</li>
-                        <li>Pakiet „Czysta Głowa” (10 sesji Biofeedback)</li>
-                    </ul>
-                </div>
-            </details>
-
+            <!-- KATEGORIA 04 - CIAŁO I DIETA -->
             <h2 class="category-header" style="border-bottom-color: #F59E0B;"><span>04.</span> Wsparcie Holistyczne (Ciało & Dieta)</h2>
 
             <details class="cursor-trigger">
@@ -557,6 +424,7 @@
                 </div>
             </details>
             
+            <!-- KATEGORIA 05 - PROGRAMY SPECJALISTYCZNE -->
             <h2 class="category-header" style="border-bottom-color: #8B5CF6;"><span>05.</span> Programy Specjalistyczne (Neuroóżnorodność)</h2>
             
             <details class="cursor-trigger">
@@ -591,7 +459,6 @@
                         <li><strong>Dyskalkulia:</strong> Ćwiczenia wspierające rozumienie liczb, operacji i myślenia matematycznego.</li>
                         <li><strong>Dyspraksja (DCD):</strong> Wsparcie koordynacji, planowania ruchu i komfortu funkcjonowania.</li>
                         <li><strong>Zespoł Tourette'a / Tiki:</strong> Elementy pracy behawioralnej, w tym podejścia inspirowane CBIT.</li>
-                        <li><strong>Migrena i bóle głowy:</strong> Biofeedback, relaksacja i trening regulacji napięcia jako wsparcie uzupełniające.</li>
                     </ul>
                     <a href="neuroroznorodnosc.html" class="btn-small">Więcej o Neuroóżnorodności</a>
                 </div>
@@ -607,7 +474,6 @@
         </div>
     </footer>
 
-    <!-- MOBILE BOTTOM NAV BAR (LOIS EDITION) -->
     <div class="mobile-bottom-nav">
       <div class="mobile-bottom-nav-inner">
         <a href="index.html">
@@ -634,12 +500,10 @@
     </div>
 
     <div id="ania-widget" class="ania-container">
-        
         <div class="ania-bubble" id="ania-greeting">
             Dzień dobry! ☀️ Jestem Wirtualną Asystentką NCNI. Kliknij we mnie, a pomożę Ci znaleźć odpowiednią terapię.
             <span class="ania-close-bubble" onclick="closeGreeting(event)">✕</span>
         </div>
-
         <div class="ania-chat-window glass" id="ania-window">
             <div class="ania-header">
                 <div style="display:flex; align-items:center; gap:10px;">
@@ -654,11 +518,9 @@
                 </div>
                 <button onclick="toggleAnia()" style="background:none; border:none; cursor:pointer; font-size:1.2rem; color: var(--text-muted);">&#x2715;</button>
             </div>
-
             <div class="ania-messages" id="ania-messages-area"></div>
             <div class="ania-options-area" id="ania-options-area"></div>
         </div>
-
         <div class="ania-avatar cursor-trigger" onclick="toggleAnia()">
             <img src="ania.jpg" alt="Ania Chat" onerror="this.src='https://placehold.co/65x65/0F766E/ffffff?text=A'">
             <div class="status-dot"></div>
