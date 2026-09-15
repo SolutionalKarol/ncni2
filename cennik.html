@@ -4,6 +4,7 @@
     <script type="text/javascript" data-cmp-ab="1" src="https://cdn.consentmanager.net/delivery/autoblocking/93e58d8b2275d.js" data-cmp-host="c.delivery.consentmanager.net" data-cmp-cdn="cdn.consentmanager.net" data-cmp-codesrc="16"></script>
     <meta charset="UTF-8">
     
+    <!-- Google tag (gtag.js) --> 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-56VR40VHHV"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -47,19 +48,27 @@
             --border: #E2E8F0;
             --highlight-bg: #F0FDF4;
         }
+
+        /* Zabezpieczenie przed białą ścianą na iPhonie - blokada rozlewania poziomego */
+        html, body {
+            max-width: 100vw;
+            overflow-x: hidden;
+        }
+
         * { box-sizing: border-box; margin: 0; padding: 0; }
+        
         body { 
             font-family: 'Inter', sans-serif; 
             background-color: var(--bg-body); 
             color: var(--text-main); 
             line-height: 1.6; 
-            overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
         }
         h1, h2, h3 { font-family: 'Lexend', sans-serif; }
         
         #bg-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; z-index: -1; opacity: 0.6; pointer-events: none; }
-        .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+        
+        .container { max-width: 900px; width: 100%; margin: 0 auto; padding: 0 24px; box-sizing: border-box; }
         .glass { background: var(--bg-surface); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.6); box-shadow: 0 4px 20px rgba(0,0,0,0.03); }
         
         header { position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid var(--border); padding: 12px 0; }
@@ -104,13 +113,13 @@
         .mobile-bottom-nav-inner a.active, .mobile-bottom-nav-inner a:hover { color: var(--primary); font-weight: 600; }
 
         @media (max-width: 900px) {
-            .nav-wrapper { flex-direction: row; height: 60px; justify-content: flex-start; padding: 0 16px; position: relative; }
-            .brand-bar { justify-content: flex-start; width: calc(100% - 40px); }
+            .nav-wrapper { flex-direction: row; height: 60px; justify-content: center; padding: 0; }
+            .brand-bar { justify-content: space-between; width: 100%; padding: 0 16px; box-sizing: border-box; }
             .nav-links { display: none; }
-            .mobile-toggle { display: block; right: 16px; }
+            .mobile-toggle { display: block; position: static; transform: none; margin-left: 10px; }
             
-            .logo { font-size: 1.1rem; gap: 8px; overflow: hidden; align-items: center; }
-            .logo img { height: 36px; flex-shrink: 0; }
+            .logo { font-size: 1.1rem; gap: 8px; overflow: hidden; align-items: center; max-width: calc(100% - 50px); }
+            .logo img { height: 38px; flex-shrink: 0; }
             .logo span { 
                 font-size: 0.95rem; 
                 line-height: 1.1; 
@@ -126,49 +135,49 @@
             .ania-container { bottom: calc(80px + env(safe-area-inset-bottom)) !important; right: 16px !important; }
         }
 
-        .featured-card { background: linear-gradient(135deg, #111827 0%, #1F2937 100%); color: white; border-radius: 20px; padding: 35px; margin: 30px 0; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); position: relative; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); }
+        .featured-card { background: linear-gradient(135deg, #111827 0%, #1F2937 100%); color: white; border-radius: 20px; padding: 35px; margin: 30px 0; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); position: relative; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); width: 100%; box-sizing: border-box; }
         .featured-card::before { content: ''; position: absolute; top: -50px; right: -50px; width: 200px; height: 200px; background: radial-gradient(circle, rgba(147, 197, 253, 0.15) 0%, transparent 70%); border-radius: 50%; }
 
-        .system-banner { background: linear-gradient(135deg, #2b7fff 0%, #1a5fd4 100%); color: white; border-radius: 20px; padding: 35px; margin: 30px 0; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 15px 40px rgba(43, 127, 255, 0.35); position: relative; overflow: hidden; border: 2px solid rgba(255,255,255,0.25); }
+        .system-banner { background: linear-gradient(135deg, #2b7fff 0%, #1a5fd4 100%); color: white; border-radius: 20px; padding: 35px; margin: 30px 0; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 15px 40px rgba(43, 127, 255, 0.35); position: relative; overflow: hidden; border: 2px solid rgba(255,255,255,0.25); width: 100%; box-sizing: border-box; }
         .system-banner::before { content: ''; position: absolute; top: -60px; right: -40px; width: 220px; height: 220px; background: rgba(255,255,255,0.12); border-radius: 50%; filter: blur(50px); }
         .system-badge { background: #FFFFFF; color: #1a5fd4; font-size: 0.75rem; padding: 3px 10px; border-radius: 99px; text-transform: uppercase; font-weight: 800; letter-spacing: 0.05em; align-self: flex-start; }
 
-        .fc-content h3 { font-size: 1.6rem; margin-bottom: 5px; display: flex; flex-direction: column; align-items: flex-start; gap: 5px; line-height: 1.2; }
+        .fc-content h3 { font-size: 1.6rem; margin-bottom: 5px; display: flex; flex-direction: column; align-items: flex-start; gap: 5px; line-height: 1.2; word-wrap: break-word; }
         .fc-badge { background: #FDE047; color: #000; font-size: 0.75rem; padding: 4px 12px; border-radius: 99px; text-transform: uppercase; font-weight: 800; align-self: flex-start; letter-spacing: 0.05em; }
         
-        .fc-price { text-align: right; font-family: 'Lexend', sans-serif; position: relative; z-index: 2; min-width: 120px; }
+        .fc-price { text-align: right; font-family: 'Lexend', sans-serif; position: relative; z-index: 2; min-width: 120px; flex-shrink: 0; }
         .fc-price .amount { font-size: 2.2rem; font-weight: 700; display: block; line-height: 1; }
         .fc-price .unit { font-size: 0.9rem; opacity: 0.9; font-weight: 400; }
 
-        .section-title { font-size: 1.4rem; color: var(--primary); margin: 60px 0 20px; border-bottom: 2px solid var(--border); padding-bottom: 10px; clear: both; scroll-margin-top: 100px; }
+        .section-title { font-size: 1.4rem; color: var(--primary); margin: 60px 0 20px; border-bottom: 2px solid var(--border); padding-bottom: 10px; clear: both; scroll-margin-top: 100px; word-wrap: break-word; }
         
-        .price-row { display: flex; justify-content: space-between; align-items: baseline; padding: 18px 0; border-bottom: 1px dashed var(--border); transition: background 0.2s; }
+        .price-row { display: flex; justify-content: space-between; align-items: baseline; padding: 18px 0; border-bottom: 1px dashed var(--border); transition: background 0.2s; flex-wrap: wrap; gap: 10px; }
         .price-row:hover { background: rgba(255,255,255,0.5); }
         
-        .pr-service { flex: 1; padding-right: 20px; }
+        .pr-service { flex: 1; padding-right: 20px; min-width: 200px; }
         .pr-name { font-weight: 600; font-size: 1.05rem; color: var(--text-main); }
         .pr-desc { font-size: 0.9rem; color: var(--text-muted); margin-top: 4px; display: block; }
         .pr-meta { font-size: 0.85rem; color: var(--text-muted); margin-top: 3px; display: block; font-style: italic; }
-        .pr-amount { font-weight: 700; color: var(--text-main); font-family: 'Lexend', sans-serif; font-size: 1.1rem; white-space: nowrap; }
+        .pr-amount { font-weight: 700; color: var(--text-main); font-family: 'Lexend', sans-serif; font-size: 1.1rem; white-space: nowrap; flex-shrink: 0; }
 
-        .neuromigra-banner { background: linear-gradient(135deg, #7C3AED 0%, #5B21B6 100%); color: white; border-radius: 20px; padding: 30px 35px; margin: 30px 0; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 12px 35px rgba(124, 58, 237, 0.3); position: relative; overflow: hidden; border: 1px solid rgba(255,255,255,0.2); }
+        .neuromigra-banner { background: linear-gradient(135deg, #7C3AED 0%, #5B21B6 100%); color: white; border-radius: 20px; padding: 30px 35px; margin: 30px 0; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 12px 35px rgba(124, 58, 237, 0.3); position: relative; overflow: hidden; border: 1px solid rgba(255,255,255,0.2); width: 100%; box-sizing: border-box; }
         .neuromigra-banner::before { content: ''; position: absolute; top: -40px; right: -30px; width: 160px; height: 160px; background: rgba(255,255,255,0.1); border-radius: 50%; filter: blur(40px); }
         .neuromigra-badge { background: #FFFFFF; color: #5B21B6; font-size: 0.75rem; padding: 3px 10px; border-radius: 99px; text-transform: uppercase; font-weight: 800; letter-spacing: 0.05em; align-self: flex-start; }
 
-        .edu-banner { background: linear-gradient(135deg, #01696f 0%, #01383c 100%); color: white; border-radius: 20px; padding: 30px 35px; margin: 30px 0; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 12px 35px rgba(1, 105, 111, 0.3); position: relative; overflow: hidden; border: 1px solid rgba(255,255,255,0.2); }
+        .edu-banner { background: linear-gradient(135deg, #01696f 0%, #01383c 100%); color: white; border-radius: 20px; padding: 30px 35px; margin: 30px 0; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 12px 35px rgba(1, 105, 111, 0.3); position: relative; overflow: hidden; border: 1px solid rgba(255,255,255,0.2); width: 100%; box-sizing: border-box; }
         .edu-banner::before { content: ''; position: absolute; top: -40px; right: -30px; width: 160px; height: 160px; background: rgba(255,255,255,0.1); border-radius: 50%; filter: blur(40px); }
         .edu-badge { background: #fde047; color: #000; font-size: 0.75rem; padding: 3px 10px; border-radius: 99px; text-transform: uppercase; font-weight: 800; letter-spacing: 0.05em; align-self: flex-start; }
 
-        .payment-methods { margin-top: 60px; background: white; padding: 30px; border-radius: 16px; border: 1px solid var(--border); }
+        .payment-methods { margin-top: 60px; background: white; padding: 30px; border-radius: 16px; border: 1px solid var(--border); width: 100%; box-sizing: border-box; }
         .payment-list { list-style: none; display: flex; flex-wrap: wrap; gap: 20px; padding: 0; color: var(--text-muted); font-weight: 500; }
         .payment-list li { display: flex; align-items: center; gap: 8px; }
         .payment-list li::before { content: ''; display: block; width: 8px; height: 8px; background: var(--primary); border-radius: 50%; }
         
-        details { margin-bottom: 16px; border: 1px solid var(--border); border-radius: 12px; background: white; overflow: hidden; }
-        summary { padding: 16px 20px; cursor: pointer; font-weight: 600; display: flex; justify-content: space-between; align-items: center; color: var(--text-main); }
+        details { margin-bottom: 16px; border: 1px solid var(--border); border-radius: 12px; background: white; overflow: hidden; width: 100%; box-sizing: border-box; }
+        summary { padding: 16px 20px; cursor: pointer; font-weight: 600; display: flex; justify-content: space-between; align-items: center; color: var(--text-main); word-break: break-word; }
         .details-content { padding: 20px; color: var(--text-muted); font-size: 0.95rem; }
 
-        .filter-tabs { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin-bottom: 40px; }
+        .filter-tabs { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin-bottom: 40px; width: 100%; box-sizing: border-box; }
         .filter-btn { background: white; border: 1px solid var(--border); color: var(--text-muted); padding: 8px 18px; border-radius: 99px; font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: 0.3s; box-shadow: 0 2px 10px rgba(0,0,0,0.02); }
         .filter-btn:hover { border-color: var(--primary); color: var(--primary); transform: translateY(-1px); }
         .filter-btn.active { background: var(--primary); color: white; border-color: var(--primary); box-shadow: 0 4px 15px rgba(15, 118, 110, 0.25); }
@@ -180,10 +189,10 @@
         @media (max-width: 600px) {
             .featured-card, .system-banner, .neuromigra-banner, .edu-banner { flex-direction: column; text-align: center; gap: 20px; padding: 25px 20px; }
             .fc-content h3 { align-items: center; font-size: 1.3rem; text-align: center; }
-            .fc-price { text-align: center; margin-top: 10px; }
-            .price-row { flex-direction: column; gap: 8px; }
+            .fc-price { text-align: center; margin-top: 10px; width: 100%; }
+            .price-row { flex-direction: column; gap: 8px; align-items: flex-start; }
             .pr-amount { align-self: flex-end; color: var(--primary); font-size: 1.2rem; }
-            h1 { font-size: 2.2rem !important; }
+            h1 { font-size: 2.2rem !important; word-wrap: break-word; }
         }
 
         .ania-container { position: fixed; bottom: 24px; right: 24px; z-index: 2000; display: flex; flex-direction: column; align-items: flex-end; }
@@ -192,7 +201,7 @@
         .ania-bubble { display: none; background: white; padding: 16px; border-radius: 16px 16px 4px 16px; box-shadow: 0 5px 25px rgba(0,0,0,0.15); margin-bottom: 12px; max-width: 250px; font-size: 0.95rem; border: 1px solid var(--border); }
         .ania-bubble.active { display: block; }
         
-        footer { background: white; border-top: 1px solid var(--border); padding: 50px 0; margin-top: 80px; text-align: center; font-size: 0.9rem; color: var(--text-muted); }
+        footer { background: white; border-top: 1px solid var(--border); padding: 50px 0; margin-top: 80px; text-align: center; font-size: 0.9rem; color: var(--text-muted); width: 100%; box-sizing: border-box; }
     </style>
 </head>
 <body>
@@ -352,18 +361,18 @@
         <div class="pricing-section psych terapia">
             <h2 class="section-title" id="psychologia">Opieka Psychologiczna i Psychoterapia</h2>
             
-            <div style="display: flex; flex-wrap: wrap; gap: 20px; background: white; padding: 25px; border-radius: 12px; border: 1px solid var(--border); border-left: 4px solid var(--primary); margin: 15px 0; box-shadow: 0 4px 15px rgba(0,0,0,0.02);">
+            <div style="display: flex; flex-wrap: wrap; gap: 20px; background: white; padding: 25px; border-radius: 12px; border: 1px solid var(--border); border-left: 4px solid var(--primary); margin: 15px 0; box-shadow: 0 4px 15px rgba(0,0,0,0.02); box-sizing: border-box; width: 100%;">
                 <div style="flex-shrink: 0; text-align: center; width: 120px; position: relative; z-index: 10;">
                     <a href="psycholog.html" style="display: inline-block; transition: 0.3s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
                         <img src="daria.jpg" alt="Daria Cerazy Psycholog NCNI Wrocław" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; object-position: top; border: 3px solid var(--primary-light); box-shadow: 0 4px 10px rgba(15, 118, 110, 0.1);" onerror="this.src='https://ui-avatars.com/api/?name=Daria+Cerazy&background=0F766E&color=fff&size=200'">
                     </a>
                     <a href="psycholog.html" style="display: inline-block; margin-top: 8px; font-size: 0.85rem; color: var(--primary); text-decoration: none; font-weight: 600; padding: 4px 8px; border-radius: 4px; transition: 0.2s;" onmouseover="this.style.backgroundColor='var(--primary-light)'" onmouseout="this.style.backgroundColor='transparent'">Zobacz profil</a>
                 </div>
-                <div style="flex: 1; min-width: 250px;">
+                <div style="flex: 1; min-width: 200px;">
                     <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 10px; margin-bottom: 15px; border-bottom: 1px dashed var(--border); padding-bottom: 15px;">
                         <div style="position: relative; z-index: 10;">
                             <h3 style="margin-bottom: 4px;">
-                                <a href="psycholog.html" style="color: var(--primary); font-size: 1.3rem; text-decoration: none; transition: 0.2s;" onmouseover="this.style.color='var(--primary-dark)'" onmouseout="this.style.color='var(--primary)'">mgr Daria Cerazy</a>
+                                <a href="psycholog.html" style="color: var(--primary); font-size: 1.3rem; text-decoration: none; transition: 0.2s; word-wrap: break-word;" onmouseover="this.style.color='var(--primary-dark)'" onmouseout="this.style.color='var(--primary)'">mgr Daria Cerazy</a>
                             </h3>
                             <p style="font-weight: 600; color: var(--accent); font-size: 0.95rem; margin-bottom: 4px;">Psycholog, Psychoterapeuta</p>
                             <p style="color: var(--text-main); font-weight: 500; font-size: 0.9rem; margin-bottom: 0;">Wsparcie emocjonalne i terapia indywidualna / par</p>
@@ -371,7 +380,7 @@
                     </div>
                     
                     <p style="font-size: 0.95rem; color: var(--text-main); font-weight: 600; margin-bottom: 10px;">Zakres usług:</p>
-                    <ul style="list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 8px;">
+                    <ul style="list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 8px;">
                         <li style="font-size: 0.85rem; color: var(--text-muted); position: relative; padding-left: 18px;"><span style="position: absolute; left: 0; color: var(--primary);">✔</span> leczenie depresji i lęków</li>
                         <li style="font-size: 0.85rem; color: var(--text-muted); position: relative; padding-left: 18px;"><span style="position: absolute; left: 0; color: var(--primary);">✔</span> terapia psychodynamiczna i integratywna</li>
                         <li style="font-size: 0.85rem; color: var(--text-muted); position: relative; padding-left: 18px;"><span style="position: absolute; left: 0; color: var(--primary);">✔</span> terapia par (PL / EN)</li>
@@ -495,18 +504,18 @@
         <div class="pricing-section diet terapia">
             <h2 class="section-title" id="dietetyka">Dietetyka Kliniczna i Psychodietetyka</h2>
             
-            <div style="display: flex; flex-wrap: wrap; gap: 20px; background: white; padding: 25px; border-radius: 12px; border: 1px solid var(--border); border-left: 4px solid var(--primary); margin: 15px 0; box-shadow: 0 4px 15px rgba(0,0,0,0.02);">
+            <div style="display: flex; flex-wrap: wrap; gap: 20px; background: white; padding: 25px; border-radius: 12px; border: 1px solid var(--border); border-left: 4px solid var(--primary); margin: 15px 0; box-shadow: 0 4px 15px rgba(0,0,0,0.02); box-sizing: border-box; width: 100%;">
                 <div style="flex-shrink: 0; text-align: center; width: 120px; position: relative; z-index: 10;">
                     <a href="dietetyk.html" style="display: inline-block; transition: 0.3s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
                         <img src="dietetyk.jpg" alt="Dietetyk NCNI Wrocław" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; object-position: top; border: 3px solid var(--primary-light); box-shadow: 0 4px 10px rgba(15, 118, 110, 0.1);" onerror="this.src='https://ui-avatars.com/api/?name=Dietetyk+NCNI&background=0F766E&color=fff&size=200'">
                     </a>
                     <a href="dietetyk.html" style="display: inline-block; margin-top: 8px; font-size: 0.85rem; color: var(--primary); text-decoration: none; font-weight: 600; padding: 4px 8px; border-radius: 4px; transition: 0.2s;" onmouseover="this.style.backgroundColor='var(--primary-light)'" onmouseout="this.style.backgroundColor='transparent'">Zobacz profil</a>
                 </div>
-                <div style="flex: 1; min-width: 250px;">
+                <div style="flex: 1; min-width: 200px;">
                     <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 10px; margin-bottom: 15px; border-bottom: 1px dashed var(--border); padding-bottom: 15px;">
                         <div style="position: relative; z-index: 10;">
                             <h3 style="margin-bottom: 4px;">
-                                <a href="dietetyk.html" style="color: var(--primary); font-size: 1.3rem; text-decoration: none; transition: 0.2s;" onmouseover="this.style.color='var(--primary-dark)'" onmouseout="this.style.color='var(--primary)'">Dietetyk Kliniczny</a>
+                                <a href="dietetyk.html" style="color: var(--primary); font-size: 1.3rem; text-decoration: none; transition: 0.2s; word-wrap: break-word;" onmouseover="this.style.color='var(--primary-dark)'" onmouseout="this.style.color='var(--primary)'">Dietetyk Kliniczny</a>
                             </h3>
                             <p style="font-weight: 600; color: var(--accent); font-size: 0.95rem; margin-bottom: 4px;">Dietetyka, Psychodietetyka</p>
                             <p style="color: var(--text-main); font-weight: 500; font-size: 0.9rem; margin-bottom: 0;">Wsparcie żywieniowe w neuroróżnorodności</p>
@@ -514,7 +523,7 @@
                     </div>
                     
                     <p style="font-size: 0.95rem; color: var(--text-main); font-weight: 600; margin-bottom: 10px;">Zakres usług:</p>
-                    <ul style="list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 8px;">
+                    <ul style="list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 8px;">
                         <li style="font-size: 0.85rem; color: var(--text-muted); position: relative; padding-left: 18px;"><span style="position: absolute; left: 0; color: var(--primary);">✔</span> dieta w ADHD (wsparcie koncentracji)</li>
                         <li style="font-size: 0.85rem; color: var(--text-muted); position: relative; padding-left: 18px;"><span style="position: absolute; left: 0; color: var(--primary);">✔</span> praca z wybiórczością pokarmową (ASD)</li>
                         <li style="font-size: 0.85rem; color: var(--text-muted); position: relative; padding-left: 18px;"><span style="position: absolute; left: 0; color: var(--primary);">✔</span> wsparcie osi jelito-mózg</li>
@@ -551,18 +560,18 @@
         <div class="pricing-section fizjo terapia">
             <h2 class="section-title" id="fizjoterapia">Fizjoterapia Neuro i Praca z Ciałem</h2>
             
-            <div style="display: flex; flex-wrap: wrap; gap: 20px; background: white; padding: 25px; border-radius: 12px; border: 1px solid var(--border); border-left: 4px solid var(--primary); margin: 15px 0; box-shadow: 0 4px 15px rgba(0,0,0,0.02);">
+            <div style="display: flex; flex-wrap: wrap; gap: 20px; background: white; padding: 25px; border-radius: 12px; border: 1px solid var(--border); border-left: 4px solid var(--primary); margin: 15px 0; box-shadow: 0 4px 15px rgba(0,0,0,0.02); box-sizing: border-box; width: 100%;">
                 <div style="flex-shrink: 0; text-align: center; width: 120px; position: relative; z-index: 10;">
                     <a href="fizjoterapia.html" style="display: inline-block; transition: 0.3s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
                         <img src="fizjoterapeuta.jpg" alt="Fizjoterapeuta NCNI Wrocław" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; object-position: top; border: 3px solid var(--primary-light); box-shadow: 0 4px 10px rgba(15, 118, 110, 0.1);" onerror="this.src='https://ui-avatars.com/api/?name=Fizjoterapeuta+NCNI&background=0F766E&color=fff&size=200'">
                     </a>
                     <a href="fizjoterapia.html" style="display: inline-block; margin-top: 8px; font-size: 0.85rem; color: var(--primary); text-decoration: none; font-weight: 600; padding: 4px 8px; border-radius: 4px; transition: 0.2s;" onmouseover="this.style.backgroundColor='var(--primary-light)'" onmouseout="this.style.backgroundColor='transparent'">Zobacz profil</a>
                 </div>
-                <div style="flex: 1; min-width: 250px;">
+                <div style="flex: 1; min-width: 200px;">
                     <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 10px; margin-bottom: 15px; border-bottom: 1px dashed var(--border); padding-bottom: 15px;">
                         <div style="position: relative; z-index: 10;">
                             <h3 style="margin-bottom: 4px;">
-                                <a href="fizjoterapia.html" style="color: var(--primary); font-size: 1.3rem; text-decoration: none; transition: 0.2s;" onmouseover="this.style.color='var(--primary-dark)'" onmouseout="this.style.color='var(--primary)'">Fizjoterapeuta</a>
+                                <a href="fizjoterapia.html" style="color: var(--primary); font-size: 1.3rem; text-decoration: none; transition: 0.2s; word-wrap: break-word;" onmouseover="this.style.color='var(--primary-dark)'" onmouseout="this.style.color='var(--primary)'">Fizjoterapeuta</a>
                             </h3>
                             <p style="font-weight: 600; color: var(--accent); font-size: 0.95rem; margin-bottom: 4px;">Fizjoterapia holistyczna</p>
                             <p style="color: var(--text-main); font-weight: 500; font-size: 0.9rem; margin-bottom: 0;">Uwalnianie napięć psychosomatycznych</p>
@@ -570,7 +579,7 @@
                     </div>
                     
                     <p style="font-size: 0.95rem; color: var(--text-main); font-weight: 600; margin-bottom: 10px;">Zakres usług:</p>
-                    <ul style="list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 8px;">
+                    <ul style="list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 8px;">
                         <li style="font-size: 0.85rem; color: var(--text-muted); position: relative; padding-left: 18px;"><span style="position: absolute; left: 0; color: var(--primary);">✔</span> diagnostyka napięć mięśniowych</li>
                         <li style="font-size: 0.85rem; color: var(--text-muted); position: relative; padding-left: 18px;"><span style="position: absolute; left: 0; color: var(--primary);">✔</span> leczenie bólów głowy i napięć</li>
                         <li style="font-size: 0.85rem; color: var(--text-muted); position: relative; padding-left: 18px;"><span style="position: absolute; left: 0; color: var(--primary);">✔</span> wsparcie w regulacji układu nerwowego</li>
@@ -600,7 +609,7 @@
             <h2 class="section-title" id="technologia">NCNI Neurotechnologie i VR</h2>
 
             <div class="system-banner" style="gap: 25px; flex-wrap: wrap;">
-                <div class="fc-content" style="flex: 1; min-width: 250px;">
+                <div class="fc-content" style="flex: 1; min-width: 200px;">
                     <h3 style="flex-direction: row; flex-wrap: wrap; align-items: center; gap: 10px;">
                         <span class="system-badge">NCNI.SYSTEM</span>
                         NCNI.System
@@ -655,7 +664,7 @@
             </div>
 
             <div class="neuromigra-banner">
-                <div class="fc-content" style="flex: 1; min-width: 250px;">
+                <div class="fc-content" style="flex: 1; min-width: 200px;">
                     <h3 style="flex-direction: row; flex-wrap: wrap; align-items: center; gap: 10px;">
                         <span class="neuromigra-badge">PROGRAM</span>
                         NeuroMigra
@@ -676,7 +685,7 @@
             <h2 class="section-title" id="edukacja">Kursy i Szkolenia NCNI</h2>
 
             <div class="edu-banner">
-                <div class="fc-content" style="flex: 1; min-width: 250px;">
+                <div class="fc-content" style="flex: 1; min-width: 200px;">
                     <h3 style="flex-direction: row; flex-wrap: wrap; align-items: center; gap: 10px;">
                         <span class="edu-badge">CERTYFIKAT</span>
                         Trener Neuroróżnorodności
