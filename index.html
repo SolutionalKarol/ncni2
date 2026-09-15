@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-    <!-- ===== COOKIE CONSENT & TRACKING ===== -->
     <script type="text/javascript" data-cmp-ab="1" src="https://cdn.consentmanager.net/delivery/autoblocking/93e58d8b2275d.js" data-cmp-host="c.delivery.consentmanager.net" data-cmp-cdn="cdn.consentmanager.net" data-cmp-codesrc="16"></script>
     <meta charset="UTF-8">
     
@@ -23,7 +22,6 @@
       gtag('config', 'AW-18029740902');
     </script>
 
-    <!-- ===== RESPONSIVENESS & PWA (APP-LIKE FEEL) ===== -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <meta name="theme-color" content="#F8FAFC">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -64,7 +62,6 @@
     <meta name="twitter:description" content="Centrum Terapii ADHD i Neuroróżnorodności. VR, Biofeedback, Neurocoaching. Wrocław.">
     <meta name="twitter:image" content="https://ncni.pl/logo.png">
 
-    <!-- FONTS & ICONS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -141,6 +138,7 @@
             line-height: 1.6;
             overflow-x: hidden;
             width: 100%;
+            max-width: 100vw;
         }
 
         h1 { font-family: 'Lexend', sans-serif; line-height: 1.1; letter-spacing: -0.02em; }
@@ -165,7 +163,6 @@
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
         }
 
-        /* --- HEADER --- */
         header {
             position: sticky; top: 0; z-index: 1000;
             transition: var(--trans-default);
@@ -199,7 +196,6 @@
             .brand-name { font-size: clamp(0.7rem, 4.2vw, 1.05rem); line-height: 1.1; }
         }
 
-        /* --- SCROLL REVEAL --- */
         .reveal {
             opacity: 0;
             transform: translateY(36px);
@@ -210,7 +206,6 @@
         .reveal-delay-2 { transition-delay: 0.2s; }
         .reveal-delay-3 { transition-delay: 0.3s; }
 
-        /* --- HERO --- */
         .hero { padding: 80px 0 60px; text-align: center; }
         h1 { font-size: clamp(2rem, 6vw, 3.5rem); margin-bottom: 24px; background: linear-gradient(135deg, var(--text-main) 0%, var(--primary) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .hero-lead { font-size: clamp(1rem, 4vw, 1.25rem); color: var(--text-muted); max-width: 700px; margin: 0 auto 32px; }
@@ -221,13 +216,11 @@
         .btn-primary { background-color: var(--primary); color: white; }
         .btn-outline { background: white; border: 1px solid var(--border); color: var(--text-main); }
 
-        /* --- MARQUEE --- */
         .marquee-wrapper { background: var(--primary); color: white; padding: 10px 0; overflow: hidden; position: relative; font-family: 'Lexend', sans-serif; font-size: 0.85rem; letter-spacing: 0.05em; text-transform: uppercase; white-space: nowrap; }
         .marquee-content { display: inline-block; animation: scroll 40s linear infinite; }
         .marquee-item { margin: 0 16px; display: inline-flex; align-items: center; gap: 6px; }
         @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-        /* --- BANER KURSY --- */
         .ncni-courses-banner {
             background: linear-gradient(135deg, #0a2628 0%, #015055 100%);
             border-radius: 16px;
@@ -264,7 +257,6 @@
         .ncni-banner-btn:hover { background: #ffffff; color: #0a2628; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3); }
         @media (max-width: 768px) { .ncni-courses-banner { flex-direction: column; text-align: center; padding: 30px 20px; } }
 
-        /* --- CIRCLE VR SECTION --- */
         .circle-vr-section { background: linear-gradient(135deg, #ffffff 0%, var(--bg-body) 100%); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 80px 0; }
         @media (max-width: 768px) { .circle-vr-section { padding: 50px 0; } }
         .circle-vr-img-wrapper img { width: 100%; height: auto; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.08); transition: var(--trans-default); }
@@ -278,7 +270,6 @@
         .circle-vr-layout > div:last-child { flex: 1; min-width: 280px; }
         @media (max-width: 768px) { .circle-vr-layout { gap: 30px; } .circle-vr-layout > div { min-width: 100% !important; } }
 
-        /* --- TABS --- */
         .tabs-nav { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; margin-bottom: 30px; padding: 0 8px; }
         .tab-btn { background: white; border: 1px solid var(--border); padding: 10px 18px; border-radius: 99px; font-weight: 600; color: var(--text-muted); cursor: pointer; font-family: 'Lexend', sans-serif; font-size: 0.9rem; flex: 1 1 auto; text-align: center; min-width: 0; transition: var(--trans-default); }
         .tab-btn:hover { background: var(--primary-light); color: var(--primary); border-color: var(--primary-light); transform: translateY(-2px); }
@@ -290,7 +281,6 @@
         .tab-content.active { display: block; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* --- CARDS (GRID) --- */
         .grid-cards { display: grid; grid-template-columns: 1fr; gap: 16px; }
         @media (min-width: 560px) { .grid-cards { grid-template-columns: repeat(2, 1fr); gap: 20px; } }
         @media (min-width: 1024px) { .grid-cards { grid-template-columns: repeat(3, 1fr); } }
@@ -314,7 +304,6 @@
         .oval-card:hover .read-more { transform: translateX(5px); }
         @media (max-width: 480px) { .oval-card { border-radius: 20px; padding: 20px 16px; } }
 
-        /* --- TEAM GRID --- */
         .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; }
         @media (max-width: 560px) { .team-grid { grid-template-columns: 1fr; gap: 16px; } }
         .team-card { border-radius: 20px; overflow: hidden; background: white; text-decoration: none; display: flex; flex-direction: column; box-shadow: 0 4px 15px rgba(0,0,0,0.03); border: 1px solid var(--border); transition: var(--trans-default); }
@@ -326,7 +315,6 @@
         .team-info { padding: 18px; }
         .team-role { font-size: 0.8rem; font-weight: 700; color: var(--primary); text-transform: uppercase; letter-spacing: 0.05em; display: block; margin-bottom: 5px; }
 
-        /* --- PARTNERS MAIN SECTION (NEW) --- */
         .partners-main-section { 
             padding: 70px 0; 
             margin-top: 40px;
@@ -391,20 +379,15 @@
             margin-bottom: 0;
         }
 
-        /* --- RESERVATION --- */
         .reservation-section { background: white; border: 1px solid var(--border); border-radius: 20px; padding: 32px 20px; margin: 50px auto; max-width: 600px; box-shadow: 0 10px 30px rgba(0,0,0,0.03); transition: var(--trans-default); }
         .reservation-section:hover { box-shadow: 0 20px 40px rgba(15, 118, 110, 0.08); transform: translateY(-3px); border-color: var(--primary-light); }
-
-        /* --- SOCIAL ICONS --- */
         .social-icon { color: var(--text-muted); transition: transform 0.3s ease, color 0.3s ease; display: inline-flex; }
         .social-icon:hover { color: var(--primary); transform: translateY(-3px); }
 
-        /* --- FOOTER --- */
         footer { background: white; border-top: 1px solid var(--border); padding: 50px 0 20px; margin-top: 60px; }
         .footer-grid { display: grid; grid-template-columns: 1fr; gap: 30px; text-align: center; }
         @media (min-width: 768px) { .footer-grid { grid-template-columns: repeat(3, 1fr); text-align: left; } }
 
-        /* --- ANIA CSS --- */
         .ania-container { position: fixed; bottom: 24px; right: 24px; z-index: 2000; display: flex; flex-direction: column; align-items: flex-end; font-family: 'Inter', sans-serif; }
         .ania-avatar { width: 65px; height: 65px; border-radius: 50%; border: 3px solid white; box-shadow: 0 4px 20px rgba(15, 118, 110, 0.3); cursor: pointer; position: relative; transition: transform 0.3s; background: #fff; overflow: hidden; }
         .ania-avatar:hover { transform: scale(1.1); }
@@ -428,14 +411,12 @@
         @keyframes popIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
         @media (max-width: 480px) { .ania-chat-window { width: 300px; right: -10px; height: 450px; } }
 
-        /* ── MOBILE NAV BAR (LOIS EDITION) ── */
         .mobile-bottom-nav {
             display: none;
             position: fixed; bottom: 0; left: 0; right: 0;
             background: rgba(255,255,255,0.96); backdrop-filter: blur(8px);
             border-top: 1px solid var(--border);
             z-index: 1000;
-            /* Uwzględniamy pasek systemowy iPhone'ów */
             height: calc(60px + env(safe-area-inset-bottom));
             padding-bottom: env(safe-area-inset-bottom);
         }
@@ -453,12 +434,9 @@
 
         @media (max-width: 768px) {
             body { 
-                /* Robimy miejsce na bottom nav z safe area */
                 padding-bottom: calc(60px + env(safe-area-inset-bottom)); 
             }
             .mobile-bottom-nav { display: block; }
-            
-            /* Drobna poprawka dla Ani, żeby nie zachodziła na menu mobilne */
             .ania-container { bottom: calc(80px + env(safe-area-inset-bottom)); right: 16px; }
         }
 
@@ -559,7 +537,6 @@
         </div>
     </section>
 
-    <!-- CIRCLE VR / TRIANGLE SECTION -->
     <section class="circle-vr-section" id="technologia-circle" style="margin-top: 40px;">
         <div class="container">
             <div class="reveal" style="text-align: center; margin-bottom: 60px;">
@@ -597,6 +574,7 @@
                 <button class="tab-btn active" onclick="openTab('neuroroznorodnosc')">Neuroróżnorodność</button>
                 <button class="tab-btn" onclick="openTab('psychologia')">Psychologia</button>
                 <button class="tab-btn" onclick="openTab('technologie')">Technologie (VR/AI)</button>
+                <button class="tab-btn" onclick="openTab('dietetyka')">Dietetyka Kliniczna</button>
             </div>
 
             <div id="neuroroznorodnosc" class="tab-content active reveal">
@@ -678,7 +656,6 @@
                         <p>Mierzalna redukcja kortyzolu. Treningi oddechowe i Zero-Gravity.</p>
                         <span class="read-more">Więcej informacji &#8594;</span>
                     </a>
-                    <!-- Zaktualizowany kafelek prowadzący do Darii -->
                     <a href="psycholog.html" class="feature-card glass" style="border: 1px solid var(--primary-light);">
                         <div class="card-icon">&#128172;</div>
                         <h3>Psychoterapia (PL / EN)</h3>
@@ -701,6 +678,23 @@
                         <h3>Biofeedback HRV</h3>
                         <p>Trenuj swoje serce i mózg. Obserwuj wpływ oddechu na stres.</p>
                         <span class="read-more">Sprawdź sprzęt &#8594;</span>
+                    </a>
+                </div>
+            </div>
+
+            <div id="dietetyka" class="tab-content reveal">
+                <div class="grid-cards">
+                    <a href="dietetyk.html" class="feature-card glass" style="border: 1px solid var(--primary-light);">
+                        <div class="card-icon">🧠</div>
+                        <h3>Oś Jelita-Mózg (ADHD/ASD)</h3>
+                        <p>Wsparcie żywieniowe w neuroróżnorodności. Dieta poprawiająca koncentrację i poziom energii.</p>
+                        <span class="read-more">Zobacz profil &#8594;</span>
+                    </a>
+                    <a href="dietetyk.html" class="feature-card glass">
+                        <div class="card-icon">🍽️</div>
+                        <h3>Psychodietetyka i Metabolizm</h3>
+                        <p>Praca z insulinoopornością, jedzeniem emocjonalnym i trwałymi nawykami zdrowotnymi.</p>
+                        <span class="read-more">Sprawdź ofertę &#8594;</span>
                     </a>
                 </div>
             </div>
@@ -728,7 +722,6 @@
                     </div>
                 </a>
                 
-                <!-- NOWY KAFELEK DLA DARII CERAZY (Na pozycji nr 2) -->
                 <a href="psycholog.html" class="team-card">
                     <div class="team-img-wrapper">
                         <img src="daria.jpg" alt="Daria Cerazy Psycholog NCNI" class="team-img" style="object-position: top;" onerror="this.src='https://ui-avatars.com/api/?name=Daria+Cerazy&background=0F766E&color=fff&size=400'">
@@ -764,7 +757,6 @@
                     </div>
                 </a>
 
-                <!-- KAFELEK KAROLA (Przeniesiony na koniec) -->
                 <a href="kiszlo.html" class="team-card">
                     <div class="team-img-wrapper">
                         <img src="kk.jpg" alt="Karol Kiszło" class="team-img" onerror="this.src='https://ui-avatars.com/api/?name=Karol+Kiszlo&background=0F766E&color=fff&size=400'">
@@ -779,7 +771,6 @@
         </div>
     </section>
 
-    <!-- NOWA SEKCJA: NASI PARTNERZY STRATEGICZNI -->
     <section class="partners-main-section reveal">
         <div class="container">
             <span style="color: var(--primary); font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; font-size: 0.9rem; display: block; margin-bottom: 10px;">Potwierdzone Partnerstwa</span>
@@ -879,7 +870,6 @@
         </div>
     </footer>
 
-    <!-- WIDGET ANI -->
     <div id="ania-widget" class="ania-container">
         <div class="ania-bubble" id="ania-greeting">
             Dzień dobry! ☀️ Jestem Wirtualną Asystentką NCNI. Kliknij we mnie, a odpowiem na Twoje pytania.
@@ -908,7 +898,7 @@
         </div>
     </div>
 
-    <!-- MOBILE BOTTOM NAV BAR (LOIS EDITION) -->
+    <!-- MOBILE BOTTOM NAV BAR -->
     <div class="mobile-bottom-nav">
       <div class="mobile-bottom-nav-inner">
         <a href="#top" class="active">
@@ -984,7 +974,7 @@
             if (opt.action === 'booking') {
                 window.location.href = '#rezerwacja';
                 if(window.innerWidth < 480) toggleAnia();
-                setTimeout(() => { addMessage("Przeniosłam Cię do przycisków kontaktu. Powodzenia! 😊", 'bot'); }, 500);
+                setTimeout(() => { addMessage("Przeniosłam Cię do formularza zapisu. Powodzenia! 😊", 'bot'); }, 500);
             } else if (opt.next) { loadScenario(opt.next); }
         }
         function showTypingIndicator() {
