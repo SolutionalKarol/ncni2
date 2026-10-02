@@ -17,3 +17,7 @@
 
 .ncni-video-stop { display: block; margin-top: 10px; padding: 8px 14px; border: 1px solid #67e8f9; border-radius: 20px; color: #e2e8f0; background: #0b1121; font: inherit; cursor: pointer; }
 .ncni-video-stop:focus-visible { outline: 3px solid #67e8f9; outline-offset: 3px; }
+
+.ncni-video-portrait .ncni-video-stage { aspect-ratio: 9 / 16; }
+.ncni-adhd-training { display: grid; grid-template-columns: minmax(0, 300px) minmax(0, 1fr); gap: 32px; align-items: center; scroll-margin-top: 110px; }
+@media (max-width: 760px) { .ncni-adhd-training { grid-template-columns: 1fr; gap: 24px; padding: 24px; } .ncni-adhd-training .ncni-video { max-width: 340px; margin: 0 auto; } }
