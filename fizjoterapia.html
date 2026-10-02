@@ -167,8 +167,11 @@
         footer{background:white;border-top:1px solid var(--border);padding:60px 0 20px;margin-top:80px;text-align:center;}
         .footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:40px;text-align:left;}
     </style>
+<meta name="robots" content="noindex, nofollow">
 </head>
 <body>
+<main class="container" style="padding:100px 24px;max-width:800px;margin:auto;text-align:center"><a href="index.html">NCNI Wrocław</a><h1 style="margin:32px 0">Usługa obecnie niedostępna</h1><p>Sprawdź aktualną ofertę konsultacji i programów NCNI.</p><p><a href="oferta.html">Zobacz dostępne usługi</a></p></main>
+<template id="temporarily-unavailable-profile">
 
     <div id="bg-canvas"></div>
 
@@ -416,5 +419,6 @@
         function showTypingIndicator(){const l=document.createElement('div');l.id='typing-loader';l.className='msg bot';l.style.color='#aaa';l.innerText='...';messagesArea.appendChild(l);messagesArea.scrollTop=messagesArea.scrollHeight;}
         function removeTypingIndicator(){const l=document.getElementById('typing-loader');if(l)l.remove();}
     </script>
+</template>
 </body>
 </html>
