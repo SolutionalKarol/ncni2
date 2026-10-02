@@ -464,6 +464,8 @@
         footer { background: white; border-top: 1px solid var(--border); padding: 60px 0 20px; margin-top: 40px; text-align: center; }
         .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; text-align: left; }
     </style>
+    <link rel="stylesheet" href="assets/ncni-video.css">
+    <script src="assets/ncni-video.js" defer></script>
 </head>
 <body>
     <div id="bg-canvas"></div>
@@ -581,7 +583,15 @@
                         </p>
                     </div>
                     <!-- Lois: Zamiast stocka używamy dedykowanego tła łączącego vr-system.png -->
-                    <div class="innovation-visual triangle-visual"></div>
+                    <div class="ncni-triangle-film"><figure class="ncni-video" data-video="kosmos.mp4">
+    <div class="ncni-video-stage">
+        <button class="ncni-video-play" type="button" aria-label="Odtwórz: NCNI Wrocław: Kosmos w VR">
+            <img src="assets/kosmos-preview.jpg" alt="NCNI Wrocław: Kosmos w VR" width="1280" height="720" loading="lazy" decoding="async">
+            <span class="ncni-video-play-label">▶ Odtwórz film</span>
+        </button>
+    </div>
+    <figcaption>NCNI Wrocław: Kosmos w VR <a href="kosmos.mp4">Otwórz film</a></figcaption>
+</figure></div>
                 </div>
 
                 <div class="innovation-card b2b-card reveal">
@@ -617,6 +627,20 @@
                     <!-- Lois: Dedykowana abstrakcja tech/biznesowa -->
                     <div class="innovation-visual b2b-visual"></div>
                 </div>
+
+                <section id="arachnofobia-vr" class="ncni-demo reveal" aria-labelledby="arachnofobia-heading">
+                    <h3 id="arachnofobia-heading">Oswoić lęk przed pająkami</h3>
+                    <p>Zobacz aplikację NCNI do treningu arachnofobii w VR. Film pokazuje wirtualne otoczenie, w którym można stopniowo oswajać spotkanie z pająkiem. Dobór i przebieg treningu ustalamy podczas konsultacji.</p>
+                    <figure class="ncni-video" data-video="google.ara.mp4">
+    <div class="ncni-video-stage">
+        <button class="ncni-video-play" type="button" aria-label="Odtwórz: NCNI Wrocław: trening arachnofobii w VR">
+            <img src="assets/arachnofobia-preview.jpg" alt="NCNI Wrocław: trening arachnofobii w VR" width="1280" height="720" loading="lazy" decoding="async">
+            <span class="ncni-video-play-label">▶ Odtwórz film</span>
+        </button>
+    </div>
+    <figcaption>NCNI Wrocław: trening arachnofobii w VR <a href="google.ara.mp4">Otwórz film</a></figcaption>
+</figure>
+                </section>
 
                 <div class="sim-grid">
                     <div class="sim-card triangle-card reveal reveal-delay-1">
