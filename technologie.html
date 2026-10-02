@@ -317,7 +317,7 @@
         
         /* Bardziej profesjonalny, abstrakcyjny stock (zamiast generycznych gogli) */
         .b2b-visual { 
-            background: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80') center/cover; 
+            background: #111e32; 
         }
         .b2b-visual::after {
             content: ''; position: absolute; top:0; left:0; width:100%; height:100%;
@@ -466,6 +466,8 @@
     </style>
     <link rel="stylesheet" href="assets/ncni-video.css">
     <script src="assets/ncni-video.js" defer></script>
+    <link rel="stylesheet" href="assets/ncni-technologie.css">
+    <script src="assets/ncni-technologie.js" defer></script>
 </head>
 <body>
     <div id="bg-canvas"></div>
@@ -515,175 +517,20 @@
         </div>
     </section>
 
-    <section class="container">
-        <div class="vr-dark-section">
-            <div class="vr-dark-content">
-                <h2 class="reveal">Czym jest Terapia VR?</h2>
-                <p class="reveal">
-                    VR, czyli „Rzeczywistość Wirtualna", to generowane komputerowo, trójwymiarowe środowisko umożliwiające immersyjne, wielozmysłowe doświadczenia. Wykorzystanie VR w terapii pozwala pacjentowi poczuć się tak, jakby naprawdę znajdował się w danej sytuacji, jednocześnie dając terapeucie pełną kontrolę nad przebiegiem sesji.
-                </p>
-                
-                <a href="ncni_partnerstwo.html" class="partner-banner reveal">
-                    <div class="partner-banner-content">
-                        <div class="partner-icon">🤝</div>
-                        <div class="partner-text">
-                            <strong>Dla Właścicieli Klinik & Gabinetów</strong>
-                            Prowadzisz placówkę medyczną? Wdróż nasze technologie u siebie i zwiększ prestiż kliniki.
-                        </div>
-                    </div>
-                    <div class="partner-arrow"><i data-lucide="arrow-right"></i></div>
-                </a>
-
-               <h3 class="reveal" style="font-size: clamp(1.2rem, 4vw, 1.6rem); color: #F1F5F9; margin-bottom: 16px;">O Terapii Ekspozycyjnej VR (VRET)</h3>
-                <p class="reveal">
-                    Terapia Ekspozycyjna w Wirtualnej Rzeczywistości (VRET) to nowoczesna forma terapii poznawczo-behawioralnej (CBT). Jest to „złoty standard" w leczeniu zaburzeń lękowych (fobii, lęku społecznego, agorafobii, PTSD).
-                </p>
-
-                <!-- TRIANGLE - NEURO-IMMERSJA KLINICZNA -->
-                <div class="innovation-card reveal">
-                    <div class="innovation-content">
-                        <span class="inn-badge">NCNI Development Lab</span>
-                        <h3 class="inn-title">
-                            <span class="inn-app-name">Triangle — Neuro-Immersja Kliniczna</span>
-                            Zintegrowany System Neuroterapeutyczny
-                        </h3>
-                        <p style="color: #CBD5E1; margin-bottom: 20px; font-weight: 500;">
-                            Autorski system immersyjny łączący terapię ekspozycyjną (VRET) z ciągłym biofeedbackiem HRV i fotelem Zero Gravity w zamkniętej pętli — dedykowany wsparciu układu przywspółczulnego i głębokiej neuroregulacji.
-                        </p>
-                        
-                        <ul class="inn-list">
-                            <li>
-                                <div class="inn-icon"><i data-lucide="activity" width="18"></i></div>
-                                <span><strong>Leczenie zaburzeń lękowych (VRET):</strong> Fobie specyficzne, lęk społeczny, PTSD – w pełni kontrolowana ekspozycja.</span>
-                            </li>
-                            <li>
-                                <div class="inn-icon"><i data-lucide="brain-circuit" width="18"></i></div>
-                                <span><strong>Neuroatypowość i ADHD:</strong> Trening funkcji wykonawczych, koncentracji uwagi i samoregulacji emocjonalnej.</span>
-                            </li>
-                            <li>
-                                <div class="inn-icon"><i data-lucide="users" width="18"></i></div>
-                                <span><strong>Psychogeriatria:</strong> Aktywizacja poznawcza, redukcja poczucia izolacji i poprawa nastroju u seniorów.</span>
-                            </li>
-                            <li>
-                                <div class="inn-icon"><i data-lucide="bar-chart-2" width="18"></i></div>
-                                <span><strong>Reaktywna pętla biofeedbacku (HRV):</strong> System automatycznie reaguje na stan układu nerwowego pacjenta — gdy wchodzi w głęboki relaks, środowisko VR i fotel podtrzymują synchronizację układu przywspółczulnego.</span>
-                            </li>
-                            <li>
-                                <div class="inn-icon"><i data-lucide="fingerprint" width="18"></i></div>
-                                <span><strong>Brak Szablonów (100% Personalizacji):</strong> Każdy układ nerwowy jest inny. Odrzucamy uniwersalne schematy – parametry immersji, fotela i biofeedbacku są zawsze rygorystycznie szyte na miarę i adaptowane do unikalnych potrzeb pacjenta.</span>
-                            </li>
-                            <li>
-                                <div class="inn-icon"><i data-lucide="shield" width="18"></i></div>
-                                <span><strong>Nadzór prowadzącego sesję:</strong> Pełna automatyzacja z możliwością manualnej modyfikacji parametrów przez terapeutę w trakcie trwania sesji.</span>
-                            </li>
-                        </ul>
-
-                        <p class="inn-footer">
-                            System jest autorskim rozwiązaniem rozwijanym w ramach NCNI Development Lab w oparciu o aktualne badania kliniczne nad neuroplastycznością. Oferujemy możliwość wdrożenia systemu Triangle w zewnętrznych placówkach medycznych (model B2B).
-                        </p>
-                    </div>
-                    <!-- Lois: Zamiast stocka używamy dedykowanego tła łączącego vr-system.png -->
-                    <div class="ncni-triangle-film"><figure class="ncni-video" data-video="kosmos.mp4">
-    <div class="ncni-video-stage">
-        <button class="ncni-video-play" type="button" aria-label="Odtwórz: NCNI Wrocław: Kosmos w VR">
-            <img src="assets/kosmos-preview.jpg" alt="NCNI Wrocław: Kosmos w VR" width="1280" height="720" loading="lazy" decoding="async">
-            <span class="ncni-video-play-label">▶ Odtwórz film</span>
-        </button>
-    </div>
-    <figcaption>NCNI Wrocław: Kosmos w VR <a href="kosmos.mp4">Otwórz film</a></figcaption>
-</figure></div>
-                </div>
-
-                <div class="innovation-card b2b-card reveal">
-                    <div class="innovation-content">
-                        <span class="inn-badge">Dla Biznesu & Klinik</span>
-                        <h3 class="inn-title">
-                            <span class="inn-app-name">Dedykowane Aplikacje VR</span>
-                            Software Medyczny na Zamówienie 
-                        </h3>
-                        <p style="color: #CBD5E1; margin-bottom: 20px; font-weight: 500;">
-                          Projektujemy od podstaw dedykowane scenariusze terapeutyczne i aplikacje VR, ściśle dopasowane do specyfiki klinicznej Twojej placówki.
-                        </p>
-                        
-                        <ul class="inn-list">
-                            <li>
-                                <div class="inn-icon"><i data-lucide="check-circle" width="18"></i></div>
-                                <span><strong>Placówki medyczne i badawcze:</strong> Poszukujące własnych, unikalnych protokołów terapeutycznych i scenariuszy badawczych.</span>
-                            </li>
-                            <li>
-                                <div class="inn-icon"><i data-lucide="check-circle" width="18"></i></div>
-                                <span><strong>Specjalistyczne ośrodki:</strong> Terapii lęku, neurorehabilitacji, pracy z ADHD oraz opieki geriatrycznej.</span>
-                            </li>
-                            <li>
-                                <div class="inn-icon"><i data-lucide="check-circle" width="18"></i></div>
-                                <span><strong>Marka i wizerunek:</strong> Instytucje dążące do wdrażania innowacji pod własnym brandem (Custom Development).</span>
-                            </li>
-                        </ul>
-
-                        <p class="inn-footer" style="color: #A5B4FC; font-weight: 500;">
-                            <a href="mailto:kontakt@ncni.pl" style="color: inherit; text-decoration: underline;">Napisz do nas</a>, jeśli chcesz stworzyć własną aplikację VR dla swojej placówki.
-                        </p>
-                    </div>
-                    <!-- Lois: Dedykowana abstrakcja tech/biznesowa -->
-                    <div class="innovation-visual b2b-visual"></div>
-                </div>
-
-                <section id="arachnofobia-vr" class="ncni-demo reveal" aria-labelledby="arachnofobia-heading">
-                    <h3 id="arachnofobia-heading">Oswoić lęk przed pająkami</h3>
-                    <p>Zobacz aplikację NCNI do treningu arachnofobii w VR. Film pokazuje wirtualne otoczenie, w którym można stopniowo oswajać spotkanie z pająkiem. Dobór i przebieg treningu ustalamy podczas konsultacji.</p>
-                    <figure class="ncni-video" data-video="google.ara.mp4">
-    <div class="ncni-video-stage">
-        <button class="ncni-video-play" type="button" aria-label="Odtwórz: NCNI Wrocław: trening arachnofobii w VR">
-            <img src="assets/arachnofobia-preview.jpg" alt="NCNI Wrocław: trening arachnofobii w VR" width="1280" height="720" loading="lazy" decoding="async">
-            <span class="ncni-video-play-label">▶ Odtwórz film</span>
-        </button>
-    </div>
-    <figcaption>NCNI Wrocław: trening arachnofobii w VR <a href="google.ara.mp4">Otwórz film</a></figcaption>
-</figure>
-                </section>
-
-                <section id="trening-vr" class="ncni-demo ncni-adhd-training" aria-labelledby="trening-vr-title">
-                <figure class="ncni-video ncni-video-portrait" data-video="treningADHD.mp4">
-                    <div class="ncni-video-stage">
-                        <button class="ncni-video-play" type="button" aria-label="Odtwórz: Trening uważności VR dla osób z ADHD">
-                            <img src="assets/adhd-preview.jpg" alt="Ognisko w nocnym lesie, przykładowa sceneria treningu uważności VR" width="720" height="1280" loading="lazy">
-                            <span class="ncni-video-play-label">▶ Obejrzyj trening</span>
-                        </button>
-                    </div>
-                    <figcaption>Trening uważności VR · NCNI Wrocław<a href="treningADHD.mp4">Otwórz film osobno</a></figcaption>
-                </figure>
-                <div>
-                    <h3 id="trening-vr-title">Trening uważności VR dla osób z ADHD</h3>
-                    <p>W NCNI mamy szeroki wybór środowisk VR do treningu uwagi, wyciszenia i uważności. Dobieramy je do wieku, potrzeb i wrażliwości konkretnej osoby. Pracujemy z dziećmi, młodzieżą i dorosłymi z ADHD, również z osobami, które dobrze radzą sobie w szkole lub pracy, ale kosztuje je to dużo wysiłku.</p>
-                    <p>Jedni potrzebują spokojnej scenerii z niewielką liczbą bodźców. Inni chcą ćwiczyć skupienie i wracanie do zadania, gdy coś ich rozprasza. Podczas konsultacji ustalamy, jakie środowisko i tempo treningu będą odpowiednie.</p>
-                    <p>Film przedstawia wizualizację przykładowego treningu uważności przy wirtualnym ognisku.</p>
-                </div>
+    <section class="container ncni-tech-story">
+        <div class="vr-dark-section"><div class="vr-dark-content">
+            <section id="triangle" class="tech-station" aria-labelledby="triangle-heading">
+                <div><span class="tech-eyebrow">01 / Stanowisko NCNI</span><h2 id="triangle-heading">Triangle. Technologia w służbie doświadczenia</h2><p>Łączymy wirtualne otoczenie, biofeedback i fotel Zero Gravity w jednym stanowisku. Scenariusz oraz przebieg sesji dobieramy do potrzeb osoby i celu spotkania.</p>
+                <ul class="tech-components"><li><i data-lucide="glasses" aria-hidden="true"></i><div><strong>Wirtualna rzeczywistość</strong><span>Środowiska do treningu uwagi, uważności i oswajania lęku.</span></div></li><li><i data-lucide="activity" aria-hidden="true"></i><div><strong>Biofeedback</strong><span>Obserwacja sygnałów, takich jak HRV lub EEG, zależnie od konfiguracji stanowiska.</span></div></li><li><i data-lucide="armchair" aria-hidden="true"></i><div><strong>Zero Gravity</strong><span>Pozycja odciążająca i komfort podczas doświadczenia VR.</span></div></li></ul><a href="index.html#rezerwacja" class="tech-link">Zapytaj o pierwszą sesję →</a></div>
+                <figure class="tech-station-photo"><img src="assets/triangle-station.webp" alt="Osoba w białej marynarce korzystająca z gogli VR w fotelu NCNI" width="720" height="1280" loading="lazy"><figcaption>Stanowisko VR w NCNI Wrocław</figcaption></figure>
             </section>
-
-                <div class="sim-grid">
-                    <div class="sim-card triangle-card reveal reveal-delay-1">
-                        <div style="font-size: 2rem; margin-bottom: 12px;">🫂</div>
-                        <h4>Triangle — Neuro-Immersja</h4>
-                        <p>Autorska pętla relaksacji: biofeedback HRV + VR + Zero Gravity w zamkniętym cyklu regulacji układu przywspółczulnego.</p>
-                    </div>
-                    <div class="sim-card reveal reveal-delay-2">
-                        <div style="font-size: 2rem; margin-bottom: 12px;">🏔️</div>
-                        <h4>Wspinaczka Górska</h4>
-                        <p>Symulacja dla osób z lękiem wysokości (akrofobia).</p>
-                    </div>
-                    <div class="sim-card reveal reveal-delay-3">
-                        <div style="font-size: 2rem; margin-bottom: 12px;">🕷️</div>
-                        <h4>Arachnofobia</h4>
-                        <p>Bezpieczna ekspozycja na pająki w wirtualnym środowisku.</p>
-                    </div>
-                    <div class="sim-card reveal">
-                        <div style="font-size: 2rem; margin-bottom: 12px;">🎤</div>
-                        <h4>Wystąpienia</h4>
-                        <p>Trening przemawiania publicznego przed wirtualną publicznością.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+            <section id="doswiadczenia-vr" class="tech-experiences" aria-labelledby="experiences-heading"><span class="tech-eyebrow">02 / Zajrzyj do świata VR</span><h2 id="experiences-heading">Trzy doświadczenia. Różne cele.</h2><p>Obejrzyj przykładowe materiały i poznaj charakter środowisk. Filmy uruchamiasz samodzielnie, z dźwiękiem i możliwością powiększenia.</p><div class="tech-film-grid">
+<article id="kosmos-vr" class="tech-film-card"><figure class="ncni-video" data-video="kosmos.mp4"><div class="ncni-video-stage"><button class="ncni-video-play" type="button" aria-label="Odtwórz: Kosmos"><img src="assets/kosmos-preview.jpg" alt="Kosmos" width="1280" height="720" loading="lazy" decoding="async"><span class="ncni-video-play-label">▶ Obejrzyj film</span></button></div><figcaption>NCNI Wrocław<a href="kosmos.mp4">Otwórz film osobno</a></figcaption></figure><div class="tech-film-copy"><h3 id="kosmos-vr-heading">Kosmos</h3><p>Podróż od stanowiska z goglami do kosmicznej scenerii. Materiał prezentujący doświadczenie VR.</p></div></article><article id="trening-vr" class="tech-film-card"><figure class="ncni-video ncni-video-portrait" data-video="treningADHD.mp4"><div class="ncni-video-stage"><button class="ncni-video-play" type="button" aria-label="Odtwórz: Trening uważności"><img src="assets/adhd-preview.jpg" alt="Trening uważności" width="720" height="1280" loading="lazy" decoding="async"><span class="ncni-video-play-label">▶ Obejrzyj film</span></button></div><figcaption>NCNI Wrocław<a href="treningADHD.mp4">Otwórz film osobno</a></figcaption></figure><div class="tech-film-copy"><h3 id="trening-vr-heading">Trening uważności</h3><p>Wizualizacja przykładowego treningu dla osób z ADHD, ze spokojnym wirtualnym ogniskiem.</p></div></article><article id="arachnofobia-vr" class="tech-film-card"><figure class="ncni-video" data-video="google.ara.mp4"><div class="ncni-video-stage"><button class="ncni-video-play" type="button" aria-label="Odtwórz: Oswajanie lęku"><img src="assets/arachnofobia-preview.jpg" alt="Oswajanie lęku" width="1280" height="720" loading="lazy" decoding="async"><span class="ncni-video-play-label">▶ Obejrzyj film</span></button></div><figcaption>NCNI Wrocław<a href="google.ara.mp4">Otwórz film osobno</a></figcaption></figure><div class="tech-film-copy"><h3 id="arachnofobia-vr-heading">Oswajanie lęku</h3><p>Przykład aplikacji do treningu oswajania lęku przed pająkami. Dobór i przebieg sesji ustalamy podczas konsultacji.</p></div></article></div><p class="tech-experience-note">Mamy szeroki wybór środowisk VR. Dobieramy je do wieku, potrzeb i wrażliwości dzieci, młodzieży oraz dorosłych. <a href="adhd.html#trening-vr">Poznaj trening uważności dla osób z ADHD →</a></p></section>
+            <section id="software-medyczny" class="tech-software" aria-labelledby="software-heading"><div><span class="tech-eyebrow">03 / Dla placówek i zespołów badawczych</span><h2 id="software-heading">Oprogramowanie dopasowane do Twojego projektu</h2><p>Projektujemy dedykowane aplikacje VR i narzędzia do prowadzenia scenariuszy. Zakres ustalamy wspólnie z placówką, od pojedynczego doświadczenia po rozwiązanie z panelem prowadzącego.</p><ul class="tech-software-list"><li><i data-lucide="boxes" aria-hidden="true"></i>Środowiska i interakcje dopasowane do scenariusza</li><li><i data-lucide="sliders-horizontal" aria-hidden="true"></i>Ustawienia przebiegu sesji i poziomu trudności</li><li><i data-lucide="chart-no-axes-combined" aria-hidden="true"></i>Integracje z pomiarami i raportowaniem, zgodnie z zakresem projektu</li></ul><a href="mailto:kontakt@ncni.pl" class="tech-link">Porozmawiajmy o Twojej aplikacji →</a></div>
+                <figure class="tech-panel" data-concept-panel><figcaption><strong>NCNI / Panel prowadzącego</strong><span>Koncepcja interfejsu</span></figcaption><div class="tech-panel-body"><div class="tech-panel-options" role="group" aria-label="Wybierz podgląd koncepcji"><button type="button" data-scene="mindfulness" aria-pressed="true">Uważność</button><button type="button" data-scene="cosmos" aria-pressed="false">Kosmos</button><button type="button" data-scene="exposure" aria-pressed="false">Ekspozycja</button></div><div class="tech-panel-screen"><img src="assets/adhd-preview.jpg" alt="Koncepcja podglądu scenariusza uważności przy ognisku" width="720" height="1280" loading="lazy" data-scene-image><span data-scene-label>Scenariusz: uważność</span></div><div class="tech-panel-track"><span>Przykładowy sygnał</span><svg viewBox="0 0 400 70" role="img" aria-label="Dekoracyjny przykładowy wykres, bez danych pacjenta"><path d="M0 40 Q20 40 30 36 T55 40 L65 40 L75 15 L85 57 L96 34 L110 40 Q135 40 150 34 T180 40 L210 40 L220 17 L230 58 L240 33 L255 40 Q280 40 305 34 T335 40 L350 40 L360 18 L370 58 L380 35 L400 40"/></svg></div><small>Podgląd koncepcyjny. Dane na wykresie są ilustracyjne.</small><button type="button" class="tech-motion-toggle" aria-pressed="false" data-concept-motion hidden>Wstrzymaj animację</button></div></figure>
+            </section>
+            <section class="tech-delivery" aria-labelledby="delivery-heading"><span class="tech-eyebrow">04 / Od pomysłu do wdrożenia</span><h2 id="delivery-heading">Wspólnie ustalamy każdy etap</h2><ol><li><span>01</span><h3>Rozmowa o potrzebach</h3><p>Określamy odbiorców, cel, sprzęt i zakres projektu.</p></li><li><span>02</span><h3>Projekt scenariusza</h3><p>Układamy doświadczenie, interakcje i sposób prowadzenia sesji.</p></li><li><span>03</span><h3>Prototyp</h3><p>Sprawdzamy pierwszą wersję na docelowym urządzeniu.</p></li><li><span>04</span><h3>Testy i uruchomienie</h3><p>Dopracowujemy działanie, przygotowujemy wdrożenie i instrukcje.</p></li></ol><a href="ncni_partnerstwo.html" class="tech-link">Poznaj możliwości współpracy →</a></section>
+        </div></div>
     </section>
 
     <section class="container method-section">
