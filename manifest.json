@@ -1,0 +1,10 @@
+{
+  "name": "NCNI – Naukowe Centrum Neuroinnowacji",
+  "short_name": "NCNI",
+  "start_url": "/",
+  "display": "browser",
+  "lang": "pl",
+  "background_color": "#F8FAFC",
+  "theme_color": "#0F766E",
+  "icons": [{"src": "logo.png", "sizes": "512x512", "type": "image/png"}]
+}
