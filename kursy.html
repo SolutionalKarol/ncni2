@@ -3,7 +3,7 @@
 <head>
   <!-- ===== COOKIE CONSENT & TRACKING ===== -->
   <script type="text/javascript" data-cmp-ab="1" src="https://cdn.consentmanager.net/delivery/autoblocking/93e58d8b2275d.js" data-cmp-host="c.delivery.consentmanager.net" data-cmp-cdn="cdn.consentmanager.net" data-cmp-codesrc="16"></script>
-  
+
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-56VR40VHHV"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -11,8 +11,6 @@
     gtag('js', new Date());
     gtag('config', 'G-56VR40VHHV');
   </script>
-
-  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18029740902"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -22,7 +20,7 @@
 
   <!-- ===== PRIMARY META ===== -->
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=5.0">
   <meta name="color-scheme" content="light"> <!-- Blokuje auto-inwersję kolorów na telefonach w Dark Mode -->
   <meta name="google-site-verification" content="googlebb56f35f5dc914eb" />
 
@@ -87,12 +85,12 @@
     }
 
     html { scroll-behavior: smooth; }
-    body { 
-      font-family: 'Inter', sans-serif; 
-      font-size: 16px; 
-      line-height: 1.7; 
-      color: var(--text-primary); 
-      background: var(--bg); 
+    body {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--text-primary);
+      background: var(--bg);
       padding-bottom: 0;
     }
 
@@ -113,15 +111,15 @@
     }
     .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 68px; }
     .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-    .nav-logo img { height: 36px; }
-    .nav-logo span { 
-      font-size: 14px; 
-      font-weight: 700; 
-      color: #000000; 
-      white-space: normal; 
-      line-height: 1.2; 
+    .nav-logo img { width: 36px; height: 36px; object-fit: contain; flex: 0 0 36px; }
+    .nav-logo span {
+      font-size: 14px;
+      font-weight: 700;
+      color: #000000;
+      white-space: normal;
+      line-height: 1.2;
       flex: 1;
-    } 
+    }
     .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
     .nav-links a { font-size: 15px; font-weight: 600; color: var(--text-primary); text-decoration: none; transition: color .2s; }
     .nav-links a:hover, .nav-links a.active { color: var(--teal); font-weight: 700; }
@@ -153,8 +151,8 @@
       white-space: normal;
       max-width: 100%;
       font-size: 12px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase;
-      color: #000000 !important; 
-      background-color: #fde047; 
+      color: #000000 !important;
+      background-color: #fde047;
       background-image: linear-gradient(#fde047, #fde047); /* Blokuje inwersję na ciemny niebieski */
       border: none;
       padding: 6px 18px; border-radius: 20px; margin-bottom: 1.6rem;
@@ -166,21 +164,21 @@
       color: #ffffff;
       text-shadow: 0 2px 10px rgba(0,0,0,0.5);
     }
-    
+
     .hero h1 strong.neuro-text {
       font-weight: 800;
       color: #000000 !important;
-      background-color: #fde047; 
+      background-color: #fde047;
       background-image: linear-gradient(#fde047, #fde047); /* Blokada inwersji tła */
       padding: 2px 16px;
       border-radius: 8px;
       display: inline;
       box-decoration-break: clone;
       -webkit-box-decoration-break: clone;
-      text-shadow: none; 
+      text-shadow: none;
       line-height: 1.4;
     }
-    
+
     .hero-sub {
       font-size: 17px; color: #ffffff !important;
       max-width: 650px; margin: 0 auto 2.5rem; font-weight: 400;
@@ -265,7 +263,7 @@
     .section-sub { font-size: 15px; color: var(--text-secondary); max-width: 640px; }
 
     /* ── COURSE CARDS ── */
-    .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 24px; }
+    .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(310px, 100%), 1fr)); gap: 24px; }
 
     .course-card {
       background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius);
@@ -337,7 +335,7 @@
     .webinar-audience { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
 
     /* ── CONSULT ── */
-    .consult-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 24px; }
+    .consult-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(340px, 100%), 1fr)); gap: 24px; }
     .consult-card { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 32px; display: flex; flex-direction: column; gap: 16px; transition: box-shadow .25s, transform .2s; }
     .consult-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-3px); }
     .consult-card.featured { border-color: var(--teal); background: #f4fbfb; }
@@ -349,11 +347,11 @@
     .consult-duration { font-size: 12px; color: var(--text-muted); font-weight: 500; }
 
     /* ── CERT SECTION ── */
-    .cert-section { 
-      background-color: var(--bg-dark); 
+    .cert-section {
+      background-color: var(--bg-dark);
       background-image: linear-gradient(var(--bg-dark), var(--bg-dark)); /* Blokada inwersji */
-      color: #ffffff !important; 
-      padding: 100px 2rem; 
+      color: #ffffff !important;
+      padding: 100px 2rem;
     }
     .cert-inner { max-width: 780px; margin: 0 auto; text-align: center; }
     .cert-icon-big { font-size: 60px; margin-bottom: 1.5rem; }
@@ -384,52 +382,54 @@
       position: fixed; bottom: 0; left: 0; right: 0;
       background: rgba(255,255,255,0.96); backdrop-filter: blur(8px);
       border-top: 1px solid var(--border);
-      z-index: 100; 
+      z-index: 100;
       /* Uwzględniamy pasek systemowy iPhone'ów */
-      height: calc(60px + env(safe-area-inset-bottom));
+      height: calc(112px + env(safe-area-inset-bottom));
       padding-bottom: env(safe-area-inset-bottom);
     }
     .mobile-bottom-nav-inner {
-      display: flex; justify-content: space-around; align-items: center;
-      height: 60px; max-width: 600px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+      height: 112px; max-width: 600px; margin: 0 auto;
     }
     .mobile-bottom-nav-inner a {
       color: var(--text-secondary); text-decoration: none;
       display: flex; flex-direction: column; align-items: center;
-      font-size: 10px; font-weight: 500;
+      justify-content: center; min-height: 44px; gap: 3px;
+      font-size: 11px; font-weight: 600; line-height: 1.2; text-align: center;
     }
-    .mobile-bottom-nav-inner a i { font-size: 18px; margin-bottom: 4px; }
+    .mobile-bottom-nav-inner svg { width: 20px; height: 20px; flex-shrink: 0; }
     .mobile-bottom-nav-inner a.active { color: var(--teal); font-weight: 600; }
 
     /* ── RESPONSIVE PUSH-DOWNS & REORDERING ── */
     @media (max-width: 768px) {
-      body { 
+      body {
         /* Robimy miejsce na bottom nav z safe area */
-        padding-bottom: calc(60px + env(safe-area-inset-bottom)); 
+        padding-bottom: calc(128px + env(safe-area-inset-bottom));
       }
-      
+
       nav { padding: 0 1rem; }
-      .nav-inner { justify-content: center; } /* Ukrywamy puste przestrzenie po menu */
+      .nav-inner { justify-content: center; min-height: 68px; height: auto; padding: 10px 0; }
+      .nav-logo { min-width: 0; max-width: 100%; }
       .nav-logo span { font-size: 12px; }
       .nav-links { display: none; }
 
       section { padding: 60px 1.25rem; }
       .container { padding: 0; }
       .hero { padding: 60px 1.25rem; }
-      
+
       .hero-actions { flex-direction: column; width: 100%; }
       .hero-actions .btn-primary, .hero-actions .btn-ghost { width: 100%; display: block; box-sizing: border-box; }
 
       .professor-inner { flex-direction: column; text-align: center; }
       .professor-badges { justify-content: center; }
       .professor-link, .professor-link .btn-outline { width: 100%; text-align: center; box-sizing: border-box; display: block; }
-      
+
       .cards-grid { grid-template-columns: 1fr; }
-      
+
       /* Ciasne układy kart na mniejsze urządzenia */
       .card-top, .card-bottom { padding: 20px; }
       .card-pricing-note { padding: 10px 20px; }
-      
+
       /* Guziki 100% szerokości na urządzeniach mobilnych */
       .card-bottom, .product-bottom, .webinar-footer, .consult-footer {
         flex-direction: column;
@@ -439,9 +439,9 @@
       .card-price, .product-price, .webinar-price, .consult-price {
         text-align: center;
       }
-      .card-bottom .btn-card, .card-bottom .btn-card-ghost, 
-      .product-bottom .btn-card, .product-bottom .btn-card-ghost, 
-      .webinar-footer .btn-card, 
+      .card-bottom .btn-card, .card-bottom .btn-card-ghost,
+      .product-bottom .btn-card, .product-bottom .btn-card-ghost,
+      .webinar-footer .btn-card,
       .consult-footer .btn-primary, .consult-footer .btn-outline {
         display: block; width: 100%; text-align: center; box-sizing: border-box;
       }
@@ -453,13 +453,13 @@
       .cert-divider { display: none; }
       .flagship-card { transform: none; }
       .flagship-card:hover { transform: translateY(-3px); }
-      
+
       .contact-actions { flex-direction: column; }
       .contact-link { width: 100%; justify-content: center; box-sizing: border-box; }
 
       .mobile-bottom-nav { display: block; }
     }
-  
+
 /* Desktop navigation: stable branding and evenly spaced links. */
 @media(min-width:769px){
  nav .nav-inner{max-width:1280px;min-height:80px;height:auto;gap:24px;padding:12px 0;box-sizing:border-box}
@@ -481,14 +481,17 @@
 }
 
 </style>
-<script type="application/ld+json" id="ncni-page-metadata">{"@context": "https://schema.org", "@type": "WebPage", "@id": "https://ncni.pl/kursy.html#webpage", "url": "https://ncni.pl/kursy.html", "name": "Kursy i szkolenia | Neuroróżnorodność, ADHD, VR | NCNI", "description": "Kursy, szkolenia i webinary NCNI dla specjalistów, rodziców i organizacji. ADHD, dysleksja, dyskalkulia, biofeedback i VR. Programy oraz ceny.", "inLanguage": "pl-PL", "isPartOf": {"@id": "https://ncni.pl/#website"}}</script></head>
+<script type="application/ld+json" id="ncni-page-metadata">{"@context": "https://schema.org", "@type": "WebPage", "@id": "https://ncni.pl/kursy.html#webpage", "url": "https://ncni.pl/kursy.html", "name": "Kursy i szkolenia | Neuroróżnorodność, ADHD, VR | NCNI", "description": "Kursy, szkolenia i webinary NCNI dla specjalistów, rodziców i organizacji. ADHD, dysleksja, dyskalkulia, biofeedback i VR. Programy oraz ceny.", "inLanguage": "pl-PL", "isPartOf": {"@id": "https://ncni.pl/#website"}}</script><link rel="stylesheet" href="assets/ncni-compat.css?v=20261006">
+<script src="assets/ncni-runtime.js?v=20261006" defer></script>
+<noscript><style>.reveal{opacity:1!important;transform:none!important}@media(max-width:900px){.mobile-toggle{display:none}.mobile-menu{position:static;display:block;transform:none;visibility:visible;pointer-events:auto;max-height:none}}</style></noscript>
+</head>
 <body>
 
 <!-- NAV -->
 <nav>
   <div class="nav-inner">
     <a href="index.html" class="nav-logo">
-      <img src="logo.png" alt="NCNI" onerror="this.style.display='none'" />
+      <img src="logo.webp" alt="NCNI" onerror="this.style.display='none'" width="256" height="256" decoding="async">
       <span>Naukowe Centrum Neuroinnowacji</span>
     </a>
     <ul class="nav-links">
@@ -519,7 +522,7 @@
 <div class="professor-strip">
   <div class="professor-inner">
     <div class="professor-avatar">
-      <img src="https://ncni.pl/sk-green.jpg" alt="dr hab. inż. Sebastian Kraszewski, prof. PWr"
+      <img src="https://ncni.pl/sk-green.webp" alt="dr hab. inż. Sebastian Kraszewski, prof. PWr"
            onerror="this.style.display='none';this.parentNode.innerHTML='<span class=professor-avatar-placeholder>🔬</span>';" />
     </div>
     <div class="professor-text">
@@ -682,7 +685,7 @@
       <h2 class="section-title"><strong>Kursy dla Rodziców</strong><br>Zrozum i wspieraj swoje dziecko</h2>
       <p class="section-sub">Wiedza, która naprawdę zmienia codzienne życie. Bez diagnozy medycznej, za to z rzetelną praktyką i gotowymi rozwiązaniami.</p>
     </div>
-    
+
     <div class="cards-grid">
 
       <!-- NOWY KURS: ADHD -->
@@ -948,6 +951,31 @@
   </div>
 </section>
 
+<section id="mentoring-naukowy">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">MedPhi Scholar · rozwój naukowy</span>
+      <h2 class="section-title">Mentoring naukowy<br><strong>i wsparcie doktorantów</strong></h2>
+      <p class="section-sub">Wspieramy doktorantów i badaczy w rozwijaniu własnych projektów naukowych: od doprecyzowania pytania badawczego i planu pracy, przez przegląd literatury, po przygotowanie publikacji.</p>
+    </div>
+    <div class="consult-grid">
+      <div class="consult-card">
+        <h3 class="consult-title">Konsultacje i warsztat badawczy</h3>
+        <p class="consult-desc">Pomagamy uporządkować temat i plan badań, zaplanować wyszukiwanie literatury oraz krytycznie ocenić źródła. Omawiamy strukturę tekstu, argumentację i sposób prezentacji wyników.</p>
+        <p class="consult-desc">Doktorant pozostaje autorem rozprawy i odpowiada za jej samodzielny wkład naukowy. Zakres wsparcia uzgadniamy z uwzględnieniem zasad uczelni i ustaleń z promotorem. Przy publikacjach autorstwo i podziękowania odzwierciedlają rzeczywisty wkład uczestników projektu.</p>
+        <a href="mailto:kontakt@ncni.pl?subject=Mentoring%20naukowy" class="btn-primary">Omów swój projekt</a>
+      </div>
+      <div class="consult-card featured">
+        <h3 class="consult-title">MedPhi Scholar: od pytania do manuskryptu</h3>
+        <p class="consult-desc">Przeglądy literatury, synteza wyników badań, wsparcie przygotowania tekstu i bibliografii oraz materiałów do zgłoszenia publikacji. Pracujemy z dokumentowaniem decyzji i ekspercką kontrolą merytoryczną.</p>
+        <p class="consult-desc">Rapid Review · Narrative Review · Systematic / Scoping Review · Full Publication Support.</p>
+        <p class="consult-desc">Nadzór naukowy: dr hab. inż. Sebastian Kraszewski. Zakres i wycenę ustalamy indywidualnie. Pakiety MedPhi Scholar od 4 900 zł.</p>
+        <a href="cennik.html#medphi-scholar" class="btn-primary">Zobacz pakiety i ceny</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- SEKCJA 5: KONSULTACJE -->
 <section id="konsultacje">
   <div class="container">
@@ -999,6 +1027,17 @@
 </div>
 
 <!-- MOBILE BOTTOM NAV BAR -->
+<div class="mobile-bottom-nav" role="navigation" aria-label="Kursy i oferta NCNI">
+  <div class="mobile-bottom-nav-inner">
+    <a href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10 12 3l9 7 M5 9v12h5v-7h4v7h5V9"/></svg><span>Strona główna</span></a>
+    <a href="#specjalisci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h7l2 2 2-2h7v15h-7l-2 2-2-2H3z M12 7v15"/></svg><span>Dla specjalistów</span></a>
+    <a href="#rodzice"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3a3 3 0 1 0 0 6 3 3 0 0 0 0-6 M16 8a2 2 0 1 0 0 4 2 2 0 0 0 0-4 M2 21v-5a6 6 0 0 1 12 0v5 M14 15a4 4 0 0 1 8 4v2"/></svg><span>Dla rodziców</span></a>
+    <a href="#materialy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h8l4 4v14H6z M14 3v5h4 M9 12h6 M9 16h6"/></svg><span>Materiały PDF</span></a>
+    <a href="#webinary"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4h18v13H3z M8 21h8 M12 17v4 M10 8l5 3-5 3z"/></svg><span>Webinary</span></a>
+    <a href="#konsultacje"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11a8 8 0 0 1-8 8H7l-4 3V7a4 4 0 0 1 4-4h6a8 8 0 0 1 8 8 M7 9h10 M7 13h7"/></svg><span>Konsultacje</span></a>
+    <a href="#mentoring-naukowy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="m2 8 10-5 10 5-10 5z M6 10v7c4 3 8 3 12 0v-7 M22 8v9"/></svg><span>Mentoring<br>naukowy</span></a>
+  </div>
+</div>
 
 
 </body>

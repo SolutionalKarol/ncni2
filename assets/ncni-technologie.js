@@ -1,8 +1,8 @@
 document.querySelectorAll('[data-concept-panel]').forEach(panel => {
     const scenes = {
-        mindfulness: ['assets/adhd-preview.jpg', 'Scenariusz: uważność', 'Koncepcja podglądu scenariusza uważności przy ognisku'],
-        cosmos: ['assets/kosmos-preview.jpg', 'Scenariusz: kosmos', 'Koncepcja podglądu scenariusza kosmicznego'],
-        exposure: ['assets/arachnofobia-preview.jpg', 'Scenariusz: ekspozycja', 'Koncepcja podglądu scenariusza oswajania lęku']
+        mindfulness: ['assets/adhd-preview.webp', 'Scenariusz: uważność', 'Koncepcja podglądu scenariusza uważności przy ognisku'],
+        cosmos: ['assets/kosmos-preview.webp', 'Scenariusz: kosmos', 'Koncepcja podglądu scenariusza kosmicznego'],
+        exposure: ['assets/arachnofobia-preview.webp', 'Scenariusz: ekspozycja', 'Koncepcja podglądu scenariusza oswajania lęku']
     };
     panel.querySelectorAll('[data-scene]').forEach(button => {
         button.addEventListener('click', () => {

@@ -2,6 +2,7 @@ document.querySelectorAll('.ncni-video[data-video]').forEach(figure => {
     const button = figure.querySelector('.ncni-video-play');
     const stage = figure.querySelector('.ncni-video-stage');
     const source = figure.dataset.video;
+    if (!button || !stage) return;
     if (!['kosmos.mp4', 'google.ara.mp4', 'treningADHD.mp4'].includes(source)) return;
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
     let timer, iframe, stop, inView = false, dismissed = false, automatic = false;
@@ -23,8 +24,12 @@ document.querySelectorAll('.ncni-video[data-video]').forEach(figure => {
         iframe.controls = true;
         iframe.playsInline = true;
         iframe.muted = auto;
+        iframe.defaultMuted = auto;
+        iframe.setAttribute('playsinline', '');
+        iframe.preload = 'none';
+        iframe.tabIndex = 0;
         iframe.loop = auto;
-        iframe.setAttribute('aria-label', button.getAttribute('aria-label').replace('Odtwórz: ', ''));
+        iframe.setAttribute('aria-label', (button.getAttribute('aria-label') || 'Film NCNI').replace('Odtwórz: ', ''));
         iframe.addEventListener('error', () => { dismissed = true; reset(); }, {once: true});
         button.replaceWith(iframe);
         iframe.play().catch(() => { /* Native controls allow manual playback. */ });
@@ -49,12 +54,12 @@ document.querySelectorAll('.ncni-video[data-video]').forEach(figure => {
         else { clearTimeout(timer); if (automatic && iframe) reset(); }
     }, {threshold: .5});
     observer.observe(figure);
-    reducedMotion.addEventListener('change', () => {
+    (reducedMotion.addEventListener ? reducedMotion.addEventListener.bind(reducedMotion, "change") : reducedMotion.addListener.bind(reducedMotion))( () => {
         if (reducedMotion.matches) { clearTimeout(timer); if (automatic && iframe) reset(); }
         else schedule();
     });
     document.addEventListener('visibilitychange', () => {
-        if (document.hidden) { clearTimeout(timer); if (automatic && iframe) reset(); }
+        if (document.hidden) { clearTimeout(timer); if (automatic && iframe) reset(); else iframe?.pause(); }
         else schedule();
     });
 });

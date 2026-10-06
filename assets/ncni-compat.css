@@ -1,0 +1,25 @@
+/* Common responsive safeguards, loaded after page styles. */
+img { max-width: 100%; }
+video, iframe { max-width: 100%; }
+html { scroll-padding-top: 130px; }
+:focus-visible { outline: 3px solid #0f766e; outline-offset: 3px; }
+.mobile-menu { visibility: hidden; pointer-events: none; max-height: calc(100vh - 90px); overflow-y: auto; overscroll-behavior: contain; }
+.mobile-menu.active { visibility: visible; pointer-events: auto; }
+#bg-canvas { background: radial-gradient(ellipse at 20% 25%, rgba(15,118,110,.07), transparent 55%), radial-gradient(ellipse at 80% 70%, rgba(99,102,241,.06), transparent 55%); }
+@supports (height: 100dvh) { .mobile-menu { max-height: calc(100dvh - var(--ncni-menu-top, 90px) - 84px - env(safe-area-inset-bottom, 0px)); } }
+@media (min-width: 901px) { .mobile-menu { display: none !important; } }
+@media (max-width: 900px) {
+  .mobile-menu { padding-bottom: calc(24px + env(safe-area-inset-bottom, 0px)); }
+  .mobile-toggle { min-width: 44px; min-height: 44px; }
+  .mobile-menu a { min-height: 44px; }
+  .mobile-bottom-nav { padding-bottom: env(safe-area-inset-bottom, 0px); }
+  .ania-bot-container { bottom: calc(90px + env(safe-area-inset-bottom, 0px)); }
+  .container, .brand-bar, .nav-wrapper { min-width: 0; }
+  h1 { overflow-wrap: break-word; }
+  input, textarea, select { font-size: max(16px, 1em); }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto !important; }
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+  .reveal { opacity: 1 !important; transform: none !important; }
+}

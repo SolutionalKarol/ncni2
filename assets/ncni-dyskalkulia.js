@@ -12,7 +12,7 @@
   started = true;
   video = document.createElement('video');
   video.src = 'dyskalkulia.mp4';
-  video.poster = 'assets/dyskalkulia-vr-start.jpg';
+  video.poster = 'assets/dyskalkulia-vr-start.webp';
   video.controls = true;
   video.muted = true;
   video.defaultMuted = true;
@@ -43,5 +43,5 @@
  document.addEventListener('visibilitychange', () => {
   if (document.hidden) {clearTimeout(timer); video?.pause();} else schedule();
  });
- reduced.addEventListener('change', schedule);
+ (reduced.addEventListener ? reduced.addEventListener.bind(reduced, "change") : reduced.addListener.bind(reduced))( schedule);
 })();
