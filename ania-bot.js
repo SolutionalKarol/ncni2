@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function() {
             <div class="ania-header">
                 <div style="display:flex; align-items:center; gap:10px;">
                     <div style="position:relative;">
-                        <img src="ania.jpg" alt="Ania" style="width:35px; height:35px; border-radius:50%; object-fit:cover; object-position: top;">
+                        <img src="ania.webp" alt="Ania" style="width:35px; height:35px; border-radius:50%; object-fit:cover; object-position: top;">
                         <div class="status-dot-small"></div>
                     </div>
                     <div>
@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function() {
         </div>
 
         <div class="ania-avatar" onclick="toggleAnia()">
-            <img src="ania.jpg" alt="Ania Chat">
+            <img src="ania.webp" alt="Ania Chat">
             <div class="status-dot"></div>
         </div>
     `;

@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-    
-    
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18029740902"></script>
     <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'AW-18029740902'); </script>
-    
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>VR i biofeedback HRV / EEG | Technologie NCNI Wrocław</title>
     <meta name="description" content="VR, biofeedback HRV i EEG oraz rozmowa z pomiarem w NCNI Wrocław. Technologie wspierające psychologię, trening uwagi i samoregulację.">
     <meta name="keywords" content="Terapia VR Wrocław, VRET, Biofeedback HRV, Zero Gravity, Neurofeedback, Leczenie fobii VR, NCNI Technologie, Software Medyczny, Triangle Neuro-Immersja, wdrożenie VR klinika, aplikacje VR medyczne, laboratorium VR psychologia, VR terapia Polska">
@@ -21,25 +18,24 @@
     <meta property="og:type" content="website">
     <meta property="og:locale" content="pl_PL">
 
-    <link rel="icon" href="logo.png" type="image/png">
+    <link rel="icon" href="assets/icon-192.png" type="image/png">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
+
 
     <!-- Schema: MedicalClinic + ResearchOrganization + Offers -->
-    
+
 
     <!-- Schema: FAQ -->
-    
+
 
     <style>
         :root {
-            --bg-body: #F8FAFC;         
+            --bg-body: #F8FAFC;
             --bg-surface: rgba(255, 255, 255, 0.95);
-            --primary: #0F766E;         
+            --primary: #0F766E;
             --primary-dark: #0D5E57;
             --primary-light: #CCFBF1;
-            --accent: #6366F1;          
+            --accent: #6366F1;
             --text-main: #1E293B;
             --text-muted: #64748B;
             --border: #E2E8F0;
@@ -81,7 +77,7 @@
         .nav-item { padding: 8px 16px; border-radius: 99px; font-size: 0.9rem; font-weight: 500; color: var(--text-muted); text-decoration: none; transition: var(--trans-default); }
         .nav-item:hover, .nav-item.active { color: var(--primary); background: var(--primary-light); }
         .nav-cta { background: var(--primary); color: white !important; box-shadow: 0 4px 12px rgba(15,118,110,0.25); }
-        
+
         .mobile-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; z-index: 1002; }
         .mobile-toggle span { display: block; width: 24px; height: 2px; background: var(--text-main); margin: 5px 0; transition: 0.3s; }
         .mobile-menu { position: fixed; top: 0; left: 0; width: 100%; height: auto; background: white; padding: 80px 24px 30px; border-bottom: 1px solid var(--border); box-shadow: 0 10px 40px rgba(0,0,0,0.1); transform: translateY(-150%); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); z-index: 999; display: flex; flex-direction: column; gap: 10px; }
@@ -109,20 +105,20 @@
         .hero-mini p { font-size: 1.1rem; color: var(--text-muted); max-width: 700px; margin: 0 auto; }
 
         /* ── VR DARK SECTION ze zmodernizowanym siatkowym tłem ── */
-        .vr-dark-section { 
-            background-color: #0F172A; 
-            background-image: 
+        .vr-dark-section {
+            background-color: #0F172A;
+            background-image:
                 radial-gradient(circle at 10% 20%, rgba(45, 212, 191, 0.08) 0%, transparent 40%),
                 radial-gradient(circle at 90% 80%, rgba(99, 102, 241, 0.08) 0%, transparent 40%),
                 linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
             background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
-            color: white; 
-            padding: 60px 0; 
-            border-radius: 32px; 
-            margin: 40px 0; 
-            position: relative; 
-            overflow: hidden; 
+            color: white;
+            padding: 60px 0;
+            border-radius: 32px;
+            margin: 40px 0;
+            position: relative;
+            overflow: hidden;
             box-shadow: inset 0 0 50px rgba(0,0,0,0.5);
         }
         .vr-dark-content { position: relative; z-index: 2; max-width: 1000px; margin: 0 auto; padding: 0 24px; }
@@ -161,24 +157,24 @@
         }
 
         @media (min-width: 900px) { .innovation-card { grid-template-columns: 1.3fr 0.7fr; } }
-        
+
         .innovation-content { padding: 32px; position: relative; z-index: 2; }
         @media (max-width: 480px) { .innovation-content { padding: 24px 18px; } }
 
         /* Dynamiczne tła dla obrazów */
-        .innovation-visual { 
-            position: relative; 
-            min-height: 300px; 
+        .innovation-visual {
+            position: relative;
+            min-height: 300px;
             transition: transform 0.7s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
         .innovation-card:hover .innovation-visual {
             transform: scale(1.03);
         }
 
-        /* Lois: Zamiast stocka z goglami - Twój własny plik vr-system.png w eleganckiej mgle */
+        /* Lois: Zamiast stocka z goglami - Twój własny plik vr-system.webp w eleganckiej mgle */
         .triangle-visual {
             background: radial-gradient(circle at center, rgba(45, 212, 191, 0.15) 0%, transparent 60%),
-                        url('vr-system.png') center/contain no-repeat,
+                        url('vr-system.webp') center/contain no-repeat,
                         #0B1121; /* Ciemnogranatowe tło, żeby png ładnie siedział */
             background-size: cover, 85%, cover; /* Grafika lekko pomniejszona żeby nie ucinało brzegów */
         }
@@ -196,10 +192,10 @@
             border-color: rgba(99, 102, 241, 0.3);
         }
         .innovation-card.b2b-card .inn-badge { background: rgba(99, 102, 241, 0.15); color: #818CF8; border-color: #6366F1; }
-        
+
         /* Bardziej profesjonalny, abstrakcyjny stock (zamiast generycznych gogli) */
-        .b2b-visual { 
-            background: #111e32; 
+        .b2b-visual {
+            background: #111e32;
         }
         .b2b-visual::after {
             content: ''; position: absolute; top:0; left:0; width:100%; height:100%;
@@ -210,8 +206,8 @@
         .innovation-card.b2b-card .inn-list li strong { color: #A5B4FC; }
         .innovation-card.b2b-card .inn-icon { color: #6366F1; }
 
-        @media (max-width: 899px) { 
-            .triangle-visual::after, .b2b-visual::after { background: linear-gradient(to top, #0F172A, transparent); } 
+        @media (max-width: 899px) {
+            .triangle-visual::after, .b2b-visual::after { background: linear-gradient(to top, #0F172A, transparent); }
             .innovation-card.b2b-card .b2b-visual::after { background: linear-gradient(to top, #1E293B, transparent); }
             .innovation-visual { min-height: 250px; background-size: cover, 95%, cover; }
         }
@@ -278,14 +274,14 @@
         .bio-type h5 { color: var(--primary); font-size: 1.05rem; margin-bottom: 8px; }
         .bio-type p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; }
 
-        .zg-section { 
-            background: linear-gradient(135deg, #ffffff 0%, #f0fdfa 100%); 
-            border: 1px solid #ccfbf1; 
-            border-radius: 32px; 
-            padding: 48px; 
-            margin: 60px 0; 
-            position: relative; 
-            overflow: hidden; 
+        .zg-section {
+            background: linear-gradient(135deg, #ffffff 0%, #f0fdfa 100%);
+            border: 1px solid #ccfbf1;
+            border-radius: 32px;
+            padding: 48px;
+            margin: 60px 0;
+            position: relative;
+            overflow: hidden;
             box-shadow: 0 20px 50px rgba(13, 94, 87, 0.05);
             transition: transform 0.4s ease;
         }
@@ -352,17 +348,20 @@
     <script src="assets/ncni-technologie.js" defer></script>
 <link rel="stylesheet" href="assets/ncni-measurement.css">
 <meta property="og:site_name" content="NCNI – Naukowe Centrum Neuroinnowacji">
-<meta property="og:image" content="https://ncni.pl/assets/kosmos-preview.jpg">
+<meta property="og:image" content="https://ncni.pl/assets/kosmos-preview.webp">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="VR i biofeedback HRV / EEG | Technologie NCNI Wrocław">
 <meta name="twitter:description" content="VR, biofeedback HRV i EEG oraz rozmowa z pomiarem w NCNI Wrocław. Technologie wspierające psychologię, trening uwagi i samoregulację.">
-<meta name="twitter:image" content="https://ncni.pl/assets/kosmos-preview.jpg">
+<meta name="twitter:image" content="https://ncni.pl/assets/kosmos-preview.webp">
 
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": ["MedicalClinic", "ResearchOrganization"], "name": "Naukowe Centrum Neuroinnowacji (NCNI)", "alternateName": ["NCNI", "NCNI Wrocław", "NCNI Development Lab"], "url": "https://ncni.pl", "logo": "https://ncni.pl/logo.png", "address": {"@type": "PostalAddress", "streetAddress": "ul. Stefana Żeromskiego 60/5a", "addressLocality": "Wrocław", "addressCountry": "PL", "postalCode": "50-312"}, "telephone": "+48600608333", "email": "kontakt@ncni.pl", "description": "NCNI to interdyscyplinarne centrum B+R we Wrocławiu specjalizujące się w terapeutycznych aplikacjach VR, biofeedbacku HRV, neurofeedbacku EEG oraz wdrożeniach technologii VR dla klinik i laboratoriów medycznych.", "knowsAbout": ["Terapia ekspozycyjna VR (VRET)", "Biofeedback HRV", "Neurofeedback EEG", "Zero Gravity Recovery", "Wdrożenia VR dla klinik", "Budowanie środowisk VR", "Tworzenie aplikacji VR medycznych", "VR w psychologii klinicznej", "VR w neurorehabilitacji", "Laboratoria VR w medycynie", "Neuroterapia", "Neuroróżnorodność"], "hasOfferCatalog": {"@type": "OfferCatalog", "name": "Usługi NCNI", "itemListElement": [{"@type": "Offer", "name": "Wdrożenie technologii VR dla klinik i gabinetów", "description": "Kompleksowe wdrożenie systemu Triangle lub dedykowanego środowiska VR w placówce medycznej. Obejmuje instalację sprzętu, konfigurację oprogramowania, szkolenie personelu i wsparcie techniczne.", "url": "https://ncni.pl/ncni_partnerstwo.html"}, {"@type": "Offer", "name": "Tworzenie dedykowanych aplikacji VR na zamówienie", "description": "Projektowanie i budowanie od podstaw środowisk terapeutycznych VR, scenariuszy ekspozycyjnych i aplikacji badawczych dla laboratoriów naukowych, uczelni i ośrodków klinicznych.", "url": "https://ncni.pl/technologie.html"}, {"@type": "Offer", "name": "System Triangle — Neuro-Immersja Kliniczna", "description": "Autorski zintegrowany system neuroterapeutyczny łączący VRET, biofeedback HRV i fotel Zero Gravity w zamkniętej pętli biofeedbacku.", "url": "https://ncni.pl/technologie.html"}, {"@type": "Offer", "name": "Projektowanie laboratoriów VR dla instytucji naukowych", "description": "Kompleksowe projektowanie i wyposażanie laboratoriów VR dla uczelni, instytutów badawczych i szpitali klinicznych w Polsce.", "url": "https://ncni.pl/ncni_partnerstwo.html"}]}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": ["MedicalClinic", "ResearchOrganization"], "name": "Naukowe Centrum Neuroinnowacji (NCNI)", "alternateName": ["NCNI", "NCNI Wrocław", "NCNI Development Lab"], "url": "https://ncni.pl", "logo": "https://ncni.pl/logo.webp", "address": {"@type": "PostalAddress", "streetAddress": "ul. Stefana Żeromskiego 60/5a", "addressLocality": "Wrocław", "addressCountry": "PL", "postalCode": "50-312"}, "telephone": "+48600608333", "email": "kontakt@ncni.pl", "description": "NCNI to interdyscyplinarne centrum B+R we Wrocławiu specjalizujące się w terapeutycznych aplikacjach VR, biofeedbacku HRV, neurofeedbacku EEG oraz wdrożeniach technologii VR dla klinik i laboratoriów medycznych.", "knowsAbout": ["Terapia ekspozycyjna VR (VRET)", "Biofeedback HRV", "Neurofeedback EEG", "Zero Gravity Recovery", "Wdrożenia VR dla klinik", "Budowanie środowisk VR", "Tworzenie aplikacji VR medycznych", "VR w psychologii klinicznej", "VR w neurorehabilitacji", "Laboratoria VR w medycynie", "Neuroterapia", "Neuroróżnorodność"], "hasOfferCatalog": {"@type": "OfferCatalog", "name": "Usługi NCNI", "itemListElement": [{"@type": "Offer", "name": "Wdrożenie technologii VR dla klinik i gabinetów", "description": "Kompleksowe wdrożenie systemu Triangle lub dedykowanego środowiska VR w placówce medycznej. Obejmuje instalację sprzętu, konfigurację oprogramowania, szkolenie personelu i wsparcie techniczne.", "url": "https://ncni.pl/ncni_partnerstwo.html"}, {"@type": "Offer", "name": "Tworzenie dedykowanych aplikacji VR na zamówienie", "description": "Projektowanie i budowanie od podstaw środowisk terapeutycznych VR, scenariuszy ekspozycyjnych i aplikacji badawczych dla laboratoriów naukowych, uczelni i ośrodków klinicznych.", "url": "https://ncni.pl/technologie.html"}, {"@type": "Offer", "name": "System Triangle — Neuro-Immersja Kliniczna", "description": "Autorski zintegrowany system neuroterapeutyczny łączący VRET, biofeedback HRV i fotel Zero Gravity w zamkniętej pętli biofeedbacku.", "url": "https://ncni.pl/technologie.html"}, {"@type": "Offer", "name": "Projektowanie laboratoriów VR dla instytucji naukowych", "description": "Kompleksowe projektowanie i wyposażanie laboratoriów VR dla uczelni, instytutów badawczych i szpitali klinicznych w Polsce.", "url": "https://ncni.pl/ncni_partnerstwo.html"}]}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Jak wdrożyć terapię VR w gabinecie psychologicznym?", "acceptedAnswer": {"@type": "Answer", "text": "Wdrożenie terapii VR w gabinecie psychologicznym wymaga trzech elementów: sprzętu VR (gogle), oprogramowania terapeutycznego (scenariusze VRET) oraz integracji z systemem biofeedbacku HRV. NCNI oferuje kompleksowe wdrożenia pod klucz dla gabinetów i klinik w Polsce, w tym instalację, szkolenie i wsparcie merytoryczne."}}, {"@type": "Question", "name": "Kto w Polsce tworzy aplikacje VR do terapii i medycyny?", "acceptedAnswer": {"@type": "Answer", "text": "NCNI — Naukowe Centrum Neuroinnowacji we Wrocławiu projektuje i buduje dedykowane aplikacje VR dla celów terapeutycznych, badawczych i klinicznych. Specjalizujemy się w środowiskach do VRET (terapia ekspozycyjna), neurorehabilitacji, treningu poznawczego i psychogeriatrii."}}, {"@type": "Question", "name": "Ile kosztuje wdrożenie VR w klinice?", "acceptedAnswer": {"@type": "Answer", "text": "Koszt wdrożenia VR w klinice zależy od zakresu projektu: gotowy system Triangle NCNI, budowa dedykowanego środowiska VR od podstaw lub pełne laboratorium VR. Skontaktuj się z NCNI pod adresem kontakt@ncni.pl, aby otrzymać wycenę dopasowaną do specyfiki placówki."}}, {"@type": "Question", "name": "Jakie technologie stosuje NCNI w terapii?", "acceptedAnswer": {"@type": "Answer", "text": "NCNI stosuje: terapię ekspozycyjną VR (VRET), biofeedback HRV, neurofeedback EEG, fotel Zero Gravity (pozycja neutralna NASA) oraz autorski system Triangle integrujący te technologie w zamkniętej pętli neuroregulacji."}}, {"@type": "Question", "name": "Czy VR w psychologii jest skuteczne klinicznie?", "acceptedAnswer": {"@type": "Answer", "text": "Tak. VRET (Virtual Reality Exposure Therapy) jest uznana przez APA jako skuteczna metoda leczenia fobii, PTSD i lęku społecznego. NCNI stosuje protokoły oparte na evidence-based medicine, opracowywane we współpracy z dr hab. inż. Sebastianem Kraszewskim z Politechniki Wrocławskiej."}}, {"@type": "Question", "name": "Gdzie w Polsce można założyć laboratorium VR do badań naukowych?", "acceptedAnswer": {"@type": "Answer", "text": "NCNI Development Lab we Wrocławiu projektuje laboratoria VR dla instytucji naukowych, uczelni i szpitali. Oferujemy dobór sprzętu, budowę środowisk wirtualnych, integrację z systemami biofeedbacku oraz wsparcie metodologiczne przy projektach B+R."}}]}</script>
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Service", "@id": "https://ncni.pl/technologie.html#service", "name": "VR i biofeedback HRV / EEG | Technologie NCNI Wrocław", "description": "VR, biofeedback HRV i EEG oraz rozmowa z pomiarem w NCNI Wrocław. Technologie wspierające psychologię, trening uwagi i samoregulację.", "url": "https://ncni.pl/technologie.html", "provider": {"@id": "https://ncni.pl/#organization"}, "areaServed": "PL"}</script><style id="ncni-mobile-nav-style">.mobile-bottom-nav{display:none;position:fixed;bottom:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,.97);border-top:1px solid #dce7e5;padding-bottom:env(safe-area-inset-bottom);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 -5px 24px #0f766e0b}.mobile-bottom-nav-inner{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));height:68px;max-width:600px;margin:auto}.mobile-bottom-nav a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-height:48px;color:#53676d;text-decoration:none;font-size:10px;white-space:nowrap}.mobile-bottom-nav svg{padding:4px;box-sizing:content-box;border-radius:10px;background:#e7f5f1;color:#0f766e}.mobile-bottom-nav a:nth-child(4) svg{background:#eeecfc;color:#6958a7}.mobile-bottom-nav a:nth-child(5) svg{background:#fff3df;color:#a56b17}.mobile-bottom-nav a.active{color:#0f766e;font-weight:700}.mobile-bottom-nav a.active svg{background:#0f766e;color:white}.mobile-bottom-nav a:focus-visible{outline:2px solid #0f766e;outline-offset:-2px}@media(max-width:900px){.mobile-bottom-nav{display:block}body{padding-bottom:calc(84px + env(safe-area-inset-bottom))!important}}</style><script type="application/ld+json" id="ncni-page-metadata">{"@context": "https://schema.org", "@type": "WebPage", "@id": "https://ncni.pl/technologie.html#webpage", "url": "https://ncni.pl/technologie.html", "name": "VR i biofeedback HRV / EEG | Technologie NCNI Wrocław", "description": "VR, biofeedback HRV i EEG oraz rozmowa z pomiarem w NCNI Wrocław. Technologie wspierające psychologię, trening uwagi i samoregulację.", "inLanguage": "pl-PL", "isPartOf": {"@id": "https://ncni.pl/#website"}}</script><style>@media(max-width:900px){header .nav-links{display:none!important}.nav-wrapper{min-width:0}}.container,.innovation-content,.pr-service{min-width:0}</style></head>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Service", "@id": "https://ncni.pl/technologie.html#service", "name": "VR i biofeedback HRV / EEG | Technologie NCNI Wrocław", "description": "VR, biofeedback HRV i EEG oraz rozmowa z pomiarem w NCNI Wrocław. Technologie wspierające psychologię, trening uwagi i samoregulację.", "url": "https://ncni.pl/technologie.html", "provider": {"@id": "https://ncni.pl/#organization"}, "areaServed": "PL"}</script><style id="ncni-mobile-nav-style">.mobile-bottom-nav{display:none;position:fixed;bottom:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,.97);border-top:1px solid #dce7e5;padding-bottom:env(safe-area-inset-bottom);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 -5px 24px #0f766e0b}.mobile-bottom-nav-inner{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));height:68px;max-width:600px;margin:auto}.mobile-bottom-nav a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-height:48px;color:#53676d;text-decoration:none;font-size:10px;white-space:nowrap}.mobile-bottom-nav svg{padding:4px;box-sizing:content-box;border-radius:10px;background:#e7f5f1;color:#0f766e}.mobile-bottom-nav a:nth-child(4) svg{background:#eeecfc;color:#6958a7}.mobile-bottom-nav a:nth-child(5) svg{background:#fff3df;color:#a56b17}.mobile-bottom-nav a.active{color:#0f766e;font-weight:700}.mobile-bottom-nav a.active svg{background:#0f766e;color:white}.mobile-bottom-nav a:focus-visible{outline:2px solid #0f766e;outline-offset:-2px}@media(max-width:900px){.mobile-bottom-nav{display:block}body{padding-bottom:calc(84px + env(safe-area-inset-bottom))!important}}</style><script type="application/ld+json" id="ncni-page-metadata">{"@context": "https://schema.org", "@type": "WebPage", "@id": "https://ncni.pl/technologie.html#webpage", "url": "https://ncni.pl/technologie.html", "name": "VR i biofeedback HRV / EEG | Technologie NCNI Wrocław", "description": "VR, biofeedback HRV i EEG oraz rozmowa z pomiarem w NCNI Wrocław. Technologie wspierające psychologię, trening uwagi i samoregulację.", "inLanguage": "pl-PL", "isPartOf": {"@id": "https://ncni.pl/#website"}}</script><style>@media(max-width:900px){header .nav-links{display:none!important}.nav-wrapper{min-width:0}}.container,.innovation-content,.pr-service{min-width:0}</style><link rel="stylesheet" href="assets/ncni-compat.css?v=20261006">
+<script src="assets/ncni-runtime.js?v=20261006" defer></script>
+<noscript><style>.reveal{opacity:1!important;transform:none!important}@media(max-width:900px){.mobile-toggle{display:none}.mobile-menu{position:static;display:block;transform:none;visibility:visible;pointer-events:auto;max-height:none}}</style></noscript>
+</head>
 <body>
     <div id="bg-canvas"></div>
 
@@ -370,15 +369,15 @@
         <div class="container nav-wrapper">
             <a href="index.html" class="brand-bar">
                 <div class="logo" style="display: flex; align-items: center; gap: 10px;">
-                    <img src="logo.png" alt="NCNI Logo">
+                    <img src="logo.webp" alt="NCNI Logo" width="256" height="256" decoding="async">
                     <span>NCNI</span>
                 </div>
             </a>
-            
+
             <nav class="nav-links">
                 <div class="header-contact">
-                    <a href="tel:+48600608333"><i data-lucide="phone" width="16"></i> 600 608 333</a>
-                    <a href="mailto:kontakt@ncni.pl"><i data-lucide="mail" width="16"></i> kontakt@ncni.pl</a>
+                    <a href="tel:+48600608333"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384" /></svg> 600 608 333</a>
+                    <a href="mailto:kontakt@ncni.pl"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7" /><rect x="2" y="4" width="20" height="16" rx="2" /></svg> kontakt@ncni.pl</a>
                 </div>
                 <a href="o-nas.html" class="nav-item">O nas</a>
                 <a href="#" class="nav-item active">Technologie</a>
@@ -420,7 +419,7 @@
                 <p class="reveal">
                     VR, czyli „Rzeczywistość Wirtualna", to generowane komputerowo, trójwymiarowe środowisko umożliwiające immersyjne, wielozmysłowe doświadczenia. Wykorzystanie VR w terapii pozwala pacjentowi poczuć się tak, jakby naprawdę znajdował się w danej sytuacji, jednocześnie dając terapeucie pełną kontrolę nad przebiegiem sesji.
                 </p>
-                
+
                 <a href="ncni_partnerstwo.html" class="partner-banner reveal">
                     <div class="partner-banner-content">
                         <div class="partner-icon">🤝</div>
@@ -429,7 +428,7 @@
                             Prowadzisz placówkę medyczną? Wdróż nasze technologie u siebie i zwiększ prestiż kliniki.
                         </div>
                     </div>
-                    <div class="partner-arrow"><i data-lucide="arrow-right"></i></div>
+                    <div class="partner-arrow"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg></div>
                 </a>
 
                <h3 class="reveal" style="font-size: clamp(1.2rem, 4vw, 1.6rem); color: #F1F5F9; margin-bottom: 16px;">O Terapii Ekspozycyjnej VR (VRET)</h3>
@@ -448,30 +447,30 @@
                         <p style="color: #CBD5E1; margin-bottom: 20px; font-weight: 500;">
                             Autorski system immersyjny łączący terapię ekspozycyjną (VRET) z ciągłym biofeedbackiem HRV i fotelem Zero Gravity w zamkniętej pętli, dedykowany wsparciu układu przywspółczulnego i głębokiej neuroregulacji.
                         </p>
-                        
+
                         <ul class="inn-list">
                             <li>
-                                <div class="inn-icon"><i data-lucide="activity" width="18"></i></div>
+                                <div class="inn-icon"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-activity"><path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2" /></svg></div>
                                 <span><strong>Leczenie zaburzeń lękowych (VRET):</strong> Fobie specyficzne, lęk społeczny, PTSD, w pełni kontrolowana ekspozycja.</span>
                             </li>
                             <li>
-                                <div class="inn-icon"><i data-lucide="brain-circuit" width="18"></i></div>
+                                <div class="inn-icon"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-brain-circuit"><path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z" /><path d="M9 13a4.5 4.5 0 0 0 3-4" /><path d="M6.003 5.125A3 3 0 0 0 6.401 6.5" /><path d="M3.477 10.896a4 4 0 0 1 .585-.396" /><path d="M6 18a4 4 0 0 1-1.967-.516" /><path d="M12 13h4" /><path d="M12 18h6a2 2 0 0 1 2 2v1" /><path d="M12 8h8" /><path d="M16 8V5a2 2 0 0 1 2-2" /><circle cx="16" cy="13" r=".5" /><circle cx="18" cy="3" r=".5" /><circle cx="20" cy="21" r=".5" /><circle cx="20" cy="8" r=".5" /></svg></div>
                                 <span><strong>Neuroatypowość i ADHD:</strong> Trening funkcji wykonawczych, koncentracji uwagi i samoregulacji emocjonalnej.</span>
                             </li>
                             <li>
-                                <div class="inn-icon"><i data-lucide="users" width="18"></i></div>
+                                <div class="inn-icon"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><path d="M16 3.128a4 4 0 0 1 0 7.744" /><path d="M22 21v-2a4 4 0 0 0-3-3.87" /><circle cx="9" cy="7" r="4" /></svg></div>
                                 <span><strong>Psychogeriatria:</strong> Aktywizacja poznawcza, redukcja poczucia izolacji i poprawa nastroju u seniorów.</span>
                             </li>
                             <li>
-                                <div class="inn-icon"><i data-lucide="bar-chart-2" width="18"></i></div>
+                                <div class="inn-icon"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bar-chart-2"><path d="M5 21v-6" /><path d="M12 21V3" /><path d="M19 21V9" /></svg></div>
                                 <span><strong>Reaktywna pętla biofeedbacku (HRV):</strong> System automatycznie reaguje na stan układu nerwowego pacjenta, gdy wchodzi w głęboki relaks, środowisko VR i fotel podtrzymują synchronizację układu przywspółczulnego.</span>
                             </li>
                             <li>
-                                <div class="inn-icon"><i data-lucide="fingerprint" width="18"></i></div>
+                                <div class="inn-icon"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-fingerprint"><path d="M12 10a2 2 0 0 0-2 2c0 1.02-.1 2.51-.26 4" /><path d="M14 13.12c0 2.38 0 6.38-1 8.88" /><path d="M17.29 21.02c.12-.6.43-2.3.5-3.02" /><path d="M2 12a10 10 0 0 1 18-6" /><path d="M2 16h.01" /><path d="M21.8 16c.2-2 .131-5.354 0-6" /><path d="M5 19.5C5.5 18 6 15 6 12a6 6 0 0 1 .34-2" /><path d="M8.65 22c.21-.66.45-1.32.57-2" /><path d="M9 6.8a6 6 0 0 1 9 5.2v2" /></svg></div>
                                 <span><strong>Brak Szablonów (100% Personalizacji):</strong> Każdy układ nerwowy jest inny. Odrzucamy uniwersalne schematy, parametry immersji, fotela i biofeedbacku są zawsze rygorystycznie szyte na miarę i adaptowane do unikalnych potrzeb pacjenta.</span>
                             </li>
                             <li>
-                                <div class="inn-icon"><i data-lucide="shield" width="18"></i></div>
+                                <div class="inn-icon"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" /></svg></div>
                                 <span><strong>Nadzór prowadzącego sesję:</strong> Pełna automatyzacja z możliwością manualnej modyfikacji parametrów przez terapeutę w trakcie trwania sesji.</span>
                             </li>
                         </ul>
@@ -480,15 +479,15 @@
                             System jest autorskim rozwiązaniem rozwijanym w ramach NCNI Development Lab w oparciu o aktualne badania kliniczne nad neuroplastycznością. Oferujemy możliwość wdrożenia systemu Triangle w zewnętrznych placówkach medycznych (model B2B).
                         </p>
                     </div>
-                    <!-- Lois: Zamiast stocka używamy dedykowanego tła łączącego vr-system.png -->
-                    <figure class="tech-station-photo"><img src="assets/triangle-station.webp" alt="Stanowisko NCNI z goglami VR i fotelem Zero Gravity" width="720" height="1280" loading="lazy"><figcaption>Stanowisko VR w NCNI Wrocław</figcaption></figure>
+                    <!-- Lois: Zamiast stocka używamy dedykowanego tła łączącego vr-system.webp -->
+                    <figure class="tech-station-photo"><img src="assets/triangle-station.webp" alt="Stanowisko NCNI z goglami VR i fotelem Zero Gravity" loading="lazy" width="720" height="1280" decoding="async"><figcaption>Stanowisko VR w NCNI Wrocław</figcaption></figure>
 
                 </div>
 
                 <section id="kosmos-vr" class="ncni-demo" aria-labelledby="kosmos-heading"><h3 id="kosmos-heading">Kosmos w VR</h3><figure class="ncni-video" data-video="kosmos.mp4">
     <div class="ncni-video-stage">
         <button class="ncni-video-play" type="button" aria-label="Odtwórz: NCNI Wrocław: Kosmos w VR">
-            <img src="assets/kosmos-preview.jpg" alt="NCNI Wrocław: Kosmos w VR" width="1280" height="720" loading="lazy" decoding="async">
+            <img src="assets/kosmos-preview.webp" alt="NCNI Wrocław: Kosmos w VR" loading="lazy" decoding="async" width="1280" height="720">
             <span class="ncni-video-play-label">▶ Odtwórz film</span>
         </button>
     </div>
@@ -501,7 +500,7 @@
                     <figure class="ncni-video" data-video="google.ara.mp4">
     <div class="ncni-video-stage">
         <button class="ncni-video-play" type="button" aria-label="Odtwórz: NCNI Wrocław: trening arachnofobii w VR">
-            <img src="assets/arachnofobia-preview.jpg" alt="NCNI Wrocław: trening arachnofobii w VR" width="1280" height="720" loading="lazy" decoding="async">
+            <img src="assets/arachnofobia-preview.webp" alt="NCNI Wrocław: trening arachnofobii w VR" loading="lazy" decoding="async" width="1280" height="720">
             <span class="ncni-video-play-label">▶ Odtwórz film</span>
         </button>
     </div>
@@ -513,7 +512,7 @@
                 <figure class="ncni-video ncni-video-portrait" data-video="treningADHD.mp4">
                     <div class="ncni-video-stage">
                         <button class="ncni-video-play" type="button" aria-label="Odtwórz: Trening uważności VR dla osób z ADHD">
-                            <img src="assets/adhd-preview.jpg" alt="Ognisko w nocnym lesie, przykładowa sceneria treningu uważności VR" width="720" height="1280" loading="lazy">
+                            <img src="assets/adhd-preview.webp" alt="Ognisko w nocnym lesie, przykładowa sceneria treningu uważności VR" loading="lazy" width="720" height="1280" decoding="async">
                             <span class="ncni-video-play-label">▶ Obejrzyj trening</span>
                         </button>
                     </div>
@@ -532,23 +531,23 @@
                         <span class="inn-badge">Dla biznesu i klinik</span>
                         <h3 class="inn-title">
                             <span class="inn-app-name">Dedykowane Aplikacje VR</span>
-                            Oprogramowanie medyczne na zamówienie 
+                            Oprogramowanie medyczne na zamówienie
                         </h3>
                         <p style="color: #CBD5E1; margin-bottom: 20px; font-weight: 500;">
                           Projektujemy od podstaw dedykowane scenariusze terapeutyczne i aplikacje VR, ściśle dopasowane do specyfiki klinicznej Twojej placówki.
                         </p>
-                        
+
                         <ul class="inn-list">
                             <li>
-                                <div class="inn-icon"><i data-lucide="check-circle" width="18"></i></div>
+                                <div class="inn-icon"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-circle"><path d="M21.801 10A10 10 0 1 1 17 3.335" /><path d="m9 11 3 3L22 4" /></svg></div>
                                 <span><strong>Placówki medyczne i badawcze:</strong> Poszukujące własnych, unikalnych protokołów terapeutycznych i scenariuszy badawczych.</span>
                             </li>
                             <li>
-                                <div class="inn-icon"><i data-lucide="check-circle" width="18"></i></div>
+                                <div class="inn-icon"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-circle"><path d="M21.801 10A10 10 0 1 1 17 3.335" /><path d="m9 11 3 3L22 4" /></svg></div>
                                 <span><strong>Specjalistyczne ośrodki:</strong> Terapii lęku, neurorehabilitacji, pracy z ADHD oraz opieki geriatrycznej.</span>
                             </li>
                             <li>
-                                <div class="inn-icon"><i data-lucide="check-circle" width="18"></i></div>
+                                <div class="inn-icon"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-circle"><path d="M21.801 10A10 10 0 1 1 17 3.335" /><path d="m9 11 3 3L22 4" /></svg></div>
                                 <span><strong>Marka i wizerunek:</strong> Instytucje dążące do wdrażania innowacji pod własnym brandem (Custom Development).</span>
                             </li>
                         </ul>
@@ -558,7 +557,7 @@
                         </p>
                     </div>
                     <!-- Lois: Dedykowana abstrakcja tech/biznesowa -->
-                    <figure class="tech-panel" data-concept-panel><figcaption><strong>NCNI / Panel prowadzącego</strong><span>Koncepcja interfejsu</span></figcaption><div class="tech-panel-body"><div class="tech-panel-options" role="group" aria-label="Wybierz podgląd koncepcji"><button type="button" data-scene="mindfulness" aria-pressed="true">Uważność</button><button type="button" data-scene="cosmos" aria-pressed="false">Kosmos</button><button type="button" data-scene="exposure" aria-pressed="false">Ekspozycja</button></div><div class="tech-panel-screen"><img src="assets/adhd-preview.jpg" alt="Koncepcja podglądu scenariusza uważności przy ognisku" width="720" height="1280" loading="lazy" data-scene-image><span data-scene-label>Scenariusz: uważność</span></div><div class="tech-panel-track"><span>Przykładowy sygnał</span><svg viewBox="0 0 400 70" role="img" aria-label="Dekoracyjny przykładowy wykres, bez danych pacjenta"><path d="M0 40 Q20 40 30 36 T55 40 L65 40 L75 15 L85 57 L96 34 L110 40 Q135 40 150 34 T180 40 L210 40 L220 17 L230 58 L240 33 L255 40 Q280 40 305 34 T335 40 L350 40 L360 18 L370 58 L380 35 L400 40"/></svg></div><small>Podgląd koncepcyjny. Dane na wykresie są ilustracyjne.</small><button type="button" class="tech-motion-toggle" aria-pressed="false" data-concept-motion hidden>Wstrzymaj animację</button></div></figure>
+                    <figure class="tech-panel" data-concept-panel><figcaption><strong>NCNI / Panel prowadzącego</strong><span>Koncepcja interfejsu</span></figcaption><div class="tech-panel-body"><div class="tech-panel-options" role="group" aria-label="Wybierz podgląd koncepcji"><button type="button" data-scene="mindfulness" aria-pressed="true">Uważność</button><button type="button" data-scene="cosmos" aria-pressed="false">Kosmos</button><button type="button" data-scene="exposure" aria-pressed="false">Ekspozycja</button></div><div class="tech-panel-screen"><img src="assets/adhd-preview.webp" alt="Koncepcja podglądu scenariusza uważności przy ognisku" loading="lazy" data-scene-image width="720" height="1280" decoding="async"><span data-scene-label>Scenariusz: uważność</span></div><div class="tech-panel-track"><span>Przykładowy sygnał</span><svg viewBox="0 0 400 70" role="img" aria-label="Dekoracyjny przykładowy wykres, bez danych pacjenta"><path d="M0 40 Q20 40 30 36 T55 40 L65 40 L75 15 L85 57 L96 34 L110 40 Q135 40 150 34 T180 40 L210 40 L220 17 L230 58 L240 33 L255 40 Q280 40 305 34 T335 40 L350 40 L360 18 L370 58 L380 35 L400 40"/></svg></div><small>Podgląd koncepcyjny. Dane na wykresie są ilustracyjne.</small><button type="button" class="tech-motion-toggle" aria-pressed="false" data-concept-motion hidden>Wstrzymaj animację</button></div></figure>
                 </div>
 
 
@@ -643,7 +642,7 @@
             <p>
                 Metoda, która pozwala Ci „zobaczyć" swój stres na ekranie monitora. Trenuj koherencję serca poprzez pomiar zmienności rytmu zatokowego (HRV), dla głębszego spokoju i lepszej regulacji emocji.
             </p>
-            
+
             <div class="bio-types-grid">
                 <div class="bio-type reveal reveal-delay-1">
                     <h5>❤️ Biofeedback HRV</h5>
@@ -683,7 +682,7 @@
             <div class="footer-grid">
                 <div>
                     <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
-                        <img src="logo.png" alt="Logo" style="height: 30px;">
+                        <img src="logo.webp" alt="Logo" style="height: 30px;" width="256" height="256" decoding="async">
                         <span style="font-weight: 700;">NCNI</span>
                     </div>
                     <p style="color: var(--text-muted); font-size: 0.9rem;">
@@ -715,14 +714,14 @@
     </footer>
 
     <script>
-        // Lois: Zawijam cały skrypt inicjujący w jedno bezpieczne zdarzenie DOMContentLoaded. 
+        // Lois: Zawijam cały skrypt inicjujący w jedno bezpieczne zdarzenie DOMContentLoaded.
         // Zapobiegnie to wywalaniu się strony w połowie ładowania.
         document.addEventListener("DOMContentLoaded", () => {
-            
+
             // 1. Bezpieczne ładowanie ikon Lucide (jeśli coś je zablokuje, nie wywali nam to Scroll Reveala)
             try {
                 if (typeof lucide !== 'undefined') {
-                    lucide.createIcons();
+                    /* Icons are embedded as SVG; no external runtime needed. */
                 } else {
                     console.warn("Lois ostrzega: Ikony Lucide się nie załadowały (być może zablokowane przez Adblocka).");
                 }
@@ -731,72 +730,8 @@
             }
 
             // 2. Tło (Particles)
-            function initParticles(){
-                const container=document.getElementById('bg-canvas');
-                if(!container)return;
-                
-                const scene=new THREE.Scene();
-                scene.fog=new THREE.FogExp2(0xF8FAFC,0.002);
-                const camera=new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,1000);
-                camera.position.z=10;
-                
-                const renderer=new THREE.WebGLRenderer({alpha:true,antialias:true});
-                renderer.setSize(window.innerWidth,window.innerHeight);
-                renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
-                container.appendChild(renderer.domElement);
-                
-                const geometry=new THREE.BufferGeometry();
-                const count=200;
-                const positions=new Float32Array(count*3);
-                const colors=new Float32Array(count*3);
-                
-                for(let i=0;i<count*3;i+=3){
-                    positions[i]=(Math.random()-0.5)*25;
-                    positions[i+1]=(Math.random()-0.5)*25;
-                    positions[i+2]=(Math.random()-0.5)*25;
-                    const mix=Math.random();
-                    if(mix>0.5){colors[i]=0.06;colors[i+1]=0.46;colors[i+2]=0.43;}
-                    else{colors[i]=0.39;colors[i+1]=0.4;colors[i+2]=0.94;}
-                }
-                
-                geometry.setAttribute('position',new THREE.BufferAttribute(positions,3));
-                geometry.setAttribute('color',new THREE.BufferAttribute(colors,3));
-                
-                const material=new THREE.PointsMaterial({size:0.1,vertexColors:true,transparent:true,opacity:0.4});
-                const particles=new THREE.Points(geometry,material);
-                scene.add(particles);
-                
-                let mouseX=0,mouseY=0;
-                const windowHalfX=window.innerWidth/2;
-                const windowHalfY=window.innerHeight/2;
-                
-                document.addEventListener('mousemove',(e)=>{
-                    mouseX=(e.clientX-windowHalfX);
-                    mouseY=(e.clientY-windowHalfY);
-                });
-                
-                const clock=new THREE.Clock();
-                function animate(){
-                    const time=clock.getElapsedTime();
-                    const tX=mouseX*0.0001;
-                    const tY=mouseY*0.0001;
-                    particles.rotation.y+=0.01*(tX-particles.rotation.y);
-                    particles.rotation.x+=0.01*(tY-particles.rotation.x);
-                    particles.rotation.z+=0.0005;
-                    const scale=1+Math.sin(time*0.5)*0.02;
-                    particles.scale.set(scale,scale,scale);
-                    renderer.render(scene,camera);
-                    requestAnimationFrame(animate);
-                }
-                animate();
-                
-                window.addEventListener('resize',()=>{
-                    camera.aspect=window.innerWidth/window.innerHeight;
-                    camera.updateProjectionMatrix();
-                    renderer.setSize(window.innerWidth,window.innerHeight);
-                });
-            }
-            
+            function initParticles(){ if(window.ncniBackground) window.ncniBackground(); }
+
             // Inicjalizacja tła z łapaniem błędów (na wszelki wypadek)
             try {
                 if (typeof THREE !== 'undefined') {
@@ -824,7 +759,7 @@
                         }
                     });
                 }, { threshold: 0.12 });
-                
+
                 document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
             } catch(e) {
                 // Gdyby przeglądarka nie wspierała IntersectionObservera, zdejmujemy ukrycie awaryjnie
