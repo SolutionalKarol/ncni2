@@ -1,0 +1,10 @@
+{
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.ncni.pl" }],
+      "destination": "https://ncni.pl/:path*",
+      "permanent": true
+    }
+  ]
+}

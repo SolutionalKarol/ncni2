@@ -96,6 +96,17 @@
     window.addEventListener('scroll', position, {passive: true});
     window.addEventListener('pageshow', function (event) { if (event.persisted) setOpen(false); });
   }
+  /* GA4: count phone and e-mail link clicks (event contact_click). */
+  document.addEventListener('click', function (event) {
+    var link = event.target.closest && event.target.closest('a[href^="tel:"], a[href^="mailto:"]');
+    if (!link || typeof window.gtag !== 'function') return;
+    var href = link.getAttribute('href');
+    window.gtag('event', 'contact_click', {
+      contact_method: href.indexOf('tel:') === 0 ? 'telefon' : 'email',
+      link_url: href,
+      page_path: location.pathname
+    });
+  }, true);
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
   else init();
 })();
