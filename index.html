@@ -554,6 +554,12 @@
             .ncni-sesja-note { font-size: .85rem; color: var(--text-muted); margin: 16px 0 0; line-height: 1.5; }
             .ncni-sesja-section .ncni-video figcaption { padding: 12px 16px; font-size: .9rem; color: #cbd5e1; }
             .ncni-sesja-section .ncni-video figcaption a { color: #67e8f9; }
+            .ncni-sesja-oddech { display: flex; gap: 16px; align-items: center; margin-top: 22px; padding: 16px 18px; border-radius: 16px; background: linear-gradient(120deg, #1e2a5a, #0d3b38); color: #e8ecff; text-decoration: none; line-height: 1.5; font-size: .95rem; }
+            .ncni-sesja-oddech strong { color: #fff; font-size: 1.02rem; }
+            .ncni-sesja-oddech:hover { filter: brightness(1.08); }
+            .ncni-sesja-oddech-orb { flex: 0 0 46px; height: 46px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #fff6d8, #f4c46b 45%, #b5653f 100%); box-shadow: 0 0 22px rgba(244,196,107,.6); animation: ncniOddech 10s ease-in-out infinite; }
+            @keyframes ncniOddech { 0% { transform: scale(.72); } 40% { transform: scale(1); } 100% { transform: scale(.72); } }
+            @media (prefers-reduced-motion: reduce) { .ncni-sesja-oddech-orb { animation: none; } }
             @media (max-width: 900px) { .ncni-sesja-layout { grid-template-columns: minmax(0, 1fr); gap: 28px; } .ncni-sesja-section { padding: 50px 0; } }
         </style>
         <script type="application/ld+json">{"@context":"https://schema.org","@type":"VideoObject","name":"Sesja relaksacyjna w VR w gabinecie NCNI Wrocław","description":"Przykładowa sesja w gabinecie Naukowego Centrum Neuroinnowacji we Wrocławiu: gogle VR i fotel w pozycji odchylonej.","thumbnailUrl":["https://ncni.pl/assets/ncni-system-sesja-preview.jpg"],"contentUrl":"https://ncni.pl/ncni-system-sesja.mp4","uploadDate":"2026-11-02","duration":"PT12S","inLanguage":"pl-PL","publisher":{"@type":"Organization","name":"Naukowe Centrum Neuroinnowacji","url":"https://ncni.pl/"}}</script>
@@ -575,7 +581,7 @@
                                 <span class="ncni-video-play-label">▶ Zobacz sesję w gabinecie</span>
                             </button>
                         </div>
-                        <figcaption>Przykładowa sesja w gabinecie NCNI we Wrocławiu. Podgląd uruchamia się bez dźwięku. <a href="ncni-system-sesja.mp4">Otwórz film</a> · <a href="https://youtube.com/shorts/HlFHtd2McPE" target="_blank" rel="noopener">Zobacz na YouTube</a></figcaption>
+                        <figcaption>Przykładowa sesja w gabinecie NCNI we Wrocławiu. Podgląd uruchamia się bez dźwięku. <a href="ncni-system-sesja.mp4">Otwórz film</a> <a href="https://youtube.com/shorts/HlFHtd2McPE" target="_blank" rel="noopener">Zobacz na YouTube</a></figcaption>
                     </figure>
                 </div>
                 <div class="reveal reveal-delay-2">
@@ -597,6 +603,10 @@
                         <a href="#rezerwacja" class="btn btn-primary">Zapytaj o sesję</a>
                         <a href="rozmowa-z-pomiarem.html" class="btn btn-outline">Rozmowa z pomiarem</a>
                     </div>
+                    <a class="ncni-sesja-oddech" href="oddech.html">
+                        <span class="ncni-sesja-oddech-orb" aria-hidden="true"></span>
+                        <span><strong>Wypróbuj ćwiczenie oddechowe</strong><br>Wieczorne jezioro i kula, która prowadzi oddech: wdech 4 sekundy, wydech 6 sekund. Działa w przeglądarce i w goglach Meta Quest.</span>
+                    </a>
                     <p class="ncni-sesja-note">Sesje relaksacyjne i treningowe wspierają codzienne funkcjonowanie. Nie zastępują psychoterapii ani leczenia, a pomiar nie służy do stawiania diagnozy.</p>
                 </div>
             </div>
@@ -840,12 +850,24 @@
                         <a href="mailto:kontakt@ncni.pl" style="color: var(--text-main); font-weight: 600; text-decoration: none;">✉️ kontakt@ncni.pl</a>
                         <a href="tel:+48600608333" style="color: var(--primary); font-weight: 600; text-decoration: none; font-size: 1.1rem;">📞 600 608 333</a>
                     </div>
-                    <div style="margin-top: 24px; display: inline-flex; gap: 10px; align-items: center;">
-                        <a href="https://www.facebook.com/profile.php?id=61579420537737" target="_blank" class="social-icon" aria-label="Facebook"><svg width="24" height="24" viewBox="0 0 24 24" fill="#1877F2"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg></a>
-                        <a href="https://www.instagram.com/ncni_pl/" target="_blank" class="social-icon" aria-label="Instagram"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="url(#ig-grad)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><defs><linearGradient id="ig-grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#f09433" /><stop offset="25%" stop-color="#e6683c" /><stop offset="50%" stop-color="#dc2743" /><stop offset="75%" stop-color="#cc2366" /><stop offset="100%" stop-color="#bc1888" /></linearGradient></defs><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
-                        <a href="https://youtube.com/@neuroinnowacje" target="_blank" class="social-icon" aria-label="YouTube" rel="noopener noreferrer" style="display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;color:var(--text-main,#222);text-decoration:none;vertical-align:middle;"><svg aria-hidden="true" width="28" height="22" viewBox="0 0 28 20" style="display:block;flex-shrink:0"><rect width="28" height="20" rx="6" fill="#FF0000"/><path d="M11 5.5v9l8-4.5z" fill="#fff"/></svg></a>
-                        <a href="https://x.com/neuroinnowacje" target="_blank" class="social-icon" aria-label="X" rel="noopener noreferrer" style="display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;color:var(--text-main,#222);text-decoration:none;vertical-align:middle;"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style="display:block;flex-shrink:0"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg></a>
+                    <div class="ncni-social" aria-label="NCNI w mediach społecznościowych">
+                        <a href="https://www.facebook.com/profile.php?id=61579420537737" target="_blank" rel="noopener noreferrer" class="ncni-social-link ncni-social-fb" aria-label="Facebook NCNI"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13.5 21v-7.5h2.5l.4-3h-2.9V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.3H8v3h2.5V21h3z"/></svg></a>
+                        <a href="https://www.instagram.com/ncni_pl/" target="_blank" rel="noopener noreferrer" class="ncni-social-link ncni-social-ig" aria-label="Instagram NCNI"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.9" d="M7.5 3.5h9a4 4 0 0 1 4 4v9a4 4 0 0 1-4 4h-9a4 4 0 0 1-4-4v-9a4 4 0 0 1 4-4z"/><circle cx="12" cy="12" r="3.8" fill="none" stroke="currentColor" stroke-width="1.9"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor"/></svg></a>
+                        <a href="https://youtube.com/@neuroinnowacje" target="_blank" rel="noopener noreferrer" class="ncni-social-link ncni-social-yt" aria-label="YouTube NCNI"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4a2.5 2.5 0 0 0-1.8 1.8C2 8.8 2 12 2 12s0 3.2.4 4.8a2.5 2.5 0 0 0 1.8 1.8c1.6.4 7.8.4 7.8.4s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8c.4-1.6.4-4.8.4-4.8s0-3.2-.4-4.8zM10 15.1V8.9l5.2 3.1-5.2 3.1z"/></svg></a>
+                        <a href="https://x.com/neuroinnowacje" target="_blank" rel="noopener noreferrer" class="ncni-social-link ncni-social-x" aria-label="X NCNI"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M17.8 3.5h3l-6.6 7.5 7.8 9.5h-6.1l-4.8-5.9-5.5 5.9h-3l7.1-8L2.2 3.5h6.2l4.3 5.4 5.1-5.4zm-1 15.3h1.7L7.3 5.1H5.5l11.3 13.7z"/></svg></a>
                     </div>
+                    <style>
+                        .ncni-social { margin-top: 22px; display: flex; gap: 12px; flex-wrap: wrap; }
+                        .ncni-social-link { width: 44px; height: 44px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; color: #fff; text-decoration: none; box-shadow: 0 4px 14px rgba(15,23,42,.12); transition: transform .2s ease, box-shadow .2s ease; }
+                        .ncni-social-link svg { width: 21px; height: 21px; }
+                        .ncni-social-link:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(15,23,42,.18); }
+                        .ncni-social-link:focus-visible { outline: 3px solid var(--primary); outline-offset: 3px; }
+                        .ncni-social-fb { background: #1877f2; }
+                        .ncni-social-ig { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%, #d6249f 60%, #285aeb 90%); }
+                        .ncni-social-yt { background: #ff0000; }
+                        .ncni-social-x { background: #0f1419; }
+                        @media (prefers-reduced-motion: reduce) { .ncni-social-link { transition: none; } .ncni-social-link:hover { transform: none; } }
+                    </style>
                 </div>
                 <div>
                     <h4 style="margin-bottom: 16px;">Mapa Strony</h4>
