@@ -1,0 +1,11 @@
+{
+  "name": "ncni-krok",
+  "private": true,
+  "version": "0.2.0",
+  "type": "module",
+  "description": "NCNI Krok – aplikacja edukacyjna dla pacjentów (osobna strona na Vercelu)",
+  "engines": { "node": "22.x" },
+  "dependencies": {
+    "@vercel/blob": "^2.0.0"
+  }
+}

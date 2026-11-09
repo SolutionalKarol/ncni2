@@ -1,6 +1,6 @@
 /*
  * NCNI Krok – aplikacja edukacyjna dla placówek POZ (hosting OVH, PHP).
- * Logowanie i dane są po stronie serwera (index.php, api.php). Ten plik to tylko interfejs.
+ * Logowanie i dane są po stronie serwera (api/strona.js, api/dane.js). Ten plik to tylko interfejs.
  */
 (function () {
   'use strict';
@@ -16,14 +16,14 @@
   const $$ = (sel) => [...app.querySelectorAll(sel)];
   const fmtDate = (ts) => ts ? new Date(ts).toLocaleDateString('pl-PL', { day: '2-digit', month: '2-digit', year: 'numeric' }) : '–';
   const pct = (a, b) => b ? Math.round((a / b) * 100) : 0;
-  const logout = () => { location.href = './?wyloguj=1'; };
+  const logout = () => { location.href = '/?wyloguj=1'; };
 
   let db = { pacjenci: [] };
 
   async function api(akcja, dane) {
     let r;
     try {
-      r = await fetch('api.php', {
+      r = await fetch('/api/dane', {
         method: 'POST', credentials: 'same-origin', cache: 'no-store',
         headers: { 'Content-Type': 'application/json', 'X-NK': '1' },
         body: JSON.stringify(Object.assign({ akcja }, dane || {}))
@@ -137,7 +137,7 @@
     $('#f-new').onsubmit = async (e) => {
       e.preventDefault();
       const r = await api('dodaj', { imie: $('#n-im').value.trim(), nazwisko: $('#n-na').value.trim(), sciezka: $('#n-sc').value });
-      patientsAdmin(`Konto założone. Login: <b>${esc(r.nazwisko)}</b>, hasło: <b>${esc(r.haslo)}</b>. Zapisz je pacjentowi na kartce. Adres: <b>ncni.pl/krok</b>`);
+      patientsAdmin(`Konto założone. Login: <b>${esc(r.nazwisko)}</b>, hasło: <b>${esc(r.haslo)}</b>. Zapisz je pacjentowi na kartce. Adres: <b>${esc(location.host)}</b>`);
     };
     $$('[data-del]').forEach((b) => b.onclick = async () => {
       const p = db.pacjenci.find((x) => x.id === b.dataset.del);
