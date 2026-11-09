@@ -1,15 +1,12 @@
 /*
- * NCNI Krok – prototyp aplikacji edukacyjnej dla placówek POZ.
- * Personel loguje się na serwerze (middleware.js). Konta pacjentów i wyniki
- * są w tym prototypie zapisywane na tablecie (localStorage); w wersji pilotażowej
- * przejdą do bazy danych w UE.
+ * NCNI Krok – aplikacja edukacyjna dla placówek POZ (hosting OVH, PHP).
+ * Logowanie i dane są po stronie serwera (index.php, api.php). Ten plik to tylko interfejs.
  */
 (function () {
   'use strict';
 
   const SCIEZKI = window.NK_SCIEZKI || {};
-  const KEY = 'nk_dane_v1';
-  const PATIENT_IDLE_MS = 5 * 60 * 1000;
+  const PATIENT_IDLE_MS = 10 * 60 * 1000;
   const app = document.getElementById('app');
 
   /* ---------- narzędzia ---------- */
@@ -19,26 +16,37 @@
   const $$ = (sel) => [...app.querySelectorAll(sel)];
   const fmtDate = (ts) => ts ? new Date(ts).toLocaleDateString('pl-PL', { day: '2-digit', month: '2-digit', year: 'numeric' }) : '–';
   const pct = (a, b) => b ? Math.round((a / b) * 100) : 0;
-  const norm = (s) => String(s || '').trim().toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/ł/g, 'l');
+  const logout = () => { location.href = './?wyloguj=1'; };
 
-  function load() {
-    try { return JSON.parse(localStorage.getItem(KEY)) || { pacjenci: [] }; } catch { return { pacjenci: [] }; }
+  let db = { pacjenci: [] };
+
+  async function api(akcja, dane) {
+    let r;
+    try {
+      r = await fetch('api.php', {
+        method: 'POST', credentials: 'same-origin', cache: 'no-store',
+        headers: { 'Content-Type': 'application/json', 'X-NK': '1' },
+        body: JSON.stringify(Object.assign({ akcja }, dane || {}))
+      });
+    } catch {
+      alertBox('Brak połączenia z serwerem. Sprawdź internet i spróbuj ponownie.');
+      throw new Error('siec');
+    }
+    if (r.status === 401) { logout(); throw new Error('sesja'); }
+    const j = await r.json().catch(() => ({}));
+    if (!r.ok) { alertBox(j.blad || 'Coś poszło nie tak.'); throw new Error(j.blad || 'blad'); }
+    return j;
   }
-  function save(d) {
-    try { localStorage.setItem(KEY, JSON.stringify(d)); } catch { alertBox('Nie udało się zapisać danych na tym urządzeniu.'); }
+
+  async function loadPatients() { db.pacjenci = (await api('pacjenci')).pacjenci; }
+
+  // zapis postępu zalogowanego pacjenta na serwerze
+  function save() {
+    if (!current) return;
+    api('zapisz', { start: current.start, kontrola: current.kontrola }).catch(() => {});
   }
-  let db = load();
 
   function alertBox(t) { const m = document.createElement('div'); m.className = 'msg err'; m.textContent = t; app.prepend(m); }
-
-  async function hashPass(password, saltHex) {
-    const enc = new TextEncoder();
-    const salt = saltHex ? new Uint8Array(saltHex.match(/../g).map((x) => parseInt(x, 16))) : crypto.getRandomValues(new Uint8Array(16));
-    const key = await crypto.subtle.importKey('raw', enc.encode(password), 'PBKDF2', false, ['deriveBits']);
-    const bits = await crypto.subtle.deriveBits({ name: 'PBKDF2', hash: 'SHA-256', salt, iterations: 120000 }, key, 256);
-    const hex = (b) => [...new Uint8Array(b)].map((x) => x.toString(16).padStart(2, '0')).join('');
-    return { salt: hex(salt), hash: hex(bits) };
-  }
 
   function speak(text) {
     if (!('speechSynthesis' in window)) return;
@@ -48,39 +56,23 @@
     speechSynthesis.speak(u);
   }
 
-  /* ---------- sesja personelu ---------- */
-  let staff = null;
-  async function whoami() {
-    try {
-      const r = await fetch('/krok/ja', { credentials: 'same-origin', cache: 'no-store' });
-      if (r.ok) return await r.json();
-    } catch { /* tryb lokalny */ }
-    return null;
-  }
-
+  /* ---------- sesja ---------- */
+  const staff = window.NK_USER || null;
   const isAdmin = () => staff && staff.rola === 'admin';
 
-  /* ---------- tryb pacjenta i bezczynność ---------- */
   let current = null; // zalogowany pacjent
   let idleTimer = null;
   function touchIdle() {
     if (!current) return;
     clearTimeout(idleTimer);
-    idleTimer = setTimeout(() => { logoutPatient(true); }, PATIENT_IDLE_MS);
+    idleTimer = setTimeout(logout, PATIENT_IDLE_MS);
   }
   ['pointerdown', 'keydown'].forEach((e) => document.addEventListener(e, touchIdle, { passive: true }));
 
-  function setPatientMode(on) {
-    document.getElementById('btn-logout').style.display = on ? 'none' : '';
-    document.getElementById('who').innerHTML = on
+  function setHeader() {
+    document.getElementById('who').innerHTML = current
       ? `Pacjent: <b>${esc(current.imie)} ${esc(current.nazwisko)}</b>`
       : staff ? `<b>${esc(staff.imie)}</b>${isAdmin() ? '<span class="badge">admin</span>' : ''}` : '';
-  }
-
-  function logoutPatient(byIdle) {
-    current = null; clearTimeout(idleTimer); window.speechSynthesis && window.speechSynthesis.cancel();
-    setPatientMode(false);
-    home(byIdle ? 'Pacjent został wylogowany po 5 minutach bezczynności.' : '');
   }
 
   /* ---------- ekran główny personelu ---------- */
@@ -92,103 +84,70 @@
       tel. 600 608 333 · kontakt@ncni.pl · ncni.pl</div></div>`;
   }
 
-  function home(info) {
-    const n = db.pacjenci.length;
+  async function home(info) {
+    await loadPatients().catch(() => {});
+    const n = db.pacjenci.filter((p) => !p.demo).length;
     h(`
       ${info ? `<div class="msg info">${esc(info)}</div>` : ''}
       <h1>Dzień dobry${staff ? ', ' + esc(staff.imie.split(' ')[0]) : ''}</h1>
-      <p class="muted">Wybierz, co chcesz zrobić. Pacjent loguje się swoim nazwiskiem i hasłem.</p>
+      <p class="muted">Wybierz, co chcesz zrobić. Pacjent loguje się swoim nazwiskiem i hasłem, na tablecie w przychodni albo w domu.</p>
       <div class="spacer"></div>
       <div class="grid three">
-        <button class="tile" data-go="plogin"><span class="ico">👤</span><strong>Zaloguj pacjenta</strong><span>Przekaż tablet pacjentowi</span></button>
+        <button class="tile" data-go="plogin"><span class="ico">👤</span><strong>Zaloguj pacjenta</strong><span>Wylogowuje personel i otwiera logowanie pacjenta na tym urządzeniu</span></button>
         ${isAdmin() ? `<button class="tile" data-go="pacjenci"><span class="ico">🗂</span><strong>Pacjenci</strong><span>${n} ${n === 1 ? 'konto' : (n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14)) ? 'konta' : 'kont'} · dodaj nowe</span></button>` : ''}
         <button class="tile" data-go="panel"><span class="ico">📊</span><strong>Wyniki placówki</strong><span>Ukończenia, wiedza, cele</span></button>
       </div>
       <div class="spacer"></div>
       ${orgCard()}
     `);
-    $$('[data-go]').forEach((b) => b.addEventListener('click', () => ({ plogin: patientLogin, pacjenci: patientsAdmin, panel })[b.dataset.go]()));
+    $$('[data-go]').forEach((b) => b.addEventListener('click', () => ({ plogin: logout, pacjenci: patientsAdmin, panel })[b.dataset.go]()));
   }
 
   /* ---------- konta pacjentów (admin) ---------- */
-  function patientsAdmin(msg) {
+  async function patientsAdmin(msg) {
     if (!isAdmin()) return home();
-    const rows = db.pacjenci.map((p) => `<tr>
+    await loadPatients();
+    const list = db.pacjenci.filter((p) => !p.demo);
+    const rows = list.map((p) => `<tr>
         <td><b>${esc(p.nazwisko)}</b> ${esc(p.imie)}</td>
         <td>${esc(SCIEZKI[p.sciezka]?.nazwa || p.sciezka)}</td>
         <td>${fmtDate(p.utworzono)}</td>
         <td>${statusPill(p)}</td>
-        <td><button class="btn-ghost small" data-reset="${p.id}">Nowe hasło</button>
-            <button class="btn-ghost small" data-del="${p.id}">Usuń</button></td></tr>`).join('');
+        <td><button class="btn-ghost small" data-reset="${esc(p.id)}">Nowe hasło</button>
+            <button class="btn-ghost small" data-del="${esc(p.id)}">Usuń</button></td></tr>`).join('');
     h(`
       <div class="row between"><h1>Pacjenci</h1><button class="btn-ghost" id="back">← Wróć</button></div>
       ${msg ? `<div class="msg ok">${msg}</div>` : ''}
       <div class="card">
         <h2>Nowe konto pacjenta</h2>
+        <p class="muted">Hasło nada system. Pokażemy je tylko raz, więc zapisz je pacjentowi na kartce.</p>
         <form id="f-new" autocomplete="off">
-          <div class="grid two">
+          <div class="grid three">
             <div><label for="n-im">Imię</label><input id="n-im" type="text" required maxlength="40"></div>
             <div><label for="n-na">Nazwisko (login)</label><input id="n-na" type="text" required maxlength="60"></div>
-            <div><label for="n-pw">Hasło (min. 6 znaków)</label><input id="n-pw" type="text" required minlength="6" maxlength="64"></div>
             <div><label for="n-sc">Ścieżka</label><select id="n-sc">${Object.values(SCIEZKI).map((s) => `<option value="${s.id}">${esc(s.nazwa)}</option>`).join('')}</select></div>
           </div>
           <div class="row end" style="margin-top:18px"><button class="btn" type="submit">Załóż konto</button></div>
         </form>
       </div>
       <div class="spacer"></div>
-      ${db.pacjenci.length ? `<div class="table-wrap"><table><thead><tr><th>Pacjent</th><th>Ścieżka</th><th>Założono</th><th>Status</th><th></th></tr></thead><tbody>${rows}</tbody></table></div>` : '<p class="muted">Nie ma jeszcze żadnych kont.</p>'}
+      ${list.length ? `<div class="table-wrap"><table><thead><tr><th>Pacjent</th><th>Ścieżka</th><th>Założono</th><th>Status</th><th></th></tr></thead><tbody>${rows}</tbody></table></div>` : '<p class="muted">Nie ma jeszcze żadnych kont.</p>'}
     `);
     $('#back').onclick = () => home();
-    $('#n-pw').value = Math.random().toString(36).slice(2, 8);
     $('#f-new').onsubmit = async (e) => {
       e.preventDefault();
-      const imie = $('#n-im').value.trim(), nazwisko = $('#n-na').value.trim(), pw = $('#n-pw').value;
-      if (pw.length < 6) return;
-      const { salt, hash } = await hashPass(pw);
-      db.pacjenci.push({ id: 'p' + Date.now().toString(36), imie, nazwisko, salt, hash, sciezka: $('#n-sc').value, utworzono: Date.now(), start: null, kontrola: null });
-      save(db);
-      patientsAdmin(`Konto założone. Login: <b>${esc(nazwisko)}</b>, hasło: <b>${esc(pw)}</b>. Zapisz je pacjentowi na kartce.`);
+      const r = await api('dodaj', { imie: $('#n-im').value.trim(), nazwisko: $('#n-na').value.trim(), sciezka: $('#n-sc').value });
+      patientsAdmin(`Konto założone. Login: <b>${esc(r.nazwisko)}</b>, hasło: <b>${esc(r.haslo)}</b>. Zapisz je pacjentowi na kartce. Adres: <b>ncni.pl/krok</b>`);
     };
-    $$('[data-del]').forEach((b) => b.onclick = () => {
+    $$('[data-del]').forEach((b) => b.onclick = async () => {
       const p = db.pacjenci.find((x) => x.id === b.dataset.del);
-      if (p && confirm(`Usunąć konto i wyniki: ${p.imie} ${p.nazwisko}?`)) { db.pacjenci = db.pacjenci.filter((x) => x !== p); save(db); patientsAdmin('Konto usunięte.'); }
+      if (p && confirm(`Usunąć konto i wyniki: ${p.imie} ${p.nazwisko}?`)) { await api('usun', { id: p.id }); patientsAdmin('Konto usunięte.'); }
     });
     $$('[data-reset]').forEach((b) => b.onclick = async () => {
       const p = db.pacjenci.find((x) => x.id === b.dataset.reset);
-      const pw = Math.random().toString(36).slice(2, 8);
-      Object.assign(p, await hashPass(pw)); save(db);
-      patientsAdmin(`Nowe hasło dla ${esc(p.nazwisko)}: <b>${esc(pw)}</b>`);
+      const r = await api('nowe_haslo', { id: p.id });
+      patientsAdmin(`Nowe hasło dla ${esc(p.nazwisko)}: <b>${esc(r.haslo)}</b>`);
     });
-  }
-
-  /* ---------- logowanie pacjenta ---------- */
-  function patientLogin(err) {
-    h(`
-      <div class="patient">
-        <div class="card">
-          <h1>Zaloguj się</h1>
-          <p class="muted">Wpisz swoje nazwisko i hasło, które dostałeś w przychodni.</p>
-          ${err ? `<div class="msg err">${esc(err)}</div>` : ''}
-          <form id="f-pl" autocomplete="off">
-            <label for="pl-n">Nazwisko</label><input id="pl-n" type="text" required autocapitalize="words">
-            <label for="pl-p">Hasło</label><input id="pl-p" type="password" required>
-            <div class="row between" style="margin-top:22px">
-              <button class="btn-ghost" type="button" id="back">← Wróć</button>
-              <button class="btn" type="submit">Dalej</button>
-            </div>
-          </form>
-        </div>
-      </div>`);
-    $('#back').onclick = () => home();
-    $('#f-pl').onsubmit = async (e) => {
-      e.preventDefault();
-      const n = norm($('#pl-n').value), pw = $('#pl-p').value;
-      for (const p of db.pacjenci.filter((x) => norm(x.nazwisko) === n)) {
-        if ((await hashPass(pw, p.salt)).hash === p.hash) { current = p; setPatientMode(true); touchIdle(); return patientHome(); }
-      }
-      await new Promise((r) => setTimeout(r, 800));
-      patientLogin('Nie znaleziono takiego nazwiska i hasła. Spróbuj jeszcze raz albo poproś personel o pomoc.');
-    };
   }
 
   /* ---------- ekran pacjenta ---------- */
@@ -209,9 +168,9 @@
           <button class="tile" id="go-breath"><span class="ico">🌬</span><strong>Spokojny oddech</strong><span>Minuta ćwiczenia oddechowego</span></button>
         </div>
         <div class="spacer"></div>
-        <div class="row end"><button class="btn secondary" id="out">Zakończ i oddaj tablet</button></div>
+        <div class="row end"><button class="btn secondary" id="out">Zakończ i wyloguj</button></div>
       </div>`);
-    $('#out').onclick = () => logoutPatient(false);
+    $('#out').onclick = logout;
     $('#go-start') && ($('#go-start').onclick = startFlow);
     $('#go-ctrl') && ($('#go-ctrl').onclick = controlFlow);
     $('#go-goal') && ($('#go-goal').onclick = () => goalSummary(true));
@@ -309,7 +268,7 @@
       data: Date.now(), wiedzaPrzed: { odp: { ...o.wiedza }, wynik: score, max: s.wiedza.length },
       etap: o.etap, bariery: [...o.bariery], pomiary: o.pomiary, moduly: moduly.map((m) => m.id), ukonczoneModuly: [], powody: [], cel: null, pewnosc: null, ukonczono: null
     };
-    save(db);
+    save();
     h(`<div class="patient">${progress(flow.kroki.length)}
       <div class="card">
         <div class="step-label">Twój plan</div>
@@ -333,7 +292,7 @@
     const c = mod.karty[flow.k];
     if (!c) {
       if (!current.start.ukonczoneModuly.includes(mod.id)) current.start.ukonczoneModuly.push(mod.id);
-      save(db); flow.m++; flow.k = 0; return card();
+      save(); flow.m++; flow.k = 0; return card();
     }
     const head = `<div class="step-label">Lekcja ${flow.m + 1} z ${flow.moduly.length} · ${esc(mod.tytul)}</div>`;
     const nav = (dis) => `<div class="row between" style="margin-top:20px">
@@ -371,7 +330,7 @@
     if (w) $$('.choice').forEach((b) => b.onclick = () => {
       const t = b.dataset.t, pw = current.start.powody;
       current.start.powody = pw.includes(t) ? pw.filter((x) => x !== t) : [...pw, t];
-      b.classList.toggle('on'); save(db);
+      b.classList.toggle('on'); save();
     });
     $('#prev').onclick = prev; $('#next').onclick = next;
   }
@@ -437,7 +396,7 @@
       $('#prev').onclick = () => { flow.m = flow.moduly.length - 1; flow.k = flow.moduly[flow.m].karty.length - 1; card(); };
       $('#next').onclick = () => {
         Object.assign(current.start, { cel: sel, pewnosc: conf, ukonczono: Date.now() });
-        save(db); goalSummary(false);
+        save(); goalSummary(false);
       };
     };
     render();
@@ -492,7 +451,7 @@
       if (!q) {
         const wynik = s.wiedza.filter((x) => ctl.odp[x.id] === x.poprawna).length;
         current.kontrola = { data: Date.now(), cel: ctl.cel, wiedzaPo: { odp: ctl.odp, wynik, max: s.wiedza.length } };
-        save(db); return results();
+        save(); return results();
       }
       const sel = ctl.odp[q.id];
       h(`<div class="patient"><div class="card">
@@ -534,7 +493,8 @@
     return '<span class="pill wait">nie zaczęto</span>';
   }
 
-  function panel() {
+  async function panel() {
+    await loadPatients();
     const P = db.pacjenci;
     const started = P.filter((p) => p.start), done = P.filter((p) => p.start && p.start.ukonczono), ctl = P.filter((p) => p.kontrola);
     const avg = (arr, f) => arr.length ? (arr.reduce((a, x) => a + f(x), 0) / arr.length) : 0;
@@ -554,7 +514,7 @@
       <td>${statusPill(p)}</td></tr>`).join('');
     h(`
       <div class="row between"><h1>Wyniki placówki</h1><button class="btn-ghost" id="back">← Wróć</button></div>
-      <p class="muted">Dane z tego tabletu. W wersji pilotażowej wyniki ze wszystkich tabletów będą w jednym miejscu.</p>
+      <p class="muted">Wszyscy pacjenci placówki, ze wszystkich urządzeń.</p>
       <div class="stats">
         <div class="stat"><div class="v">${P.length}</div><div class="l">Konta pacjentów</div></div>
         <div class="stat"><div class="v">${done.length}<small style="font-size:.45em;color:var(--muted)"> / ${started.length}</small></div><div class="l">Ukończone sesje / rozpoczęte</div></div>
@@ -579,8 +539,8 @@
       </div>`);
     $('#back').onclick = () => home();
     $('#csv').onclick = exportCsv;
-    $('#demo') && ($('#demo').onclick = async () => { await seedDemo(); panel(); });
-    $('#clear') && ($('#clear').onclick = () => { db.pacjenci = db.pacjenci.filter((p) => !p.demo); save(db); panel(); });
+    $('#demo') && ($('#demo').onclick = async () => { await api('demo'); panel(); });
+    $('#clear') && ($('#clear').onclick = async () => { await api('usun_demo'); panel(); });
   }
 
   function exportCsv() {
@@ -597,36 +557,18 @@
     setTimeout(() => URL.revokeObjectURL(a.href), 1000);
   }
 
-  async function seedDemo() {
-    const day = 86400e3, now = Date.now();
-    const demo = [
-      ['Anna', 'Przykładowa', 1, 3, 'Przez 7 dni przed następną wizytą zmierzę ciśnienie rano i wieczorem i zapiszę wyniki', 8, 'tak', 3],
-      ['Jan', 'Testowy', 0, 1, 'Przez 2 tygodnie nie będę dosalać potraw przy stole', 7, 'czesciowo', 2],
-      ['Maria', 'Demo', 2, 2, 'Codziennie przed snem zrobię 3 minuty spokojnego oddechu', 9, 'tak', 3],
-      ['Piotr', 'Wzorcowy', 1, 0, 'Będę chodzić na 15-minutowy spacer 5 dni w tygodniu przez najbliższe 2 tygodnie', 6, 'nie', 2],
-      ['Ewa', 'Pokazowa', 2, 2, 'Przez 2 tygodnie będę brać leki o stałej porze, z przypomnieniem w telefonie', 8, null, null]
-    ];
-    const { salt, hash } = await hashPass('demo123');
-    demo.forEach(([imie, nazwisko, wp, etap, cel, pewnosc, cs, wpo], i) => {
-      const t = now - (20 - i * 2) * day;
-      db.pacjenci.push({
-        id: 'demo' + i, demo: true, imie, nazwisko, salt, hash, sciezka: 'nadcisnienie', utworzono: t,
-        start: { data: t, wiedzaPrzed: { odp: {}, wynik: wp, max: 3 }, etap, bariery: ['pomiar', 'stres'], pomiary: 'czasem', moduly: ['podstawy', 'pomiar', 'stres'], ukonczoneModuly: ['podstawy', 'pomiar', 'stres'], powody: [], cel, pewnosc, ukonczono: t + 900e3 },
-        kontrola: cs ? { data: t + 14 * day, cel: cs, wiedzaPo: { odp: {}, wynik: wpo, max: 3 } } : null
-      });
-    });
-    db.pacjenci = db.pacjenci.filter((p, i, arr) => arr.findIndex((x) => x.id === p.id) === i);
-    save(db);
-  }
-
   /* ---------- start ---------- */
   document.getElementById('btn-font').onclick = () => document.documentElement.classList.toggle('big');
 
   (async function init() {
-    staff = await whoami();
-    if ((!staff || !staff.zalogowany) && location.hostname === 'localhost') staff = { zalogowany: true, imie: 'Test lokalny', rola: 'admin' };
-    if (!staff || !staff.zalogowany) { location.href = '/krok/'; return; }
-    setPatientMode(false);
+    if (!staff) { logout(); return; }
+    if (staff.typ === 'pacjent') {
+      const r = await api('ja');
+      current = r.pacjent;
+      setHeader(); touchIdle(); patientHome();
+      return;
+    }
+    setHeader();
     home();
   })();
 })();
