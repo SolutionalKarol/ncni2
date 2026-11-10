@@ -23,3 +23,32 @@ html { scroll-padding-top: 130px; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
   .reveal { opacity: 1 !important; transform: none !important; }
 }
+
+/* Desktop header: one row (logo left, menu right) on every subpage. Added 2026-11-02. */
+@media (min-width: 1101px) {
+  header .nav-wrapper { display: flex !important; flex-direction: row !important; flex-wrap: nowrap !important; align-items: center !important; justify-content: space-between !important; gap: 20px !important; height: auto; }
+  header .brand-bar { width: auto !important; flex: 0 0 auto; justify-content: flex-start !important; padding: 0 !important; }
+  header .brand-bar .nav-link-back, header .brand-bar > a:not(.logo) { display: none !important; }
+  header .logo { gap: 10px; text-decoration: none; color: #1e293b; }
+  header .container.nav-wrapper { width: 100%; max-width: 1320px; padding-left: 24px !important; padding-right: 24px !important; box-sizing: border-box; }
+  header .logo .brand-name-mobile { display: none !important; }
+  header .logo span:not(.brand-name-mobile) { display: block; overflow: visible; text-overflow: clip; white-space: normal; min-width: 0; max-width: 190px; font-size: .95rem; line-height: 1.2; font-weight: 700; text-transform: none; letter-spacing: -.01em; }
+  header .nav-links { display: flex !important; flex: 1 1 auto; flex-wrap: nowrap !important; align-items: center; justify-content: flex-end !important; gap: 2px !important; margin: 0 !important; }
+  header .nav-links > div { display: none !important; }
+  header .header-contact { display: flex; align-items: center; gap: 10px; margin: 0 10px 0 0 !important; white-space: nowrap; font-size: .85rem; }
+  header .header-contact a { color: #475569; text-decoration: none; }
+  header .nav-item { padding: 8px 12px; border-radius: 99px; font-size: .88rem; font-weight: 500; color: #64748b; text-decoration: none; white-space: nowrap; }
+  header .nav-item:hover, header .nav-item.active { color: #0f766e; background: #ccfbf1; }
+  header .nav-item.nav-cta { margin-left: 6px; background: #0f766e; color: #fff; font-weight: 600; padding: 9px 18px; }
+  header .nav-item.nav-cta:hover { background: #115e59; color: #fff; }
+}
+@media (min-width: 1361px) {
+  header .nav-links > div { display: flex !important; align-items: center; gap: 12px; margin: 0 8px 0 0 !important; white-space: nowrap; font-size: .85rem !important; }
+  header .nav-links > div a { white-space: nowrap; margin: 0 !important; text-decoration: none; }
+  header .nav-links > div a[href^="mailto"] { display: none; }
+}
+@media (min-width: 1601px) { header .nav-links > div a[href^="mailto"] { display: inline; } }
+
+/* Links without their own colour used to fall back to browser blue. Zero specificity, so page styles still win. */
+:where(a) { color: #0f766e; }
+:where(a) :where(h2, h3, h4) { color: #1e293b; }

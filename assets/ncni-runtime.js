@@ -96,17 +96,31 @@
     window.addEventListener('scroll', position, {passive: true});
     window.addEventListener('pageshow', function (event) { if (event.persisted) setOpen(false); });
   }
-  /* GA4: count phone and e-mail link clicks (event contact_click). */
-  document.addEventListener('click', function (event) {
-    var link = event.target.closest && event.target.closest('a[href^="tel:"], a[href^="mailto:"]');
-    if (!link || typeof window.gtag !== 'function') return;
-    var href = link.getAttribute('href');
-    window.gtag('event', 'contact_click', {
-      contact_method: href.indexOf('tel:') === 0 ? 'telefon' : 'email',
-      link_url: href,
-      page_path: location.pathname
-    });
-  }, true);
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
   else init();
+})();
+
+/* Contact intent is counted only after consent for Google Analytics (CMP vendor s26). */
+(function () {
+  'use strict';
+  var measurementId = 'G-56VR40VHHV';
+  if (!/^(www\.)?ncni\.pl$/.test(window.location.hostname)) return;
+  document.addEventListener('click', function (event) {
+    if (event.defaultPrevented || (typeof event.button === 'number' && event.button !== 0)) return;
+    var link = event.target.closest && event.target.closest('a[href]');
+    if (!link || typeof window.gtag !== 'function' || typeof window.__cmp !== 'function') return;
+    var href = link.getAttribute('href') || '';
+    var name = /^tel:/i.test(href) ? 'contact_phone_click' : /^mailto:/i.test(href) ? 'contact_email_click' : null;
+    if (!name) return;
+    var data;
+    try { data = window.__cmp('getCMPData'); } catch (error) { return; }
+    var accepted = data && data.vendorConsents && data.vendorConsents.s26;
+    if (accepted !== true && accepted !== 1) return;
+    // No phone number, email address, message subject or link label is sent.
+    window.gtag('event', name, {
+      send_to: measurementId,
+      page_location: window.location.origin + window.location.pathname,
+      page_referrer: document.referrer.split(/[?#]/)[0]
+    });
+  });
 })();

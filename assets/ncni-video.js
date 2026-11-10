@@ -3,7 +3,7 @@ document.querySelectorAll('.ncni-video[data-video]').forEach(figure => {
     const stage = figure.querySelector('.ncni-video-stage');
     const source = figure.dataset.video;
     if (!button || !stage) return;
-    if (!['kosmos.mp4', 'google.ara.mp4', 'treningADHD.mp4'].includes(source)) return;
+    if (!['kosmos.mp4', 'google.ara.mp4', 'treningADHD.mp4', 'ncni-system-sesja.mp4'].includes(source)) return;
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
     let timer, iframe, stop, inView = false, dismissed = false, automatic = false;
     function reset(focus = false) {

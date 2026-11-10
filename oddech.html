@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NCNI VR – Spokojny oddech</title>
+    <link rel="icon" href="assets/icon-192.png" type="image/png">
+<style>
+  html, body { margin: 0; height: 100%; background: #0b1026; color: #e8ecff; font-family: system-ui, -apple-system, "Segoe UI", sans-serif; overflow: hidden; }
+  canvas { display: block; }
+  #panel { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; padding: 16px; box-sizing: border-box; background: radial-gradient(ellipse at center, rgba(11,16,38,.55), rgba(11,16,38,.9)); }
+  .card { max-width: 520px; width: 100%; text-align: center; }
+  h1 { font-weight: 600; font-size: 28px; margin: 0 0 6px; }
+  p { color: #b8c0e6; line-height: 1.5; margin: 8px 0; }
+  .row { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin: 18px 0; }
+  button { font: inherit; border: 1px solid #5b6bb5; background: transparent; color: #e8ecff; border-radius: 999px; padding: 10px 18px; cursor: pointer; }
+  button.sel { background: #3b4a9a; border-color: #8090e0; }
+  #start { font-size: 20px; padding: 14px 32px; background: #6c7fe0; border-color: #6c7fe0; color: #fff; }
+  #start:disabled { opacity: .5; }
+  small { color: #8890b8; }
+</style>
+<link rel="canonical" href="https://ncni.pl/oddech.html">
+<meta name="description" content="Spokojny oddech: ćwiczenie relaksacyjne NCNI w przeglądarce lub w goglach VR. Wdech 4 sekundy, wydech 6 sekund.">
+</head>
+<body>
+<div id="panel">
+  <div class="card">
+    <h1>Spokojny oddech</h1>
+    <p>Wieczorne jezioro i kula, która prowadzi oddech: wdech 4 sekundy, wydech 6 sekund.</p>
+    <div class="row" id="durations">
+      <button data-min="3">3 min</button>
+      <button data-min="5" class="sel">5 min</button>
+      <button data-min="10">10 min</button>
+    </div>
+    <button id="start">Wejdź do VR</button>
+    <p><small id="info">Najlepiej w goglach Meta Quest, na siedząco.</small></p>
+    <p><small><a href="/" style="color:#aab6ff">Naukowe Centrum Neuroinnowacji</a> · ćwiczenie relaksacyjne, nie zastępuje leczenia</small></p>
+  </div>
+</div>
+
+<script type="importmap">
+{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.min.js" } }
+</script>
+<script type="module">
+import * as THREE from 'three';
+
+const INHALE = 4, EXHALE = 6, CYCLE = INHALE + EXHALE;
+let sessionMin = 5;
+
+// ---------- renderer / scene ----------
+const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+renderer.setSize(innerWidth, innerHeight);
+renderer.xr.enabled = true;
+renderer.xr.setReferenceSpaceType('local-floor');
+document.body.appendChild(renderer.domElement);
+
+const scene = new THREE.Scene();
+scene.fog = new THREE.Fog(0x1a2050, 40, 180);
+const camera = new THREE.PerspectiveCamera(70, innerWidth / innerHeight, 0.05, 500);
+camera.position.set(0, 1.2, 0);
+addEventListener('resize', () => {
+  camera.aspect = innerWidth / innerHeight; camera.updateProjectionMatrix();
+  renderer.setSize(innerWidth, innerHeight);
+});
+
+// sky dome with vertical gradient
+const sky = new THREE.Mesh(
+  new THREE.SphereGeometry(300, 32, 16),
+  new THREE.ShaderMaterial({
+    side: THREE.BackSide, depthWrite: false, fog: false,
+    uniforms: { top: { value: new THREE.Color(0x070b24) }, mid: { value: new THREE.Color(0x2b2f6e) }, low: { value: new THREE.Color(0xd98a7a) } },
+    vertexShader: `varying vec3 vP; void main(){ vP = normalize(position); gl_Position = projectionMatrix*modelViewMatrix*vec4(position,1.); }`,
+    fragmentShader: `uniform vec3 top, mid, low; varying vec3 vP;
+      void main(){ float h = vP.y;
+        vec3 c = mix(low, mid, smoothstep(-0.02, 0.18, h));
+        c = mix(c, top, smoothstep(0.18, 0.7, h));
+        gl_FragColor = vec4(c,1.); }`
+  })
+);
+scene.add(sky);
+
+// stars
+{
+  const n = 900, pos = new Float32Array(n * 3);
+  for (let i = 0; i < n; i++) {
+    const th = Math.random() * Math.PI * 2, y = 0.15 + Math.random() * 0.85, r = Math.sqrt(1 - y * y);
+    pos.set([Math.cos(th) * r * 280, y * 280, Math.sin(th) * r * 280], i * 3);
+  }
+  const g = new THREE.BufferGeometry(); g.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+  scene.add(new THREE.Points(g, new THREE.PointsMaterial({ color: 0xdfe6ff, size: 1.1, sizeAttenuation: true, fog: false, transparent: true, opacity: 0.8 })));
+}
+
+// soft round sprite texture (moon glow, fireflies)
+function glowTex() {
+  const c = document.createElement('canvas'); c.width = c.height = 128;
+  const x = c.getContext('2d'), gr = x.createRadialGradient(64, 64, 0, 64, 64, 64);
+  gr.addColorStop(0, 'rgba(255,255,255,1)'); gr.addColorStop(0.25, 'rgba(255,255,255,.55)'); gr.addColorStop(1, 'rgba(255,255,255,0)');
+  x.fillStyle = gr; x.fillRect(0, 0, 128, 128);
+  return new THREE.CanvasTexture(c);
+}
+const glow = glowTex();
+
+// moon
+const moonDir = new THREE.Vector3(0.25, 0.22, -1).normalize();
+const moon = new THREE.Mesh(new THREE.CircleGeometry(6, 48), new THREE.MeshBasicMaterial({ color: 0xfff3d6, fog: false }));
+moon.position.copy(moonDir).multiplyScalar(250); moon.lookAt(0, 0, 0); scene.add(moon);
+const moonGlow = new THREE.Sprite(new THREE.SpriteMaterial({ map: glow, color: 0xffe2b8, transparent: true, opacity: 0.5, depthWrite: false, fog: false, blending: THREE.AdditiveBlending }));
+moonGlow.position.copy(moon.position); moonGlow.scale.set(60, 60, 1); scene.add(moonGlow);
+
+// mountains: ring of silhouettes
+function ridge(radius, height, color, seed) {
+  const seg = 160, verts = [];
+  const h = a => { let v = 0; for (let k = 1; k <= 4; k++) v += Math.sin(a * k * 3 + seed * k * 1.7) / k; return 0.45 + 0.35 * v; };
+  for (let i = 0; i < seg; i++) {
+    const a0 = i / seg * Math.PI * 2, a1 = (i + 1) / seg * Math.PI * 2;
+    const p = (a, y) => [Math.cos(a) * radius, y, Math.sin(a) * radius];
+    const t0 = height * Math.max(0.05, h(a0)), t1 = height * Math.max(0.05, h(a1));
+    verts.push(...p(a0, -1), ...p(a1, -1), ...p(a1, t1), ...p(a0, -1), ...p(a1, t1), ...p(a0, t0));
+  }
+  const g = new THREE.BufferGeometry(); g.setAttribute('position', new THREE.Float32BufferAttribute(verts, 3));
+  return new THREE.Mesh(g, new THREE.MeshBasicMaterial({ color, side: THREE.DoubleSide }));
+}
+scene.add(ridge(170, 38, 0x262a5c, 1.3));
+scene.add(ridge(120, 22, 0x161a3e, 4.1));
+
+// water
+const waterMat = new THREE.ShaderMaterial({
+  fog: true,
+  uniforms: THREE.UniformsUtils.merge([THREE.UniformsLib.fog, { t: { value: 0 }, moonX: { value: moonDir.x / -moonDir.z } }]),
+  vertexShader: `uniform float t; varying vec3 vW; varying float vH;
+    #include <fog_pars_vertex>
+    void main(){ vec3 p = position;
+      float h = sin(p.x*0.35 + t*0.6)*0.05 + sin(p.y*0.5 - t*0.45)*0.05 + sin((p.x+p.y)*1.3 + t)*0.015;
+      p.z += h; vH = h;
+      vec4 w = modelMatrix*vec4(p,1.); vW = w.xyz;
+      vec4 mvPosition = viewMatrix*w; gl_Position = projectionMatrix*mvPosition;
+      #include <fog_vertex>
+    }`,
+  fragmentShader: `uniform float t, moonX; varying vec3 vW; varying float vH;
+    #include <fog_pars_fragment>
+    void main(){
+      vec3 base = mix(vec3(0.2,0.18,0.4), vec3(0.06,0.07,0.19), smoothstep(-90.,-6., vW.z));
+      float lane = exp(-pow((vW.x - moonX*(-vW.z)) / (1.5 + 0.06*(-vW.z)), 2.));
+      float r = sin(vW.x*2.1 + t*1.1)*sin(vW.z*2.7 - t*0.8) + sin((vW.x - vW.z)*1.3 + t*0.7)*0.6;
+      float sparkle = smoothstep(0.6, 1.4, r) * 0.9 + 0.2;
+      float far = 1. - smoothstep(-30., -4., vW.z);
+      vec3 c = base + vec3(1.,0.88,0.7) * lane * sparkle * 0.5 * far;
+      gl_FragColor = vec4(c,1.);
+      #include <fog_fragment>
+    }`
+});
+const water = new THREE.Mesh(new THREE.PlaneGeometry(400, 400, 160, 160), waterMat);
+water.rotation.x = -Math.PI / 2; scene.add(water);
+
+// small wooden pier under the viewer, so the floor feels solid
+const pier = new THREE.Mesh(new THREE.BoxGeometry(2.2, 0.15, 4), new THREE.MeshBasicMaterial({ color: 0x2b2030 }));
+pier.position.set(0, 0.05, 0.6); scene.add(pier);
+
+// fireflies
+const flyCount = 70;
+const flyGeo = new THREE.BufferGeometry();
+{
+  const base = new Float32Array(flyCount * 3), ph = new Float32Array(flyCount);
+  for (let i = 0; i < flyCount; i++) {
+    base.set([(Math.random() - 0.5) * 16, 0.4 + Math.random() * 2.6, -2 - Math.random() * 14], i * 3);
+    ph[i] = Math.random() * 100;
+  }
+  flyGeo.setAttribute('position', new THREE.BufferAttribute(base, 3));
+  flyGeo.setAttribute('ph', new THREE.BufferAttribute(ph, 1));
+}
+const flyMat = new THREE.ShaderMaterial({
+  transparent: true, depthWrite: false, blending: THREE.AdditiveBlending,
+  uniforms: { t: { value: 0 }, map: { value: glow }, k: { value: 600 } },
+  vertexShader: `uniform float t, k; attribute float ph; varying float vA;
+    void main(){ vec3 p = position;
+      p.x += sin(t*0.13 + ph)*0.8; p.y += sin(t*0.21 + ph*1.3)*0.35; p.z += cos(t*0.11 + ph*0.7)*0.8;
+      vA = 0.35 + 0.65*pow(0.5+0.5*sin(t*0.9 + ph*5.), 3.);
+      vec4 mv = modelViewMatrix*vec4(p,1.); gl_PointSize = k*0.06/(-mv.z); gl_Position = projectionMatrix*mv; }`,
+  fragmentShader: `uniform sampler2D map; varying float vA;
+    void main(){ vec4 c = texture2D(map, gl_PointCoord); gl_FragColor = vec4(vec3(1.,0.9,0.55)*c.a*vA, c.a*vA); }`
+});
+scene.add(new THREE.Points(flyGeo, flyMat));
+
+// breathing orb
+const guide = new THREE.Group(); guide.position.set(0, 1.35, -2.6); scene.add(guide);
+const orb = new THREE.Mesh(new THREE.SphereGeometry(1, 48, 32), new THREE.ShaderMaterial({
+  transparent: true,
+  uniforms: { c: { value: new THREE.Color(0x9fb4ff) }, a: { value: 0.9 } },
+  vertexShader: `varying vec3 vN; varying vec3 vV; void main(){ vN = normalize(normalMatrix*normal); vec4 mv = modelViewMatrix*vec4(position,1.); vV = normalize(-mv.xyz); gl_Position = projectionMatrix*mv; }`,
+  fragmentShader: `uniform vec3 c; uniform float a; varying vec3 vN; varying vec3 vV;
+    void main(){ float f = pow(1. - max(dot(vN, vV), 0.), 2.); vec3 col = mix(c*0.55, vec3(1.), f*0.6) + c*f; gl_FragColor = vec4(col, a*(0.55 + 0.45*f)); }`
+}));
+guide.add(orb);
+const halo = new THREE.Sprite(new THREE.SpriteMaterial({ map: glow, color: 0x9fb4ff, transparent: true, opacity: 0.35, depthWrite: false, blending: THREE.AdditiveBlending }));
+guide.add(halo);
+const ring = new THREE.Mesh(new THREE.RingGeometry(0.62, 0.635, 96), new THREE.MeshBasicMaterial({ color: 0xc8d2ff, transparent: true, opacity: 0.35, side: THREE.DoubleSide }));
+guide.add(ring);
+
+// text label under the orb
+const labelCanvas = document.createElement('canvas'); labelCanvas.width = 1024; labelCanvas.height = 256;
+const lctx = labelCanvas.getContext('2d');
+const labelTex = new THREE.CanvasTexture(labelCanvas);
+const label = new THREE.Mesh(new THREE.PlaneGeometry(1.6, 0.4), new THREE.MeshBasicMaterial({ map: labelTex, transparent: true, depthWrite: false, fog: false }));
+label.position.set(0, -0.95, 0); guide.add(label);
+let lastLabel = '';
+function setLabel(big, small) {
+  const key = big + '|' + small; if (key === lastLabel) return; lastLabel = key;
+  lctx.clearRect(0, 0, 1024, 256);
+  lctx.textAlign = 'center'; lctx.fillStyle = 'rgba(235,240,255,0.95)';
+  lctx.font = '600 96px system-ui, sans-serif'; lctx.fillText(big, 512, 110);
+  lctx.font = '48px system-ui, sans-serif'; lctx.fillStyle = 'rgba(200,210,255,0.75)'; lctx.fillText(small, 512, 200);
+  labelTex.needsUpdate = true;
+}
+setLabel('Usiądź wygodnie', 'oddychaj razem z kulą');
+
+// ---------- audio (generated, no files) ----------
+let audio = null;
+function startAudio() {
+  const ctx = new (window.AudioContext || window.webkitAudioContext)();
+  const master = ctx.createGain(); master.gain.value = 0; master.connect(ctx.destination);
+  master.gain.linearRampToValueAtTime(0.9, ctx.currentTime + 6);
+  // gentle waves: brown noise through a low-pass whose cutoff is modulated by the breath
+  const len = ctx.sampleRate * 4, buf = ctx.createBuffer(1, len, ctx.sampleRate), d = buf.getChannelData(0);
+  let last = 0; for (let i = 0; i < len; i++) { last = (last + 0.02 * (Math.random() * 2 - 1)) / 1.02; d[i] = last * 3.2; }
+  const noise = ctx.createBufferSource(); noise.buffer = buf; noise.loop = true;
+  const lp = ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 400;
+  const nGain = ctx.createGain(); nGain.gain.value = 0.25;
+  noise.connect(lp).connect(nGain).connect(master); noise.start();
+  // soft drone chord
+  const pad = ctx.createGain(); pad.gain.value = 0.035; pad.connect(master);
+  [110, 164.81, 220, 277.18].forEach((f, i) => {
+    const o = ctx.createOscillator(); o.type = 'sine'; o.frequency.value = f; o.detune.value = (i - 1.5) * 4;
+    const g = ctx.createGain(); g.gain.value = 1 / (i + 1); o.connect(g).connect(pad); o.start();
+  });
+  audio = { ctx, master, lp, nGain, pad };
+}
+function audioBreath(v) { // v: 0..1 breath fullness
+  if (!audio) return;
+  const t = audio.ctx.currentTime;
+  audio.lp.frequency.setTargetAtTime(250 + v * 700, t, 0.3);
+  audio.nGain.gain.setTargetAtTime(0.15 + v * 0.2, t, 0.3);
+}
+function audioFadeOut() { if (audio) audio.master.gain.setTargetAtTime(0, audio.ctx.currentTime, 2); }
+
+// ---------- session ----------
+let t0 = null, ended = false;
+const ease = x => 0.5 - 0.5 * Math.cos(Math.PI * x);
+
+function update(now) {
+  const time = now / 1000;
+  waterMat.uniforms.t.value = time; flyMat.uniforms.t.value = time;
+  flyMat.uniforms.k.value = renderer.xr.isPresenting ? 1400 : innerHeight;
+
+  let v = 0.5 + 0.08 * Math.sin(time * 0.6); // idle pulse before start
+  if (t0 !== null) {
+    const el = time - t0, total = sessionMin * 60;
+    if (el < 6) {
+      setLabel('Witaj', 'za chwilę zaczniemy');
+      v = 0.3 * ease(Math.min(el / 6, 1));
+    } else if (el < total + 6) {
+      const c = (el - 6) % CYCLE;
+      const left = Math.ceil(total + 6 - el), mm = Math.floor(left / 60), ss = String(left % 60).padStart(2, '0');
+      if (c < INHALE) { v = ease(c / INHALE); setLabel('Wdech', `${Math.ceil(INHALE - c)}   ·   ${mm}:${ss}`); }
+      else { v = 1 - ease((c - INHALE) / EXHALE); setLabel('Wydech', `${Math.ceil(CYCLE - c)}   ·   ${mm}:${ss}`); }
+    } else {
+      if (!ended) { ended = true; audioFadeOut(); }
+      v = 0.25 + 0.05 * Math.sin(time * 0.5);
+      setLabel('Koniec sesji', 'otwórz oczy, zdejmij powoli gogle');
+    }
+    audioBreath(v);
+  }
+  const s = 0.28 + 0.24 * v;
+  orb.scale.setScalar(s);
+  halo.scale.set(s * 3, s * 3, 1); halo.material.opacity = 0.15 + 0.25 * v;
+  ring.scale.setScalar(0.9 + 0.1 * Math.sin(time * 0.3));
+  guide.position.y = 1.35 + 0.03 * Math.sin(time * 0.4);
+  // label always faces the viewer (horizontally)
+  label.lookAt(camera.getWorldPosition(tmp).setY(guide.position.y - 0.95));
+
+  if (!renderer.xr.isPresenting) { camera.rotation.y = Math.sin(time * 0.05) * 0.12; }
+  renderer.render(scene, camera);
+}
+const tmp = new THREE.Vector3();
+renderer.setAnimationLoop(update);
+
+// ---------- UI ----------
+const panel = document.getElementById('panel'), startBtn = document.getElementById('start'), info = document.getElementById('info');
+document.querySelectorAll('#durations button').forEach(b => b.onclick = () => {
+  document.querySelectorAll('#durations button').forEach(x => x.classList.remove('sel'));
+  b.classList.add('sel'); sessionMin = +b.dataset.min;
+});
+
+let vrOk = false;
+if (navigator.xr) {
+  navigator.xr.isSessionSupported('immersive-vr').then(ok => {
+    vrOk = ok;
+    if (!ok) { startBtn.textContent = 'Zacznij (bez gogli)'; info.textContent = 'Ta przeglądarka nie obsługuje VR. Otwórz tę stronę w przeglądarce w goglach Meta Quest.'; }
+  });
+} else {
+  startBtn.textContent = 'Zacznij (bez gogli)';
+  info.textContent = 'Ta przeglądarka nie obsługuje VR (wymaga HTTPS i gogli). Podgląd działa na ekranie.';
+}
+
+function begin() {
+  if (!audio) startAudio(); else audio.master.gain.setTargetAtTime(0.9, audio.ctx.currentTime, 1);
+  t0 = performance.now() / 1000; ended = false; panel.style.display = 'none';
+}
+
+startBtn.onclick = async () => {
+  if (vrOk) {
+    startBtn.disabled = true;
+    try {
+      const session = await navigator.xr.requestSession('immersive-vr', { optionalFeatures: ['local-floor'] });
+      renderer.xr.setFoveation?.(1);
+      await renderer.xr.setSession(session);
+      begin();
+      session.addEventListener('end', () => { panel.style.display = ''; startBtn.disabled = false; audioFadeOut(); t0 = null; setLabel('Usiądź wygodnie', 'oddychaj razem z kulą'); });
+    } catch (e) { startBtn.disabled = false; info.textContent = 'Nie udało się uruchomić VR: ' + e.message; }
+  } else {
+    begin();
+  }
+};
+</script>
+</body>
+</html>
