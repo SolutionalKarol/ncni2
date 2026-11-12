@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Tester Mirage – NCNI</title>
+<style>
+:root{--bg:#f6f7fb;--card:#fff;--ink:#16202e;--muted:#5d6878;--acc:#1f5fbf;--ok:#1a7f4b;--warn:#b25c00;--line:#dde2ea}
+@media (prefers-color-scheme:dark){:root{--bg:#10141b;--card:#18202b;--ink:#e8edf4;--muted:#9aa6b6;--acc:#6aa5ff;--ok:#4cc38a;--warn:#ffb057;--line:#2a3442}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+main{max-width:860px;margin:0 auto;padding:16px}
+h1{font-size:1.4rem;margin:.2em 0}
+.sub{color:var(--muted);margin:0 0 14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:14px}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+button,.btn{appearance:none;border:0;border-radius:10px;padding:12px 16px;font:inherit;font-weight:600;background:var(--acc);color:#fff;cursor:pointer}
+button.sec{background:transparent;color:var(--acc);border:1px solid var(--acc)}
+button:disabled{opacity:.45;cursor:default}
+input[type=file]{display:none}
+#status{color:var(--muted);font-size:.95rem}
+#wrap{position:relative;max-width:100%}
+#wrap canvas{max-width:100%;height:auto;display:block;border-radius:10px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px}
+.stat{border:1px solid var(--line);border-radius:10px;padding:10px}
+.stat b{display:block;font-size:1.5rem}
+.stat span{color:var(--muted);font-size:.85rem}
+ol{padding-left:1.4em;margin:.3em 0}
+li{margin:.15em 0}
+.low{color:var(--warn)}
+.legend{font-size:.85rem;color:var(--muted)}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:-1px;margin:0 4px 0 10px}
+details{margin-top:8px}
+pre{white-space:pre-wrap;word-break:break-word;font-size:.8rem;max-height:300px;overflow:auto;background:var(--bg);padding:8px;border-radius:8px}
+label.chk{color:var(--muted);font-size:.95rem}
+footer{color:var(--muted);font-size:.8rem;padding:8px 0 30px}
+</style>
+</head>
+<body>
+<main>
+  <h1>Tester Mirage</h1>
+  <p class="sub">Narzędzie wewnętrzne NCNI do sprawdzenia, co mały model rozpoznawania obrazu odczytuje ze zdjęć zadań. Zdjęcie jest analizowane wyłącznie w tej przeglądarce i nigdzie nie jest wysyłane.</p>
+
+  <div class="card">
+    <div class="row">
+      <label class="btn" for="cam">📷 Zrób zdjęcie</label>
+      <input id="cam" type="file" accept="image/*" capture="environment">
+      <label class="btn" for="pick" style="background:transparent;color:var(--acc);border:1px solid var(--acc)">Wybierz z galerii</label>
+      <input id="pick" type="file" accept="image/*">
+      <button class="sec" id="rot" disabled>↻ Obróć</button>
+      <label class="chk"><input type="checkbox" id="pl" checked> opisy po polsku</label>
+    </div>
+    <p id="status">Wczytuję model (ok. 23 MB, tylko za pierwszym razem)…</p>
+  </div>
+
+  <div class="card" id="res" hidden>
+    <div class="stats">
+      <div class="stat"><b id="sTime">–</b><span>czas analizy</span></div>
+      <div class="stat"><b id="sLines">–</b><span>odczytane linie tekstu</span></div>
+      <div class="stat"><b id="sObj">–</b><span>wykryte obiekty</span></div>
+    </div>
+    <p class="legend" style="margin-top:12px"><i style="background:#1f9d55"></i>tekst<i style="background:#e0661b"></i>obiekty</p>
+    <div id="wrap"><canvas id="cv"></canvas></div>
+    <h3>Odczytany tekst</h3>
+    <ol id="txt"></ol>
+    <h3>Obiekty</h3>
+    <p id="objs"></p>
+    <p id="scene" class="legend"></p>
+    <details><summary>Pełna odpowiedź modelu (JSON)</summary><pre id="raw"></pre></details>
+  </div>
+
+  <footer>
+    Model: Mirage (Cactus Compute, Inc.), licencja Apache 2.0. Silnik: Cactus 4.1.0, licencja Apache 2.0 (<a href="LICENSE-cactus.txt">tekst licencji</a>).<br>
+    Wersja testowa, nie służy do diagnozy. Wyniki modelu bywają błędne.
+  </footer>
+</main>
+<script src="cactus.js"></script>
+<script>
+const $=id=>document.getElementById(id);
+let M=null, lastImg=null, rot=0, busy=false;
+const MAX=1280;
+
+async function init(){
+  try{
+    M=await createCactus();
+    const buf=new Uint8Array(await (await fetch('mirage.cact')).arrayBuffer());
+    const p=M._malloc(buf.length); M.HEAPU8.set(buf,p);
+    let rc; try{rc=M._cactus_load(p,BigInt(buf.length))}catch(e){rc=M._cactus_load(p,buf.length)}
+    if(rc<0) throw new Error(M.UTF8ToString?M.UTF8ToString(M._cactus_last_error()):'błąd wczytania');
+    $('status').textContent='Model gotowy. Zrób zdjęcie zadania, paragonu, zegara albo przedmiotów do policzenia.';
+  }catch(e){ $('status').textContent='Nie udało się wczytać modelu: '+e.message; }
+}
+
+function cstr(s){const b=new TextEncoder().encode(s+'\0');const q=M._malloc(b.length);M.HEAPU8.set(b,q);return q}
+
+function draw(img){
+  const sw=img.naturalWidth||img.width, sh=img.naturalHeight||img.height;
+  const k=Math.min(1,MAX/Math.max(sw,sh)); const w=Math.round(sw*k), h=Math.round(sh*k);
+  const r=rot%360, c=document.createElement('canvas');
+  c.width=(r%180)?h:w; c.height=(r%180)?w:h;
+  const g=c.getContext('2d'); g.translate(c.width/2,c.height/2); g.rotate(r*Math.PI/180); g.drawImage(img,-w/2,-h/2,w,h);
+  return c;
+}
+
+async function analyse(){
+  if(!M||!lastImg||busy) return; busy=true;
+  $('status').textContent='Analizuję…';
+  await new Promise(r=>setTimeout(r,30));
+  const c=draw(lastImg), g=c.getContext('2d'), d=g.getImageData(0,0,c.width,c.height).data;
+  const rgb=new Uint8Array(c.width*c.height*3);
+  for(let i=0,j=0;i<d.length;i+=4){rgb[j++]=d[i];rgb[j++]=d[i+1];rgb[j++]=d[i+2]}
+  const rp=M._malloc(rgb.length); M.HEAPU8.set(rgb,rp);
+  const op=cstr(JSON.stringify({max_objects:64,max_text_lines:64})), lp=cstr($('pl').checked?'pl':'en');
+  const cap=8<<20, out=M._malloc(cap);
+  const t=performance.now();
+  const code=M._cactus_describe(rp,c.width,c.height,op,lp,0,out,cap);
+  const ms=performance.now()-t;
+  let s=new TextDecoder().decode(M.HEAPU8.subarray(out,M.HEAPU8.indexOf(0,out)));
+  [rp,op,lp,out].forEach(x=>M._free(x));
+  busy=false;
+  if(code<0){ $('status').textContent='Błąd modelu: '+(M.UTF8ToString?M.UTF8ToString(M._cactus_last_error()):code); return; }
+  let r; try{ r=JSON.parse(s.replace(/-?nan\b/g,'null')) }catch(e){ $('status').textContent='Model zwrócił nieczytelną odpowiedź.'; return; }
+  show(c,r,ms);
+}
+
+function show(c,r,ms){
+  $('res').hidden=false;
+  const cv=$('cv'); cv.width=c.width; cv.height=c.height; const g=cv.getContext('2d'); g.drawImage(c,0,0);
+  const sx=c.width/1000, sy=c.height/1000; g.lineWidth=Math.max(2,c.width/400);
+  (r.objects||[]).forEach(o=>{ if(!o.bbox) return; const [x1,y1,x2,y2]=o.bbox; g.strokeStyle='#e0661b'; g.strokeRect(x1*sx,y1*sy,(x2-x1)*sx,(y2-y1)*sy); });
+  (r.text||[]).forEach(o=>{ if(!o.bbox) return; const [x1,y1,x2,y2]=o.bbox; g.strokeStyle='#1f9d55'; g.strokeRect(x1*sx,y1*sy,(x2-x1)*sx,(y2-y1)*sy); });
+  const T=r.text||[], O=r.objects||[];
+  $('sTime').textContent=(ms/1000).toFixed(1)+' s'; $('sLines').textContent=T.length; $('sObj').textContent=O.length;
+  $('txt').innerHTML=''; T.forEach(t=>{const li=document.createElement('li'); li.textContent=t.string+'  ('+Math.round((t.score||0)*100)+'%)'; if((t.score||0)<0.5) li.className='low'; $('txt').appendChild(li)});
+  if(!T.length) $('txt').innerHTML='<li>brak</li>';
+  const counts={}; O.forEach(o=>counts[o.name]=(counts[o.name]||0)+1);
+  $('objs').textContent=Object.entries(counts).map(([k,v])=>k+': '+v).join(', ')||'brak';
+  $('scene').textContent=r.scene?('Scena: '+Object.values(r.scene).join(', ')):'';
+  $('raw').textContent=JSON.stringify(r,null,1);
+  $('status').textContent='Gotowe. Jeśli zdjęcie jest obrócone, użyj „Obróć”.';
+}
+
+function load(file){
+  if(!file) return; const img=new Image();
+  img.onload=()=>{ lastImg=img; rot=0; $('rot').disabled=false; analyse(); };
+  img.src=URL.createObjectURL(file);
+}
+$('cam').onchange=e=>load(e.target.files[0]);
+$('pick').onchange=e=>load(e.target.files[0]);
+$('rot').onclick=()=>{ rot=(rot+90)%360; analyse(); };
+$('pl').onchange=()=>analyse();
+init();
+</script>
+</body>
+</html>
