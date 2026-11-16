@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Newsletter NCNI – list raz w miesiącu</title>
+<link rel="icon" href="assets/icon-192.png" type="image/png">
+<link rel="canonical" href="https://ncni.pl/newsletter.html">
+<meta name="description" content="Zapisz się na list z NCNI: raz w miesiącu jedno ćwiczenie do zrobienia w domu, nowości z gabinetu i wiedza o neuroróżnorodności.">
+<style>
+  :root { --teal:#0f766e; --teal-light:#ccfbf1; --ink:#0f172a; --muted:#475569; --line:#e2e8f0; --bg:#f1f5f9; --night:#020617; --cyan:#67e8f9; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; line-height:1.6; }
+  a { color:var(--teal); }
+  header { background:var(--night); padding:18px 16px; }
+  header a { display:inline-flex; align-items:center; gap:12px; color:#fff; text-decoration:none; font-weight:600; }
+  header img { width:44px; height:44px; border-radius:10px; }
+  main { max-width:640px; margin:0 auto; padding:32px 16px 48px; }
+  .card { background:#fff; border:1px solid var(--line); border-radius:18px; overflow:hidden; }
+  .hero { background:var(--teal); color:#fff; padding:28px 24px; }
+  .hero small { color:var(--teal-light); letter-spacing:.12em; text-transform:uppercase; font-size:12px; }
+  .hero h1 { margin:8px 0 10px; font-size:clamp(24px,5vw,30px); line-height:1.25; }
+  .hero p { margin:0; color:#e2e8f0; }
+  form { padding:24px; }
+  label.field { display:block; font-weight:600; margin-bottom:6px; }
+  input[type=email] { width:100%; font:inherit; padding:12px 14px; border:1px solid #cbd5e1; border-radius:10px; }
+  input[type=email]:focus { outline:2px solid var(--cyan); border-color:var(--teal); }
+  .consent { display:flex; gap:10px; align-items:flex-start; margin:18px 0; font-size:14px; color:var(--muted); }
+  .consent input { margin-top:4px; width:18px; height:18px; flex:none; accent-color:var(--teal); }
+  button { font:inherit; font-weight:700; background:var(--teal); color:#fff; border:0; border-radius:999px; padding:12px 26px; cursor:pointer; }
+  button:disabled { opacity:.6; cursor:wait; }
+  .hp { position:absolute; left:-9999px; }
+  .msg { display:none; margin-top:16px; padding:12px 14px; border-radius:10px; font-size:15px; }
+  .msg.ok { display:block; background:#ecfdf5; color:#065f46; border:1px solid #a7f3d0; }
+  .msg.err { display:block; background:#fef2f2; color:#991b1b; border:1px solid #fecaca; }
+  ul.what { margin:0; padding:0 24px 8px 44px; color:var(--muted); }
+  .rodo { margin-top:24px; font-size:13px; color:var(--muted); }
+  .rodo summary { cursor:pointer; font-weight:600; color:var(--ink); }
+  footer { text-align:center; font-size:13px; color:var(--muted); padding:0 16px 32px; }
+</style>
+</head>
+<body>
+<header><a href="/"><img src="logo.webp" alt="" width="44" height="44">Naukowe Centrum Neuroinnowacji</a></header>
+<main>
+  <div class="card">
+    <div class="hero">
+      <small>List z NCNI · raz w miesiącu</small>
+      <h1>Zapisz się na nasz newsletter</h1>
+      <p>Krótko i konkretnie. Bez spamu, a wypisać się możesz jednym kliknięciem w każdym liście.</p>
+    </div>
+    <ul class="what">
+      <li>jedno proste ćwiczenie do zrobienia w domu,</li>
+      <li>nowości z gabinetu: VR, biofeedback, rozmowa z pomiarem,</li>
+      <li>wiedza o neuroróżnorodności: ADHD, spektrum autyzmu, dyskalkulia.</li>
+    </ul>
+    <form id="nl-form" method="POST" action="https://7bcd3fee.sibforms.com/serve/MUIFAJjrL9OFkf_eLAUEJ_KrT6rbECwDXKxW3Ex1XjwVqiMkZ26RY7TeER_3yt_AgrEkUxE3s3z-9f3mvTqDCH-2zOnR5hAlKl27olrfD_faDPDIG2enzdede6_GiCOJjW8y_NO96N8gbMSabI7hOfIItLizLLEy_PGsNlEe4WO3UD7YoY8O26t5u_VZEXx9w5yqZxrxQhzBACNx_A==">
+      <label class="field" for="EMAIL">Twój adres e-mail</label>
+      <input type="email" id="EMAIL" name="EMAIL" autocomplete="email" placeholder="np. anna@example.com" required>
+      <input type="text" name="email_address_check" value="" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <input type="hidden" name="locale" value="pl">
+      <input type="hidden" name="html_type" value="simple">
+      <label class="consent">
+        <input type="checkbox" id="zgoda" required>
+        <span>Chcę otrzymywać newsletter Naukowego Centrum Neuroinnowacji sp. z o.o. na podany adres e-mail. Zgodę mogę wycofać w każdej chwili (link „Wypisz się” w każdym liście).</span>
+      </label>
+      <button type="submit" id="nl-btn">Zapisz mnie</button>
+      <div id="nl-msg" class="msg" role="status" aria-live="polite"></div>
+      <details class="rodo">
+        <summary>Informacja o danych osobowych (RODO)</summary>
+        <p>Administratorem Twoich danych jest Naukowe Centrum Neuroinnowacji sp. z o.o., ul. Stefana Żeromskiego 60/5A, 50-312 Wrocław, kontakt@ncni.pl. Adres e-mail przetwarzamy wyłącznie w celu wysyłki newslettera, na podstawie Twojej zgody (art. 6 ust. 1 lit. a RODO), do czasu jej wycofania. Wycofanie zgody nie wpływa na zgodność z prawem wysyłek sprzed jego dokonania.</p>
+        <p>Newsletter wysyłamy przez serwis Brevo (Sendinblue SAS, Francja), który przetwarza dane w naszym imieniu na terenie UE. Masz prawo dostępu do danych, ich sprostowania, usunięcia, ograniczenia przetwarzania i przeniesienia oraz prawo skargi do Prezesa UODO. Po zapisie wyślemy Ci e-mail z linkiem potwierdzającym. Bez kliknięcia w niego nie dodamy Cię do listy.</p>
+      </details>
+    </form>
+  </div>
+</main>
+<footer>&copy; 2026 Naukowe Centrum Neuroinnowacji sp. z o.o. · <a href="/">ncni.pl</a> · tel. 600 608 333</footer>
+<script>
+(function () {
+  var form = document.getElementById('nl-form');
+  var btn = document.getElementById('nl-btn');
+  var msg = document.getElementById('nl-msg');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (!form.reportValidity()) return;
+    btn.disabled = true;
+    msg.className = 'msg'; msg.textContent = '';
+    fetch(form.action, { method: 'POST', body: new FormData(form), mode: 'no-cors' })
+      .then(function () {
+        msg.className = 'msg ok';
+        msg.textContent = 'Dziękujemy! Sprawdź skrzynkę (także folder Oferty/Spam) i kliknij link potwierdzający zapis.';
+        form.reset();
+      })
+      .catch(function () {
+        msg.className = 'msg err';
+        msg.textContent = 'Nie udało się zapisać. Spróbuj ponownie albo napisz na kontakt@ncni.pl.';
+      })
+      .finally(function () { btn.disabled = false; });
+  });
+})();
+</script>
+</body>
+</html>
