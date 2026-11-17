@@ -1,0 +1,15 @@
+.ncni-contact-form{max-width:640px;margin:40px auto 0;padding:28px;text-align:left;background:#fff;border:1px solid var(--border,#E2E8F0);border-radius:var(--radius,16px);box-shadow:0 10px 30px rgba(15,118,110,.06)}
+.ncni-contact-form h3{margin:0 0 8px;color:var(--primary-dark,#0D5E57);font-family:'Lexend',sans-serif}
+.ncni-contact-form>p{color:var(--text-muted,#64748B);margin:0 0 20px}
+.ncni-contact-fields{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.ncni-contact-form label{display:block;font-size:14px;font-weight:600;color:var(--text-main,#1E293B)}
+.ncni-contact-form input,.ncni-contact-form textarea{display:block;width:100%;box-sizing:border-box;margin:7px 0 16px;padding:12px 14px;border:1px solid #cbd5e1;border-radius:10px;background:#fff;color:var(--text-main,#1E293B);font:inherit;font-weight:400}
+.ncni-contact-form input:focus,.ncni-contact-form textarea:focus{outline:2px solid var(--primary,#0F766E);outline-offset:1px;border-color:var(--primary,#0F766E)}
+.ncni-contact-form textarea{resize:vertical;min-height:130px}
+.ncni-contact-form .fine{font-size:13px;line-height:1.55;color:var(--text-muted,#64748B);margin:0 0 18px}
+.ncni-contact-form .fine a{color:var(--primary,#0F766E)}
+.ncni-contact-form button{cursor:pointer}
+.ncni-contact-form button:disabled{opacity:.65;cursor:wait}
+.ncni-contact-form [role=status]{margin:14px 0 0;line-height:1.5;color:var(--primary-dark,#0D5E57);font-weight:500}
+.ncni-contact-trap{position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden}
+@media(max-width:600px){.ncni-contact-fields{grid-template-columns:1fr}.ncni-contact-form{padding:20px}}
