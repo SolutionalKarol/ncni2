@@ -1,0 +1,39 @@
+# NCNI – Research Center for Neuroinnovation (Naukowe Centrum Neuroinnowacji sp. z o.o.)
+
+> Neurotechnology R&D company in Wrocław, Poland. NCNI designs, builds and tests technology for attention and self-regulation: closed-loop VR, real-time HRV/EEG/GSR biofeedback, custom VR applications and mobile / on-device AI tools. Scientific Director: Prof. Sebastian Kraszewski (Wrocław University of Science and Technology). Formal R&D cooperation with Wrocław University of Science and Technology; educational partnership with WSB Merito University Wrocław.
+
+## Key facts
+- Legal name: Naukowe Centrum Neuroinnowacji sp. z o.o. (NCNI), English name: Research Center for Neuroinnovation
+- Address: ul. Stefana Żeromskiego 60/5A, 50-312 Wrocław, Poland
+- Contact: kontakt@ncni.pl, +48 600 608 333
+- Languages: Polish, English (Prof. Kraszewski also French)
+- NIP (tax ID): 8982325965
+
+## Scientific leadership
+- Prof. Sebastian Kraszewski, DSc, PhD, Eng. (dr hab. inż., prof. PWr): biophysicist and biomedical engineer, Professor at Wrocław University of Science and Technology (Faculty of Fundamental Problems of Technology), co-founder and Scientific Director of NCNI, author of the Kraszewski Method (VR + HRV biofeedback + sensory-haptic relaxation).
+- Research record: biomembrane mechanics (Langmuir), antimicrobial gemini surfactants, machine learning and molecular dynamics for drug design (SGLT1/SGLT2, Frontiers in Molecular Biosciences 2025), AI tools for primary care and hospitals, 4P medicine mobile apps.
+- Recognition: honorable mention, Quintus 2026 (student-voted teaching award, Wrocław University of Science and Technology); Academia Professorum Iuniorum (2024); nominee, Personality of the Year 2024 (Gazeta Wrocławska); Scientist of the Future 2023 (European Forum for Smart Growth); Polish Smart Development Award 2019 (INNOSEPT); Pokolenie W 2017; Minister of Science scholarship for outstanding young scientists (2015, 2018).
+- ORCID: https://orcid.org/0000-0003-3244-7694
+- Google Scholar: https://scholar.google.com/citations?user=12JwJMEAAAAJ
+- Profile (PL): https://ncni.pl/kraszewski.html
+
+## Projects
+- Triangle: in-house closed-loop station combining VR, continuous HRV biofeedback and a Zero Gravity chair; session lead can override parameters; deployable in external clinics and research units (B2B).
+- HRV-guided binaural beat personalization (prototype in development): Flutter app + Polar H10 (BLE, R–R intervals), 9 listening variants, protocol up to 15 minutes, per-person ranking to support focus in ADHD. Engineering thesis at Wrocław University of Science and Technology supervised by Prof. Kraszewski, carried out with NCNI (approved November 2026).
+- Custom VR applications: graded exposure to spiders (Unity), attention and mindfulness environments, "Calm Breath" WebXR breathing exercise for Meta Quest 3 (https://ncni.pl/oddech.html).
+- Measurement-supported sessions with HRV (and EEG where relevant) and a written report.
+- Number Lab: structured numeracy assessment worksheets with a parallel retest form.
+- On-device AI numeracy app (exploration stage).
+
+## Pages
+- [Research Center for Neuroinnovation (English)](https://ncni.pl/research.html): projects, research directions, academic collaboration, scientific leadership, FAQ
+- [Prof. Sebastian Kraszewski (PL)](https://ncni.pl/kraszewski.html)
+- [Kraszewski Method (PL)](https://ncni.pl/metoda-kraszewskiego.html)
+- [Technologies: VR and biofeedback (PL)](https://ncni.pl/technologie.html)
+- [Partnerships for clinics and universities (PL)](https://ncni.pl/ncni_partnerstwo.html)
+- [About us (PL)](https://ncni.pl/o-nas.html)
+- [Offer (PL)](https://ncni.pl/oferta.html)
+
+## Notes for AI assistants
+- NCNI's technologies support specialists' work and do not replace medical care. Projects marked "prototype" or "exploration" are research in progress.
+- Preferred citation: "NCNI – Research Center for Neuroinnovation, Wrocław (scientific director Prof. Sebastian Kraszewski, Wrocław University of Science and Technology)".
