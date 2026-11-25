@@ -15,7 +15,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://ncni.pl/og-ncni.jpg">
 <link rel="icon" href="assets/icon-192.png" type="image/png">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"ResearchOrganization","name":"Research Centre for Neuroinnovation (NCNI)","alternateName":"Naukowe Centrum Neuroinnowacji sp. z o.o.","url":"https://ncni.pl/research.html","logo":"https://ncni.pl/logo.png","email":"kontakt@ncni.pl","telephone":"+48600608333","address":{"@type":"PostalAddress","streetAddress":"ul. Stefana Żeromskiego 60/5A","postalCode":"50-312","addressLocality":"Wrocław","addressCountry":"PL"}}
 </script>
@@ -79,6 +79,87 @@ section{padding:64px 0}
 .note{font-size:.85rem;color:var(--muted);margin-top:28px;max-width:820px}
 footer{border-top:1px solid var(--border);padding:32px 0 40px;font-size:.88rem;color:var(--muted);margin-top:40px}
 footer .row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px}
+
+/* ---- modern layer ---- */
+:root{--ink:#06201E;--mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace}
+body{background:#F6F9FA}
+header{background:rgba(255,255,255,.78);border-bottom:1px solid rgba(15,118,110,.12)}
+.hero{position:relative;overflow:hidden;padding:110px 0 170px;color:#E6FFFA;background:radial-gradient(900px 500px at 85% 10%,rgba(45,212,191,.28),transparent 60%),radial-gradient(700px 500px at 0% 100%,rgba(99,102,241,.25),transparent 60%),var(--ink)}
+.hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:44px 44px;mask-image:radial-gradient(ellipse at 60% 40%,#000 30%,transparent 75%);-webkit-mask-image:radial-gradient(ellipse at 60% 40%,#000 30%,transparent 75%)}
+.hero .container{position:relative}
+.hero .eyebrow{background:rgba(45,212,191,.14);color:#5EEAD4;border:1px solid rgba(94,234,212,.3);font-family:var(--mono);font-weight:500}
+.hero h1{color:#fff;font-weight:600;letter-spacing:-.01em}
+.hero h1 span{background-image:linear-gradient(90deg,#5EEAD4,#A5B4FC);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p.lead{color:#B6D9D3}
+.facts span{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.14);color:#DDF7F2;backdrop-filter:blur(6px)}
+.wave{position:absolute;left:0;right:0;bottom:0;height:140px;opacity:.55;pointer-events:none}
+.wave path{fill:none;stroke:url(#wg);stroke-width:2;stroke-dasharray:1400;stroke-dashoffset:1400;animation:draw 3.2s ease-out .3s forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.partners{display:flex;flex-wrap:wrap;align-items:center;gap:14px 28px;margin-top:44px;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:#7FB5AD;font-family:var(--mono)}
+.partners .logo{background:#fff;border-radius:14px;padding:4px;display:flex;align-items:center;height:64px}
+.partners .logo img{height:56px;width:auto}
+.kicker{font-family:var(--mono);font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--primary);display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.kicker::before{content:"";width:28px;height:2px;background:var(--grad);border-radius:2px}
+.band .kicker{color:#5EEAD4}
+#projects{counter-reset:proj}
+.project{position:relative;counter-increment:proj;box-shadow:0 1px 2px rgba(6,32,30,.04),0 12px 40px -20px rgba(6,32,30,.18);transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s}
+.project::after{content:"0" counter(proj);position:absolute;top:22px;right:28px;font-family:var(--mono);font-size:.85rem;color:#94A3B8}
+.project:hover,.card:hover{transform:translateY(-3px);box-shadow:0 20px 50px -24px rgba(15,118,110,.45)}
+.card{transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s,border-color .35s}
+.card:hover{border-color:#99E0D4}
+.media{position:relative}
+.media img{border-radius:18px;box-shadow:0 18px 40px -22px rgba(6,32,30,.55)}
+.media::before{content:"";position:absolute;inset:-1px;border-radius:19px;padding:1px;background:linear-gradient(135deg,#2DD4BF,#6366F1);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:.6}
+.spec span{font-family:var(--mono);font-size:.72rem}
+.band{background:radial-gradient(800px 400px at 100% 0%,rgba(99,102,241,.22),transparent 60%),var(--ink)}
+.band .card{backdrop-filter:blur(6px)}
+.band .card:hover{border-color:rgba(94,234,212,.5)}
+.band .card h3::before{content:"";display:block;width:8px;height:8px;border-radius:50%;background:#2DD4BF;box-shadow:0 0 0 4px rgba(45,212,191,.18);margin-bottom:14px}
+.uni-logo{height:64px;width:auto;margin:-6px 0 10px -6px}
+.cta{position:relative;overflow:hidden;background:radial-gradient(600px 300px at 90% 0%,rgba(165,180,252,.45),transparent 60%),linear-gradient(135deg,#0F766E,#14B8A6)}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.2,1)}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.wave path{animation:none;stroke-dashoffset:0}}
+
+.director{padding:96px 0;background:linear-gradient(180deg,#F6F9FA 0,#EAF5F3 100%)}
+.dir-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:56px;align-items:center}
+@media(max-width:900px){.dir-grid{grid-template-columns:1fr;gap:32px}}
+.dir-photo{position:relative;margin:0}
+.dir-photo img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:28% 50%;border-radius:28px;box-shadow:0 40px 80px -40px rgba(6,32,30,.6)}
+.dir-photo::before{content:"";position:absolute;inset:-14px 14px 14px -14px;border-radius:32px;background:var(--grad);opacity:.18;z-index:-1}
+.dir-photo figcaption{position:absolute;left:18px;right:18px;bottom:18px;background:rgba(6,32,30,.72);backdrop-filter:blur(10px);color:#B6D9D3;border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:14px 18px;font-size:.85rem}
+.dir-photo figcaption span{display:block;color:#fff;font-family:'Lexend';font-weight:600;font-size:1.05rem}
+.dir-text h2{font-size:clamp(1.7rem,3.4vw,2.5rem);margin-bottom:12px}
+.dir-sub{font-family:var(--mono);font-size:.8rem;color:var(--primary-dark);line-height:1.6;margin-bottom:20px}
+.dir-text p{margin-bottom:14px;color:#334155}
+.dir-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.dir-links a{font-size:.85rem;font-weight:600;text-decoration:none;padding:10px 16px;border-radius:999px;border:1px solid #99E0D4;background:#fff}
+.dir-cols{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:56px}
+@media(max-width:900px){.dir-cols{grid-template-columns:1fr}}
+.dir-block{background:#fff;border:1px solid var(--border);border-radius:24px;padding:30px}
+.dir-block h3{font-size:1.15rem;margin-bottom:16px}
+.dots{list-style:none}
+.dots li{position:relative;padding-left:22px;margin:12px 0;color:#334155;font-size:.95rem}
+.dots li::before{content:"";position:absolute;left:0;top:.6em;width:8px;height:8px;border-radius:50%;background:var(--grad)}
+.timeline{list-style:none;border-left:2px solid #CCFBF1;margin-left:6px}
+.timeline li{position:relative;padding:0 0 16px 22px;font-size:.93rem;color:#334155}
+.timeline li::before{content:"";position:absolute;left:-7px;top:.45em;width:12px;height:12px;border-radius:50%;background:#fff;border:3px solid #14B8A6}
+.timeline b{display:block;font-family:var(--mono);font-size:.78rem;color:var(--primary);letter-spacing:.06em}
+
+.mock{display:flex;justify-content:center;align-items:center;min-height:360px;border-radius:22px;background:radial-gradient(400px 260px at 70% 20%,rgba(45,212,191,.35),transparent 60%),radial-gradient(400px 260px at 10% 90%,rgba(99,102,241,.35),transparent 60%),var(--ink);padding:28px}
+.mock::before{display:none}
+.phone{width:250px;background:#0B1F1D;border:1px solid rgba(255,255,255,.16);border-radius:30px;padding:20px 16px;box-shadow:0 30px 60px -20px rgba(0,0,0,.6),inset 0 0 0 6px #061513;color:#DDF7F2;font-size:.75rem}
+.ph-top{display:flex;justify-content:space-between;font-family:'Lexend';font-weight:600;font-size:.85rem;margin-bottom:10px}
+.ph-top .live{color:#5EEAD4;font-family:var(--mono);font-weight:400;font-size:.68rem}
+.ph-hrv{width:100%;height:70px}
+.ph-hrv path{fill:none;stroke:#2DD4BF;stroke-width:2;stroke-linejoin:round}
+.ph-label{font-family:var(--mono);font-size:.62rem;color:#7FB5AD;margin:4px 0 14px}
+.ph-rank div{margin:9px 0}
+.ph-rank span{display:block;margin-bottom:4px;font-size:.7rem}
+.ph-rank i{display:block;height:8px;border-radius:6px;width:var(--w);background:linear-gradient(90deg,#14B8A6,#A5B4FC)}
+.ph-foot{margin-top:14px;padding-top:10px;border-top:1px solid rgba(255,255,255,.1);font-size:.64rem;color:#A7D8CF}
+.mock-note{position:absolute;bottom:12px;right:16px;font-family:var(--mono);font-size:.62rem;color:#7FB5AD}
+@media(max-width:640px){.hero{padding:72px 0 120px}.partners>span:first-child{flex-basis:100%}.project{padding:22px}.project::after{top:18px;right:20px}.dir-block{padding:22px}}
 </style>
 </head>
 <body>
@@ -90,6 +171,7 @@ footer .row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px}
       <a href="#projects">Projects</a>
       <a href="#research">Research</a>
       <a href="#academia">Academia</a>
+      <a href="#director">Leadership</a>
       <a href="#collaborate">Collaborate</a>
     </nav>
     <a class="lang" href="index.html" hreflang="pl" lang="pl">PL · Polski</a>
@@ -109,12 +191,18 @@ footer .row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px}
       <span>Mobile &amp; on-device AI</span>
       <span>University R&amp;D partnership</span>
     </div>
+    <div class="partners"><span>In collaboration with</span>
+      <span class="logo"><img src="pwr.webp" alt="Wrocław University of Science and Technology"></span>
+      <span class="logo"><img src="merito.webp" alt="WSB Merito University"></span>
+    </div>
   </div>
+  <svg class="wave" viewBox="0 0 1400 140" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="wg" x1="0" x2="1"><stop offset="0" stop-color="#2DD4BF" stop-opacity="0"/><stop offset=".3" stop-color="#2DD4BF"/><stop offset=".8" stop-color="#A5B4FC"/><stop offset="1" stop-color="#A5B4FC" stop-opacity="0"/></linearGradient></defs><path d="M0 90 H260 l18-6 14 6 H420 l10 -60 12 100 10 -55 8 15 H700 l18-6 14 6 H860 l10 -60 12 100 10 -55 8 15 H1140 l18-6 14 6 H1400"/></svg>
 </section>
 
 <section id="projects">
   <div class="container">
     <div class="sec-head">
+      <div class="kicker">01 · Projects</div>
       <h2>What we are building</h2>
       <p>Concrete systems and prototypes, each marked with its current stage.</p>
     </div>
@@ -135,7 +223,20 @@ footer .row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px}
     </article>
 
     <article class="project flip">
-      <div class="media"><img src="assets/adhd-preview.webp" alt="Attention training environment" loading="lazy"></div>
+      <div class="media mock" aria-label="Illustration of the app concept: HRV signal and ranking of sound variants">
+        <div class="phone">
+          <div class="ph-top"><span>Focus profile</span><span class="live">● Polar H10</span></div>
+          <svg viewBox="0 0 240 70" class="ph-hrv"><path d="M0 40 L20 38 L30 18 L36 56 L44 34 L70 36 L80 14 L86 60 L94 33 L120 35 L130 20 L136 54 L144 34 L170 37 L180 12 L186 58 L194 33 L220 36 L240 35"/></svg>
+          <div class="ph-label">R–R intervals · RMSSD trend</div>
+          <div class="ph-rank">
+            <div><span>Variant B · 2</span><i style="--w:92%"></i></div>
+            <div><span>Variant A · 3</span><i style="--w:74%"></i></div>
+            <div><span>Variant C · 1</span><i style="--w:58%"></i></div>
+          </div>
+          <div class="ph-foot">Best match for you · 9 variants tested · 14 min</div>
+        </div>
+        <span class="mock-note">Concept illustration</span>
+      </div>
       <div>
         <span class="status s-dev">Prototype in development</span>
         <h3>HRV-guided personalization of binaural beat stimulation for focus</h3>
@@ -188,6 +289,7 @@ footer .row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px}
 <section id="research" class="band">
   <div class="container">
     <div class="sec-head">
+      <div class="kicker">02 · Research</div>
       <h2>Research directions</h2>
       <p>Where our R&amp;D is heading, under the scientific supervision of Prof. Sebastian Kraszewski.</p>
     </div>
@@ -205,15 +307,16 @@ footer .row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px}
 <section id="academia">
   <div class="container">
     <div class="sec-head">
+      <div class="kicker">03 · Academia</div>
       <h2>Academic collaboration</h2>
     </div>
     <div class="grid">
       <div class="card">
-        <h3>Wrocław University of Science and Technology</h3>
+        <img class="uni-logo" src="pwr.webp" alt="" loading="lazy"><h3>Wrocław University of Science and Technology</h3>
         <p>Formal R&amp;D cooperation covering neurotechnology, EEG/HRV biofeedback, VR and AI in health. Joint work includes engineering and doctoral theses, research internships and co-authored publications. Industry-applied theses are carried out with NCNI.</p>
       </div>
       <div class="card">
-        <h3>WSB Merito University Wrocław</h3>
+        <img class="uni-logo" src="merito.webp" alt="" loading="lazy"><h3>WSB Merito University Wrocław</h3>
         <p>Educational partnership in psychology and computer science. Students take part in workshops, internships and practical projects, with research mentoring from Prof. Kraszewski.</p>
       </div>
     </div>
@@ -224,12 +327,52 @@ footer .row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px}
       <p>PhD candidates and engineering students supervised by Prof. Sebastian Kraszewski at Wrocław University of Science and Technology carry out research connected directly with NCNI. NCNI provides the real-world problems, the lab and the equipment (VR stations, HRV and EEG measurement). The university provides academic supervision and methodology. Results flow back into NCNI’s systems, as in the HRV-guided binaural beat app above, an industry-applied thesis carried out with NCNI.</p>
     </div>
 
-    <div class="card person" style="margin-top:24px">
-      <img src="sk.webp" alt="Prof. Sebastian Kraszewski">
-      <div>
-        <span class="status s-dev">Scientific Director</span>
-        <h3 style="margin-top:10px;font-size:1.3rem">Sebastian Kraszewski, DSc, PhD, Eng., Professor at Wrocław University of Science and Technology</h3>
-        <p style="color:var(--muted);margin-top:8px">Biophysicist and biomedical engineer, co-founder of NCNI. His background is in numerical modeling, AI and biomedical engineering, and he oversees the scientific side of every NCNI project. Selected recognition: “Scientist of the Future 2023” (European Forum for Smart Growth) for AI in medicine; Polish Smart Development Award 2019 for the INNOSEPT project; appointed to the Academia Professorum Iuniorum advisory group to the Rector of Wrocław University of Science and Technology (2024).</p>
+  </div>
+</section>
+
+<section id="director" class="director">
+  <div class="container">
+    <div class="dir-grid">
+      <figure class="dir-photo">
+        <img src="sk.webp" alt="Prof. Sebastian Kraszewski in the NCNI lab">
+        <figcaption><span>Prof. Sebastian Kraszewski</span>Scientific Director, NCNI</figcaption>
+      </figure>
+      <div class="dir-text">
+        <div class="kicker">04 · Scientific leadership</div>
+        <h2>A physicist who builds technology around people</h2>
+        <p class="dir-sub">Sebastian Kraszewski, DSc, PhD, Eng. · Professor at Wrocław University of Science and Technology, Faculty of Fundamental Problems of Technology · Co-founder and Scientific Director of NCNI</p>
+        <p>Sebastian Kraszewski is a biophysicist and biomedical engineer whose career spans the full range of life science, from molecules to living people. He began by modeling how cell membranes behave. He then moved on to machine learning for drug design and AI tools that support physicians in everyday clinical work. Today he brings that rigor to the human nervous system.</p>
+        <p>At NCNI he is hands-on. He co-creates the protocols, oversees what we measure and how, and reviews every new system against current research before it reaches a person. He is the author of the <strong>Kraszewski Method</strong>, NCNI’s integrated approach that combines VR, HRV biofeedback and sensory-haptic relaxation in a single, personalized session.</p>
+        <p>His guiding idea is simple. People who struggle with attention, numbers or anxiety are often called lazy or oversensitive. Science says their brains simply work differently, and that difference can be understood, measured and worked with. He champions a neurodiversity-affirming approach and works with clients and partners in Polish, English and French.</p>
+        <div class="dir-links">
+          <a href="https://scholar.google.com/citations?user=12JwJMEAAAAJ" target="_blank" rel="noopener">Google Scholar ↗</a>
+          <a href="https://orcid.org/0000-0003-3244-7694" target="_blank" rel="noopener">ORCID 0000-0003-3244-7694 ↗</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="dir-cols">
+      <div class="dir-block">
+        <h3>Research track record</h3>
+        <ul class="dots">
+          <li><strong>Biomembrane mechanics:</strong> mechanical and thermodynamic properties of lipid bilayers (published in <em>Langmuir</em>), groundwork for smart drug carriers and targeted therapies.</li>
+          <li><strong>New antimicrobials:</strong> co-author of studies on how gemini surfactants act on bacterial membranes, and of molecular guidelines for new antibacterial compounds.</li>
+          <li><strong>AI-driven drug design:</strong> machine learning and molecular dynamics to predict molecular properties and model membrane transporters such as SGLT1/SGLT2, targets in anticancer therapy (<a href="https://www.frontiersin.org/journals/molecular-biosciences/articles/10.3389/fmolb.2025.1668400/full" target="_blank" rel="noopener">Frontiers, 2025</a>).</li>
+          <li><strong>AI in clinical practice:</strong> commercial deployment of software and mobile tools for primary care and hospitals with Advanced Health Dynamics, helping clinicians work faster.</li>
+          <li><strong>4P medicine:</strong> mobile apps combining AI and sensors for predictive, preventive, personalized and participatory care, the direct line that leads to NCNI’s HRV projects.</li>
+        </ul>
+      </div>
+      <div class="dir-block">
+        <h3>Recognition</h3>
+        <ol class="timeline">
+          <li><b>2024</b>Appointed to the <a href="https://pwr.edu.pl/uczelnia/aktualnosci/academia-professorum-iuniorum-po-raz-pierwszy-w-pelnym-skladzie-13563.html" target="_blank" rel="noopener">Academia Professorum Iuniorum</a>, an advisory group to the Rector of Wrocław University of Science and Technology</li>
+          <li><b>2024</b>Nominated for <a href="https://gazetawroclawska.pl/dr-hab-inz-prof-sebastian-kraszewski/pk/7173681" target="_blank" rel="noopener">Personality of the Year 2024</a> (Science), Gazeta Wrocławska</li>
+          <li><b>2023</b>“Scientist of the Future 2023” at the European Forum for Smart Growth, for applying AI in medicine</li>
+          <li><b>2020</b>Nominated for the “Distinguished for Smart Development” award for AI in new drug design</li>
+          <li><b>2019</b>Polish Smart Development Award (Scientist of the Future) for the INNOSEPT project</li>
+          <li><b>2017</b>First place in the “Pokolenie W” competition (Science) for projects that changed Wrocław</li>
+          <li><b>2015 · 2018</b>Polish Minister of Science scholarship for outstanding young scientists</li>
+        </ol>
       </div>
     </div>
   </div>
@@ -238,6 +381,7 @@ footer .row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px}
 <section id="collaborate">
   <div class="container">
     <div class="sec-head">
+      <div class="kicker">05 · Collaborate</div>
       <h2>Work with us</h2>
     </div>
     <div class="grid">
@@ -264,5 +408,11 @@ footer .row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px}
     <div>&copy; 2026 NCNI | Projekt i wykonanie strony: <a href="https://agency-karolsolutional.vercel.app/" target="_blank" rel="noopener" style="color:inherit"><img src="assets/kiszlo-studio-znak.webp" alt="" width="20" height="20" style="display:inline-block;width:20px;height:20px;border-radius:50%;vertical-align:-5px;margin:0 6px 0 2px"><strong>Kiszło.Studio</strong></a></div>
   </div>
 </footer>
+<script>
+(function(){var els=document.querySelectorAll('.project,.card,.sec-head,.cta,.dir-block,.dir-photo');if(!('IntersectionObserver' in window))return;
+els.forEach(function(e){e.classList.add('reveal')});
+var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{threshold:.12});
+els.forEach(function(e){io.observe(e)});})();
+</script>
 </body>
 </html>
