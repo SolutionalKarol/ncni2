@@ -194,6 +194,32 @@ header{background:rgba(255,255,255,.78);border-bottom:1px solid rgba(15,118,110,
 .faq-item summary::after{content:"+";color:var(--primary);font-size:1.3rem;line-height:1}
 .faq-item[open] summary::after{content:"–"}
 .faq-item p{margin-top:12px;color:#334155;font-size:.95rem}
+
+.apps-wrap{background:linear-gradient(180deg,#06201E,#0B2F2B);border-radius:28px;padding:36px;margin-bottom:24px;color:#DDF7F2;box-shadow:0 30px 70px -40px rgba(6,32,30,.8)}
+.apps-wrap h3{color:#fff;font-size:1.5rem;margin:10px 0}
+.apps-wrap .apps-head p{color:#A7D8CF;max-width:760px}
+.apps-wrap .spec span{background:rgba(255,255,255,.06);border-color:rgba(94,234,212,.3);color:#99F6E4}
+.apps-wrap .note{color:#7FB5AD}
+.apps{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:26px}
+.app{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:20px;overflow:hidden;transition:transform .35s cubic-bezier(.2,.8,.2,1),border-color .35s}
+.app:hover{transform:translateY(-4px);border-color:rgba(94,234,212,.5)}
+.app-media{position:relative;aspect-ratio:16/10;background:#041513}
+.app-media video,.app-media img{width:100%;height:100%;object-fit:cover;display:block}
+.app-tag{position:absolute;top:12px;left:12px;font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:#fff;background:rgba(6,32,30,.6);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.2);padding:4px 9px;border-radius:999px}
+.app-body{padding:18px 20px 20px}
+.app-body h4{font-family:'Lexend';font-size:1.02rem;color:#fff;margin-bottom:8px}
+.app-body p{font-size:.88rem;color:#A7D8CF;line-height:1.6}
+.app-body p a{color:#5EEAD4;font-weight:600;text-decoration:none}
+.app-meta{display:flex;justify-content:space-between;gap:10px;margin-top:14px;font-family:var(--mono);font-size:.66rem;color:#7FB5AD;border-top:1px solid rgba(255,255,255,.08);padding-top:10px}
+@media(max-width:640px){.apps-wrap{padding:22px}}
+
+.approach{padding-top:24px}
+.approach .kicker::after{content:none}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px;counter-reset:none}
+.step{position:relative;background:#fff;border:1px solid var(--border);border-radius:20px;padding:26px 24px;overflow:hidden}
+.step b{font-family:var(--mono);font-size:2.4rem;font-weight:500;line-height:1;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;display:block;margin-bottom:14px}
+.step h3{font-size:1.05rem;margin-bottom:8px}
+.step p{color:var(--muted);font-size:.93rem}
 </style>
 </head>
 <body>
@@ -239,7 +265,7 @@ header{background:rgba(255,255,255,.78);border-bottom:1px solid rgba(15,118,110,
     <div class="sec-head">
       <div class="kicker">01 · Projects</div>
       <h2>What we are building</h2>
-      <p>Concrete systems and prototypes, each marked with its current stage.</p>
+      <p>Working systems, prototypes and early explorations. Each one is labeled with its real stage, because in research the difference matters.</p>
     </div>
 
     <article class="project">
@@ -292,20 +318,59 @@ header{background:rgba(255,255,255,.78);border-bottom:1px solid rgba(15,118,110,
       </div>
     </article>
 
-    <article class="project">
-      <div>
-        <span class="status s-live">In use at NCNI</span>
-        <h3>Custom VR applications</h3>
-        <p>We build our own VR content, so scenes, pacing and stimulus intensity can be tailored to each person and each study.</p>
-        <ul>
-          <li><strong>Graded exposure to spiders:</strong> a living-room scene built in Unity where the encounter with a spider is introduced step by step</li>
-          <li><strong>Attention and mindfulness environments:</strong> low-stimulus and high-distraction scenes for practicing focus and returning to a task, matched to age and sensory sensitivity</li>
-          <li><strong>“Calm Breath” (WebXR):</strong> an evening-lake scene with a breathing orb paced at 4 s in / 6 s out, for 3, 5 or 10 minutes. It runs directly in the Meta Quest 3 browser with no install</li>
-        </ul>
-        <div class="spec"><span>Unity</span><span>WebXR · three.js</span><span>Meta Quest 3</span></div>
+<div class="apps-wrap">
+      <div class="apps-head">
+        <div>
+          <span class="status s-live">In use at NCNI</span>
+          <h3>Custom VR applications</h3>
+          <p>We build our own VR content instead of licensing off-the-shelf experiences. That gives us control over every parameter that matters for research and for the person in the headset: stimulus intensity, pacing, number of distractors and session length. Each scene can run on its own or inside the Triangle closed loop with live HRV.</p>
+        </div>
+        <div class="spec"><span>Unity</span><span>WebXR · three.js</span><span>Meta Quest 3</span><span>HRV-ready</span></div>
       </div>
-      <div class="media"><img src="vr-system.webp" alt="VR station at NCNI" loading="lazy"></div>
-    </article>
+      <div class="apps">
+      <article class="app">
+        <div class="app-media"><video muted loop playsinline preload="none" poster="assets/vr-app-spiders.webp" data-autoplay><source src="assets/vr-app-spiders.mp4" type="video/mp4"></video><span class="app-tag">Exposure</span></div>
+        <div class="app-body">
+          <h4>Graded exposure to spiders</h4>
+          <p>A photorealistic living room built in Unity. The spider’s size, distance and movement are introduced in small, controllable steps, so each person sets the pace and can pause at any moment while the session lead stays alongside.</p>
+          <div class="app-meta"><span>Unity · Meta Quest 3</span><span>Recorded in the Unity editor</span></div>
+        </div>
+      </article>
+      <article class="app">
+        <div class="app-media"><video muted loop playsinline preload="none" poster="assets/vr-app-focus-forest.webp" data-autoplay><source src="assets/vr-app-focus-forest.mp4" type="video/mp4"></video><span class="app-tag">Attention</span></div>
+        <div class="app-body">
+          <h4>Focus Forest: attention training for ADHD</h4>
+          <p>A night forest with a campfire and drifting fireflies. Low-stimulus by default, with optional distractions for practicing sustained attention and returning to a task. Used with children, teens and adults, matched to age and sensory sensitivity.</p>
+          <div class="app-meta"><span>Meta Quest 3 · HRV-compatible</span><span>Recorded in headset</span></div>
+        </div>
+      </article>
+      <article class="app">
+        <div class="app-media"><video muted loop playsinline preload="none" poster="assets/vr-app-deep-space.webp" data-autoplay><source src="assets/vr-app-deep-space.mp4" type="video/mp4"></video><span class="app-tag">Relaxation</span></div>
+        <div class="app-body">
+          <h4>Deep Space: guided deep relaxation</h4>
+          <p>A slow, immersive journey past a space station and a softly pulsing light. Designed for down-regulation after high stress, typically combined with the Zero Gravity chair in Triangle sessions.</p>
+          <div class="app-meta"><span>Meta Quest 3 · Triangle</span><span>Recorded in headset</span></div>
+        </div>
+      </article>
+      <article class="app">
+        <div class="app-media"><img src="assets/vr-app-calm-breath.webp" alt="Calm Breath: paced breathing in WebXR" loading="lazy"><span class="app-tag">Breathing</span></div>
+        <div class="app-body">
+          <h4>Calm Breath: paced breathing in WebXR</h4>
+          <p>An evening lake with a breathing orb that guides 4-second inhales and 6-second exhales for 3, 5 or 10 minutes. Runs directly in the Meta Quest 3 browser with no installation, so partners can test it on their own headsets. <a href="oddech.html" lang="pl">Try it →</a></p>
+          <div class="app-meta"><span>WebXR · three.js</span><span>Live at ncni.pl/oddech.html</span></div>
+        </div>
+      </article>
+      <article class="app">
+        <div class="app-media"><video muted loop playsinline preload="none" poster="assets/vr-app-number-ship.webp" data-autoplay><source src="assets/vr-app-number-ship.mp4" type="video/mp4"></video><span class="app-tag">Numeracy</span></div>
+        <div class="app-body">
+          <h4>Number Ship: math in a spaceship (concept)</h4>
+          <p>A concept for numeracy exercises inside a spaceship cockpit: comparing dot patterns, finding numbers on a number line and estimating quantities, without the pressure of a classroom worksheet.</p>
+          <div class="app-meta"><span>Concept visualization</span><span>Concept, not yet in use</span></div>
+        </div>
+      </article>
+      </div>
+      <p class="note" style="margin-top:16px">Clips are short, silent recordings from our applications. The numeracy scene is shown as a concept visualization.</p>
+    </div>
 
     <div class="grid">
       <div class="card">
@@ -323,6 +388,22 @@ header{background:rgba(255,255,255,.78);border-bottom:1px solid rgba(15,118,110,
         <h3 style="margin-top:10px">On-device AI for everyday numeracy</h3>
         <p>We are testing a compact open-source vision model (about 51M parameters) that runs fully on the phone, so photos never leave the device. Our November 2026 bench test on 63 images showed reliable reading of printed numbers and receipts. That points the app toward estimating, counting and shopping math rather than handwriting.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<section id="approach" class="approach">
+  <div class="container">
+    <div class="sec-head">
+      <div class="kicker">How we work</div>
+      <h2>Four principles behind every NCNI project</h2>
+      <p>The same rules apply whether we are building a VR scene, a mobile app or a full closed-loop station.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><b>01</b><h3>Person first, technology second</h3><p>Every session starts with a conversation and a short questionnaire. Technology is added only when it answers a real question about that person.</p></div>
+      <div class="step"><b>02</b><h3>Measure, don’t guess</h3><p>We record physiological responses (HRV with a Polar H10 chest strap, EEG where relevant) and every session ends with a written report, so decisions rest on data rather than impressions.</p></div>
+      <div class="step"><b>03</b><h3>One person, one protocol</h3><p>Immersion, stimulus intensity, pacing and chair settings are tuned to the individual, and the session lead can override any parameter at any moment.</p></div>
+      <div class="step"><b>04</b><h3>Evidence before scale</h3><p>New systems go through technical verification first. Studies with participants start only after the required approvals, and our mobile AI work keeps personal data on the user’s own device.</p></div>
     </div>
   </div>
 </section>
@@ -464,14 +545,19 @@ header{background:rgba(255,255,255,.78);border-bottom:1px solid rgba(15,118,110,
 <footer>
   <div class="container row">
     <div><strong>Naukowe Centrum Neuroinnowacji sp. z o.o.</strong> · Research Center for Neuroinnovation<br>ul. Stefana Żeromskiego 60/5A, 50-312 Wrocław, Poland · kontakt@ncni.pl · +48 600 608 333</div>
-    <div>&copy; 2026 NCNI | Website design &amp; development: <a href="https://agency-karolsolutional.vercel.app/" target="_blank" rel="noopener" style="color:inherit"><img src="assets/kiszlo-studio-znak.webp" alt="" width="20" height="20" style="display:inline-block;width:20px;height:20px;border-radius:50%;vertical-align:-5px;margin:0 6px 0 2px"><strong>Kiszło.Studio</strong></a></div>
+    <div>&copy; 2026 NCNI | Website design &amp; development: <a href="https://agency-karolsolutional.vercel.app/" target="_blank" rel="noopener" style="color:inherit"><img src="assets/kiszlo-studio-znak.webp" alt="" width="20" height="20" style="display:inline-block;width:20px;height:20px;border-radius:50%;vertical-align:-5px;margin:0 6px 0 2px"><strong>Kiszlo.Studio</strong></a></div>
   </div>
 </footer>
 <script>
-(function(){var els=document.querySelectorAll('.project,.card,.sec-head,.cta,.dir-block,.dir-photo');if(!('IntersectionObserver' in window))return;
+(function(){var els=document.querySelectorAll('.project,.card,.sec-head,.cta,.dir-block,.dir-photo,.app,.step');if(!('IntersectionObserver' in window))return;
 els.forEach(function(e){e.classList.add('reveal')});
 var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{threshold:.12});
 els.forEach(function(e){io.observe(e)});})();
+</script>
+<script>
+(function(){var v=document.querySelectorAll('video[data-autoplay]');if(!('IntersectionObserver' in window)){v.forEach(function(x){x.play&&x.play().catch(function(){})});return;}
+var io=new IntersectionObserver(function(es){es.forEach(function(e){var x=e.target;if(e.isIntersecting){x.preload='auto';var p=x.play();p&&p.catch(function(){})}else{x.pause()}})},{threshold:.35});
+v.forEach(function(x){io.observe(x)});})();
 </script>
 <script src="assets/ncni-runtime.js?v=20261030-analytics" defer></script>
 </body>
