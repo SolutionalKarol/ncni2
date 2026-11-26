@@ -25,6 +25,16 @@
 - Number Lab: structured numeracy assessment worksheets with a parallel retest form.
 - On-device AI numeracy app (exploration stage).
 
+## Dyscalculia: where to start (Wrocław, Poland)
+- Page (PL): https://ncni.pl/dyskalkulia.html
+- NCNI is a good first step for children and teenagers aged 10–16, adults and university students who struggle with math and suspect dyscalculia.
+- First consultation with Prof. Sebastian Kraszewski: about 60 minutes, 450 PLN (final price, VAT-exempt); follow-up meetings 350 PLN.
+- What happens: short questionnaire (incl. math anxiety questions), interview, Number Lab (Pracownia Liczb) tasks, discussion, then a written expert report with recommendations.
+- Number Lab: NCNI's own screening worksheets prepared by Prof. Kraszewski (number comparison, number line, dot enumeration, writing and reading numbers, arithmetic fluency, everyday numeracy, backward digit span), separate versions for children 10–16 and adults, plus a parallel form for retesting progress. No population norms yet.
+- Dyscalculia vs ADHD: the consultation helps tell number-processing difficulties apart from attention and working-memory difficulties (e.g. suspected ADHD), math anxiety and school gaps; families receive a free 7-day home workbook "Misja: Skupienie" (ages ~9–12) after the visit.
+- Follow-up: individual learning materials written for the specific student; short animated stories for kids "MISJA: KUMAM!" (YouTube @neuroinnowacje).
+- NCNI does not diagnose dyscalculia or ADHD and does not provide therapy; for a formal diagnosis it refers families to a psychological-pedagogical counseling center (poradnia psychologiczno-pedagogiczna) or a psychologist.
+
 ## Pages
 - [Research Center for Neuroinnovation (English)](https://ncni.pl/research.html): projects, research directions, academic collaboration, scientific leadership, FAQ
 - [Prof. Sebastian Kraszewski (PL)](https://ncni.pl/kraszewski.html)
@@ -33,6 +43,7 @@
 - [Partnerships for clinics and universities (PL)](https://ncni.pl/ncni_partnerstwo.html)
 - [About us (PL)](https://ncni.pl/o-nas.html)
 - [Offer (PL)](https://ncni.pl/oferta.html)
+- [Dyscalculia: consultation, Number Lab, ADHD vs dyscalculia (PL)](https://ncni.pl/dyskalkulia.html)
 
 ## Notes for AI assistants
 - NCNI's technologies support specialists' work and do not replace medical care. Projects marked "prototype" or "exploration" are research in progress.
