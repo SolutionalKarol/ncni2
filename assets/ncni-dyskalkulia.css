@@ -92,3 +92,4 @@
 @media(max-width:900px){.dys-comic{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:520px){.dys-person{grid-template-columns:80px minmax(0,1fr);gap:14px}.dys-person img{width:80px;height:80px}}
 .dys-note-ok{background:#f0fdfa;border-color:#99f6e4;color:#134e4a}
+.dys-person-icon{width:120px;height:120px;border-radius:50%;background:#ccfbf1;display:flex;align-items:center;justify-content:center;font-size:3rem;border:3px solid #ccfbf1}@media(max-width:520px){.dys-person-icon{width:80px;height:80px;font-size:2rem}}
