@@ -33,7 +33,7 @@
 - Number Lab: NCNI's own screening worksheets prepared by Prof. Kraszewski (number comparison, number line, dot enumeration, writing and reading numbers, arithmetic fluency, everyday numeracy, backward digit span), separate versions for children 10–16 and adults, plus a parallel form for retesting progress. No population norms yet.
 - Dyscalculia vs ADHD: the consultation helps tell number-processing difficulties apart from attention and working-memory difficulties (e.g. suspected ADHD), math anxiety and school gaps; families receive a free 7-day home workbook "Misja: Skupienie" (ages ~9–12) after the visit.
 - Follow-up: individual learning materials written for the specific student; short animated stories for kids "MISJA: KUMAM!" (YouTube @neuroinnowacje).
-- NCNI does not diagnose dyscalculia or ADHD and does not provide therapy; when needed the consultation is complemented by NCNI's in-house psychologist (Daria Cerazy); if a formal opinion from a psychological-pedagogical counseling center (poradnia psychologiczno-pedagogiczna) is the right path, NCNI tells the family.
+- When needed the consultation is complemented by NCNI's in-house psychologist (Daria Cerazy); if a formal opinion from a psychological-pedagogical counseling center (poradnia psychologiczno-pedagogiczna) is the right path, NCNI tells the family.
 
 ## Pages
 - [Research Center for Neuroinnovation (English)](https://ncni.pl/research.html): projects, research directions, academic collaboration, scientific leadership, FAQ
