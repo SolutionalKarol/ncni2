@@ -69,3 +69,25 @@
 .dys-mat .tag.test{background:#eef2ff;color:#4338ca}
 .dys-mat .tag.learn{background:#ccfbf1;color:#0f766e}
 @media(max-width:700px){.dys-compare-row{grid-template-columns:1fr}.dys-compare-row>div:first-child{border-right:0}.dys-compare-row.head{display:none}.dys-compare-row>div:first-child::before{content:"Liczby: ";font-weight:700;color:#0f766e}.dys-compare-row>div:last-child::before{content:"Uwaga: ";font-weight:700;color:#4338ca}.dys-tldr{padding:18px}}
+#dla-kogo,#zespol{scroll-margin-top:110px}
+.dys-groups{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;margin-top:20px}
+.dys-group{border:1px solid #e2e8f0;border-radius:18px;padding:22px;background:#fff;display:flex;flex-direction:column}
+.dys-group-age{display:inline-block;align-self:flex-start;font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:#0f766e;background:#ccfbf1;padding:4px 10px;border-radius:99px;margin-bottom:12px}
+.dys-group h3{font-size:1.1rem;color:#1e293b;margin-bottom:10px;font-style:italic}
+.dys-group ul{margin:0 0 14px!important;padding-left:0!important}
+.dys-group li{font-size:.93rem;margin-bottom:6px!important}
+.dys-group p{font-size:.93rem;color:#475569;margin:auto 0 0!important;padding-top:12px;border-top:1px dashed #cbd5e1}
+.dys-team{display:grid;gap:20px}
+.dys-person{display:grid;grid-template-columns:120px minmax(0,1fr);gap:20px;align-items:start}
+.dys-person img{width:120px;height:120px;border-radius:50%;object-fit:cover;display:block;border:3px solid #ccfbf1}
+.dys-person h3{font-size:1.15rem;margin-bottom:2px}
+.dys-person h3 a{color:#0f766e;text-decoration:none}
+.dys-person span{display:block;font-size:.88rem;color:#64748b;margin-bottom:8px}
+.dys-person p{margin:0!important;font-size:.97rem}
+.dys-comic{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:28px}
+.dys-comic figure{margin:0;background:#fff;border:3px solid #1e293b;border-radius:10px;overflow:hidden;box-shadow:4px 4px 0 #1e293b}
+.dys-comic img{display:block;width:100%;height:auto}
+.dys-comic figcaption{font-size:.82rem;font-weight:600;padding:8px 10px;color:#1e293b;line-height:1.4}
+.dys-comic-note{font-size:.9rem;color:#64748b;margin:14px 0 0!important}
+@media(max-width:900px){.dys-comic{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:520px){.dys-person{grid-template-columns:80px minmax(0,1fr);gap:14px}.dys-person img{width:80px;height:80px}}
